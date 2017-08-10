@@ -75,7 +75,7 @@ def rr_order_patterns(signal1, signal2, m, tau):
     factorial_dim = scipy.misc.factorial(m)
 
     ipermlist = itertools.permutations(range(1, m + 1))
-    npermlist = np.zeros((factorial_dim, m))
+    npermlist = np.zeros((np.int32(factorial_dim), m))
     for index, perm in enumerate(ipermlist):
         perm = np.reshape(perm, (1, -1)).astype(np.float32)
         npermlist[index, :] = sklearn.preprocessing.normalize(perm)
