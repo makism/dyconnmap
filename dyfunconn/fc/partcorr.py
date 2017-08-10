@@ -19,7 +19,9 @@ def partcorr(data, fb, fs, pairs=None):
 
     P_corr = np.zeros((n_channels, n_channels), dtype=np.float32)
 
-    r = np.corrcoef(filtered)
+    r = np.cov(filtered)
+    r = np.float32(r)
+
     rinv = np.linalg.inv(r)
 
     for i in range(n_channels):
