@@ -14,7 +14,7 @@ from dyfunconn.fc import (aec,
                           glm,
                           icoherence,
                           iplv,
-                          mi,
+                          #mi,
                           mutual_information,
                           nesc,
                           pac,
@@ -104,22 +104,6 @@ def test_iplv():
     np.testing.assert_array_equal(ts, expected_ts)
 
     expected_avg = np.load("data/test_iplv_avg.npy")
-    np.testing.assert_array_equal(avg, expected_avg)
-
-
-def test_mi():
-    data = np.load(
-        "/home/makism/Github/dyfunconn/examples/data/eeg_32chans_10secs.npy")
-
-    fs = 128
-    fb_lo = [1.0, 4.0]
-    fb_hi = [8.0, 13.0]
-    ts, avg = mi(data, fb_lo, fb_hi, fs)
-
-    expected_ts = np.load("data/test_mi_ts.npy")
-    np.testing.assert_array_equal(ts, expected_ts)
-
-    expected_avg = np.load("data/test_mi_avg.npy")
     np.testing.assert_array_equal(avg, expected_avg)
 
 
