@@ -23,7 +23,7 @@ from dyfunconn.fc import (aec,
                           pli,
                           plv, PLV,
                           si,
-                          sl,
+                          #sl,
                           wpli, dwpli,
                           corr, crosscorr, partcorr)
 
@@ -230,7 +230,7 @@ def test_sl():
 
 def test_wpli():
     data = np.load(
-        "/home/makism/Github/dyfunconn/examples/data/eeg_32chans_10secs.npy")
+        "../examples/data/eeg_32chans_10secs.npy")
 
     csdparams = {'NFFT': 256, 'noverlap': 256 / 2.0}
 
