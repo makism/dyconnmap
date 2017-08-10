@@ -258,7 +258,7 @@ def test_wpli():
 
 def test_dwpli():
     data = np.load(
-        "/home/makism/Github/dyfunconn/examples/data/eeg_32chans_10secs.npy")
+        "../examples/data/eeg_32chans_10secs.npy")
 
     csdparams = {'NFFT': 256, 'noverlap': 256 / 2.0}
 
