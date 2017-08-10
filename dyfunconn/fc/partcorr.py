@@ -27,6 +27,6 @@ def partcorr(data, fb, fs, pairs=None):
     for i in range(n_channels):
         for ii in range(n_channels):
             P_corr[i, ii] = -rinv[i, ii] / \
-                (np.sqrt(rinv[i, i] * rinv[ii, ii]))
+                np.float32(np.sqrt(rinv[i, i] * rinv[ii, ii]))
 
     return P_corr
