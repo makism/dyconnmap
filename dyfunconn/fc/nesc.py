@@ -47,5 +47,6 @@ def nesc(data, f_lo, f_hi, fs, pairs=None):
     phi = np.angle(hilbert_lo)
 
     nesc = np.corrcoef(np.cos(phi), np.abs(hilbert_hi))
+    nesc = np.float32(nesc)
 
     return nesc

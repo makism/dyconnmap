@@ -103,6 +103,7 @@ def glm(data, fb_lo, fb_hi, fs, pairs=None, window_size=-1):
 
             result = sm.OLS(y, X).fit()
             r2 = result.rsquared
+            r2 = np.float32(r2)
 
             ts[win, source_channel, target_channel] = r2
 

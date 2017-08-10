@@ -57,5 +57,6 @@ def aec(data, fb_lo, fb_hi, fs):
     _, h_hi, _ = analytic_signal(data, fb_hi, fs)
 
     r = np.corrcoef(np.abs(h_lo), np.abs(h_hi))
+    r = np.float32(r)
 
     return r

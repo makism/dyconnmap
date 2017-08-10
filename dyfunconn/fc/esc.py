@@ -63,5 +63,6 @@ def esc(data, fb_lo, fb_hi, fs):
     _, h, _ = analytic_signal(data, fb_hi, fs)
 
     escv = np.corrcoef(f, np.abs(h))
+    escv = np.float32(escv)
 
     return escv

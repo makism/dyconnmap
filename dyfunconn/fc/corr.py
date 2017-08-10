@@ -20,6 +20,7 @@ def corr(data, fb, fs, pairs=None):
     filtered, _, _ = analytic_signal(data, fb, fs)
 
     r = np.corrcoef(filtered[:])
+    r = np.float32(r)
 
     return r
 
