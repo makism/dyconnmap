@@ -7,5 +7,5 @@ install:
   - pip install -r requirements.txt
 
 script:
-  - cd tests
+  - cd /home/travis/build/makism/dyfunconn/tests/
   - nosetests --cover-tests --with-coverage --cover-package=dyfunconn
