@@ -278,7 +278,5 @@ def test_partcorr():
 
     r = partcorr(data, [1.0, 4.0], 128.0)
 
-    np.save("data/test_partcorr.npy", r)
-
     expected = np.load("data/test_partcorr.npy")
     np.testing.assert_array_equal(r, expected)
