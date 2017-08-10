@@ -67,7 +67,7 @@ def test_surrogate_analysis2():
     rng = np.random.RandomState(0)
 
     data = np.load(
-        "/home/makism/Github/dyfunconn/examples/data/eeg_32chans_10secs.npy")
+        "../examples/data/eeg_32chans_10secs.npy")
     ts1 = data[0, 0:512].ravel()
     ts2 = data[1, 0:512].ravel()
 
