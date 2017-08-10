@@ -1,4 +1,9 @@
+nose
+python-coveralls
+coverage
+
 numpy
 scipy
 matplotlib
 networkx
+statsmodels
