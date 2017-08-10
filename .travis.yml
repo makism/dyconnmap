@@ -9,3 +9,6 @@ install:
 script:
   - cd /home/travis/build/makism/dyfunconn/tests/
   - nosetests --cover-tests --with-coverage --cover-package=dyfunconn
+
+after_success:  
+  - coveralls
