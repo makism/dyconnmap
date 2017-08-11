@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+"""
+
+"""
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
 from .fisher_z import fisher_z, fisher_z_plv

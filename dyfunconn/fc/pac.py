@@ -61,6 +61,10 @@ def pac(data, f_lo, f_hi, fs, estimator, pairs=None):
 
 
 class PAC(Estimator):
+    """ Phase Amplitude Coupling (PAC)
+
+
+    """
 
     def __init__(self, f_lo, f_hi, fs, estimator, pairs=None):
         self.f_lo = f_lo

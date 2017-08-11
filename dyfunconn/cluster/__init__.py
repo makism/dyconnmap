@@ -1,4 +1,8 @@
 # -*- coding: utf-8 -*-
+"""
+
+
+"""
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
 from .ng import NeuralGas

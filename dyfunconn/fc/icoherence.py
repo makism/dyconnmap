@@ -82,6 +82,10 @@ def icoherence(data, fb, fs, pairs=None, **kwargs):
 
 
 class ICoherence(Estimator):
+    """ Imaginary Coherence
+
+
+    """
 
     def __init__(self, fb, fs, pairs=None):
         Estimator.__init__(self, fs, pairs)

@@ -85,7 +85,7 @@ class MergeNeuralGas:
         cr = wr
 
         for iteration in range(self.iterations):
-            input = data[self.rng.choice(n_samples, 1),]
+            sample = data[self.rng.choice(n_samples, 1),]
 
             ct = (1 - self.a) * wr + self.b * cr
 
@@ -93,14 +93,14 @@ class MergeNeuralGas:
             lrate = self.lrate_i * (self.lrate_f / float(self.lrate_i)) ** t
             epsilon = self.epsilon_i * (self.lrate_f / float(self.lrate_i)) ** t
 
-            d = (1 - self.a) * pairwise_distances(input, self.protos) + self.a * pairwise_distances(ct, self.context)
+            d = (1 - self.a) * pairwise_distances(sample, self.protos) + self.a * pairwise_distances(ct, self.context)
             I = np.argsort(np.argsort(d))
 
             min_id = np.where(I == 0)[0]
 
             H = np.exp(-I / epsilon).ravel()
 
-            diff_w = input - self.protos
+            diff_w = sample - self.protos
             diff_c = ct - self.context
             for i in range(self.n_protos):
                 self.protos[i, :] += lrate * H[i] * diff_w[i, :]

@@ -142,18 +142,18 @@ class NeuralGas:
         #ndistortion = []
 
         for iteration in range(self.iterations):
-            input = data[self.rng.choice(n_samples, 1), ]
+            sample = data[self.rng.choice(n_samples, 1), ]
 
             t = iteration / float(self.iterations)
             lrate = self.lrate_i * (self.lrate_f / float(self.lrate_i)) ** t
             epsilon = self.epsilon_i * (self.epsilon_f / float(self.epsilon_i)) ** t
 
-            D = pairwise_distances(input, self.protos, metric='euclidean', n_jobs=self.n_jobs)
+            D = pairwise_distances(sample, self.protos, metric='euclidean', n_jobs=self.n_jobs)
             I = np.argsort(np.argsort(D))
 
             H = np.exp(-I / epsilon).ravel()
 
-            diff = input - self.protos
+            diff = sample - self.protos
             for proto_id in range(self.n_protos):
                 self.protos[proto_id, :] += lrate * H[proto_id] * diff[proto_id, :]
                 #nbrs = NearestNeighbors(n_neighbors=1, algorithm='auto').fit(protos)

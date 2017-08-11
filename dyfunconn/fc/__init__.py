@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+"""
+
+"""
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
 from .estimator import Estimator

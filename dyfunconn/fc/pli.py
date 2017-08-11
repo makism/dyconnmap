@@ -75,6 +75,10 @@ def pli(data, fb, fs, pairs=None):
 
 
 class PLI(Estimator):
+    """ Phase Lag Index (PLI)
+
+
+    """
 
     def __init__(self, fb, fs, pairs=None):
         Estimator.__init__(self, fs, pairs)

@@ -30,4 +30,7 @@ def crosscorr(data, fb, fs, pairs=None):
 
 
 class CrossCorr(Estimator):
+    """ Cross correlation
+
+    """
     pass
