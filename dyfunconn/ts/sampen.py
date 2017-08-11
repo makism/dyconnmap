@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """ Sample Entropy
 
 
@@ -15,10 +14,6 @@
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
 import numpy as np
-from numpy import random
-from numpy import matlib
-import scipy as sp
-from scipy import spatial
 
 
 def sample_entropy(data, dim=2, tau=None, r=None):

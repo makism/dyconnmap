@@ -60,7 +60,6 @@ For faster convergence, we can also draw random weights from the given probabili
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
 import numpy as np
-import sklearn
 from sklearn.metrics.pairwise import pairwise_distances
 from sklearn.neighbors import NearestNeighbors
 from sklearn.manifold import MDS
@@ -135,7 +134,7 @@ class NeuralGas:
         self : object
             The instance itself
         """
-        [n_samples, n_obs] = data.shape
+        [n_samples, _] = data.shape
         self.protos = data[self.rng.choice(n_samples, self.n_protos), ]
 
         # avg_p = np.mean(data, 0)

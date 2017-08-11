@@ -18,8 +18,6 @@ http://journal.frontiersin.org/article/10.3389/fncom.2015.00026/full
 from ..analytic_signal import analytic_signal
 
 import numpy as np
-import scipy
-from scipy import signal
 import matplotlib.mlab as mlab
 
 

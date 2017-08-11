@@ -20,7 +20,6 @@ between the different frequency bands [Friston1996_].
 from ..analytic_signal import analytic_signal
 
 import numpy as np
-import scipy
 
 
 def pec(data, fb_lo, fb_hi, fs):

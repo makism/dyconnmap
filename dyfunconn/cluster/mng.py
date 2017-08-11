@@ -6,7 +6,6 @@
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
 import numpy as np
-import sklearn
 from sklearn.metrics.pairwise import pairwise_distances
 from sklearn.neighbors import NearestNeighbors
 

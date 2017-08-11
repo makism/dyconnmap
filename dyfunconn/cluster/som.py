@@ -19,17 +19,7 @@ For faster convergence, we can also draw random weights from the given probabili
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
 import numpy as np
-import random
-import sys
-import scipy as sp
-import sklearn
-from patsy.util import wide_dtype_for
-from sklearn import datasets, metrics
 from sklearn.neighbors import NearestNeighbors
-import matplotlib.pyplot as plt
-from sklearn.learning_curve import learning_curve
-from statsmodels.graphics.regressionplots import influence_plot
-
 
 
 class SOM:
@@ -74,7 +64,7 @@ class SOM:
         return distance
 
     def fit(self, data):
-        [n_samples, n_obs] = data.shape
+        [n_samples, _] = data.shape
 
         for self.currentIteration in range(self.numIterations):
             title = "Epoch {0}".format(self.currentIteration)

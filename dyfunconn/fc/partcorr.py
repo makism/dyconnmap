@@ -14,7 +14,7 @@ def partcorr(data, fb, fs, pairs=None):
     """
 
     """
-    n_channels, n_samples = np.shape(data)
+    n_channels, _ = np.shape(data)
     filtered, _, _ = analytic_signal(data, fb, fs)
 
     P_corr = np.zeros((n_channels, n_channels), dtype=np.float32)
@@ -28,7 +28,7 @@ def partcorr(data, fb, fs, pairs=None):
     for i in range(n_channels):
         for ii in range(n_channels):
             P_corr[i, ii] = -rinv[i, ii] / \
-                (np.sqrt(rinv[i, i] * rinv[ii, ii]))
+                np.float32(np.sqrt(rinv[i, i] * rinv[ii, ii]))
 
     P_corr = np.float32(P_corr)
 

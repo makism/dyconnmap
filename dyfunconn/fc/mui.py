@@ -15,11 +15,6 @@ Mutual Information (*MI*),
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
 import numpy as np
-from scipy.special import gamma, psi
-from scipy import ndimage
-from scipy.linalg import det
-from numpy import pi
-
 
 EPS = np.finfo(float).eps
 

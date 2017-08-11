@@ -17,7 +17,6 @@ from ..analytic_signal import analytic_signal
 
 from matplotlib import mlab
 import numpy as np
-import scipy as sp
 
 
 def icoherence(data, fb, fs, pairs=None, **kwargs):

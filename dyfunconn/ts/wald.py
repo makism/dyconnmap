@@ -8,7 +8,6 @@
 import numpy as np
 import networkx as nx
 import sklearn
-from sklearn import metrics
 
 
 def wald(x, y):

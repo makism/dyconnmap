@@ -12,10 +12,7 @@
 """
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
-from estimator import Estimator
 from ..analytic_signal import analytic_signal
-
-import numpy as np
 
 """
 function bplv_value=b_plv_hilbert(filtered1_a,filtered1_b,filtered2_a,filtered2_b)
