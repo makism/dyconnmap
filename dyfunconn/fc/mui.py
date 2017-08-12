@@ -21,7 +21,7 @@ EPS = np.finfo(float).eps
 #function [Iab,Pab,Pa,Pb] = my_mutualInformation(a,b,normalize,nbins)
 
 
-def mutual_information(x, y):
+def mutual_information(x, y, n_bins = 10):
     """
 
     Parameters
