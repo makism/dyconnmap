@@ -16,7 +16,7 @@ from .wald import wald
 from .markov_matrix import markov_matrix
 from .dcorr import dcorr
 
-__all__ = ['fisher_z', 'fisher_z_plv'
+__all__ = ['fisher_z', 'fisher_z_plv',
            'sample_entropy',
            'embed_delay',
            'aaft', 'fdr', 'phase_rand', 'surrogate_analysis',
