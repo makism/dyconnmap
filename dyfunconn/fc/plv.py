@@ -114,8 +114,6 @@ class PLV(Estimator):
         """
         n_samples = len(ts1)
 
-        assert(n_samples == len(ts2))
-
         ts_plv = np.exp(1j * (ts1 - ts2))
         avg_plv = np.abs(np.sum((ts_plv)) / float(n_samples))
 

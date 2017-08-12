@@ -95,8 +95,6 @@ class PLI(Estimator):
         return np.abs(np.mean(ts))
 
     def estimate_pair(self, signal1, signal2):
-        assert (len(signal1) == len(signal2))
-
         ts_pli = np.sin(signal1 - signal2)
         avg_pli = np.abs(np.mean(np.sign(ts_pli)))
 

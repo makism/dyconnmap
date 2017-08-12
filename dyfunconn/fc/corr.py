@@ -64,8 +64,6 @@ class Corr(Estimator):
         """
         n_samples = len(ts1)
 
-        assert(n_samples == len(ts2))
-
         ts = None
         avg = None
 
