@@ -84,11 +84,11 @@ def coherence(data, fb, fs, pairs=None, **kwargs):
     for pair in pairs:
         filt1, filt2 = filtered[pair, ]
 
-        csdxx, f = mlab.csd(x=filt1, y=filt1, Fs=fs,
+        csdxx, fxx = mlab.csd(x=filt1, y=filt1, Fs=fs,
                             scale_by_freq=True, sides='onesided', **kwargs)
-        csdyy, f = mlab.csd(x=filt2, y=filt2, Fs=fs,
+        csdyy, fyy = mlab.csd(x=filt2, y=filt2, Fs=fs,
                             scale_by_freq=True, sides='onesided', **kwargs)
-        csdxy, f = mlab.csd(x=filt1, y=filt2, Fs=fs,
+        csdxy, fxy = mlab.csd(x=filt1, y=filt2, Fs=fs,
                             scale_by_freq=True, sides='onesided', **kwargs)
 
         cohv = np.abs(csdxy * np.conj(csdxy)) / (csdxx * csdyy)
@@ -129,11 +129,11 @@ class Coherence(Estimator):
         return filtered
 
     def estimate_pair(self, ts1, ts2):
-        csdxx, f = mlab.csd(x=ts1, y=ts1, Fs=self.fs,
+        csdxx, fxx = mlab.csd(x=ts1, y=ts1, Fs=self.fs,
                             scale_by_freq=True, sides='onesided', **self.csdargs)
-        csdyy, f = mlab.csd(x=ts2, y=ts2, Fs=self.fs,
+        csdyy, fyy = mlab.csd(x=ts2, y=ts2, Fs=self.fs,
                             scale_by_freq=True, sides='onesided', **self.csdargs)
-        csdxy, f = mlab.csd(x=ts1, y=ts2, Fs=self.fs,
+        csdxy, fxy = mlab.csd(x=ts1, y=ts2, Fs=self.fs,
                             scale_by_freq=True, sides='onesided', **self.csdargs)
 
         cohv = np.abs(csdxy * np.conj(csdxy)) / (csdxx * csdyy)
