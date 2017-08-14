@@ -23,6 +23,9 @@ sys.path.insert(0, os.path.abspath('sphinxext'))
 sys.path.insert(1, os.path.abspath('../'))
 sys.path.insert(2, os.path.abspath('../dyfunconn/'))
 sys.path.insert(3, os.path.abspath('../dyfunconn/dyfunconn/'))
+sys.path.insert(4, os.path.abspath('dyfunconn/'))
+sys.path.insert(5, os.path.abspath('dyfunconn/dyfunconn/'))
+
 
 # -- General configuration ------------------------------------------------
 
