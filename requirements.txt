@@ -1,5 +1,6 @@
 nose==1.3.7
 python-coveralls
+codacy-coverage
 coverage
 
 numpy==1.13.1
