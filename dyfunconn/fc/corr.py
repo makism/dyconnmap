@@ -13,8 +13,36 @@ import numpy as np
 
 
 def corr(data, fb, fs, pairs=None):
-    """
+    """ Correlation
 
+    Compute the correlation for the given :attr:`data`, between the :attr:`pairs` (if given)
+    of channels.
+
+
+    Parameters
+    ----------
+    data : array-like, shape(n_channels, n_samples)
+        Multichannel recording data.
+
+    fb : list of length 2
+        The lower and upper frequency.
+
+    fs : float
+        Sampling frequency.
+
+    pairs : array-like or `None`
+        - If an `array-like` is given, notice that each element is a tuple of length two.
+        - If `None` is passed, complete connectivity will be assumed.
+
+
+    Returns
+    -------
+    r : array-like, shape(n_channels, n_channels)
+        Estimated correlation values.
+
+    See also
+    --------
+    dyfunconn.fc.Corr: Correlation (Class Estimator)
     """
     n_channels, n_samples = np.shape(data)
     filtered, _, _ = analytic_signal(data, fb, fs)
@@ -26,7 +54,7 @@ def corr(data, fb, fs, pairs=None):
 
 
 class Corr(Estimator):
-    """ Phase Locking Value (PLV)
+    """ Correlation
 
 
     See also
@@ -51,11 +79,11 @@ class Corr(Estimator):
 
         Returns
         -------
-        ts : array-like, shape(1, n_samples)
-            Estimated Corr time series (real valued).
+        r : array-like, shape(1, n_samples)
+            Estimated correlation values (real valued).
 
-        avg : float
-            Average.
+        _ : None
+            None.
 
 
         Notes
@@ -64,10 +92,12 @@ class Corr(Estimator):
         """
         n_samples = len(ts1)
 
-        ts = None
-        avg = None
+        r = np.corrcoef(ts1, ts2)[0, 1]
 
-        return ts, avg
+        return r, None
+
+    def mean(self, value):
+        return value
 
     def estimate(self, data):
         """
@@ -75,11 +105,8 @@ class Corr(Estimator):
 
         Returns
         -------
-        ts : complex array-like, shape(n_channels, n_channels, n_samples)
-            Estimated Corr time series.
-
-        avg : array-like, shape(n_channels, n_channels)
-            Average corr
+        r : array-like, shape(n_channels, n_channels, n_samples)
+            Estimated correlation values.
 
 
         Notes
@@ -88,20 +115,14 @@ class Corr(Estimator):
         """
         n_channels, n_samples = np.shape(data)
 
-        ts = np.zeros((n_channels, n_channels, n_samples), dtype=np.complex)
-        avg = np.zeros((n_channels, n_channels))
+        r = np.zeros((n_channels, n_channels), dtype=self.data_type)
 
         if self.pairs is None:
             self.pairs = [(r1, r2) for r1 in range(n_channels)
-                          for r2 in range(r1, n_channels)
-                          if r1 != r2]
+                          for r2 in range(n_channels)]
 
         for pair in self.pairs:
-            u_phases1, u_phases2 = data[pair, ]
-            ts = None
-            avg = None
+            f_data1, f_data2 = data[pair, ]
+            r[pair] = np.corrcoef(f_data1, f_data2)[0, 1]
 
-            ts[pair] = ts
-            avg[pair] = avg
-
-        return ts, avg
+        return r
