@@ -6,6 +6,7 @@ np.set_printoptions(precision=2, linewidth=256)
 
 from dyfunconn import analytic_signal
 from dyfunconn.fc import corr, crosscorr, partcorr
+from dyfunconn.fc import Corr
 
 
 if __name__ == "__main__":
@@ -15,19 +16,16 @@ if __name__ == "__main__":
     fb = [1.0, 4.0]
     fs = 128.0
 
-    filtered, _, _ = analytic_signal(data, fb, fs)
-
     # Correlation
     r = corr(data, fb, fs)
     print(r)
 
-    # Cross correlation
-    # xr = np.correlate(filtered[0, ], filtered[1, ])#, mode='valid')
-    # xr1 = crosscorr(data, fb, fs)
-
     # Partial correlation
-    pr = partcorr(data, fb, fs)
+    # pr = partcorr(data, fb, fs)
+    # print(pr)
 
-    # print(xr, xr1)
+    ro = Corr(fb, fs)
+    pp_data = ro.preprocess(data)
+    r = ro.estimate(pp_data)
 
-    print(pr)
+    print(r)
