@@ -90,6 +90,7 @@ class PLV(Estimator):
 
         self.fb = fb
         self.fs = fs
+        self.data_type = np.complex
 
     def preprocess(self, data):
         _, _, u_phases = analytic_signal(data, self.fb, self.fs)
@@ -115,7 +116,7 @@ class PLV(Estimator):
         n_samples = len(ts1)
 
         ts_plv = np.exp(1j * (ts1 - ts2))
-        avg_plv = np.abs(np.sum((ts_plv)) / float(n_samples))
+        avg_plv = np.abs(np.sum((ts_plv))) / float(n_samples)
 
         return ts_plv, avg_plv
 
@@ -153,7 +154,7 @@ class PLV(Estimator):
         for pair in self.pairs:
             u_phases1, u_phases2 = data[pair, ]
             ts_plv = np.exp(1j * (u_phases1 - u_phases2))
-            avg_plv = np.abs(np.sum((ts_plv)) / float(n_samples))
+            avg_plv = np.abs(np.sum((ts_plv))) / float(n_samples)
 
             ts[pair] = ts_plv
             avg[pair] = avg_plv
