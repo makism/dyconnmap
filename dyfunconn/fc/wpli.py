@@ -81,8 +81,8 @@ def wpli(data, fb, fs, pairs=None, **kwargs):
 
         Ixy = np.imag(csdxy)
 
-        num = np.sum(np.abs(Ixy) * np.sign(Ixy))
-        denom = np.sum(np.abs(Ixy))
+        num = np.nansum(np.abs(Ixy) * np.sign(Ixy))
+        denom = np.nansum(np.abs(Ixy))
 
         wpliv[pair] = num / denom
 
@@ -143,10 +143,10 @@ def dwpli(data, fb, fs, pairs=None, **kwargs):
 
         Ixy = np.imag(csdxy)
 
-        num = np.sum(np.abs(Ixy) * np.sign(Ixy))
-        denom = np.sum(np.abs(Ixy))
+        num = np.nansum(np.abs(Ixy) * np.sign(Ixy))
+        denom = np.nansum(np.abs(Ixy))
 
-        sumsquare = np.sum(np.power(Ixy, 2.0))
+        sumsquare = np.nansum(np.power(Ixy, 2.0))
         dwpliv[pair] = (np.power(num, 2.0) - sumsquare) / \
             (np.power(denom, 2.0) - sumsquare)
 
