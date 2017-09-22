@@ -102,7 +102,7 @@ def tvfcg(data, estimator_instance, fb, fs, cc=2.0, step=5.0, pairs=None):
         raise Exception(
             "The size of window cannot be greater than the number of samples")
 
-    fcgs = np.zeros((windows, n_channels, n_channels), dtype=np.complex)
+    fcgs = np.zeros((windows, n_channels, n_channels), dtype=estimator_instance.data_type)
 
     if pairs is None:
         pairs = [(win_id, int(win_id * step), int(window_length + (win_id * step)), c1, c2)
@@ -118,7 +118,11 @@ def tvfcg(data, estimator_instance, fb, fs, cc=2.0, step=5.0, pairs=None):
         slice1 = pp_data[c1, ..., start:end]
         slice2 = pp_data[c2, ..., start:end]
 
+        # slice = None
+        # try:
         slice, _ = estimator(slice1, slice2)
+        # except:
+            # slice = estimator(slice1, slice2)
 
         fcgs[win_id, c1, c2] = avg_func(slice)
 
