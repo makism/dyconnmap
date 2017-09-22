@@ -56,36 +56,92 @@ def iplv(data, fb, fs, pairs=None):
     avg : array-like, shape = [n_electrodes, n_electrodes]
         Average IPLV.
     """
-    n_channels, n_samples = np.shape(data)
-    _, _, u_phases = analytic_signal(data, fb, fs)
+    iplv = IPLV(fb, fs, pairs)
+    pp_data = iplv.preprocess(data)
 
-    if pairs is None:
-        pairs = [(r1, r2) for r1 in range(n_channels)
-                 for r2 in range(r1, n_channels)
-                 if r1 != r2]
-
-    ts = np.zeros((n_channels, n_channels, n_samples))
-    avg = np.zeros((n_channels, n_channels))
-
-    for pair in pairs:
-        u_phases1, u_phases2 = u_phases[pair, ]
-
-        ts_iplv = np.exp(1j * (u_phases1 - u_phases2))
-        average_iplv = np.abs(np.sum((ts_iplv)) / float(n_samples))
-
-        ts[pair] = ts_iplv
-        avg[pair] = average_iplv
-
-    return ts, avg
+    return iplv.estimate(pp_data)
 
 
 class IPLV(Estimator):
 
     def __init__(self, fb, fs, pairs=None):
-        pass
+        """ Imaginary part of PLV (iPLV)
+
+
+        See also
+        --------
+        dyfunconn.fc.iplv: Imaginary part of PLV
+        dyfunconn.fc.plv: Phase Locking Value
+        dyfunconn.tvfcg: Time-Varying Functional Connectivity Graphs
+        """
+        Estimator.__init__(self, fs, pairs)
+
+        self.fb = fb
+        self.fs = fs
+        self.data_type = np.complex
 
     def preprocess(self, data):
-        pass
+        _, _, u_phases = analytic_signal(data, self.fb, self.fs)
+
+        return u_phases
+
+    def estimate_pair(self, ts1, ts2):
+        """
+
+        Returns
+        -------
+        ts : array-like, shape(1, n_samples)
+            Estimated iPLV time series.
+
+        avg : float
+            Average iPLV.
+
+
+        Notes
+        -----
+        Called from :mod:`dyfunconn.tvfcgs.tvfcg`.
+        """
+        n_samples = len(ts1)
+
+        ts_plv = np.exp(1j * (ts1 - ts2))
+        avg_plv = np.abs(np.imag(np.sum((ts_plv)))) / float(n_samples)
+
+        return np.imag(ts_plv), avg_plv
+
+    def mean(self, ts):
+        l = float(np.shape(ts)[0])
+        return np.abs(np.imgag(np.sum(ts))) / l
 
     def estimate(self, data):
-        pass
+        """
+
+        Returns
+        -------
+        ts :
+
+        avg:
+
+
+        Notes
+        -----
+        Called from :mod:`dyfunconn.tvfcgs.tvfcg`.
+        """
+        n_channels, n_samples = np.shape(data)
+
+        ts = np.zeros((n_channels, n_channels, n_samples), dtype=np.complex)
+        avg = np.zeros((n_channels, n_channels))
+
+        if self.pairs is None:
+            self.pairs = [(r1, r2) for r1 in range(n_channels)
+                          for r2 in range(r1, n_channels)
+                          if r1 != r2]
+
+        for pair in self.pairs:
+            u_phases1, u_phases2 = data[pair, ]
+            ts_plv = np.exp(1j * (u_phases1 - u_phases2))
+            avg_plv = np.abs(np.imag(np.sum((ts_plv)))) / float(n_samples)
+
+            ts[pair] = ts_plv
+            avg[pair] = avg_plv
+
+        return ts, avg
