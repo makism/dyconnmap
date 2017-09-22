@@ -16,6 +16,13 @@ import numpy as np
 def crosscorr(data, fb, fs, pairs=None):
     """
 
+    Parameters
+    ----------
+
+
+    Returns
+    -------
+
     """
     n_channels, n_samples = np.shape(data)
     filtered, _, _ = analytic_signal(data, fb, fs)
@@ -27,10 +34,3 @@ def crosscorr(data, fb, fs, pairs=None):
             r[i, ii] = np.correlate(filtered[i, ], filtered[ii, ], mode='valid')
 
     return r
-
-
-class CrossCorr(Estimator):
-    """ Cross correlation
-
-    """
-    pass
