@@ -11,7 +11,14 @@ import numpy as np
 
 
 def partcorr(data, fb, fs, pairs=None):
-    """
+    """ Partial correlation
+
+    Parameters
+    ----------
+
+
+    Returns
+    -------
 
     """
     n_channels, _ = np.shape(data)
