@@ -27,6 +27,7 @@ class Estimator(object):
     def __init__(self, fs, pairs=None):
         self.fs = fs
         self.pairs = pairs
+        self.data_type = np.float32
 
     def preprocess(self, data):
         """ Preprocess the data.
@@ -63,3 +64,6 @@ class Estimator(object):
 
         """
         return np.mean(ts)
+
+    def typeCast(self, data, cast_type=np.float32):
+        return data.astype(cast_type)
