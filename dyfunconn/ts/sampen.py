@@ -2,6 +2,10 @@
 
 
 
+Notes
+-----
+Based on https://nl.mathworks.com/matlabcentral/fileexchange/35784-sample-entropy
+
 
 |
 
@@ -22,15 +26,23 @@ def sample_entropy(data, dim=2, tau=None, r=None):
 
     Parameters
     ----------
-    data : array-like, shape = [n_electrodes, n_samples]
-        Multichannel recording data.
+    data : array-like, shape = [1, n_samples]
+        Symbolic time series.
 
-    pairs : array-like
-        Each element is a tuple of length two.
+    dim : int
+        Embedding dimension. Default `2`.
+
+    tau : int
+        Delay time for downsampling. Is `None`, `1` is passed.
+
+    r : float
+        Tolerance factor. If `None`, `0.2 * std(data)` is passed.
 
 
     Returns
     -------
+    SampEn : float
+        Sample entropy.
 
 
     See also
@@ -39,6 +51,14 @@ def sample_entropy(data, dim=2, tau=None, r=None):
     """
     if tau is None:
         tau = 1
+
+    data = data.ravel()
+
+    # do downsample
+    if tau  > 1:
+        N = len(data)
+        ds_data = [data[i] for i in range(0, N, tau)]
+        data = ds_data
 
     if r is None:
         r = 0.2 * np.std(data)

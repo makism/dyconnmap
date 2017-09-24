@@ -5,7 +5,7 @@ from numpy import testing
 
 # dynfunconn
 from dyfunconn.ts import (aaft, fdr, phase_rand, surrogate_analysis, entropy_reduction_rate,
-                          symoblic_transfer_entropy, embed_delay,
+                          symoblic_transfer_entropy, embed_delay, sample_entropy,
                           ordinal_pattern_similarity, permutation_entropy,
                           rr_order_patterns, wald, markov_matrix)
 
@@ -241,3 +241,12 @@ def test_markov_chain():
 
     expected_result = np.load("data/ts_markov_chain.npy")
     np.testing.assert_array_almost_equal(mtx, expected_result)
+
+
+def test_sample_entropy():
+    rng = np.random.RandomState(0)
+
+    symts = rng.randint(10, size=100)
+
+    sampen = sample_entropy(symts)
+    np.testing.assert_almost_equal(sampen, 2.37954613413)
