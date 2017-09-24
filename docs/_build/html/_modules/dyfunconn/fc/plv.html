@@ -1,0 +1,352 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>dyfunconn.fc.plv &mdash; dyfunconn  documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="dyfunconn  documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> dyfunconn
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../dyfunconn.html">dyfunconn package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">dyfunconn</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      
+    <li>dyfunconn.fc.plv</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for dyfunconn.fc.plv</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot; Phase Locking Value</span>
+
+<span class="sd">One of the pioneer methods called Phase Locking Value (*PLV*) is discussed in</span>
+<span class="sd">[Lachaux1998]_; it utilizes the Hilbert representation (consult</span>
+<span class="sd">:py:mod:`dyfunconn.analytic_signal` for more details) an EEG time</span>
+<span class="sd">series (of :math:`N_{sensors}`) and quantifies their interaction based on their</span>
+<span class="sd">instantaneous phase in a specific band frequency.</span>
+
+<span class="sd">So, for a pair of Instantaneous Phases of two time series of equal length,</span>
+<span class="sd">:math:`\phi_{j1}(t)` and :math:`\phi_{j2}(t)`, the Phase Locking Value for each</span>
+<span class="sd">sample in time (:math:`t`) is computed as:</span>
+
+<span class="sd">.. math::</span>
+<span class="sd">    e^{i (\phi_{j1}(t)  - \phi_{j2}(t))}</span>
+
+<span class="sd">A value of zero means that no coupling (or negligible) observed between two</span>
+<span class="sd">phases, while a value of one denotes a perfect synchronization.</span>
+
+<span class="sd">|</span>
+
+<span class="sd">-----</span>
+
+<span class="sd">.. [Lachaux1998] Lachaux, J., Rodriguez, E., Martinerie, J., Varela, F., &amp; others,. (1999). Measuring phase synchrony in brain signals. Human Brain Mapping, 8(4), 194-208.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="c1"># Author: Avraam Marimpis &lt;avraam.marimpis@gmail.com&gt;</span>
+
+<span class="kn">from</span> <span class="nn">estimator</span> <span class="k">import</span> <span class="n">Estimator</span>
+<span class="kn">from</span> <span class="nn">..analytic_signal</span> <span class="k">import</span> <span class="n">analytic_signal</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+
+<div class="viewcode-block" id="plv"><a class="viewcode-back" href="../../../dyfunconn.fc.html#dyfunconn.fc.plv.plv">[docs]</a><span class="k">def</span> <span class="nf">plv</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">fb</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="n">pairs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Phase Locking Value</span>
+
+<span class="sd">    Compute the PLV for the given :attr:`data`, between the :attr:`pairs` (if given)</span>
+<span class="sd">    of channels.</span>
+
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    data : array-like, shape(n_channels, n_samples)</span>
+<span class="sd">        Multichannel recording data.</span>
+
+<span class="sd">    fb : list of length 2</span>
+<span class="sd">        The lower and upper frequency.</span>
+
+<span class="sd">    fs : float</span>
+<span class="sd">        Sampling frequency.</span>
+
+<span class="sd">    pairs : array-like or `None`</span>
+<span class="sd">        - If an `array-like` is given, notice that each element is a tuple of length two.</span>
+<span class="sd">        - If `None` is passed, complete connectivity will be assumed.</span>
+
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    ts : complex array-like, shape(n_channels, n_channels, n_samples)</span>
+<span class="sd">        Estimated PLV time series.</span>
+
+<span class="sd">    avg : array-like, shape(n_channels, n_channels)</span>
+<span class="sd">        Average PLV.</span>
+
+
+<span class="sd">    See also</span>
+<span class="sd">    --------</span>
+<span class="sd">    dyfunconn.fc.PLV: Phase Locking Value (Class Estimator)</span>
+<span class="sd">    dyfunconn.fc.iplv: Imaginary part of PLV</span>
+<span class="sd">    dyfunconn.fc.pli: Phase Lag Index</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">plv</span> <span class="o">=</span> <span class="n">PLV</span><span class="p">(</span><span class="n">fb</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="n">pairs</span><span class="p">)</span>
+    <span class="n">pp_data</span> <span class="o">=</span> <span class="n">plv</span><span class="o">.</span><span class="n">preprocess</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">plv</span><span class="o">.</span><span class="n">estimate</span><span class="p">(</span><span class="n">pp_data</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="PLV"><a class="viewcode-back" href="../../../dyfunconn.fc.html#dyfunconn.fc.plv.PLV">[docs]</a><span class="k">class</span> <span class="nc">PLV</span><span class="p">(</span><span class="n">Estimator</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Phase Locking Value (PLV)</span>
+
+
+<span class="sd">    See also</span>
+<span class="sd">    --------</span>
+<span class="sd">    dyfunconn.fc.plv: Phase Locking Value</span>
+<span class="sd">    dyfunconn.tvfcg: Time-Varying Functional Connectivity Graphs</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fb</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="n">pairs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">Estimator</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="n">pairs</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">fb</span> <span class="o">=</span> <span class="n">fb</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fs</span> <span class="o">=</span> <span class="n">fs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data_type</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">complex</span>
+
+<div class="viewcode-block" id="PLV.preprocess"><a class="viewcode-back" href="../../../dyfunconn.fc.html#dyfunconn.fc.plv.PLV.preprocess">[docs]</a>    <span class="k">def</span> <span class="nf">preprocess</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">u_phases</span> <span class="o">=</span> <span class="n">analytic_signal</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">fb</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">fs</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">u_phases</span></div>
+
+<div class="viewcode-block" id="PLV.estimate_pair"><a class="viewcode-back" href="../../../dyfunconn.fc.html#dyfunconn.fc.plv.PLV.estimate_pair">[docs]</a>    <span class="k">def</span> <span class="nf">estimate_pair</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ts1</span><span class="p">,</span> <span class="n">ts2</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ts : array-like, shape(1, n_samples)</span>
+<span class="sd">            Estimated PLV time series (real valued).</span>
+
+<span class="sd">        avg : float</span>
+<span class="sd">            Average PLV.</span>
+
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        Called from :mod:`dyfunconn.tvfcgs.tvfcg`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">n_samples</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ts1</span><span class="p">)</span>
+
+        <span class="n">ts_plv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="p">(</span><span class="n">ts1</span> <span class="o">-</span> <span class="n">ts2</span><span class="p">))</span>
+        <span class="n">avg_plv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">ts_plv</span><span class="p">)))</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">ts_plv</span><span class="p">,</span> <span class="n">avg_plv</span></div>
+
+<div class="viewcode-block" id="PLV.mean"><a class="viewcode-back" href="../../../dyfunconn.fc.html#dyfunconn.fc.plv.PLV.mean">[docs]</a>    <span class="k">def</span> <span class="nf">mean</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ts</span><span class="p">):</span>
+        <span class="n">l</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">ts</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">ts</span><span class="p">))</span> <span class="o">/</span> <span class="n">l</span></div>
+
+<div class="viewcode-block" id="PLV.estimate"><a class="viewcode-back" href="../../../dyfunconn.fc.html#dyfunconn.fc.plv.PLV.estimate">[docs]</a>    <span class="k">def</span> <span class="nf">estimate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ts : complex array-like, shape(n_channels, n_channels, n_samples)</span>
+<span class="sd">            Estimated PLV time series (complex valued).</span>
+
+<span class="sd">        avg : array-like, shape(n_channels, n_channels)</span>
+<span class="sd">            Average PLV.</span>
+
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        Called from :mod:`dyfunconn.tvfcgs.tvfcg`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">n_channels</span><span class="p">,</span> <span class="n">n_samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+        <span class="n">ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_channels</span><span class="p">,</span> <span class="n">n_channels</span><span class="p">,</span> <span class="n">n_samples</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">complex</span><span class="p">)</span>
+        <span class="n">avg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_channels</span><span class="p">,</span> <span class="n">n_channels</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">pairs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">pairs</span> <span class="o">=</span> <span class="p">[(</span><span class="n">r1</span><span class="p">,</span> <span class="n">r2</span><span class="p">)</span> <span class="k">for</span> <span class="n">r1</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_channels</span><span class="p">)</span>
+                          <span class="k">for</span> <span class="n">r2</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">r1</span><span class="p">,</span> <span class="n">n_channels</span><span class="p">)</span>
+                          <span class="k">if</span> <span class="n">r1</span> <span class="o">!=</span> <span class="n">r2</span><span class="p">]</span>
+
+        <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">pairs</span><span class="p">:</span>
+            <span class="n">u_phases1</span><span class="p">,</span> <span class="n">u_phases2</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">pair</span><span class="p">,</span> <span class="p">]</span>
+            <span class="n">ts_plv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="p">(</span><span class="n">u_phases1</span> <span class="o">-</span> <span class="n">u_phases2</span><span class="p">))</span>
+            <span class="n">avg_plv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">ts_plv</span><span class="p">)))</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span>
+
+            <span class="n">ts</span><span class="p">[</span><span class="n">pair</span><span class="p">]</span> <span class="o">=</span> <span class="n">ts_plv</span>
+            <span class="n">avg</span><span class="p">[</span><span class="n">pair</span><span class="p">]</span> <span class="o">=</span> <span class="n">avg_plv</span>
+
+        <span class="k">return</span> <span class="n">ts</span><span class="p">,</span> <span class="n">avg</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Avraam Marimpis &amp; Stavros Dimitriadis.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

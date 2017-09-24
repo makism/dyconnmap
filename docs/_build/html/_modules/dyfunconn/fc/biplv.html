@@ -1,0 +1,307 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>dyfunconn.fc.biplv &mdash; dyfunconn  documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="dyfunconn  documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> dyfunconn
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../dyfunconn.html">dyfunconn package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">dyfunconn</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      
+    <li>dyfunconn.fc.biplv</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for dyfunconn.fc.biplv</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot; Bi-Phase Locking Value</span>
+
+
+
+
+<span class="sd">|</span>
+
+<span class="sd">.. [Darvas2009] Darvas, F., Ojemann, J. G., &amp; Sorensen, L. B. (2009). Bi-phase locking—a tool for probing non-linear interaction in the human brain. NeuroImage, 46(1), 123-132.</span>
+
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="c1"># Author: Avraam Marimpis &lt;avraam.marimpis@gmail.com&gt;</span>
+
+<span class="kn">from</span> <span class="nn">..analytic_signal</span> <span class="k">import</span> <span class="n">analytic_signal</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">function bplv_value=b_plv_hilbert(filtered1_a,filtered1_b,filtered2_a,filtered2_b)</span>
+
+<span class="sd">%Darvas-&quot;Bi-phase locking - a tool probing non-linear interaction in the</span>
+<span class="sd">%human brain&quot;-Neuroimage - 2009</span>
+<span class="sd">%Input:</span>
+<span class="sd">%filtered1_a,filtered1_b =  filtered  EEG/MEG signals in the two studying</span>
+<span class="sd">%frequency bands</span>
+
+<span class="sd">%B-PLV measure search for cross frequency</span>
+<span class="sd">%interplays between two frequency bands in a time-window (e.g. [4 8; 30 45])</span>
+<span class="sd">%Output:</span>
+<span class="sd">%        bplv_value varies from 0 to 1</span>
+
+<span class="sd">%We extract the instantaneous phase of the signals via Hilbert transform</span>
+
+
+<span class="sd">tic</span>
+
+
+<span class="sd">%STAVROS DIMITRIADIS 3/2010</span>
+<span class="sd">%http://users.auth.gr/stdimitr/</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+<div class="viewcode-block" id="biplv"><a class="viewcode-back" href="../../../dyfunconn.fc.html#dyfunconn.fc.biplv.biplv">[docs]</a><span class="k">def</span> <span class="nf">biplv</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">fb_lo</span><span class="p">,</span> <span class="n">fb_hi</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="n">pairs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Bi-Phase Locking Value</span>
+
+<span class="sd">    Estimate the Bi-Phase Locking Value for the given :attr:`data`,</span>
+<span class="sd">    between the :attr:`pairs (if given) of channels</span>
+
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    data : array-like, shape(n_channels, n_samples)</span>
+<span class="sd">        Multichannel recording data.</span>
+
+<span class="sd">    fb_lo : list of length 2</span>
+<span class="sd">        The low and high frequencies of the lower band.</span>
+
+<span class="sd">    fb_hi : list of length 2</span>
+<span class="sd">        The low and high frequencies of the upper band.</span>
+
+<span class="sd">    fs : float</span>
+<span class="sd">        Sampling frequency.</span>
+
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    %for the first signal</span>
+<span class="sd">    %for the first frequency band</span>
+<span class="sd">    hilbert1_a=hilbert(filtered1_a);</span>
+<span class="sd">    phase1_a=angle(hilbert1_a);</span>
+<span class="sd">    unwrap1_a=unwrap(phase1_a);</span>
+
+<span class="sd">    %for the second frequency band</span>
+<span class="sd">    hilbert1_b=hilbert(filtered1_b);</span>
+<span class="sd">    phase1_b=angle(hilbert1_b);</span>
+<span class="sd">    unwrap1_b=unwrap(phase1_b);</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">u_phases1</span> <span class="o">=</span> <span class="n">analytic_signal</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">fb1</span><span class="p">,</span> <span class="n">fs</span><span class="p">)</span>
+
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    %for the second signal</span>
+<span class="sd">    %for the first frequency band</span>
+<span class="sd">    hilbert2_a=hilbert(filtered2_a);</span>
+<span class="sd">    phase2_a=angle(hilbert2_a);</span>
+<span class="sd">    unwrap2_a=unwrap(phase2_a);</span>
+
+<span class="sd">    %for the second frequency band</span>
+<span class="sd">    hilbert2_b=hilbert(filtered2_b);</span>
+<span class="sd">    phase2_b=angle(hilbert2_b);</span>
+<span class="sd">    unwrap2_b=unwrap(phase2_b);</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">u_phases2</span> <span class="o">=</span> <span class="n">analytic_signal</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">fb2</span><span class="p">,</span> <span class="n">fs</span><span class="p">)</span>
+
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    bplv_value=0;</span>
+
+<span class="sd">    [dim_x dim_y]=size(filtered1_a);</span>
+
+<span class="sd">    for k=1:dim_x</span>
+<span class="sd">        for l=1:dim_y</span>
+<span class="sd">            bplv_value = bplv_value + (</span>
+<span class="sd">                exp(</span>
+<span class="sd">                    i * (</span>
+<span class="sd">                        unwrap1_a(k, l) + unwrap1_b(k, l) -</span>
+<span class="sd">                        (unwrap2_a(k, l) * unwrap2_b(k, l))</span>
+<span class="sd">                    )</span>
+<span class="sd">                )</span>
+<span class="sd">            );</span>
+<span class="sd">        end</span>
+<span class="sd">    end</span>
+
+<span class="sd">    bplv_value=abs(bplv_value/(dim_x*dim_y));</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Avraam Marimpis &amp; Stavros Dimitriadis.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

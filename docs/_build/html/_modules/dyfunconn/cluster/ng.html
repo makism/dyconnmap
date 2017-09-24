@@ -1,0 +1,391 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>dyfunconn.cluster.ng &mdash; dyfunconn  documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="dyfunconn  documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> dyfunconn
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../dyfunconn.html">dyfunconn package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">dyfunconn</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      
+    <li>dyfunconn.cluster.ng</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for dyfunconn.cluster.ng</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot; NeuralGas</span>
+
+<span class="sd">Inspired by Self Organizing Maps (SOMs), Neural Gas (*NG*), an unsupervised adaptive algorithm coined by [Martinetz1991]_.</span>
+<span class="sd">Neural Gas does not assume a preconstructed lattice thus the adaptation cannot be based on the distances between the</span>
+<span class="sd">neighbor neurons (like in SOMs) because be definition there are no neighbors.</span>
+
+<span class="sd">The adaptation-convergence is driven by a stochastic gradient function with a soft-max adaptation rule that minimizes the</span>
+<span class="sd">average distortion error.</span>
+
+<span class="sd">First, we construct a number of neurons ( :math:`N_\\vec{w}` ) with random weights ( :math:`\\vec{w}` ).</span>
+<span class="sd">Then we train the model by feeding it feature vectors sequentially drawn from the distribution :math:`P(t)`.</span>
+<span class="sd">When a new feature vector is presented to the model, we sort all neurons&#39; weights (:math:`N_\\vec{w})` based on their</span>
+<span class="sd">Euclidean distance from :math:`\\vec{x}`. Then, the adaptation if done by:</span>
+
+<span class="sd">.. math::</span>
+<span class="sd">    \\vec{w} \\leftarrow \\vec{w} + [ N_{\\vec{w}} \\cdot  e(t)) \\cdot  h(k)) \\cdot  (\\vec{x} - \\vec{w}) ], \\forall \\vec{w} \\in N_{\\vec{w}}</span>
+
+<span class="sd">where,</span>
+
+<span class="sd">.. math::</span>
+<span class="sd">    h(t)=exp{ \\frac{-k}{\\sigma^2}(t) }</span>
+
+<span class="sd">    \\sigma^2 = {\\lambda_i(\\frac{\\lambda_T}{\\lambda_0})}^{(\\frac{t}{T_{max}})}</span>
+
+<span class="sd">    e(t) = {e_i(\\frac{e_T}{e_0})}^{(\\frac{t}{T_{max}})}</span>
+
+
+<span class="sd">The parameter :math:`\lambda`, governs the initial and final learning rate, while the parameter :math:`e` the training respectively.</span>
+
+<span class="sd">After the presentation of a feature vector, increase the itaration counter :math:`t` and repeat</span>
+<span class="sd">until all desired criteria are met, or :math:`t = T_{max}`.</span>
+
+<span class="sd">With these prototypes, we can represent all the input feature vectors :math:`\\vec{x}` using a Nearest Neighbor rule.</span>
+<span class="sd">The quality of this encoding can measured by the normalized distortion error:</span>
+
+<span class="sd">.. math::</span>
+<span class="sd">    \\frac{ \\sum_{t=1}^T \\left | \\left | X(t) - X^\\ast(t))  \\right | \\right |^2 }{ \\sum_{t=1}^T \\left | \\left | X(t) - \\overline{X})  \\right | \\right |^2 }</span>
+
+<span class="sd">where</span>
+
+<span class="sd">.. math::</span>
+<span class="sd">    \\overline{X}` = \\frac{1}{T} \\sum_{t=1}^T{X(t)}</span>
+
+<span class="sd">:math:`T` is the number of reference prototypes; in :math:`X` the input patterns are stored; :math:`X^\\ast` contains</span>
+<span class="sd">the approximated patterns as produced by the Nearest Neighbor rule.</span>
+
+<span class="sd">Notes</span>
+<span class="sd">-----</span>
+<span class="sd">For faster convergence, we can also draw random weights from the given probability distribution :math:`P(t)`</span>
+
+<span class="sd">|</span>
+
+<span class="sd">-----</span>
+
+<span class="sd">.. [Martinetz1991] Martinetz, T., Schulten, K., et al. A &quot;neural-gas&quot; network learns topologies. University of Illinois at Urbana-Champaign, 1991.</span>
+<span class="sd">.. [Laskaris2004] Laskaris, N. A., Fotopoulos, S., &amp; Ioannides, A. A. (2004). Mining information from event-related recordings. Signal Processing Magazine, IEEE, 21(3), 66-77.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="c1"># Author: Avraam Marimpis &lt;avraam.marimpis@gmail.com&gt;</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics.pairwise</span> <span class="k">import</span> <span class="n">pairwise_distances</span>
+<span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="k">import</span> <span class="n">NearestNeighbors</span>
+<span class="kn">from</span> <span class="nn">sklearn.manifold</span> <span class="k">import</span> <span class="n">MDS</span>
+
+
+<div class="viewcode-block" id="NeuralGas"><a class="viewcode-back" href="../../../dyfunconn.cluster.html#dyfunconn.cluster.ng.NeuralGas">[docs]</a><span class="k">class</span> <span class="nc">NeuralGas</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot; Neural Gas</span>
+
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+
+<span class="sd">    n_protos : int</span>
+<span class="sd">        The number of prototypes</span>
+
+<span class="sd">    iterations : int</span>
+<span class="sd">        The maximum iterations</span>
+
+<span class="sd">    epsilon : list of length 2</span>
+<span class="sd">        The initial and final training rates</span>
+
+<span class="sd">    lrate : list of length 2</span>
+<span class="sd">        The initial and final rearning rates</span>
+
+<span class="sd">    n_jobs : int</span>
+<span class="sd">        Number of parallel jobs (will be passed to scikit-learn))</span>
+
+<span class="sd">    rng : object or None</span>
+<span class="sd">        An object of type numpy.random.RandomState</span>
+
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    protos : array-like, shape(n_protos, n_features)</span>
+<span class="sd">        The prototypical vectors</span>
+
+<span class="sd">    distortion : float</span>
+<span class="sd">        The normalized distortion error</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Slightly based on *http://webloria.loria.fr/~rougier/downloads/ng.py*</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_protos</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span> <span class="n">epsilon</span><span class="o">=</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">],</span> <span class="n">lrate</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.005</span><span class="p">],</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">rng</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_protos</span> <span class="o">=</span> <span class="n">n_protos</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">iterations</span> <span class="o">=</span> <span class="n">iterations</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">epsilon_i</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">epsilon_f</span> <span class="o">=</span> <span class="n">epsilon</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lrate_i</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">lrate_f</span> <span class="o">=</span> <span class="n">lrate</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_jobs</span> <span class="o">=</span> <span class="n">n_jobs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">protos</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">distortion</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+        <span class="k">if</span> <span class="n">rng</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">rng</span> <span class="o">=</span> <span class="n">rng</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">__symbols</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__encoding</span> <span class="o">=</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="NeuralGas.fit"><a class="viewcode-back" href="../../../dyfunconn.cluster.html#dyfunconn.cluster.ng.NeuralGas.fit">[docs]</a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Learn data, and construct a vector codebook.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : real array-like, shape(n_samples, n_features)</span>
+<span class="sd">            Data matrix, each row represents a sample.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        self : object</span>
+<span class="sd">            The instance itself</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="p">[</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">_</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">protos</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_protos</span><span class="p">),</span> <span class="p">]</span>
+
+        <span class="c1"># avg_p = np.mean(data, 0)</span>
+        <span class="c1">#dist_from_avg_p = np.sum(pairwise_distances(avg_p, data))</span>
+        <span class="c1">#ndistortion = []</span>
+
+        <span class="k">for</span> <span class="n">iteration</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">iterations</span><span class="p">):</span>
+            <span class="n">sample</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">]</span>
+
+            <span class="n">t</span> <span class="o">=</span> <span class="n">iteration</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">iterations</span><span class="p">)</span>
+            <span class="n">lrate</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lrate_i</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lrate_f</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lrate_i</span><span class="p">))</span> <span class="o">**</span> <span class="n">t</span>
+            <span class="n">epsilon</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">epsilon_i</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">epsilon_f</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">epsilon_i</span><span class="p">))</span> <span class="o">**</span> <span class="n">t</span>
+
+            <span class="n">D</span> <span class="o">=</span> <span class="n">pairwise_distances</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">protos</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;euclidean&#39;</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">n_jobs</span><span class="p">)</span>
+            <span class="n">I</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">D</span><span class="p">))</span>
+
+            <span class="n">H</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">I</span> <span class="o">/</span> <span class="n">epsilon</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+
+            <span class="n">diff</span> <span class="o">=</span> <span class="n">sample</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">protos</span>
+            <span class="k">for</span> <span class="n">proto_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_protos</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">protos</span><span class="p">[</span><span class="n">proto_id</span><span class="p">,</span> <span class="p">:]</span> <span class="o">+=</span> <span class="n">lrate</span> <span class="o">*</span> <span class="n">H</span><span class="p">[</span><span class="n">proto_id</span><span class="p">]</span> <span class="o">*</span> <span class="n">diff</span><span class="p">[</span><span class="n">proto_id</span><span class="p">,</span> <span class="p">:]</span>
+                <span class="c1">#nbrs = NearestNeighbors(n_neighbors=1, algorithm=&#39;auto&#39;).fit(protos)</span>
+                <span class="c1">#distances, _ = nbrs.kneighbors(data)</span>
+        <span class="c1">#ndistortion.append( np.sum(distances) / dist_from_avg_p )</span>
+
+        <span class="k">return</span> <span class="bp">self</span></div>
+
+<div class="viewcode-block" id="NeuralGas.encode"><a class="viewcode-back" href="../../../dyfunconn.cluster.html#dyfunconn.cluster.ng.NeuralGas.encode">[docs]</a>    <span class="k">def</span> <span class="nf">encode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;euclidean&#39;</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Employ a nearest-neighbor rule to encode the given ``data`` using the codebook.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : real array-like, shape(n_samples, n_features)</span>
+<span class="sd">            Data matrix, each row represents a sample.</span>
+
+<span class="sd">        metric : string</span>
+<span class="sd">            One of the following valid options as defined for function http://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.pairwise_distances.html.</span>
+
+<span class="sd">            Valid options include:</span>
+
+<span class="sd">             - euclidean</span>
+<span class="sd">             - cityblock</span>
+<span class="sd">             - l1</span>
+<span class="sd">             - cosine</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        encoded_data : real array-like, shape(n_samples, n_features)</span>
+<span class="sd">            ``data``, as represented by the prototypes in codebook.</span>
+<span class="sd">        ts_symbols : list, shape(n_samples, 1)</span>
+<span class="sd">            A discrete symbolic time series</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Perform a proposed data mining procedure as described in [Laskaris2004].</span>
+        <span class="n">mds</span> <span class="o">=</span> <span class="n">MDS</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">rng</span><span class="p">)</span>
+        <span class="n">protos_1d</span> <span class="o">=</span> <span class="n">mds</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">protos</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+        <span class="n">sorted_protos_1d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">protos_1d</span><span class="p">)</span>
+
+        <span class="n">sprotos</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">protos</span><span class="p">[</span><span class="n">sorted_protos_1d</span><span class="p">]</span>
+
+        <span class="n">nbrs</span> <span class="o">=</span> <span class="n">NearestNeighbors</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="n">metric</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">sprotos</span><span class="p">)</span>
+        <span class="n">_</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__symbols</span> <span class="o">=</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">kneighbors</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__encoding</span> <span class="o">=</span> <span class="n">sprotos</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">__symbols</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__encoding</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__symbols</span><span class="p">)</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Avraam Marimpis &amp; Stavros Dimitriadis.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

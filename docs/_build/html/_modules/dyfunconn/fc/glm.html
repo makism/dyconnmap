@@ -1,0 +1,305 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>dyfunconn.fc.glm &mdash; dyfunconn  documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="dyfunconn  documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> dyfunconn
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../dyfunconn.html">dyfunconn package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">dyfunconn</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      
+    <li>dyfunconn.fc.glm</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for dyfunconn.fc.glm</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot; General Linear Model</span>
+
+
+<span class="sd">General linear modeling (*GLM*) is used widely in neuroimaging [Penny2006_] to detect</span>
+<span class="sd">coupling between a low and higher frequency.</span>
+
+<span class="sd">.. math::</span>
+<span class="sd">    \\chi_{hf} = X_{\\beta} + e</span>
+
+<span class="sd">Where :math:`\\beta` are the corresponding regression coefficients and</span>
+<span class="sd">:math:`e` is the additive Gaussian noise. Finally, :math:`X` is the design</span>
+<span class="sd">matrix of size :math:`n \\times 3` (:math:`n` the number of samples). Columns</span>
+<span class="sd">1 and 2, contain the cosines and sines counterparts of the instantaneous</span>
+<span class="sd">phases (of the low frequency) of the predictors, while the third row only 1s.</span>
+
+<span class="sd">|</span>
+
+<span class="sd">-----</span>
+
+<span class="sd">.. [Penny2006] Penny, W. D., Friston, K. J., Ashburner, J. T., Kiebel, S. J., &amp; Nichols, T. E. (Eds.). (2011). Statistical parametric mapping: the analysis of functional brain images. Academic press.</span>
+<span class="sd">.. [Penny2008] Penny, W. D., Duzel, E., Miller, K. J., &amp; Ojemann, J. G. (2008). Testing for nested oscillation. Journal of neuroscience methods, 174(1), 50-61.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="c1"># Author: Avraam Marimpis &lt;avraam.marimpis@gmail.com&gt;</span>
+
+<span class="kn">from</span> <span class="nn">..analytic_signal</span> <span class="k">import</span> <span class="n">analytic_signal</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+
+
+<div class="viewcode-block" id="glm"><a class="viewcode-back" href="../../../dyfunconn.fc.html#dyfunconn.fc.glm.glm">[docs]</a><span class="k">def</span> <span class="nf">glm</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">fb_lo</span><span class="p">,</span> <span class="n">fb_hi</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="n">pairs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">window_size</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; General Linear Model</span>
+
+<span class="sd">    Estimate the :math:`r^2` for the given :attr:`data`,</span>
+<span class="sd">    between the :attr:`pairs (if given) of channels.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    data : array-like, shape(n_channels, n_samples)</span>
+<span class="sd">        Multichannel recording data.</span>
+
+<span class="sd">    fb_lo : list of length 2</span>
+<span class="sd">        The low and high frequencies of the lower band.</span>
+
+<span class="sd">    fb_hi : list of length 2</span>
+<span class="sd">        The low and high frequencies of the upper band.</span>
+
+<span class="sd">    fs : float</span>
+<span class="sd">        Sampling frequency.</span>
+
+<span class="sd">    pairs : array-like or `None`</span>
+<span class="sd">        - If an `array-like` is given, notice that each element is a tuple of length two.</span>
+<span class="sd">        - If `None` is passed, complete connectivity will be assumed.</span>
+
+<span class="sd">    window_size : int</span>
+<span class="sd">        The number of samples that will be used in each window.</span>
+
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    ts : complex array-like, shape(n_windows, n_channels, n_channels)</span>
+<span class="sd">        Estimated :math:`r^2` time series (in each window).</span>
+
+<span class="sd">    ts_avg: complex array-like, shape(n_channels, n_channels)</span>
+<span class="sd">        Average :math:`r^2` (across all windows).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">window_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">window_size</span><span class="p">)</span>
+
+    <span class="n">n_channels</span><span class="p">,</span> <span class="n">n_samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="n">windows</span> <span class="o">=</span> <span class="n">n_samples</span> <span class="o">/</span> <span class="n">window_size</span>
+    <span class="k">if</span> <span class="n">windows</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">windows</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">window_size</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+
+    <span class="k">if</span> <span class="n">pairs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">pairs</span> <span class="o">=</span> <span class="p">[(</span><span class="n">r1</span><span class="p">,</span> <span class="n">r2</span><span class="p">)</span> <span class="k">for</span> <span class="n">r1</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_channels</span><span class="p">)</span>
+                 <span class="k">for</span> <span class="n">r2</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_channels</span><span class="p">)]</span>
+
+    <span class="n">_</span><span class="p">,</span> <span class="n">l_hilb</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">analytic_signal</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">fb_lo</span><span class="p">,</span> <span class="n">fs</span><span class="p">)</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">h_hilb</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">analytic_signal</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">fb_hi</span><span class="p">,</span> <span class="n">fs</span><span class="p">)</span>
+
+    <span class="n">lf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">angle</span><span class="p">(</span><span class="n">l_hilb</span><span class="p">)</span> <span class="o">%</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+    <span class="n">hfa</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">h_hilb</span><span class="p">)</span>
+
+    <span class="n">ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">windows</span><span class="p">,</span> <span class="n">n_channels</span><span class="p">,</span> <span class="n">n_channels</span><span class="p">))</span>
+    <span class="n">ts_avg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_channels</span><span class="p">,</span> <span class="n">n_channels</span><span class="p">))</span>
+
+    <span class="n">start_window</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">end_window</span> <span class="o">=</span> <span class="n">start_window</span> <span class="o">+</span> <span class="n">window_size</span>
+    <span class="k">for</span> <span class="n">win</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">windows</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="n">pairs</span><span class="p">:</span>
+            <span class="n">source_channel</span><span class="p">,</span> <span class="n">target_channel</span> <span class="o">=</span> <span class="n">pair</span>
+
+            <span class="n">slide_lf</span> <span class="o">=</span> <span class="n">lf</span><span class="p">[</span><span class="n">source_channel</span><span class="p">,</span> <span class="n">start_window</span><span class="p">:</span> <span class="n">end_window</span><span class="p">]</span>
+            <span class="n">slide_hfa</span> <span class="o">=</span> <span class="n">hfa</span><span class="p">[</span><span class="n">target_channel</span><span class="p">,</span> <span class="n">start_window</span><span class="p">:</span> <span class="n">end_window</span><span class="p">]</span>
+
+            <span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">slide_lf</span><span class="p">)</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">slide_hfa</span><span class="p">,</span> <span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="n">ax</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">s</span><span class="p">))</span>
+            <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">slide_lf</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">slide_lf</span><span class="p">),</span> <span class="n">ax</span><span class="p">))</span><span class="o">.</span><span class="n">T</span>
+
+            <span class="n">result</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+            <span class="n">r2</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">rsquared</span>
+            <span class="n">r2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">r2</span><span class="p">)</span>
+
+            <span class="n">ts</span><span class="p">[</span><span class="n">win</span><span class="p">,</span> <span class="n">source_channel</span><span class="p">,</span> <span class="n">target_channel</span><span class="p">]</span> <span class="o">=</span> <span class="n">r2</span>
+
+        <span class="n">start_window</span> <span class="o">=</span> <span class="n">end_window</span>
+        <span class="n">end_window</span> <span class="o">=</span> <span class="n">start_window</span> <span class="o">+</span> <span class="n">window_size</span>
+
+    <span class="n">ts_avg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">ts</span><span class="p">,</span> <span class="n">ts_avg</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Avraam Marimpis &amp; Stavros Dimitriadis.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,556 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>dyfunconn.tvfcgs &mdash; dyfunconn  documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="dyfunconn  documentation" href="../../index.html"/>
+        <link rel="up" title="Module code" href="../index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> dyfunconn
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../dyfunconn.html">dyfunconn package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">dyfunconn</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      
+    <li>dyfunconn.tvfcgs</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for dyfunconn.tvfcgs</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot; Time-Varying Functional Connectivity Graphs</span>
+
+<span class="sd">Time-varying functional connectivity graphs (TVFCGs) [Dimitriadis2010_ , Falani2008_] introduce the</span>
+<span class="sd">idea of processing overlapping segments of neuroelectric signals by defining a</span>
+<span class="sd">frequency-dependent time window in which the synchronization is estimated;</span>
+<span class="sd">and then tabulating the results as adjacency matrices. These matrices have a</span>
+<span class="sd">natural graph-based representation called “functional connectivity graphs”</span>
+<span class="sd">(FCGs).</span>
+
+<span class="sd">An important aspect of the TVFCGs is the “cycle-criterion” (CC) [Cohen2008_].</span>
+<span class="sd">It regulates the amount of the oscillation cycles that will be considered in</span>
+<span class="sd">measuring the phase synchrony. In the original proposal :math:`CC = 2.0` was</span>
+<span class="sd">introduced, resulting into a time-window with width twice the lower period.</span>
+<span class="sd">TVFCGs on the other, consider the given lower frequency that correspond to the</span>
+<span class="sd">possibly synchronized oscillations of each brain rhythm and the sampling</span>
+<span class="sd">frequency. This newly defined frequency-depedent time-window is sliding over</span>
+<span class="sd">the time series and the network connectivity is estimated. The overlapping</span>
+<span class="sd">is determined by an arbitrary step parameter.</span>
+
+<span class="sd">Given a multi-channel recording data matrix :math:`X^{m \\times n}` of</span>
+<span class="sd">size :math:`m \\times n` (with :math:`m` channels, and :math:`n` samples), a</span>
+<span class="sd">frequency range with :math:`F_{up}` and :math:`F_{lo}` the upper and lower</span>
+<span class="sd">limits, :math:`fs` the sampling frequency, :math:`step` and :math:`CC`, the</span>
+<span class="sd">computation of these graphs proceeds as follows:</span>
+
+<span class="sd">Firstly, based on the :math:`CC` and the specified frequency range</span>
+<span class="sd">(:math:`F_{lo}` and :math:`fs` ) the window size calculated:</span>
+
+<span class="sd">.. math::</span>
+<span class="sd">    w_{len} = \\frac{ CC }{ F_{lo} } fs</span>
+
+<span class="sd">Then, this window is moving per :math:`step` samples and the average</span>
+<span class="sd">synchronization is computed (between the channels, in a pairwise manner)</span>
+<span class="sd">resulting into :math:`\\frac{n}{step}` adjacency matrices of size</span>
+<span class="sd">:math:`n \\times n`.</span>
+
+
+<span class="sd">|</span>
+
+<span class="sd">-----</span>
+
+<span class="sd">.. [Cohen2008] Cohen, M. X. (2008). Assessing transient cross-frequency coupling in EEG data. Journal of neuroscience methods, 168(2), 494-499.</span>
+<span class="sd">.. [Dimitriadis2010] Dimitriadis, S. I., Laskaris, N. A., Tsirka, V., Vourkas, M., Micheloyannis, S., &amp; Fotopoulos, S. (2010). Tracking brain dynamics via time-dependent network analysis. Journal of neuroscience methods, 193(1), 145-155.</span>
+<span class="sd">.. [Falani2008] Fallani, F. D. V., Latora, V., Astolfi, L., Cincotti, F., Mattia, D., Marciani, M. G., ... &amp; Babiloni, F. (2008). Persistent patterns of interconnection in time-varying cortical networks estimated from high-resolution EEG recordings in humans during a simple motor act. Journal of Physics A: Mathematical and Theoretical, 41(22), 224014.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="c1"># Author: Avraam Marimpis &lt;avraam.marimpis@gmail.com&gt;</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">fc.estimator</span> <span class="k">import</span> <span class="n">Estimator</span>
+
+
+<div class="viewcode-block" id="tvfcg"><a class="viewcode-back" href="../../dyfunconn.html#dyfunconn.tvfcgs.tvfcg">[docs]</a><span class="k">def</span> <span class="nf">tvfcg</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">estimator_instance</span><span class="p">,</span> <span class="n">fb</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="n">cc</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="n">pairs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Time-Varying Functional Connectivity Graphs</span>
+
+<span class="sd">    The TVFCGs are computed from the input ``data`` by employing the given</span>
+<span class="sd">    synchronization estimator (``estimator_instance``).</span>
+
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    data : array-like, shape(n_channels, n_samples)</span>
+<span class="sd">        Multichannel recording data.</span>
+
+<span class="sd">    estimator_instance : object</span>
+<span class="sd">        An object of type :mod:`dyfunconn.fc.Estimator`.</span>
+
+<span class="sd">    fb : list of length 2</span>
+<span class="sd">        The lower and upper frequency.</span>
+
+<span class="sd">    fs : float</span>
+<span class="sd">        Sampling frequency.</span>
+
+<span class="sd">    cc : float</span>
+<span class="sd">        Cycle criterion.</span>
+
+<span class="sd">    step : int</span>
+<span class="sd">        The amount of samples the window will move/slide over the time series.</span>
+
+<span class="sd">    pairs : array-like or `None`</span>
+<span class="sd">        - If an `array-like` is given, notice that each element is a tuple of length two.</span>
+<span class="sd">        - If `None` is passed, complete connectivity will be assumed.</span>
+
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    fcgs : array-like, shape(n_windows, n_channels, n_channels)</span>
+<span class="sd">        The computed FCGs.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">preprocess</span><span class="p">,</span> <span class="n">estimator</span><span class="p">,</span> <span class="n">avg_func</span> <span class="o">=</span> <span class="n">_validate_estimator</span><span class="p">(</span><span class="n">estimator_instance</span><span class="p">)</span>
+
+    <span class="c1"># Preprocess the data (estimator function)</span>
+    <span class="n">pp_data</span> <span class="o">=</span> <span class="n">preprocess</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="c1">#</span>
+    <span class="n">n_channels</span><span class="p">,</span> <span class="n">n_samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">window_length</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">((</span><span class="n">cc</span> <span class="o">/</span> <span class="n">fb</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="n">fs</span><span class="p">))</span>
+    <span class="n">windows</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">((</span><span class="n">n_samples</span> <span class="o">-</span> <span class="n">window_length</span><span class="p">)</span> <span class="o">/</span> <span class="n">step</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">window_length</span> <span class="o">&gt;=</span> <span class="n">n_samples</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span>
+            <span class="s2">&quot;The size of window cannot be greater than the number of samples&quot;</span><span class="p">)</span>
+
+    <span class="n">fcgs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">windows</span><span class="p">,</span> <span class="n">n_channels</span><span class="p">,</span> <span class="n">n_channels</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">estimator_instance</span><span class="o">.</span><span class="n">data_type</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">pairs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">pairs</span> <span class="o">=</span> <span class="p">[(</span><span class="n">win_id</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">win_id</span> <span class="o">*</span> <span class="n">step</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">window_length</span> <span class="o">+</span> <span class="p">(</span><span class="n">win_id</span> <span class="o">*</span> <span class="n">step</span><span class="p">)),</span> <span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">)</span>
+                 <span class="k">for</span> <span class="n">win_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">windows</span><span class="p">)</span>
+                 <span class="k">for</span> <span class="n">c1</span> <span class="ow">in</span> <span class="n">xrange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_channels</span><span class="p">)</span>
+                 <span class="k">for</span> <span class="n">c2</span> <span class="ow">in</span> <span class="n">xrange</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span> <span class="n">n_channels</span><span class="p">)</span>
+                 <span class="k">if</span> <span class="n">c1</span> <span class="o">!=</span> <span class="n">c2</span>
+                 <span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="n">pairs</span><span class="p">:</span>
+        <span class="n">win_id</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">c1</span><span class="p">,</span> <span class="n">c2</span> <span class="o">=</span> <span class="n">pair</span>
+
+        <span class="n">slice1</span> <span class="o">=</span> <span class="n">pp_data</span><span class="p">[</span><span class="n">c1</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span>
+        <span class="n">slice2</span> <span class="o">=</span> <span class="n">pp_data</span><span class="p">[</span><span class="n">c2</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span>
+
+        <span class="c1"># slice = None</span>
+        <span class="c1"># try:</span>
+        <span class="nb">slice</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">estimator</span><span class="p">(</span><span class="n">slice1</span><span class="p">,</span> <span class="n">slice2</span><span class="p">)</span>
+        <span class="c1"># except:</span>
+            <span class="c1"># slice = estimator(slice1, slice2)</span>
+
+        <span class="n">fcgs</span><span class="p">[</span><span class="n">win_id</span><span class="p">,</span> <span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">]</span> <span class="o">=</span> <span class="n">avg_func</span><span class="p">(</span><span class="nb">slice</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">fcgs</span></div>
+
+
+<div class="viewcode-block" id="tvfcg_cfc"><a class="viewcode-back" href="../../dyfunconn.html#dyfunconn.tvfcgs.tvfcg_cfc">[docs]</a><span class="k">def</span> <span class="nf">tvfcg_cfc</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">estimator_instance</span><span class="p">,</span> <span class="n">fb_lo</span><span class="p">,</span> <span class="n">fb_hi</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">cc</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">pairs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Time-Varying Functional Connectivity Graphs (for Cross frequency Coupling)</span>
+
+<span class="sd">    The TVFCGs are computed from the input ``data`` by employing the given</span>
+<span class="sd">    cross frequency coupling synchronization estimator (``estimator_instance``).</span>
+
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    data : array-like, shape(n_channels, n_samples)</span>
+<span class="sd">        Multichannel recording data.</span>
+
+<span class="sd">    estimator_instance : object</span>
+<span class="sd">        An object of type :mod:`dyfunconn.fc.Estimator`.</span>
+
+<span class="sd">    fb_lo : list of length 2</span>
+<span class="sd">        The low and high frequencies.</span>
+
+<span class="sd">    fb_hi : list of length 2</span>
+<span class="sd">        The low and high frequencies.</span>
+
+<span class="sd">    fs : float</span>
+<span class="sd">        Sampling frequency.</span>
+
+<span class="sd">    cc : float</span>
+<span class="sd">        Cycle criterion.</span>
+
+<span class="sd">    step : int</span>
+<span class="sd">        The amount of samples the window will move/slide over the time series.</span>
+
+<span class="sd">    pairs : array-like or `None`</span>
+<span class="sd">        - If an `array-like` is given, notice that each element is a tuple of length two.</span>
+<span class="sd">        - If `None` is passed, complete connectivity will be assumed.</span>
+
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    fcgs : array-like, shape(n_windows, n_channels, n_channels)</span>
+<span class="sd">        The computed Cross-Frequency FCGs.</span>
+
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    Not all available estimators in the :mod:`dyfunconn.fc` are valid for estimating</span>
+<span class="sd">    cross frequency coupling.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">preprocess</span><span class="p">,</span> <span class="n">estimator</span><span class="p">,</span> <span class="n">avg_func</span> <span class="o">=</span> <span class="n">_validate_estimator</span><span class="p">(</span><span class="n">estimator_instance</span><span class="p">)</span>
+
+    <span class="c1"># Preprocess the data (estimator function)</span>
+    <span class="n">pp_data1</span><span class="p">,</span> <span class="n">pp_data2</span> <span class="o">=</span> <span class="n">preprocess</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="c1">#</span>
+    <span class="n">n_channels</span><span class="p">,</span> <span class="n">n_samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="n">window_length</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">((</span><span class="n">cc</span> <span class="o">/</span> <span class="n">fb_lo</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="n">fs</span><span class="p">))</span>
+    <span class="n">windows</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">((</span><span class="n">n_samples</span> <span class="o">-</span> <span class="n">window_length</span><span class="p">)</span> <span class="o">/</span> <span class="n">step</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">window_length</span> <span class="o">&gt;=</span> <span class="n">n_samples</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span>
+            <span class="s2">&quot;The size of window cannot be greater than the number of samples&quot;</span><span class="p">)</span>
+
+    <span class="n">fcgs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">windows</span><span class="p">,</span> <span class="n">n_channels</span><span class="p">,</span> <span class="n">n_channels</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">pairs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">pairs</span> <span class="o">=</span> <span class="p">[(</span><span class="n">win_id</span><span class="p">,</span> <span class="p">(</span><span class="n">win_id</span> <span class="o">*</span> <span class="n">step</span><span class="p">),</span> <span class="n">window_length</span> <span class="o">+</span> <span class="p">(</span><span class="n">win_id</span> <span class="o">*</span> <span class="n">step</span><span class="p">),</span> <span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">)</span>
+                 <span class="k">for</span> <span class="n">win_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">windows</span><span class="p">)</span>
+                 <span class="k">for</span> <span class="n">c1</span> <span class="ow">in</span> <span class="n">xrange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_channels</span><span class="p">)</span>
+                 <span class="k">for</span> <span class="n">c2</span> <span class="ow">in</span> <span class="n">xrange</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span> <span class="n">n_channels</span><span class="p">)</span>
+                 <span class="k">if</span> <span class="n">c1</span> <span class="o">!=</span> <span class="n">c2</span>
+                 <span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="n">pairs</span><span class="p">:</span>
+        <span class="n">win_id</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">c1</span><span class="p">,</span> <span class="n">c2</span> <span class="o">=</span> <span class="n">pair</span>
+        <span class="n">slice1</span> <span class="o">=</span> <span class="n">pp_data1</span><span class="p">[</span><span class="n">c1</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span>
+        <span class="n">slice2</span> <span class="o">=</span> <span class="n">pp_data2</span><span class="p">[</span><span class="n">c2</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span>
+        <span class="nb">slice</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">estimator</span><span class="p">(</span><span class="n">slice1</span><span class="p">,</span> <span class="n">slice2</span><span class="p">)</span>
+        <span class="n">aslice</span> <span class="o">=</span> <span class="n">avg_func</span><span class="p">(</span><span class="nb">slice</span><span class="p">)</span>
+
+        <span class="n">fcgs</span><span class="p">[</span><span class="n">win_id</span><span class="p">,</span> <span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">]</span> <span class="o">=</span> <span class="n">aslice</span>
+
+    <span class="k">return</span> <span class="n">fcgs</span></div>
+
+
+<div class="viewcode-block" id="tvfcg_ts"><a class="viewcode-back" href="../../dyfunconn.html#dyfunconn.tvfcgs.tvfcg_ts">[docs]</a><span class="k">def</span> <span class="nf">tvfcg_ts</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">fb</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">cc</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">pairs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">avg_func</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Time-Varying Function Connectivity Graphs (from time series)</span>
+
+<span class="sd">    This implementation operates directly on the given estimated synchronization</span>
+<span class="sd">    time series (``ts``) and the mean value inside the window is computed.</span>
+
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    ts : array-like, shape(n_channels, n_samples)</span>
+<span class="sd">        Multichannel synchronization time series.</span>
+
+<span class="sd">    fb : list of length 2</span>
+<span class="sd">        The lower and upper frequency.</span>
+
+<span class="sd">    fs : float</span>
+<span class="sd">        Sampling frequency.</span>
+
+<span class="sd">    cc : float</span>
+<span class="sd">        Cycle criterion.</span>
+
+<span class="sd">    step : int</span>
+<span class="sd">        The amount of samples the window will move/slide over the time series.</span>
+
+<span class="sd">    pairs : array-like or `None`</span>
+<span class="sd">        - If an `array-like` is given, notice that each element is a tuple of length two.</span>
+<span class="sd">        - If `None` is passed, complete connectivity will be assumed.</span>
+
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    fcgs : array-like</span>
+<span class="sd">        The computed FCGs.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">n_channels</span><span class="p">,</span> <span class="n">n_channels</span><span class="p">,</span> <span class="n">n_samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
+
+    <span class="n">window_length</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">((</span><span class="n">cc</span> <span class="o">/</span> <span class="n">fb</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="n">fs</span><span class="p">))</span>
+    <span class="n">windows</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">((</span><span class="n">n_samples</span> <span class="o">-</span> <span class="n">window_length</span><span class="p">)</span> <span class="o">/</span> <span class="n">step</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">window_length</span> <span class="o">&gt;=</span> <span class="n">n_samples</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span>
+            <span class="s2">&quot;The size of window cannot be greater than the number of samples&quot;</span><span class="p">)</span>
+
+    <span class="n">fcgs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">windows</span><span class="p">,</span> <span class="n">n_channels</span><span class="p">,</span> <span class="n">n_channels</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">pairs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">pairs</span> <span class="o">=</span> <span class="p">[(</span><span class="n">win_id</span><span class="p">,</span> <span class="p">(</span><span class="n">win_id</span> <span class="o">*</span> <span class="n">step</span><span class="p">),</span> <span class="n">window_length</span> <span class="o">+</span> <span class="p">(</span><span class="n">win_id</span> <span class="o">*</span> <span class="n">step</span><span class="p">),</span> <span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">)</span>
+                 <span class="k">for</span> <span class="n">win_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">windows</span><span class="p">)</span>
+                 <span class="k">for</span> <span class="n">c1</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_channels</span><span class="p">)</span>
+                 <span class="k">for</span> <span class="n">c2</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span> <span class="n">n_channels</span><span class="p">)]</span>
+
+    <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="n">pairs</span><span class="p">:</span>
+        <span class="n">win_id</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">,</span> <span class="n">c1</span><span class="p">,</span> <span class="n">c2</span> <span class="o">=</span> <span class="n">pair</span>
+        <span class="nb">slice</span> <span class="o">=</span> <span class="n">ts</span><span class="p">[</span><span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">,</span> <span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span>
+
+        <span class="n">fcgs</span><span class="p">[</span><span class="n">win_id</span><span class="p">,</span> <span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">]</span> <span class="o">=</span> <span class="n">avg_func</span><span class="p">(</span><span class="nb">slice</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">fcgs</span></div>
+
+
+<div class="viewcode-block" id="tvfcg_compute_windows"><a class="viewcode-back" href="../../dyfunconn.html#dyfunconn.tvfcgs.tvfcg_compute_windows">[docs]</a><span class="k">def</span> <span class="nf">tvfcg_compute_windows</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">fb_lo</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="n">cc</span><span class="p">,</span> <span class="n">step</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Compute TVFCGs Sliding Windows</span>
+
+<span class="sd">    A helper function that computes the size and number of sliding windows</span>
+<span class="sd">    given the parameters.</span>
+
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    data : array-like, shape(n_channels, n_samples)</span>
+<span class="sd">        Multichannel recording data.</span>
+
+<span class="sd">    fb_lo :</span>
+
+<span class="sd">    fb : list of length 2</span>
+<span class="sd">        The lower and upper frequency.</span>
+
+<span class="sd">    fs : float</span>
+<span class="sd">        Sampling frequency.</span>
+
+<span class="sd">    cc : float</span>
+<span class="sd">        Cycle criterion.</span>
+
+<span class="sd">    step : int</span>
+<span class="sd">        Stepping.</span>
+
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    windows : int</span>
+<span class="sd">        The total number of sliding windows.</span>
+
+<span class="sd">    window_length : int</span>
+<span class="sd">        The length of a sliding window; number of samples used to estimated the connectivity.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">n_channels</span><span class="p">,</span> <span class="n">n_channels</span><span class="p">,</span> <span class="n">n_samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">window_length</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">((</span><span class="n">cc</span> <span class="o">/</span> <span class="n">fb_lo</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="n">fs</span><span class="p">))</span>
+    <span class="n">windows</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">((</span><span class="n">n_samples</span> <span class="o">-</span> <span class="n">window_length</span><span class="p">)</span> <span class="o">/</span> <span class="n">step</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">window_length</span> <span class="o">&gt;=</span> <span class="n">n_samples</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span>
+            <span class="s2">&quot;The size of window cannot be greater than the number of samples&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">windows</span><span class="p">,</span> <span class="n">window_length</span></div>
+
+
+<span class="k">def</span> <span class="nf">_validate_estimator</span><span class="p">(</span><span class="n">estimator_instance</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    Perform common validity checks for a given estimator.</span>
+
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    estimator_instance : object</span>
+<span class="sd">        An instance of `dyfunconn.fc.Estimator`</span>
+
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    preprocess : function</span>
+<span class="sd">        A callable function for preprocessing the data.</span>
+
+<span class="sd">    estimator : function</span>
+<span class="sd">        A callable function for estimating the synchronization.</span>
+
+<span class="sd">    avg : function</span>
+<span class="sd">        A callable function for computing the average on each slice.</span>
+
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    This function is used mainly internally.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">estimator_instance</span><span class="p">,</span> <span class="n">Estimator</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+    <span class="n">preprocess</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">estimator_instance</span><span class="p">,</span> <span class="s2">&quot;preprocess&quot;</span><span class="p">)</span>
+    <span class="n">estimator</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">estimator_instance</span><span class="p">,</span> <span class="s2">&quot;estimate_pair&quot;</span><span class="p">)</span>
+    <span class="n">avg</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">estimator_instance</span><span class="p">,</span> <span class="s2">&quot;mean&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">callable</span><span class="p">(</span><span class="n">preprocess</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">callable</span><span class="p">(</span><span class="n">estimator</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">callable</span><span class="p">(</span><span class="n">avg</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Mean func is not callable.&quot;</span><span class="p">)</span>
+        <span class="n">avg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span>
+
+    <span class="k">return</span> <span class="n">preprocess</span><span class="p">,</span> <span class="n">estimator</span><span class="p">,</span> <span class="n">avg</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Avraam Marimpis &amp; Stavros Dimitriadis.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

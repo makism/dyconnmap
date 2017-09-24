@@ -1,0 +1,294 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>dyfunconn.fc.mui &mdash; dyfunconn  documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="dyfunconn  documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> dyfunconn
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../dyfunconn.html">dyfunconn package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">dyfunconn</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      
+    <li>dyfunconn.fc.mui</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for dyfunconn.fc.mui</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot; Mutual Information</span>
+
+<span class="sd">Mutual Information (*MI*),</span>
+
+
+
+<span class="sd">|</span>
+
+<span class="sd">-----</span>
+
+<span class="sd">.. [Vinck2011] Vinck, M., Oostenveld, R., van Wingerden, M., Battaglia, F., &amp; Pennartz, C. M. (2011). An improved index of phase-synchronization for electrophysiological data in the presence of volume-conduction, noise and sample-size bias. Neuroimage, 55(4), 1548-1565.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="c1"># Author: Avraam Marimpis &lt;avraam.marimpis@gmail.com&gt;</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">EPS</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">finfo</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">eps</span>
+
+<span class="c1">#function [Iab,Pab,Pa,Pb] = my_mutualInformation(a,b,normalize,nbins)</span>
+
+
+<div class="viewcode-block" id="mutual_information"><a class="viewcode-back" href="../../../dyfunconn.fc.html#dyfunconn.fc.mui.mutual_information">[docs]</a><span class="k">def</span> <span class="nf">mutual_information</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">n_bins</span> <span class="o">=</span> <span class="mi">10</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">n_bins</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">n_bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">/</span> <span class="mf">10.0</span><span class="p">))</span></div>
+
+<span class="c1"># % Joint histogram</span>
+<span class="c1"># abHist = hist2(a,b,nbins);</span>
+<span class="c1">#</span>
+<span class="c1"># % Marginal histograms</span>
+<span class="c1"># aHist = sum(abHist,1);</span>
+<span class="c1"># bHist = sum(abHist,2);</span>
+<span class="c1">#</span>
+<span class="c1"># % Probabilities</span>
+<span class="c1"># N = sum(aHist);</span>
+<span class="c1"># Pa = aHist/N;</span>
+<span class="c1"># Pb = bHist/N;</span>
+<span class="c1"># Pab = abHist/N;</span>
+<span class="c1">#</span>
+<span class="c1"># % Disable divide by 0 and log of 0 warnings</span>
+<span class="c1"># warning(&#39;off&#39;);</span>
+<span class="c1"># Ha = (Pa .* log(Pa));</span>
+<span class="c1"># id = isfinite(Ha);</span>
+<span class="c1"># Ha = - sum(Ha(id));</span>
+<span class="c1">#</span>
+<span class="c1"># Hb = (Pb .* log(Pb));</span>
+<span class="c1"># id = isfinite(Hb);</span>
+<span class="c1"># Hb = - sum(Hb(id));</span>
+<span class="c1">#</span>
+<span class="c1"># Hab = (Pab .* log(Pab));</span>
+<span class="c1"># id = isfinite(Hab);</span>
+<span class="c1"># Hab = - sum(Hab(id));</span>
+<span class="c1"># warning(&#39;on&#39;);</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1">#     %normalized</span>
+<span class="c1">#     if normalize</span>
+<span class="c1">#         Iab=[Ha + Hb] / (2*Hab);</span>
+<span class="c1">#     else</span>
+<span class="c1">#         Iab = Ha + Hb - Hab;</span>
+<span class="c1">#     end</span>
+<span class="c1">#</span>
+<span class="c1"># return</span>
+
+    <span class="c1"># bins = (5, 5)</span>
+    <span class="c1"># sigma = 1.0</span>
+    <span class="c1"># normalized = True</span>
+    <span class="c1">#</span>
+    <span class="c1"># jh = np.histogram2d(x, y, bins=bins)[0]</span>
+    <span class="c1">#</span>
+    <span class="c1"># # smooth the jh with a gaussian filter of given sigma</span>
+    <span class="c1"># ndimage.gaussian_filter(jh, sigma=sigma, mode=&#39;constant&#39;,</span>
+    <span class="c1">#                         output=jh)</span>
+    <span class="c1">#</span>
+    <span class="c1"># # compute marginal histograms</span>
+    <span class="c1"># jh = jh + EPS</span>
+    <span class="c1"># sh = np.sum(jh)</span>
+    <span class="c1"># jh = jh / sh</span>
+    <span class="c1"># s1 = np.sum(jh, axis=0).reshape((-1, jh.shape[0]))</span>
+    <span class="c1"># s2 = np.sum(jh, axis=1).reshape((jh.shape[1], -1))</span>
+    <span class="c1">#</span>
+    <span class="c1"># # Normalised Mutual Information of:</span>
+    <span class="c1"># # Studholme,  jhill &amp; jhawkes (1998).</span>
+    <span class="c1"># # &quot;A normalized entropy measure of 3-D medical image alignment&quot;.</span>
+    <span class="c1"># # in Proc. Medical Imaging 1998, vol. 3338, San Diego, CA, pp. 132-143.</span>
+    <span class="c1"># if normalized:</span>
+    <span class="c1">#     mi = ((np.sum(s1 * np.log(s1)) + np.sum(s2 * np.log(s2)))</span>
+    <span class="c1">#           / np.sum(jh * np.log(jh))) - 1</span>
+    <span class="c1"># else:</span>
+    <span class="c1">#     mi = (np.sum(jh * np.log(jh)) - np.sum(s1 * np.log(s1))</span>
+    <span class="c1">#           - np.sum(s2 * np.log(s2)))</span>
+    <span class="c1">#</span>
+    <span class="c1"># return mi</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Avraam Marimpis &amp; Stavros Dimitriadis.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

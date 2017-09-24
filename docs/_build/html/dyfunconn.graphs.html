@@ -1,0 +1,368 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>dyfunconn.graphs package &mdash; dyfunconn  documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="dyfunconn  documentation" href="index.html"/>
+        <link rel="up" title="dyfunconn package" href="dyfunconn.html"/>
+        <link rel="next" title="dyfunconn.sim_models package" href="dyfunconn.sim_models.html"/>
+        <link rel="prev" title="dyfunconn.fc package" href="dyfunconn.fc.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> dyfunconn
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="dyfunconn.html">dyfunconn package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="dyfunconn.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="dyfunconn.cluster.html">dyfunconn.cluster package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dyfunconn.fc.html">dyfunconn.fc package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">dyfunconn.graphs package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.graphs.gdd">dyfunconn.graphs.gdd module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.graphs.mi">dyfunconn.graphs.mi module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.graphs.vi">dyfunconn.graphs.vi module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.graphs">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dyfunconn.sim_models.html">dyfunconn.sim_models package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dyfunconn.ts.html">dyfunconn.ts package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.html#module-dyfunconn.analytic_signal">dyfunconn.analytic_signal module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.html#module-dyfunconn.bands">dyfunconn.bands module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.html#module-dyfunconn.tvfcgs">dyfunconn.tvfcgs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.html#module-contents">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">dyfunconn</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="dyfunconn.html">dyfunconn package</a> &raquo;</li>
+      
+    <li>dyfunconn.graphs package</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/dyfunconn.graphs.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="dyfunconn-graphs-package">
+<h1>dyfunconn.graphs package<a class="headerlink" href="#dyfunconn-graphs-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-dyfunconn.graphs.gdd">
+<span id="dyfunconn-graphs-gdd-module"></span><h2>dyfunconn.graphs.gdd module<a class="headerlink" href="#module-dyfunconn.graphs.gdd" title="Permalink to this headline">¶</a></h2>
+<p>Graph Diffusion Distance</p>
+<div class="section" id="notes">
+<h3>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h3>
+<p>Based on the code accompanied the original paper. Available at <a class="reference external" href="https://www.researchgate.net/publication/259621918_A_Matlab_code_for_computing_the_GDD_presented_in_the_paper">https://www.researchgate.net/publication/259621918_A_Matlab_code_for_computing_the_GDD_presented_in_the_paper</a></p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<hr class="docutils" />
+<table class="docutils citation" frame="void" id="hammond2013" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Hammond2013]</td><td>Hammond, D. K., Gur, Y., &amp; Johnson, C. R. (2013, December). Graph diffusion distance: A difference measure for weighted graphs based on the graph Laplacian exponential kernel. In Global Conference on Signal and Information Processing (GlobalSIP), 2013 IEEE (pp. 419-422). IEEE.</td></tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="dyfunconn.graphs.gdd.graph_diffusion_distance">
+<code class="descclassname">dyfunconn.graphs.gdd.</code><code class="descname">graph_diffusion_distance</code><span class="sig-paren">(</span><em>a</em>, <em>b</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/graphs/gdd.html#graph_diffusion_distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.graphs.gdd.graph_diffusion_distance" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>a</strong> :</p>
+<p class="last"><strong>b</strong> :</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="module-dyfunconn.graphs.mi">
+<span id="dyfunconn-graphs-mi-module"></span><h2>dyfunconn.graphs.mi module<a class="headerlink" href="#module-dyfunconn.graphs.mi" title="Permalink to this headline">¶</a></h2>
+<p>Mutual Information</p>
+<p>Comparing two partitions using the mutual information theoretical metric.</p>
+<div class="section" id="id1">
+<h3>Notes<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Based on the code available at <a class="reference external" href="http://users.auth.gr/~stdimitr/files/software/vi.rar">http://users.auth.gr/~stdimitr/files/software/vi.rar</a></p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl class="function">
+<dt id="dyfunconn.graphs.mi.mutual_information">
+<code class="descclassname">dyfunconn.graphs.mi.</code><code class="descname">mutual_information</code><span class="sig-paren">(</span><em>indices_a</em>, <em>indices_b</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/graphs/mi.html#mutual_information"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.graphs.mi.mutual_information" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mutual Information</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>MI</strong> : float</p>
+<blockquote>
+<div><p>Mutual information.</p>
+</div></blockquote>
+<p><strong>NMI</strong> : float</p>
+<blockquote class="last">
+<div><p>Normalized mutual information.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="module-dyfunconn.graphs.vi">
+<span id="dyfunconn-graphs-vi-module"></span><h2>dyfunconn.graphs.vi module<a class="headerlink" href="#module-dyfunconn.graphs.vi" title="Permalink to this headline">¶</a></h2>
+<p>Variation of Information</p>
+<div class="section" id="id2">
+<h3>Notes<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>Based on the code available at <a class="reference external" href="http://users.auth.gr/~stdimitr/files/software/vi.rar">http://users.auth.gr/~stdimitr/files/software/vi.rar</a></p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<table class="docutils citation" frame="void" id="dimitriadis2012" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Dimitriadis2012]</td><td>Dimitriadis, S. I., Laskaris, N. A., Michael Vourkas, V. T., &amp; Micheloyannis, S. (2012). An EEG study of brain connectivity dynamics at the resting state. Nonlinear Dynamics-Psychology and Life Sciences, 16(1), 5.</td></tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="dyfunconn.graphs.vi.variation_information">
+<code class="descclassname">dyfunconn.graphs.vi.</code><code class="descname">variation_information</code><span class="sig-paren">(</span><em>indices_a</em>, <em>indices_b</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/graphs/vi.html#variation_information"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.graphs.vi.variation_information" title="Permalink to this definition">¶</a></dt>
+<dd><p>indices_a:</p>
+<p>indices_b:</p>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="module-dyfunconn.graphs">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-dyfunconn.graphs" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="dyfunconn.graphs.graph_diffusion_distance">
+<code class="descclassname">dyfunconn.graphs.</code><code class="descname">graph_diffusion_distance</code><span class="sig-paren">(</span><em>a</em>, <em>b</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/graphs/gdd.html#graph_diffusion_distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.graphs.graph_diffusion_distance" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>a</strong> :</p>
+<p class="last"><strong>b</strong> :</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="dyfunconn.graphs.variation_information">
+<code class="descclassname">dyfunconn.graphs.</code><code class="descname">variation_information</code><span class="sig-paren">(</span><em>indices_a</em>, <em>indices_b</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/graphs/vi.html#variation_information"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.graphs.variation_information" title="Permalink to this definition">¶</a></dt>
+<dd><p>indices_a:</p>
+<p>indices_b:</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dyfunconn.graphs.mutual_information">
+<code class="descclassname">dyfunconn.graphs.</code><code class="descname">mutual_information</code><span class="sig-paren">(</span><em>indices_a</em>, <em>indices_b</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/graphs/mi.html#mutual_information"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.graphs.mutual_information" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mutual Information</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>MI</strong> : float</p>
+<blockquote>
+<div><p>Mutual information.</p>
+</div></blockquote>
+<p><strong>NMI</strong> : float</p>
+<blockquote class="last">
+<div><p>Normalized mutual information.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="dyfunconn.sim_models.html" class="btn btn-neutral float-right" title="dyfunconn.sim_models package" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="dyfunconn.fc.html" class="btn btn-neutral" title="dyfunconn.fc package" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Avraam Marimpis &amp; Stavros Dimitriadis.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

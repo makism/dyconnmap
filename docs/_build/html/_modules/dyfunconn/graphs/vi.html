@@ -1,0 +1,275 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>dyfunconn.graphs.vi &mdash; dyfunconn  documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="dyfunconn  documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> dyfunconn
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../dyfunconn.html">dyfunconn package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">dyfunconn</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      
+    <li>dyfunconn.graphs.vi</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for dyfunconn.graphs.vi</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot; Variation of Information</span>
+
+
+
+<span class="sd">Notes</span>
+<span class="sd">-----</span>
+<span class="sd">Based on the code available at http://users.auth.gr/~stdimitr/files/software/vi.rar</span>
+
+<span class="sd">|</span>
+
+<span class="sd">-----</span>
+<span class="sd">.. [Meilla2007] Meilă, M. (2007). Comparing clusterings—an information based distance. Journal of multivariate analysis, 98(5), 873-895.</span>
+<span class="sd">.. [Dimitriadis2009] Dimitriadis, S. I., Laskaris, N. A., Del Rio-Portilla, Y., &amp; Koudounis, G. C. (2009). Characterizing dynamic functional connectivity across sleep stages from EEG. Brain topography, 22(2), 119-133.</span>
+<span class="sd">.. [Dimitriadis2012] Dimitriadis, S. I., Laskaris, N. A., Michael Vourkas, V. T., &amp; Micheloyannis, S. (2012). An EEG study of brain connectivity dynamics at the resting state. Nonlinear Dynamics-Psychology and Life Sciences, 16(1), 5.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="c1"># Author: Avraam Marimpis &lt;avraam.marimpis@gmail.com&quot;</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">dyfunconn.ts.entropy</span> <span class="k">import</span> <span class="n">__entropy</span>
+
+
+<div class="viewcode-block" id="variation_information"><a class="viewcode-back" href="../../../dyfunconn.graphs.html#dyfunconn.graphs.vi.variation_information">[docs]</a><span class="k">def</span> <span class="nf">variation_information</span><span class="p">(</span><span class="n">indices_a</span><span class="p">,</span> <span class="n">indices_b</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    indices_a:</span>
+
+<span class="sd">    indices_b:</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">n1</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">indices_a</span><span class="p">)</span>
+    <span class="n">n2</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">indices_b</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">n1</span> <span class="o">!=</span> <span class="n">n2</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+    <span class="n">entropy1</span> <span class="o">=</span> <span class="n">__entropy</span><span class="p">(</span><span class="n">indices_a</span><span class="p">)</span>
+    <span class="n">entropy2</span> <span class="o">=</span> <span class="n">__entropy</span><span class="p">(</span><span class="n">indices_b</span><span class="p">)</span>
+
+    <span class="n">MI</span><span class="p">,</span> <span class="n">NMI</span> <span class="o">=</span> <span class="n">__mi</span><span class="p">(</span><span class="n">indices_a</span><span class="p">,</span> <span class="o">-</span><span class="n">entropy1</span><span class="p">,</span> <span class="n">indices_b</span><span class="p">,</span> <span class="o">-</span><span class="n">entropy2</span><span class="p">)</span>
+
+    <span class="n">entropy1</span> <span class="o">=</span> <span class="o">-</span><span class="n">entropy1</span>
+    <span class="n">entropy2</span> <span class="o">=</span> <span class="o">-</span><span class="n">entropy2</span>
+    <span class="n">VI_value</span> <span class="o">=</span> <span class="n">entropy1</span> <span class="o">+</span> <span class="n">entropy2</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">MI</span>
+
+    <span class="n">NVI</span> <span class="o">=</span> <span class="n">VI_value</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">n1</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">VI_value</span><span class="p">,</span> <span class="n">NVI</span></div>
+
+
+<span class="k">def</span> <span class="nf">__mi</span><span class="p">(</span><span class="n">indices_a</span><span class="p">,</span> <span class="n">entropy_a</span><span class="p">,</span> <span class="n">indices_b</span><span class="p">,</span> <span class="n">entropy_b</span><span class="p">):</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">indices_a</span><span class="p">)</span>
+
+    <span class="n">unique</span><span class="p">,</span> <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">indices_a</span><span class="p">,</span> <span class="n">return_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">len_counts</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+    <span class="n">Ua</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">len_counts</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>
+    <span class="n">indices_a</span> <span class="o">=</span> <span class="n">indices_a</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">len_counts</span><span class="p">):</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">indices_a</span> <span class="o">==</span> <span class="n">unique</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">Ua</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">tmp</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="n">unique</span><span class="p">,</span> <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">indices_b</span><span class="p">,</span> <span class="n">return_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">len_counts</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+    <span class="n">Ub</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">len_counts</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>
+    <span class="n">indices_b</span> <span class="o">=</span> <span class="n">indices_b</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">len_counts</span><span class="p">):</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">indices_b</span> <span class="o">==</span> <span class="n">unique</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">Ub</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">tmp</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="n">Sab</span> <span class="o">=</span> <span class="n">Ua</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Ub</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">Sa</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">Ua</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Ua</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">N</span><span class="p">))</span>
+    <span class="n">Sb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">Ub</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Ub</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">N</span><span class="p">))</span>
+
+    <span class="c1"># Add dummy dimension (needed for following computations).</span>
+    <span class="n">Sa</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">Sa</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">Sb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">Sb</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">SS</span> <span class="o">=</span> <span class="n">Sab</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">Sab</span> <span class="o">/</span> <span class="p">(</span><span class="n">Sa</span> <span class="o">*</span> <span class="n">Sb</span><span class="o">.</span><span class="n">T</span><span class="p">))</span>
+
+    <span class="n">MI</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nansum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nansum</span><span class="p">(</span><span class="n">SS</span><span class="p">))</span>
+    <span class="n">NMI</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">MI</span> <span class="o">/</span> <span class="p">(</span><span class="n">entropy_a</span> <span class="o">+</span> <span class="n">entropy_b</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">MI</span><span class="p">,</span> <span class="n">NMI</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Avraam Marimpis &amp; Stavros Dimitriadis.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

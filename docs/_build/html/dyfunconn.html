@@ -1,0 +1,957 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>dyfunconn package &mdash; dyfunconn  documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="dyfunconn  documentation" href="index.html"/>
+        <link rel="next" title="dyfunconn.cluster package" href="dyfunconn.cluster.html"/>
+        <link rel="prev" title="Welcome to dyfunconn’s documentation!" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> dyfunconn
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">dyfunconn package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dyfunconn.cluster.html">dyfunconn.cluster package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dyfunconn.fc.html">dyfunconn.fc package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dyfunconn.graphs.html">dyfunconn.graphs package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dyfunconn.sim_models.html">dyfunconn.sim_models package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dyfunconn.ts.html">dyfunconn.ts package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-dyfunconn.analytic_signal">dyfunconn.analytic_signal module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-dyfunconn.bands">dyfunconn.bands module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-dyfunconn.tvfcgs">dyfunconn.tvfcgs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-contents">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">dyfunconn</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>dyfunconn package</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/dyfunconn.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="dyfunconn-package">
+<h1>dyfunconn package<a class="headerlink" href="#dyfunconn-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="dyfunconn.cluster.html">dyfunconn.cluster package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.cluster.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.cluster.html#module-dyfunconn.cluster.dmatrix">dyfunconn.cluster.dmatrix module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.cluster.html#module-dyfunconn.cluster.mng">dyfunconn.cluster.mng module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.cluster.html#module-dyfunconn.cluster.ng">dyfunconn.cluster.ng module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dyfunconn.cluster.html#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.cluster.html#module-dyfunconn.cluster.som">dyfunconn.cluster.som module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dyfunconn.cluster.html#id2">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.cluster.html#module-dyfunconn.cluster.umatrix">dyfunconn.cluster.umatrix module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.cluster.html#module-dyfunconn.cluster">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dyfunconn.fc.html">dyfunconn.fc package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.fc.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.fc.html#module-dyfunconn.fc.aec">dyfunconn.fc.aec module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.fc.html#module-dyfunconn.fc.biplv">dyfunconn.fc.biplv module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.fc.html#module-dyfunconn.fc.coherence">dyfunconn.fc.coherence module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.fc.html#module-dyfunconn.fc.corr">dyfunconn.fc.corr module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.fc.html#module-dyfunconn.fc.crosscorr">dyfunconn.fc.crosscorr module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.fc.html#module-dyfunconn.fc.dpli">dyfunconn.fc.dpli module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.fc.html#module-dyfunconn.fc.esc">dyfunconn.fc.esc module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.fc.html#module-dyfunconn.fc.estimator">dyfunconn.fc.estimator module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.fc.html#module-dyfunconn.fc.glm">dyfunconn.fc.glm module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.fc.html#module-dyfunconn.fc.icoherence">dyfunconn.fc.icoherence module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.fc.html#module-dyfunconn.fc.iplv">dyfunconn.fc.iplv module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.fc.html#module-dyfunconn.fc.mui">dyfunconn.fc.mui module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.fc.html#module-dyfunconn.fc.nesc">dyfunconn.fc.nesc module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.fc.html#module-dyfunconn.fc.pac">dyfunconn.fc.pac module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.fc.html#module-dyfunconn.fc.partcorr">dyfunconn.fc.partcorr module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.fc.html#module-dyfunconn.fc.pcoh">dyfunconn.fc.pcoh module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.fc.html#module-dyfunconn.fc.pec">dyfunconn.fc.pec module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.fc.html#module-dyfunconn.fc.pli">dyfunconn.fc.pli module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.fc.html#module-dyfunconn.fc.plv">dyfunconn.fc.plv module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.fc.html#module-dyfunconn.fc.si">dyfunconn.fc.si module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.fc.html#module-dyfunconn.fc.wpli">dyfunconn.fc.wpli module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.fc.html#module-dyfunconn.fc">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dyfunconn.graphs.html">dyfunconn.graphs package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.graphs.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.graphs.html#module-dyfunconn.graphs.gdd">dyfunconn.graphs.gdd module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dyfunconn.graphs.html#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.graphs.html#module-dyfunconn.graphs.mi">dyfunconn.graphs.mi module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dyfunconn.graphs.html#id1">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.graphs.html#module-dyfunconn.graphs.vi">dyfunconn.graphs.vi module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dyfunconn.graphs.html#id2">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.graphs.html#module-dyfunconn.graphs">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dyfunconn.sim_models.html">dyfunconn.sim_models package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.sim_models.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.sim_models.html#module-dyfunconn.sim_models.makinen">dyfunconn.sim_models.makinen module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dyfunconn.sim_models.html#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.sim_models.html#module-dyfunconn.sim_models">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dyfunconn.ts.html">dyfunconn.ts package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.ts.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.ts.html#module-dyfunconn.ts.dcorr">dyfunconn.ts.dcorr module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dyfunconn.ts.html#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.ts.html#module-dyfunconn.ts.embed_delay">dyfunconn.ts.embed_delay module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.ts.html#module-dyfunconn.ts.entropy">dyfunconn.ts.entropy module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.ts.html#module-dyfunconn.ts.fisher_score">dyfunconn.ts.fisher_score module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.ts.html#module-dyfunconn.ts.fisher_z">dyfunconn.ts.fisher_z module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.ts.html#module-dyfunconn.ts.markov_matrix">dyfunconn.ts.markov_matrix module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.ts.html#module-dyfunconn.ts.ordinal_pattern_similarity">dyfunconn.ts.ordinal_pattern_similarity module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.ts.html#module-dyfunconn.ts.permutation_entropy">dyfunconn.ts.permutation_entropy module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.ts.html#module-dyfunconn.ts.rr_order_patterns">dyfunconn.ts.rr_order_patterns module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.ts.html#module-dyfunconn.ts.sampen">dyfunconn.ts.sampen module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dyfunconn.ts.html#id17">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.ts.html#module-dyfunconn.ts.ste">dyfunconn.ts.ste module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.ts.html#module-dyfunconn.ts.surrogates">dyfunconn.ts.surrogates module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.ts.html#module-dyfunconn.ts.teager_kaiser_energy">dyfunconn.ts.teager_kaiser_energy module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.ts.html#module-dyfunconn.ts.wald">dyfunconn.ts.wald module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.ts.html#module-dyfunconn.ts">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-dyfunconn.analytic_signal">
+<span id="dyfunconn-analytic-signal-module"></span><h2>dyfunconn.analytic_signal module<a class="headerlink" href="#module-dyfunconn.analytic_signal" title="Permalink to this headline">¶</a></h2>
+<p>Analytic Signal</p>
+<p>For a time series <span class="math">\(x(t)\)</span>, filtered with a passband <span class="math">\(N`th order Butterworth filter [Butter1930]_
+in the frequency range :math:`F_{lo} - F_{hi}\)</span>; first we compute its analytic representation <a class="reference internal" href="#cohen1995" id="id1">[Cohen1995]</a> , <a class="reference internal" href="#freeman2007" id="id2">[Freeman2007]</a>:</p>
+<div class="math">
+\[u_j(t) = \frac{1}{\pi} \textrm{PV} \int_{+\infty}^{-\infty} { \frac{V_j(t')}{t-t'} dt'}\]</div>
+<p>where <span class="math">\(PV\)</span> signifies the Cauchy Principal Value. The above equation results
+into a complex time-series <span class="math">\(V_j(t)\)</span>, with a real part <span class="math">\(v_j(t)\)</span> (the original neuroelectric
+time-series) and an imaginary part <span class="math">\(u_j(t)\)</span>, both as functions of time. Where <span class="math">\(j\)</span> the
+EEG recording electrode id.</p>
+<p>From these parts, we are capable to determine the Instantaneous Amplitude:</p>
+<div class="math">
+\[A_j(t) = \sqrt{ v_j^2 (t) + u_j^2 (t) }\]</div>
+<p>and its Instantaneous Phase counterpart, from:</p>
+<div class="math">
+\[\phi_j (t) = atan \frac{u_j(t)} {v_j(t)}\]</div>
+<p>The values in <span class="math">\(\phi_j(t)\)</span> are originally bound to <span class="math">\([-\pi, \pi]\)</span>,
+however we employed an <em>unwrap</em> transformation (a phase correction
+algorithm) in order to eliminate the discontinuities <a class="reference internal" href="#id5" id="id3">[Dimitriadis2010]</a>, <a class="reference internal" href="#freeman2002" id="id4">[Freeman2002]</a>.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<hr class="docutils" />
+<table class="docutils citation" frame="void" id="cohen1995" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[Cohen1995]</a></td><td>Cohen, L. (1995). Time-frequency analysis (Vol. 1, No. 995,299). Prentice hall.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="freeman2007" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[Freeman2007]</a></td><td>Walter J. Freeman (2007) Hilbert transform for brain waves. Scholarpedia, 2(1):1338.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="dimitriadis2010" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Dimitriadis2010]</td><td>Dimitriadis, S. I., Laskaris, N. A., Tsirka, V., Vourkas, M., Micheloyannis, S., &amp; Fotopoulos, S. (2010). Tracking brain dynamics via time-dependent network analysis. Journal of neuroscience methods, 193(1), 145-155.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="freeman2002" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id4">[Freeman2002]</a></td><td>Freeman, W. J., &amp; Rogers, L. J. (2002). Fine temporal resolution of analytic phase reveals episodic synchronization by state transitions in gamma EEGs. Journal of neurophysiology, 87(2), 937-945.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="butter1930" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Butter1930]</td><td>Butterworth, S. (1930). On the theory of filter amplifiers. Wireless Engineer, 7(6), 536-541.</td></tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="dyfunconn.analytic_signal.analytic_signal">
+<code class="descclassname">dyfunconn.analytic_signal.</code><code class="descname">analytic_signal</code><span class="sig-paren">(</span><em>signal</em>, <em>fb</em>, <em>fs=128</em>, <em>order=3</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/analytic_signal.html#analytic_signal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.analytic_signal.analytic_signal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Passband filtering and Hilbert transformation</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>signal: real array-like, shape(n_channels, n_samples)</strong> :</p>
+<blockquote>
+<div><p>Input signal</p>
+</div></blockquote>
+<p><strong>fb: list of length 2</strong> :</p>
+<blockquote>
+<div><p>The low and high frequencies</p>
+</div></blockquote>
+<p><strong>fs: int</strong> :</p>
+<blockquote>
+<div><p>Sampling frequency</p>
+</div></blockquote>
+<p><strong>order</strong> : int</p>
+<blockquote>
+<div><p>Filter order</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>filtered_signal: real array-like, shape(n_channels, n_samples)</strong> :</p>
+<blockquote>
+<div><p>The input signal, filtered within the given frequencies</p>
+</div></blockquote>
+<p><strong>hilberted_signal: complex array-like, shape(n_channels, n_samples)</strong> :</p>
+<blockquote>
+<div><p>The Hilbert representation of the input signal</p>
+</div></blockquote>
+<p><strong>unwrapped_phase: real array-like, shape(n_channels, n_samples)</strong> :</p>
+<blockquote class="last">
+<div><p>The unwrapped phase of the Hilbert representation</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>Internally, we use SciPy&#8217;s Butterworth implementation (<cite>scipy.signal.butter</cite>)
+and the two-pass filter <cite>scipy.signal.filtfilt</cite> to achieve results identical
+to MATLAB.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-dyfunconn.bands">
+<span id="dyfunconn-bands-module"></span><h2>dyfunconn.bands module<a class="headerlink" href="#module-dyfunconn.bands" title="Permalink to this headline">¶</a></h2>
+<p>Commonly used band frequencies</p>
+<p>For your convenience we have predefined some widely adopted brain rhythms.
+You can access them with</p>
+<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="kn">from</span> <span class="nn">dyfunconn.bands</span> <span class="kn">import</span> <span class="o">*</span>
+ <span class="k">print</span><span class="p">(</span><span class="n">bands</span><span class="p">[</span><span class="s1">&#39;alpha&#39;</span><span class="p">])</span>
+</pre></div>
+</td></tr></table></div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="38%" />
+<col width="35%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">brainwave</th>
+<th class="head">frequency (Hz)</th>
+<th class="head">variable/index</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>δ</td>
+<td>[1.0, 4.0]</td>
+<td>bands[&#8216;delta&#8217;]</td>
+</tr>
+<tr class="row-odd"><td>θ</td>
+<td>[4.0, 8.0]</td>
+<td>bands[&#8216;theta&#8217;]</td>
+</tr>
+<tr class="row-even"><td>α1</td>
+<td>[7.0, 10.0]</td>
+<td>bands[&#8216;alpha1&#8217;]</td>
+</tr>
+<tr class="row-odd"><td>α2</td>
+<td>[10.0, 13.0]</td>
+<td>bands[&#8216;alpha2&#8217;]</td>
+</tr>
+<tr class="row-even"><td>α</td>
+<td>[7.0, 13.0]</td>
+<td>bands[&#8216;alpha&#8217;]</td>
+</tr>
+<tr class="row-odd"><td>μ</td>
+<td>[8.0, 13.0]</td>
+<td>band[&#8216;mu&#8217;]</td>
+</tr>
+<tr class="row-even"><td>β</td>
+<td>[13.0, 25.0]</td>
+<td>bands[&#8216;beta&#8217;]</td>
+</tr>
+<tr class="row-odd"><td>γ</td>
+<td>[25.0, 40.0]</td>
+<td>bands[&#8216;gamma&#8217;]</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-dyfunconn.tvfcgs">
+<span id="dyfunconn-tvfcgs-module"></span><h2>dyfunconn.tvfcgs module<a class="headerlink" href="#module-dyfunconn.tvfcgs" title="Permalink to this headline">¶</a></h2>
+<p>Time-Varying Functional Connectivity Graphs</p>
+<p>Time-varying functional connectivity graphs (TVFCGs) [<a href="#id6"><span class="problematic" id="id7">Dimitriadis2010_</span></a> , <a class="reference internal" href="#falani2008">Falani2008</a>] introduce the
+idea of processing overlapping segments of neuroelectric signals by defining a
+frequency-dependent time window in which the synchronization is estimated;
+and then tabulating the results as adjacency matrices. These matrices have a
+natural graph-based representation called “functional connectivity graphs”
+(FCGs).</p>
+<p>An important aspect of the TVFCGs is the “cycle-criterion” (CC) [<a class="reference internal" href="#cohen2008">Cohen2008</a>].
+It regulates the amount of the oscillation cycles that will be considered in
+measuring the phase synchrony. In the original proposal <span class="math">\(CC = 2.0\)</span> was
+introduced, resulting into a time-window with width twice the lower period.
+TVFCGs on the other, consider the given lower frequency that correspond to the
+possibly synchronized oscillations of each brain rhythm and the sampling
+frequency. This newly defined frequency-depedent time-window is sliding over
+the time series and the network connectivity is estimated. The overlapping
+is determined by an arbitrary step parameter.</p>
+<p>Given a multi-channel recording data matrix <span class="math">\(X^{m \times n}\)</span> of
+size <span class="math">\(m \times n\)</span> (with <span class="math">\(m\)</span> channels, and <span class="math">\(n\)</span> samples), a
+frequency range with <span class="math">\(F_{up}\)</span> and <span class="math">\(F_{lo}\)</span> the upper and lower
+limits, <span class="math">\(fs\)</span> the sampling frequency, <span class="math">\(step\)</span> and <span class="math">\(CC\)</span>, the
+computation of these graphs proceeds as follows:</p>
+<p>Firstly, based on the <span class="math">\(CC\)</span> and the specified frequency range
+(<span class="math">\(F_{lo}\)</span> and <span class="math">\(fs\)</span> ) the window size calculated:</p>
+<div class="math">
+\[w_{len} = \frac{ CC }{ F_{lo} } fs\]</div>
+<p>Then, this window is moving per <span class="math">\(step\)</span> samples and the average
+synchronization is computed (between the channels, in a pairwise manner)
+resulting into <span class="math">\(\frac{n}{step}\)</span> adjacency matrices of size
+<span class="math">\(n \times n\)</span>.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<hr class="docutils" />
+<table class="docutils citation" frame="void" id="cohen2008" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Cohen2008]</td><td>Cohen, M. X. (2008). Assessing transient cross-frequency coupling in EEG data. Journal of neuroscience methods, 168(2), 494-499.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="id5" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Dimitriadis2010]</td><td>Dimitriadis, S. I., Laskaris, N. A., Tsirka, V., Vourkas, M., Micheloyannis, S., &amp; Fotopoulos, S. (2010). Tracking brain dynamics via time-dependent network analysis. Journal of neuroscience methods, 193(1), 145-155.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="falani2008" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Falani2008]</td><td>Fallani, F. D. V., Latora, V., Astolfi, L., Cincotti, F., Mattia, D., Marciani, M. G., ... &amp; Babiloni, F. (2008). Persistent patterns of interconnection in time-varying cortical networks estimated from high-resolution EEG recordings in humans during a simple motor act. Journal of Physics A: Mathematical and Theoretical, 41(22), 224014.</td></tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="dyfunconn.tvfcgs.tvfcg">
+<code class="descclassname">dyfunconn.tvfcgs.</code><code class="descname">tvfcg</code><span class="sig-paren">(</span><em>data</em>, <em>estimator_instance</em>, <em>fb</em>, <em>fs</em>, <em>cc=2.0</em>, <em>step=5.0</em>, <em>pairs=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/tvfcgs.html#tvfcg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.tvfcgs.tvfcg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Time-Varying Functional Connectivity Graphs</p>
+<p>The TVFCGs are computed from the input <code class="docutils literal"><span class="pre">data</span></code> by employing the given
+synchronization estimator (<code class="docutils literal"><span class="pre">estimator_instance</span></code>).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : array-like, shape(n_channels, n_samples)</p>
+<blockquote>
+<div><p>Multichannel recording data.</p>
+</div></blockquote>
+<p><strong>estimator_instance</strong> : object</p>
+<blockquote>
+<div><p>An object of type <a class="reference internal" href="dyfunconn.fc.html#dyfunconn.fc.Estimator" title="dyfunconn.fc.Estimator"><code class="xref py py-mod docutils literal"><span class="pre">dyfunconn.fc.Estimator</span></code></a>.</p>
+</div></blockquote>
+<p><strong>fb</strong> : list of length 2</p>
+<blockquote>
+<div><p>The lower and upper frequency.</p>
+</div></blockquote>
+<p><strong>fs</strong> : float</p>
+<blockquote>
+<div><p>Sampling frequency.</p>
+</div></blockquote>
+<p><strong>cc</strong> : float</p>
+<blockquote>
+<div><p>Cycle criterion.</p>
+</div></blockquote>
+<p><strong>step</strong> : int</p>
+<blockquote>
+<div><p>The amount of samples the window will move/slide over the time series.</p>
+</div></blockquote>
+<p><strong>pairs</strong> : array-like or <cite>None</cite></p>
+<blockquote>
+<div><ul class="simple">
+<li>If an <cite>array-like</cite> is given, notice that each element is a tuple of length two.</li>
+<li>If <cite>None</cite> is passed, complete connectivity will be assumed.</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>fcgs</strong> : array-like, shape(n_windows, n_channels, n_channels)</p>
+<blockquote class="last">
+<div><p>The computed FCGs.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="dyfunconn.tvfcgs.tvfcg_cfc">
+<code class="descclassname">dyfunconn.tvfcgs.</code><code class="descname">tvfcg_cfc</code><span class="sig-paren">(</span><em>data</em>, <em>estimator_instance</em>, <em>fb_lo</em>, <em>fb_hi</em>, <em>fs=128</em>, <em>cc=2.0</em>, <em>step=5</em>, <em>pairs=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/tvfcgs.html#tvfcg_cfc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.tvfcgs.tvfcg_cfc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Time-Varying Functional Connectivity Graphs (for Cross frequency Coupling)</p>
+<p>The TVFCGs are computed from the input <code class="docutils literal"><span class="pre">data</span></code> by employing the given
+cross frequency coupling synchronization estimator (<code class="docutils literal"><span class="pre">estimator_instance</span></code>).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : array-like, shape(n_channels, n_samples)</p>
+<blockquote>
+<div><p>Multichannel recording data.</p>
+</div></blockquote>
+<p><strong>estimator_instance</strong> : object</p>
+<blockquote>
+<div><p>An object of type <a class="reference internal" href="dyfunconn.fc.html#dyfunconn.fc.Estimator" title="dyfunconn.fc.Estimator"><code class="xref py py-mod docutils literal"><span class="pre">dyfunconn.fc.Estimator</span></code></a>.</p>
+</div></blockquote>
+<p><strong>fb_lo</strong> : list of length 2</p>
+<blockquote>
+<div><p>The low and high frequencies.</p>
+</div></blockquote>
+<p><strong>fb_hi</strong> : list of length 2</p>
+<blockquote>
+<div><p>The low and high frequencies.</p>
+</div></blockquote>
+<p><strong>fs</strong> : float</p>
+<blockquote>
+<div><p>Sampling frequency.</p>
+</div></blockquote>
+<p><strong>cc</strong> : float</p>
+<blockquote>
+<div><p>Cycle criterion.</p>
+</div></blockquote>
+<p><strong>step</strong> : int</p>
+<blockquote>
+<div><p>The amount of samples the window will move/slide over the time series.</p>
+</div></blockquote>
+<p><strong>pairs</strong> : array-like or <cite>None</cite></p>
+<blockquote>
+<div><ul class="simple">
+<li>If an <cite>array-like</cite> is given, notice that each element is a tuple of length two.</li>
+<li>If <cite>None</cite> is passed, complete connectivity will be assumed.</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>fcgs</strong> : array-like, shape(n_windows, n_channels, n_channels)</p>
+<blockquote class="last">
+<div><p>The computed Cross-Frequency FCGs.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>Not all available estimators in the <a class="reference internal" href="dyfunconn.fc.html#module-dyfunconn.fc" title="dyfunconn.fc"><code class="xref py py-mod docutils literal"><span class="pre">dyfunconn.fc</span></code></a> are valid for estimating
+cross frequency coupling.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dyfunconn.tvfcgs.tvfcg_compute_windows">
+<code class="descclassname">dyfunconn.tvfcgs.</code><code class="descname">tvfcg_compute_windows</code><span class="sig-paren">(</span><em>data</em>, <em>fb_lo</em>, <em>fs</em>, <em>cc</em>, <em>step</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/tvfcgs.html#tvfcg_compute_windows"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.tvfcgs.tvfcg_compute_windows" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute TVFCGs Sliding Windows</p>
+<p>A helper function that computes the size and number of sliding windows
+given the parameters.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : array-like, shape(n_channels, n_samples)</p>
+<blockquote>
+<div><p>Multichannel recording data.</p>
+</div></blockquote>
+<p><strong>fb_lo :</strong> :</p>
+<p><strong>fb</strong> : list of length 2</p>
+<blockquote>
+<div><p>The lower and upper frequency.</p>
+</div></blockquote>
+<p><strong>fs</strong> : float</p>
+<blockquote>
+<div><p>Sampling frequency.</p>
+</div></blockquote>
+<p><strong>cc</strong> : float</p>
+<blockquote>
+<div><p>Cycle criterion.</p>
+</div></blockquote>
+<p><strong>step</strong> : int</p>
+<blockquote>
+<div><p>Stepping.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>windows</strong> : int</p>
+<blockquote>
+<div><p>The total number of sliding windows.</p>
+</div></blockquote>
+<p><strong>window_length</strong> : int</p>
+<blockquote class="last">
+<div><p>The length of a sliding window; number of samples used to estimated the connectivity.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="dyfunconn.tvfcgs.tvfcg_ts">
+<code class="descclassname">dyfunconn.tvfcgs.</code><code class="descname">tvfcg_ts</code><span class="sig-paren">(</span><em>ts</em>, <em>fb</em>, <em>fs=128</em>, <em>cc=2.0</em>, <em>step=5</em>, <em>pairs=None</em>, <em>avg_func=&lt;function mean&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/tvfcgs.html#tvfcg_ts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.tvfcgs.tvfcg_ts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Time-Varying Function Connectivity Graphs (from time series)</p>
+<p>This implementation operates directly on the given estimated synchronization
+time series (<code class="docutils literal"><span class="pre">ts</span></code>) and the mean value inside the window is computed.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>ts</strong> : array-like, shape(n_channels, n_samples)</p>
+<blockquote>
+<div><p>Multichannel synchronization time series.</p>
+</div></blockquote>
+<p><strong>fb</strong> : list of length 2</p>
+<blockquote>
+<div><p>The lower and upper frequency.</p>
+</div></blockquote>
+<p><strong>fs</strong> : float</p>
+<blockquote>
+<div><p>Sampling frequency.</p>
+</div></blockquote>
+<p><strong>cc</strong> : float</p>
+<blockquote>
+<div><p>Cycle criterion.</p>
+</div></blockquote>
+<p><strong>step</strong> : int</p>
+<blockquote>
+<div><p>The amount of samples the window will move/slide over the time series.</p>
+</div></blockquote>
+<p><strong>pairs</strong> : array-like or <cite>None</cite></p>
+<blockquote>
+<div><ul class="simple">
+<li>If an <cite>array-like</cite> is given, notice that each element is a tuple of length two.</li>
+<li>If <cite>None</cite> is passed, complete connectivity will be assumed.</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>fcgs</strong> : array-like</p>
+<blockquote class="last">
+<div><p>The computed FCGs.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-contents">
+<h2>Module contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-dyfunconn"></span><dl class="function">
+<dt id="dyfunconn.analytic_signal">
+<code class="descclassname">dyfunconn.</code><code class="descname">analytic_signal</code><span class="sig-paren">(</span><em>signal</em>, <em>fb</em>, <em>fs=128</em>, <em>order=3</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/analytic_signal.html#analytic_signal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.analytic_signal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Passband filtering and Hilbert transformation</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>signal: real array-like, shape(n_channels, n_samples)</strong> :</p>
+<blockquote>
+<div><p>Input signal</p>
+</div></blockquote>
+<p><strong>fb: list of length 2</strong> :</p>
+<blockquote>
+<div><p>The low and high frequencies</p>
+</div></blockquote>
+<p><strong>fs: int</strong> :</p>
+<blockquote>
+<div><p>Sampling frequency</p>
+</div></blockquote>
+<p><strong>order</strong> : int</p>
+<blockquote>
+<div><p>Filter order</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>filtered_signal: real array-like, shape(n_channels, n_samples)</strong> :</p>
+<blockquote>
+<div><p>The input signal, filtered within the given frequencies</p>
+</div></blockquote>
+<p><strong>hilberted_signal: complex array-like, shape(n_channels, n_samples)</strong> :</p>
+<blockquote>
+<div><p>The Hilbert representation of the input signal</p>
+</div></blockquote>
+<p><strong>unwrapped_phase: real array-like, shape(n_channels, n_samples)</strong> :</p>
+<blockquote class="last">
+<div><p>The unwrapped phase of the Hilbert representation</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>Internally, we use SciPy&#8217;s Butterworth implementation (<cite>scipy.signal.butter</cite>)
+and the two-pass filter <cite>scipy.signal.filtfilt</cite> to achieve results identical
+to MATLAB.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dyfunconn.tvfcg">
+<code class="descclassname">dyfunconn.</code><code class="descname">tvfcg</code><span class="sig-paren">(</span><em>data</em>, <em>estimator_instance</em>, <em>fb</em>, <em>fs</em>, <em>cc=2.0</em>, <em>step=5.0</em>, <em>pairs=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/tvfcgs.html#tvfcg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.tvfcg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Time-Varying Functional Connectivity Graphs</p>
+<p>The TVFCGs are computed from the input <code class="docutils literal"><span class="pre">data</span></code> by employing the given
+synchronization estimator (<code class="docutils literal"><span class="pre">estimator_instance</span></code>).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : array-like, shape(n_channels, n_samples)</p>
+<blockquote>
+<div><p>Multichannel recording data.</p>
+</div></blockquote>
+<p><strong>estimator_instance</strong> : object</p>
+<blockquote>
+<div><p>An object of type <a class="reference internal" href="dyfunconn.fc.html#dyfunconn.fc.Estimator" title="dyfunconn.fc.Estimator"><code class="xref py py-mod docutils literal"><span class="pre">dyfunconn.fc.Estimator</span></code></a>.</p>
+</div></blockquote>
+<p><strong>fb</strong> : list of length 2</p>
+<blockquote>
+<div><p>The lower and upper frequency.</p>
+</div></blockquote>
+<p><strong>fs</strong> : float</p>
+<blockquote>
+<div><p>Sampling frequency.</p>
+</div></blockquote>
+<p><strong>cc</strong> : float</p>
+<blockquote>
+<div><p>Cycle criterion.</p>
+</div></blockquote>
+<p><strong>step</strong> : int</p>
+<blockquote>
+<div><p>The amount of samples the window will move/slide over the time series.</p>
+</div></blockquote>
+<p><strong>pairs</strong> : array-like or <cite>None</cite></p>
+<blockquote>
+<div><ul class="simple">
+<li>If an <cite>array-like</cite> is given, notice that each element is a tuple of length two.</li>
+<li>If <cite>None</cite> is passed, complete connectivity will be assumed.</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>fcgs</strong> : array-like, shape(n_windows, n_channels, n_channels)</p>
+<blockquote class="last">
+<div><p>The computed FCGs.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="dyfunconn.tvfcg_cfc">
+<code class="descclassname">dyfunconn.</code><code class="descname">tvfcg_cfc</code><span class="sig-paren">(</span><em>data</em>, <em>estimator_instance</em>, <em>fb_lo</em>, <em>fb_hi</em>, <em>fs=128</em>, <em>cc=2.0</em>, <em>step=5</em>, <em>pairs=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/tvfcgs.html#tvfcg_cfc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.tvfcg_cfc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Time-Varying Functional Connectivity Graphs (for Cross frequency Coupling)</p>
+<p>The TVFCGs are computed from the input <code class="docutils literal"><span class="pre">data</span></code> by employing the given
+cross frequency coupling synchronization estimator (<code class="docutils literal"><span class="pre">estimator_instance</span></code>).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : array-like, shape(n_channels, n_samples)</p>
+<blockquote>
+<div><p>Multichannel recording data.</p>
+</div></blockquote>
+<p><strong>estimator_instance</strong> : object</p>
+<blockquote>
+<div><p>An object of type <a class="reference internal" href="dyfunconn.fc.html#dyfunconn.fc.Estimator" title="dyfunconn.fc.Estimator"><code class="xref py py-mod docutils literal"><span class="pre">dyfunconn.fc.Estimator</span></code></a>.</p>
+</div></blockquote>
+<p><strong>fb_lo</strong> : list of length 2</p>
+<blockquote>
+<div><p>The low and high frequencies.</p>
+</div></blockquote>
+<p><strong>fb_hi</strong> : list of length 2</p>
+<blockquote>
+<div><p>The low and high frequencies.</p>
+</div></blockquote>
+<p><strong>fs</strong> : float</p>
+<blockquote>
+<div><p>Sampling frequency.</p>
+</div></blockquote>
+<p><strong>cc</strong> : float</p>
+<blockquote>
+<div><p>Cycle criterion.</p>
+</div></blockquote>
+<p><strong>step</strong> : int</p>
+<blockquote>
+<div><p>The amount of samples the window will move/slide over the time series.</p>
+</div></blockquote>
+<p><strong>pairs</strong> : array-like or <cite>None</cite></p>
+<blockquote>
+<div><ul class="simple">
+<li>If an <cite>array-like</cite> is given, notice that each element is a tuple of length two.</li>
+<li>If <cite>None</cite> is passed, complete connectivity will be assumed.</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>fcgs</strong> : array-like, shape(n_windows, n_channels, n_channels)</p>
+<blockquote class="last">
+<div><p>The computed Cross-Frequency FCGs.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>Not all available estimators in the <a class="reference internal" href="dyfunconn.fc.html#module-dyfunconn.fc" title="dyfunconn.fc"><code class="xref py py-mod docutils literal"><span class="pre">dyfunconn.fc</span></code></a> are valid for estimating
+cross frequency coupling.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="dyfunconn.tvfcg_ts">
+<code class="descclassname">dyfunconn.</code><code class="descname">tvfcg_ts</code><span class="sig-paren">(</span><em>ts</em>, <em>fb</em>, <em>fs=128</em>, <em>cc=2.0</em>, <em>step=5</em>, <em>pairs=None</em>, <em>avg_func=&lt;function mean&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/tvfcgs.html#tvfcg_ts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.tvfcg_ts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Time-Varying Function Connectivity Graphs (from time series)</p>
+<p>This implementation operates directly on the given estimated synchronization
+time series (<code class="docutils literal"><span class="pre">ts</span></code>) and the mean value inside the window is computed.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>ts</strong> : array-like, shape(n_channels, n_samples)</p>
+<blockquote>
+<div><p>Multichannel synchronization time series.</p>
+</div></blockquote>
+<p><strong>fb</strong> : list of length 2</p>
+<blockquote>
+<div><p>The lower and upper frequency.</p>
+</div></blockquote>
+<p><strong>fs</strong> : float</p>
+<blockquote>
+<div><p>Sampling frequency.</p>
+</div></blockquote>
+<p><strong>cc</strong> : float</p>
+<blockquote>
+<div><p>Cycle criterion.</p>
+</div></blockquote>
+<p><strong>step</strong> : int</p>
+<blockquote>
+<div><p>The amount of samples the window will move/slide over the time series.</p>
+</div></blockquote>
+<p><strong>pairs</strong> : array-like or <cite>None</cite></p>
+<blockquote>
+<div><ul class="simple">
+<li>If an <cite>array-like</cite> is given, notice that each element is a tuple of length two.</li>
+<li>If <cite>None</cite> is passed, complete connectivity will be assumed.</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>fcgs</strong> : array-like</p>
+<blockquote class="last">
+<div><p>The computed FCGs.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="dyfunconn.cluster.html" class="btn btn-neutral float-right" title="dyfunconn.cluster package" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Welcome to dyfunconn’s documentation!" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Avraam Marimpis &amp; Stavros Dimitriadis.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
