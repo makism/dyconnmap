@@ -8,6 +8,7 @@
 import numpy as np
 import networkx as nx
 import sklearn
+from sklearn import metrics
 
 
 def wald(x, y):
@@ -54,7 +55,7 @@ def wald(x, y):
     dmtx = sklearn.metrics.pairwise_distances(data, data)
 
     g = nx.from_numpy_matrix(dmtx)
-    mst_g = nx.mst.minimum_spanning_tree(g)
+    mst_g = nx.minimum_spanning_tree(g)
 
     weighted_edges = mst_g.edges(data=True)
 
