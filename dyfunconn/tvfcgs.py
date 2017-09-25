@@ -120,11 +120,11 @@ def tvfcg(data, estimator_instance, fb, fs, cc=2.0, step=5.0, pairs=None):
 
         # slice = None
         # try:
-        slice, _ = estimator(slice1, slice2)
+        slice_ts, _ = estimator(slice1, slice2)
         # except:
             # slice = estimator(slice1, slice2)
 
-        fcgs[win_id, c1, c2] = avg_func(slice)
+        fcgs[win_id, c1, c2] = avg_func(slice_ts)
 
     return fcgs
 
@@ -204,8 +204,8 @@ def tvfcg_cfc(data, estimator_instance, fb_lo, fb_hi, fs=128, cc=2.0, step=5, pa
         win_id, start, end, c1, c2 = pair
         slice1 = pp_data1[c1, ..., start:end]
         slice2 = pp_data2[c2, ..., start:end]
-        slice, _ = estimator(slice1, slice2)
-        aslice = avg_func(slice)
+        slice_ts, _ = estimator(slice1, slice2)
+        aslice = avg_func(slice_ts)
 
         fcgs[win_id, c1, c2] = aslice
 
@@ -265,9 +265,9 @@ def tvfcg_ts(ts, fb, fs=128, cc=2.0, step=5, pairs=None, avg_func=np.mean):
 
     for pair in pairs:
         win_id, start, end, c1, c2 = pair
-        slice = ts[c1, c2, start:end]
+        slice_ts = ts[c1, c2, start:end]
 
-        fcgs[win_id, c1, c2] = avg_func(slice)
+        fcgs[win_id, c1, c2] = avg_func(slice_ts)
 
     return fcgs
 
