@@ -354,13 +354,12 @@ def _validate_estimator(estimator_instance):
     avg = getattr(estimator_instance, "mean")
 
     if not callable(preprocess):
-        raise Exception("")
+        raise Exception("Preprocess method is not callable.")
 
     if not callable(estimator):
-        raise Exception("")
+        raise Exception("Estimator method is not callabled.")
 
     if not callable(avg):
-        raise Exception("Mean func is not callable.")
-        avg = np.mean
+        raise Exception("Mean method is not callable.")
 
     return preprocess, estimator, avg
