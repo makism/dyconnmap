@@ -12,3 +12,4 @@ script:
 
 after_success:  
   - coveralls
+  - python-codacy-coverage -r coverage.xml
