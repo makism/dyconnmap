@@ -28,7 +28,7 @@ def test_surrogate_analysis():
     ts2 = data[1, 0:512].ravel()
 
     p_vals, surr_vals, surrogates, r_value = surrogate_analysis(
-        ts1, ts2, num_surr=1000, estimator=None, ts1_no_surr=False, rng=rng)
+        ts1, ts2, num_surr=1000, estimator_func=None, ts1_no_surr=False, rng=rng)
 
     expected_result = np.load("data/test_ts_surrogates.npy").squeeze()
     np.testing.assert_array_equal(surrogates, expected_result)
@@ -50,7 +50,7 @@ def test_surrogate_analysis_fdr():
     ts2 = data[1, 0:512].ravel()
 
     p_val, surr_vals, surrogates, r_value = surrogate_analysis(
-        ts1, ts2, num_surr=1000, estimator=None, ts1_no_surr=False, rng=rng)
+        ts1, ts2, num_surr=1000, estimator_func=None, ts1_no_surr=False, rng=rng)
 
     num_ts = 2
     p_vals = np.ones([num_ts * (num_ts - 1) / 2, 1]) * p_val

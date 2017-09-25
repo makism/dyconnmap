@@ -10,7 +10,7 @@ import numpy as np
 import numbers
 
 
-def surrogate_analysis(ts1, ts2, num_surr=1000, estimator=None, ts1_no_surr=False, rng=None):
+def surrogate_analysis(ts1, ts2, num_surr=1000, estimator_func=None, ts1_no_surr=False, rng=None):
     """ Surrogate Analysis
 
 
@@ -22,7 +22,7 @@ def surrogate_analysis(ts1, ts2, num_surr=1000, estimator=None, ts1_no_surr=Fals
 
     num_surr : int
 
-    estimator : function
+    estimator_func : function
 
     ts1_no_surr : boolean
 
@@ -44,11 +44,13 @@ def surrogate_analysis(ts1, ts2, num_surr=1000, estimator=None, ts1_no_surr=Fals
     if rng is None:
         rng = np.random.RandomState(0)
 
-    if estimator is None:
+    if estimator_func is None:
         def estimator(x, y):
             return np.abs(np.corrcoef(x, y))[0, 1]
 
-    r_value = estimator(ts1, ts2)
+        estimator_func = estimator
+
+    r_value = estimator_func(ts1, ts2)
 
     if isinstance(r_value, numbers.Real):
         r_value = [r_value]
@@ -67,7 +69,7 @@ def surrogate_analysis(ts1, ts2, num_surr=1000, estimator=None, ts1_no_surr=Fals
 
     surr_vals = np.zeros((num_surr, len(r_value)))
     for i in range(num_surr):
-        surr_vals[i, :] = estimator(
+        surr_vals[i, :] = estimator_func(
             surrogates[0, i, ...], surrogates[1, i, ...])
 
     surr_vals = np.array(surr_vals)
