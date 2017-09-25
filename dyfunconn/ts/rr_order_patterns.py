@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+ #-*- coding: utf-8 -*-
 """ Order Reccurence Plot
 
 
@@ -94,11 +94,11 @@ def rr_order_patterns(signal1, signal2, m, tau):
 
     ct2, _ = np.where(Y == 1.0)
 
-    sum = 0.0
+    total_sum = 0.0
     for k in range(lenx):
         if ct1[k] == ct2[k]:
-            sum += 1
+            total_sum += 1
 
-    cstr = sum / lenx
+    cstr = total_sum / lenx
 
     return cstr

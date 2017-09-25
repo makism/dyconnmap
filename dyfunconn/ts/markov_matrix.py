@@ -28,10 +28,10 @@ def markov_matrix(symts):
     mtx = np.zeros((l, l))
 
     for i in range(len(symts) - 1):
-        curr = symts[i]
-        next = symts[i+1]
+        curr_sym = symts[i]
+        next_sym = symts[i+1]
 
-        mtx[curr, next] += 1
+        mtx[curr_sym, next_sym] += 1
 
     mtx /= float(len(symts))
 
