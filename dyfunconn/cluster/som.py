@@ -68,8 +68,6 @@ class SOM:
         [n_samples, _] = data.shape
 
         for self.currentIteration in range(self.numIterations):
-            title = "Epoch {0}".format(self.currentIteration)
-
             learn_sample = data[self.rng.choice(n_samples, 1), ] #random.choice(data)
             learn_sample = learn_sample.squeeze()
 
