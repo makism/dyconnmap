@@ -1,16 +1,10 @@
 import numpy as np
-import sys
 import scipy as sp
-from scipy import io
 import matplotlib.pyplot as plt
 from matplotlib import transforms
 from matplotlib.path import Path
-import matplotlib.patches as patches
 import sklearn
 from sklearn import preprocessing
-import matplotlib.cm as cm
-
-np.set_printoptions(precision=3, linewidth=256)
 
 
 def make_hexagon():
@@ -57,12 +51,7 @@ def wrap_kernel(center, mtx):
     mtx[center] = np.median(neighbors)
 
 def umatrix(M):
-    # S = sp.io.loadmat("/home/makism/Development/Matlab/S.mat")['S']
-    # cb= S['codebook']
-    #
-    # M = sp.io.loadmat("/home/makism/Development/Matlab/M.mat")['M']
-
-    grid_x, grid_y, dim = np.shape(M) #(grid_x, grid_y) #(16, 4)
+    grid_x, grid_y, dim = np.shape(M) 
     # dim = 4
 
     ux = 2 * grid_x - 1
@@ -101,30 +90,5 @@ def umatrix(M):
     for x,y in zip(indices[0], indices[1]):
         center = (x, y)
         wrap_kernel(center, U)
-
-    # np.save("U.npy", U)
-
-    # min = np.min(np.min(U))
-    # max = np.max(np.max(U))
-    #
-    # normU = (U - min) / max
-    #
-    # fig = plt.figure()
-    # ax = fig.add_subplot(111)
-    #
-    # for row in range(ux):
-    #     for col in range(uy):
-    #         xtra_col = 0
-    #         if row % 2 == 0:
-    #             xtra_col = 0.5
-    #         x, y = (col + (col * 0.0) + xtra_col, row + (row * 0.5))
-    #
-    #         path = make_hexagon()
-    #         trans = transforms.Affine2D().translate(x, y) + ax.transData
-    #         color = cm.jet(normU[row, col])
-    #         patch = patches.PathPatch(path, facecolor=color, lw=1, edgecolor='white', transform=trans)
-    #         ax.add_patch(patch)
-    # plt.axis('auto')
-    # plt.show()
 
     return U
