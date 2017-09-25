@@ -54,7 +54,6 @@ class SOM:
         self.startLearningRate = 0.1
         self.timeConstant = float(self.numIterations) / float(np.log(self.mapRadius))
         self.learningRate = self.startLearningRate
-        self.startLearningRate * np.exp(float(-self.currentIteration) / self.numIterations)
 
     @classmethod
     def findBMU(self, x, y):
