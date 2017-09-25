@@ -68,7 +68,6 @@ def rr_order_patterns(signal1, signal2, m, tau):
     y = embed_delay(signal2, m, tau)
 
     lenx = len(x)
-    leny = len(y)
 
     factorial_dim = scipy.misc.factorial(m)
 
