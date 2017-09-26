@@ -51,7 +51,7 @@ def wrap_kernel(center, mtx):
     mtx[center] = np.median(neighbors)
 
 def umatrix(M):
-    grid_x, grid_y, dim = np.shape(M) 
+    grid_x, grid_y, dim = np.shape(M)
     # dim = 4
 
     ux = 2 * grid_x - 1

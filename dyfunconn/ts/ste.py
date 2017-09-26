@@ -59,7 +59,8 @@ def entropy_reduction_rate(sym_ts):
     for i in range(num_symbols):
         indices = np.where(conprob[i, :] > 0)[0]
 
-        for j in range(len(indices)):
+        l = len(indices)
+        for j in range(l):
             sum1 += conprob[i, indices[j]] * np.log(conprob[i, indices[j]])
         condentropy[i] = -sum1
         sum1 = 0
@@ -109,7 +110,8 @@ def symoblic_transfer_entropy(x, y, s=1, delay=0, verbose=False):
 
     num_symbols = len(symbols)
 
-    for k in range(len(x)):
+    l = len(x)
+    for k in range(l):
         x[k] = np.where(x[k] == symbols)[0]
         y[k] = np.where(y[k] == symbols)[0]
 

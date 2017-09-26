@@ -11,7 +11,6 @@ import numpy as np
 
 def teager_kaiser_energy(ts):
     """ Teager Kaiser Energy
-    
 
 
     Parameters
