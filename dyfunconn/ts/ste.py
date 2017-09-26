@@ -119,7 +119,8 @@ def symoblic_transfer_entropy(x, y, s=1, delay=0, verbose=False):
     y = y.astype(np.int32)
 
     pxy = np.zeros((num_symbols, num_symbols))
-    for k in range(len(x)):
+    l = len(x)
+    for k in range(l):
         pxy[x[k], y[k]] = pxy[x[k], y[k]] + 1
     sum1 = np.sum(np.sum(pxy))
     pxy = pxy / sum1
