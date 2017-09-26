@@ -1,7 +1,7 @@
 ### dyfunconn
 A neuroimaging module for dynamic functional connectivity.
 
-Solely built on [NumPy](http://www.numpy.org/), [SciPy](http://www.scipy.org/), [matplotlib](http://matplotlib.org/) and [networkx](https://networkx.github.io/)
+Built on [NumPy](http://www.numpy.org/), [SciPy](http://www.scipy.org/), [matplotlib](http://matplotlib.org/) and [networkx](https://networkx.github.io/) (and some other libs ;P)
 
 * [![poster presented @ 13th International Conference for Cognitive Neuroscience in Amsterdam (ICON2017)](https://f1000research.com/posters/6-1638)](https://f1000research.com/posters/6-1638)
 
