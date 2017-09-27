@@ -39,7 +39,7 @@ def variation_information(indices_a, indices_b):
     entropy1 = entropy(indices_a)
     entropy2 = entropy(indices_b)
 
-    MI, NMI = __mi(indices_a, -entropy1, indices_b, -entropy2)
+    MI, _ = __mi(indices_a, -entropy1, indices_b, -entropy2)
 
     entropy1 = -entropy1
     entropy2 = -entropy2

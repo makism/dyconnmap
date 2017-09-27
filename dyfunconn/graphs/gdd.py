@@ -45,7 +45,8 @@ def graph_diffusion_distance(a, b):
     t_upperbound = np.real(1.0 / eigs[0])
 
     __min_fun = lambda t: -1.0 * __gdd_xi_t(v1, w1, v2, w2, t)
-    xopt, fval, ierr, numfunc = scipy.optimize.fminbound(func=__min_fun, x1=0, x2=t_upperbound, xtol=1e-4, full_output=True)
+    xopt, fval, _, numfunc = scipy.optimize.fminbound(func=__min_fun, x1=0, x2=t_upperbound, xtol=1e-4, full_output=True)
+    # xopt, fval, ierr, numfunc = scipy.optimize.fminbound(func=__min_fun, x1=0, x2=t_upperbound, xtol=1e-4, full_output=True)
 
     gdd = np.sqrt(-fval)
 
