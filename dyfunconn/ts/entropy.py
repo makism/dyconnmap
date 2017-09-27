@@ -6,7 +6,7 @@
 
 import numpy as np
 
-def __entropy(dts):
+def entropy(dts):
     """ Entropy
 
     """
