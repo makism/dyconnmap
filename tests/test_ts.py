@@ -7,7 +7,7 @@ from numpy import testing
 from dyfunconn.ts import (aaft, fdr, phase_rand, surrogate_analysis, entropy_reduction_rate,
                           symoblic_transfer_entropy, embed_delay, sample_entropy,
                           ordinal_pattern_similarity, permutation_entropy,
-                          rr_order_patterns, wald, markov_matrix)
+                          rr_order_patterns, wald, markov_matrix, teager_kaiser_energy)
 
 
 ts = None
@@ -250,3 +250,13 @@ def test_sample_entropy():
 
     sampen = sample_entropy(symts)
     np.testing.assert_almost_equal(sampen, 2.37954613413)
+
+def test_teager_kaiser_energy():
+    rng = np.random.RandomState(0)
+
+    ts = rng.rand(1, 100)
+
+    tko = teager_kaiser_energy(ts)
+
+    expected_result = np.load("data/ts_tko.npy")
+    np.testing.assert_array_almost_equal(tko, expected_result)

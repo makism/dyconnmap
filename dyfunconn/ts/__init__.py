@@ -15,6 +15,7 @@ from .rr_order_patterns import rr_order_patterns
 from .wald import wald
 from .markov_matrix import markov_matrix
 from .dcorr import dcorr
+from .teager_kaiser_energy import teager_kaiser_energy
 
 __all__ = ['fisher_z', 'fisher_z_plv',
            'sample_entropy',
@@ -27,5 +28,6 @@ __all__ = ['fisher_z', 'fisher_z_plv',
            'rr_order_patterns',
            'wald',
            'dcorr',
-           'markov_matrix'
+           'markov_matrix',
+           'teager_kaiser_energy'
            ]
