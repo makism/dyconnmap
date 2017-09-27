@@ -4,10 +4,23 @@ import numpy as np
 from numpy import testing
 
 # dynfunconn
-from dyfunconn.ts import (aaft, fdr, phase_rand, surrogate_analysis, entropy_reduction_rate,
-                          symoblic_transfer_entropy, embed_delay, sample_entropy,
-                          ordinal_pattern_similarity, permutation_entropy,
-                          rr_order_patterns, wald, markov_matrix, teager_kaiser_energy)
+from dyfunconn.ts import (aaft,
+                          fdr,
+                          phase_rand,
+                          surrogate_analysis,
+                          entropy_reduction_rate,
+                          symoblic_transfer_entropy,
+                          embed_delay,
+                          sample_entropy,
+                          ordinal_pattern_similarity,
+                          permutation_entropy,
+                          entropy,
+                          rr_order_patterns,
+                          wald,
+                          markov_matrix,
+                          teager_kaiser_energy,
+                          dcorr,
+                          fisher_score)
 
 
 ts = None
@@ -251,6 +264,16 @@ def test_sample_entropy():
     sampen = sample_entropy(symts)
     np.testing.assert_almost_equal(sampen, 2.37954613413)
 
+
+def test_entropy():
+    rng = np.random.RandomState(0)
+
+    symts = rng.randint(10, size=100)
+
+    result = -entropy(symts)
+    np.testing.assert_almost_equal(result, 0.981787607585)
+
+
 def test_teager_kaiser_energy():
     rng = np.random.RandomState(0)
 
@@ -260,3 +283,23 @@ def test_teager_kaiser_energy():
 
     expected_result = np.load("data/ts_tko.npy")
     np.testing.assert_array_almost_equal(tko, expected_result)
+
+
+def test_dcorr():
+    rng = np.random.RandomState(0)
+
+    x = rng.rand(100)
+    y = rng.rand(100)
+
+    result = dcorr(x, y)
+    np.testing.assert_array_almost_equal(result, 0.144839163386)
+
+
+def test_fisher_score():
+    rng = np.random.RandomState(0)
+
+    x = rng.rand(100)
+    y = rng.rand(100)
+
+    result = fisher_score(x, y)
+    np.testing.assert_array_almost_equal(result, 0.138355761177)
