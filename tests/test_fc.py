@@ -25,7 +25,7 @@ from dyfunconn.fc import (aec,
                           si,
                           #sl,
                           wpli, dwpli,
-                          corr, crosscorr, partcorr)
+                          corr, Corr, crosscorr, partcorr)
 
 
 def test_aec():
@@ -257,6 +257,18 @@ def test_corr():
         "../examples/data/eeg_32chans_10secs.npy")
 
     r = corr(data, [1.0, 4.0], 128.0)
+
+    expected = np.load("data/test_corr.npy")
+    np.testing.assert_array_equal(r, expected)
+
+
+def test_corr_class():
+    data = np.load(
+        "../examples/data/eeg_32chans_10secs.npy")
+
+    obj_corr = Corr([1.0, 4.0], 128.0)
+    pp_data = obj_corr.preprocess(data)
+    r = obj_corr.estimate(pp_data)
 
     expected = np.load("data/test_corr.npy")
     np.testing.assert_array_equal(r, expected)
