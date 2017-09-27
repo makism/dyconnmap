@@ -35,14 +35,14 @@ class Estimator(object):
         """
         pass
 
-    def estimate(self, data):
+    def estimate(self, data, data_against=None):
         """ Estimate the connectivity within the given dataset.
 
         """
         pass
 
-    def estimate_pair(self, signal1, signal2):
-        """ Estimate the connectivity between two signals.
+    def estimate_pair(self, ts1, ts2):
+        """ Estimate the connectivity between two signals (time series).
 
         Notes
         -----
