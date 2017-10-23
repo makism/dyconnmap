@@ -43,4 +43,5 @@ def fisher_z_plv(data):
     .. [Mormann2005] Mormann, F., Fell, J., Axmacher, N., Weber, B., Lehnertz, K., Elger, C. E., & Fernández, G. (2005). Phase/amplitude reset and theta–gamma interaction in the human medial temporal lobe during a continuous word recognition memory task. Hippocampus, 15(7), 890-900.
 
     """
-    return np.arcsin(2*data - 1)
+    tmp = 2*data - 1
+    return np.apply_along_axis(np.arcsin, 1, tmp)

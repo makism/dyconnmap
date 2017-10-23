@@ -20,7 +20,9 @@ from dyfunconn.ts import (aaft,
                           markov_matrix,
                           teager_kaiser_energy,
                           dcorr,
-                          fisher_score)
+                          fisher_score,
+                          fisher_z_plv,
+                          fisher_z)
 
 
 ts = None
@@ -303,3 +305,19 @@ def test_fisher_score():
 
     result = fisher_score(x, y)
     np.testing.assert_array_almost_equal(result, 0.138355761177)
+
+def test_fisher_z_plv():
+    from dyfunconn.fc import plv
+
+    np.set_printoptions(precision=2, linewidth=256)
+
+    print ""
+    data = np.load("../examples/data/eeg_32chans_10secs.npy")
+    ts, avg = plv(data, [1.0, 4.0], 128.0)
+
+    symm_avg = avg + avg.T
+    np.fill_diagonal(symm_avg, 1.0)
+
+    print symm_avg
+    ts = fisher_z_plv(avg)
+    print ts
