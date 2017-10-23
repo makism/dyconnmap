@@ -4,7 +4,8 @@
 # https://github.com/marcindulak/python-mycli/blob/master/setup.py#L34
 
 import os
-from distutils.core import setup
+from setuptools import setup
+#from distutils.core import setup
 
 name = "dyfunconn"
 rootdir = os.path.abspath(os.path.dirname(__file__))
@@ -24,21 +25,27 @@ for extra_dirs in ("docs", "examples", "tests"):
         data_files.append(('share/' + name + '/' + dirname, fileslist))
 
 setup(name='dyfunconn',
-      version='1.0',
-      description='dynamic functional connectivity',
+      version='v1.0.0-beta.0',
+      description='A dynamic functional connectivity module in Python',
       author='Avraam Marimpis, Stavros Dimitriadis',
       author_email='Avraam.Marimpis@gmail.com, STIDimitriadis@gmail.com',
-      license='',
-      keywords='',
-      url='',
+      license='BSD',
+      keywords='eeg fMRI meg connectivity graphs neuroimage brain',
+      url = 'https://github.com/makism/dyfunconn',
+      download_url = 'https://github.com/makism/dyfunconn/archive/v1.0.0-beta.0.tar.gz',
       packages=packages,
+      install_requires=['numpy', 'scipy', 'networkx', 'matplotlib', 'statsmodels', 'scikit-learn', 'bctpy'],
       package_dir={'dyfunconn': 'dyfunconn'},
       data_files=data_files,
       classifiers=['Development Status :: 4 - Beta',
                    'Intended Audience :: Science/Research',
                    'Intended Audience :: Developers',
-                   'License :: OSI Approved :: New BSD License',
+                   'License :: OSI Approved',
                    'Topic :: Software Development',
-                   'Topic :: Scientific/Engineering'
+                   'Topic :: Scientific/Engineering',
+                   'Operating System :: Microsoft :: Windows',
+                   'Operating System :: POSIX',
+                   'Operating System :: Unix',
+                   'Operating System :: MacOS'
                    ],
       )
