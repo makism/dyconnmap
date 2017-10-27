@@ -19,7 +19,17 @@ The following software is required for `dyfunconn` to work properly:
 Installation
 ============
 
-To install `dyfunconn` simple run:
+##### Using pip
+The easiest way to install `dyfunconn` is through `pip`.
+From a terminal just type:
+> pip install dyfunconn
+
+You may want to check also the _testing_ repository:
+> pip install --index-url https://test.pypi.org/simple dyfunconn
+
+##### From source code
+
+First clone the github repository, navigate into the directory and run:
 > python setup.py install
 
 If you prefer to install `dyfunconn` locally, instead run:
