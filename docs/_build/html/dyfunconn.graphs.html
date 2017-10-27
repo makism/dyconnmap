@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -45,6 +47,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -81,15 +84,21 @@
           
             
             
-                <ul class="current">
+              
+            
+            
+              <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="dyfunconn.html">dyfunconn package</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="dyfunconn.html#subpackages">Subpackages</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="dyfunconn.cluster.html">dyfunconn.cluster package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dyfunconn.fc.html">dyfunconn.fc package</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">dyfunconn.graphs package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.graphs.diffusion_efficiency">dyfunconn.graphs.diffusion_efficiency module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.graphs.gdd">dyfunconn.graphs.gdd module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.graphs.mean_first_passage_time">dyfunconn.graphs.mean_first_passage_time module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.graphs.mi">dyfunconn.graphs.mi module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.graphs.rout_efficiency">dyfunconn.graphs.rout_efficiency module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.graphs.vi">dyfunconn.graphs.vi module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.graphs">Module contents</a></li>
 </ul>
@@ -117,8 +126,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="index.html">dyfunconn</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">dyfunconn</a>
+        
       </nav>
 
 
@@ -127,25 +138,42 @@
         <div class="rst-content">
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="index.html">Docs</a> &raquo;</li>
-      
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
           <li><a href="dyfunconn.html">dyfunconn package</a> &raquo;</li>
-      
-    <li>dyfunconn.graphs package</li>
+        
+      <li>dyfunconn.graphs package</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="_sources/dyfunconn.graphs.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -156,11 +184,31 @@
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 </div>
+<div class="section" id="module-dyfunconn.graphs.diffusion_efficiency">
+<span id="dyfunconn-graphs-diffusion-efficiency-module"></span><h2>dyfunconn.graphs.diffusion_efficiency module<a class="headerlink" href="#module-dyfunconn.graphs.diffusion_efficiency" title="Permalink to this headline">¶</a></h2>
+<p>Diffusion Efficiency</p>
+<div class="section" id="notes">
+<h3>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>This is a direct translation from <a href="#id1"><span class="problematic" id="id2">`</span></a>BCT&#8217;s function &#8220;diffusion_efficiency.m&#8221; &lt;hhttps://sites.google.com/site/bctnet/Home/functions/diffusion_efficiency.m&gt;</li>
+<li>Original author is</li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<hr class="docutils" />
+<dl class="function">
+<dt id="dyfunconn.graphs.diffusion_efficiency.diffusion_efficiency">
+<code class="descclassname">dyfunconn.graphs.diffusion_efficiency.</code><code class="descname">diffusion_efficiency</code><span class="sig-paren">(</span><em>mtx</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/graphs/diffusion_efficiency.html#diffusion_efficiency"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.graphs.diffusion_efficiency.diffusion_efficiency" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
 <div class="section" id="module-dyfunconn.graphs.gdd">
 <span id="dyfunconn-graphs-gdd-module"></span><h2>dyfunconn.graphs.gdd module<a class="headerlink" href="#module-dyfunconn.graphs.gdd" title="Permalink to this headline">¶</a></h2>
 <p>Graph Diffusion Distance</p>
-<div class="section" id="notes">
-<h3>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id3">
+<h3>Notes<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>Based on the code accompanied the original paper. Available at <a class="reference external" href="https://www.researchgate.net/publication/259621918_A_Matlab_code_for_computing_the_GDD_presented_in_the_paper">https://www.researchgate.net/publication/259621918_A_Matlab_code_for_computing_the_GDD_presented_in_the_paper</a></p>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -189,12 +237,32 @@
 
 </div>
 </div>
+<div class="section" id="module-dyfunconn.graphs.mean_first_passage_time">
+<span id="dyfunconn-graphs-mean-first-passage-time-module"></span><h2>dyfunconn.graphs.mean_first_passage_time module<a class="headerlink" href="#module-dyfunconn.graphs.mean_first_passage_time" title="Permalink to this headline">¶</a></h2>
+<p>Mean First Passsage Time</p>
+<div class="section" id="id4">
+<h3>Notes<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>This is a direct translation from <cite>BCT&#8217;s function &#8220;mean_first_passage_time.m&#8221; &lt;https://sites.google.com/site/bctnet/Home/functions/mean_first_passage_time.m&gt;`</cite></li>
+<li>Original author is Joaquin Goñi, IU Bloomington, 2012</li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<hr class="docutils" />
+<dl class="function">
+<dt id="dyfunconn.graphs.mean_first_passage_time.mean_first_passage_time">
+<code class="descclassname">dyfunconn.graphs.mean_first_passage_time.</code><code class="descname">mean_first_passage_time</code><span class="sig-paren">(</span><em>mtx</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/graphs/mean_first_passage_time.html#mean_first_passage_time"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.graphs.mean_first_passage_time.mean_first_passage_time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
 <div class="section" id="module-dyfunconn.graphs.mi">
 <span id="dyfunconn-graphs-mi-module"></span><h2>dyfunconn.graphs.mi module<a class="headerlink" href="#module-dyfunconn.graphs.mi" title="Permalink to this headline">¶</a></h2>
 <p>Mutual Information</p>
 <p>Comparing two partitions using the mutual information theoretical metric.</p>
-<div class="section" id="id1">
-<h3>Notes<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id5">
+<h3>Notes<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>Based on the code available at <a class="reference external" href="http://users.auth.gr/~stdimitr/files/software/vi.rar">http://users.auth.gr/~stdimitr/files/software/vi.rar</a></p>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -223,11 +291,31 @@
 
 </div>
 </div>
+<div class="section" id="module-dyfunconn.graphs.rout_efficiency">
+<span id="dyfunconn-graphs-rout-efficiency-module"></span><h2>dyfunconn.graphs.rout_efficiency module<a class="headerlink" href="#module-dyfunconn.graphs.rout_efficiency" title="Permalink to this headline">¶</a></h2>
+<p>Rout Information</p>
+<div class="section" id="id6">
+<h3>Notes<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>This is a direct translation from <a href="#id7"><span class="problematic" id="id8">`</span></a>BCT&#8217;s function &#8220;diffusion_efficiency.m&#8221; &lt;hhttps://sites.google.com/site/bctnet/Home/functions/diffusion_efficiency.m&gt;</li>
+<li>Original author is</li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<hr class="docutils" />
+<dl class="function">
+<dt id="dyfunconn.graphs.rout_efficiency.rout_efficiency">
+<code class="descclassname">dyfunconn.graphs.rout_efficiency.</code><code class="descname">rout_efficiency</code><span class="sig-paren">(</span><em>mtx</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/graphs/rout_efficiency.html#rout_efficiency"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.graphs.rout_efficiency.rout_efficiency" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
 <div class="section" id="module-dyfunconn.graphs.vi">
 <span id="dyfunconn-graphs-vi-module"></span><h2>dyfunconn.graphs.vi module<a class="headerlink" href="#module-dyfunconn.graphs.vi" title="Permalink to this headline">¶</a></h2>
 <p>Variation of Information</p>
-<div class="section" id="id2">
-<h3>Notes<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id9">
+<h3>Notes<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <p>Based on the code available at <a class="reference external" href="http://users.auth.gr/~stdimitr/files/software/vi.rar">http://users.auth.gr/~stdimitr/files/software/vi.rar</a></p>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -293,20 +381,33 @@
 </table>
 </dd></dl>
 
+<dl class="function">
+<dt id="dyfunconn.graphs.diffusion_efficiency">
+<code class="descclassname">dyfunconn.graphs.</code><code class="descname">diffusion_efficiency</code><span class="sig-paren">(</span><em>mtx</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/graphs/diffusion_efficiency.html#diffusion_efficiency"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.graphs.diffusion_efficiency" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="dyfunconn.graphs.mean_first_passage_time">
+<code class="descclassname">dyfunconn.graphs.</code><code class="descname">mean_first_passage_time</code><span class="sig-paren">(</span><em>mtx</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/graphs/mean_first_passage_time.html#mean_first_passage_time"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.graphs.mean_first_passage_time" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </div>
 </div>
 
 
+           </div>
+           <div class="articleComments">
+            
            </div>
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="dyfunconn.sim_models.html" class="btn btn-neutral float-right" title="dyfunconn.sim_models package" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="dyfunconn.sim_models.html" class="btn btn-neutral float-right" title="dyfunconn.sim_models package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="dyfunconn.fc.html" class="btn btn-neutral" title="dyfunconn.fc package" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="dyfunconn.fc.html" class="btn btn-neutral" title="dyfunconn.fc package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -340,7 +441,8 @@
             VERSION:'',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="_static/jquery.js"></script>

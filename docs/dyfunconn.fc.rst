@@ -124,14 +124,6 @@ dyfunconn.fc.partcorr module
     :undoc-members:
     :show-inheritance:
 
-dyfunconn.fc.pcoh module
-------------------------
-
-.. automodule:: dyfunconn.fc.pcoh
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
 dyfunconn.fc.pec module
 -----------------------
 
@@ -156,10 +148,10 @@ dyfunconn.fc.plv module
     :undoc-members:
     :show-inheritance:
 
-dyfunconn.fc.si module
-----------------------
+dyfunconn.fc.rho_index module
+-----------------------------
 
-.. automodule:: dyfunconn.fc.si
+.. automodule:: dyfunconn.fc.rho_index
     :members:
     :undoc-members:
     :show-inheritance:

@@ -13,6 +13,8 @@
 
   
   
+  
+  
 
   
 
@@ -43,6 +45,7 @@
 
 <body class="wy-body-for-nav" role="document">
 
+   
   <div class="wy-grid-for-nav">
 
     
@@ -79,7 +82,10 @@
           
             
             
-                <ul>
+              
+            
+            
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../dyfunconn.html">dyfunconn package</a></li>
 </ul>
 
@@ -93,8 +99,10 @@
 
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../../../index.html">dyfunconn</a>
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">dyfunconn</a>
+        
       </nav>
 
 
@@ -107,26 +115,43 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="../../../index.html">Docs</a> &raquo;</li>
-      
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
           <li><a href="../../index.html">Module code</a> &raquo;</li>
-      
-    <li>dyfunconn.ts.rr_order_patterns</li>
+        
+      <li>dyfunconn.ts.rr_order_patterns</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
   <h1>Source code for dyfunconn.ts.rr_order_patterns</h1><div class="highlight"><pre>
-<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span></span> <span class="c1">#-*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot; Order Reccurence Plot</span>
 
 
@@ -196,7 +221,6 @@
     <span class="n">y</span> <span class="o">=</span> <span class="n">embed_delay</span><span class="p">(</span><span class="n">signal2</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">tau</span><span class="p">)</span>
 
     <span class="n">lenx</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="n">leny</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 
     <span class="n">factorial_dim</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">misc</span><span class="o">.</span><span class="n">factorial</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
 
@@ -223,16 +247,19 @@
 
     <span class="n">ct2</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">Y</span> <span class="o">==</span> <span class="mf">1.0</span><span class="p">)</span>
 
-    <span class="nb">sum</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">total_sum</span> <span class="o">=</span> <span class="mf">0.0</span>
     <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">lenx</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">ct1</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">==</span> <span class="n">ct2</span><span class="p">[</span><span class="n">k</span><span class="p">]:</span>
-            <span class="nb">sum</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">total_sum</span> <span class="o">+=</span> <span class="mi">1</span>
 
-    <span class="n">cstr</span> <span class="o">=</span> <span class="nb">sum</span> <span class="o">/</span> <span class="n">lenx</span>
+    <span class="n">cstr</span> <span class="o">=</span> <span class="n">total_sum</span> <span class="o">/</span> <span class="n">lenx</span>
 
     <span class="k">return</span> <span class="n">cstr</span></div>
 </pre></div>
 
+           </div>
+           <div class="articleComments">
+            
            </div>
           </div>
           <footer>
@@ -267,7 +294,8 @@
             VERSION:'',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
         };
     </script>
       <script type="text/javascript" src="../../../_static/jquery.js"></script>

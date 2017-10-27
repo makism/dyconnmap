@@ -44,6 +44,14 @@ dyfunconn.ts.fisher_z module
     :undoc-members:
     :show-inheritance:
 
+dyfunconn.ts.fnn module
+-----------------------
+
+.. automodule:: dyfunconn.ts.fnn
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 dyfunconn.ts.markov_matrix module
 ---------------------------------
 
