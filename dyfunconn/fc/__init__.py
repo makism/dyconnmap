@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+    # -*- coding: utf-8 -*-
 """
 
 """
@@ -14,8 +14,6 @@ from .nesc import nesc
 from .pec import pec
 from .glm import glm
 from .pac import PAC, pac
-from .pcoh import pcoh
-from .si import si
 from .mui import mutual_information
 from .dpli import dpli
 from .wpli import wpli, dwpli
@@ -24,6 +22,7 @@ from .icoherence import icoherence
 from .corr import corr, Corr
 from .crosscorr import crosscorr
 from .partcorr import partcorr
+from .rho_index import rho_index
 
 
 __all__ = ['Estimator',
@@ -34,9 +33,8 @@ __all__ = ['Estimator',
            'esc',
            'nesc',
            'pec',
-           'pcoh',
            'glm',
-           'si',
+           'rho_index',
            'PAC', 'pac',
            'mutual_information',
            'dpli',

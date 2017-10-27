@@ -1,28 +1,24 @@
 # -*- coding: utf-8 -*-
-""" Synchronization Index
+""" ρ index
 
+.. math::
+    \\r_{p, q}(t) = \\frac{H_{max} - H}{H_{max}}
 
+Where :math:`H` is the Shannon entropy estimated within :math:`M` number of
+phase bins, and :math:`H_{max} = ln(M)` is the maximal entropy and
+and :math:`p_k` is the relative frequency of finding frequency difference
+in the :math:`k` th phase bin.
+
+.. math::
+    H = - \\sum_{k=1}^M p_k ln(p_k)
+
+The computed value varies within the range :math:`[0, 1]`
 
 -----
 
+.. [Tass1998] Tass, P., Rosenblum, M. G., Weule, J., Kurths, J., Pikovsky, A., Volkmann, J., ... & Freund, H. J. (1998). Detection of n: m phase locking from noisy data: application to magnetoencephalography. Physical review letters, 81(15), 3291.
 
-https://vis.caltech.edu/~rodri/papers/performance.pdf
-
-http://researchcommons.waikato.ac.nz/bitstream/handle/10289/770/EEG_entropies.pdf;jsessionid=837973D1FD53B66585F7CBFB6FEBADFB?sequence=1
-
-file:///home/makism/Downloads/pereda2005.pdf
-
-https://en.wikipedia.org/wiki/Brain_connectivity_estimators#Bivariate_versus_multivariate_estimators
-
-http://journal.frontiersin.org/article/10.3389/fneur.2013.00057/full
-
-http://jn.physiology.org/content/87/2/937
-
-http://www.stat.physik.uni-potsdam.de/~mros/Moss_book.pdf
-
-http://www.fulviofrisone.com/attachments/article/412/synchronization%20an%20universal%20concept%20in%20nonlinear%20sciences.pdf
-
-.. [Cohen2008] Cohen, M. X. (2008). Assessing transient cross-frequency coupling in EEG data. Journal of neuroscience methods, 168(2), 494-499."""
+"""
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
 from ..analytic_signal import analytic_signal
@@ -30,7 +26,7 @@ from ..analytic_signal import analytic_signal
 import numpy as np
 
 
-def si(data, n_bins, fb, fs, pairs=None):
+def rho_index(data, n_bins, fb, fs, pairs=None):
     """ Synchronization Index
 
     Compute the synchronization index for the given :attr:`data`, between the :attr:`pairs (if given)
@@ -58,8 +54,8 @@ def si(data, n_bins, fb, fs, pairs=None):
 
     Returns
     -------
-    si : array-likem, shape(n_channels, n_channels)
-        Estimated Synchronization Index.
+    rho : array-likem, shape(n_channels, n_channels)
+        Estimated rho index.
     """
     n_channels, n_samples = np.shape(data)
 
@@ -70,7 +66,7 @@ def si(data, n_bins, fb, fs, pairs=None):
                  for r2 in range(r1, n_channels)
                  if r1 != r2]
 
-    si_mtx = np.zeros((n_channels, n_channels))
+    rho_mtx = np.zeros((n_channels, n_channels))
     for pair in pairs:
         u_phase1, u_phase2 = u_phases[pair, ]
 
@@ -83,6 +79,6 @@ def si(data, n_bins, fb, fs, pairs=None):
         S = -np.sum(n_hist * np.log(n_hist))
         H = (Smax - S) / Smax
 
-        si_mtx[pair] = H
+        rho_mtx[pair] = H
 
-    return si_mtx
+    return rho_mtx

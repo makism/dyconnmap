@@ -18,11 +18,10 @@ from dyfunconn.fc import (aec,
                           mutual_information,
                           nesc,
                           pac,
-                          pcoh,
                           pec,
                           pli,
                           plv, PLV,
-                          si,
+                          rho_index,
                           #sl,
                           wpli, dwpli,
                           corr, Corr, crosscorr, partcorr)
@@ -157,24 +156,6 @@ def test_pac_multiple_channels():
     np.testing.assert_array_equal(avg, expected_avg)
 
 
-def test_pcoh():
-    data = np.load("../examples/data/eeg_32chans_10secs.npy")
-
-    v = pcoh(data, [1.0, 4.0], 128.0, n_bins=10)
-
-    expected = np.load("data/test_pcoh.npy")
-    np.testing.assert_array_equal(v, expected)
-
-
-def test_pcoh_unrwap():
-    data = np.load("../examples/data/eeg_32chans_10secs.npy")
-
-    vu = pcoh(data, [1.0, 4.0], 128.0, n_bins=10, unwrap=True)
-
-    expected = np.load("data/test_pcoh_unwrap.npy")
-    np.testing.assert_array_equal(vu, expected)
-
-
 def test_pec():
     data = np.load("../examples/data/eeg_32chans_10secs.npy")
 
@@ -215,13 +196,13 @@ def test_plv():
     np.testing.assert_array_equal(avg, expected_avg)
 
 
-def test_si():
+def test_rho_index():
     data = np.load("../examples/data/eeg_32chans_10secs.npy")
 
-    si_mtx = si(data, 10, [1.0, 4.0], 128.0)
+    rho_mtx = rho_index(data, 10, [1.0, 4.0], 128.0)
 
-    expected = np.load("data/test_si.npy")
-    np.testing.assert_array_equal(si_mtx, expected)
+    expected = np.load("data/test_rho_index.npy")
+    np.testing.assert_array_equal(rho_mtx, expected)
 
 
 def test_sl():
