@@ -7,19 +7,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-## [1.0.0-beta.1] - 2017-10-23
-### Added
-- This file! 
+## 2017-10-27
 
 ### Changed
 
-### Deprecated
+* Renamed "Synchronization Index" to "rho_index".
+
+* Update documentation to reflect the latest changes.
 
 ### Removed
 
-### Fixed
-
-### Security
-
-
-
+* "Phase Coherence Value" Estimator, code overllaps with "rho_index"; must check again.
