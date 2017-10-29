@@ -10,4 +10,4 @@ self-contained code example that demonstrates the problem.
 
 Thanks for your interest in contributing code to `dynfunconn`!
 
-Either fork of create a pull request on our Github page.
+Either fork or create a pull request on our Github page.
