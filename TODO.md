@@ -5,6 +5,7 @@ Below are just some ideas for future additions to the module. This is in no way 
 #### Connecivity
 - [ ] Synchronization Likelihood
 - [ ] Partial Directed Coherence
+- [ ] Phase Slope Index (PSI)
 - [ ] Granger Causality
 - [ ] Partial Granger Causality
 - [ ] Directed Transfer Function
