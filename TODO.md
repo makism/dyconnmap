@@ -10,6 +10,7 @@ Below are just some ideas for future additions to the module. This is in no way 
 - [ ] Directed Transfer Function
 
 #### Cross frequency coupling:
+- [ ] Phase Amplitude Coupling (Canolty)
 - [ ] Power to Power
 - [ ] Phase to Phase
 - [ ] Phase to Frequency
