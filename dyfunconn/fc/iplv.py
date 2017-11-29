@@ -104,13 +104,13 @@ class IPLV(Estimator):
         n_samples = len(ts1)
 
         ts_plv = np.exp(1j * (ts1 - ts2))
-        avg_plv = np.abs(np.imag(np.sum((ts_plv)))) / float(n_samples)
+        avg_plv = np.abs(np.imag(np.sum((ts_plv))) / float(n_samples))
 
         return np.imag(ts_plv), avg_plv
 
     def mean(self, ts):
         l = float(np.shape(ts)[0])
-        return np.abs(np.imgag(np.sum(ts))) / l
+        return np.abs(np.imgag(np.sum(ts)) / l)
 
     def estimate(self, data):
         """
@@ -139,7 +139,7 @@ class IPLV(Estimator):
         for pair in self.pairs:
             u_phases1, u_phases2 = data[pair, ]
             ts_plv = np.exp(1j * (u_phases1 - u_phases2))
-            avg_plv = np.abs(np.imag(np.sum((ts_plv)))) / float(n_samples)
+            avg_plv = np.abs(np.imag(np.sum((ts_plv))) / float(n_samples))
 
             ts[pair] = ts_plv
             avg[pair] = avg_plv
