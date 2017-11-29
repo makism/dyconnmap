@@ -18,9 +18,8 @@ at the frequency band :math:`hi`.
 
 -----
 
-
-.. [Penny2008] Penny, W. D., Duzel, E., Miller, K. J., & Ojemann, J. G. (2008). Testing for nested oscillation. Journal of neuroscience methods, 174(1), 50-61. Chicago
 .. [Bruns2004] Bruns, A., & Eckhorn, R. (2004). Task-related coupling from high-to low-frequency signals among visual cortical areas in human subdural recordings. International Journal of Psychophysiology, 51(2), 97-116.
+.. [Penny2008] Penny, W. D., Duzel, E., Miller, K. J., & Ojemann, J. G. (2008). Testing for nested oscillation. Journal of neuroscience methods, 174(1), 50-61. Chicago
 """
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
