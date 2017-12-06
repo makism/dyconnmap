@@ -33,7 +33,7 @@ def k_core_decomposition(mtx, threshold):
     mtx :
         undirected binary
 
-    threshold : float
+    threshold : int
 
     """
     imtx = mtx # input matrix ;)
@@ -65,21 +65,30 @@ def k_core_decomposition(mtx, threshold):
 def threshold_mst_mean_degree(mtx, avg_degree):
     """
 
-    """
-    rows, cols = np.shape(mtx)
+    Parameters
+    ----------
 
-    CIJtree = np.zeros((rows, cols))
+    mtx :
+
+
+    avg_degree :
+
+
+    """
+    N, _ = np.shape(mtx)
+
+    CIJtree = np.zeros((N, N))
     CIJnotintree = mtx
 
 
     # Find the number of orthogonal msts according to the desired mean degree.
-    num_edges = avg_degree * rows
-    num_msts = np.round(num_edges / (rows-1)) + 1
+    num_edges = avg_degree * N
+    num_msts = np.int32(np.round(num_edges / (N-1)) + 1)
 
     # Keep the N-1 connections of the num_msts MSTs.
-    mst_conn = np.zeros((num_msts * (rows - 1), 2), dtype=np.int32)
+    mst_conn = np.zeros((num_msts * (N- 1), 2), dtype=np.int32)
 
-    nCIJtree = np.zeros((num_msts, rows, cols), dtype=np.int32)
+    nCIJtree = np.zeros((num_msts, N, N), dtype=np.int32)
 
     # Repeat rows-2 times
     count = 0
@@ -89,7 +98,7 @@ def threshold_mst_mean_degree(mtx, avg_degree):
         mst = nx.minimum_spanning_tree(graph)
         links = list(mst.edges())
 
-        for k in range(rows - 1):
+        for k in range(N - 1):
             link1 = links[k][0]
             link2 = links[k][1]
 
@@ -103,15 +112,15 @@ def threshold_mst_mean_degree(mtx, avg_degree):
 
         # Now add connections back, with the total number of added connections
         # determined by the desired 'threshold'
-        iCIJtree = np.ones((rows, cols))
+        iCIJtree = np.ones((N, N))
         iCIJtree[np.where(CIJtree != 0.0)] = 0
         CIJnotintree = CIJnotintree * iCIJtree
         nCIJtree[no, :, :] = CIJtree
 
-    degree = np.zeros((1, num_msts * (rows - 1)))
-    matrix = np.zeros((rows, cols))
+    degree = np.zeros((1, num_msts * (N - 1)))
+    matrix = np.zeros((N, N))
 
-    for no in range(num_msts * (rows - 1)):
+    for no in range(num_msts * (N - 1)):
         idx1 = mst_conn[no, 0]
         idx2 = mst_conn[no, 1]
 
@@ -125,7 +134,7 @@ def threshold_mst_mean_degree(mtx, avg_degree):
     abs_diff = np.abs(degree - avg_degree)
     cutoff = np.argmin(abs_diff)
 
-    CIJtree = np.zeros((rows, cols))
+    CIJtree = np.zeros((N, N))
 
     for no in range(cutoff):
         idx1 = mst_conn[no, 0]
@@ -201,7 +210,7 @@ def threshold_mean_degree(mtx, threshold_mean_degree):
     return binary_mtx
 
 
-def threshold_shortest_paths(mtx, treatment=True):
+def threshold_shortest_paths(mtx, treatment=False):
     """
     Thresholds a weighted matrix in binary via shortest path identification using
     Dijkstra's algorithm.
@@ -351,7 +360,7 @@ def threshold_omst_global_cost_efficiency(mtx):
     for k in range(N):
         for l in range(k+1, N):
             imtx_uptril[l, k] = 0.0
-    # np.fill_diagonal(imtx_uptril, 0.0)
+    np.fill_diagonal(imtx_uptril, 0.0)
 
     # Find the number of orthogonal msts according to the desired mean degree
     num_edges = len(np.where(imtx > 0.0)[0])
@@ -360,7 +369,6 @@ def threshold_omst_global_cost_efficiency(mtx):
 
     if num_msts > pos_num_msts:
         num_msts = pos_num_msts
-    num_msts = 3
 
     CIJnotintree = imtx
 
@@ -409,11 +417,6 @@ def threshold_omst_global_cost_efficiency(mtx):
     global_eff_ini = bct.efficiency_wei(imtx_uptril) * 2.0
     cost_ini = np.sum(imtx_uptril[:])
 
-    print global_eff_ini
-
-    print cost_ini
-
-
     # Insert the 1st MST
     graph = np.zeros((N, N))
     global_cost_eff = np.zeros((num_msts, 1))
@@ -453,30 +456,3 @@ def threshold_omst_global_cost_efficiency(mtx):
     # plt.show()
 
     return nCIJtree, CIJtree, degree, global_eff, global_cost_eff_max, cost_max
-
-
-if __name__ == '__main__':
-    data = scipy.io.loadmat('/home/makism/Github/Other/topological_filtering_networks/threshold_schemes/threshold_schemes/data/mean_degree.mat')
-    mtx = data['w']
-    result = data['binary']
-    mean_degree = data['threshold_mean_degree']
-    binary = threshold_mean_degree(mtx, mean_degree)
-    np.testing.assert_array_equal(binary, result)
-
-    data = scipy.io.loadmat('/home/makism/Github/Other/topological_filtering_networks/threshold_schemes/threshold_schemes/data/glocal_cost_efficiency.mat')
-    mtx = data['w']
-    result = data['binary']
-    iterations = 10# int(data['iterations'])
-    binary_mtx, threshold, global_cost_eff_max, cost_max = threshold_global_cost_efficiency(mtx, iterations)
-
-    data = scipy.io.loadmat('/home/makism/Github/Other/topological_filtering_networks/threshold_schemes/threshold_schemes/data/glocal_cost_efficiency.mat')
-    mtx = data['w']
-    binary = threshold_shortest_paths(mtx, treatment=True)
-
-    kcores = k_core_decomposition(binary, 10)
-
-    tree = threshold_mst_mean_degree(binary, 10)
-
-    data = scipy.io.loadmat('/home/makism/Github/Other/topological_filtering_networks/threshold_schemes/threshold_schemes/data/graph.mat')
-    mtx = data['graph']
-    nCIJtree, CIJtree, degree, global_eff, global_cost_eff_max, cost_max =  threshold_omst_global_cost_efficiency(mtx)
