@@ -11,6 +11,7 @@ from .mi import mutual_information
 from .threshold import (threshold_mean_degree,
                         threshold_mst_mean_degree,
                         threshold_shortest_paths,
+                        k_core_decomposition,
                         threshold_global_cost_efficiency,
                         threshold_omst_global_cost_efficiency)
 
@@ -20,5 +21,6 @@ __all__ = ['graph_diffusion_distance',
            'mutual_information',
            'threshold_mean_degree', 'threshold_mst_mean_degree',
            'threshold_shortest_paths',
+           'k_core_decomposition',
            'threshold_global_cost_efficiency', 'threshold_omst_global_cost_efficiency'
            ]
