@@ -5,7 +5,7 @@
 Notes
 -----
 * This is a direct translation from `Data Driven Topological Filtering of Brain Networks via Orthogonal Minimal Spanning Trees <https://github.com/stdimitr/topological_filtering_networks>'
-* Original author is Stravros Dimitriadis <>
+* Original author is Stravros Dimitriadis <stidimitriadis@gmail.com>
 
 |
 
@@ -16,24 +16,28 @@ Notes
 
 import numpy as np
 import networkx as nx
-import scipy
 import bct
-from scipy import io
-from numpy import testing
-
-
-np.set_printoptions(precision=2, linewidth=80)
-
-import pprint
 
 
 def k_core_decomposition(mtx, threshold):
-    """
+    """ Threshold a binary graph based on the detected k-cores.
 
-    mtx :
-        undirected binary
+    .. [Alvarez2006] Alvarez-Hamelin, J. I., Dall'Asta, L., Barrat, A., & Vespignani, A. (2006). Large scale networks fingerprinting and visualization using the k-core decomposition. In Advances in neural information processing systems (pp. 41-50).
+    .. [Hagman2008] Hagmann, P., Cammoun, L., Gigandet, X., Meuli, R., Honey, C. J., Wedeen, V. J., & Sporns, O. (2008). Mapping the structural core of human cerebral cortex. PLoS biology, 6(7), e159.
+
+
+    Parameters
+    ----------
+    mtx : array-like, shape(N, N)
+        Binary matrix.
 
     threshold : int
+        Degree threshold.
+
+    Returns
+    -------
+    k_cores : array-like, shape(N, 1)
+        A binary matrix of the decomposed cores.
 
     """
     imtx = mtx # input matrix ;)
@@ -63,16 +67,21 @@ def k_core_decomposition(mtx, threshold):
 
 
 def threshold_mst_mean_degree(mtx, avg_degree):
-    """
+    """ Threshold a graph based on mean using minimum spanning trees.
+
 
     Parameters
     ----------
+    mtx : array-like, shape(N, N)
+        Symmetric, weighted and undirected connectivity matrix.
 
-    mtx :
+    avg_degree : float
+        Mean degree threshold.
 
-
-    avg_degree :
-
+    Returns
+    -------
+    binary_mtx : array-like, shape(N, N)
+        A binary mask matrix.
 
     """
     N, _ = np.shape(mtx)
@@ -149,16 +158,21 @@ def threshold_mst_mean_degree(mtx, avg_degree):
 
 
 def threshold_mean_degree(mtx, threshold_mean_degree):
-    """
-    Binarize the given weighted matrix using the mean degree.
+    """ Threshold a graph based on the mean degree.
+
 
     Parameters
     ----------
-
-    mtx :
-
+    mtx : array-like, shape(N, N)
+        Symmetric, weighted and undirected connectivity matrix.
 
     threshold_mean_degree : int
+        Mean degree threshold.
+
+    Returns
+    -------
+    binary_mtx : array-like, shape(N, N)
+        A binary mask matrix.
 
     """
     binary_mtx = np.zeros_like(mtx, dtype=np.int32)
@@ -211,22 +225,24 @@ def threshold_mean_degree(mtx, threshold_mean_degree):
 
 
 def threshold_shortest_paths(mtx, treatment=False):
-    """
-    Thresholds a weighted matrix in binary via shortest path identification using
-    Dijkstra's algorithm.
-
+    """ Threshold a graph via  via shortest path identification using Dijkstra's algorithm.
 
     .. [Dimitriadis2010] Dimitriadis, S. I., Laskaris, N. A., Tsirka, V., Vourkas, M., Micheloyannis, S., & Fotopoulos, S. (2010). Tracking brain dynamics via time-dependent network analysis. Journal of neuroscience methods, 193(1), 145-155.
 
 
     Parameters
     ----------
-
-    mtx :
-
+    mtx : array-like, shape(N, N)
+        Symmetric, weighted and undirected connectivity matrix.
 
     treatment : boolean
+        Convert the weights to distances by inversing the matrix. Also,
+        fill the diagonal with zeroes. Default `false`.
 
+    Returns
+    -------
+    binary_mtx : array-like, shape(N, N)
+        A binary mask matrix.
 
     """
     imtx = mtx
@@ -259,22 +275,24 @@ def threshold_shortest_paths(mtx, treatment=False):
 
 
 def threshold_global_cost_efficiency(mtx, iterations):
-    """
+    """ Threshold a graph based on the Global Efficiency - Cost formula.
+
+    .. [Basset2009] Bassett, D. S., Bullmore, E. T., Meyer-Lindenberg, A., Apud, J. A., Weinberger, D. R., & Coppola, R. (2009). Cognitive fitness of cost-efficient brain functional networks. Proceedings of the National Academy of Sciences, 106(28), 11747-11752.
+
 
     Parameters
     ----------
-
-    mtx :
-
+    mtx : array-like, shape(N, N)
+        Symmetric, weighted and undirected connectivity matrix.
 
     iterations : int
-
+        Number of steps, as a resolution when search for optima.
 
 
     Returns
     -------
-
-    binary_mtx :
+    binary_mtx : array-like, shape(N, N)
+        A binary mask matrix.
 
     threshold : float
         The threshold that maximizes the global cost efficiency.
@@ -282,7 +300,7 @@ def threshold_global_cost_efficiency(mtx, iterations):
     global_cost_eff_max : float
         Global cost efficiency.
 
-    cost_max: float
+    cost_max : float
         Cost of the network at the maximum global cost efficiency
 
     """
@@ -344,12 +362,39 @@ def threshold_global_cost_efficiency(mtx, iterations):
 
 
 def threshold_omst_global_cost_efficiency(mtx):
-    """ Optimizing the formula GE-C via orthogonal MSTs.
+    """ Threshold a graph by optimizing the formula GE-C via orthogonal MSTs.
+
+    .. [Dimitriadis2017a] Dimitriadis, S. I., Salis, C., Tarnanas, I., & Linden, D. E. (2017). Topological Filtering of Dynamic Functional Brain Networks Unfolds Informative Chronnectomics: A Novel Data-Driven Thresholding Scheme Based on Orthogonal Minimal Spanning Trees (OMSTs). Frontiers in neuroinformatics, 11.
+    .. [Dimitriadis2017n] Dimitriadis, S. I., Antonakakis, M., Simos, P., Fletcher, J. M., & Papanicolaou, A. C. (2017). Data-driven Topological Filtering based on Orthogonal Minimal Spanning Trees: Application to Multi-Group MEG Resting-State Connectivity. Brain Connectivity, (ja).
+    .. [Basset2009] Bassett, D. S., Bullmore, E. T., Meyer-Lindenberg, A., Apud, J. A., Weinberger, D. R., & Coppola, R. (2009). Cognitive fitness of cost-efficient brain functional networks. Proceedings of the National Academy of Sciences, 106(28), 11747-11752.
+
 
     Parameters
     ----------
+    mtx : array-like, shape(N, N)
+        Symmetric, weighted and undirected connectivity matrix.
 
-    mtx :
+
+    Returns
+    -------
+    nCIJtree : array-like, shape(n_msts, N, N)
+        A matrix containing all the orthogonal MSTs.
+
+    CIJtree : array-like, shape(N, N)
+        Resulting graph.
+
+    degree : float
+        The mean degree of the resulting graph.
+
+    global_eff : float
+        Global efficiency of the resulting graph.
+
+    global_cost_eff_max : float
+        The value where global efficiency - cost is maximized.
+
+    cost_max : float
+        Cost of the network at the maximum global cost efficiency.
+
 
     """
     imtx = np.copy(mtx)
@@ -456,11 +501,3 @@ def threshold_omst_global_cost_efficiency(mtx):
     # plt.show()
 
     return nCIJtree, CIJtree, degree, global_eff, global_cost_eff_max, cost_max
-
-# if __name__ == '__main__':
-#     expected = scipy.io.loadmat(
-#         '/home/makism/Github/Other/topological_filtering_networks/threshold_schemes/threshold_schemes/gce_binary.mat')['binary']
-#
-#     graph = np.load('/home/makism/Github/dyfunconn-public/tests/data/test_graphs_threshold_graph.npy')
-#     iterations = 50
-#     binary_mask = threshold_global_cost_efficiency(graph, iterations)
