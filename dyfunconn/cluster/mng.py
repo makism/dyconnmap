@@ -1,6 +1,14 @@
 # -*- coding: utf-8 -*-
 """ Merge NeuralGas
 
+
+Notes
+-----
+
+|
+
+----
+
 .. [Strickert2003] Strickert, M., & Hammer, B. (2003, September). Neural gas for sequences. In Proceedings of the Workshop on Self-Organizing Maps (WSOM’03) (pp. 53-57).
 """
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
@@ -13,9 +21,9 @@ from sklearn.neighbors import NearestNeighbors
 class MergeNeuralGas:
     """ Merge Neural Gas
 
+
     Parameters
     ----------
-
     n_protos: int
         The number of prototypes
 
@@ -83,7 +91,6 @@ class MergeNeuralGas:
         ct = np.zeros((1, n_obs))
         wr = ct
         cr = wr
-
         for iteration in range(self.iterations):
             sample = data[self.rng.choice(n_samples, 1),]
 
@@ -120,7 +127,7 @@ class MergeNeuralGas:
             Data matrix, each row represents a sample.
 
         metric : string
-            One of the following valid options as defined for function http://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.pairwise_distances.html.
+            One of the following valid options as defined for function `http://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.pairwise_distances.html`.
 
             Valid options include:
 

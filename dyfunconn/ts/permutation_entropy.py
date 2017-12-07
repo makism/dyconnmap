@@ -2,8 +2,6 @@
 """ Permutation Entropy
 
 
-
-
 |
 
 -----
@@ -25,17 +23,16 @@ def permutation_entropy(signal, m, tau):
     """ Permutation Entropy
 
 
-
     Parameters
     ----------
-    signal :
+    signal : array-like, shape(N)
+        Symblic time series (1D).
 
     m : int
         Embedding dimension.
 
     tau : int
-        Time delay parame
-        ter.
+        Time delay parameter.
 
 
     Returns

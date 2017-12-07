@@ -14,7 +14,8 @@ def entropy_reduction_rate(sym_ts):
 
     Parameters
     ----------
-    sym_ts :
+    sym_ts : array-like, shape(N)
+        Symblic time series (1D)
 
 
     Returns
@@ -82,14 +83,20 @@ def symoblic_transfer_entropy(x, y, s=1, delay=0, verbose=False):
 
     Parameters
     ----------
-    x :
+    x : array-like, shape(N)
+        Symblic time series (1D).
 
-    y :
+    y : array-like, shape(N)
+        Symbolic time series (1D).
 
-    s :
+    s : int
+        Embedding dimension.
 
-    delay :
+    delay : int
+        Time delay parameter
 
+    verbose : boolean
+        Print computation messages.
 
 
     Returns
@@ -147,28 +154,37 @@ def symoblic_transfer_entropy(x, y, s=1, delay=0, verbose=False):
 
 
 def __transfer_entropy(x, y, pxy, num_symbols, s=1, delay=0, switch_indices=False):
-    """
+    """ Transfer Entropy
+
 
     Parameters
     ----------
-    x :
+    x : array-like, shape(N)
+        Symblic time series (1D).
 
-    y :
+    y : array-like, shape(N)
+        Symbolic time series (1D)
 
-    pxy :
+    pxy : float
+        The joint entropy.
 
-    num_symbols :
+    num_symbols : int
+        The number of unique symbols in the time series.
 
-    s :
+    s : int
+        Embedding dimension.
 
-    delay :
+    delay : int
+        Time delay parameter.
 
-    switch_indices :
+    switch_indices : boolean
+        Compute the transfer entropy from y -> x.
 
 
     Returns
     -------
-
+    te : float
+        Transfer entropy.
     """
     pxxy = np.zeros((num_symbols, num_symbols, num_symbols))
     for k in range(len(x) - s):
