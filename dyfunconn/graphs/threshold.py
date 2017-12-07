@@ -456,3 +456,11 @@ def threshold_omst_global_cost_efficiency(mtx):
     # plt.show()
 
     return nCIJtree, CIJtree, degree, global_eff, global_cost_eff_max, cost_max
+
+# if __name__ == '__main__':
+#     expected = scipy.io.loadmat(
+#         '/home/makism/Github/Other/topological_filtering_networks/threshold_schemes/threshold_schemes/gce_binary.mat')['binary']
+#
+#     graph = np.load('/home/makism/Github/dyfunconn-public/tests/data/test_graphs_threshold_graph.npy')
+#     iterations = 50
+#     binary_mask = threshold_global_cost_efficiency(graph, iterations)

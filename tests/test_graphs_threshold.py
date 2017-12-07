@@ -52,13 +52,11 @@ def test_graphs_threshold_shortest_paths():
 
 
 def test_graphs_threshold_global_cost_efficiency():
-    expected = scipy.io.loadmat(
-        '/home/makism/Github/Other/topological_filtering_networks/threshold_schemes/threshold_schemes/gce_weighted.mat')['weighted']
-    np.save('data/test_graphs_threshold_gce.npy', expected)
+    expected = np.load('data/test_graphs_threshold_gce.npy')
 
     graph = np.load('data/test_graphs_threshold_graph.npy')
     iterations = 50
-    binary_mask = threshold_global_cost_efficiency(graph, iterations)
+    binary_mask, _, _, _ = threshold_global_cost_efficiency(graph, iterations)
 
     np.testing.assert_array_equal(expected, binary_mask)
 
