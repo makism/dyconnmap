@@ -154,7 +154,7 @@ def threshold_mst_mean_degree(mtx, avg_degree):
         CIJtree[idx1, idx2] = mtx[idx1, idx2]
         CIJtree[idx2, idx1] = CIJtree[idx1, idx2]
 
-    ravgdeg = avg_degree - abs_diff
+    # ravgdeg = avg_degree - abs_diff
 
     return CIJtree
 
@@ -212,7 +212,7 @@ def threshold_mean_degree(mtx, threshold_mean_degree):
     r = np.argmin(diff)
 
     # find the threhold corresponds to the mean degree
-    mdegree = thresdeg[r, 0]
+    # mdegree = thresdeg[r, 0]
     thres = thresdeg[r, 1]
 
     for k in range(N):
@@ -302,6 +302,9 @@ def threshold_global_cost_efficiency(mtx, iterations):
     global_cost_eff_max : float
         Global cost efficiency.
 
+    efficiency : float
+        Global efficiency.
+
     cost_max : float
         Cost of the network at the maximum global cost efficiency
     """
@@ -359,7 +362,7 @@ def threshold_global_cost_efficiency(mtx, iterations):
     # plt.legend()
     # plt.show()
 
-    return binary_mtx, threshold, global_cost_eff_max, efficiency
+    return binary_mtx, threshold, global_cost_eff_max, efficiency, cost_max
 
 
 def threshold_omst_global_cost_efficiency(mtx):

@@ -56,7 +56,7 @@ def test_graphs_threshold_global_cost_efficiency():
 
     graph = np.load('data/test_graphs_threshold_graph.npy')
     iterations = 50
-    binary_mask, _, _, _ = threshold_global_cost_efficiency(graph, iterations)
+    binary_mask, _, _, _, _ = threshold_global_cost_efficiency(graph, iterations)
 
     np.testing.assert_array_equal(expected, binary_mask)
 
