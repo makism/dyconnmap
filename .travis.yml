@@ -1,5 +1,7 @@
 language: python
 
+cache: pip
+
 python:
   - 2.7
 
@@ -10,7 +12,7 @@ script:
   - cd /home/travis/build/makism/dyfunconn/tests/
   - nosetests --cover-tests --with-coverage --cover-package=dyfunconn
 
-after_success:  
+after_success:
   - coveralls
   - coverage xml
   - python-codacy-coverage -r coverage.xml
