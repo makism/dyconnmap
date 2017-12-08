@@ -26,6 +26,7 @@ def k_core_decomposition(mtx, threshold):
     .. [Hagman2008] Hagmann, P., Cammoun, L., Gigandet, X., Meuli, R., Honey, C. J., Wedeen, V. J., & Sporns, O. (2008). Mapping the structural core of human cerebral cortex. PLoS biology, 6(7), e159.
 
 
+
     Parameters
     ----------
     mtx : array-like, shape(N, N)
@@ -34,32 +35,32 @@ def k_core_decomposition(mtx, threshold):
     threshold : int
         Degree threshold.
 
+
     Returns
     -------
     k_cores : array-like, shape(N, 1)
         A binary matrix of the decomposed cores.
-
     """
-    imtx = mtx # input matrix ;)
+    imtx = mtx
 
-    rows, cols = np.shape(mtx)
+    N, _ = np.shape(mtx)
 
-    in_degree = np.sum(mtx, 0)
-    out_degree = np.sum(mtx, 1)
+    # in_degree = np.sum(mtx, 0)
+    # out_degree = np.sum(mtx, 1)
 
     degree = bct.degrees_und(mtx);
 
-    for i in range(rows):
+    for i in range(N):
         if degree[i] < threshold:
-            for l in range(rows):
+            for l in range(N):
                 imtx[i, l] = 0
 
         # Recalculate the list of the degrees
         degree = bct.degrees_und(imtx)
 
-    k_cores = np.zeros((rows, 1), dtype=np.int32)
+    k_cores = np.zeros((N, 1), dtype=np.int32)
 
-    for i in range(rows):
+    for i in range(N):
         if degree[i] > 0:
             k_cores[i] = 1
 
@@ -70,6 +71,7 @@ def threshold_mst_mean_degree(mtx, avg_degree):
     """ Threshold a graph based on mean using minimum spanning trees.
 
 
+
     Parameters
     ----------
     mtx : array-like, shape(N, N)
@@ -78,11 +80,11 @@ def threshold_mst_mean_degree(mtx, avg_degree):
     avg_degree : float
         Mean degree threshold.
 
+
     Returns
     -------
     binary_mtx : array-like, shape(N, N)
         A binary mask matrix.
-
     """
     N, _ = np.shape(mtx)
 
@@ -161,6 +163,7 @@ def threshold_mean_degree(mtx, threshold_mean_degree):
     """ Threshold a graph based on the mean degree.
 
 
+
     Parameters
     ----------
     mtx : array-like, shape(N, N)
@@ -169,29 +172,27 @@ def threshold_mean_degree(mtx, threshold_mean_degree):
     threshold_mean_degree : int
         Mean degree threshold.
 
+
     Returns
     -------
     binary_mtx : array-like, shape(N, N)
         A binary mask matrix.
-
     """
     binary_mtx = np.zeros_like(mtx, dtype=np.int32)
-    rows, cols = np.shape(mtx)
+    N, _ = np.shape(mtx)
 
-    iter = 100
-    step = 1.0 / iter
+    iterations = 100
+    step = 1.0 / iterations
     thres = 0.0
-    thresdeg = np.zeros((iter, 2))
+    thresdeg = np.zeros((iterations, 2))
 
-    graph = nx.from_numpy_matrix(mtx)
-
-    for i in range(iter):
+    for i in range(iterations):
         thres += step
 
         tmp_binary = np.zeros_like(binary_mtx)
 
-        for k in range(cols):
-            for l in range(k + 1, rows):
+        for k in range(N):
+            for l in range(k + 1, N):
                 if mtx[k, l] > thres:
                     tmp_binary[k, l] = 1
                     tmp_binary[l, k] = 1
@@ -202,21 +203,20 @@ def threshold_mean_degree(mtx, threshold_mean_degree):
         thresdeg[i, 1] = thres
 
     # find the nearest mean degree to kk
-    diff = np.zeros((iter, 1))
+    diff = np.zeros((iterations, 1))
 
-    for i in range(iter):
+    for i in range(iterations):
         diff[i] = np.abs(thresdeg[i, 0] - threshold_mean_degree)
 
     # find the mean degree with the min difference from kk
     r = np.argmin(diff)
 
     # find the threhold corresponds to the mean degree
-    mdegree = 0
     mdegree = thresdeg[r, 0]
     thres = thresdeg[r, 1]
 
-    for k in range(cols):
-        for l in range(k + 1, rows):
+    for k in range(N):
+        for l in range(k + 1, N):
             if mtx[k, l] > thres:
                 binary_mtx[k, l] = 1
                 binary_mtx[l, k] = 1
@@ -230,6 +230,7 @@ def threshold_shortest_paths(mtx, treatment=False):
     .. [Dimitriadis2010] Dimitriadis, S. I., Laskaris, N. A., Tsirka, V., Vourkas, M., Micheloyannis, S., & Fotopoulos, S. (2010). Tracking brain dynamics via time-dependent network analysis. Journal of neuroscience methods, 193(1), 145-155.
 
 
+
     Parameters
     ----------
     mtx : array-like, shape(N, N)
@@ -239,11 +240,11 @@ def threshold_shortest_paths(mtx, treatment=False):
         Convert the weights to distances by inversing the matrix. Also,
         fill the diagonal with zeroes. Default `false`.
 
+
     Returns
     -------
     binary_mtx : array-like, shape(N, N)
         A binary mask matrix.
-
     """
     imtx = mtx
     if treatment:
@@ -280,6 +281,7 @@ def threshold_global_cost_efficiency(mtx, iterations):
     .. [Basset2009] Bassett, D. S., Bullmore, E. T., Meyer-Lindenberg, A., Apud, J. A., Weinberger, D. R., & Coppola, R. (2009). Cognitive fitness of cost-efficient brain functional networks. Proceedings of the National Academy of Sciences, 106(28), 11747-11752.
 
 
+
     Parameters
     ----------
     mtx : array-like, shape(N, N)
@@ -302,7 +304,6 @@ def threshold_global_cost_efficiency(mtx, iterations):
 
     cost_max : float
         Cost of the network at the maximum global cost efficiency
-
     """
     binary_mtx = np.zeros_like(mtx, dtype=np.int32)
 
@@ -369,6 +370,7 @@ def threshold_omst_global_cost_efficiency(mtx):
     .. [Basset2009] Bassett, D. S., Bullmore, E. T., Meyer-Lindenberg, A., Apud, J. A., Weinberger, D. R., & Coppola, R. (2009). Cognitive fitness of cost-efficient brain functional networks. Proceedings of the National Academy of Sciences, 106(28), 11747-11752.
 
 
+
     Parameters
     ----------
     mtx : array-like, shape(N, N)
@@ -394,8 +396,6 @@ def threshold_omst_global_cost_efficiency(mtx):
 
     cost_max : float
         Cost of the network at the maximum global cost efficiency.
-
-
     """
     imtx = np.copy(mtx)
     imtx_uptril = np.copy(mtx)
@@ -439,7 +439,8 @@ def threshold_omst_global_cost_efficiency(mtx):
         links = list(mst.edges())
 
         new_mst = np.zeros((N, N))
-        for k in range(len(links)):
+        mst_num_links = len(links)
+        for k in range(mst_num_links):
             link1 = links[k][0]
             link2 = links[k][1]
 
