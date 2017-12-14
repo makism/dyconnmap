@@ -2,7 +2,7 @@
 
 Notes
 -----
-Snippet adapted from: https://gist.github.com/Satra/aa3d19a12b74e9ab7941
+Snippet adapted from:
 
 
 """
@@ -59,7 +59,7 @@ def complexity_index(x, sub_len=-1, normalize=True, iter=200):
     print spectrum
 
     all_num_words = list()
-    for word_len in range(2, max_len_word + 1):
+    for word_len in range(1, max_len_word):
         cumulative_words = None
 
         for shift in range(word_len):
