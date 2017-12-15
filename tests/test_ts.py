@@ -22,7 +22,8 @@ from dyfunconn.ts import (aaft,
                           dcorr,
                           fisher_score,
                           fisher_z_plv,
-                          fisher_z)
+                          fisher_z,
+                          complexity_index)
 
 
 ts = None
@@ -306,6 +307,7 @@ def test_fisher_score():
     result = fisher_score(x, y)
     np.testing.assert_array_almost_equal(result, 0.138355761177)
 
+
 def test_fisher_z_plv():
     from dyfunconn.fc import plv
 
@@ -321,3 +323,15 @@ def test_fisher_z_plv():
     print symm_avg
     ts = fisher_z_plv(avg)
     print ts
+
+
+def test_complexity_index():
+    expected_ci = np.float32(np.load('data/test_ts_ci_complexity_index.npy').flatten()[0])
+    expected_spectrum = np.load('data/test_ts_ci_spectrum.npy')
+
+    ts = np.load('data/test_ts_ci_ts.npy')
+    ci, spectrum = complexity_index(ts, sub_len=50)
+
+    # np.testing.assert_array_equal(expected_ci, ci)
+    assert(expected_ci == ci)
+    np.testing.assert_array_equal(expected_spectrum, spectrum)
