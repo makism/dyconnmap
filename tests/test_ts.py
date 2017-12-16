@@ -310,20 +310,21 @@ def test_fisher_score():
 
 
 def test_fisher_z_plv():
+    """ WIP """
     from dyfunconn.fc import plv
 
     np.set_printoptions(precision=2, linewidth=256)
 
-    print ""
+    # print ""
     data = np.load("../examples/data/eeg_32chans_10secs.npy")
     ts, avg = plv(data, [1.0, 4.0], 128.0)
 
     symm_avg = avg + avg.T
     np.fill_diagonal(symm_avg, 1.0)
 
-    print symm_avg
+    # print symm_avg
     ts = fisher_z_plv(avg)
-    print ts
+    # print ts
 
 
 def test_complexity_index():
