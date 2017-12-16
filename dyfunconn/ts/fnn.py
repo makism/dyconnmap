@@ -13,14 +13,7 @@
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
 import numpy as np
-import scipy
-from scipy import io
-import sklearn
-from sklearn import metrics
 
-
-def euclidean_distance(x, y):
-    return np.sqrt(np.sum(np.power(x - y, 2), 1))
 
 def fnn(ts, tau, max_dim=20, neighbors_reduction=0.10, rtol=15, atol=2):
     """ False Nearest Neighbors
@@ -56,8 +49,6 @@ def fnn(ts, tau, max_dim=20, neighbors_reduction=0.10, rtol=15, atol=2):
     """
     ts = ts.flatten()
 
-    length = len(ts)
-
     neighbors_perc = neighbors_reduction * 100.0
     fnn_ini = 0.0
     min_dimension = None
@@ -70,7 +61,7 @@ def fnn(ts, tau, max_dim=20, neighbors_reduction=0.10, rtol=15, atol=2):
         if ed_ts is not None and num_points > 0:
             distances = np.zeros((num_points, num_points))
             for i in range(num_points):
-                distances[i, :] = euclidean_distance(ed_ts, np.ones((num_points, dim)) * ed_ts[i, :])
+                distances[i, :] = __euclidean_distance(ed_ts, np.ones((num_points, dim)) * ed_ts[i, :])
 
             indices = np.argsort(distances)
             sort_distances = np.sort(distances)
@@ -94,6 +85,10 @@ def fnn(ts, tau, max_dim=20, neighbors_reduction=0.10, rtol=15, atol=2):
             break
 
     return min_dimension
+
+
+def __euclidean_distance(x, y):
+    return np.sqrt(np.sum(np.power(x - y, 2), 1))
 
 
 def __embed_delay(ts, dim, tau):

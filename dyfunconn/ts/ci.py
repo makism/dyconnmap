@@ -64,7 +64,7 @@ def complexity_index(x, sub_len=-1, normalize=False, iterations=100):
         mean_ci = 0.0
         num_letters = spectrum[0]
 
-        for iteration in range(iterations):
+        for _ in range(iterations):
             new_x = np.int32(np.floor(rng.rand(len_x) * num_letters))
             new_ci, _ = __compute_complexity_index(new_x, sub_len)
             mean_ci += new_ci / iterations
@@ -170,7 +170,7 @@ def __rowsBaseConv(x, base=None):
     if base is None:
         base = np.max(x) + 1
 
-    n, p = np.shape(x)
+    _, p = np.shape(x)
 
     bases = np.ones(p) * base
     indices = range(p-1, -1, -1)
