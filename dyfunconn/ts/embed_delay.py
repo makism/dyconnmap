@@ -20,16 +20,11 @@ import numpy as np
 def embed_delay(ts, dim, tau):
     """ Embed delay
 
-    Build a set of embedding sequences from given time series X with lag Tau
-    and embedding dimension DE. Let X = [x(1), x(2), ... , x(N)], then for each
-    i such that 1 < i <  N - (D - 1) * Tau, we build an embedding sequence,
-    Y(i) = [x(i), x(i + Tau), ... , x(i + (D - 1) * Tau)]. All embedding
-    sequence are placed in a matrix Y.
-
 
     Parameters
     ----------
-    ts : 1d array
+    ts : array-like, shape(1, n_samples)
+        Symbolic time series.
 
     dim : int
         The embedding dimension.
@@ -37,20 +32,29 @@ def embed_delay(ts, dim, tau):
     tau : int
         Time delay factor.
 
-
     Returns
     -------
-    new_ts : array
-        The embedding sequeces.
-
+    y : array-like
+        The embedded timeseries.
     """
     ts = ts.flatten()
-    new_ts = np.zeros([len(ts), dim])
+    new_ts = np.zeros((dim, len(ts)))
+    new_ts[0, :] = ts
 
-    l = np.int32(np.floor(dim / 2.0))
-    for i, o in zip(range(0, dim), range(-l, l + 1)):
-        data = np.roll(ts, -tau + o)
-        new_ts[:, i] = data
-    new_ts = new_ts[:-(dim - 1) * tau, ]
+    l = len(ts)
+    m = l - (dim - 1) * tau
+    if dim == 1:
+        m = l - tau
 
-    return new_ts
+    if m < 0:
+        return None
+
+    for i in range(1, dim):
+        offset = i - 1
+        tmp = np.roll(new_ts[offset], l - tau)
+        new_ts[i] = tmp
+    new_ts = new_ts.T
+
+    y = new_ts[0:m, 0:dim]
+
+    return y
