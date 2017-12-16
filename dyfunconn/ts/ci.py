@@ -18,7 +18,6 @@ Notes
 
 """
 import numpy as np
-np.set_printoptions(precision=2, linewidth=256)
 
 
 def complexity_index(x, sub_len=-1, normalize=False, iterations=100):
