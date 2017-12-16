@@ -23,7 +23,8 @@ from dyfunconn.ts import (aaft,
                           fisher_score,
                           fisher_z_plv,
                           fisher_z,
-                          complexity_index)
+                          complexity_index,
+                          fnn)
 
 
 ts = None
@@ -335,3 +336,16 @@ def test_complexity_index():
     # np.testing.assert_array_equal(expected_ci, ci)
     assert(expected_ci == ci)
     np.testing.assert_array_equal(expected_spectrum, spectrum)
+
+
+def test_fnn():
+    ts = np.load('data/test_ts_fnn.npy')
+
+    min_dimension = fnn(ts, tau=5)
+    assert(min_dimension == 19)
+
+    min_dimension = fnn(ts, tau=5)
+    assert(min_dimension == 19)
+
+    min_dimension = fnn(ts, tau=15)
+    assert(min_dimension == 7)

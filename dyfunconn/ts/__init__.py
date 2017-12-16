@@ -19,6 +19,7 @@ from .markov_matrix import markov_matrix
 from .dcorr import dcorr
 from .teager_kaiser_energy import teager_kaiser_energy
 from .ci import complexity_index
+from .fnn import fnn
 
 __all__ = ['fisher_z', 'fisher_z_plv', 'fisher_score',
            'sample_entropy',
@@ -34,5 +35,6 @@ __all__ = ['fisher_z', 'fisher_z_plv', 'fisher_score',
            'dcorr',
            'markov_matrix',
            'teager_kaiser_energy',
-           'complexity_index'
+           'complexity_index',
+           'fnn'
            ]
