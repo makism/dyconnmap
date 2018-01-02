@@ -15,7 +15,7 @@
 import numpy as np
 
 
-def fnn(ts, tau, max_dim=20, neighbors_reduction=0.10, rtol=15, atol=2):
+def fnn(ts, tau, max_dim=20, neighbors_reduction=0.10, rtol=15.0, atol=2.0):
     """ False Nearest Neighbors
 
     Notes
@@ -37,9 +37,11 @@ def fnn(ts, tau, max_dim=20, neighbors_reduction=0.10, rtol=15, atol=2):
     neighbors_reduction : float
         Maximum percentage of neighbors reduction. Default '0.10' (10%).
 
-    rtol : int
+    rtol : float
+        First threshold, criterion to identify a false neighbor. (Neighborhood size)
 
-    atol : int
+    atol : float
+        Second threshold, criterion to identify a false neighbor.
 
 
     Returns
