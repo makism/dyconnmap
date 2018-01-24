@@ -7,8 +7,7 @@ Other sudmodules are introduced for analyzing symbolic timeseries, clustering, s
 
 Built on [NumPy](http://www.numpy.org/), [SciPy](http://www.scipy.org/), [matplotlib](http://matplotlib.org/) and [networkx](https://networkx.github.io/) (and some other libs ;P)
 
-* [![poster presented @ 13th International Conference for Cognitive Neuroscience in Amsterdam (ICON2017)](https://f1000research.com/posters/6-1638)](https://f1000research.com/posters/6-1638) [![DOI](https://img.shields.io/badge/DOI-10.7490%2Ff1000research.1114652.1-blue.svg)](http://dx.doi.org/10.7490/f1000research.1114652.1)
-
+* [poster presented @ 13th International Conference for Cognitive Neuroscience in Amsterdam \(ICON2017\)](https://f1000research.com/posters/6-1638) [![DOI](https://img.shields.io/badge/DOI-10.7490%2Ff1000research.1114652.1-blue.svg)](http://dx.doi.org/10.7490/f1000research.1114652.1)
 
 #### Workflow outline
 
