@@ -22,7 +22,9 @@ from dyfunconn.ts import (aaft,
                           dcorr,
                           fisher_score,
                           fisher_z_plv,
-                          fisher_z)
+                          fisher_z,
+                          complexity_index,
+                          fnn)
 
 
 ts = None
@@ -306,18 +308,45 @@ def test_fisher_score():
     result = fisher_score(x, y)
     np.testing.assert_array_almost_equal(result, 0.138355761177)
 
+
 def test_fisher_z_plv():
+    """ WIP """
     from dyfunconn.fc import plv
 
     np.set_printoptions(precision=2, linewidth=256)
 
-    print ""
+    # print ""
     data = np.load("../examples/data/eeg_32chans_10secs.npy")
     ts, avg = plv(data, [1.0, 4.0], 128.0)
 
     symm_avg = avg + avg.T
     np.fill_diagonal(symm_avg, 1.0)
 
-    print symm_avg
+    # print symm_avg
     ts = fisher_z_plv(avg)
-    print ts
+    # print ts
+
+
+def test_complexity_index():
+    expected_ci = np.float32(np.load('data/test_ts_ci_complexity_index.npy').flatten()[0])
+    expected_spectrum = np.load('data/test_ts_ci_spectrum.npy')
+
+    ts = np.load('data/test_ts_ci_ts.npy')
+    ci, spectrum = complexity_index(ts, sub_len=50)
+
+    # np.testing.assert_array_equal(expected_ci, ci)
+    assert(expected_ci == ci)
+    np.testing.assert_array_equal(expected_spectrum, spectrum)
+
+
+def test_fnn():
+    ts = np.load('data/test_ts_fnn.npy')
+
+    min_dimension = fnn(ts, tau=5)
+    assert(min_dimension == 19)
+
+    min_dimension = fnn(ts, tau=5)
+    assert(min_dimension == 19)
+
+    min_dimension = fnn(ts, tau=15)
+    assert(min_dimension == 7)
