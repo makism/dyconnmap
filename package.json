@@ -1,35 +1,35 @@
 {
-  "name": "dyfunconn",
-  "version": "",
-  "description": "",
-  "keywords": [
-    "python"
-  ],
-  "dependencies": {
-    "numpy": "^1.13.1",
-    "scipy": "^0.19.1",
-    "matplotlib": "^2.0.2",
-    "networkx": "^2.0",
-    "statsmodels": "^0.8.0",
-    "scikit-learn": "^0.19.0",
-    "bctpy": "^0.5.0"
-  },
-  "devDependencies": {
-    "nose": "^1.3.7",
-    "python-coveralls",
-    "codacy-coverage",
-    "coverage",
-    "codecov"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/makism/dyfunconn"
-  },
-  "homepage": "",
-  "bugs": "",
-  "author": {
-    "name": "",
-    "email": ""
-  },
-  "license": "BSD 3-Clause"
+	"name": "dyfunconn",
+	"version": "",
+	"description": "",
+	"keywords": [
+		"python"
+	],
+	"dependencies": {
+		"numpy": "^1.13.1",
+		"scipy": "^0.19.1",
+		"matplotlib": "^2.0.2",
+		"networkx": "^2.0",
+		"statsmodels": "^0.8.0",
+		"scikit-learn": "^0.19.0",
+		"bctpy": "^0.5.0"
+	},
+	"devDependencies": {
+		"nose": "^1.3.7",
+		"python-coveralls": "",
+		"codacy-coverage": "",
+		"coverage": "",
+		"codecov": ""
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/makism/dyfunconn"
+	},
+	"homepage": "",
+	"bugs": "",
+	"author": {
+		"name": "",
+		"email": ""
+	},
+	"license": "BSD 3-Clause"
 }
