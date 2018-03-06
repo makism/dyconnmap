@@ -18,19 +18,29 @@ import numpy as np
 import scipy.optimize
 
 
-def graph_diffusion_distance(a, b):
+def graph_diffusion_distance(a, b, threshold=1e-14):
     """
 
 
     Parameters
     ----------
-    a
+    a :
+        Input matrix.
 
-    b
+    b :
+        Input matrix.
+
+    threshold : float
+        A threshold to filter out the small eigenvalues. If the you get NaN or INFs, try lowering this threshold.
 
 
+    Returns
+    -------
+    gdd : float
+        The computed graph diffusion distance value.
 
-
+    xopt : float
+        The timestep in which the gdd was computed.
     """
     L1 = __graph_laplacian(a)
     L2 = __graph_laplacian(b)
@@ -39,7 +49,7 @@ def graph_diffusion_distance(a, b):
     w2, v2 = np.linalg.eig(L2)
 
     eigs = np.hstack((np.diag(w1), np.diag(w2)))
-    eigs = eigs[np.where(eigs > 1e-14)]
+    eigs = eigs[np.where(eigs > threshold)]
     eigs = np.sort(eigs)
 
     t_upperbound = np.real(1.0 / eigs[0])
