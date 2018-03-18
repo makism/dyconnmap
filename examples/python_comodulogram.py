@@ -59,7 +59,7 @@ eeg = data['data'][:, 0:32, :]
 
 n_trials, n_channels, n_samples = np.shape(eeg)
 
-print n_trials, n_channels, n_samples
+print(n_trials, n_channels, n_samples)
 
 
 # In[7]:
@@ -82,8 +82,8 @@ A = len(f_amps)
 
 # In[92]:
 
-print f_phases
-print f_amps
+print(f_phases)
+print(f_amps)
 
 
 # In[ ]:

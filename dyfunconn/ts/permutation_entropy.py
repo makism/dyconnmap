@@ -16,7 +16,7 @@ import numpy as np
 import scipy
 import itertools
 
-from embed_delay import embed_delay
+from .embed_delay import embed_delay
 
 
 def permutation_entropy(signal, m, tau):
@@ -49,7 +49,7 @@ def permutation_entropy(signal, m, tau):
 
     factorial_dim = np.int(scipy.misc.factorial(m))
 
-    ipermlist = itertools.permutations(range(1, m + 1))
+    ipermlist = itertools.permutations(list(range(1, m + 1)))
     npermlist = np.zeros((factorial_dim, m))
     for index, perm in enumerate(ipermlist):
         perm = np.reshape(perm, (1, -1)).astype(np.float32)

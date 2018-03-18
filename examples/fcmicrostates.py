@@ -14,4 +14,4 @@ from dyfunconn.cluster import NeuralGas
 if __name__ == "__main__":
     data = np.load("data/eeg_32chans_10secs.npy")
 
-    print np.shape(data)
+    print(np.shape(data))

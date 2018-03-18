@@ -14,5 +14,5 @@ if __name__ == "__main__":
     ts = rng.randint(1, 10, [100])
     norm_ci, ci, spectrum = complexity_index(ts, sub_len=25, normalize=True)
 
-    print ("Normalized complexity index: %f" % (norm_ci))
-    print ("Complexity index: %f" % (ci))
+    print(("Normalized complexity index: %f" % (norm_ci)))
+    print(("Complexity index: %f" % (ci)))

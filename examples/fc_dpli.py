@@ -13,4 +13,4 @@ if __name__ == "__main__":
 
     v= dpli(data, [1.0, 4.0], 128.0)
 
-    print v
+    print(v)

@@ -173,7 +173,7 @@ def __rowsBaseConv(x, base=None):
     _, p = np.shape(x)
 
     bases = np.ones(p) * base
-    indices = range(p-1, -1, -1)
+    indices = list(range(p-1, -1, -1))
     base = np.power(bases, indices)
 
     result = x.dot(base)

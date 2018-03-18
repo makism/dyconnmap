@@ -25,7 +25,7 @@ phases, while a value of one denotes a perfect synchronization.
 """
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
-from estimator import Estimator
+from .estimator import Estimator
 from ..analytic_signal import analytic_signal
 
 import numpy as np

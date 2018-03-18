@@ -12,7 +12,7 @@ Chicago
 """
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
-from estimator import Estimator
+from .estimator import Estimator
 from ..analytic_signal import analytic_signal
 
 from matplotlib import mlab

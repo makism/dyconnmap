@@ -1,3 +1,8 @@
+# -*- coding: utf-8 -*-
+""" UMatrix Visualization
+
+
+"""
 import numpy as np
 import scipy as sp
 import matplotlib.pyplot as plt
@@ -7,52 +12,11 @@ import sklearn
 from sklearn import preprocessing
 
 
-def make_hexagon():
-    verts = [
-        (0.5, 0.), (0.5, 1.),
-        (1., 1.5),
-        (1.5, 1), (1.5, 0),
-        (1., -0.5),
-        (0., -0.5),
-    ]
-
-    codes = [Path.MOVETO,
-             Path.LINETO,
-             Path.LINETO,
-             Path.LINETO,
-             Path.LINETO,
-             Path.LINETO,
-             Path.CLOSEPOLY,
-             ]
-    path = Path(verts, codes)
-
-    return path
-
-def wrap_kernel(center, mtx):
-    x, y = center
-
-    left = None
-    right = None
-    top = None
-    bottom = None
-
-    if x-1 >= 0:
-        left = mtx[x-1, y]
-    if x+1 < np.shape(mtx)[0]:
-        right= mtx[x+1, y]
-    if y-1 >= 0:
-        top  = mtx[x, y-1]
-    if y+1 < np.shape(mtx)[1]:
-        bottom=mtx[x, y+1]
-
-    neighbors = np.array([left, right, top, bottom])
-    neighbors = neighbors[neighbors != np.array(None)]
-
-    mtx[center] = np.median(neighbors)
-
 def umatrix(M):
+    """
+
+    """
     grid_x, grid_y, dim = np.shape(M)
-    # dim = 4
 
     ux = 2 * grid_x - 1
     uy = 2 * grid_y - 1
@@ -89,6 +53,33 @@ def umatrix(M):
     indices = np.where(U == np.inf)
     for x,y in zip(indices[0], indices[1]):
         center = (x, y)
-        wrap_kernel(center, U)
+        __wrap_kernel(center, U)
 
     return U
+
+
+def __wrap_kernel(center, mtx):
+    """
+
+
+    """
+    x, y = center
+
+    left = None
+    right = None
+    top = None
+    bottom = None
+
+    if x-1 >= 0:
+        left = mtx[x-1, y]
+    if x+1 < np.shape(mtx)[0]:
+        right= mtx[x+1, y]
+    if y-1 >= 0:
+        top  = mtx[x, y-1]
+    if y+1 < np.shape(mtx)[1]:
+        bottom=mtx[x, y+1]
+
+    neighbors = np.array([left, right, top, bottom])
+    neighbors = neighbors[neighbors != np.array(None)]
+
+    mtx[center] = np.median(neighbors)

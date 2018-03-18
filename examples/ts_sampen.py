@@ -17,4 +17,4 @@ if __name__ == "__main__":
     x = rng.randint(10, size=1000)
     sampen = sample_entropy(x)
 
-    print sampen
+    print(sampen)

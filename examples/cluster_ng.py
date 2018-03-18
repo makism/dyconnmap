@@ -14,4 +14,4 @@ if __name__ == "__main__":
     ng = dyfunconn.cluster.NeuralGas(rng=rng).fit(data)
     encoding, symbols = ng.encode(data)
 
-    print symbols
+    print(symbols)

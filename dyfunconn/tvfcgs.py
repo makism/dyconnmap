@@ -48,7 +48,7 @@ resulting into :math:`\\frac{n}{step}` adjacency matrices of size
 
 import numpy as np
 
-from fc.estimator import Estimator
+from .fc.estimator import Estimator
 
 
 def tvfcg(data, estimator_instance, fb, fs, cc=2.0, step=5.0, pairs=None):
@@ -107,8 +107,8 @@ def tvfcg(data, estimator_instance, fb, fs, cc=2.0, step=5.0, pairs=None):
     if pairs is None:
         pairs = [(win_id, int(win_id * step), int(window_length + (win_id * step)), c1, c2)
                  for win_id in range(windows)
-                 for c1 in xrange(0, n_channels)
-                 for c2 in xrange(c1, n_channels)
+                 for c1 in range(0, n_channels)
+                 for c2 in range(c1, n_channels)
                  if c1 != c2
                  ]
 
@@ -195,8 +195,8 @@ def tvfcg_cfc(data, estimator_instance, fb_lo, fb_hi, fs=128, cc=2.0, step=5, pa
     if pairs is None:
         pairs = [(win_id, (win_id * step), window_length + (win_id * step), c1, c2)
                  for win_id in range(windows)
-                 for c1 in xrange(0, n_channels)
-                 for c2 in xrange(c1, n_channels)
+                 for c1 in range(0, n_channels)
+                 for c2 in range(c1, n_channels)
                  if c1 != c2
                  ]
 

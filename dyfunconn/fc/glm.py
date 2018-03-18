@@ -70,6 +70,7 @@ def glm(data, fb_lo, fb_hi, fs, pairs=None, window_size=-1):
     n_channels, n_samples = np.shape(data)
 
     windows = n_samples / window_size
+    windows = np.int32(windows)
     if windows <= 0:
         windows = 1
         window_size = -1

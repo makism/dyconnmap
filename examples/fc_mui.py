@@ -13,4 +13,4 @@ if __name__ == "__main__":
 
     mi = mutual_information(x1, x2)
 
-    print mi
+    print(mi)

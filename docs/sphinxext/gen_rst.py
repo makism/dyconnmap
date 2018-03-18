@@ -7,7 +7,7 @@ example files.
 Files that generate images should start with 'plot'
 
 """
-from __future__ import division, print_function
+
 from time import time
 import ast
 import os
@@ -24,10 +24,10 @@ import warnings
 
 # Try Python 2 first, otherwise load from Python 3
 try:
-    from StringIO import StringIO
-    import cPickle as pickle
+    from io import StringIO
+    import pickle as pickle
     import urllib2 as urllib
-    from urllib2 import HTTPError, URLError
+    from urllib.error import HTTPError, URLError
 except ImportError:
     from io import StringIO
     import pickle
@@ -46,9 +46,9 @@ except NameError:
             exec (code, global_vars, local_vars)
 
 try:
-    basestring
+    str
 except NameError:
-    basestring = str
+    str = str
 
 import token
 import tokenize
@@ -93,7 +93,7 @@ def _get_data(url):
     if url.startswith('http://'):
         # Try Python 2, use Python 3 on exception
         try:
-            resp = urllib.urlopen(url)
+            resp = urllib.request.urlopen(url)
             encoding = resp.headers.dict.get('content-encoding', 'plain')
         except AttributeError:
             resp = urllib.request.urlopen(url)
@@ -270,11 +270,11 @@ class SphinxDocLinkResolver(object):
         if full_name in self._searchindex['objects']:
             value = self._searchindex['objects'][full_name]
             if isinstance(value, dict):
-                value = value[next(iter(value.keys()))]
+                value = value[next(iter(list(value.keys())))]
             fname_idx = value[0]
         elif cobj['module_short'] in self._searchindex['objects']:
             value = self._searchindex['objects'][cobj['module_short']]
-            if cobj['name'] in value.keys():
+            if cobj['name'] in list(value.keys()):
                 fname_idx = value[cobj['name']][0]
 
         if fname_idx is not None:
@@ -310,7 +310,7 @@ class SphinxDocLinkResolver(object):
                     # Decode bytes under Python 3
                     comb_name = comb_name.decode('utf-8', 'replace')
                 if comb_name in html:
-                    url = link + u'#' + comb_name
+                    url = link + '#' + comb_name
             link = url
         else:
             link = False
@@ -859,7 +859,7 @@ def generate_file_rst(fname, target_dir, src_dir, root_dir, plot_gallery):
                 my_stdout = Tee(sys.stdout, my_buffer)
                 sys.stdout = my_stdout
                 my_globals = {'pl': plt}
-                execfile(os.path.basename(src_file), my_globals)
+                exec(compile(open(os.path.basename(src_file)).read(), os.path.basename(src_file), 'exec'), my_globals)
                 time_elapsed = time() - t0
                 sys.stdout = orig_stdout
                 my_stdout = my_buffer.getvalue()
@@ -961,7 +961,7 @@ def generate_file_rst(fname, target_dir, src_dir, root_dir, plot_gallery):
             pickle.dump(example_code_obj, fid, pickle.HIGHEST_PROTOCOL)
 
     backrefs = set('{module_short}.{name}'.format(**entry)
-                   for entry in example_code_obj.values()
+                   for entry in list(example_code_obj.values())
                    if entry['module'].startswith('sklearn'))
     return backrefs
 
@@ -1011,7 +1011,7 @@ def embed_code_links(app, exception):
                     fid.close()
                     str_repl = {}
                     # generate replacement strings with the links
-                    for name, cobj in example_code_obj.items():
+                    for name, cobj in list(example_code_obj.items()):
                         this_module = cobj['module'].split('.')[0]
 
                         if this_module not in doc_resolvers:

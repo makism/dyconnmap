@@ -70,7 +70,9 @@ def test_surrogate_analysis_fdr():
         ts1, ts2, num_surr=1000, estimator_func=None, ts1_no_surr=False, rng=rng)
 
     num_ts = 2
-    p_vals = np.ones([num_ts * (num_ts - 1) / 2, 1]) * p_val
+    num_pvals = num_ts  * (num_ts -1) / 2.0
+    num_pvals = np.int32(num_pvals)
+    p_vals = np.ones([num_pvals, 1]) * p_val
     h, crit_p = fdr(p_vals, 0.01, 'pdep')
 
     expected_result = np.load("data/test_ts_surrogates_fdr_h.npy")
@@ -109,7 +111,9 @@ def test_surrogate_analysis2_fdr():
         ts1, ts2, num_surr=1000, ts1_no_surr=True, rng=rng)
 
     num_ts = 2
-    p_vals = np.ones([num_ts * (num_ts - 1) / 2, 1]) * p_val
+    num_pvals = num_ts  * (num_ts -1) / 2.0
+    num_pvals = np.int32(num_pvals)
+    p_vals = np.ones([num_pvals, 1]) * p_val
     h, crit_p = fdr(p_vals, 0.01, 'pdep')
 
     expected_result = np.load("data/test_ts_surrogates2_fdr_h.npy")
@@ -193,7 +197,10 @@ def test_aaft():
 
 
 def test_fdr():
-    pvals = np.ones((1, 2 * (2 - 1) / 2)) * 0.0025
+    num_pvals = 2 * (2 - 1) / 2.0
+    num_pvals = np.int32(num_pvals)
+
+    pvals = np.ones((1, num_pvals)) * 0.0025
     q = 0.01
     method = "pdep"
 
@@ -241,7 +248,8 @@ def test_symbolic_transfer_entropy():
 
 
 def test_wald():
-    data = np.load("../examples/data/wald_test_ts.npy").item()
+    # data = np.load("../examples/data/wald_test_ts.npy").item()
+    data = np.load("../examples/data/wald_test_ts.npy",  encoding='latin1').item()
 
     x = data['x']
     y = data['y']

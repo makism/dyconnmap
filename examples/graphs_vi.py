@@ -21,5 +21,5 @@ if __name__ == '__main__':
 
     vi, nvi = variation_information(Ca, Cb)
 
-    print vi
-    print nvi
+    print(vi)
+    print(nvi)

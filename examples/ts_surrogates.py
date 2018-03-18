@@ -23,4 +23,4 @@ if __name__ == "__main__":
     method = 'pdep'
     h, crit_p = fdr(p_vals, q, method)
 
-    print "p-value: {0}, h: {1} (critical p-value: {2})".format(p_val, h, crit_p)
+    print("p-value: {0}, h: {1} (critical p-value: {2})".format(p_val, h, crit_p))

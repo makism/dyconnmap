@@ -17,7 +17,7 @@ def try_PLV(data):
 
     ts, avg = plv_within(data, fb, fs)
 
-    print avg
+    print(avg)
 
 
 def try_MI(data):
@@ -35,7 +35,7 @@ def try_MI(data):
     estimator = getattr(estimator_instance, "estimate")
     result, result_norm = estimator(result)
 
-    print "MI mtx shape:", np.shape(result)
+    print("MI mtx shape:", np.shape(result))
 
 
 def try_TVFCG(data):

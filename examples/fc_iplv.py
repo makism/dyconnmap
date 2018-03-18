@@ -12,4 +12,4 @@ if __name__ == "__main__":
 
     ts, avg = iplv(data, [1.0, 4.0], 128.0)
 
-    print avg
+    print(avg)

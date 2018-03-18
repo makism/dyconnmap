@@ -129,7 +129,7 @@ def test_pac_one_channel():
     estimator = PLV(f_lo, fs)
     ts, avg = pac(data, f_lo, f_hi, fs, estimator)
 
-    avg = np.real(avg)
+    avg = np.squeeze(np.real(avg))
 
     expected = 0.468296707219
     nose.tools.assert_almost_equal(avg, expected)

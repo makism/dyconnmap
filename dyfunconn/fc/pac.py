@@ -91,7 +91,7 @@ class PAC(Estimator):
     def estimate(self, phases, phases_lohi):
         num_ts, ts_len = np.shape(phases)
 
-        self.pairs = [(r1, r2) for r1 in xrange(0, num_ts) for r2 in xrange(r1, num_ts)]
+        self.pairs = [(r1, r2) for r1 in range(0, num_ts) for r2 in range(r1, num_ts)]
 
         pacs_ts = np.zeros((num_ts, num_ts, ts_len), dtype=np.complex)
         pacs_avg = np.zeros((num_ts, num_ts))

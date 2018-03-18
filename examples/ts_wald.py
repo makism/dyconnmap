@@ -16,12 +16,12 @@ if __name__ == "__main__":
     x = data['x']
     y = data['y']
 
-    print np.shape(x)
+    print(np.shape(x))
 
     # Test
     w, r, e, we = wald(x, y)
 
-    print w
+    print(w)
 
     # Plot
     e = e - 1

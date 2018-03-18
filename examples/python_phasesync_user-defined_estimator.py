@@ -10,10 +10,10 @@ from dyfunconn import PhaseSync
 
 
 def myestimator(data, synchpairs, ts, avg, fb, fs):
-    print ts
-    print avg
-    print fb
-    print fs
+    print(ts)
+    print(avg)
+    print(fb)
+    print(fs)
 
     ts = None
     avg = -1.0
@@ -26,5 +26,5 @@ if __name__ == '__main__':
     psync = PhaseSync([1.0, 4.0], 128, estimator=myestimator)
     psync.timeseries(data)
 
-    print psync.ts
-    print psync.ts_avg
+    print(psync.ts)
+    print(psync.ts_avg)
