@@ -173,16 +173,11 @@
 <div class="viewcode-block" id="embed_delay"><a class="viewcode-back" href="../../../dyfunconn.ts.html#dyfunconn.ts.embed_delay.embed_delay">[docs]</a><span class="k">def</span> <span class="nf">embed_delay</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">dim</span><span class="p">,</span> <span class="n">tau</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Embed delay</span>
 
-<span class="sd">    Build a set of embedding sequences from given time series X with lag Tau</span>
-<span class="sd">    and embedding dimension DE. Let X = [x(1), x(2), ... , x(N)], then for each</span>
-<span class="sd">    i such that 1 &lt; i &lt;  N - (D - 1) * Tau, we build an embedding sequence,</span>
-<span class="sd">    Y(i) = [x(i), x(i + Tau), ... , x(i + (D - 1) * Tau)]. All embedding</span>
-<span class="sd">    sequence are placed in a matrix Y.</span>
-
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    ts : 1d array</span>
+<span class="sd">    ts : array-like, shape(1, n_samples)</span>
+<span class="sd">        Symbolic time series.</span>
 
 <span class="sd">    dim : int</span>
 <span class="sd">        The embedding dimension.</span>
@@ -190,23 +185,32 @@
 <span class="sd">    tau : int</span>
 <span class="sd">        Time delay factor.</span>
 
-
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    new_ts : array</span>
-<span class="sd">        The embedding sequeces.</span>
-
+<span class="sd">    y : array-like</span>
+<span class="sd">        The embedded timeseries.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">ts</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
-    <span class="n">new_ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">ts</span><span class="p">),</span> <span class="n">dim</span><span class="p">])</span>
+    <span class="n">new_ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">dim</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">ts</span><span class="p">)))</span>
+    <span class="n">new_ts</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">ts</span>
 
-    <span class="n">l</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">dim</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">))</span>
-    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">o</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">dim</span><span class="p">),</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="n">l</span><span class="p">,</span> <span class="n">l</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)):</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="o">-</span><span class="n">tau</span> <span class="o">+</span> <span class="n">o</span><span class="p">)</span>
-        <span class="n">new_ts</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span>
-    <span class="n">new_ts</span> <span class="o">=</span> <span class="n">new_ts</span><span class="p">[:</span><span class="o">-</span><span class="p">(</span><span class="n">dim</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">tau</span><span class="p">,</span> <span class="p">]</span>
+    <span class="n">l</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">l</span> <span class="o">-</span> <span class="p">(</span><span class="n">dim</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">tau</span>
+    <span class="k">if</span> <span class="n">dim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">l</span> <span class="o">-</span> <span class="n">tau</span>
 
-    <span class="k">return</span> <span class="n">new_ts</span></div>
+    <span class="k">if</span> <span class="n">m</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">dim</span><span class="p">):</span>
+        <span class="n">offset</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">new_ts</span><span class="p">[</span><span class="n">offset</span><span class="p">],</span> <span class="n">l</span> <span class="o">-</span> <span class="n">tau</span><span class="p">)</span>
+        <span class="n">new_ts</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span>
+    <span class="n">new_ts</span> <span class="o">=</span> <span class="n">new_ts</span><span class="o">.</span><span class="n">T</span>
+
+    <span class="n">y</span> <span class="o">=</span> <span class="n">new_ts</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">m</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="n">dim</span><span class="p">]</span>
+</div>
+    <span class="k">return</span> <span class="n">y</span>
 </pre></div>
 
            </div>
@@ -253,7 +257,7 @@
       <script type="text/javascript" src="../../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

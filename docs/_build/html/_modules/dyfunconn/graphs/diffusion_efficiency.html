@@ -193,8 +193,8 @@
 
     <span class="n">np</span><span class="o">.</span><span class="n">fill_diagonal</span><span class="p">(</span><span class="n">Ediff</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
     <span class="n">GEdiff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">Ediff</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">)</span> <span class="o">-</span> <span class="n">n</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">Ediff</span><span class="p">,</span> <span class="n">GEdiff</span></div>
+</div>
+    <span class="k">return</span> <span class="n">Ediff</span><span class="p">,</span> <span class="n">GEdiff</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">data</span> <span class="o">=</span>  <span class="n">scipy</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">loadmat</span><span class="p">(</span><span class="s1">&#39;/home/makism/mtx.mat&#39;</span><span class="p">)</span>
@@ -202,9 +202,9 @@
 
     <span class="n">ediff</span><span class="p">,</span> <span class="n">gdiff</span> <span class="o">=</span> <span class="n">diffusion_efficiency</span><span class="p">(</span><span class="n">mtx</span><span class="p">)</span>
 
-    <span class="nb">print</span> <span class="n">ediff</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">ediff</span><span class="p">)</span>
 
-    <span class="nb">print</span> <span class="n">gdiff</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">gdiff</span><span class="p">)</span>
 </pre></div>
 
            </div>
@@ -251,7 +251,7 @@
       <script type="text/javascript" src="../../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

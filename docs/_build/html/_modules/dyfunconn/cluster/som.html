@@ -178,6 +178,28 @@
 <div class="viewcode-block" id="SOM"><a class="viewcode-back" href="../../../dyfunconn.cluster.html#dyfunconn.cluster.som.SOM">[docs]</a><span class="k">class</span> <span class="nc">SOM</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; Self Organizing Map</span>
 
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    grid : list of length 2</span>
+<span class="sd">        The X and Y sizes of the grid</span>
+
+<span class="sd">    iterations : int</span>
+<span class="sd">        The maximum iterations</span>
+
+<span class="sd">    lrate : float</span>
+<span class="sd">        The initial rearning rate</span>
+
+<span class="sd">    n_jobs : int</span>
+<span class="sd">        Number of parallel jobs (will be passed to scikit-learn))</span>
+
+<span class="sd">    rng : object or None</span>
+<span class="sd">        An object of type numpy.random.RandomState</span>
+
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    protos : array-like, shape(n_protos, n_features)</span>
+<span class="sd">        The prototypical vectors</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -208,19 +230,19 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">timeConstant</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">numIterations</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mapRadius</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">learningRate</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">startLearningRate</span>
 
-    <span class="nd">@classmethod</span>
-<div class="viewcode-block" id="SOM.findBMU"><a class="viewcode-back" href="../../../dyfunconn.cluster.html#dyfunconn.cluster.som.SOM.findBMU">[docs]</a>    <span class="k">def</span> <span class="nf">findBMU</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<div class="viewcode-block" id="SOM.findBMU"><a class="viewcode-back" href="../../../dyfunconn.cluster.html#dyfunconn.cluster.som.SOM.findBMU">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">findBMU</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
         <span class="n">distance</span> <span class="o">=</span> <span class="mf">0.0</span>
         <span class="n">distance</span> <span class="o">+=</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
         <span class="n">distance</span> <span class="o">+=</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-
-        <span class="k">return</span> <span class="n">distance</span></div>
+</div>
+        <span class="k">return</span> <span class="n">distance</span>
 
 <div class="viewcode-block" id="SOM.fit"><a class="viewcode-back" href="../../../dyfunconn.cluster.html#dyfunconn.cluster.som.SOM.fit">[docs]</a>    <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
         <span class="p">[</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">_</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span>
 
         <span class="k">for</span> <span class="bp">self</span><span class="o">.</span><span class="n">currentIteration</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">numIterations</span><span class="p">):</span>
-            <span class="n">learn_sample</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">]</span> <span class="c1">#random.choice(data)</span>
+            <span class="n">learn_sample</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">]</span>
             <span class="n">learn_sample</span> <span class="o">=</span> <span class="n">learn_sample</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
 
             <span class="n">dist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>
@@ -251,8 +273,8 @@
                         <span class="n">w</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">learningRate</span> <span class="o">*</span> <span class="n">infl</span> <span class="o">*</span> <span class="p">(</span><span class="n">learn_sample</span> <span class="o">-</span> <span class="n">w</span><span class="p">)</span>
 
             <span class="n">learningRate</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">startLearningRate</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">currentIteration</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">numIterations</span><span class="p">)</span>
-
-        <span class="k">return</span> <span class="bp">self</span></div>
+</div>
+        <span class="k">return</span> <span class="bp">self</span>
 
 <div class="viewcode-block" id="SOM.encode"><a class="viewcode-back" href="../../../dyfunconn.cluster.html#dyfunconn.cluster.som.SOM.encode">[docs]</a>    <span class="k">def</span> <span class="nf">encode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">metric</span> <span class="o">=</span> <span class="s1">&#39;euclidean&#39;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Employ a nearest-neighbor rule to encode the given ``data`` using the codebook.</span>
@@ -282,8 +304,8 @@
         <span class="n">nbrs</span> <span class="o">=</span> <span class="n">NearestNeighbors</span><span class="p">(</span><span class="n">n_neighbors</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">algorithm</span> <span class="o">=</span> <span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">metric</span> <span class="o">=</span> <span class="n">metric</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">protos</span><span class="p">)</span>
         <span class="n">_</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__symbols</span> <span class="o">=</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">kneighbors</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__encoding</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">protos</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">__symbols</span><span class="p">]</span>
-
-        <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__encoding</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__symbols</span><span class="p">)</span></div></div>
+</div></div>
+        <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__encoding</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__symbols</span><span class="p">)</span>
 </pre></div>
 
            </div>
@@ -330,7 +352,7 @@
       <script type="text/javascript" src="../../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

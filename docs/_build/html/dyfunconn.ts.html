@@ -119,7 +119,7 @@
 <li class="toctree-l2"><a class="reference internal" href="dyfunconn.html#module-dyfunconn.analytic_signal">dyfunconn.analytic_signal module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dyfunconn.html#module-dyfunconn.bands">dyfunconn.bands module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dyfunconn.html#module-dyfunconn.tvfcgs">dyfunconn.tvfcgs module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dyfunconn.html#module-contents">Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.html#module-dyfunconn">Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -244,16 +244,14 @@
 <dt id="dyfunconn.ts.embed_delay.embed_delay">
 <code class="descclassname">dyfunconn.ts.embed_delay.</code><code class="descname">embed_delay</code><span class="sig-paren">(</span><em>ts</em>, <em>dim</em>, <em>tau</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/embed_delay.html#embed_delay"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.embed_delay.embed_delay" title="Permalink to this definition">¶</a></dt>
 <dd><p>Embed delay</p>
-<p>Build a set of embedding sequences from given time series X with lag Tau
-and embedding dimension DE. Let X = [x(1), x(2), ... , x(N)], then for each
-i such that 1 &lt; i &lt;  N - (D - 1) * Tau, we build an embedding sequence,
-Y(i) = [x(i), x(i + Tau), ... , x(i + (D - 1) * Tau)]. All embedding
-sequence are placed in a matrix Y.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>ts</strong> : 1d array</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>ts</strong> : array-like, shape(1, n_samples)</p>
+<blockquote>
+<div><p>Symbolic time series.</p>
+</div></blockquote>
 <p><strong>dim</strong> : int</p>
 <blockquote>
 <div><p>The embedding dimension.</p>
@@ -264,9 +262,9 @@ sequence are placed in a matrix Y.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>new_ts</strong> : array</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>y</strong> : array-like</p>
 <blockquote class="last">
-<div><p>The embedding sequeces.</p>
+<div><p>The embedded timeseries.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -312,7 +310,7 @@ sequence are placed in a matrix Y.</p>
 </div>
 <div class="section" id="module-dyfunconn.ts.fisher_z">
 <span id="dyfunconn-ts-fisher-z-module"></span><h2>dyfunconn.ts.fisher_z module<a class="headerlink" href="#module-dyfunconn.ts.fisher_z" title="Permalink to this headline">¶</a></h2>
-<p>Fisher&#8217;s Z Transformation</p>
+<p>Fisher’s Z Transformation</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -332,18 +330,18 @@ sequence are placed in a matrix Y.</p>
 <dl class="function">
 <dt id="dyfunconn.ts.fisher_z.fisher_z">
 <code class="descclassname">dyfunconn.ts.fisher_z.</code><code class="descname">fisher_z</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/fisher_z.html#fisher_z"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.fisher_z.fisher_z" title="Permalink to this definition">¶</a></dt>
-<dd><p>Fisher&#8217;s z-transformation</p>
-<p>For a given dataset <span class="math">\(p\)</span> bound to <span class="math">\([0.0, 1.0]\)</span>, we can use Fisher&#8217;s z-transformation to normalize it
+<dd><p>Fisher’s z-transformation</p>
+<p>For a given dataset <span class="math notranslate">\(p\)</span> bound to <span class="math notranslate">\([0.0, 1.0]\)</span>, we can use Fisher’s z-transformation to normalize it
 in an approximately Gaussian distribution.</p>
 <p>This transformation is computed as follows:</p>
-<div class="math">
+<div class="math notranslate">
 \[z_p := \frac{1}{2} \text{ln} \left ( \frac{1+p}{1-p} \right ) = \text{arctanh}(p)\]</div>
 </dd></dl>
 
 <dl class="function">
 <dt id="dyfunconn.ts.fisher_z.fisher_z_plv">
 <code class="descclassname">dyfunconn.ts.fisher_z.</code><code class="descname">fisher_z_plv</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/fisher_z.html#fisher_z_plv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.fisher_z.fisher_z_plv" title="Permalink to this definition">¶</a></dt>
-<dd><div class="math">
+<dd><div class="math notranslate">
 \[z^p_j = sin^{-1}(2 * PLV_j - 1)\]</div>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -364,35 +362,60 @@ in an approximately Gaussian distribution.</p>
 <div class="line"><br /></div>
 </div>
 <hr class="docutils" />
-<table class="docutils citation" frame="void" id="id5" rules="none">
+<table class="docutils citation" frame="void" id="kennel1992" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[Stam2007]</td><td>Stam, C. J., Nolte, G., &amp; Daffertshofer, A. (2007). Phase lag index: assessment of functional connectivity from multi channel EEG and MEG with diminished bias from common sources. Human brain mapping, 28(11), 1178-1193.</td></tr>
+<tr><td class="label">[Kennel1992]</td><td>Kennel, M. B., Brown, R., &amp; Abarbanel, H. D. (1992). Determining embedding dimension for phase-space reconstruction using a geometrical construction. Physical review A, 45(6), 3403.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="id6" rules="none">
+<table class="docutils citation" frame="void" id="abarbane2012" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[Hardmeier2014]</td><td>Hardmeier, M., Hatz, F., Bousleiman, H., Schindler, C., Stam, C. J., &amp; Fuhr, P. (2014). Reproducibility of functional connectivity and graph measures based on the phase lag index (PLI) and weighted phase lag index (wPLI) derived from high resolution EEG. PloS one, 9(10), e108648.</td></tr>
+<tr><td class="label">[Abarbane2012]</td><td>Abarbanel, H. (2012). Analysis of observed chaotic data. Springer Science &amp; Business Media.</td></tr>
 </tbody>
 </table>
 <dl class="function">
 <dt id="dyfunconn.ts.fnn.fnn">
-<code class="descclassname">dyfunconn.ts.fnn.</code><code class="descname">fnn</code><span class="sig-paren">(</span><em>ts</em>, <em>tau</em>, <em>dim</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/fnn.html#fnn"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.fnn.fnn" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
+<code class="descclassname">dyfunconn.ts.fnn.</code><code class="descname">fnn</code><span class="sig-paren">(</span><em>ts</em>, <em>tau</em>, <em>max_dim=20</em>, <em>neighbors_reduction=0.1</em>, <em>rtol=15.0</em>, <em>atol=2.0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/fnn.html#fnn"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.fnn.fnn" title="Permalink to this definition">¶</a></dt>
+<dd><p>False Nearest Neighbors</p>
+<table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>ts :</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>ts</strong> : array-like, 1d</p>
 <p><strong>tau</strong> : int</p>
-<p><strong>dim</strong> : int</p>
-<blockquote class="last">
+<blockquote>
+<div><p>Time-delay parameter.</p>
+</div></blockquote>
+<p><strong>max_dim</strong> : int</p>
+<blockquote>
 <div><p>Maximum embedding dimension.</p>
+</div></blockquote>
+<p><strong>neighbors_reduction</strong> : float</p>
+<blockquote>
+<div><p>Maximum percentage of neighbors reduction. Default ‘0.10’ (10%).</p>
+</div></blockquote>
+<p><strong>rtol</strong> : float</p>
+<blockquote>
+<div><p>First threshold, criterion to identify a false neighbor. (Neighborhood size)</p>
+</div></blockquote>
+<p><strong>atol</strong> : float</p>
+<blockquote>
+<div><p>Second threshold, criterion to identify a false neighbor.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>min_dimension</strong> : int</p>
+<blockquote class="last">
+<div><p>Minimum embedding dimension.</p>
 </div></blockquote>
 </td>
 </tr>
 </tbody>
 </table>
+<p class="rubric">Notes</p>
+<p>The execution stops either when the maxium number of embedding dimensions is
+reached, or the the number of neighbors is reduced to specific percentage.</p>
 </dd></dl>
 
 </div>
@@ -431,13 +454,13 @@ in an approximately Gaussian distribution.</p>
 <div class="line"><br /></div>
 </div>
 <hr class="docutils" />
-<table class="docutils citation" frame="void" id="id7" rules="none">
+<table class="docutils citation" frame="void" id="id5" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[Stam2007]</td><td>Stam, C. J., Nolte, G., &amp; Daffertshofer, A. (2007). Phase lag index: assessment of functional connectivity from multi channel EEG and MEG with diminished bias from common sources. Human brain mapping, 28(11), 1178-1193.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="id8" rules="none">
+<table class="docutils citation" frame="void" id="id6" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[Hardmeier2014]</td><td>Hardmeier, M., Hatz, F., Bousleiman, H., Schindler, C., Stam, C. J., &amp; Fuhr, P. (2014). Reproducibility of functional connectivity and graph measures based on the phase lag index (PLI) and weighted phase lag index (wPLI) derived from high resolution EEG. PloS one, 9(10), e108648.</td></tr>
@@ -482,12 +505,12 @@ in an approximately Gaussian distribution.</p>
 <p class="rubric">Notes</p>
 <ul class="simple">
 <li>The results may vary from the original MATLAB script because of
-the permutations&#8217; order.</li>
-<li>The permutations are generated from <span class="math">\([1, dim+1]\)</span> so there are
-no occurances of <span class="math">\(0.\)</span></li>
-<li>The extra <span class="math">\(+1\)</span> in the lines
+the permutations’ order.</li>
+<li>The permutations are generated from <span class="math notranslate">\([1, dim+1]\)</span> so there are
+no occurances of <span class="math notranslate">\(0.\)</span></li>
+<li>The extra <span class="math notranslate">\(+1\)</span> in the lines
 .. python: I = sklearn.preprocessing.normalize(I + 1)
-is in order to avoid :math:<a href="#id9"><span class="problematic" id="id10">`</span></a>0`s.</li>
+is in order to avoid :math:<a href="#id7"><span class="problematic" id="id8">`</span></a>0`s.</li>
 </ul>
 </dd></dl>
 
@@ -499,13 +522,13 @@ is in order to avoid :math:<a href="#id9"><span class="problematic" id="id10">`<
 <div class="line"><br /></div>
 </div>
 <hr class="docutils" />
-<table class="docutils citation" frame="void" id="id11" rules="none">
+<table class="docutils citation" frame="void" id="id9" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[Stam2007]</td><td>Stam, C. J., Nolte, G., &amp; Daffertshofer, A. (2007). Phase lag index: assessment of functional connectivity from multi channel EEG and MEG with diminished bias from common sources. Human brain mapping, 28(11), 1178-1193.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="id12" rules="none">
+<table class="docutils citation" frame="void" id="id10" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[Hardmeier2014]</td><td>Hardmeier, M., Hatz, F., Bousleiman, H., Schindler, C., Stam, C. J., &amp; Fuhr, P. (2014). Reproducibility of functional connectivity and graph measures based on the phase lag index (PLI) and weighted phase lag index (wPLI) derived from high resolution EEG. PloS one, 9(10), e108648.</td></tr>
@@ -519,15 +542,17 @@ is in order to avoid :math:<a href="#id9"><span class="problematic" id="id10">`<
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>signal :</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>signal</strong> : array-like, shape(N)</p>
+<blockquote>
+<div><p>Symblic time series (1D).</p>
+</div></blockquote>
 <p><strong>m</strong> : int</p>
 <blockquote>
 <div><p>Embedding dimension.</p>
 </div></blockquote>
 <p><strong>tau</strong> : int</p>
 <blockquote>
-<div><p>Time delay parame
-ter.</p>
+<div><p>Time delay parameter.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -553,13 +578,13 @@ ter.</p>
 <div class="line"><br /></div>
 </div>
 <hr class="docutils" />
-<table class="docutils citation" frame="void" id="id13" rules="none">
+<table class="docutils citation" frame="void" id="id11" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[Stam2007]</td><td>Stam, C. J., Nolte, G., &amp; Daffertshofer, A. (2007). Phase lag index: assessment of functional connectivity from multi channel EEG and MEG with diminished bias from common sources. Human brain mapping, 28(11), 1178-1193.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="id14" rules="none">
+<table class="docutils citation" frame="void" id="id12" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[Hardmeier2014]</td><td>Hardmeier, M., Hatz, F., Bousleiman, H., Schindler, C., Stam, C. J., &amp; Fuhr, P. (2014). Reproducibility of functional connectivity and graph measures based on the phase lag index (PLI) and weighted phase lag index (wPLI) derived from high resolution EEG. PloS one, 9(10), e108648.</td></tr>
@@ -595,14 +620,14 @@ ter.</p>
 <p class="rubric">Notes</p>
 <ul class="simple">
 <li>The results may vary from the original MATLAB script because of
-the permutations&#8217; order.</li>
+the permutations’ order.</li>
 <li>The results may vary from the original MATLAB script because of
-the order of the indices in the <a href="#id15"><span class="problematic" id="id16">:python:`numpy.where`</span></a>.</li>
-<li>The permutations are generated from <span class="math">\([1, dim+1]\)</span> so there are
-no occurances of <span class="math">\(0.\)</span></li>
-<li>The extra <span class="math">\(+1\)</span> in the lines
+the order of the indices in the <a href="#id13"><span class="problematic" id="id14">:python:`numpy.where`</span></a>.</li>
+<li>The permutations are generated from <span class="math notranslate">\([1, dim+1]\)</span> so there are
+no occurances of <span class="math notranslate">\(0.\)</span></li>
+<li>The extra <span class="math notranslate">\(+1\)</span> in the lines
 .. python: I = sklearn.preprocessing.normalize(I + 1)
-is in order to avoid :math:<a href="#id17"><span class="problematic" id="id18">`</span></a>0`s.</li>
+is in order to avoid :math:<a href="#id15"><span class="problematic" id="id16">`</span></a>0`s.</li>
 </ul>
 </dd></dl>
 
@@ -610,20 +635,20 @@ is in order to avoid :math:<a href="#id17"><span class="problematic" id="id18">`
 <div class="section" id="module-dyfunconn.ts.sampen">
 <span id="dyfunconn-ts-sampen-module"></span><h2>dyfunconn.ts.sampen module<a class="headerlink" href="#module-dyfunconn.ts.sampen" title="Permalink to this headline">¶</a></h2>
 <p>Sample Entropy</p>
-<div class="section" id="id19">
-<h3>Notes<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id17">
+<h3>Notes<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
 <p>Based on <a class="reference external" href="https://nl.mathworks.com/matlabcentral/fileexchange/35784-sample-entropy">https://nl.mathworks.com/matlabcentral/fileexchange/35784-sample-entropy</a></p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <hr class="docutils" />
-<table class="docutils citation" frame="void" id="id20" rules="none">
+<table class="docutils citation" frame="void" id="id18" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[Stam2007]</td><td>Stam, C. J., Nolte, G., &amp; Daffertshofer, A. (2007). Phase lag index: assessment of functional connectivity from multi channel EEG and MEG with diminished bias from common sources. Human brain mapping, 28(11), 1178-1193.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="id21" rules="none">
+<table class="docutils citation" frame="void" id="id19" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[Hardmeier2014]</td><td>Hardmeier, M., Hatz, F., Bousleiman, H., Schindler, C., Stam, C. J., &amp; Fuhr, P. (2014). Reproducibility of functional connectivity and graph measures based on the phase lag index (PLI) and weighted phase lag index (wPLI) derived from high resolution EEG. PloS one, 9(10), e108648.</td></tr>
@@ -637,7 +662,7 @@ is in order to avoid :math:<a href="#id17"><span class="problematic" id="id18">`
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : array-like, shape = [1, n_samples]</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : array-like, shape(1, n_samples)</p>
 <blockquote>
 <div><p>Symbolic time series.</p>
 </div></blockquote>
@@ -666,7 +691,7 @@ is in order to avoid :math:<a href="#id17"><span class="problematic" id="id18">`
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <dl class="last docutils">
-<dt><code class="xref py py-obj docutils literal"><span class="pre">dyfunconn.ts.embed_ts</span></code></dt>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">dyfunconn.ts.embed_ts</span></code></dt>
 <dd>Embedded timeseries</dd>
 </dl>
 </div>
@@ -685,7 +710,10 @@ is in order to avoid :math:<a href="#id17"><span class="problematic" id="id18">`
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>sym_ts :</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>sym_ts</strong> : array-like, shape(N)</p>
+<blockquote>
+<div><p>Symblic time series (1D)</p>
+</div></blockquote>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>entredrate</strong> : float</p>
@@ -706,10 +734,26 @@ is in order to avoid :math:<a href="#id17"><span class="problematic" id="id18">`
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>x :</strong> :</p>
-<p><strong>y :</strong> :</p>
-<p><strong>s :</strong> :</p>
-<p><strong>delay :</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>x</strong> : array-like, shape(N)</p>
+<blockquote>
+<div><p>Symblic time series (1D).</p>
+</div></blockquote>
+<p><strong>y</strong> : array-like, shape(N)</p>
+<blockquote>
+<div><p>Symbolic time series (1D).</p>
+</div></blockquote>
+<p><strong>s</strong> : int</p>
+<blockquote>
+<div><p>Embedding dimension.</p>
+</div></blockquote>
+<p><strong>delay</strong> : int</p>
+<blockquote>
+<div><p>Time delay parameter</p>
+</div></blockquote>
+<p><strong>verbose</strong> : boolean</p>
+<blockquote>
+<div><p>Print computation messages.</p>
+</div></blockquote>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>tent_diff</strong> : float</p>
@@ -872,23 +916,23 @@ is in order to avoid :math:<a href="#id17"><span class="problematic" id="id18">`
 <dl class="function">
 <dt id="dyfunconn.ts.fisher_z">
 <code class="descclassname">dyfunconn.ts.</code><code class="descname">fisher_z</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/fisher_z.html#fisher_z"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.fisher_z" title="Permalink to this definition">¶</a></dt>
-<dd><p>Fisher&#8217;s z-transformation</p>
-<p>For a given dataset <span class="math">\(p\)</span> bound to <span class="math">\([0.0, 1.0]\)</span>, we can use Fisher&#8217;s z-transformation to normalize it
+<dd><p>Fisher’s z-transformation</p>
+<p>For a given dataset <span class="math notranslate">\(p\)</span> bound to <span class="math notranslate">\([0.0, 1.0]\)</span>, we can use Fisher’s z-transformation to normalize it
 in an approximately Gaussian distribution.</p>
 <p>This transformation is computed as follows:</p>
-<div class="math">
+<div class="math notranslate">
 \[z_p := \frac{1}{2} \text{ln} \left ( \frac{1+p}{1-p} \right ) = \text{arctanh}(p)\]</div>
 </dd></dl>
 
 <dl class="function">
 <dt id="dyfunconn.ts.fisher_z_plv">
 <code class="descclassname">dyfunconn.ts.</code><code class="descname">fisher_z_plv</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/fisher_z.html#fisher_z_plv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.fisher_z_plv" title="Permalink to this definition">¶</a></dt>
-<dd><div class="math">
+<dd><div class="math notranslate">
 \[z^p_j = sin^{-1}(2 * PLV_j - 1)\]</div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<table class="docutils citation" frame="void" id="id22" rules="none">
+<table class="docutils citation" frame="void" id="id20" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[Mormann2005]</td><td>Mormann, F., Fell, J., Axmacher, N., Weber, B., Lehnertz, K., Elger, C. E., &amp; Fernández, G. (2005). Phase/amplitude reset and theta–gamma interaction in the human medial temporal lobe during a continuous word recognition memory task. Hippocampus, 15(7), 890-900.</td></tr>
@@ -909,7 +953,7 @@ in an approximately Gaussian distribution.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : array-like, shape = [1, n_samples]</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : array-like, shape(1, n_samples)</p>
 <blockquote>
 <div><p>Symbolic time series.</p>
 </div></blockquote>
@@ -938,7 +982,7 @@ in an approximately Gaussian distribution.</p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <dl class="last docutils">
-<dt><code class="xref py py-obj docutils literal"><span class="pre">dyfunconn.ts.embed_ts</span></code></dt>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">dyfunconn.ts.embed_ts</span></code></dt>
 <dd>Embedded timeseries</dd>
 </dl>
 </div>
@@ -948,16 +992,14 @@ in an approximately Gaussian distribution.</p>
 <dt id="dyfunconn.ts.embed_delay">
 <code class="descclassname">dyfunconn.ts.</code><code class="descname">embed_delay</code><span class="sig-paren">(</span><em>ts</em>, <em>dim</em>, <em>tau</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/embed_delay.html#embed_delay"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.embed_delay" title="Permalink to this definition">¶</a></dt>
 <dd><p>Embed delay</p>
-<p>Build a set of embedding sequences from given time series X with lag Tau
-and embedding dimension DE. Let X = [x(1), x(2), ... , x(N)], then for each
-i such that 1 &lt; i &lt;  N - (D - 1) * Tau, we build an embedding sequence,
-Y(i) = [x(i), x(i + Tau), ... , x(i + (D - 1) * Tau)]. All embedding
-sequence are placed in a matrix Y.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>ts</strong> : 1d array</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>ts</strong> : array-like, shape(1, n_samples)</p>
+<blockquote>
+<div><p>Symbolic time series.</p>
+</div></blockquote>
 <p><strong>dim</strong> : int</p>
 <blockquote>
 <div><p>The embedding dimension.</p>
@@ -968,9 +1010,9 @@ sequence are placed in a matrix Y.</p>
 </div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>new_ts</strong> : array</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>y</strong> : array-like</p>
 <blockquote class="last">
-<div><p>The embedding sequeces.</p>
+<div><p>The embedded timeseries.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -1072,7 +1114,10 @@ sequence are placed in a matrix Y.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>sym_ts :</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>sym_ts</strong> : array-like, shape(N)</p>
+<blockquote>
+<div><p>Symblic time series (1D)</p>
+</div></blockquote>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>entredrate</strong> : float</p>
@@ -1093,10 +1138,26 @@ sequence are placed in a matrix Y.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>x :</strong> :</p>
-<p><strong>y :</strong> :</p>
-<p><strong>s :</strong> :</p>
-<p><strong>delay :</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>x</strong> : array-like, shape(N)</p>
+<blockquote>
+<div><p>Symblic time series (1D).</p>
+</div></blockquote>
+<p><strong>y</strong> : array-like, shape(N)</p>
+<blockquote>
+<div><p>Symbolic time series (1D).</p>
+</div></blockquote>
+<p><strong>s</strong> : int</p>
+<blockquote>
+<div><p>Embedding dimension.</p>
+</div></blockquote>
+<p><strong>delay</strong> : int</p>
+<blockquote>
+<div><p>Time delay parameter</p>
+</div></blockquote>
+<p><strong>verbose</strong> : boolean</p>
+<blockquote>
+<div><p>Print computation messages.</p>
+</div></blockquote>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>tent_diff</strong> : float</p>
@@ -1156,12 +1217,12 @@ sequence are placed in a matrix Y.</p>
 <p class="rubric">Notes</p>
 <ul class="simple">
 <li>The results may vary from the original MATLAB script because of
-the permutations&#8217; order.</li>
-<li>The permutations are generated from <span class="math">\([1, dim+1]\)</span> so there are
-no occurances of <span class="math">\(0.\)</span></li>
-<li>The extra <span class="math">\(+1\)</span> in the lines
+the permutations’ order.</li>
+<li>The permutations are generated from <span class="math notranslate">\([1, dim+1]\)</span> so there are
+no occurances of <span class="math notranslate">\(0.\)</span></li>
+<li>The extra <span class="math notranslate">\(+1\)</span> in the lines
 .. python: I = sklearn.preprocessing.normalize(I + 1)
-is in order to avoid :math:<a href="#id23"><span class="problematic" id="id24">`</span></a>0`s.</li>
+is in order to avoid :math:<a href="#id21"><span class="problematic" id="id22">`</span></a>0`s.</li>
 </ul>
 </dd></dl>
 
@@ -1173,15 +1234,17 @@ is in order to avoid :math:<a href="#id23"><span class="problematic" id="id24">`
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>signal :</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>signal</strong> : array-like, shape(N)</p>
+<blockquote>
+<div><p>Symblic time series (1D).</p>
+</div></blockquote>
 <p><strong>m</strong> : int</p>
 <blockquote>
 <div><p>Embedding dimension.</p>
 </div></blockquote>
 <p><strong>tau</strong> : int</p>
 <blockquote>
-<div><p>Time delay parame
-ter.</p>
+<div><p>Time delay parameter.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -1238,12 +1301,12 @@ ter.</p>
 <p class="rubric">Notes</p>
 <ul class="simple">
 <li>The results may vary from the original MATLAB script because of
-the permutations&#8217; order.</li>
-<li>The permutations are generated from <span class="math">\([1, dim+1]\)</span> so there are
-no occurances of <span class="math">\(0.\)</span></li>
-<li>The extra <span class="math">\(+1\)</span> in the lines
+the permutations’ order.</li>
+<li>The permutations are generated from <span class="math notranslate">\([1, dim+1]\)</span> so there are
+no occurances of <span class="math notranslate">\(0.\)</span></li>
+<li>The extra <span class="math notranslate">\(+1\)</span> in the lines
 .. python: I = sklearn.preprocessing.normalize(I + 1)
-is in order to avoid :math:<a href="#id25"><span class="problematic" id="id26">`</span></a>0`s.</li>
+is in order to avoid :math:<a href="#id23"><span class="problematic" id="id24">`</span></a>0`s.</li>
 </ul>
 </dd></dl>
 
@@ -1277,14 +1340,14 @@ is in order to avoid :math:<a href="#id25"><span class="problematic" id="id26">`
 <p class="rubric">Notes</p>
 <ul class="simple">
 <li>The results may vary from the original MATLAB script because of
-the permutations&#8217; order.</li>
+the permutations’ order.</li>
 <li>The results may vary from the original MATLAB script because of
-the order of the indices in the <a href="#id27"><span class="problematic" id="id28">:python:`numpy.where`</span></a>.</li>
-<li>The permutations are generated from <span class="math">\([1, dim+1]\)</span> so there are
-no occurances of <span class="math">\(0.\)</span></li>
-<li>The extra <span class="math">\(+1\)</span> in the lines
+the order of the indices in the <a href="#id25"><span class="problematic" id="id26">:python:`numpy.where`</span></a>.</li>
+<li>The permutations are generated from <span class="math notranslate">\([1, dim+1]\)</span> so there are
+no occurances of <span class="math notranslate">\(0.\)</span></li>
+<li>The extra <span class="math notranslate">\(+1\)</span> in the lines
 .. python: I = sklearn.preprocessing.normalize(I + 1)
-is in order to avoid :math:<a href="#id29"><span class="problematic" id="id30">`</span></a>0`s.</li>
+is in order to avoid :math:<a href="#id27"><span class="problematic" id="id28">`</span></a>0`s.</li>
 </ul>
 </dd></dl>
 
@@ -1377,6 +1440,96 @@ is in order to avoid :math:<a href="#id29"><span class="problematic" id="id30">`
 </table>
 </dd></dl>
 
+<dl class="function">
+<dt id="dyfunconn.ts.complexity_index">
+<code class="descclassname">dyfunconn.ts.</code><code class="descname">complexity_index</code><span class="sig-paren">(</span><em>x</em>, <em>sub_len=-1</em>, <em>normalize=False</em>, <em>iterations=100</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/ci.html#complexity_index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.complexity_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Complexity Index</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>x :</strong> :</p>
+<blockquote>
+<div><p>Input symbolic time series.</p>
+</div></blockquote>
+<p><strong>sub_len</strong> : int</p>
+<blockquote>
+<div><p>Maximum subword length. Default is <cite>len(x) - 1</cite>.</p>
+</div></blockquote>
+<p><strong>normalize</strong> : bool</p>
+<blockquote>
+<div><p>Normalize result. Default is <cite>False</cite>.</p>
+</div></blockquote>
+<p><strong>iterationss</strong> : int</p>
+<blockquote>
+<div><p>Number of iterations to perform randomization. Default is <cite>100</cite>.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>normal_ci</strong> : float</p>
+<blockquote>
+<div><p>The computed omplexity index after normalization against the randomization
+procedure.</p>
+</div></blockquote>
+<p><strong>ci</strong> : float</p>
+<blockquote>
+<div><p>The computed complexity index.</p>
+</div></blockquote>
+<p><strong>spectrum</strong> : array-like</p>
+<blockquote class="last">
+<div><p>A list of the number of distinct subwords of length 1, up to the size
+of the input symbolic time series.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="dyfunconn.ts.fnn">
+<code class="descclassname">dyfunconn.ts.</code><code class="descname">fnn</code><span class="sig-paren">(</span><em>ts</em>, <em>tau</em>, <em>max_dim=20</em>, <em>neighbors_reduction=0.1</em>, <em>rtol=15.0</em>, <em>atol=2.0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/fnn.html#fnn"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.fnn" title="Permalink to this definition">¶</a></dt>
+<dd><p>False Nearest Neighbors</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>ts</strong> : array-like, 1d</p>
+<p><strong>tau</strong> : int</p>
+<blockquote>
+<div><p>Time-delay parameter.</p>
+</div></blockquote>
+<p><strong>max_dim</strong> : int</p>
+<blockquote>
+<div><p>Maximum embedding dimension.</p>
+</div></blockquote>
+<p><strong>neighbors_reduction</strong> : float</p>
+<blockquote>
+<div><p>Maximum percentage of neighbors reduction. Default ‘0.10’ (10%).</p>
+</div></blockquote>
+<p><strong>rtol</strong> : float</p>
+<blockquote>
+<div><p>First threshold, criterion to identify a false neighbor. (Neighborhood size)</p>
+</div></blockquote>
+<p><strong>atol</strong> : float</p>
+<blockquote>
+<div><p>Second threshold, criterion to identify a false neighbor.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>min_dimension</strong> : int</p>
+<blockquote class="last">
+<div><p>Minimum embedding dimension.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>The execution stops either when the maxium number of embedding dimensions is
+reached, or the the number of neighbors is reduced to specific percentage.</p>
+</dd></dl>
+
 </div>
 </div>
 
@@ -1432,7 +1585,7 @@ is in order to avoid :math:<a href="#id29"><span class="problematic" id="id30">`
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

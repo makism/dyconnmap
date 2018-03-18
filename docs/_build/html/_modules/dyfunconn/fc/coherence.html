@@ -247,8 +247,8 @@
         <span class="n">cohv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">csdxy</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">conj</span><span class="p">(</span><span class="n">csdxy</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">csdxx</span> <span class="o">*</span> <span class="n">csdyy</span><span class="p">)</span>
 
         <span class="n">coh</span><span class="p">[</span><span class="n">pair</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">cohv</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">cohv</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">coh</span></div>
+</div>
+    <span class="k">return</span> <span class="n">coh</span>
 
 
 <div class="viewcode-block" id="Coherence"><a class="viewcode-back" href="../../../dyfunconn.fc.html#dyfunconn.fc.coherence.Coherence">[docs]</a><span class="k">class</span> <span class="nc">Coherence</span><span class="p">(</span><span class="n">Estimator</span><span class="p">):</span>
@@ -278,8 +278,8 @@
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">pairs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">pairs</span> <span class="o">=</span> <span class="p">[(</span><span class="n">r1</span><span class="p">,</span> <span class="n">r2</span><span class="p">)</span> <span class="k">for</span> <span class="n">r1</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_channels</span><span class="p">)</span>
                           <span class="k">for</span> <span class="n">r2</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_channels</span><span class="p">)]</span>
-
-        <span class="k">return</span> <span class="n">filtered</span></div>
+</div>
+        <span class="k">return</span> <span class="n">filtered</span>
 
 <div class="viewcode-block" id="Coherence.estimate_pair"><a class="viewcode-back" href="../../../dyfunconn.fc.html#dyfunconn.fc.coherence.Coherence.estimate_pair">[docs]</a>    <span class="k">def</span> <span class="nf">estimate_pair</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ts1</span><span class="p">,</span> <span class="n">ts2</span><span class="p">):</span>
         <span class="n">csdxx</span><span class="p">,</span> <span class="n">fxx</span> <span class="o">=</span> <span class="n">mlab</span><span class="o">.</span><span class="n">csd</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">ts1</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">ts1</span><span class="p">,</span> <span class="n">Fs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">fs</span><span class="p">,</span>
@@ -290,8 +290,8 @@
                             <span class="n">scale_by_freq</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sides</span><span class="o">=</span><span class="s1">&#39;onesided&#39;</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">csdargs</span><span class="p">)</span>
 
         <span class="n">cohv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">csdxy</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">conj</span><span class="p">(</span><span class="n">csdxy</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">csdxx</span> <span class="o">*</span> <span class="n">csdyy</span><span class="p">)</span>
-
-        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">cohv</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">cohv</span><span class="p">)</span></div></div>
+</div></div>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">cohv</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">cohv</span><span class="p">)</span>
 </pre></div>
 
            </div>
@@ -338,7 +338,7 @@
       <script type="text/javascript" src="../../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

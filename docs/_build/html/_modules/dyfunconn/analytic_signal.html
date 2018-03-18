@@ -242,8 +242,8 @@
     <span class="n">filtered_signal</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">signal</span><span class="o">.</span><span class="n">filtfilt</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">signal</span><span class="p">)</span>
     <span class="n">hilberted_signal</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">signal</span><span class="o">.</span><span class="n">hilbert</span><span class="p">(</span><span class="n">filtered_signal</span><span class="p">)</span>
     <span class="n">unwrapped_phase</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unwrap</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">angle</span><span class="p">(</span><span class="n">hilberted_signal</span><span class="p">))</span>
-
-    <span class="k">return</span> <span class="p">(</span><span class="n">filtered_signal</span><span class="p">,</span> <span class="n">hilberted_signal</span><span class="p">,</span> <span class="n">unwrapped_phase</span><span class="p">)</span></div>
+</div>
+    <span class="k">return</span> <span class="p">(</span><span class="n">filtered_signal</span><span class="p">,</span> <span class="n">hilberted_signal</span><span class="p">,</span> <span class="n">unwrapped_phase</span><span class="p">)</span>
 </pre></div>
 
            </div>
@@ -290,7 +290,7 @@
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

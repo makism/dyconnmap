@@ -167,7 +167,8 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    sym_ts :</span>
+<span class="sd">    sym_ts : array-like, shape(N)</span>
+<span class="sd">        Symblic time series (1D)</span>
 
 
 <span class="sd">    Returns</span>
@@ -225,8 +226,8 @@
         <span class="n">sum1</span> <span class="o">=</span> <span class="n">sum1</span> <span class="o">+</span> <span class="n">prob</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">condentropy</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
 
     <span class="n">entredrate</span> <span class="o">=</span> <span class="p">(</span><span class="n">entropy</span> <span class="o">-</span> <span class="n">sum1</span><span class="p">)</span> <span class="o">/</span> <span class="n">entropy</span>
-
-    <span class="k">return</span> <span class="n">entredrate</span></div>
+</div>
+    <span class="k">return</span> <span class="n">entredrate</span>
 
 
 <div class="viewcode-block" id="symoblic_transfer_entropy"><a class="viewcode-back" href="../../../dyfunconn.ts.html#dyfunconn.ts.ste.symoblic_transfer_entropy">[docs]</a><span class="k">def</span> <span class="nf">symoblic_transfer_entropy</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
@@ -235,14 +236,20 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    x :</span>
+<span class="sd">    x : array-like, shape(N)</span>
+<span class="sd">        Symblic time series (1D).</span>
 
-<span class="sd">    y :</span>
+<span class="sd">    y : array-like, shape(N)</span>
+<span class="sd">        Symbolic time series (1D).</span>
 
-<span class="sd">    s :</span>
+<span class="sd">    s : int</span>
+<span class="sd">        Embedding dimension.</span>
 
-<span class="sd">    delay :</span>
+<span class="sd">    delay : int</span>
+<span class="sd">        Time delay parameter</span>
 
+<span class="sd">    verbose : boolean</span>
+<span class="sd">        Print computation messages.</span>
 
 
 <span class="sd">    Returns</span>
@@ -285,43 +292,52 @@
 
     <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">tent_diff</span> <span class="o">&gt;</span> <span class="mf">0.0</span> <span class="ow">and</span> <span class="n">tent_diff</span> <span class="o">!=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">:</span>
-            <span class="nb">print</span> <span class="s2">&quot;System x drives y.&quot;</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;System x drives y.&quot;</span><span class="p">)</span>
 
         <span class="k">elif</span> <span class="n">tent_diff</span> <span class="o">&lt;</span> <span class="mf">0.0</span><span class="p">:</span>
-            <span class="nb">print</span> <span class="s2">&quot;System y drives x.&quot;</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;System y drives x.&quot;</span><span class="p">)</span>
 
         <span class="k">elif</span> <span class="n">tent_diff</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>
-            <span class="nb">print</span> <span class="s2">&quot;Symmetric bidirectionality.&quot;</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Symmetric bidirectionality.&quot;</span><span class="p">)</span>
 
         <span class="k">elif</span> <span class="n">tent_diff</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">:</span>
-            <span class="nb">print</span> <span class="s2">&quot;No information can be extracted by the two symbolic time series.&quot;</span>
-
-    <span class="k">return</span> <span class="n">tent_diff</span><span class="p">,</span> <span class="n">tentxy</span><span class="p">,</span> <span class="n">tentyx</span></div>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No information can be extracted by the two symbolic time series.&quot;</span><span class="p">)</span>
+</div>
+    <span class="k">return</span> <span class="n">tent_diff</span><span class="p">,</span> <span class="n">tentxy</span><span class="p">,</span> <span class="n">tentyx</span>
 
 
 <span class="k">def</span> <span class="nf">__transfer_entropy</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">pxy</span><span class="p">,</span> <span class="n">num_symbols</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">delay</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">switch_indices</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot; Transfer Entropy</span>
+
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    x :</span>
+<span class="sd">    x : array-like, shape(N)</span>
+<span class="sd">        Symblic time series (1D).</span>
 
-<span class="sd">    y :</span>
+<span class="sd">    y : array-like, shape(N)</span>
+<span class="sd">        Symbolic time series (1D)</span>
 
-<span class="sd">    pxy :</span>
+<span class="sd">    pxy : float</span>
+<span class="sd">        The joint entropy.</span>
 
-<span class="sd">    num_symbols :</span>
+<span class="sd">    num_symbols : int</span>
+<span class="sd">        The number of unique symbols in the time series.</span>
 
-<span class="sd">    s :</span>
+<span class="sd">    s : int</span>
+<span class="sd">        Embedding dimension.</span>
 
-<span class="sd">    delay :</span>
+<span class="sd">    delay : int</span>
+<span class="sd">        Time delay parameter.</span>
 
-<span class="sd">    switch_indices :</span>
+<span class="sd">    switch_indices : boolean</span>
+<span class="sd">        Compute the transfer entropy from y -&gt; x.</span>
 
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-
+<span class="sd">    te : float</span>
+<span class="sd">        Transfer entropy.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">pxxy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_symbols</span><span class="p">,</span> <span class="n">num_symbols</span><span class="p">,</span> <span class="n">num_symbols</span><span class="p">))</span>
     <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">s</span><span class="p">):</span>
@@ -407,7 +423,7 @@
       <script type="text/javascript" src="../../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

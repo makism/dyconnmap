@@ -211,8 +211,8 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">iplv</span> <span class="o">=</span> <span class="n">IPLV</span><span class="p">(</span><span class="n">fb</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="n">pairs</span><span class="p">)</span>
     <span class="n">pp_data</span> <span class="o">=</span> <span class="n">iplv</span><span class="o">.</span><span class="n">preprocess</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">iplv</span><span class="o">.</span><span class="n">estimate</span><span class="p">(</span><span class="n">pp_data</span><span class="p">)</span></div>
+</div>
+    <span class="k">return</span> <span class="n">iplv</span><span class="o">.</span><span class="n">estimate</span><span class="p">(</span><span class="n">pp_data</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="IPLV"><a class="viewcode-back" href="../../../dyfunconn.fc.html#dyfunconn.fc.iplv.IPLV">[docs]</a><span class="k">class</span> <span class="nc">IPLV</span><span class="p">(</span><span class="n">Estimator</span><span class="p">):</span>
@@ -235,8 +235,8 @@
 
 <div class="viewcode-block" id="IPLV.preprocess"><a class="viewcode-back" href="../../../dyfunconn.fc.html#dyfunconn.fc.iplv.IPLV.preprocess">[docs]</a>    <span class="k">def</span> <span class="nf">preprocess</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
         <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">u_phases</span> <span class="o">=</span> <span class="n">analytic_signal</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">fb</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">fs</span><span class="p">)</span>
-
-        <span class="k">return</span> <span class="n">u_phases</span></div>
+</div>
+        <span class="k">return</span> <span class="n">u_phases</span>
 
 <div class="viewcode-block" id="IPLV.estimate_pair"><a class="viewcode-back" href="../../../dyfunconn.fc.html#dyfunconn.fc.iplv.IPLV.estimate_pair">[docs]</a>    <span class="k">def</span> <span class="nf">estimate_pair</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ts1</span><span class="p">,</span> <span class="n">ts2</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -258,12 +258,12 @@
 
         <span class="n">ts_plv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="p">(</span><span class="n">ts1</span> <span class="o">-</span> <span class="n">ts2</span><span class="p">))</span>
         <span class="n">avg_plv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">imag</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">ts_plv</span><span class="p">))))</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span>
-
-        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">imag</span><span class="p">(</span><span class="n">ts_plv</span><span class="p">),</span> <span class="n">avg_plv</span></div>
+</div>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">imag</span><span class="p">(</span><span class="n">ts_plv</span><span class="p">),</span> <span class="n">avg_plv</span>
 
 <div class="viewcode-block" id="IPLV.mean"><a class="viewcode-back" href="../../../dyfunconn.fc.html#dyfunconn.fc.iplv.IPLV.mean">[docs]</a>    <span class="k">def</span> <span class="nf">mean</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ts</span><span class="p">):</span>
-        <span class="n">l</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">ts</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
-        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">imgag</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">ts</span><span class="p">)))</span> <span class="o">/</span> <span class="n">l</span></div>
+        <span class="n">l</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">ts</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span></div>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">imgag</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">ts</span><span class="p">)))</span> <span class="o">/</span> <span class="n">l</span>
 
 <div class="viewcode-block" id="IPLV.estimate"><a class="viewcode-back" href="../../../dyfunconn.fc.html#dyfunconn.fc.iplv.IPLV.estimate">[docs]</a>    <span class="k">def</span> <span class="nf">estimate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -296,8 +296,8 @@
 
             <span class="n">ts</span><span class="p">[</span><span class="n">pair</span><span class="p">]</span> <span class="o">=</span> <span class="n">ts_plv</span>
             <span class="n">avg</span><span class="p">[</span><span class="n">pair</span><span class="p">]</span> <span class="o">=</span> <span class="n">avg_plv</span>
-
-        <span class="k">return</span> <span class="n">ts</span><span class="p">,</span> <span class="n">avg</span></div></div>
+</div></div>
+        <span class="k">return</span> <span class="n">ts</span><span class="p">,</span> <span class="n">avg</span>
 </pre></div>
 
            </div>
@@ -344,7 +344,7 @@
       <script type="text/javascript" src="../../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

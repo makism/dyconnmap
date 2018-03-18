@@ -241,8 +241,8 @@
 
     <span class="n">p_vals</span> <span class="o">=</span> <span class="n">p_vals</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
     <span class="n">surr_vals</span> <span class="o">=</span> <span class="n">surr_vals</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
-
-    <span class="k">return</span> <span class="n">p_vals</span><span class="p">,</span> <span class="n">surr_vals</span><span class="p">,</span> <span class="n">surrogates</span><span class="p">,</span> <span class="n">r_value</span></div>
+</div>
+    <span class="k">return</span> <span class="n">p_vals</span><span class="p">,</span> <span class="n">surr_vals</span><span class="p">,</span> <span class="n">surrogates</span><span class="p">,</span> <span class="n">r_value</span>
 
 
 <div class="viewcode-block" id="aaft"><a class="viewcode-back" href="../../../dyfunconn.ts.html#dyfunconn.ts.surrogates.aaft">[docs]</a><span class="k">def</span> <span class="nf">aaft</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">num_surr</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">rng</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -282,8 +282,8 @@
         <span class="n">T</span><span class="p">,</span> <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">T</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
 
         <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">r</span><span class="p">]</span>
-
-    <span class="k">return</span> <span class="n">s</span></div>
+</div>
+    <span class="k">return</span> <span class="n">s</span>
 
 
 <div class="viewcode-block" id="fdr"><a class="viewcode-back" href="../../../dyfunconn.ts.html#dyfunconn.ts.surrogates.fdr">[docs]</a><span class="k">def</span> <span class="nf">fdr</span><span class="p">(</span><span class="n">p_values</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;pdep&quot;</span><span class="p">):</span>
@@ -330,8 +330,8 @@
 
     <span class="n">h</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
     <span class="n">h</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">bool</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">h</span><span class="p">,</span> <span class="n">crit_p</span></div>
+</div>
+    <span class="k">return</span> <span class="n">h</span><span class="p">,</span> <span class="n">crit_p</span>
 
 
 <div class="viewcode-block" id="phase_rand"><a class="viewcode-back" href="../../../dyfunconn.ts.html#dyfunconn.ts.surrogates.phase_rand">[docs]</a><span class="k">def</span> <span class="nf">phase_rand</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">num_surr</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">rng</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -375,10 +375,10 @@
             <span class="n">b</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="n">half</span><span class="p">]</span>
             <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flipud</span><span class="p">(</span><span class="n">p1</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
 
-            <span class="n">p</span><span class="p">[</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_samples</span><span class="p">)]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="o">-</span><span class="n">c</span><span class="p">))</span>
+            <span class="n">p</span><span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_samples</span><span class="p">))]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="o">-</span><span class="n">c</span><span class="p">))</span>
 
-            <span class="n">a</span> <span class="o">=</span> <span class="n">m</span><span class="p">[</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">half</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span>
-            <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flipud</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">half</span><span class="p">)])</span>
+            <span class="n">a</span> <span class="o">=</span> <span class="n">m</span><span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">half</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))]</span>
+            <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flipud</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">half</span><span class="p">))])</span>
             <span class="n">m</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">((</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">p1</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">half</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
@@ -386,11 +386,11 @@
             <span class="n">a</span> <span class="o">=</span> <span class="n">p1</span>
             <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flipud</span><span class="p">(</span><span class="n">p1</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
 
-            <span class="n">p</span><span class="p">[</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_samples</span><span class="p">)]</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span>
+            <span class="n">p</span><span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_samples</span><span class="p">))]</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span>
 
         <span class="n">surrogates</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifft</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">p</span><span class="p">)</span> <span class="o">*</span> <span class="n">m</span><span class="p">))</span>
-
-    <span class="k">return</span> <span class="n">surrogates</span></div>
+</div>
+    <span class="k">return</span> <span class="n">surrogates</span>
 </pre></div>
 
            </div>
@@ -437,7 +437,7 @@
       <script type="text/javascript" src="../../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

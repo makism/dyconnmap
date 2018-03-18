@@ -100,7 +100,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#module-dyfunconn.analytic_signal">dyfunconn.analytic_signal module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-dyfunconn.bands">dyfunconn.bands module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-dyfunconn.tvfcgs">dyfunconn.tvfcgs module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-contents">Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-dyfunconn">Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -174,14 +174,17 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="dyfunconn.cluster.html">dyfunconn.cluster package</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="dyfunconn.cluster.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dyfunconn.cluster.html#module-dyfunconn.cluster.dmatrix">dyfunconn.cluster.dmatrix module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dyfunconn.cluster.html#module-dyfunconn.cluster.mng">dyfunconn.cluster.mng module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dyfunconn.cluster.html#module-dyfunconn.cluster.ng">dyfunconn.cluster.ng module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.cluster.html#dyfunconn-cluster-dmatrix-module">dyfunconn.cluster.dmatrix module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.cluster.html#module-dyfunconn.cluster.mng">dyfunconn.cluster.mng module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="dyfunconn.cluster.html#notes">Notes</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="dyfunconn.cluster.html#module-dyfunconn.cluster.som">dyfunconn.cluster.som module</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.cluster.html#module-dyfunconn.cluster.ng">dyfunconn.cluster.ng module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="dyfunconn.cluster.html#id2">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.cluster.html#module-dyfunconn.cluster.som">dyfunconn.cluster.som module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="dyfunconn.cluster.html#id3">Notes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="dyfunconn.cluster.html#module-dyfunconn.cluster.umatrix">dyfunconn.cluster.umatrix module</a></li>
@@ -267,7 +270,7 @@
 <li class="toctree-l2"><a class="reference internal" href="dyfunconn.ts.html#module-dyfunconn.ts.permutation_entropy">dyfunconn.ts.permutation_entropy module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dyfunconn.ts.html#module-dyfunconn.ts.rr_order_patterns">dyfunconn.ts.rr_order_patterns module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dyfunconn.ts.html#module-dyfunconn.ts.sampen">dyfunconn.ts.sampen module</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="dyfunconn.ts.html#id19">Notes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dyfunconn.ts.html#id17">Notes</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="dyfunconn.ts.html#module-dyfunconn.ts.ste">dyfunconn.ts.ste module</a></li>
@@ -286,23 +289,23 @@
 <div class="section" id="module-dyfunconn.analytic_signal">
 <span id="dyfunconn-analytic-signal-module"></span><h2>dyfunconn.analytic_signal module<a class="headerlink" href="#module-dyfunconn.analytic_signal" title="Permalink to this headline">¶</a></h2>
 <p>Analytic Signal</p>
-<p>For a time series <span class="math">\(x(t)\)</span>, filtered with a passband <span class="math">\(N`th order Butterworth filter [Butter1930]_
+<p>For a time series <span class="math notranslate">\(x(t)\)</span>, filtered with a passband <span class="math notranslate">\(N`th order Butterworth filter [Butter1930]_
 in the frequency range :math:`F_{lo} - F_{hi}\)</span>; first we compute its analytic representation <a class="reference internal" href="#cohen1995" id="id1">[Cohen1995]</a> , <a class="reference internal" href="#freeman2007" id="id2">[Freeman2007]</a>:</p>
-<div class="math">
+<div class="math notranslate">
 \[u_j(t) = \frac{1}{\pi} \textrm{PV} \int_{+\infty}^{-\infty} { \frac{V_j(t')}{t-t'} dt'}\]</div>
-<p>where <span class="math">\(PV\)</span> signifies the Cauchy Principal Value. The above equation results
-into a complex time-series <span class="math">\(V_j(t)\)</span>, with a real part <span class="math">\(v_j(t)\)</span> (the original neuroelectric
-time-series) and an imaginary part <span class="math">\(u_j(t)\)</span>, both as functions of time. Where <span class="math">\(j\)</span> the
+<p>where <span class="math notranslate">\(PV\)</span> signifies the Cauchy Principal Value. The above equation results
+into a complex time-series <span class="math notranslate">\(V_j(t)\)</span>, with a real part <span class="math notranslate">\(v_j(t)\)</span> (the original neuroelectric
+time-series) and an imaginary part <span class="math notranslate">\(u_j(t)\)</span>, both as functions of time. Where <span class="math notranslate">\(j\)</span> the
 EEG recording electrode id.</p>
 <p>From these parts, we are capable to determine the Instantaneous Amplitude:</p>
-<div class="math">
+<div class="math notranslate">
 \[A_j(t) = \sqrt{ v_j^2 (t) + u_j^2 (t) }\]</div>
 <p>and its Instantaneous Phase counterpart, from:</p>
-<div class="math">
+<div class="math notranslate">
 \[\phi_j (t) = atan \frac{u_j(t)} {v_j(t)}\]</div>
-<p>The values in <span class="math">\(\phi_j(t)\)</span> are originally bound to <span class="math">\([-\pi, \pi]\)</span>,
+<p>The values in <span class="math notranslate">\(\phi_j(t)\)</span> are originally bound to <span class="math notranslate">\([-\pi, \pi]\)</span>,
 however we employed an <em>unwrap</em> transformation (a phase correction
-algorithm) in order to eliminate the discontinuities <a class="reference internal" href="#id5" id="id3">[Dimitriadis2010]</a>, <a class="reference internal" href="#freeman2002" id="id4">[Freeman2002]</a>.</p>
+algorithm) in order to eliminate the discontinuities <a class="reference internal" href="dyfunconn.graphs.html#dimitriadis2010" id="id3">[Dimitriadis2010]</a>, <a class="reference internal" href="#freeman2002" id="id4">[Freeman2002]</a>.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -380,7 +383,7 @@ algorithm) in order to eliminate the discontinuities <a class="reference interna
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<p>Internally, we use SciPy&#8217;s Butterworth implementation (<cite>scipy.signal.butter</cite>)
+<p>Internally, we use SciPy’s Butterworth implementation (<cite>scipy.signal.butter</cite>)
 and the two-pass filter <cite>scipy.signal.filtfilt</cite> to achieve results identical
 to MATLAB.</p>
 </dd></dl>
@@ -391,7 +394,7 @@ to MATLAB.</p>
 <p>Commonly used band frequencies</p>
 <p>For your convenience we have predefined some widely adopted brain rhythms.
 You can access them with</p>
-<div class="highlight-python"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
 2</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="kn">from</span> <span class="nn">dyfunconn.bands</span> <span class="kn">import</span> <span class="o">*</span>
  <span class="k">print</span><span class="p">(</span><span class="n">bands</span><span class="p">[</span><span class="s1">&#39;alpha&#39;</span><span class="p">])</span>
 </pre></div>
@@ -411,35 +414,35 @@ You can access them with</p>
 <tbody valign="top">
 <tr class="row-even"><td>δ</td>
 <td>[1.0, 4.0]</td>
-<td>bands[&#8216;delta&#8217;]</td>
+<td>bands[‘delta’]</td>
 </tr>
 <tr class="row-odd"><td>θ</td>
 <td>[4.0, 8.0]</td>
-<td>bands[&#8216;theta&#8217;]</td>
+<td>bands[‘theta’]</td>
 </tr>
 <tr class="row-even"><td>α1</td>
 <td>[7.0, 10.0]</td>
-<td>bands[&#8216;alpha1&#8217;]</td>
+<td>bands[‘alpha1’]</td>
 </tr>
 <tr class="row-odd"><td>α2</td>
 <td>[10.0, 13.0]</td>
-<td>bands[&#8216;alpha2&#8217;]</td>
+<td>bands[‘alpha2’]</td>
 </tr>
 <tr class="row-even"><td>α</td>
 <td>[7.0, 13.0]</td>
-<td>bands[&#8216;alpha&#8217;]</td>
+<td>bands[‘alpha’]</td>
 </tr>
 <tr class="row-odd"><td>μ</td>
 <td>[8.0, 13.0]</td>
-<td>band[&#8216;mu&#8217;]</td>
+<td>band[‘mu’]</td>
 </tr>
 <tr class="row-even"><td>β</td>
 <td>[13.0, 25.0]</td>
-<td>bands[&#8216;beta&#8217;]</td>
+<td>bands[‘beta’]</td>
 </tr>
 <tr class="row-odd"><td>γ</td>
 <td>[25.0, 40.0]</td>
-<td>bands[&#8216;gamma&#8217;]</td>
+<td>bands[‘gamma’]</td>
 </tr>
 </tbody>
 </table>
@@ -455,26 +458,26 @@ natural graph-based representation called “functional connectivity graphs”
 (FCGs).</p>
 <p>An important aspect of the TVFCGs is the “cycle-criterion” (CC) [<a class="reference internal" href="#cohen2008">Cohen2008</a>].
 It regulates the amount of the oscillation cycles that will be considered in
-measuring the phase synchrony. In the original proposal <span class="math">\(CC = 2.0\)</span> was
+measuring the phase synchrony. In the original proposal <span class="math notranslate">\(CC = 2.0\)</span> was
 introduced, resulting into a time-window with width twice the lower period.
 TVFCGs on the other, consider the given lower frequency that correspond to the
 possibly synchronized oscillations of each brain rhythm and the sampling
 frequency. This newly defined frequency-depedent time-window is sliding over
 the time series and the network connectivity is estimated. The overlapping
 is determined by an arbitrary step parameter.</p>
-<p>Given a multi-channel recording data matrix <span class="math">\(X^{m \times n}\)</span> of
-size <span class="math">\(m \times n\)</span> (with <span class="math">\(m\)</span> channels, and <span class="math">\(n\)</span> samples), a
-frequency range with <span class="math">\(F_{up}\)</span> and <span class="math">\(F_{lo}\)</span> the upper and lower
-limits, <span class="math">\(fs\)</span> the sampling frequency, <span class="math">\(step\)</span> and <span class="math">\(CC\)</span>, the
+<p>Given a multi-channel recording data matrix <span class="math notranslate">\(X^{m \times n}\)</span> of
+size <span class="math notranslate">\(m \times n\)</span> (with <span class="math notranslate">\(m\)</span> channels, and <span class="math notranslate">\(n\)</span> samples), a
+frequency range with <span class="math notranslate">\(F_{up}\)</span> and <span class="math notranslate">\(F_{lo}\)</span> the upper and lower
+limits, <span class="math notranslate">\(fs\)</span> the sampling frequency, <span class="math notranslate">\(step\)</span> and <span class="math notranslate">\(CC\)</span>, the
 computation of these graphs proceeds as follows:</p>
-<p>Firstly, based on the <span class="math">\(CC\)</span> and the specified frequency range
-(<span class="math">\(F_{lo}\)</span> and <span class="math">\(fs\)</span> ) the window size calculated:</p>
-<div class="math">
+<p>Firstly, based on the <span class="math notranslate">\(CC\)</span> and the specified frequency range
+(<span class="math notranslate">\(F_{lo}\)</span> and <span class="math notranslate">\(fs\)</span> ) the window size calculated:</p>
+<div class="math notranslate">
 \[w_{len} = \frac{ CC }{ F_{lo} } fs\]</div>
-<p>Then, this window is moving per <span class="math">\(step\)</span> samples and the average
+<p>Then, this window is moving per <span class="math notranslate">\(step\)</span> samples and the average
 synchronization is computed (between the channels, in a pairwise manner)
-resulting into <span class="math">\(\frac{n}{step}\)</span> adjacency matrices of size
-<span class="math">\(n \times n\)</span>.</p>
+resulting into <span class="math notranslate">\(\frac{n}{step}\)</span> adjacency matrices of size
+<span class="math notranslate">\(n \times n\)</span>.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -494,15 +497,15 @@ resulting into <span class="math">\(\frac{n}{step}\)</span> adjacency matrices o
 <table class="docutils citation" frame="void" id="falani2008" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[Falani2008]</td><td>Fallani, F. D. V., Latora, V., Astolfi, L., Cincotti, F., Mattia, D., Marciani, M. G., ... &amp; Babiloni, F. (2008). Persistent patterns of interconnection in time-varying cortical networks estimated from high-resolution EEG recordings in humans during a simple motor act. Journal of Physics A: Mathematical and Theoretical, 41(22), 224014.</td></tr>
+<tr><td class="label">[Falani2008]</td><td>Fallani, F. D. V., Latora, V., Astolfi, L., Cincotti, F., Mattia, D., Marciani, M. G., … &amp; Babiloni, F. (2008). Persistent patterns of interconnection in time-varying cortical networks estimated from high-resolution EEG recordings in humans during a simple motor act. Journal of Physics A: Mathematical and Theoretical, 41(22), 224014.</td></tr>
 </tbody>
 </table>
 <dl class="function">
 <dt id="dyfunconn.tvfcgs.tvfcg">
 <code class="descclassname">dyfunconn.tvfcgs.</code><code class="descname">tvfcg</code><span class="sig-paren">(</span><em>data</em>, <em>estimator_instance</em>, <em>fb</em>, <em>fs</em>, <em>cc=2.0</em>, <em>step=5.0</em>, <em>pairs=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/tvfcgs.html#tvfcg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.tvfcgs.tvfcg" title="Permalink to this definition">¶</a></dt>
 <dd><p>Time-Varying Functional Connectivity Graphs</p>
-<p>The TVFCGs are computed from the input <code class="docutils literal"><span class="pre">data</span></code> by employing the given
-synchronization estimator (<code class="docutils literal"><span class="pre">estimator_instance</span></code>).</p>
+<p>The TVFCGs are computed from the input <code class="docutils literal notranslate"><span class="pre">data</span></code> by employing the given
+synchronization estimator (<code class="docutils literal notranslate"><span class="pre">estimator_instance</span></code>).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -513,7 +516,7 @@ synchronization estimator (<code class="docutils literal"><span class="pre">esti
 </div></blockquote>
 <p><strong>estimator_instance</strong> : object</p>
 <blockquote>
-<div><p>An object of type <a class="reference internal" href="dyfunconn.fc.html#dyfunconn.fc.Estimator" title="dyfunconn.fc.Estimator"><code class="xref py py-mod docutils literal"><span class="pre">dyfunconn.fc.Estimator</span></code></a>.</p>
+<div><p>An object of type <a class="reference internal" href="dyfunconn.fc.html#dyfunconn.fc.Estimator" title="dyfunconn.fc.Estimator"><code class="xref py py-mod docutils literal notranslate"><span class="pre">dyfunconn.fc.Estimator</span></code></a>.</p>
 </div></blockquote>
 <p><strong>fb</strong> : list of length 2</p>
 <blockquote>
@@ -554,8 +557,8 @@ synchronization estimator (<code class="docutils literal"><span class="pre">esti
 <dt id="dyfunconn.tvfcgs.tvfcg_cfc">
 <code class="descclassname">dyfunconn.tvfcgs.</code><code class="descname">tvfcg_cfc</code><span class="sig-paren">(</span><em>data</em>, <em>estimator_instance</em>, <em>fb_lo</em>, <em>fb_hi</em>, <em>fs=128</em>, <em>cc=2.0</em>, <em>step=5</em>, <em>pairs=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/tvfcgs.html#tvfcg_cfc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.tvfcgs.tvfcg_cfc" title="Permalink to this definition">¶</a></dt>
 <dd><p>Time-Varying Functional Connectivity Graphs (for Cross frequency Coupling)</p>
-<p>The TVFCGs are computed from the input <code class="docutils literal"><span class="pre">data</span></code> by employing the given
-cross frequency coupling synchronization estimator (<code class="docutils literal"><span class="pre">estimator_instance</span></code>).</p>
+<p>The TVFCGs are computed from the input <code class="docutils literal notranslate"><span class="pre">data</span></code> by employing the given
+cross frequency coupling synchronization estimator (<code class="docutils literal notranslate"><span class="pre">estimator_instance</span></code>).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -566,7 +569,7 @@ cross frequency coupling synchronization estimator (<code class="docutils litera
 </div></blockquote>
 <p><strong>estimator_instance</strong> : object</p>
 <blockquote>
-<div><p>An object of type <a class="reference internal" href="dyfunconn.fc.html#dyfunconn.fc.Estimator" title="dyfunconn.fc.Estimator"><code class="xref py py-mod docutils literal"><span class="pre">dyfunconn.fc.Estimator</span></code></a>.</p>
+<div><p>An object of type <a class="reference internal" href="dyfunconn.fc.html#dyfunconn.fc.Estimator" title="dyfunconn.fc.Estimator"><code class="xref py py-mod docutils literal notranslate"><span class="pre">dyfunconn.fc.Estimator</span></code></a>.</p>
 </div></blockquote>
 <p><strong>fb_lo</strong> : list of length 2</p>
 <blockquote>
@@ -606,7 +609,7 @@ cross frequency coupling synchronization estimator (<code class="docutils litera
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<p>Not all available estimators in the <a class="reference internal" href="dyfunconn.fc.html#module-dyfunconn.fc" title="dyfunconn.fc"><code class="xref py py-mod docutils literal"><span class="pre">dyfunconn.fc</span></code></a> are valid for estimating
+<p>Not all available estimators in the <a class="reference internal" href="dyfunconn.fc.html#module-dyfunconn.fc" title="dyfunconn.fc"><code class="xref py py-mod docutils literal notranslate"><span class="pre">dyfunconn.fc</span></code></a> are valid for estimating
 cross frequency coupling.</p>
 </dd></dl>
 
@@ -662,7 +665,7 @@ given the parameters.</p>
 <code class="descclassname">dyfunconn.tvfcgs.</code><code class="descname">tvfcg_ts</code><span class="sig-paren">(</span><em>ts</em>, <em>fb</em>, <em>fs=128</em>, <em>cc=2.0</em>, <em>step=5</em>, <em>pairs=None</em>, <em>avg_func=&lt;function mean&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/tvfcgs.html#tvfcg_ts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.tvfcgs.tvfcg_ts" title="Permalink to this definition">¶</a></dt>
 <dd><p>Time-Varying Function Connectivity Graphs (from time series)</p>
 <p>This implementation operates directly on the given estimated synchronization
-time series (<code class="docutils literal"><span class="pre">ts</span></code>) and the mean value inside the window is computed.</p>
+time series (<code class="docutils literal notranslate"><span class="pre">ts</span></code>) and the mean value inside the window is computed.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -707,9 +710,9 @@ time series (<code class="docutils literal"><span class="pre">ts</span></code>) 
 </dd></dl>
 
 </div>
-<div class="section" id="module-contents">
-<h2>Module contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="module-dyfunconn"></span><dl class="function">
+<div class="section" id="module-dyfunconn">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-dyfunconn" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
 <dt id="dyfunconn.analytic_signal">
 <code class="descclassname">dyfunconn.</code><code class="descname">analytic_signal</code><span class="sig-paren">(</span><em>signal</em>, <em>fb</em>, <em>fs=128</em>, <em>order=3</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/analytic_signal.html#analytic_signal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.analytic_signal" title="Permalink to this definition">¶</a></dt>
 <dd><p>Passband filtering and Hilbert transformation</p>
@@ -752,7 +755,7 @@ time series (<code class="docutils literal"><span class="pre">ts</span></code>) 
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<p>Internally, we use SciPy&#8217;s Butterworth implementation (<cite>scipy.signal.butter</cite>)
+<p>Internally, we use SciPy’s Butterworth implementation (<cite>scipy.signal.butter</cite>)
 and the two-pass filter <cite>scipy.signal.filtfilt</cite> to achieve results identical
 to MATLAB.</p>
 </dd></dl>
@@ -761,8 +764,8 @@ to MATLAB.</p>
 <dt id="dyfunconn.tvfcg">
 <code class="descclassname">dyfunconn.</code><code class="descname">tvfcg</code><span class="sig-paren">(</span><em>data</em>, <em>estimator_instance</em>, <em>fb</em>, <em>fs</em>, <em>cc=2.0</em>, <em>step=5.0</em>, <em>pairs=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/tvfcgs.html#tvfcg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.tvfcg" title="Permalink to this definition">¶</a></dt>
 <dd><p>Time-Varying Functional Connectivity Graphs</p>
-<p>The TVFCGs are computed from the input <code class="docutils literal"><span class="pre">data</span></code> by employing the given
-synchronization estimator (<code class="docutils literal"><span class="pre">estimator_instance</span></code>).</p>
+<p>The TVFCGs are computed from the input <code class="docutils literal notranslate"><span class="pre">data</span></code> by employing the given
+synchronization estimator (<code class="docutils literal notranslate"><span class="pre">estimator_instance</span></code>).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -773,7 +776,7 @@ synchronization estimator (<code class="docutils literal"><span class="pre">esti
 </div></blockquote>
 <p><strong>estimator_instance</strong> : object</p>
 <blockquote>
-<div><p>An object of type <a class="reference internal" href="dyfunconn.fc.html#dyfunconn.fc.Estimator" title="dyfunconn.fc.Estimator"><code class="xref py py-mod docutils literal"><span class="pre">dyfunconn.fc.Estimator</span></code></a>.</p>
+<div><p>An object of type <a class="reference internal" href="dyfunconn.fc.html#dyfunconn.fc.Estimator" title="dyfunconn.fc.Estimator"><code class="xref py py-mod docutils literal notranslate"><span class="pre">dyfunconn.fc.Estimator</span></code></a>.</p>
 </div></blockquote>
 <p><strong>fb</strong> : list of length 2</p>
 <blockquote>
@@ -814,8 +817,8 @@ synchronization estimator (<code class="docutils literal"><span class="pre">esti
 <dt id="dyfunconn.tvfcg_cfc">
 <code class="descclassname">dyfunconn.</code><code class="descname">tvfcg_cfc</code><span class="sig-paren">(</span><em>data</em>, <em>estimator_instance</em>, <em>fb_lo</em>, <em>fb_hi</em>, <em>fs=128</em>, <em>cc=2.0</em>, <em>step=5</em>, <em>pairs=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/tvfcgs.html#tvfcg_cfc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.tvfcg_cfc" title="Permalink to this definition">¶</a></dt>
 <dd><p>Time-Varying Functional Connectivity Graphs (for Cross frequency Coupling)</p>
-<p>The TVFCGs are computed from the input <code class="docutils literal"><span class="pre">data</span></code> by employing the given
-cross frequency coupling synchronization estimator (<code class="docutils literal"><span class="pre">estimator_instance</span></code>).</p>
+<p>The TVFCGs are computed from the input <code class="docutils literal notranslate"><span class="pre">data</span></code> by employing the given
+cross frequency coupling synchronization estimator (<code class="docutils literal notranslate"><span class="pre">estimator_instance</span></code>).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -826,7 +829,7 @@ cross frequency coupling synchronization estimator (<code class="docutils litera
 </div></blockquote>
 <p><strong>estimator_instance</strong> : object</p>
 <blockquote>
-<div><p>An object of type <a class="reference internal" href="dyfunconn.fc.html#dyfunconn.fc.Estimator" title="dyfunconn.fc.Estimator"><code class="xref py py-mod docutils literal"><span class="pre">dyfunconn.fc.Estimator</span></code></a>.</p>
+<div><p>An object of type <a class="reference internal" href="dyfunconn.fc.html#dyfunconn.fc.Estimator" title="dyfunconn.fc.Estimator"><code class="xref py py-mod docutils literal notranslate"><span class="pre">dyfunconn.fc.Estimator</span></code></a>.</p>
 </div></blockquote>
 <p><strong>fb_lo</strong> : list of length 2</p>
 <blockquote>
@@ -866,7 +869,7 @@ cross frequency coupling synchronization estimator (<code class="docutils litera
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<p>Not all available estimators in the <a class="reference internal" href="dyfunconn.fc.html#module-dyfunconn.fc" title="dyfunconn.fc"><code class="xref py py-mod docutils literal"><span class="pre">dyfunconn.fc</span></code></a> are valid for estimating
+<p>Not all available estimators in the <a class="reference internal" href="dyfunconn.fc.html#module-dyfunconn.fc" title="dyfunconn.fc"><code class="xref py py-mod docutils literal notranslate"><span class="pre">dyfunconn.fc</span></code></a> are valid for estimating
 cross frequency coupling.</p>
 </dd></dl>
 
@@ -875,7 +878,7 @@ cross frequency coupling.</p>
 <code class="descclassname">dyfunconn.</code><code class="descname">tvfcg_ts</code><span class="sig-paren">(</span><em>ts</em>, <em>fb</em>, <em>fs=128</em>, <em>cc=2.0</em>, <em>step=5</em>, <em>pairs=None</em>, <em>avg_func=&lt;function mean&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/tvfcgs.html#tvfcg_ts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.tvfcg_ts" title="Permalink to this definition">¶</a></dt>
 <dd><p>Time-Varying Function Connectivity Graphs (from time series)</p>
 <p>This implementation operates directly on the given estimated synchronization
-time series (<code class="docutils literal"><span class="pre">ts</span></code>) and the mean value inside the window is computed.</p>
+time series (<code class="docutils literal notranslate"><span class="pre">ts</span></code>) and the mean value inside the window is computed.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -976,7 +979,7 @@ time series (<code class="docutils literal"><span class="pre">ts</span></code>) 
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

@@ -111,7 +111,7 @@
 <li class="toctree-l2"><a class="reference internal" href="dyfunconn.html#module-dyfunconn.analytic_signal">dyfunconn.analytic_signal module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dyfunconn.html#module-dyfunconn.bands">dyfunconn.bands module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dyfunconn.html#module-dyfunconn.tvfcgs">dyfunconn.tvfcgs module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dyfunconn.html#module-contents">Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.html#module-dyfunconn">Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -190,7 +190,7 @@
 <div class="section" id="notes">
 <h3>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>This is a direct translation from <a href="#id1"><span class="problematic" id="id2">`</span></a>BCT&#8217;s function &#8220;diffusion_efficiency.m&#8221; &lt;hhttps://sites.google.com/site/bctnet/Home/functions/diffusion_efficiency.m&gt;</li>
+<li>This is a direct translation from <a href="#id1"><span class="problematic" id="id2">`</span></a>BCT’s function “diffusion_efficiency.m” &lt;hhttps://sites.google.com/site/bctnet/Home/functions/diffusion_efficiency.m&gt;</li>
 <li>Original author is</li>
 </ul>
 <div class="line-block">
@@ -243,7 +243,7 @@
 <div class="section" id="id4">
 <h3>Notes<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>This is a direct translation from <cite>BCT&#8217;s function &#8220;mean_first_passage_time.m&#8221; &lt;https://sites.google.com/site/bctnet/Home/functions/mean_first_passage_time.m&gt;`</cite></li>
+<li>This is a direct translation from <cite>BCT’s function “mean_first_passage_time.m” &lt;https://sites.google.com/site/bctnet/Home/functions/mean_first_passage_time.m&gt;</cite></li>
 <li>Original author is Joaquin Goñi, IU Bloomington, 2012</li>
 </ul>
 <div class="line-block">
@@ -297,7 +297,7 @@
 <div class="section" id="id6">
 <h3>Notes<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>This is a direct translation from <a href="#id7"><span class="problematic" id="id8">`</span></a>BCT&#8217;s function &#8220;diffusion_efficiency.m&#8221; &lt;hhttps://sites.google.com/site/bctnet/Home/functions/diffusion_efficiency.m&gt;</li>
+<li>This is a direct translation from <a href="#id7"><span class="problematic" id="id8">`</span></a>BCT’s function “diffusion_efficiency.m” &lt;<a class="reference external" href="https://sites.google.com/site/bctnet/Home/functions/diffusion_efficiency.m">https://sites.google.com/site/bctnet/Home/functions/diffusion_efficiency.m</a>&gt;</li>
 <li>Original author is</li>
 </ul>
 <div class="line-block">
@@ -382,14 +382,247 @@
 </dd></dl>
 
 <dl class="function">
-<dt id="dyfunconn.graphs.diffusion_efficiency">
-<code class="descclassname">dyfunconn.graphs.</code><code class="descname">diffusion_efficiency</code><span class="sig-paren">(</span><em>mtx</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/graphs/diffusion_efficiency.html#diffusion_efficiency"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.graphs.diffusion_efficiency" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dt id="dyfunconn.graphs.threshold_mean_degree">
+<code class="descclassname">dyfunconn.graphs.</code><code class="descname">threshold_mean_degree</code><span class="sig-paren">(</span><em>mtx</em>, <em>threshold_mean_degree</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/graphs/threshold.html#threshold_mean_degree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.graphs.threshold_mean_degree" title="Permalink to this definition">¶</a></dt>
+<dd><p>Threshold a graph based on the mean degree.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>mtx</strong> : array-like, shape(N, N)</p>
+<blockquote>
+<div><p>Symmetric, weighted and undirected connectivity matrix.</p>
+</div></blockquote>
+<p><strong>threshold_mean_degree</strong> : int</p>
+<blockquote>
+<div><p>Mean degree threshold.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>binary_mtx</strong> : array-like, shape(N, N)</p>
+<blockquote class="last">
+<div><p>A binary mask matrix.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="function">
-<dt id="dyfunconn.graphs.mean_first_passage_time">
-<code class="descclassname">dyfunconn.graphs.</code><code class="descname">mean_first_passage_time</code><span class="sig-paren">(</span><em>mtx</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/graphs/mean_first_passage_time.html#mean_first_passage_time"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.graphs.mean_first_passage_time" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dt id="dyfunconn.graphs.threshold_mst_mean_degree">
+<code class="descclassname">dyfunconn.graphs.</code><code class="descname">threshold_mst_mean_degree</code><span class="sig-paren">(</span><em>mtx</em>, <em>avg_degree</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/graphs/threshold.html#threshold_mst_mean_degree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.graphs.threshold_mst_mean_degree" title="Permalink to this definition">¶</a></dt>
+<dd><p>Threshold a graph based on mean using minimum spanning trees.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>mtx</strong> : array-like, shape(N, N)</p>
+<blockquote>
+<div><p>Symmetric, weighted and undirected connectivity matrix.</p>
+</div></blockquote>
+<p><strong>avg_degree</strong> : float</p>
+<blockquote>
+<div><p>Mean degree threshold.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>binary_mtx</strong> : array-like, shape(N, N)</p>
+<blockquote class="last">
+<div><p>A binary mask matrix.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="dyfunconn.graphs.threshold_shortest_paths">
+<code class="descclassname">dyfunconn.graphs.</code><code class="descname">threshold_shortest_paths</code><span class="sig-paren">(</span><em>mtx</em>, <em>treatment=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/graphs/threshold.html#threshold_shortest_paths"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.graphs.threshold_shortest_paths" title="Permalink to this definition">¶</a></dt>
+<dd><p>Threshold a graph via  via shortest path identification using Dijkstra’s algorithm.</p>
+<table class="docutils citation" frame="void" id="dimitriadis2010" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Dimitriadis2010]</td><td>Dimitriadis, S. I., Laskaris, N. A., Tsirka, V., Vourkas, M., Micheloyannis, S., &amp; Fotopoulos, S. (2010). Tracking brain dynamics via time-dependent network analysis. Journal of neuroscience methods, 193(1), 145-155.</td></tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>mtx</strong> : array-like, shape(N, N)</p>
+<blockquote>
+<div><p>Symmetric, weighted and undirected connectivity matrix.</p>
+</div></blockquote>
+<p><strong>treatment</strong> : boolean</p>
+<blockquote>
+<div><p>Convert the weights to distances by inversing the matrix. Also,
+fill the diagonal with zeroes. Default <cite>false</cite>.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>binary_mtx</strong> : array-like, shape(N, N)</p>
+<blockquote class="last">
+<div><p>A binary mask matrix.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="dyfunconn.graphs.k_core_decomposition">
+<code class="descclassname">dyfunconn.graphs.</code><code class="descname">k_core_decomposition</code><span class="sig-paren">(</span><em>mtx</em>, <em>threshold</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/graphs/threshold.html#k_core_decomposition"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.graphs.k_core_decomposition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Threshold a binary graph based on the detected k-cores.</p>
+<table class="docutils citation" frame="void" id="alvarez2006" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Alvarez2006]</td><td>Alvarez-Hamelin, J. I., Dall’Asta, L., Barrat, A., &amp; Vespignani, A. (2006). Large scale networks fingerprinting and visualization using the k-core decomposition. In Advances in neural information processing systems (pp. 41-50).</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="hagman2008" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Hagman2008]</td><td>Hagmann, P., Cammoun, L., Gigandet, X., Meuli, R., Honey, C. J., Wedeen, V. J., &amp; Sporns, O. (2008). Mapping the structural core of human cerebral cortex. PLoS biology, 6(7), e159.</td></tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>mtx</strong> : array-like, shape(N, N)</p>
+<blockquote>
+<div><p>Binary matrix.</p>
+</div></blockquote>
+<p><strong>threshold</strong> : int</p>
+<blockquote>
+<div><p>Degree threshold.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>k_cores</strong> : array-like, shape(N, 1)</p>
+<blockquote class="last">
+<div><p>A binary matrix of the decomposed cores.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="dyfunconn.graphs.threshold_global_cost_efficiency">
+<code class="descclassname">dyfunconn.graphs.</code><code class="descname">threshold_global_cost_efficiency</code><span class="sig-paren">(</span><em>mtx</em>, <em>iterations</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/graphs/threshold.html#threshold_global_cost_efficiency"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.graphs.threshold_global_cost_efficiency" title="Permalink to this definition">¶</a></dt>
+<dd><p>Threshold a graph based on the Global Efficiency - Cost formula.</p>
+<table class="docutils citation" frame="void" id="basset2009" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Basset2009]</td><td>Bassett, D. S., Bullmore, E. T., Meyer-Lindenberg, A., Apud, J. A., Weinberger, D. R., &amp; Coppola, R. (2009). Cognitive fitness of cost-efficient brain functional networks. Proceedings of the National Academy of Sciences, 106(28), 11747-11752.</td></tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>mtx</strong> : array-like, shape(N, N)</p>
+<blockquote>
+<div><p>Symmetric, weighted and undirected connectivity matrix.</p>
+</div></blockquote>
+<p><strong>iterations</strong> : int</p>
+<blockquote>
+<div><p>Number of steps, as a resolution when search for optima.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>binary_mtx</strong> : array-like, shape(N, N)</p>
+<blockquote>
+<div><p>A binary mask matrix.</p>
+</div></blockquote>
+<p><strong>threshold</strong> : float</p>
+<blockquote>
+<div><p>The threshold that maximizes the global cost efficiency.</p>
+</div></blockquote>
+<p><strong>global_cost_eff_max</strong> : float</p>
+<blockquote>
+<div><p>Global cost efficiency.</p>
+</div></blockquote>
+<p><strong>efficiency</strong> : float</p>
+<blockquote>
+<div><p>Global efficiency.</p>
+</div></blockquote>
+<p><strong>cost_max</strong> : float</p>
+<blockquote class="last">
+<div><p>Cost of the network at the maximum global cost efficiency</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="dyfunconn.graphs.threshold_omst_global_cost_efficiency">
+<code class="descclassname">dyfunconn.graphs.</code><code class="descname">threshold_omst_global_cost_efficiency</code><span class="sig-paren">(</span><em>mtx</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/graphs/threshold.html#threshold_omst_global_cost_efficiency"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.graphs.threshold_omst_global_cost_efficiency" title="Permalink to this definition">¶</a></dt>
+<dd><p>Threshold a graph by optimizing the formula GE-C via orthogonal MSTs.</p>
+<table class="docutils citation" frame="void" id="dimitriadis2017a" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Dimitriadis2017a]</td><td>Dimitriadis, S. I., Salis, C., Tarnanas, I., &amp; Linden, D. E. (2017). Topological Filtering of Dynamic Functional Brain Networks Unfolds Informative Chronnectomics: A Novel Data-Driven Thresholding Scheme Based on Orthogonal Minimal Spanning Trees (OMSTs). Frontiers in neuroinformatics, 11.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="dimitriadis2017n" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Dimitriadis2017n]</td><td>Dimitriadis, S. I., Antonakakis, M., Simos, P., Fletcher, J. M., &amp; Papanicolaou, A. C. (2017). Data-driven Topological Filtering based on Orthogonal Minimal Spanning Trees: Application to Multi-Group MEG Resting-State Connectivity. Brain Connectivity, (ja).</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="id10" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Basset2009]</td><td>Bassett, D. S., Bullmore, E. T., Meyer-Lindenberg, A., Apud, J. A., Weinberger, D. R., &amp; Coppola, R. (2009). Cognitive fitness of cost-efficient brain functional networks. Proceedings of the National Academy of Sciences, 106(28), 11747-11752.</td></tr>
+</tbody>
+</table>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>mtx</strong> : array-like, shape(N, N)</p>
+<blockquote>
+<div><p>Symmetric, weighted and undirected connectivity matrix.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>nCIJtree</strong> : array-like, shape(n_msts, N, N)</p>
+<blockquote>
+<div><p>A matrix containing all the orthogonal MSTs.</p>
+</div></blockquote>
+<p><strong>CIJtree</strong> : array-like, shape(N, N)</p>
+<blockquote>
+<div><p>Resulting graph.</p>
+</div></blockquote>
+<p><strong>degree</strong> : float</p>
+<blockquote>
+<div><p>The mean degree of the resulting graph.</p>
+</div></blockquote>
+<p><strong>global_eff</strong> : float</p>
+<blockquote>
+<div><p>Global efficiency of the resulting graph.</p>
+</div></blockquote>
+<p><strong>global_cost_eff_max</strong> : float</p>
+<blockquote>
+<div><p>The value where global efficiency - cost is maximized.</p>
+</div></blockquote>
+<p><strong>cost_max</strong> : float</p>
+<blockquote class="last">
+<div><p>Cost of the network at the maximum global cost efficiency.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 </div>
 </div>
@@ -448,7 +681,7 @@
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
