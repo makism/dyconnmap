@@ -25,14 +25,14 @@ for extra_dirs in ("docs", "examples", "tests"):
         data_files.append(('share/' + name + '/' + dirname, fileslist))
 
 setup(name='dyfunconn',
-      version='v1.0.0-beta.0',
+      version='v1.0.0-beta.1',
       description='A dynamic functional connectivity module in Python',
       author='Avraam Marimpis, Stavros Dimitriadis',
       author_email='Avraam.Marimpis@gmail.com, STIDimitriadis@gmail.com',
       license='BSD',
       keywords='eeg fMRI meg connectivity graphs neuroimage brain',
       url = 'https://github.com/makism/dyfunconn',
-      download_url = 'https://github.com/makism/dyfunconn/archive/v1.0.0-beta.0.tar.gz',
+      download_url = 'https://github.com/makism/dyfunconn/archive/v1.0.0-beta.1.tar.gz',
       packages=packages,
       install_requires=['numpy', 'scipy', 'networkx', 'matplotlib', 'statsmodels', 'scikit-learn', 'bctpy'],
       package_dir={'dyfunconn': 'dyfunconn'},
