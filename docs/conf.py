@@ -67,7 +67,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'dyfunconn'
-copyright = '2017, Avraam Marimpis & Stavros Dimitriadis'
+copyright = '2018, Avraam Marimpis & Stavros Dimitriadis'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -299,9 +299,9 @@ texinfo_documents = [
 
 # Bibliographic Dublin Core info.
 epub_title = 'dyfunconn'
-epub_author = 'Marimpis Avraam'
-epub_publisher = 'Marimpis Avraam'
-epub_copyright = '2015, Marimpis Avraam'
+epub_author = 'Marimpis Avraam & Dimitriadis Stavros'
+epub_publisher = 'Marimpis Avraam & Dimitriadis Stavros'
+epub_copyright = '2018, Marimpis Avraam & Dimitriadis Stavros'
 
 # The basename for the epub file. It defaults to the project name.
 #epub_basename = u'dyfunconn'
