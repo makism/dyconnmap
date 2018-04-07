@@ -153,7 +153,8 @@
   <h1>Source code for dyfunconn.ts.ci</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot; Complexity Index</span>
 
-<span class="sd">Computes the `l`-subword complexity (`l`-subword spectrum) of a one-dimensional,</span>
+
+<span class="sd">Complexity index (Janson2004_, Rapp2007_) computes the `l`-subword complexity (`l`-subword spectrum) of a one-dimensional,</span>
 <span class="sd">symbolic (integer) time series, by finding the number of distinct subwords</span>
 <span class="sd">of length `l`. The total complexity is given by the sum of all subwords of different lengths.</span>
 <span class="sd">The unnormalized measure can be used to compare sequences of equal lengths.</span>
@@ -161,7 +162,7 @@
 
 <span class="sd">Notes</span>
 <span class="sd">-----</span>
-<span class="sd">* This is a direct translation from the `Complexity toolbox available at &lt;http://users.auth.gr/~stdimitr/files/software/complexitiy.rar&gt;`</span>
+<span class="sd">* This is a direct translation from the `Complexity toolbox available at` http://users.auth.gr/~stdimitr/files/software/complexitiy.rar</span>
 <span class="sd">* Original author is Stravros Dimitriadis &lt;stidimitriadis@gmail.com&gt;</span>
 
 <span class="sd">|</span>
@@ -173,13 +174,13 @@
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 
-<div class="viewcode-block" id="complexity_index"><a class="viewcode-back" href="../../../dyfunconn.ts.html#dyfunconn.ts.complexity_index">[docs]</a><span class="k">def</span> <span class="nf">complexity_index</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">sub_len</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+<div class="viewcode-block" id="complexity_index"><a class="viewcode-back" href="../../../dyfunconn.ts.html#dyfunconn.ts.ci.complexity_index">[docs]</a><span class="k">def</span> <span class="nf">complexity_index</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">sub_len</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Complexity Index</span>
 
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    x :</span>
+<span class="sd">    x : array-like, shape(N)</span>
 <span class="sd">        Input symbolic time series.</span>
 
 <span class="sd">    sub_len : int</span>
@@ -346,7 +347,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Avraam Marimpis &amp; Stavros Dimitriadis.
+        &copy; Copyright 2018, Avraam Marimpis &amp; Stavros Dimitriadis.
 
     </p>
   </div>

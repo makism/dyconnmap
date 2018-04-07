@@ -15,8 +15,8 @@ Subpackages
 Submodules
 ----------
 
-dyfunconn.analytic_signal module
---------------------------------
+dyfunconn.analytic\_signal module
+---------------------------------
 
 .. automodule:: dyfunconn.analytic_signal
     :members:
@@ -27,6 +27,14 @@ dyfunconn.bands module
 ----------------------
 
 .. automodule:: dyfunconn.bands
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+dyfunconn.sliding\_window module
+--------------------------------
+
+.. automodule:: dyfunconn.sliding_window
     :members:
     :undoc-members:
     :show-inheritance:

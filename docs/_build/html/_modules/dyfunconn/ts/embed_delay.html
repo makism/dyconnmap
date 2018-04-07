@@ -154,16 +154,28 @@
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
+<span class="sd">When dealing with non-linear time series analysis, it is common to reconstruct</span>
+<span class="sd">hem as time delay vectors in phase space. This new reconstruction, describes the</span>
+<span class="sd">tmporal evolution of a system in a state space; a trajectory of interchanging states.</span>
+<span class="sd">The need for this state space, stems from the fact that the original system may</span>
+<span class="sd">contain latent and unobserved variables that we would like to expose. Thus, we</span>
+<span class="sd">construct :math:`m`-dimensional phase vectors from :math:`\\tau`-time delayed samples (Takens1981_):</span>
 
+<span class="sd">.. math::</span>
+<span class="sd">    s_n = (s_(n-(m-1)τ),s_(n-(m-2)) τ, …, s_n)</span>
+
+<span class="sd">This new space, is shown to preserve the dynamics properties of the original</span>
+<span class="sd">phase space. For more on the subject, the interested readers are encouraged to</span>
+<span class="sd">consult the work of Bradley and Kantz (Bradley2015_).</span>
 
 
 <span class="sd">|</span>
 
 <span class="sd">-----</span>
 
+<span class="sd">.. [Taken1981] Takens, F. (1981). Detecting strange attractors in turbulence. Lecture notes in mathematics, 898(1), 366-381.</span>
+<span class="sd">.. [Bradley2015] Bradley, E., &amp; Kantz, H. (2015). Nonlinear time-series analysis revisited. Chaos: An Interdisciplinary Journal of Nonlinear Science, 25(9), 097610.</span>
 
-<span class="sd">.. [Stam2007] Stam, C. J., Nolte, G., &amp; Daffertshofer, A. (2007). Phase lag index: assessment of functional connectivity from multi channel EEG and MEG with diminished bias from common sources. Human brain mapping, 28(11), 1178-1193.</span>
-<span class="sd">.. [Hardmeier2014] Hardmeier, M., Hatz, F., Bousleiman, H., Schindler, C., Stam, C. J., &amp; Fuhr, P. (2014). Reproducibility of functional connectivity and graph measures based on the phase lag index (PLI) and weighted phase lag index (wPLI) derived from high resolution EEG. PloS one, 9(10), e108648.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="c1"># Author: Avraam Marimpis &lt;avraam.marimpis@gmail.com&gt;</span>
 
@@ -177,7 +189,7 @@
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    ts : array-like, shape(1, n_samples)</span>
-<span class="sd">        Symbolic time series.</span>
+<span class="sd">        One-dimensional symbolic time series.</span>
 
 <span class="sd">    dim : int</span>
 <span class="sd">        The embedding dimension.</span>
@@ -225,7 +237,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Avraam Marimpis &amp; Stavros Dimitriadis.
+        &copy; Copyright 2018, Avraam Marimpis &amp; Stavros Dimitriadis.
 
     </p>
   </div>

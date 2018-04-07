@@ -95,6 +95,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.fc.aec">dyfunconn.fc.aec module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.fc.biplv">dyfunconn.fc.biplv module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.fc.canolty_pac">dyfunconn.fc.canolty_pac module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.fc.coherence">dyfunconn.fc.coherence module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.fc.corr">dyfunconn.fc.corr module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.fc.crosscorr">dyfunconn.fc.crosscorr module</a></li>
@@ -124,6 +125,7 @@
 <li class="toctree-l2"><a class="reference internal" href="dyfunconn.html#submodules">Submodules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dyfunconn.html#module-dyfunconn.analytic_signal">dyfunconn.analytic_signal module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dyfunconn.html#module-dyfunconn.bands">dyfunconn.bands module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.html#module-dyfunconn.sliding_window">dyfunconn.sliding_window module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dyfunconn.html#module-dyfunconn.tvfcgs">dyfunconn.tvfcgs module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dyfunconn.html#module-dyfunconn">Module contents</a></li>
 </ul>
@@ -305,6 +307,71 @@ between the :attr:<a href="#id1"><span class="problematic" id="id2">`</span></a>
 <p><strong>fs</strong> : float</p>
 <blockquote class="last">
 <div><p>Sampling frequency.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-dyfunconn.fc.canolty_pac">
+<span id="dyfunconn-fc-canolty-pac-module"></span><h2>dyfunconn.fc.canolty_pac module<a class="headerlink" href="#module-dyfunconn.fc.canolty_pac" title="Permalink to this headline">¶</a></h2>
+<p>Phase-Amplitude Coupling</p>
+<div class="math notranslate">
+\[pac = \left | \left |  \]</div>
+<p>rac{1}{N} sum_{t=1}^{N}{lpha_t e^{iphi t}}  
+ight | 
+ight |</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<hr class="docutils" />
+<table class="docutils citation" frame="void" id="canolty2006" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Canolty2006]</td><td>Canolty, R. T., Edwards, E., Dalal, S. S., Soltani, M., Nagarajan, S. S., Kirsch, H. E., … &amp; Knight, R. T. (2006). High gamma power is phase-locked to theta oscillations in human neocortex. science, 313(5793), 1626-1628.</td></tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="dyfunconn.fc.canolty_pac.canolty_pac">
+<code class="descclassname">dyfunconn.fc.canolty_pac.</code><code class="descname">canolty_pac</code><span class="sig-paren">(</span><em>data</em>, <em>f_lo</em>, <em>f_hi</em>, <em>fs</em>, <em>pairs=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/canolty_pac.html#canolty_pac"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.canolty_pac.canolty_pac" title="Permalink to this definition">¶</a></dt>
+<dd><p>Phase-Amplitude Coupling</p>
+<p>Compute the PAC for the given <code class="xref py py-attr docutils literal notranslate"><span class="pre">data</span></code>, between the <code class="xref py py-attr docutils literal notranslate"><span class="pre">pairs</span></code> (if given)
+of channels.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : array-like, shape = [n_electrodes, n_samples]</p>
+<blockquote>
+<div><p>Multichannel recording data.</p>
+</div></blockquote>
+<p><strong>pairs</strong> : array-like</p>
+<blockquote>
+<div><p>Each element is a tuple of length two.</p>
+</div></blockquote>
+<p><strong>f_lo</strong> : list of length 2</p>
+<blockquote>
+<div><p>The low and high frequencies.</p>
+</div></blockquote>
+<p><strong>f_hi</strong> : list of length 2</p>
+<blockquote>
+<div><p>The low and high frequencies.</p>
+</div></blockquote>
+<p><strong>fs</strong> : float</p>
+<blockquote>
+<div><p>Sampling frequency.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>ts</strong> : complex array-like, shape(n_channels, n_channels, n_samples)</p>
+<blockquote>
+<div><p>Estimated PAC time series.</p>
+</div></blockquote>
+<p><strong>avg</strong> : array-like, shape(n_channels, n_channels)</p>
+<blockquote class="last">
+<div><p>Average PAC.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -3573,7 +3640,7 @@ special treatment is needed (i.e. taking only the real part).</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Avraam Marimpis &amp; Stavros Dimitriadis.
+        &copy; Copyright 2018, Avraam Marimpis &amp; Stavros Dimitriadis.
 
     </p>
   </div>

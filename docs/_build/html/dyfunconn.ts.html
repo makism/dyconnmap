@@ -95,6 +95,7 @@
 <li class="toctree-l3"><a class="reference internal" href="dyfunconn.sim_models.html">dyfunconn.sim_models package</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">dyfunconn.ts package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.ts.ci">dyfunconn.ts.ci module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.ts.dcorr">dyfunconn.ts.dcorr module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.ts.embed_delay">dyfunconn.ts.embed_delay module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.ts.entropy">dyfunconn.ts.entropy module</a></li>
@@ -118,6 +119,7 @@
 <li class="toctree-l2"><a class="reference internal" href="dyfunconn.html#submodules">Submodules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dyfunconn.html#module-dyfunconn.analytic_signal">dyfunconn.analytic_signal module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dyfunconn.html#module-dyfunconn.bands">dyfunconn.bands module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.html#module-dyfunconn.sliding_window">dyfunconn.sliding_window module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dyfunconn.html#module-dyfunconn.tvfcgs">dyfunconn.tvfcgs module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dyfunconn.html#module-dyfunconn">Module contents</a></li>
 </ul>
@@ -192,11 +194,87 @@
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 </div>
+<div class="section" id="module-dyfunconn.ts.ci">
+<span id="dyfunconn-ts-ci-module"></span><h2>dyfunconn.ts.ci module<a class="headerlink" href="#module-dyfunconn.ts.ci" title="Permalink to this headline">¶</a></h2>
+<p>Complexity Index</p>
+<p>Complexity index (<a class="reference internal" href="#janson2004">Janson2004</a>, <a class="reference internal" href="#rapp2007">Rapp2007</a>) computes the <cite>l</cite>-subword complexity (<cite>l</cite>-subword spectrum) of a one-dimensional,
+symbolic (integer) time series, by finding the number of distinct subwords
+of length <cite>l</cite>. The total complexity is given by the sum of all subwords of different lengths.
+The unnormalized measure can be used to compare sequences of equal lengths.</p>
+<div class="section" id="notes">
+<h3>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>This is a direct translation from the <cite>Complexity toolbox available at</cite> <a class="reference external" href="http://users.auth.gr/~stdimitr/files/software/complexitiy.rar">http://users.auth.gr/~stdimitr/files/software/complexitiy.rar</a></li>
+<li>Original author is Stravros Dimitriadis &lt;<a class="reference external" href="mailto:stidimitriadis&#37;&#52;&#48;gmail&#46;com">stidimitriadis<span>&#64;</span>gmail<span>&#46;</span>com</a>&gt;</li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<table class="docutils citation" frame="void" id="janson2004" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Janson2004]</td><td>Janson, S., Lonardi, S., &amp; Szpankowski, W. (2004). On average sequence complexity. Theoretical Computer Science, 326(1-3), 213-227.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="rapp2007" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Rapp2007]</td><td>Rapp, P. E. (2007). Quantitative characterization of animal behavior following blast exposure. Cognitive neurodynamics, 1(4), 287-293.</td></tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="dyfunconn.ts.ci.complexity_index">
+<code class="descclassname">dyfunconn.ts.ci.</code><code class="descname">complexity_index</code><span class="sig-paren">(</span><em>x</em>, <em>sub_len=-1</em>, <em>normalize=False</em>, <em>iterations=100</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/ci.html#complexity_index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.ci.complexity_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Complexity Index</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>x</strong> : array-like, shape(N)</p>
+<blockquote>
+<div><p>Input symbolic time series.</p>
+</div></blockquote>
+<p><strong>sub_len</strong> : int</p>
+<blockquote>
+<div><p>Maximum subword length. Default is <cite>len(x) - 1</cite>.</p>
+</div></blockquote>
+<p><strong>normalize</strong> : bool</p>
+<blockquote>
+<div><p>Normalize result. Default is <cite>False</cite>.</p>
+</div></blockquote>
+<p><strong>iterationss</strong> : int</p>
+<blockquote>
+<div><p>Number of iterations to perform randomization. Default is <cite>100</cite>.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>normal_ci</strong> : float</p>
+<blockquote>
+<div><p>The computed omplexity index after normalization against the randomization
+procedure.</p>
+</div></blockquote>
+<p><strong>ci</strong> : float</p>
+<blockquote>
+<div><p>The computed complexity index.</p>
+</div></blockquote>
+<p><strong>spectrum</strong> : array-like</p>
+<blockquote class="last">
+<div><p>A list of the number of distinct subwords of length 1, up to the size
+of the input symbolic time series.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
 <div class="section" id="module-dyfunconn.ts.dcorr">
 <span id="dyfunconn-ts-dcorr-module"></span><h2>dyfunconn.ts.dcorr module<a class="headerlink" href="#module-dyfunconn.ts.dcorr" title="Permalink to this headline">¶</a></h2>
 <p>Distance Correlation</p>
-<div class="section" id="notes">
-<h3>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id1">
+<h3>Notes<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <p>Snippet adapted from: <a class="reference external" href="https://gist.github.com/Satra/aa3d19a12b74e9ab7941">https://gist.github.com/Satra/aa3d19a12b74e9ab7941</a></p>
 <dl class="function">
 <dt id="dyfunconn.ts.dcorr.dcorr">
@@ -224,20 +302,31 @@
 </div>
 <div class="section" id="module-dyfunconn.ts.embed_delay">
 <span id="dyfunconn-ts-embed-delay-module"></span><h2>dyfunconn.ts.embed_delay module<a class="headerlink" href="#module-dyfunconn.ts.embed_delay" title="Permalink to this headline">¶</a></h2>
+<p>When dealing with non-linear time series analysis, it is common to reconstruct
+hem as time delay vectors in phase space. This new reconstruction, describes the
+tmporal evolution of a system in a state space; a trajectory of interchanging states.
+The need for this state space, stems from the fact that the original system may
+contain latent and unobserved variables that we would like to expose. Thus, we
+construct <span class="math notranslate">\(m\)</span>-dimensional phase vectors from <span class="math notranslate">\(\tau\)</span>-time delayed samples (<a href="#id28"><span class="problematic" id="id29">Takens1981_</span></a>):</p>
+<div class="math notranslate">
+\[s_n = (s_(n-(m-1)τ),s_(n-(m-2)) τ, …, s_n)\]</div>
+<p>This new space, is shown to preserve the dynamics properties of the original
+phase space. For more on the subject, the interested readers are encouraged to
+consult the work of Bradley and Kantz (<a class="reference internal" href="#bradley2015">Bradley2015</a>).</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <hr class="docutils" />
-<table class="docutils citation" frame="void" id="stam2007" rules="none">
+<table class="docutils citation" frame="void" id="taken1981" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[Stam2007]</td><td>Stam, C. J., Nolte, G., &amp; Daffertshofer, A. (2007). Phase lag index: assessment of functional connectivity from multi channel EEG and MEG with diminished bias from common sources. Human brain mapping, 28(11), 1178-1193.</td></tr>
+<tr><td class="label">[Taken1981]</td><td>Takens, F. (1981). Detecting strange attractors in turbulence. Lecture notes in mathematics, 898(1), 366-381.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="hardmeier2014" rules="none">
+<table class="docutils citation" frame="void" id="bradley2015" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[Hardmeier2014]</td><td>Hardmeier, M., Hatz, F., Bousleiman, H., Schindler, C., Stam, C. J., &amp; Fuhr, P. (2014). Reproducibility of functional connectivity and graph measures based on the phase lag index (PLI) and weighted phase lag index (wPLI) derived from high resolution EEG. PloS one, 9(10), e108648.</td></tr>
+<tr><td class="label">[Bradley2015]</td><td>Bradley, E., &amp; Kantz, H. (2015). Nonlinear time-series analysis revisited. Chaos: An Interdisciplinary Journal of Nonlinear Science, 25(9), 097610.</td></tr>
 </tbody>
 </table>
 <dl class="function">
@@ -250,7 +339,7 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>ts</strong> : array-like, shape(1, n_samples)</p>
 <blockquote>
-<div><p>Symbolic time series.</p>
+<div><p>One-dimensional symbolic time series.</p>
 </div></blockquote>
 <p><strong>dim</strong> : int</p>
 <blockquote>
@@ -290,13 +379,13 @@
 <div class="line"><br /></div>
 </div>
 <hr class="docutils" />
-<table class="docutils citation" frame="void" id="id1" rules="none">
+<table class="docutils citation" frame="void" id="stam2007" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[Stam2007]</td><td>Stam, C. J., Nolte, G., &amp; Daffertshofer, A. (2007). Phase lag index: assessment of functional connectivity from multi channel EEG and MEG with diminished bias from common sources. Human brain mapping, 28(11), 1178-1193.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="id2" rules="none">
+<table class="docutils citation" frame="void" id="hardmeier2014" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[Hardmeier2014]</td><td>Hardmeier, M., Hatz, F., Bousleiman, H., Schindler, C., Stam, C. J., &amp; Fuhr, P. (2014). Reproducibility of functional connectivity and graph measures based on the phase lag index (PLI) and weighted phase lag index (wPLI) derived from high resolution EEG. PloS one, 9(10), e108648.</td></tr>
@@ -315,13 +404,13 @@
 <div class="line"><br /></div>
 </div>
 <hr class="docutils" />
-<table class="docutils citation" frame="void" id="id3" rules="none">
+<table class="docutils citation" frame="void" id="id2" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[Stam2007]</td><td>Stam, C. J., Nolte, G., &amp; Daffertshofer, A. (2007). Phase lag index: assessment of functional connectivity from multi channel EEG and MEG with diminished bias from common sources. Human brain mapping, 28(11), 1178-1193.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="id4" rules="none">
+<table class="docutils citation" frame="void" id="id3" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[Hardmeier2014]</td><td>Hardmeier, M., Hatz, F., Bousleiman, H., Schindler, C., Stam, C. J., &amp; Fuhr, P. (2014). Reproducibility of functional connectivity and graph measures based on the phase lag index (PLI) and weighted phase lag index (wPLI) derived from high resolution EEG. PloS one, 9(10), e108648.</td></tr>
@@ -422,6 +511,41 @@ reached, or the the number of neighbors is reduced to specific percentage.</p>
 <div class="section" id="module-dyfunconn.ts.markov_matrix">
 <span id="dyfunconn-ts-markov-matrix-module"></span><h2>dyfunconn.ts.markov_matrix module<a class="headerlink" href="#module-dyfunconn.ts.markov_matrix" title="Permalink to this headline">¶</a></h2>
 <p>Markov matrix</p>
+<p>Markov matrix (also refere as “transition matrix”) is a square matrix that tabulates
+the observed transition probabilities between symbols for a finite Markov Chain. It is a first-order descriptor
+by which the next symbol depends only on the current symbol (and not on the previous ones);
+a Markov Chain model.</p>
+<p>A transition matrix is formally depicted as:</p>
+<p>Given the probability <span class="math notranslate">\(Pr(j|i)\)</span> of moving between <span class="math notranslate">\(i\)</span> and <span class="math notranslate">\(j\)</span> elements,
+the transition matrix is depicted as:</p>
+<div class="math notranslate">
+\[\begin{split}P = \begin{pmatrix}
+              P_{1,1} &amp; P_{1,2} &amp; \ldots &amp; P_{1,j} &amp; \ldots &amp; P_{1,S} \\
+              P_{2,1} &amp; P_{2,2} &amp; \ldots &amp; P_{2,j} &amp; \ldots &amp; P_{2,S} \\
+              \vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \ddots &amp; \vdots \\
+              P_{i,1} &amp; P_{i,2} &amp; \ldots &amp; P_{i,j} &amp; \ldots &amp; P_{i,S} \\
+              \vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \ddots &amp; \vdots \\
+              P_{S,1} &amp; P_{S,2} &amp; \ldots &amp; P_{S,j} &amp; \ldots &amp; P_{S,S} \\
+    \end{pmatrix}\end{split}\]</div>
+<p>Since the transition matrix is row-normalized, so as the total transition probability
+from state <span class="math notranslate">\(i\)</span> to all the others must be equal to <span class="math notranslate">\(1\)</span>.</p>
+<p>For more properties consult, among other links <a class="reference internal" href="#wolframmathworld">WolframMathWorld</a> and <a class="reference internal" href="#wikipediamarkovmatrix">WikipediaMarkovMatrix</a>.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<hr class="docutils" />
+<table class="docutils citation" frame="void" id="wolframmathworld" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[WolframMathWorld]</td><td><a class="reference external" href="http://mathworld.wolfram.com/StochasticMatrix.html">http://mathworld.wolfram.com/StochasticMatrix.html</a></td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="wikipediamarkovmatrix" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[WikipediaMarkovMatrix]</td><td><a class="reference external" href="https://en.wikipedia.org/wiki/Stochastic_matrix">https://en.wikipedia.org/wiki/Stochastic_matrix</a></td></tr>
+</tbody>
+</table>
 <dl class="function">
 <dt id="dyfunconn.ts.markov_matrix.markov_matrix">
 <code class="descclassname">dyfunconn.ts.markov_matrix.</code><code class="descname">markov_matrix</code><span class="sig-paren">(</span><em>symts</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/markov_matrix.html#markov_matrix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.markov_matrix.markov_matrix" title="Permalink to this definition">¶</a></dt>
@@ -430,15 +554,15 @@ reached, or the the number of neighbors is reduced to specific percentage.</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>symts :</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>symts</strong> : array-like, shape(N)</p>
 <blockquote>
-<div><p>Discrete time series</p>
+<div><p>One-dimensional discrete time series.</p>
 </div></blockquote>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>mtx</strong> : matrix</p>
 <blockquote class="last">
-<div><p>The</p>
+<div><p>The transition matrix.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -454,13 +578,13 @@ reached, or the the number of neighbors is reduced to specific percentage.</p>
 <div class="line"><br /></div>
 </div>
 <hr class="docutils" />
-<table class="docutils citation" frame="void" id="id5" rules="none">
+<table class="docutils citation" frame="void" id="id4" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[Stam2007]</td><td>Stam, C. J., Nolte, G., &amp; Daffertshofer, A. (2007). Phase lag index: assessment of functional connectivity from multi channel EEG and MEG with diminished bias from common sources. Human brain mapping, 28(11), 1178-1193.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="id6" rules="none">
+<table class="docutils citation" frame="void" id="id5" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[Hardmeier2014]</td><td>Hardmeier, M., Hatz, F., Bousleiman, H., Schindler, C., Stam, C. J., &amp; Fuhr, P. (2014). Reproducibility of functional connectivity and graph measures based on the phase lag index (PLI) and weighted phase lag index (wPLI) derived from high resolution EEG. PloS one, 9(10), e108648.</td></tr>
@@ -510,7 +634,7 @@ the permutations’ order.</li>
 no occurances of <span class="math notranslate">\(0.\)</span></li>
 <li>The extra <span class="math notranslate">\(+1\)</span> in the lines
 .. python: I = sklearn.preprocessing.normalize(I + 1)
-is in order to avoid :math:<a href="#id7"><span class="problematic" id="id8">`</span></a>0`s.</li>
+is in order to avoid :math:<a href="#id6"><span class="problematic" id="id7">`</span></a>0`s.</li>
 </ul>
 </dd></dl>
 
@@ -522,13 +646,13 @@ is in order to avoid :math:<a href="#id7"><span class="problematic" id="id8">`</
 <div class="line"><br /></div>
 </div>
 <hr class="docutils" />
-<table class="docutils citation" frame="void" id="id9" rules="none">
+<table class="docutils citation" frame="void" id="id8" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[Stam2007]</td><td>Stam, C. J., Nolte, G., &amp; Daffertshofer, A. (2007). Phase lag index: assessment of functional connectivity from multi channel EEG and MEG with diminished bias from common sources. Human brain mapping, 28(11), 1178-1193.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="id10" rules="none">
+<table class="docutils citation" frame="void" id="id9" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[Hardmeier2014]</td><td>Hardmeier, M., Hatz, F., Bousleiman, H., Schindler, C., Stam, C. J., &amp; Fuhr, P. (2014). Reproducibility of functional connectivity and graph measures based on the phase lag index (PLI) and weighted phase lag index (wPLI) derived from high resolution EEG. PloS one, 9(10), e108648.</td></tr>
@@ -578,13 +702,13 @@ is in order to avoid :math:<a href="#id7"><span class="problematic" id="id8">`</
 <div class="line"><br /></div>
 </div>
 <hr class="docutils" />
-<table class="docutils citation" frame="void" id="id11" rules="none">
+<table class="docutils citation" frame="void" id="id10" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[Stam2007]</td><td>Stam, C. J., Nolte, G., &amp; Daffertshofer, A. (2007). Phase lag index: assessment of functional connectivity from multi channel EEG and MEG with diminished bias from common sources. Human brain mapping, 28(11), 1178-1193.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="id12" rules="none">
+<table class="docutils citation" frame="void" id="id11" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[Hardmeier2014]</td><td>Hardmeier, M., Hatz, F., Bousleiman, H., Schindler, C., Stam, C. J., &amp; Fuhr, P. (2014). Reproducibility of functional connectivity and graph measures based on the phase lag index (PLI) and weighted phase lag index (wPLI) derived from high resolution EEG. PloS one, 9(10), e108648.</td></tr>
@@ -622,12 +746,12 @@ is in order to avoid :math:<a href="#id7"><span class="problematic" id="id8">`</
 <li>The results may vary from the original MATLAB script because of
 the permutations’ order.</li>
 <li>The results may vary from the original MATLAB script because of
-the order of the indices in the <a href="#id13"><span class="problematic" id="id14">:python:`numpy.where`</span></a>.</li>
+the order of the indices in the <a href="#id12"><span class="problematic" id="id13">:python:`numpy.where`</span></a>.</li>
 <li>The permutations are generated from <span class="math notranslate">\([1, dim+1]\)</span> so there are
 no occurances of <span class="math notranslate">\(0.\)</span></li>
 <li>The extra <span class="math notranslate">\(+1\)</span> in the lines
 .. python: I = sklearn.preprocessing.normalize(I + 1)
-is in order to avoid :math:<a href="#id15"><span class="problematic" id="id16">`</span></a>0`s.</li>
+is in order to avoid :math:<a href="#id14"><span class="problematic" id="id15">`</span></a>0`s.</li>
 </ul>
 </dd></dl>
 
@@ -635,20 +759,20 @@ is in order to avoid :math:<a href="#id15"><span class="problematic" id="id16">`
 <div class="section" id="module-dyfunconn.ts.sampen">
 <span id="dyfunconn-ts-sampen-module"></span><h2>dyfunconn.ts.sampen module<a class="headerlink" href="#module-dyfunconn.ts.sampen" title="Permalink to this headline">¶</a></h2>
 <p>Sample Entropy</p>
-<div class="section" id="id17">
-<h3>Notes<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id16">
+<h3>Notes<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
 <p>Based on <a class="reference external" href="https://nl.mathworks.com/matlabcentral/fileexchange/35784-sample-entropy">https://nl.mathworks.com/matlabcentral/fileexchange/35784-sample-entropy</a></p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <hr class="docutils" />
-<table class="docutils citation" frame="void" id="id18" rules="none">
+<table class="docutils citation" frame="void" id="id17" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[Stam2007]</td><td>Stam, C. J., Nolte, G., &amp; Daffertshofer, A. (2007). Phase lag index: assessment of functional connectivity from multi channel EEG and MEG with diminished bias from common sources. Human brain mapping, 28(11), 1178-1193.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="id19" rules="none">
+<table class="docutils citation" frame="void" id="id18" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[Hardmeier2014]</td><td>Hardmeier, M., Hatz, F., Bousleiman, H., Schindler, C., Stam, C. J., &amp; Fuhr, P. (2014). Reproducibility of functional connectivity and graph measures based on the phase lag index (PLI) and weighted phase lag index (wPLI) derived from high resolution EEG. PloS one, 9(10), e108648.</td></tr>
@@ -932,7 +1056,7 @@ in an approximately Gaussian distribution.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<table class="docutils citation" frame="void" id="id20" rules="none">
+<table class="docutils citation" frame="void" id="id19" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[Mormann2005]</td><td>Mormann, F., Fell, J., Axmacher, N., Weber, B., Lehnertz, K., Elger, C. E., &amp; Fernández, G. (2005). Phase/amplitude reset and theta–gamma interaction in the human medial temporal lobe during a continuous word recognition memory task. Hippocampus, 15(7), 890-900.</td></tr>
@@ -998,7 +1122,7 @@ in an approximately Gaussian distribution.</p>
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>ts</strong> : array-like, shape(1, n_samples)</p>
 <blockquote>
-<div><p>Symbolic time series.</p>
+<div><p>One-dimensional symbolic time series.</p>
 </div></blockquote>
 <p><strong>dim</strong> : int</p>
 <blockquote>
@@ -1222,7 +1346,7 @@ the permutations’ order.</li>
 no occurances of <span class="math notranslate">\(0.\)</span></li>
 <li>The extra <span class="math notranslate">\(+1\)</span> in the lines
 .. python: I = sklearn.preprocessing.normalize(I + 1)
-is in order to avoid :math:<a href="#id21"><span class="problematic" id="id22">`</span></a>0`s.</li>
+is in order to avoid :math:<a href="#id20"><span class="problematic" id="id21">`</span></a>0`s.</li>
 </ul>
 </dd></dl>
 
@@ -1306,7 +1430,7 @@ the permutations’ order.</li>
 no occurances of <span class="math notranslate">\(0.\)</span></li>
 <li>The extra <span class="math notranslate">\(+1\)</span> in the lines
 .. python: I = sklearn.preprocessing.normalize(I + 1)
-is in order to avoid :math:<a href="#id23"><span class="problematic" id="id24">`</span></a>0`s.</li>
+is in order to avoid :math:<a href="#id22"><span class="problematic" id="id23">`</span></a>0`s.</li>
 </ul>
 </dd></dl>
 
@@ -1342,12 +1466,12 @@ is in order to avoid :math:<a href="#id23"><span class="problematic" id="id24">`
 <li>The results may vary from the original MATLAB script because of
 the permutations’ order.</li>
 <li>The results may vary from the original MATLAB script because of
-the order of the indices in the <a href="#id25"><span class="problematic" id="id26">:python:`numpy.where`</span></a>.</li>
+the order of the indices in the <a href="#id24"><span class="problematic" id="id25">:python:`numpy.where`</span></a>.</li>
 <li>The permutations are generated from <span class="math notranslate">\([1, dim+1]\)</span> so there are
 no occurances of <span class="math notranslate">\(0.\)</span></li>
 <li>The extra <span class="math notranslate">\(+1\)</span> in the lines
 .. python: I = sklearn.preprocessing.normalize(I + 1)
-is in order to avoid :math:<a href="#id27"><span class="problematic" id="id28">`</span></a>0`s.</li>
+is in order to avoid :math:<a href="#id26"><span class="problematic" id="id27">`</span></a>0`s.</li>
 </ul>
 </dd></dl>
 
@@ -1410,15 +1534,15 @@ is in order to avoid :math:<a href="#id27"><span class="problematic" id="id28">`
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>symts :</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>symts</strong> : array-like, shape(N)</p>
 <blockquote>
-<div><p>Discrete time series</p>
+<div><p>One-dimensional discrete time series.</p>
 </div></blockquote>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>mtx</strong> : matrix</p>
 <blockquote class="last">
-<div><p>The</p>
+<div><p>The transition matrix.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -1448,7 +1572,7 @@ is in order to avoid :math:<a href="#id27"><span class="problematic" id="id28">`
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>x :</strong> :</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>x</strong> : array-like, shape(N)</p>
 <blockquote>
 <div><p>Input symbolic time series.</p>
 </div></blockquote>
@@ -1553,7 +1677,7 @@ reached, or the the number of neighbors is reduced to specific percentage.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Avraam Marimpis &amp; Stavros Dimitriadis.
+        &copy; Copyright 2018, Avraam Marimpis &amp; Stavros Dimitriadis.
 
     </p>
   </div>

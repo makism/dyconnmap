@@ -154,6 +154,27 @@
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot; Graph Diffusion Distance</span>
 
+<span class="sd">The Graph Diffusion Distance (GDD) metric (Hammond2013_) is a measure of distance</span>
+<span class="sd">between two (positive) weighted graphs based on the Laplacian exponential diffusion kernel.</span>
+<span class="sd">The notion backing this metric is that two graphs are similar if they emit comparable</span>
+<span class="sd">patterns of information transmission.</span>
+
+<span class="sd">This distance is computed by searching for a diffusion time :math:`t` that maximizes the</span>
+<span class="sd">value of the Frobenius norm between the two diffusion kernels. The Laplacian operator</span>
+<span class="sd">is defined as :math:`L = D - A`, where :math:`A` is the positive symmetric data matrix and :math:`D` is a diagonal</span>
+<span class="sd">degree matrix for the adjacency matrix :math:`A`. The diffusion process (per vertex) on the adjacency</span>
+<span class="sd">matrix :math:`A` is governed by a time-varying vector :math:`u(t)∈ R^N`. Thus, between each given pair of</span>
+<span class="sd">(vertices’) weights :math:`i` and :math:`j`, their flux is quantified by :math:`a_{ij} (u_i (t)u_j (t))`. The grand</span>
+<span class="sd">sum of these interactions is given by :math:`\hat{u}_j(t)=\sum_i{a_{ij}(u_i(t)u_j(t))=-Lu(t)}`.</span>
+<span class="sd">Given the initial condition :math:`u^0,t=0` this sum has the following analytic solution :math:`u(t)=exp⁡(-tL)u^0`.</span>
+<span class="sd">The resulting matrix is known as the Laplacian exponential diffusion kernel. Letting the diffusion process</span>
+<span class="sd">run for :math:`t` time we compute and store the diffusion patterns in each column. Finally, the actual distance</span>
+<span class="sd">measure between two adjacency matrices :math:`A_1` and  :math:`A_2`, at diffusion time :math:`t` is given by:</span>
+
+<span class="sd">.. math::</span>
+<span class="sd">    ξ(A_1, A_2 ; t) = ‖exp⁡(-tL_1 ) - exp⁡(-tL_2 )‖_F^2</span>
+
+<span class="sd">where :math:`‖∙‖_F` is the Frobenious norm.</span>
 
 <span class="sd">Notes</span>
 <span class="sd">-----</span>
@@ -165,25 +186,31 @@
 
 <span class="sd">.. [Hammond2013] Hammond, D. K., Gur, Y., &amp; Johnson, C. R. (2013, December). Graph diffusion distance: A difference measure for weighted graphs based on the graph Laplacian exponential kernel. In Global Conference on Signal and Information Processing (GlobalSIP), 2013 IEEE (pp. 419-422). IEEE.</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="c1"># Author: Avraam Marimpis &lt;avraam.marimpis@gmail.com&quot;</span>
+<span class="c1"># Author: Avraam Marimpis &lt;avraam.marimpis@gmail.com&gt;</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">scipy.optimize</span>
 
 
 <div class="viewcode-block" id="graph_diffusion_distance"><a class="viewcode-back" href="../../../dyfunconn.graphs.html#dyfunconn.graphs.gdd.graph_diffusion_distance">[docs]</a><span class="k">def</span> <span class="nf">graph_diffusion_distance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot; Graph Diffusion Distance</span>
 
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    a</span>
+<span class="sd">    a : array-like, shape(N, N)</span>
+<span class="sd">        Weighted matrix.</span>
 
-<span class="sd">    b</span>
+<span class="sd">    b : array-like, shape(N, N)</span>
+<span class="sd">        Weighted matrix.</span>
 
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    gdd : float</span>
+<span class="sd">        The estimated graph diffusion distance.</span>
 
-
-
+<span class="sd">    xopt : float</span>
+<span class="sd">        Parameters (over given interval) which minimize the objective function. (see :mod:`scipy.optimize.fmindbound`)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">L1</span> <span class="o">=</span> <span class="n">__graph_laplacian</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
     <span class="n">L2</span> <span class="o">=</span> <span class="n">__graph_laplacian</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
@@ -247,7 +274,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Avraam Marimpis &amp; Stavros Dimitriadis.
+        &copy; Copyright 2018, Avraam Marimpis &amp; Stavros Dimitriadis.
 
     </p>
   </div>

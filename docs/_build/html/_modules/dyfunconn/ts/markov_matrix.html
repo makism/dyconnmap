@@ -153,6 +153,38 @@
   <h1>Source code for dyfunconn.ts.markov_matrix</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot; Markov matrix</span>
 
+<span class="sd">Markov matrix (also refere as &quot;transition matrix&quot;) is a square matrix that tabulates</span>
+<span class="sd">the observed transition probabilities between symbols for a finite Markov Chain. It is a first-order descriptor</span>
+<span class="sd">by which the next symbol depends only on the current symbol (and not on the previous ones);</span>
+<span class="sd">a Markov Chain model.</span>
+
+<span class="sd">A transition matrix is formally depicted as:</span>
+
+<span class="sd">Given the probability :math:`Pr(j|i)` of moving between :math:`i` and :math:`j` elements,</span>
+<span class="sd">the transition matrix is depicted as:</span>
+
+<span class="sd">.. math::</span>
+<span class="sd">    P = \\begin{pmatrix}</span>
+<span class="sd">                  P_{1,1} &amp; P_{1,2} &amp; \\ldots &amp; P_{1,j} &amp; \\ldots &amp; P_{1,S} \\\\</span>
+<span class="sd">                  P_{2,1} &amp; P_{2,2} &amp; \\ldots &amp; P_{2,j} &amp; \\ldots &amp; P_{2,S} \\\\</span>
+<span class="sd">                  \\vdots &amp; \\vdots &amp; \\ddots &amp; \\vdots &amp; \\ddots &amp; \\vdots \\\\</span>
+<span class="sd">                  P_{i,1} &amp; P_{i,2} &amp; \\ldots &amp; P_{i,j} &amp; \\ldots &amp; P_{i,S} \\\\</span>
+<span class="sd">                  \\vdots &amp; \\vdots &amp; \\ddots &amp; \\vdots &amp; \\ddots &amp; \\vdots \\\\</span>
+<span class="sd">                  P_{S,1} &amp; P_{S,2} &amp; \\ldots &amp; P_{S,j} &amp; \\ldots &amp; P_{S,S} \\\\</span>
+<span class="sd">        \\end{pmatrix}</span>
+
+<span class="sd">Since the transition matrix is row-normalized, so as the total transition probability</span>
+<span class="sd">from state :math:`i` to all the others must be equal to :math:`1`.</span>
+
+<span class="sd">For more properties consult, among other links WolframMathWorld_ and WikipediaMarkovMatrix_.</span>
+
+
+<span class="sd">|</span>
+
+<span class="sd">-----</span>
+
+<span class="sd">.. [WolframMathWorld] http://mathworld.wolfram.com/StochasticMatrix.html</span>
+<span class="sd">.. [WikipediaMarkovMatrix] https://en.wikipedia.org/wiki/Stochastic_matrix</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -164,17 +196,14 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    symts :</span>
-<span class="sd">        Discrete time series</span>
-
+<span class="sd">    symts : array-like, shape(N)</span>
+<span class="sd">        One-dimensional discrete time series.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    mtx : matrix</span>
-<span class="sd">        The</span>
-
+<span class="sd">        The transition matrix.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-
     <span class="n">symbols</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">symts</span><span class="p">)</span>
     <span class="n">l</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">symbols</span><span class="p">)</span>
 
@@ -203,7 +232,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Avraam Marimpis &amp; Stavros Dimitriadis.
+        &copy; Copyright 2018, Avraam Marimpis &amp; Stavros Dimitriadis.
 
     </p>
   </div>
