@@ -4,8 +4,8 @@ dyfunconn.graphs package
 Submodules
 ----------
 
-dyfunconn.graphs.diffusion_efficiency module
---------------------------------------------
+dyfunconn.graphs.diffusion\_efficiency module
+---------------------------------------------
 
 .. automodule:: dyfunconn.graphs.diffusion_efficiency
     :members:
@@ -20,8 +20,8 @@ dyfunconn.graphs.gdd module
     :undoc-members:
     :show-inheritance:
 
-dyfunconn.graphs.mean_first_passage_time module
------------------------------------------------
+dyfunconn.graphs.mean\_first\_passage\_time module
+--------------------------------------------------
 
 .. automodule:: dyfunconn.graphs.mean_first_passage_time
     :members:
@@ -36,10 +36,26 @@ dyfunconn.graphs.mi module
     :undoc-members:
     :show-inheritance:
 
-dyfunconn.graphs.rout_efficiency module
----------------------------------------
+dyfunconn.graphs.mpc module
+---------------------------
+
+.. automodule:: dyfunconn.graphs.mpc
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+dyfunconn.graphs.rout\_efficiency module
+----------------------------------------
 
 .. automodule:: dyfunconn.graphs.rout_efficiency
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+dyfunconn.graphs.threshold module
+---------------------------------
+
+.. automodule:: dyfunconn.graphs.threshold
     :members:
     :undoc-members:
     :show-inheritance:

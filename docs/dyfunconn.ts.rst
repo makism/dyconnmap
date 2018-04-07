@@ -4,6 +4,14 @@ dyfunconn.ts package
 Submodules
 ----------
 
+dyfunconn.ts.ci module
+----------------------
+
+.. automodule:: dyfunconn.ts.ci
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 dyfunconn.ts.dcorr module
 -------------------------
 
@@ -12,8 +20,8 @@ dyfunconn.ts.dcorr module
     :undoc-members:
     :show-inheritance:
 
-dyfunconn.ts.embed_delay module
--------------------------------
+dyfunconn.ts.embed\_delay module
+--------------------------------
 
 .. automodule:: dyfunconn.ts.embed_delay
     :members:
@@ -28,16 +36,16 @@ dyfunconn.ts.entropy module
     :undoc-members:
     :show-inheritance:
 
-dyfunconn.ts.fisher_score module
---------------------------------
+dyfunconn.ts.fisher\_score module
+---------------------------------
 
 .. automodule:: dyfunconn.ts.fisher_score
     :members:
     :undoc-members:
     :show-inheritance:
 
-dyfunconn.ts.fisher_z module
-----------------------------
+dyfunconn.ts.fisher\_z module
+-----------------------------
 
 .. automodule:: dyfunconn.ts.fisher_z
     :members:
@@ -52,32 +60,32 @@ dyfunconn.ts.fnn module
     :undoc-members:
     :show-inheritance:
 
-dyfunconn.ts.markov_matrix module
----------------------------------
+dyfunconn.ts.markov\_matrix module
+----------------------------------
 
 .. automodule:: dyfunconn.ts.markov_matrix
     :members:
     :undoc-members:
     :show-inheritance:
 
-dyfunconn.ts.ordinal_pattern_similarity module
-----------------------------------------------
+dyfunconn.ts.ordinal\_pattern\_similarity module
+------------------------------------------------
 
 .. automodule:: dyfunconn.ts.ordinal_pattern_similarity
     :members:
     :undoc-members:
     :show-inheritance:
 
-dyfunconn.ts.permutation_entropy module
----------------------------------------
+dyfunconn.ts.permutation\_entropy module
+----------------------------------------
 
 .. automodule:: dyfunconn.ts.permutation_entropy
     :members:
     :undoc-members:
     :show-inheritance:
 
-dyfunconn.ts.rr_order_patterns module
--------------------------------------
+dyfunconn.ts.rr\_order\_patterns module
+---------------------------------------
 
 .. automodule:: dyfunconn.ts.rr_order_patterns
     :members:
@@ -108,8 +116,8 @@ dyfunconn.ts.surrogates module
     :undoc-members:
     :show-inheritance:
 
-dyfunconn.ts.teager_kaiser_energy module
-----------------------------------------
+dyfunconn.ts.teager\_kaiser\_energy module
+------------------------------------------
 
 .. automodule:: dyfunconn.ts.teager_kaiser_energy
     :members:

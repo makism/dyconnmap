@@ -4,14 +4,6 @@ dyfunconn.cluster package
 Submodules
 ----------
 
-dyfunconn.cluster.dmatrix module
---------------------------------
-
-.. automodule:: dyfunconn.cluster.dmatrix
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
 dyfunconn.cluster.mng module
 ----------------------------
 
@@ -24,6 +16,14 @@ dyfunconn.cluster.ng module
 ---------------------------
 
 .. automodule:: dyfunconn.cluster.ng
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+dyfunconn.cluster.rng module
+----------------------------
+
+.. automodule:: dyfunconn.cluster.rng
     :members:
     :undoc-members:
     :show-inheritance:
