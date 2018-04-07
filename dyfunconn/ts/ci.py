@@ -1,6 +1,7 @@
 """ Complexity Index
 
-Computes the `l`-subword complexity (`l`-subword spectrum) of a one-dimensional,
+
+Complexity index (Janson2004_, Rapp2007_) computes the `l`-subword complexity (`l`-subword spectrum) of a one-dimensional,
 symbolic (integer) time series, by finding the number of distinct subwords
 of length `l`. The total complexity is given by the sum of all subwords of different lengths.
 The unnormalized measure can be used to compare sequences of equal lengths.
@@ -8,7 +9,7 @@ The unnormalized measure can be used to compare sequences of equal lengths.
 
 Notes
 -----
-* This is a direct translation from the `Complexity toolbox available at <http://users.auth.gr/~stdimitr/files/software/complexitiy.rar>`
+* This is a direct translation from the `Complexity toolbox available at` http://users.auth.gr/~stdimitr/files/software/complexitiy.rar
 * Original author is Stravros Dimitriadis <stidimitriadis@gmail.com>
 
 |
@@ -26,7 +27,7 @@ def complexity_index(x, sub_len=-1, normalize=False, iterations=100):
 
     Parameters
     ----------
-    x :
+    x : array-like, shape(N)
         Input symbolic time series.
 
     sub_len : int
