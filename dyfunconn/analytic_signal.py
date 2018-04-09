@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """ Analytic Signal
 
-For a time series :math:`x(t)`, filtered with a passband :math:`N`th order Butterworth filter [Butter1930]_
-in the frequency range :math:`F_{lo} - F_{hi}`; first we compute its analytic representation [Cohen1995]_ , [Freeman2007]_:
+For a time series :math:`x(t)`, filtered with a passband :math:`N`th order Butterworth filter (Butter1930_)
+in the frequency range :math:`F_{lo} - F_{hi}`; first we compute its analytic representation (Cohen1995_ , Freeman2007_):
 
 .. math::
     u_j(t) = \\frac{1}{\pi} \\textrm{PV} \\int_{+\\infty}^{-\\infty} { \\frac{V_j(t')}{t-t'} dt'}
@@ -24,7 +24,7 @@ and its Instantaneous Phase counterpart, from:
 
 The values in :math:`\phi_j(t)` are originally bound to :math:`[-\pi, \pi]`,
 however we employed an *unwrap* transformation (a phase correction
-algorithm) in order to eliminate the discontinuities [Dimitriadis2010]_, [Freeman2002]_.
+algorithm) in order to eliminate the discontinuities (Dimitriadis2010_, Freeman2002_).
 
 |
 
