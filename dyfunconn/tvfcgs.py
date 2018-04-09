@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 """ Time-Varying Functional Connectivity Graphs
 
-Time-varying functional connectivity graphs (TVFCGs) [Dimitriadis2010_ , Falani2008_] introduce the
+Time-varying functional connectivity graphs (TVFCGs) (Dimitriadis2010_, Falani2008_) introduce the
 idea of processing overlapping segments of neuroelectric signals by defining a
 frequency-dependent time window in which the synchronization is estimated;
 and then tabulating the results as adjacency matrices. These matrices have a
 natural graph-based representation called “functional connectivity graphs”
 (FCGs).
 
-An important aspect of the TVFCGs is the “cycle-criterion” (CC) [Cohen2008_].
+An important aspect of the TVFCGs is the “cycle-criterion” (CC) (Cohen2008_).
 It regulates the amount of the oscillation cycles that will be considered in
 measuring the phase synchrony. In the original proposal :math:`CC = 2.0` was
 introduced, resulting into a time-window with width twice the lower period.
@@ -347,7 +347,7 @@ def _validate_estimator(estimator_instance):
     This function is used mainly internally.
     """
     if not isinstance(estimator_instance, Estimator):
-        raise Exception("")
+        raise Exception("Given object is not an Estimator.")
 
     preprocess = getattr(estimator_instance, "preprocess")
     estimator = getattr(estimator_instance, "estimate_pair")
