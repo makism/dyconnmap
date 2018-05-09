@@ -6,7 +6,8 @@ from numpy import testing
 # dyfunconn
 from dyfunconn.graphs import (graph_diffusion_distance,
                               variation_information,
-                              mutual_information)
+                              mutual_information,
+                              nodal_global_efficiency)
 
 
 def test_graph_diffusion_distance():
@@ -43,3 +44,12 @@ def test_mutual_information():
 
     np.testing.assert_almost_equal(mi, 0.0115297151096)
     np.testing.assert_almost_equal(nmi, 0.0303868002153)
+
+
+def test_nodal_global_efficiency():
+    inv_mtx = np.load('data/test_graphs_inv_mtx.npy')
+    result = np.load('data/test_graphs_nodal_global_efficiency.npy')
+
+    nodal_ge = nodal_global_efficiency(inv_mtx)
+
+    np.testing.assert_array_equal(nodal_ge, result)
