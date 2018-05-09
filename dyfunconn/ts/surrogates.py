@@ -222,10 +222,10 @@ def phase_rand(data, num_surr=1, rng=None):
             b = p[half]
             c = np.flipud(p1).T.ravel()
 
-            p[range(1, n_samples)] = np.hstack((a, b, -c))
+            p[list(range(1, n_samples))] = np.hstack((a, b, -c))
 
-            a = m[range(0, half + 1)]
-            b = np.flipud(m[range(1, half)])
+            a = m[list(range(0, half + 1))]
+            b = np.flipud(m[list(range(1, half))])
             m = np.hstack((a, b))
         else:
             p1 = rng.randn(half, 1) * 2.0 * np.pi
@@ -233,7 +233,7 @@ def phase_rand(data, num_surr=1, rng=None):
             a = p1
             b = np.flipud(p1).ravel()
 
-            p[range(1, n_samples)] = a - b
+            p[list(range(1, n_samples))] = a - b
 
         surrogates[i, :] = np.real(np.fft.ifft(np.exp(1j * p) * m))
 

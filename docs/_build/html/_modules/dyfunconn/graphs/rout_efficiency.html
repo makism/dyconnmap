@@ -152,17 +152,20 @@
             
   <h1>Source code for dyfunconn.graphs.rout_efficiency</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="sd">&quot;&quot;&quot; Rout Information</span>
+<span class="sd">&quot;&quot;&quot; Rout Efficiency</span>
 
 
 <span class="sd">Notes</span>
 <span class="sd">-----</span>
-<span class="sd">* This is a direct translation from `BCT&#39;s function &quot;diffusion_efficiency.m&quot; &lt;hhttps://sites.google.com/site/bctnet/Home/functions/diffusion_efficiency.m&gt;</span>
-<span class="sd">* Original author is</span>
+<span class="sd">* This is a direct translation from `BCT&#39;s function &quot;rout_efficiency.m&quot;` (https://sites.google.com/site/bctnet/Home/functions/rout_efficiency.m)</span>
+<span class="sd">* Original authors are Andrea Avena-Koenigsberger and Joaquin Goñi, IU Bloomington, 2012</span>
 
 <span class="sd">|</span>
 
 <span class="sd">-----</span>
+<span class="sd">.. [Goni2012] Goni, J., Avena-Koenigsberger, A., de Mendizabal, N. V., van den Heuvel, M. P., Betzel, R. F., &amp; Sporns, O. (2013). Exploring the morphospace of communication efficiency in complex networks. PLoS One, 8(3), e58070.</span>
+<span class="sd">.. [Betzel2016] Betzel, R. F., Avena-Koenigsberger, A., Goñi, J., He, Y., De Reus, M. A., Griffa, A., ... &amp; Van Den Heuvel, M. (2016). Generative models of the human connectome. Neuroimage, 124, 1054-1064.</span>
+<span class="sd">.. [Latora2001] Latora, Vito, and Massimo Marchiori. &quot;Efficient behavior of small-world networks.&quot; Physical review letters 87.19 (2001): 198701.</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="c1"># Author: Avraam Marimpis &lt;avraam.marimpis@gmail.com&quot;</span>
@@ -193,8 +196,8 @@
 
     <span class="n">np</span><span class="o">.</span><span class="n">fill_diagonal</span><span class="p">(</span><span class="n">Ediff</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
     <span class="n">GEdiff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">Ediff</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">)</span> <span class="o">-</span> <span class="n">n</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">Ediff</span><span class="p">,</span> <span class="n">GEdiff</span></div>
+</div>
+    <span class="k">return</span> <span class="n">Ediff</span><span class="p">,</span> <span class="n">GEdiff</span>
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">data</span> <span class="o">=</span>  <span class="n">scipy</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">loadmat</span><span class="p">(</span><span class="s1">&#39;/home/makism/x.mat&#39;</span><span class="p">)</span>
@@ -231,7 +234,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Avraam Marimpis &amp; Stavros Dimitriadis.
+        &copy; Copyright 2018, Avraam Marimpis &amp; Stavros Dimitriadis.
 
     </p>
   </div>
@@ -263,7 +266,7 @@
       <script type="text/javascript" src="../../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

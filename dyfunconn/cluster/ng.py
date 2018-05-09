@@ -71,7 +71,6 @@ class NeuralGas:
 
     Parameters
     ----------
-
     n_protos : int
         The number of prototypes
 

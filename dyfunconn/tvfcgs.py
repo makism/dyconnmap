@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 """ Time-Varying Functional Connectivity Graphs
 
-Time-varying functional connectivity graphs (TVFCGs) [Dimitriadis2010_ , Falani2008_] introduce the
+Time-varying functional connectivity graphs (TVFCGs) (Dimitriadis2010_, Falani2008_) introduce the
 idea of processing overlapping segments of neuroelectric signals by defining a
 frequency-dependent time window in which the synchronization is estimated;
 and then tabulating the results as adjacency matrices. These matrices have a
 natural graph-based representation called “functional connectivity graphs”
 (FCGs).
 
-An important aspect of the TVFCGs is the “cycle-criterion” (CC) [Cohen2008_].
+An important aspect of the TVFCGs is the “cycle-criterion” (CC) (Cohen2008_).
 It regulates the amount of the oscillation cycles that will be considered in
 measuring the phase synchrony. In the original proposal :math:`CC = 2.0` was
 introduced, resulting into a time-window with width twice the lower period.
@@ -48,7 +48,7 @@ resulting into :math:`\\frac{n}{step}` adjacency matrices of size
 
 import numpy as np
 
-from fc.estimator import Estimator
+from .fc.estimator import Estimator
 
 
 def tvfcg(data, estimator_instance, fb, fs, cc=2.0, step=5.0, pairs=None):
@@ -107,8 +107,8 @@ def tvfcg(data, estimator_instance, fb, fs, cc=2.0, step=5.0, pairs=None):
     if pairs is None:
         pairs = [(win_id, int(win_id * step), int(window_length + (win_id * step)), c1, c2)
                  for win_id in range(windows)
-                 for c1 in xrange(0, n_channels)
-                 for c2 in xrange(c1, n_channels)
+                 for c1 in range(0, n_channels)
+                 for c2 in range(c1, n_channels)
                  if c1 != c2
                  ]
 
@@ -195,8 +195,8 @@ def tvfcg_cfc(data, estimator_instance, fb_lo, fb_hi, fs=128, cc=2.0, step=5, pa
     if pairs is None:
         pairs = [(win_id, (win_id * step), window_length + (win_id * step), c1, c2)
                  for win_id in range(windows)
-                 for c1 in xrange(0, n_channels)
-                 for c2 in xrange(c1, n_channels)
+                 for c1 in range(0, n_channels)
+                 for c2 in range(c1, n_channels)
                  if c1 != c2
                  ]
 
@@ -347,7 +347,7 @@ def _validate_estimator(estimator_instance):
     This function is used mainly internally.
     """
     if not isinstance(estimator_instance, Estimator):
-        raise Exception("")
+        raise Exception("Given object is not an Estimator.")
 
     preprocess = getattr(estimator_instance, "preprocess")
     estimator = getattr(estimator_instance, "estimate_pair")

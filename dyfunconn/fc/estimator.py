@@ -8,9 +8,7 @@ from abc import ABCMeta
 import numpy as np
 
 
-class Estimator(object):
-    __metaclass__ = ABCMeta
-
+class Estimator(object, metaclass=ABCMeta):
     """ Base class for estimators.
 
     Through this abstract class, an estimator can provide the necessary methods

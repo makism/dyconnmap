@@ -154,8 +154,8 @@
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot; Analytic Signal</span>
 
-<span class="sd">For a time series :math:`x(t)`, filtered with a passband :math:`N`th order Butterworth filter [Butter1930]_</span>
-<span class="sd">in the frequency range :math:`F_{lo} - F_{hi}`; first we compute its analytic representation [Cohen1995]_ , [Freeman2007]_:</span>
+<span class="sd">For a time series :math:`x(t)`, filtered with a passband :math:`N`th order Butterworth filter (Butter1930_)</span>
+<span class="sd">in the frequency range :math:`F_{lo} - F_{hi}`; first we compute its analytic representation (Cohen1995_ , Freeman2007_):</span>
 
 <span class="sd">.. math::</span>
 <span class="sd">    u_j(t) = \\frac{1}{\pi} \\textrm{PV} \\int_{+\\infty}^{-\\infty} { \\frac{V_j(t&#39;)}{t-t&#39;} dt&#39;}</span>
@@ -177,7 +177,7 @@
 
 <span class="sd">The values in :math:`\phi_j(t)` are originally bound to :math:`[-\pi, \pi]`,</span>
 <span class="sd">however we employed an *unwrap* transformation (a phase correction</span>
-<span class="sd">algorithm) in order to eliminate the discontinuities [Dimitriadis2010]_, [Freeman2002]_.</span>
+<span class="sd">algorithm) in order to eliminate the discontinuities (Dimitriadis2010_, Freeman2002_).</span>
 
 <span class="sd">|</span>
 
@@ -242,8 +242,8 @@
     <span class="n">filtered_signal</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">signal</span><span class="o">.</span><span class="n">filtfilt</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">signal</span><span class="p">)</span>
     <span class="n">hilberted_signal</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">signal</span><span class="o">.</span><span class="n">hilbert</span><span class="p">(</span><span class="n">filtered_signal</span><span class="p">)</span>
     <span class="n">unwrapped_phase</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unwrap</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">angle</span><span class="p">(</span><span class="n">hilberted_signal</span><span class="p">))</span>
-
-    <span class="k">return</span> <span class="p">(</span><span class="n">filtered_signal</span><span class="p">,</span> <span class="n">hilberted_signal</span><span class="p">,</span> <span class="n">unwrapped_phase</span><span class="p">)</span></div>
+</div>
+    <span class="k">return</span> <span class="p">(</span><span class="n">filtered_signal</span><span class="p">,</span> <span class="n">hilberted_signal</span><span class="p">,</span> <span class="n">unwrapped_phase</span><span class="p">)</span>
 </pre></div>
 
            </div>
@@ -258,7 +258,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Avraam Marimpis &amp; Stavros Dimitriadis.
+        &copy; Copyright 2018, Avraam Marimpis &amp; Stavros Dimitriadis.
 
     </p>
   </div>
@@ -290,7 +290,7 @@
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

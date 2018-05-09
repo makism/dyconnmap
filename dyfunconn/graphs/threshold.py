@@ -421,6 +421,7 @@ def threshold_omst_global_cost_efficiency(mtx):
     CIJnotintree = imtx
 
     # Keep the N-1 connections of the num_msts MSTs
+    num_msts = np.int32(num_msts)
     mst_conn = np.zeros((num_msts * (N-1), 2))
 
     nCIJtree = np.zeros((num_msts, N, N)) #, dtype=np.int32)

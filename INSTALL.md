@@ -3,7 +3,7 @@ Prerequisites
 
 The following software is required for `dyfunconn` to work properly:
 
-1. Python 2.7.x or newer (for Python 2)
+1. Python 3.6.x or newer (for Python 3)
 2. NumPy 1.11.x or newer
 3. SciPy 0.18.x or newer
 4. Matplotlib 1.5.x or newer
@@ -36,8 +36,8 @@ If you prefer to install `dyfunconn` locally, instead run:
 > python setupy.py install --prefix=$HOME/.local
 
 If you opt for the later option, you will have to set the environmental
-variable $PYTONPATH from the terminal as follows:
-> export PYTOHNPATH="$HOME/.local/dyunconn/lib/python2.7/site-packages/"
+variable $PYTHONPATH from the terminal as follows:
+> export PYTHONPATH="$HOME/.local/dyunconn/lib/python2.7/site-packages/"
 
 
 Documentation

@@ -1,11 +1,11 @@
-dyfunconn.sim_models package
-============================
+dyfunconn.sim\_models package
+=============================
 
 Submodules
 ----------
 
-dyfunconn.sim_models.makinen module
------------------------------------
+dyfunconn.sim\_models.makinen module
+------------------------------------
 
 .. automodule:: dyfunconn.sim_models.makinen
     :members:

@@ -12,4 +12,4 @@ if __name__ == "__main__":
 
     teo = teager_kaiser_energy(ts)
 
-    print teo
+    print(teo)

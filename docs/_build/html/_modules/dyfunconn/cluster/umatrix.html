@@ -151,7 +151,12 @@
            <div itemprop="articleBody">
             
   <h1>Source code for dyfunconn.cluster.umatrix</h1><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot; UMatrix Visualization</span>
+
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sp</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="n">transforms</span>
@@ -160,52 +165,11 @@
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="k">import</span> <span class="n">preprocessing</span>
 
 
-<div class="viewcode-block" id="make_hexagon"><a class="viewcode-back" href="../../../dyfunconn.cluster.html#dyfunconn.cluster.umatrix.make_hexagon">[docs]</a><span class="k">def</span> <span class="nf">make_hexagon</span><span class="p">():</span>
-    <span class="n">verts</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.</span><span class="p">),</span>
-        <span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">),</span>
-        <span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mf">1.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
-        <span class="p">(</span><span class="mf">1.</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">),</span>
-        <span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">),</span>
-    <span class="p">]</span>
-
-    <span class="n">codes</span> <span class="o">=</span> <span class="p">[</span><span class="n">Path</span><span class="o">.</span><span class="n">MOVETO</span><span class="p">,</span>
-             <span class="n">Path</span><span class="o">.</span><span class="n">LINETO</span><span class="p">,</span>
-             <span class="n">Path</span><span class="o">.</span><span class="n">LINETO</span><span class="p">,</span>
-             <span class="n">Path</span><span class="o">.</span><span class="n">LINETO</span><span class="p">,</span>
-             <span class="n">Path</span><span class="o">.</span><span class="n">LINETO</span><span class="p">,</span>
-             <span class="n">Path</span><span class="o">.</span><span class="n">LINETO</span><span class="p">,</span>
-             <span class="n">Path</span><span class="o">.</span><span class="n">CLOSEPOLY</span><span class="p">,</span>
-             <span class="p">]</span>
-    <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">verts</span><span class="p">,</span> <span class="n">codes</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">path</span></div>
-
-<div class="viewcode-block" id="wrap_kernel"><a class="viewcode-back" href="../../../dyfunconn.cluster.html#dyfunconn.cluster.umatrix.wrap_kernel">[docs]</a><span class="k">def</span> <span class="nf">wrap_kernel</span><span class="p">(</span><span class="n">center</span><span class="p">,</span> <span class="n">mtx</span><span class="p">):</span>
-    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">center</span>
-
-    <span class="n">left</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="n">right</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="n">top</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="n">bottom</span> <span class="o">=</span> <span class="kc">None</span>
-
-    <span class="k">if</span> <span class="n">x</span><span class="o">-</span><span class="mi">1</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">left</span> <span class="o">=</span> <span class="n">mtx</span><span class="p">[</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span>
-    <span class="k">if</span> <span class="n">x</span><span class="o">+</span><span class="mi">1</span> <span class="o">&lt;</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">mtx</span><span class="p">)[</span><span class="mi">0</span><span class="p">]:</span>
-        <span class="n">right</span><span class="o">=</span> <span class="n">mtx</span><span class="p">[</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span>
-    <span class="k">if</span> <span class="n">y</span><span class="o">-</span><span class="mi">1</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">top</span>  <span class="o">=</span> <span class="n">mtx</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-    <span class="k">if</span> <span class="n">y</span><span class="o">+</span><span class="mi">1</span> <span class="o">&lt;</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">mtx</span><span class="p">)[</span><span class="mi">1</span><span class="p">]:</span>
-        <span class="n">bottom</span><span class="o">=</span><span class="n">mtx</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
-
-    <span class="n">neighbors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">top</span><span class="p">,</span> <span class="n">bottom</span><span class="p">])</span>
-    <span class="n">neighbors</span> <span class="o">=</span> <span class="n">neighbors</span><span class="p">[</span><span class="n">neighbors</span> <span class="o">!=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="kc">None</span><span class="p">)]</span>
-
-    <span class="n">mtx</span><span class="p">[</span><span class="n">center</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">neighbors</span><span class="p">)</span></div>
-
 <div class="viewcode-block" id="umatrix"><a class="viewcode-back" href="../../../dyfunconn.cluster.html#dyfunconn.cluster.umatrix.umatrix">[docs]</a><span class="k">def</span> <span class="nf">umatrix</span><span class="p">(</span><span class="n">M</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">grid_x</span><span class="p">,</span> <span class="n">grid_y</span><span class="p">,</span> <span class="n">dim</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
-    <span class="c1"># dim = 4</span>
 
     <span class="n">ux</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">grid_x</span> <span class="o">-</span> <span class="mi">1</span>
     <span class="n">uy</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">grid_y</span> <span class="o">-</span> <span class="mi">1</span>
@@ -242,9 +206,36 @@
     <span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">U</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">indices</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">indices</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
         <span class="n">center</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-        <span class="n">wrap_kernel</span><span class="p">(</span><span class="n">center</span><span class="p">,</span> <span class="n">U</span><span class="p">)</span>
+        <span class="n">__wrap_kernel</span><span class="p">(</span><span class="n">center</span><span class="p">,</span> <span class="n">U</span><span class="p">)</span>
+</div>
+    <span class="k">return</span> <span class="n">U</span>
 
-    <span class="k">return</span> <span class="n">U</span></div>
+
+<span class="k">def</span> <span class="nf">__wrap_kernel</span><span class="p">(</span><span class="n">center</span><span class="p">,</span> <span class="n">mtx</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">center</span>
+
+    <span class="n">left</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">right</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">top</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">bottom</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">if</span> <span class="n">x</span><span class="o">-</span><span class="mi">1</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">left</span> <span class="o">=</span> <span class="n">mtx</span><span class="p">[</span><span class="n">x</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">x</span><span class="o">+</span><span class="mi">1</span> <span class="o">&lt;</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">mtx</span><span class="p">)[</span><span class="mi">0</span><span class="p">]:</span>
+        <span class="n">right</span><span class="o">=</span> <span class="n">mtx</span><span class="p">[</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">y</span><span class="o">-</span><span class="mi">1</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">top</span>  <span class="o">=</span> <span class="n">mtx</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">y</span><span class="o">+</span><span class="mi">1</span> <span class="o">&lt;</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">mtx</span><span class="p">)[</span><span class="mi">1</span><span class="p">]:</span>
+        <span class="n">bottom</span><span class="o">=</span><span class="n">mtx</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="n">neighbors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">top</span><span class="p">,</span> <span class="n">bottom</span><span class="p">])</span>
+    <span class="n">neighbors</span> <span class="o">=</span> <span class="n">neighbors</span><span class="p">[</span><span class="n">neighbors</span> <span class="o">!=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="kc">None</span><span class="p">)]</span>
+
+    <span class="n">mtx</span><span class="p">[</span><span class="n">center</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">neighbors</span><span class="p">)</span>
 </pre></div>
 
            </div>
@@ -259,7 +250,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Avraam Marimpis &amp; Stavros Dimitriadis.
+        &copy; Copyright 2018, Avraam Marimpis &amp; Stavros Dimitriadis.
 
     </p>
   </div>
@@ -291,7 +282,7 @@
       <script type="text/javascript" src="../../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

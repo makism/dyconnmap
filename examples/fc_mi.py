@@ -16,4 +16,4 @@ if __name__ == "__main__":
     fb_hi = [8.0, 13.0]
     ts, avg = mi(data, fb_lo, fb_hi, fs)
 
-    print avg
+    print(avg)

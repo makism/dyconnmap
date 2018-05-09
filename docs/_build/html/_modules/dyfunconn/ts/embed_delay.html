@@ -154,16 +154,28 @@
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
+<span class="sd">When dealing with non-linear time series analysis, it is common to reconstruct</span>
+<span class="sd">hem as time delay vectors in phase space. This new reconstruction, describes the</span>
+<span class="sd">tmporal evolution of a system in a state space; a trajectory of interchanging states.</span>
+<span class="sd">The need for this state space, stems from the fact that the original system may</span>
+<span class="sd">contain latent and unobserved variables that we would like to expose. Thus, we</span>
+<span class="sd">construct :math:`m`-dimensional phase vectors from :math:`\\tau`-time delayed samples (Takens1981_):</span>
 
+<span class="sd">.. math::</span>
+<span class="sd">    s_n = (s_(n-(m-1)τ),s_(n-(m-2)) τ, …, s_n)</span>
+
+<span class="sd">This new space, is shown to preserve the dynamics properties of the original</span>
+<span class="sd">phase space. For more on the subject, the interested readers are encouraged to</span>
+<span class="sd">consult the work of Bradley and Kantz (Bradley2015_).</span>
 
 
 <span class="sd">|</span>
 
 <span class="sd">-----</span>
 
+<span class="sd">.. [Taken1981] Takens, F. (1981). Detecting strange attractors in turbulence. Lecture notes in mathematics, 898(1), 366-381.</span>
+<span class="sd">.. [Bradley2015] Bradley, E., &amp; Kantz, H. (2015). Nonlinear time-series analysis revisited. Chaos: An Interdisciplinary Journal of Nonlinear Science, 25(9), 097610.</span>
 
-<span class="sd">.. [Stam2007] Stam, C. J., Nolte, G., &amp; Daffertshofer, A. (2007). Phase lag index: assessment of functional connectivity from multi channel EEG and MEG with diminished bias from common sources. Human brain mapping, 28(11), 1178-1193.</span>
-<span class="sd">.. [Hardmeier2014] Hardmeier, M., Hatz, F., Bousleiman, H., Schindler, C., Stam, C. J., &amp; Fuhr, P. (2014). Reproducibility of functional connectivity and graph measures based on the phase lag index (PLI) and weighted phase lag index (wPLI) derived from high resolution EEG. PloS one, 9(10), e108648.</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="c1"># Author: Avraam Marimpis &lt;avraam.marimpis@gmail.com&gt;</span>
 
@@ -173,16 +185,11 @@
 <div class="viewcode-block" id="embed_delay"><a class="viewcode-back" href="../../../dyfunconn.ts.html#dyfunconn.ts.embed_delay.embed_delay">[docs]</a><span class="k">def</span> <span class="nf">embed_delay</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">dim</span><span class="p">,</span> <span class="n">tau</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Embed delay</span>
 
-<span class="sd">    Build a set of embedding sequences from given time series X with lag Tau</span>
-<span class="sd">    and embedding dimension DE. Let X = [x(1), x(2), ... , x(N)], then for each</span>
-<span class="sd">    i such that 1 &lt; i &lt;  N - (D - 1) * Tau, we build an embedding sequence,</span>
-<span class="sd">    Y(i) = [x(i), x(i + Tau), ... , x(i + (D - 1) * Tau)]. All embedding</span>
-<span class="sd">    sequence are placed in a matrix Y.</span>
-
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    ts : 1d array</span>
+<span class="sd">    ts : array-like, shape(1, n_samples)</span>
+<span class="sd">        One-dimensional symbolic time series.</span>
 
 <span class="sd">    dim : int</span>
 <span class="sd">        The embedding dimension.</span>
@@ -190,23 +197,32 @@
 <span class="sd">    tau : int</span>
 <span class="sd">        Time delay factor.</span>
 
-
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    new_ts : array</span>
-<span class="sd">        The embedding sequeces.</span>
-
+<span class="sd">    y : array-like</span>
+<span class="sd">        The embedded timeseries.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">ts</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
-    <span class="n">new_ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="nb">len</span><span class="p">(</span><span class="n">ts</span><span class="p">),</span> <span class="n">dim</span><span class="p">])</span>
+    <span class="n">new_ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">dim</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">ts</span><span class="p">)))</span>
+    <span class="n">new_ts</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">ts</span>
 
-    <span class="n">l</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">dim</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">))</span>
-    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">o</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">dim</span><span class="p">),</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="n">l</span><span class="p">,</span> <span class="n">l</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)):</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="o">-</span><span class="n">tau</span> <span class="o">+</span> <span class="n">o</span><span class="p">)</span>
-        <span class="n">new_ts</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span>
-    <span class="n">new_ts</span> <span class="o">=</span> <span class="n">new_ts</span><span class="p">[:</span><span class="o">-</span><span class="p">(</span><span class="n">dim</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">tau</span><span class="p">,</span> <span class="p">]</span>
+    <span class="n">l</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">l</span> <span class="o">-</span> <span class="p">(</span><span class="n">dim</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">tau</span>
+    <span class="k">if</span> <span class="n">dim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">l</span> <span class="o">-</span> <span class="n">tau</span>
 
-    <span class="k">return</span> <span class="n">new_ts</span></div>
+    <span class="k">if</span> <span class="n">m</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">dim</span><span class="p">):</span>
+        <span class="n">offset</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">new_ts</span><span class="p">[</span><span class="n">offset</span><span class="p">],</span> <span class="n">l</span> <span class="o">-</span> <span class="n">tau</span><span class="p">)</span>
+        <span class="n">new_ts</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">tmp</span>
+    <span class="n">new_ts</span> <span class="o">=</span> <span class="n">new_ts</span><span class="o">.</span><span class="n">T</span>
+
+    <span class="n">y</span> <span class="o">=</span> <span class="n">new_ts</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">m</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="n">dim</span><span class="p">]</span>
+</div>
+    <span class="k">return</span> <span class="n">y</span>
 </pre></div>
 
            </div>
@@ -221,7 +237,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Avraam Marimpis &amp; Stavros Dimitriadis.
+        &copy; Copyright 2018, Avraam Marimpis &amp; Stavros Dimitriadis.
 
     </p>
   </div>
@@ -253,7 +269,7 @@
       <script type="text/javascript" src="../../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

@@ -139,16 +139,16 @@ def symoblic_transfer_entropy(x, y, s=1, delay=0, verbose=False):
 
     if verbose:
         if tent_diff > 0.0 and tent_diff != np.inf:
-            print "System x drives y."
+            print("System x drives y.")
 
         elif tent_diff < 0.0:
-            print "System y drives x."
+            print("System y drives x.")
 
         elif tent_diff == 0.0:
-            print "Symmetric bidirectionality."
+            print("Symmetric bidirectionality.")
 
         elif tent_diff == np.inf:
-            print "No information can be extracted by the two symbolic time series."
+            print("No information can be extracted by the two symbolic time series.")
 
     return tent_diff, tentxy, tentyx
 

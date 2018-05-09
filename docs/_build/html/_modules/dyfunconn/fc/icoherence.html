@@ -165,7 +165,7 @@
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="c1"># Author: Avraam Marimpis &lt;avraam.marimpis@gmail.com&gt;</span>
 
-<span class="kn">from</span> <span class="nn">estimator</span> <span class="k">import</span> <span class="n">Estimator</span>
+<span class="kn">from</span> <span class="nn">.estimator</span> <span class="k">import</span> <span class="n">Estimator</span>
 <span class="kn">from</span> <span class="nn">..analytic_signal</span> <span class="k">import</span> <span class="n">analytic_signal</span>
 
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="n">mlab</span>
@@ -230,8 +230,8 @@
         <span class="n">denom</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">csdxx</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">csdyy</span><span class="p">)))</span>
 
         <span class="n">icoh</span><span class="p">[</span><span class="n">pair</span><span class="p">]</span> <span class="o">=</span> <span class="n">num</span> <span class="o">/</span> <span class="n">denom</span>
-
-    <span class="k">return</span> <span class="n">icoh</span></div>
+</div>
+    <span class="k">return</span> <span class="n">icoh</span>
 
 
 <div class="viewcode-block" id="ICoherence"><a class="viewcode-back" href="../../../dyfunconn.fc.html#dyfunconn.fc.icoherence.ICoherence">[docs]</a><span class="k">class</span> <span class="nc">ICoherence</span><span class="p">(</span><span class="n">Estimator</span><span class="p">):</span>
@@ -278,8 +278,8 @@
             <span class="n">csds</span><span class="p">[</span><span class="n">r1</span><span class="p">,</span> <span class="n">r2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">]</span> <span class="o">=</span> <span class="n">csdxx</span>
             <span class="n">csds</span><span class="p">[</span><span class="n">r1</span><span class="p">,</span> <span class="n">r2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">]</span> <span class="o">=</span> <span class="n">csdyy</span>
             <span class="n">csds</span><span class="p">[</span><span class="n">r1</span><span class="p">,</span> <span class="n">r2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">]</span> <span class="o">=</span> <span class="n">csdxy</span>
-
-        <span class="k">return</span> <span class="n">csds</span></div>
+</div>
+        <span class="k">return</span> <span class="n">csds</span>
 
 <div class="viewcode-block" id="ICoherence.estimate_pair"><a class="viewcode-back" href="../../../dyfunconn.fc.html#dyfunconn.fc.icoherence.ICoherence.estimate_pair">[docs]</a>    <span class="k">def</span> <span class="nf">estimate_pair</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">signal1</span><span class="p">,</span> <span class="n">signal2</span><span class="p">):</span>
         <span class="n">csdxx</span> <span class="o">=</span> <span class="kc">None</span>
@@ -291,11 +291,11 @@
         <span class="c1"># icoh = num / denom</span>
 
         <span class="n">icoh</span> <span class="o">=</span> <span class="mf">0.0</span>
+</div>
+        <span class="k">return</span> <span class="n">icoh</span><span class="p">,</span> <span class="mf">0.0</span>
 
-        <span class="k">return</span> <span class="n">icoh</span><span class="p">,</span> <span class="mf">0.0</span></div>
-
-<div class="viewcode-block" id="ICoherence.estimate"><a class="viewcode-back" href="../../../dyfunconn.fc.html#dyfunconn.fc.icoherence.ICoherence.estimate">[docs]</a>    <span class="k">def</span> <span class="nf">estimate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
-        <span class="k">return</span> <span class="kc">None</span></div></div>
+<div class="viewcode-block" id="ICoherence.estimate"><a class="viewcode-back" href="../../../dyfunconn.fc.html#dyfunconn.fc.icoherence.ICoherence.estimate">[docs]</a>    <span class="k">def</span> <span class="nf">estimate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span></div></div>
+        <span class="k">return</span> <span class="kc">None</span>
 </pre></div>
 
            </div>
@@ -310,7 +310,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Avraam Marimpis &amp; Stavros Dimitriadis.
+        &copy; Copyright 2018, Avraam Marimpis &amp; Stavros Dimitriadis.
 
     </p>
   </div>
@@ -342,7 +342,7 @@
       <script type="text/javascript" src="../../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

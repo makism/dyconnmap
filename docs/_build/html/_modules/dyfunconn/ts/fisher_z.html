@@ -179,8 +179,8 @@
 <span class="sd">    .. math::</span>
 <span class="sd">        z_p := \\frac{1}{2} \\text{ln} \\left ( \\frac{1+p}{1-p} \\right ) = \\text{arctanh}(p)</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">arctanh</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></div>
+<span class="sd">    &quot;&quot;&quot;</span></div>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">arctanh</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
 
 <div class="viewcode-block" id="fisher_z_plv"><a class="viewcode-back" href="../../../dyfunconn.ts.html#dyfunconn.ts.fisher_z.fisher_z_plv">[docs]</a><span class="k">def</span> <span class="nf">fisher_z_plv</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
@@ -196,8 +196,8 @@
 <span class="sd">    .. [Mormann2005] Mormann, F., Fell, J., Axmacher, N., Weber, B., Lehnertz, K., Elger, C. E., &amp; Fernández, G. (2005). Phase/amplitude reset and theta–gamma interaction in the human medial temporal lobe during a continuous word recognition memory task. Hippocampus, 15(7), 890-900.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">tmp</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">data</span> <span class="o">-</span> <span class="mi">1</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">apply_along_axis</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arcsin</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">tmp</span><span class="p">)</span></div>
+    <span class="n">tmp</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">data</span> <span class="o">-</span> <span class="mi">1</span></div>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">apply_along_axis</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arcsin</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">tmp</span><span class="p">)</span>
 </pre></div>
 
            </div>
@@ -212,7 +212,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Avraam Marimpis &amp; Stavros Dimitriadis.
+        &copy; Copyright 2018, Avraam Marimpis &amp; Stavros Dimitriadis.
 
     </p>
   </div>
@@ -244,7 +244,7 @@
       <script type="text/javascript" src="../../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

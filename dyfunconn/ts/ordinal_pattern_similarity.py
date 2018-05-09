@@ -20,7 +20,7 @@ import itertools
 import sklearn
 from sklearn import preprocessing
 
-from embed_delay import embed_delay
+from .embed_delay import embed_delay
 
 
 def ordinal_pattern_similarity(signal1, signal2, m, tau):
@@ -73,9 +73,9 @@ def ordinal_pattern_similarity(signal1, signal2, m, tau):
     len1 = len(x)
     len2 = len(y)
 
-    factorial_dim = scipy.misc.factorial(m)
+    factorial_dim = scipy.misc.factorial(m, exact=True)
 
-    ipermlist = itertools.permutations(range(1, m + 1))
+    ipermlist = itertools.permutations(list(range(1, m + 1)))
     npermlist = np.zeros((np.int32(factorial_dim), m))
     for index, perm in enumerate(ipermlist):
         perm = np.reshape(perm, (1, -1)).astype(np.float32)

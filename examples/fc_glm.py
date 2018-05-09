@@ -12,8 +12,8 @@ if __name__ == "__main__":
     data = data[0:5, :]
 
     num_ts, ts_len = np.shape(data)
-    pairs = [(r1, r2) for r1 in xrange(0, num_ts)
-             for r2 in xrange(r1, num_ts)]
+    pairs = [(r1, r2) for r1 in range(0, num_ts)
+             for r2 in range(r1, num_ts)]
 
     window_size = ts_len / 2.0
 
@@ -24,4 +24,4 @@ if __name__ == "__main__":
     ts, ts_avg = glm(data, fb_lo, fb_hi, fs, pairs=pairs,
                      window_size=window_size)
 
-    print ts_avg
+    print(ts_avg)

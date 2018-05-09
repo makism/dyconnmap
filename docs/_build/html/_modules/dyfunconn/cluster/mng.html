@@ -154,6 +154,14 @@
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot; Merge NeuralGas</span>
 
+
+<span class="sd">Notes</span>
+<span class="sd">-----</span>
+
+<span class="sd">|</span>
+
+<span class="sd">----</span>
+
 <span class="sd">.. [Strickert2003] Strickert, M., &amp; Hammer, B. (2003, September). Neural gas for sequences. In Proceedings of the Workshop on Self-Organizing Maps (WSOM’03) (pp. 53-57).</span>
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="c1"># Author: Avraam Marimpis &lt;avraam.marimpis@gmail.com&gt;</span>
@@ -166,9 +174,9 @@
 <div class="viewcode-block" id="MergeNeuralGas"><a class="viewcode-back" href="../../../dyfunconn.cluster.html#dyfunconn.cluster.mng.MergeNeuralGas">[docs]</a><span class="k">class</span> <span class="nc">MergeNeuralGas</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot; Merge Neural Gas</span>
 
+
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-
 <span class="sd">    n_protos: int</span>
 <span class="sd">        The number of prototypes</span>
 
@@ -260,8 +268,8 @@
 
             <span class="n">wr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">protos</span><span class="p">[</span><span class="n">min_id</span><span class="p">]</span>
             <span class="n">cr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="p">[</span><span class="n">min_id</span><span class="p">]</span>
-
-        <span class="k">return</span> <span class="bp">self</span></div>
+</div>
+        <span class="k">return</span> <span class="bp">self</span>
 
 <div class="viewcode-block" id="MergeNeuralGas.encode"><a class="viewcode-back" href="../../../dyfunconn.cluster.html#dyfunconn.cluster.mng.MergeNeuralGas.encode">[docs]</a>    <span class="k">def</span> <span class="nf">encode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">metric</span> <span class="o">=</span> <span class="s1">&#39;euclidean&#39;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Employ a nearest-neighbor rule to encode the given ``data`` using the codebook.</span>
@@ -272,7 +280,7 @@
 <span class="sd">            Data matrix, each row represents a sample.</span>
 
 <span class="sd">        metric : string</span>
-<span class="sd">            One of the following valid options as defined for function http://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.pairwise_distances.html.</span>
+<span class="sd">            One of the following valid options as defined for function `http://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.pairwise_distances.html`.</span>
 
 <span class="sd">            Valid options include:</span>
 
@@ -291,64 +299,8 @@
         <span class="n">nbrs</span> <span class="o">=</span> <span class="n">NearestNeighbors</span><span class="p">(</span><span class="n">n_neighbors</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">algorithm</span> <span class="o">=</span> <span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">metric</span> <span class="o">=</span> <span class="n">metric</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">protos</span><span class="p">)</span>
         <span class="n">_</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__symbols</span> <span class="o">=</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">kneighbors</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__encoding</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">protos</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">__symbols</span><span class="p">]</span>
-
-        <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__encoding</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__symbols</span><span class="p">)</span></div></div>
-
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">dyfunconn.cluster</span> <span class="k">import</span> <span class="n">NeuralGas</span>
-    <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-    <span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="k">import</span> <span class="n">Axes3D</span>
-    <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-    <span class="kn">import</span> <span class="nn">sklearn</span>
-    <span class="kn">from</span> <span class="nn">sklearn</span> <span class="k">import</span> <span class="n">datasets</span>
-
-    <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">make_blobs</span><span class="p">(</span>
-        <span class="n">n_samples</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span> <span class="n">n_features</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">centers</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">rng</span><span class="p">)</span>
-
-    <span class="n">n_protos</span> <span class="o">=</span> <span class="mi">10</span>
-
-    <span class="n">mng</span> <span class="o">=</span> <span class="n">MergeNeuralGas</span><span class="p">(</span><span class="n">n_protos</span><span class="o">=</span><span class="n">n_protos</span><span class="p">,</span> <span class="n">rng</span><span class="o">=</span><span class="n">rng</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-    <span class="n">encoding</span><span class="p">,</span> <span class="n">symbols</span> <span class="o">=</span> <span class="n">mng</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-
-    <span class="n">ng</span> <span class="o">=</span> <span class="n">NeuralGas</span><span class="p">(</span><span class="n">n_protos</span><span class="o">=</span><span class="n">n_protos</span><span class="p">,</span> <span class="n">rng</span><span class="o">=</span><span class="n">rng</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-    <span class="n">encoding2</span><span class="p">,</span> <span class="n">symbols2</span> <span class="o">=</span> <span class="n">ng</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-
-    <span class="n">x</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
-    <span class="n">z</span> <span class="o">=</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span>
-
-    <span class="n">p_x</span> <span class="o">=</span> <span class="n">mng</span><span class="o">.</span><span class="n">protos</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
-    <span class="n">p_y</span> <span class="o">=</span> <span class="n">mng</span><span class="o">.</span><span class="n">protos</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
-    <span class="n">p_z</span> <span class="o">=</span> <span class="n">mng</span><span class="o">.</span><span class="n">protos</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span>
-    <span class="n">p_Y</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-
-    <span class="kn">from</span> <span class="nn">sklearn.manifold</span> <span class="k">import</span> <span class="n">MDS</span>
-
-    <span class="n">mds1</span> <span class="o">=</span> <span class="n">MDS</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">rng</span><span class="p">)</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">mng</span><span class="o">.</span><span class="n">protos</span><span class="p">)</span>
-    <span class="n">mds2</span> <span class="o">=</span> <span class="n">MDS</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">rng</span><span class="p">)</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">ng</span><span class="o">.</span><span class="n">protos</span><span class="p">)</span>
-
-    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">mds1</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">mds1</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;mng&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">mds2</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">mds2</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;ng&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-    <span class="c1"># plt.figure()</span>
-    <span class="c1"># n, bins, patches = plt.hist(symbols, n_protos)</span>
-    <span class="c1"># plt.show()</span>
-    <span class="c1">#</span>
-    <span class="c1"># plt.figure()</span>
-    <span class="c1"># n, bins, patches = plt.hist(symbols2, n_protos)</span>
-    <span class="c1"># plt.show()</span>
-
-    <span class="c1"># figure = plt.figure()</span>
-    <span class="c1"># axes = Axes3D(figure)</span>
-    <span class="c1"># axes.scatter(x, y, z, c=Y)</span>
-    <span class="c1"># axes.scatter(p_x, p_y, p_z, s=100, c=&#39;black&#39;, marker=&#39;D&#39;)</span>
-    <span class="c1"># axes.scatter(x, y, z, c=symbols, s=100)</span>
-    <span class="c1"># figure.add_axes(axes)</span>
-    <span class="c1"># plt.show()</span>
+</div></div>
+        <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__encoding</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__symbols</span><span class="p">)</span>
 </pre></div>
 
            </div>
@@ -363,7 +315,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Avraam Marimpis &amp; Stavros Dimitriadis.
+        &copy; Copyright 2018, Avraam Marimpis &amp; Stavros Dimitriadis.
 
     </p>
   </div>
@@ -395,7 +347,7 @@
       <script type="text/javascript" src="../../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

@@ -20,6 +20,14 @@ dyfunconn.fc.biplv module
     :undoc-members:
     :show-inheritance:
 
+dyfunconn.fc.canolty\_pac module
+--------------------------------
+
+.. automodule:: dyfunconn.fc.canolty_pac
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 dyfunconn.fc.coherence module
 -----------------------------
 
@@ -148,8 +156,8 @@ dyfunconn.fc.plv module
     :undoc-members:
     :show-inheritance:
 
-dyfunconn.fc.rho_index module
------------------------------
+dyfunconn.fc.rho\_index module
+------------------------------
 
 .. automodule:: dyfunconn.fc.rho_index
     :members:

@@ -1,0 +1,727 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>dyfunconn.graphs.threshold &mdash; dyfunconn  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="dyfunconn  documentation" href="../../../index.html"/>
+        <link rel="up" title="Module code" href="../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> dyfunconn
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../dyfunconn.html">dyfunconn package</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">dyfunconn</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+        
+      <li>dyfunconn.graphs.threshold</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <h1>Source code for dyfunconn.graphs.threshold</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="sd">&quot;&quot;&quot; Thresholding schemes</span>
+
+
+<span class="sd">Notes</span>
+<span class="sd">-----</span>
+<span class="sd">* This is a direct translation from `Data Driven Topological Filtering of Brain Networks via Orthogonal Minimal Spanning Trees &lt;https://github.com/stdimitr/topological_filtering_networks&gt;&#39;</span>
+<span class="sd">* Original author is Stravros Dimitriadis &lt;stidimitriadis@gmail.com&gt;</span>
+
+<span class="sd">|</span>
+
+<span class="sd">-----</span>
+
+<span class="sd"> &quot;&quot;&quot;</span>
+<span class="c1"># Author: Avraam Marimpis &lt;avraam.marimpis@gmail.com&gt;</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">bct</span>
+
+
+<div class="viewcode-block" id="k_core_decomposition"><a class="viewcode-back" href="../../../dyfunconn.graphs.html#dyfunconn.graphs.k_core_decomposition">[docs]</a><span class="k">def</span> <span class="nf">k_core_decomposition</span><span class="p">(</span><span class="n">mtx</span><span class="p">,</span> <span class="n">threshold</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Threshold a binary graph based on the detected k-cores.</span>
+
+<span class="sd">    .. [Alvarez2006] Alvarez-Hamelin, J. I., Dall&#39;Asta, L., Barrat, A., &amp; Vespignani, A. (2006). Large scale networks fingerprinting and visualization using the k-core decomposition. In Advances in neural information processing systems (pp. 41-50).</span>
+<span class="sd">    .. [Hagman2008] Hagmann, P., Cammoun, L., Gigandet, X., Meuli, R., Honey, C. J., Wedeen, V. J., &amp; Sporns, O. (2008). Mapping the structural core of human cerebral cortex. PLoS biology, 6(7), e159.</span>
+
+
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mtx : array-like, shape(N, N)</span>
+<span class="sd">        Binary matrix.</span>
+
+<span class="sd">    threshold : int</span>
+<span class="sd">        Degree threshold.</span>
+
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    k_cores : array-like, shape(N, 1)</span>
+<span class="sd">        A binary matrix of the decomposed cores.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">imtx</span> <span class="o">=</span> <span class="n">mtx</span>
+
+    <span class="n">N</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">mtx</span><span class="p">)</span>
+
+    <span class="c1"># in_degree = np.sum(mtx, 0)</span>
+    <span class="c1"># out_degree = np.sum(mtx, 1)</span>
+
+    <span class="n">degree</span> <span class="o">=</span> <span class="n">bct</span><span class="o">.</span><span class="n">degrees_und</span><span class="p">(</span><span class="n">mtx</span><span class="p">);</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">degree</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">threshold</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+                <span class="n">imtx</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">l</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="c1"># Recalculate the list of the degrees</span>
+        <span class="n">degree</span> <span class="o">=</span> <span class="n">bct</span><span class="o">.</span><span class="n">degrees_und</span><span class="p">(</span><span class="n">imtx</span><span class="p">)</span>
+
+    <span class="n">k_cores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">N</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">degree</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">k_cores</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+</div>
+    <span class="k">return</span> <span class="n">k_cores</span>
+
+
+<div class="viewcode-block" id="threshold_mst_mean_degree"><a class="viewcode-back" href="../../../dyfunconn.graphs.html#dyfunconn.graphs.threshold_mst_mean_degree">[docs]</a><span class="k">def</span> <span class="nf">threshold_mst_mean_degree</span><span class="p">(</span><span class="n">mtx</span><span class="p">,</span> <span class="n">avg_degree</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Threshold a graph based on mean using minimum spanning trees.</span>
+
+
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mtx : array-like, shape(N, N)</span>
+<span class="sd">        Symmetric, weighted and undirected connectivity matrix.</span>
+
+<span class="sd">    avg_degree : float</span>
+<span class="sd">        Mean degree threshold.</span>
+
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    binary_mtx : array-like, shape(N, N)</span>
+<span class="sd">        A binary mask matrix.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">N</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">mtx</span><span class="p">)</span>
+
+    <span class="n">CIJtree</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">N</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>
+    <span class="n">CIJnotintree</span> <span class="o">=</span> <span class="n">mtx</span>
+
+
+    <span class="c1"># Find the number of orthogonal msts according to the desired mean degree.</span>
+    <span class="n">num_edges</span> <span class="o">=</span> <span class="n">avg_degree</span> <span class="o">*</span> <span class="n">N</span>
+    <span class="n">num_msts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">num_edges</span> <span class="o">/</span> <span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Keep the N-1 connections of the num_msts MSTs.</span>
+    <span class="n">mst_conn</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_msts</span> <span class="o">*</span> <span class="p">(</span><span class="n">N</span><span class="o">-</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">2</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+
+    <span class="n">nCIJtree</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_msts</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">N</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+
+    <span class="c1"># Repeat rows-2 times</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">no</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_msts</span><span class="p">):</span>
+
+        <span class="n">graph</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">from_numpy_matrix</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="n">CIJnotintree</span><span class="p">)</span>
+        <span class="n">mst</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">minimum_spanning_tree</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
+        <span class="n">links</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">mst</span><span class="o">.</span><span class="n">edges</span><span class="p">())</span>
+
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="n">link1</span> <span class="o">=</span> <span class="n">links</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">link2</span> <span class="o">=</span> <span class="n">links</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+
+            <span class="n">CIJtree</span><span class="p">[</span><span class="n">link1</span><span class="p">,</span> <span class="n">link2</span><span class="p">]</span> <span class="o">=</span> <span class="n">mtx</span><span class="p">[</span><span class="n">link1</span><span class="p">,</span> <span class="n">link2</span><span class="p">]</span>
+            <span class="n">CIJtree</span><span class="p">[</span><span class="n">link2</span><span class="p">,</span> <span class="n">link1</span><span class="p">]</span> <span class="o">=</span> <span class="n">mtx</span><span class="p">[</span><span class="n">link1</span><span class="p">,</span> <span class="n">link2</span><span class="p">]</span>
+
+            <span class="n">mst_conn</span><span class="p">[</span><span class="n">count</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">link1</span>
+            <span class="n">mst_conn</span><span class="p">[</span><span class="n">count</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">link2</span>
+
+            <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="c1"># Now add connections back, with the total number of added connections</span>
+        <span class="c1"># determined by the desired &#39;threshold&#39;</span>
+        <span class="n">iCIJtree</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">N</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>
+        <span class="n">iCIJtree</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">CIJtree</span> <span class="o">!=</span> <span class="mf">0.0</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">CIJnotintree</span> <span class="o">=</span> <span class="n">CIJnotintree</span> <span class="o">*</span> <span class="n">iCIJtree</span>
+        <span class="n">nCIJtree</span><span class="p">[</span><span class="n">no</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">CIJtree</span>
+
+    <span class="n">degree</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_msts</span> <span class="o">*</span> <span class="p">(</span><span class="n">N</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)))</span>
+    <span class="n">matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">N</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>
+
+    <span class="k">for</span> <span class="n">no</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_msts</span> <span class="o">*</span> <span class="p">(</span><span class="n">N</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)):</span>
+        <span class="n">idx1</span> <span class="o">=</span> <span class="n">mst_conn</span><span class="p">[</span><span class="n">no</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+        <span class="n">idx2</span> <span class="o">=</span> <span class="n">mst_conn</span><span class="p">[</span><span class="n">no</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+
+        <span class="n">matrix</span><span class="p">[</span><span class="n">idx1</span><span class="p">,</span> <span class="n">idx2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">matrix</span><span class="p">[</span><span class="n">idx2</span><span class="p">,</span> <span class="n">idx1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+        <span class="c1"># matrix = double(matrix~=0)</span>
+        <span class="n">deg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">degree</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">no</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">deg</span><span class="p">)</span>
+
+    <span class="n">abs_diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">degree</span> <span class="o">-</span> <span class="n">avg_degree</span><span class="p">)</span>
+    <span class="n">cutoff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">abs_diff</span><span class="p">)</span>
+
+    <span class="n">CIJtree</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">N</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>
+
+    <span class="k">for</span> <span class="n">no</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">cutoff</span><span class="p">):</span>
+        <span class="n">idx1</span> <span class="o">=</span> <span class="n">mst_conn</span><span class="p">[</span><span class="n">no</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+        <span class="n">idx2</span> <span class="o">=</span> <span class="n">mst_conn</span><span class="p">[</span><span class="n">no</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+
+        <span class="n">CIJtree</span><span class="p">[</span><span class="n">idx1</span><span class="p">,</span> <span class="n">idx2</span><span class="p">]</span> <span class="o">=</span> <span class="n">mtx</span><span class="p">[</span><span class="n">idx1</span><span class="p">,</span> <span class="n">idx2</span><span class="p">]</span>
+        <span class="n">CIJtree</span><span class="p">[</span><span class="n">idx2</span><span class="p">,</span> <span class="n">idx1</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIJtree</span><span class="p">[</span><span class="n">idx1</span><span class="p">,</span> <span class="n">idx2</span><span class="p">]</span>
+
+    <span class="c1"># ravgdeg = avg_degree - abs_diff</span>
+</div>
+    <span class="k">return</span> <span class="n">CIJtree</span>
+
+
+<div class="viewcode-block" id="threshold_mean_degree"><a class="viewcode-back" href="../../../dyfunconn.graphs.html#dyfunconn.graphs.threshold_mean_degree">[docs]</a><span class="k">def</span> <span class="nf">threshold_mean_degree</span><span class="p">(</span><span class="n">mtx</span><span class="p">,</span> <span class="n">threshold_mean_degree</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Threshold a graph based on the mean degree.</span>
+
+
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mtx : array-like, shape(N, N)</span>
+<span class="sd">        Symmetric, weighted and undirected connectivity matrix.</span>
+
+<span class="sd">    threshold_mean_degree : int</span>
+<span class="sd">        Mean degree threshold.</span>
+
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    binary_mtx : array-like, shape(N, N)</span>
+<span class="sd">        A binary mask matrix.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">binary_mtx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">mtx</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+    <span class="n">N</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">mtx</span><span class="p">)</span>
+
+    <span class="n">iterations</span> <span class="o">=</span> <span class="mi">100</span>
+    <span class="n">step</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">iterations</span>
+    <span class="n">thres</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">thresdeg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">iterations</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">iterations</span><span class="p">):</span>
+        <span class="n">thres</span> <span class="o">+=</span> <span class="n">step</span>
+
+        <span class="n">tmp_binary</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">binary_mtx</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">mtx</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="n">l</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">thres</span><span class="p">:</span>
+                    <span class="n">tmp_binary</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="n">l</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+                    <span class="n">tmp_binary</span><span class="p">[</span><span class="n">l</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+        <span class="n">degree</span> <span class="o">=</span> <span class="n">bct</span><span class="o">.</span><span class="n">degrees_und</span><span class="p">(</span><span class="n">tmp_binary</span><span class="p">)</span>
+
+        <span class="n">thresdeg</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">degree</span><span class="p">)</span>
+        <span class="n">thresdeg</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">thres</span>
+
+    <span class="c1"># find the nearest mean degree to kk</span>
+    <span class="n">diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">iterations</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">iterations</span><span class="p">):</span>
+        <span class="n">diff</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">thresdeg</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">threshold_mean_degree</span><span class="p">)</span>
+
+    <span class="c1"># find the mean degree with the min difference from kk</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">diff</span><span class="p">)</span>
+
+    <span class="c1"># find the threhold corresponds to the mean degree</span>
+    <span class="c1"># mdegree = thresdeg[r, 0]</span>
+    <span class="n">thres</span> <span class="o">=</span> <span class="n">thresdeg</span><span class="p">[</span><span class="n">r</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">mtx</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="n">l</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">thres</span><span class="p">:</span>
+                <span class="n">binary_mtx</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="n">l</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+                <span class="n">binary_mtx</span><span class="p">[</span><span class="n">l</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+</div>
+    <span class="k">return</span> <span class="n">binary_mtx</span>
+
+
+<div class="viewcode-block" id="threshold_shortest_paths"><a class="viewcode-back" href="../../../dyfunconn.graphs.html#dyfunconn.graphs.threshold_shortest_paths">[docs]</a><span class="k">def</span> <span class="nf">threshold_shortest_paths</span><span class="p">(</span><span class="n">mtx</span><span class="p">,</span> <span class="n">treatment</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Threshold a graph via  via shortest path identification using Dijkstra&#39;s algorithm.</span>
+
+<span class="sd">    .. [Dimitriadis2010] Dimitriadis, S. I., Laskaris, N. A., Tsirka, V., Vourkas, M., Micheloyannis, S., &amp; Fotopoulos, S. (2010). Tracking brain dynamics via time-dependent network analysis. Journal of neuroscience methods, 193(1), 145-155.</span>
+
+
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mtx : array-like, shape(N, N)</span>
+<span class="sd">        Symmetric, weighted and undirected connectivity matrix.</span>
+
+<span class="sd">    treatment : boolean</span>
+<span class="sd">        Convert the weights to distances by inversing the matrix. Also,</span>
+<span class="sd">        fill the diagonal with zeroes. Default `false`.</span>
+
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    binary_mtx : array-like, shape(N, N)</span>
+<span class="sd">        A binary mask matrix.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">imtx</span> <span class="o">=</span> <span class="n">mtx</span>
+    <span class="k">if</span> <span class="n">treatment</span><span class="p">:</span>
+        <span class="n">imtx</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">mtx</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">fill_diagonal</span><span class="p">(</span><span class="n">imtx</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+
+    <span class="n">binary_mtx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">imtx</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+
+    <span class="n">graph</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">from_numpy_matrix</span><span class="p">(</span><span class="n">imtx</span><span class="p">)</span>
+    <span class="n">paths</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">all_pairs_dijkstra_path</span><span class="p">(</span><span class="n">graph</span><span class="p">))</span>
+
+    <span class="n">N</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">mtx</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+            <span class="n">r_path</span> <span class="o">=</span> <span class="n">paths</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">]</span>
+            <span class="n">num_nodes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">r_path</span><span class="p">)</span>
+
+            <span class="n">ind1</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+            <span class="n">ind2</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+            <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_nodes</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+                <span class="n">ind1</span> <span class="o">=</span> <span class="n">ind1</span> <span class="o">+</span> <span class="mi">1</span>
+                <span class="n">ind2</span> <span class="o">=</span> <span class="n">ind1</span> <span class="o">+</span> <span class="mi">1</span>
+
+                <span class="n">binary_mtx</span><span class="p">[</span><span class="n">r_path</span><span class="p">[</span><span class="n">ind1</span><span class="p">],</span> <span class="n">r_path</span><span class="p">[</span><span class="n">ind2</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">1</span>
+                <span class="n">binary_mtx</span><span class="p">[</span><span class="n">r_path</span><span class="p">[</span><span class="n">ind2</span><span class="p">],</span> <span class="n">r_path</span><span class="p">[</span><span class="n">ind1</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">1</span>
+</div>
+    <span class="k">return</span> <span class="n">binary_mtx</span>
+
+
+<div class="viewcode-block" id="threshold_global_cost_efficiency"><a class="viewcode-back" href="../../../dyfunconn.graphs.html#dyfunconn.graphs.threshold_global_cost_efficiency">[docs]</a><span class="k">def</span> <span class="nf">threshold_global_cost_efficiency</span><span class="p">(</span><span class="n">mtx</span><span class="p">,</span> <span class="n">iterations</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Threshold a graph based on the Global Efficiency - Cost formula.</span>
+
+<span class="sd">    .. [Basset2009] Bassett, D. S., Bullmore, E. T., Meyer-Lindenberg, A., Apud, J. A., Weinberger, D. R., &amp; Coppola, R. (2009). Cognitive fitness of cost-efficient brain functional networks. Proceedings of the National Academy of Sciences, 106(28), 11747-11752.</span>
+
+
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mtx : array-like, shape(N, N)</span>
+<span class="sd">        Symmetric, weighted and undirected connectivity matrix.</span>
+
+<span class="sd">    iterations : int</span>
+<span class="sd">        Number of steps, as a resolution when search for optima.</span>
+
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    binary_mtx : array-like, shape(N, N)</span>
+<span class="sd">        A binary mask matrix.</span>
+
+<span class="sd">    threshold : float</span>
+<span class="sd">        The threshold that maximizes the global cost efficiency.</span>
+
+<span class="sd">    global_cost_eff_max : float</span>
+<span class="sd">        Global cost efficiency.</span>
+
+<span class="sd">    efficiency : float</span>
+<span class="sd">        Global efficiency.</span>
+
+<span class="sd">    cost_max : float</span>
+<span class="sd">        Cost of the network at the maximum global cost efficiency</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">binary_mtx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">mtx</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+
+    <span class="n">step</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">iterations</span>
+
+    <span class="n">thresholds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="o">+</span><span class="n">step</span><span class="p">,</span> <span class="n">step</span><span class="p">)</span>
+
+    <span class="n">N</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">mtx</span><span class="p">)</span>
+
+    <span class="n">num_connections</span> <span class="o">=</span> <span class="p">(</span><span class="n">N</span> <span class="o">*</span> <span class="p">(</span><span class="n">N</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span> <span class="o">/</span> <span class="mf">2.0</span>
+
+    <span class="n">global_cost_eff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">iterations</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+    <span class="n">cost</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">iterations</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">iterations</span><span class="p">):</span>
+        <span class="n">tmp_binary</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">binary_mtx</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">mtx</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="n">l</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">thresholds</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+                    <span class="n">tmp_binary</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="n">l</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+                    <span class="n">tmp_binary</span><span class="p">[</span><span class="n">l</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+        <span class="n">global_eff</span> <span class="o">=</span> <span class="n">bct</span><span class="o">.</span><span class="n">efficiency_bin</span><span class="p">(</span><span class="n">tmp_binary</span><span class="p">)</span>
+
+        <span class="n">degree</span> <span class="o">=</span> <span class="n">bct</span><span class="o">.</span><span class="n">degrees_und</span><span class="p">(</span><span class="n">tmp_binary</span><span class="p">)</span>
+        <span class="n">total_degree</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">degree</span><span class="p">)</span>
+
+        <span class="n">cost</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">total_degree</span><span class="p">)</span> <span class="o">/</span> <span class="n">num_connections</span>
+        <span class="n">global_cost_eff</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">global_eff</span> <span class="o">-</span> <span class="n">cost</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+    <span class="n">indx_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">global_cost_eff</span><span class="p">)</span>
+    <span class="n">threshold</span> <span class="o">=</span> <span class="n">thresholds</span><span class="p">[</span><span class="n">indx_max</span><span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">mtx</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="n">l</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">threshold</span><span class="p">:</span>
+                <span class="n">binary_mtx</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="n">l</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+                <span class="n">binary_mtx</span><span class="p">[</span><span class="n">l</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="n">cost_max</span> <span class="o">=</span> <span class="n">cost</span><span class="p">[</span><span class="n">indx_max</span><span class="p">]</span>
+    <span class="n">global_cost_eff_max</span> <span class="o">=</span> <span class="n">global_cost_eff</span><span class="p">[</span><span class="n">indx_max</span><span class="p">]</span>
+    <span class="n">efficiency</span> <span class="o">=</span> <span class="n">bct</span><span class="o">.</span><span class="n">efficiency_bin</span><span class="p">(</span><span class="n">binary_mtx</span><span class="p">)</span>
+
+    <span class="c1"># import matplotlib.pyplot as plt</span>
+    <span class="c1"># plt.figure()</span>
+    <span class="c1"># plt.plot(cost, global_cost_eff)</span>
+    <span class="c1"># plt.plot(cost_max, global_cost_eff_max, &#39;b*&#39;, label=&#39;Max Global Cost Efficiency&#39;)</span>
+    <span class="c1"># plt.title(&#39;Economical small-world network at max Global Cost Efficiency&#39;)</span>
+    <span class="c1"># plt.xlabel(&#39;Cost&#39;)</span>
+    <span class="c1"># plt.ylabel(&#39;Global Cost Efficiency&#39;)</span>
+    <span class="c1"># plt.legend()</span>
+    <span class="c1"># plt.show()</span>
+</div>
+    <span class="k">return</span> <span class="n">binary_mtx</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">global_cost_eff_max</span><span class="p">,</span> <span class="n">efficiency</span><span class="p">,</span> <span class="n">cost_max</span>
+
+
+<div class="viewcode-block" id="threshold_omst_global_cost_efficiency"><a class="viewcode-back" href="../../../dyfunconn.graphs.html#dyfunconn.graphs.threshold_omst_global_cost_efficiency">[docs]</a><span class="k">def</span> <span class="nf">threshold_omst_global_cost_efficiency</span><span class="p">(</span><span class="n">mtx</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Threshold a graph by optimizing the formula GE-C via orthogonal MSTs.</span>
+
+<span class="sd">    .. [Dimitriadis2017a] Dimitriadis, S. I., Salis, C., Tarnanas, I., &amp; Linden, D. E. (2017). Topological Filtering of Dynamic Functional Brain Networks Unfolds Informative Chronnectomics: A Novel Data-Driven Thresholding Scheme Based on Orthogonal Minimal Spanning Trees (OMSTs). Frontiers in neuroinformatics, 11.</span>
+<span class="sd">    .. [Dimitriadis2017n] Dimitriadis, S. I., Antonakakis, M., Simos, P., Fletcher, J. M., &amp; Papanicolaou, A. C. (2017). Data-driven Topological Filtering based on Orthogonal Minimal Spanning Trees: Application to Multi-Group MEG Resting-State Connectivity. Brain Connectivity, (ja).</span>
+<span class="sd">    .. [Basset2009] Bassett, D. S., Bullmore, E. T., Meyer-Lindenberg, A., Apud, J. A., Weinberger, D. R., &amp; Coppola, R. (2009). Cognitive fitness of cost-efficient brain functional networks. Proceedings of the National Academy of Sciences, 106(28), 11747-11752.</span>
+
+
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mtx : array-like, shape(N, N)</span>
+<span class="sd">        Symmetric, weighted and undirected connectivity matrix.</span>
+
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    nCIJtree : array-like, shape(n_msts, N, N)</span>
+<span class="sd">        A matrix containing all the orthogonal MSTs.</span>
+
+<span class="sd">    CIJtree : array-like, shape(N, N)</span>
+<span class="sd">        Resulting graph.</span>
+
+<span class="sd">    degree : float</span>
+<span class="sd">        The mean degree of the resulting graph.</span>
+
+<span class="sd">    global_eff : float</span>
+<span class="sd">        Global efficiency of the resulting graph.</span>
+
+<span class="sd">    global_cost_eff_max : float</span>
+<span class="sd">        The value where global efficiency - cost is maximized.</span>
+
+<span class="sd">    cost_max : float</span>
+<span class="sd">        Cost of the network at the maximum global cost efficiency.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">imtx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">mtx</span><span class="p">)</span>
+    <span class="n">imtx_uptril</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">mtx</span><span class="p">)</span>
+
+    <span class="n">N</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">imtx</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
+            <span class="n">imtx_uptril</span><span class="p">[</span><span class="n">l</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">fill_diagonal</span><span class="p">(</span><span class="n">imtx_uptril</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+
+    <span class="c1"># Find the number of orthogonal msts according to the desired mean degree</span>
+    <span class="n">num_edges</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">imtx</span> <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">num_msts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">num_edges</span><span class="o">/</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">pos_num_msts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">num_edges</span> <span class="o">/</span> <span class="p">(</span><span class="n">N</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="n">num_msts</span> <span class="o">&gt;</span> <span class="n">pos_num_msts</span><span class="p">:</span>
+        <span class="n">num_msts</span> <span class="o">=</span> <span class="n">pos_num_msts</span>
+
+    <span class="n">CIJnotintree</span> <span class="o">=</span> <span class="n">imtx</span>
+
+    <span class="c1"># Keep the N-1 connections of the num_msts MSTs</span>
+    <span class="n">num_msts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">(</span><span class="n">num_msts</span><span class="p">)</span>
+    <span class="n">mst_conn</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_msts</span> <span class="o">*</span> <span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="mi">2</span><span class="p">))</span>
+
+    <span class="n">nCIJtree</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_msts</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span> <span class="c1">#, dtype=np.int32)</span>
+    <span class="n">omst</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_msts</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">N</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+    <span class="c1"># Repeat N-2 times</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">CIJtree</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">N</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>
+
+    <span class="k">for</span> <span class="n">no</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_msts</span><span class="p">):</span>
+        <span class="n">tmp_mtx</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">CIJnotintree</span>
+        <span class="c1"># ugly code ~_~</span>
+        <span class="c1"># graph = nx.from_numpy_matrix(tmp_mtx)</span>
+        <span class="n">graph</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
+                <span class="n">graph</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="n">tmp_mtx</span><span class="p">[</span><span class="n">x</span><span class="p">][</span><span class="n">y</span><span class="p">])</span>
+        <span class="n">mst</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">minimum_spanning_tree</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
+        <span class="n">links</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">mst</span><span class="o">.</span><span class="n">edges</span><span class="p">())</span>
+
+        <span class="n">new_mst</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">N</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>
+        <span class="n">mst_num_links</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">links</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">mst_num_links</span><span class="p">):</span>
+            <span class="n">link1</span> <span class="o">=</span> <span class="n">links</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">link2</span> <span class="o">=</span> <span class="n">links</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+
+            <span class="n">CIJtree</span><span class="p">[</span><span class="n">link1</span><span class="p">,</span> <span class="n">link2</span><span class="p">]</span> <span class="o">=</span> <span class="n">imtx</span><span class="p">[</span><span class="n">link1</span><span class="p">,</span> <span class="n">link2</span><span class="p">]</span>
+            <span class="n">CIJtree</span><span class="p">[</span><span class="n">link2</span><span class="p">,</span> <span class="n">link1</span><span class="p">]</span> <span class="o">=</span> <span class="n">imtx</span><span class="p">[</span><span class="n">link1</span><span class="p">,</span> <span class="n">link2</span><span class="p">]</span>
+
+            <span class="n">mst_conn</span><span class="p">[</span><span class="n">count</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">link1</span>
+            <span class="n">mst_conn</span><span class="p">[</span><span class="n">count</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">link2</span>
+
+            <span class="n">new_mst</span><span class="p">[</span><span class="n">link1</span><span class="p">,</span> <span class="n">link2</span><span class="p">]</span> <span class="o">=</span> <span class="n">imtx</span><span class="p">[</span><span class="n">link1</span><span class="p">,</span> <span class="n">link2</span><span class="p">]</span>
+            <span class="n">new_mst</span><span class="p">[</span><span class="n">link2</span><span class="p">,</span> <span class="n">link1</span><span class="p">]</span> <span class="o">=</span> <span class="n">imtx</span><span class="p">[</span><span class="n">link1</span><span class="p">,</span> <span class="n">link2</span><span class="p">]</span>
+            <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="n">iCIJtree</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">N</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>
+        <span class="n">iCIJtree</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">CIJtree</span> <span class="o">!=</span> <span class="mf">0.0</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">CIJnotintree</span> <span class="o">=</span> <span class="n">CIJnotintree</span> <span class="o">*</span> <span class="n">iCIJtree</span>
+        <span class="n">nCIJtree</span><span class="p">[</span><span class="n">no</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">CIJtree</span>
+        <span class="n">omst</span><span class="p">[</span><span class="n">no</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">new_mst</span>
+
+    <span class="n">global_eff_ini</span> <span class="o">=</span> <span class="n">bct</span><span class="o">.</span><span class="n">efficiency_wei</span><span class="p">(</span><span class="n">imtx_uptril</span><span class="p">)</span> <span class="o">*</span> <span class="mf">2.0</span>
+    <span class="n">cost_ini</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">imtx_uptril</span><span class="p">[:])</span>
+
+    <span class="c1"># Insert the 1st MST</span>
+    <span class="n">graph</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">N</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>
+    <span class="n">global_cost_eff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_msts</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">degrees</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_msts</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">cost</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_msts</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_msts</span><span class="p">):</span>
+        <span class="n">graph</span> <span class="o">=</span> <span class="n">nCIJtree</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span>
+
+        <span class="n">degree</span> <span class="o">=</span> <span class="n">bct</span><span class="o">.</span><span class="n">degrees_und</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
+        <span class="n">mean_degree</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">degree</span><span class="p">)</span>
+        <span class="n">degrees</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">mean_degree</span>
+
+        <span class="n">cost</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span> <span class="o">/</span> <span class="n">cost_ini</span>
+
+        <span class="n">global_eff</span> <span class="o">=</span> <span class="n">bct</span><span class="o">.</span><span class="n">efficiency_wei</span><span class="p">(</span><span class="n">graph</span><span class="p">)</span>
+        <span class="n">global_cost_eff</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">global_eff</span> <span class="o">/</span> <span class="n">global_eff_ini</span> <span class="o">-</span> <span class="n">cost</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+
+    <span class="c1"># Get the OMST where the formula GE-C is maximized</span>
+    <span class="n">indx_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">global_cost_eff</span><span class="p">)</span>
+
+    <span class="c1"># Final output</span>
+    <span class="n">degree</span> <span class="o">=</span> <span class="n">degrees</span><span class="p">[</span><span class="n">indx_max</span><span class="p">]</span>
+    <span class="n">CIJtree</span> <span class="o">=</span> <span class="n">nCIJtree</span><span class="p">[</span><span class="n">indx_max</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span>
+    <span class="n">cost_max</span> <span class="o">=</span> <span class="n">cost</span><span class="p">[</span><span class="n">indx_max</span><span class="p">]</span>
+    <span class="n">global_eff</span> <span class="o">=</span> <span class="n">bct</span><span class="o">.</span><span class="n">efficiency_wei</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="n">CIJtree</span><span class="p">)</span>
+    <span class="n">global_cost_eff_max</span> <span class="o">=</span> <span class="n">global_cost_eff</span><span class="p">[</span><span class="n">indx_max</span><span class="p">]</span>
+
+    <span class="c1"># import matplotlib.pyplot as plt</span>
+    <span class="c1"># plt.figure()</span>
+    <span class="c1"># plt.plot(cost, global_cost_eff)</span>
+    <span class="c1"># plt.plot(cost_max, global_cost_eff_max, &#39;b*&#39;, label=&#39;Max Global Cost Efficiency&#39;)</span>
+    <span class="c1"># plt.title(&#39;Economical small-world network at max Global Cost Efficiency&#39;)</span>
+    <span class="c1"># plt.xlabel(&#39;Cost&#39;)</span>
+    <span class="c1"># plt.ylabel(&#39;Global Cost Efficiency&#39;)</span>
+    <span class="c1"># plt.legend()</span>
+    <span class="c1"># plt.show()</span>
+</div>
+    <span class="k">return</span> <span class="n">nCIJtree</span><span class="p">,</span> <span class="n">CIJtree</span><span class="p">,</span> <span class="n">degree</span><span class="p">,</span> <span class="n">global_eff</span><span class="p">,</span> <span class="n">global_cost_eff_max</span><span class="p">,</span> <span class="n">cost_max</span>
+</pre></div>
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Avraam Marimpis &amp; Stavros Dimitriadis.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

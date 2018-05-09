@@ -1,16 +1,28 @@
 # -*- coding: utf-8 -*-
 """
 
+When dealing with non-linear time series analysis, it is common to reconstruct
+hem as time delay vectors in phase space. This new reconstruction, describes the
+tmporal evolution of a system in a state space; a trajectory of interchanging states.
+The need for this state space, stems from the fact that the original system may
+contain latent and unobserved variables that we would like to expose. Thus, we
+construct :math:`m`-dimensional phase vectors from :math:`\\tau`-time delayed samples (Takens1981_):
 
+.. math::
+    s_n = (s_(n-(m-1)τ),s_(n-(m-2)) τ, …, s_n)
+
+This new space, is shown to preserve the dynamics properties of the original
+phase space. For more on the subject, the interested readers are encouraged to
+consult the work of Bradley and Kantz (Bradley2015_).
 
 
 |
 
 -----
 
+.. [Taken1981] Takens, F. (1981). Detecting strange attractors in turbulence. Lecture notes in mathematics, 898(1), 366-381.
+.. [Bradley2015] Bradley, E., & Kantz, H. (2015). Nonlinear time-series analysis revisited. Chaos: An Interdisciplinary Journal of Nonlinear Science, 25(9), 097610.
 
-.. [Stam2007] Stam, C. J., Nolte, G., & Daffertshofer, A. (2007). Phase lag index: assessment of functional connectivity from multi channel EEG and MEG with diminished bias from common sources. Human brain mapping, 28(11), 1178-1193.
-.. [Hardmeier2014] Hardmeier, M., Hatz, F., Bousleiman, H., Schindler, C., Stam, C. J., & Fuhr, P. (2014). Reproducibility of functional connectivity and graph measures based on the phase lag index (PLI) and weighted phase lag index (wPLI) derived from high resolution EEG. PloS one, 9(10), e108648.
 """
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
@@ -24,7 +36,7 @@ def embed_delay(ts, dim, tau):
     Parameters
     ----------
     ts : array-like, shape(1, n_samples)
-        Symbolic time series.
+        One-dimensional symbolic time series.
 
     dim : int
         The embedding dimension.

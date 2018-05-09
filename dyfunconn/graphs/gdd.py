@@ -1,6 +1,27 @@
 # -*- coding: utf-8 -*-
 """ Graph Diffusion Distance
 
+The Graph Diffusion Distance (GDD) metric (Hammond2013_) is a measure of distance
+between two (positive) weighted graphs based on the Laplacian exponential diffusion kernel.
+The notion backing this metric is that two graphs are similar if they emit comparable
+patterns of information transmission.
+
+This distance is computed by searching for a diffusion time :math:`t` that maximizes the
+value of the Frobenius norm between the two diffusion kernels. The Laplacian operator
+is defined as :math:`L = D - A`, where :math:`A` is the positive symmetric data matrix and :math:`D` is a diagonal
+degree matrix for the adjacency matrix :math:`A`. The diffusion process (per vertex) on the adjacency
+matrix :math:`A` is governed by a time-varying vector :math:`u(t)∈ R^N`. Thus, between each given pair of
+(vertices’) weights :math:`i` and :math:`j`, their flux is quantified by :math:`a_{ij} (u_i (t)u_j (t))`. The grand
+sum of these interactions is given by :math:`\hat{u}_j(t)=\sum_i{a_{ij}(u_i(t)u_j(t))=-Lu(t)}`.
+Given the initial condition :math:`u^0,t=0` this sum has the following analytic solution :math:`u(t)=exp⁡(-tL)u^0`.
+The resulting matrix is known as the Laplacian exponential diffusion kernel. Letting the diffusion process
+run for :math:`t` time we compute and store the diffusion patterns in each column. Finally, the actual distance
+measure between two adjacency matrices :math:`A_1` and  :math:`A_2`, at diffusion time :math:`t` is given by:
+
+.. math::
+    ξ(A_1, A_2 ; t) = ‖exp⁡(-tL_1 ) - exp⁡(-tL_2 )‖_F^2
+
+where :math:`‖∙‖_F` is the Frobenious norm.
 
 Notes
 -----
@@ -12,35 +33,35 @@ Based on the code accompanied the original paper. Available at https://www.resea
 
 .. [Hammond2013] Hammond, D. K., Gur, Y., & Johnson, C. R. (2013, December). Graph diffusion distance: A difference measure for weighted graphs based on the graph Laplacian exponential kernel. In Global Conference on Signal and Information Processing (GlobalSIP), 2013 IEEE (pp. 419-422). IEEE.
 """
-# Author: Avraam Marimpis <avraam.marimpis@gmail.com"
+# Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
 import numpy as np
 import scipy.optimize
 
 
 def graph_diffusion_distance(a, b, threshold=1e-14):
-    """
+    """ Graph Diffusion Distance
 
 
     Parameters
     ----------
-    a :
-        Input matrix.
-
-    b :
-        Input matrix.
+    a : array-like, shape(N, N)
+        Weighted matrix.
+      
+    b : array-like, shape(N, N)
+        Weighted matrix.
 
     threshold : float
         A threshold to filter out the small eigenvalues. If the you get NaN or INFs, try lowering this threshold.
-
-
+        
     Returns
     -------
     gdd : float
-        The computed graph diffusion distance value.
+        The estimated graph diffusion distance.
 
     xopt : float
-        The timestep in which the gdd was computed.
+        Parameters (over given interval) which minimize the objective function. (see :mod:`scipy.optimize.fmindbound`)
+
     """
     L1 = __graph_laplacian(a)
     L2 = __graph_laplacian(b)

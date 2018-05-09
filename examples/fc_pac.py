@@ -25,7 +25,7 @@ if __name__ == "__main__":
     #
     cfc, avg = pac(data, f_lo, f_hi, fs, estimator, pairs=None)
 
-    print avg
+    print(avg)
 
     #
     # Object-oriented
@@ -34,4 +34,4 @@ if __name__ == "__main__":
     phases, phases_lohi = pac.preprocess(data)
     cfc, avg = pac.estimate(phases, phases_lohi)
 
-    print avg
+    print(avg)

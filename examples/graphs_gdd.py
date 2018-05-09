@@ -18,5 +18,5 @@ if __name__ == '__main__':
 
     gdd, t = graph_diffusion_distance(a_symm, b_symm)
 
-    print gdd
-    print t
+    print(gdd)
+    print(t)

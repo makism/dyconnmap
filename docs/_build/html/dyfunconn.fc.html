@@ -95,6 +95,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.fc.aec">dyfunconn.fc.aec module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.fc.biplv">dyfunconn.fc.biplv module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.fc.canolty_pac">dyfunconn.fc.canolty_pac module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.fc.coherence">dyfunconn.fc.coherence module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.fc.corr">dyfunconn.fc.corr module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.fc.crosscorr">dyfunconn.fc.crosscorr module</a></li>
@@ -124,8 +125,9 @@
 <li class="toctree-l2"><a class="reference internal" href="dyfunconn.html#submodules">Submodules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dyfunconn.html#module-dyfunconn.analytic_signal">dyfunconn.analytic_signal module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dyfunconn.html#module-dyfunconn.bands">dyfunconn.bands module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.html#module-dyfunconn.sliding_window">dyfunconn.sliding_window module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dyfunconn.html#module-dyfunconn.tvfcgs">dyfunconn.tvfcgs module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dyfunconn.html#module-contents">Module contents</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.html#module-dyfunconn">Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -203,11 +205,11 @@
 <p>Amplitude Envelope Correlation</p>
 <p>Amplitude Envelope Correlation (<em>AEC</em>), estimates the coupling
 (without phase coherence and even among different frequencies [<a class="reference internal" href="#bruns2000">Bruns2000</a>]) by
-computing the correlation coefficient of a signal&#8217;s amplitude envelope.</p>
-<div class="math">
+computing the correlation coefficient of a signal’s amplitude envelope.</p>
+<div class="math notranslate">
 \[r_{AEC} = \text{corr}(\alpha_{lo}, \alpha_{hi})\]</div>
-<p>Where <span class="math">\(\alpha\)</span> denotes the Instantaneous Amplitude of a given signal,
-filtered in a specfic frequency band (<span class="math">\(lo\)</span> or <span class="math">\(hi\)</span>).</p>
+<p>Where <span class="math notranslate">\(\alpha\)</span> denotes the Instantaneous Amplitude of a given signal,
+filtered in a specfic frequency band (<span class="math notranslate">\(lo\)</span> or <span class="math notranslate">\(hi\)</span>).</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -234,7 +236,7 @@ filtered in a specfic frequency band (<span class="math">\(lo\)</span> or <span 
 <dt id="dyfunconn.fc.aec.aec">
 <code class="descclassname">dyfunconn.fc.aec.</code><code class="descname">aec</code><span class="sig-paren">(</span><em>data</em>, <em>fb_lo</em>, <em>fb_hi</em>, <em>fs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/aec.html#aec"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.aec.aec" title="Permalink to this definition">¶</a></dt>
 <dd><p>Amplitude Envelope Correlation</p>
-<p>Estimate the Amplitude-Envelope Correlation for the given <code class="xref py py-attr docutils literal"><span class="pre">data</span></code>.</p>
+<p>Estimate the Amplitude-Envelope Correlation for the given <code class="xref py py-attr docutils literal notranslate"><span class="pre">data</span></code>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -284,7 +286,7 @@ filtered in a specfic frequency band (<span class="math">\(lo\)</span> or <span 
 <dt id="dyfunconn.fc.biplv.biplv">
 <code class="descclassname">dyfunconn.fc.biplv.</code><code class="descname">biplv</code><span class="sig-paren">(</span><em>data</em>, <em>fb_lo</em>, <em>fb_hi</em>, <em>fs</em>, <em>pairs=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/biplv.html#biplv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.biplv.biplv" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bi-Phase Locking Value</p>
-<p>Estimate the Bi-Phase Locking Value for the given <code class="xref py py-attr docutils literal"><span class="pre">data</span></code>,
+<p>Estimate the Bi-Phase Locking Value for the given <code class="xref py py-attr docutils literal notranslate"><span class="pre">data</span></code>,
 between the :attr:<a href="#id1"><span class="problematic" id="id2">`</span></a>pairs (if given) of channels</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -313,20 +315,85 @@ between the :attr:<a href="#id1"><span class="problematic" id="id2">`</span></a>
 </dd></dl>
 
 </div>
+<div class="section" id="module-dyfunconn.fc.canolty_pac">
+<span id="dyfunconn-fc-canolty-pac-module"></span><h2>dyfunconn.fc.canolty_pac module<a class="headerlink" href="#module-dyfunconn.fc.canolty_pac" title="Permalink to this headline">¶</a></h2>
+<p>Phase-Amplitude Coupling</p>
+<div class="math notranslate">
+\[pac = \left | \left |  \]</div>
+<p>rac{1}{N} sum_{t=1}^{N}{lpha_t e^{iphi t}}  
+ight | 
+ight |</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<hr class="docutils" />
+<table class="docutils citation" frame="void" id="canolty2006" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Canolty2006]</td><td>Canolty, R. T., Edwards, E., Dalal, S. S., Soltani, M., Nagarajan, S. S., Kirsch, H. E., … &amp; Knight, R. T. (2006). High gamma power is phase-locked to theta oscillations in human neocortex. science, 313(5793), 1626-1628.</td></tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="dyfunconn.fc.canolty_pac.canolty_pac">
+<code class="descclassname">dyfunconn.fc.canolty_pac.</code><code class="descname">canolty_pac</code><span class="sig-paren">(</span><em>data</em>, <em>f_lo</em>, <em>f_hi</em>, <em>fs</em>, <em>pairs=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/canolty_pac.html#canolty_pac"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.canolty_pac.canolty_pac" title="Permalink to this definition">¶</a></dt>
+<dd><p>Phase-Amplitude Coupling</p>
+<p>Compute the PAC for the given <code class="xref py py-attr docutils literal notranslate"><span class="pre">data</span></code>, between the <code class="xref py py-attr docutils literal notranslate"><span class="pre">pairs</span></code> (if given)
+of channels.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : array-like, shape = [n_electrodes, n_samples]</p>
+<blockquote>
+<div><p>Multichannel recording data.</p>
+</div></blockquote>
+<p><strong>pairs</strong> : array-like</p>
+<blockquote>
+<div><p>Each element is a tuple of length two.</p>
+</div></blockquote>
+<p><strong>f_lo</strong> : list of length 2</p>
+<blockquote>
+<div><p>The low and high frequencies.</p>
+</div></blockquote>
+<p><strong>f_hi</strong> : list of length 2</p>
+<blockquote>
+<div><p>The low and high frequencies.</p>
+</div></blockquote>
+<p><strong>fs</strong> : float</p>
+<blockquote>
+<div><p>Sampling frequency.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>ts</strong> : complex array-like, shape(n_channels, n_channels, n_samples)</p>
+<blockquote>
+<div><p>Estimated PAC time series.</p>
+</div></blockquote>
+<p><strong>avg</strong> : array-like, shape(n_channels, n_channels)</p>
+<blockquote class="last">
+<div><p>Average PAC.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
 <div class="section" id="module-dyfunconn.fc.coherence">
 <span id="dyfunconn-fc-coherence-module"></span><h2>dyfunconn.fc.coherence module<a class="headerlink" href="#module-dyfunconn.fc.coherence" title="Permalink to this headline">¶</a></h2>
 <p>Coherence</p>
 <p>Coherence (<em>Coh</em>) is one of the most commonly utilized connectivity estimators; it is a
 measurement of the linear relationship of two signals at a specific frequency [<a class="reference internal" href="#nolte2004">Nolte2004</a>].</p>
-<p>Given two time series <span class="math">\(x\)</span> and <span class="math">\(y\)</span>, coherece is given by:</p>
-<div class="math">
+<p>Given two time series <span class="math notranslate">\(x\)</span> and <span class="math notranslate">\(y\)</span>, coherece is given by:</p>
+<div class="math notranslate">
 \[coh^2_{xy}(f) = \frac{ |G_{xy}(f)^2| }{ G_{xx}(f) G_{yy}(f) }\]</div>
-<p>Where <span class="math">\(G_{xy}(f)\)</span> is the estimated cross-spectral density between <span class="math">\(x\)</span> and
-<span class="math">\(y\)</span>, while <span class="math">\(G_{xx}(f)\)</span> and <span class="math">\(G_{yy}(f)\)</span> are the autospectrum of
-<span class="math">\(x\)</span> and <span class="math">\(y\)</span> respectively.</p>
-<p>The result is a symmetric matrix of size <span class="math">\([n\_channels \times n\_channels]\)</span>
+<p>Where <span class="math notranslate">\(G_{xy}(f)\)</span> is the estimated cross-spectral density between <span class="math notranslate">\(x\)</span> and
+<span class="math notranslate">\(y\)</span>, while <span class="math notranslate">\(G_{xx}(f)\)</span> and <span class="math notranslate">\(G_{yy}(f)\)</span> are the autospectrum of
+<span class="math notranslate">\(x\)</span> and <span class="math notranslate">\(y\)</span> respectively.</p>
+<p>The result is a symmetric matrix of size <span class="math notranslate">\([n\_channels \times n\_channels]\)</span>
 bearing no information about the directionality of the interaction, with values
-within the range <span class="math">\([0,1]\)</span>.</p>
+within the range <span class="math notranslate">\([0,1]\)</span>.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -352,14 +419,14 @@ within the range <span class="math">\([0,1]\)</span>.</p>
 <dl class="class">
 <dt id="dyfunconn.fc.coherence.Coherence">
 <em class="property">class </em><code class="descclassname">dyfunconn.fc.coherence.</code><code class="descname">Coherence</code><span class="sig-paren">(</span><em>fb</em>, <em>fs</em>, <em>pairs=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/coherence.html#Coherence"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.coherence.Coherence" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#dyfunconn.fc.estimator.Estimator" title="dyfunconn.fc.estimator.Estimator"><code class="xref py py-class docutils literal"><span class="pre">dyfunconn.fc.estimator.Estimator</span></code></a></p>
-<p>An <a class="reference internal" href="#dyfunconn.fc.Estimator" title="dyfunconn.fc.Estimator"><code class="xref py py-mod docutils literal"><span class="pre">dyfunconn.fc.Estimator</span></code></a> class that implements <a class="reference internal" href="#dyfunconn.fc.coherence" title="dyfunconn.fc.coherence"><code class="xref py py-mod docutils literal"><span class="pre">dyfunconn.fc.coherence</span></code></a>.</p>
+<dd><p>Bases: <a class="reference internal" href="#dyfunconn.fc.estimator.Estimator" title="dyfunconn.fc.estimator.Estimator"><code class="xref py py-class docutils literal notranslate"><span class="pre">dyfunconn.fc.estimator.Estimator</span></code></a></p>
+<p>An <a class="reference internal" href="#dyfunconn.fc.Estimator" title="dyfunconn.fc.Estimator"><code class="xref py py-mod docutils literal notranslate"><span class="pre">dyfunconn.fc.Estimator</span></code></a> class that implements <a class="reference internal" href="#dyfunconn.fc.coherence" title="dyfunconn.fc.coherence"><code class="xref py py-mod docutils literal notranslate"><span class="pre">dyfunconn.fc.coherence</span></code></a>.</p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <dl class="last docutils">
-<dt><a class="reference internal" href="#dyfunconn.fc.coherence" title="dyfunconn.fc.coherence"><code class="xref py py-obj docutils literal"><span class="pre">dyfunconn.fc.coherence</span></code></a></dt>
+<dt><a class="reference internal" href="#dyfunconn.fc.coherence" title="dyfunconn.fc.coherence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dyfunconn.fc.coherence</span></code></a></dt>
 <dd>Coherence</dd>
-<dt><a class="reference internal" href="dyfunconn.html#dyfunconn.tvfcg" title="dyfunconn.tvfcg"><code class="xref py py-obj docutils literal"><span class="pre">dyfunconn.tvfcg</span></code></a></dt>
+<dt><a class="reference internal" href="dyfunconn.html#dyfunconn.tvfcg" title="dyfunconn.tvfcg"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dyfunconn.tvfcg</span></code></a></dt>
 <dd>Time-Varying Functional Connectivity Graphs</dd>
 </dl>
 </div>
@@ -370,19 +437,19 @@ within the range <span class="math">\([0,1]\)</span>.</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.coherence.Coherence.estimate" title="dyfunconn.fc.coherence.Coherence.estimate"><code class="xref py py-obj docutils literal"><span class="pre">estimate</span></code></a>(data[,&nbsp;data_against])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.coherence.Coherence.estimate" title="dyfunconn.fc.coherence.Coherence.estimate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">estimate</span></code></a>(data[,&nbsp;data_against])</td>
 <td>Estimate the connectivity within the given dataset.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.fc.coherence.Coherence.estimate_pair" title="dyfunconn.fc.coherence.Coherence.estimate_pair"><code class="xref py py-obj docutils literal"><span class="pre">estimate_pair</span></code></a>(ts1,&nbsp;ts2)</td>
-<td></td>
+<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.fc.coherence.Coherence.estimate_pair" title="dyfunconn.fc.coherence.Coherence.estimate_pair"><code class="xref py py-obj docutils literal notranslate"><span class="pre">estimate_pair</span></code></a>(ts1,&nbsp;ts2)</td>
+<td>Estimate the connectivity between two signals (time series).</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.coherence.Coherence.mean" title="dyfunconn.fc.coherence.Coherence.mean"><code class="xref py py-obj docutils literal"><span class="pre">mean</span></code></a>(ts)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.coherence.Coherence.mean" title="dyfunconn.fc.coherence.Coherence.mean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mean</span></code></a>(ts)</td>
 <td>The function used to compute the mean synchronization in a timeseries.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.fc.coherence.Coherence.preprocess" title="dyfunconn.fc.coherence.Coherence.preprocess"><code class="xref py py-obj docutils literal"><span class="pre">preprocess</span></code></a>(data)</td>
-<td></td>
+<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.fc.coherence.Coherence.preprocess" title="dyfunconn.fc.coherence.Coherence.preprocess"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preprocess</span></code></a>(data)</td>
+<td>Preprocess the data.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.coherence.Coherence.typeCast" title="dyfunconn.fc.coherence.Coherence.typeCast"><code class="xref py py-obj docutils literal"><span class="pre">typeCast</span></code></a>(data[,&nbsp;cast_type])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.coherence.Coherence.typeCast" title="dyfunconn.fc.coherence.Coherence.typeCast"><code class="xref py py-obj docutils literal notranslate"><span class="pre">typeCast</span></code></a>(data[,&nbsp;cast_type])</td>
 <td></td>
 </tr>
 </tbody>
@@ -396,7 +463,10 @@ within the range <span class="math">\([0,1]\)</span>.</p>
 <dl class="method">
 <dt id="dyfunconn.fc.coherence.Coherence.estimate_pair">
 <code class="descname">estimate_pair</code><span class="sig-paren">(</span><em>ts1</em>, <em>ts2</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/coherence.html#Coherence.estimate_pair"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.coherence.Coherence.estimate_pair" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Estimate the connectivity between two signals (time series).</p>
+<p class="rubric">Notes</p>
+<p>This is invoked from cross-frequency coupling methods.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="dyfunconn.fc.coherence.Coherence.mean">
@@ -421,11 +491,12 @@ special treatment is needed (i.e. taking only the real part).</p>
 <dl class="method">
 <dt id="dyfunconn.fc.coherence.Coherence.preprocess">
 <code class="descname">preprocess</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/coherence.html#Coherence.preprocess"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.coherence.Coherence.preprocess" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Preprocess the data.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="dyfunconn.fc.coherence.Coherence.typeCast">
-<code class="descname">typeCast</code><span class="sig-paren">(</span><em>data</em>, <em>cast_type=&lt;type 'numpy.float32'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#dyfunconn.fc.coherence.Coherence.typeCast" title="Permalink to this definition">¶</a></dt>
+<code class="descname">typeCast</code><span class="sig-paren">(</span><em>data</em>, <em>cast_type=&lt;class 'numpy.float32'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#dyfunconn.fc.coherence.Coherence.typeCast" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -434,7 +505,7 @@ special treatment is needed (i.e. taking only the real part).</p>
 <dt id="dyfunconn.fc.coherence.coherence">
 <code class="descclassname">dyfunconn.fc.coherence.</code><code class="descname">coherence</code><span class="sig-paren">(</span><em>data</em>, <em>fb</em>, <em>fs</em>, <em>pairs=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/coherence.html#coherence"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.coherence.coherence" title="Permalink to this definition">¶</a></dt>
 <dd><p>Coherence</p>
-<p>Estimate the Coherence for the given <code class="xref py py-attr docutils literal"><span class="pre">data</span></code>,
+<p>Estimate the Coherence for the given <code class="xref py py-attr docutils literal notranslate"><span class="pre">data</span></code>,
 between the :attr:<a href="#id3"><span class="problematic" id="id4">`</span></a>pairs (if given) of channels.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -461,7 +532,7 @@ between the :attr:<a href="#id3"><span class="problematic" id="id4">`</span></a>
 </div></blockquote>
 <p><strong>**kwargs :</strong> :</p>
 <blockquote>
-<div><p>Keyword arguments to be passed to <code class="xref py py-meth docutils literal"><span class="pre">matplotlib.mlab.csd()</span></code>.</p>
+<div><p>Keyword arguments to be passed to <code class="xref py py-meth docutils literal notranslate"><span class="pre">matplotlib.mlab.csd()</span></code>.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -476,9 +547,9 @@ between the :attr:<a href="#id3"><span class="problematic" id="id4">`</span></a>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <dl class="last docutils">
-<dt><code class="xref py py-obj docutils literal"><span class="pre">dyfunconn.fc.Coherece</span></code></dt>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">dyfunconn.fc.Coherece</span></code></dt>
 <dd>Coherece (Class Estimator)</dd>
-<dt><a class="reference internal" href="#dyfunconn.fc.icoherence" title="dyfunconn.fc.icoherence"><code class="xref py py-obj docutils literal"><span class="pre">dyfunconn.fc.icoherence</span></code></a></dt>
+<dt><a class="reference internal" href="#dyfunconn.fc.icoherence" title="dyfunconn.fc.icoherence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dyfunconn.fc.icoherence</span></code></a></dt>
 <dd>Imaginary Coherence</dd>
 </dl>
 </div>
@@ -492,14 +563,14 @@ between the :attr:<a href="#id3"><span class="problematic" id="id4">`</span></a>
 <dl class="class">
 <dt id="dyfunconn.fc.corr.Corr">
 <em class="property">class </em><code class="descclassname">dyfunconn.fc.corr.</code><code class="descname">Corr</code><span class="sig-paren">(</span><em>fb</em>, <em>fs</em>, <em>pairs=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/corr.html#Corr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.corr.Corr" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#dyfunconn.fc.estimator.Estimator" title="dyfunconn.fc.estimator.Estimator"><code class="xref py py-class docutils literal"><span class="pre">dyfunconn.fc.estimator.Estimator</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#dyfunconn.fc.estimator.Estimator" title="dyfunconn.fc.estimator.Estimator"><code class="xref py py-class docutils literal notranslate"><span class="pre">dyfunconn.fc.estimator.Estimator</span></code></a></p>
 <p>Correlation</p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <dl class="last docutils">
-<dt><a class="reference internal" href="#dyfunconn.fc.corr" title="dyfunconn.fc.corr"><code class="xref py py-obj docutils literal"><span class="pre">dyfunconn.fc.corr</span></code></a></dt>
+<dt><a class="reference internal" href="#dyfunconn.fc.corr" title="dyfunconn.fc.corr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dyfunconn.fc.corr</span></code></a></dt>
 <dd>Correlation</dd>
-<dt><a class="reference internal" href="dyfunconn.html#dyfunconn.tvfcg" title="dyfunconn.tvfcg"><code class="xref py py-obj docutils literal"><span class="pre">dyfunconn.tvfcg</span></code></a></dt>
+<dt><a class="reference internal" href="dyfunconn.html#dyfunconn.tvfcg" title="dyfunconn.tvfcg"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dyfunconn.tvfcg</span></code></a></dt>
 <dd>Time-Varying Functional Connectivity Graphs</dd>
 </dl>
 </div>
@@ -510,7 +581,7 @@ between the :attr:<a href="#id3"><span class="problematic" id="id4">`</span></a>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.corr.Corr.estimate" title="dyfunconn.fc.corr.Corr.estimate"><code class="xref py py-obj docutils literal"><span class="pre">estimate</span></code></a>(data)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.corr.Corr.estimate" title="dyfunconn.fc.corr.Corr.estimate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">estimate</span></code></a>(data)</td>
 <td><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -521,7 +592,7 @@ between the :attr:<a href="#id3"><span class="problematic" id="id4">`</span></a>
 </table>
 </td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.fc.corr.Corr.estimate_pair" title="dyfunconn.fc.corr.Corr.estimate_pair"><code class="xref py py-obj docutils literal"><span class="pre">estimate_pair</span></code></a>(ts1,&nbsp;ts2)</td>
+<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.fc.corr.Corr.estimate_pair" title="dyfunconn.fc.corr.Corr.estimate_pair"><code class="xref py py-obj docutils literal notranslate"><span class="pre">estimate_pair</span></code></a>(ts1,&nbsp;ts2)</td>
 <td><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -532,13 +603,13 @@ between the :attr:<a href="#id3"><span class="problematic" id="id4">`</span></a>
 </table>
 </td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.corr.Corr.mean" title="dyfunconn.fc.corr.Corr.mean"><code class="xref py py-obj docutils literal"><span class="pre">mean</span></code></a>(value)</td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.corr.Corr.mean" title="dyfunconn.fc.corr.Corr.mean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mean</span></code></a>(value)</td>
+<td>The function used to compute the mean synchronization in a timeseries.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.fc.corr.Corr.preprocess" title="dyfunconn.fc.corr.Corr.preprocess"><code class="xref py py-obj docutils literal"><span class="pre">preprocess</span></code></a>(data)</td>
-<td></td>
+<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.fc.corr.Corr.preprocess" title="dyfunconn.fc.corr.Corr.preprocess"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preprocess</span></code></a>(data)</td>
+<td>Preprocess the data.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.corr.Corr.typeCast" title="dyfunconn.fc.corr.Corr.typeCast"><code class="xref py py-obj docutils literal"><span class="pre">typeCast</span></code></a>(data[,&nbsp;cast_type])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.corr.Corr.typeCast" title="dyfunconn.fc.corr.Corr.typeCast"><code class="xref py py-obj docutils literal notranslate"><span class="pre">typeCast</span></code></a>(data[,&nbsp;cast_type])</td>
 <td></td>
 </tr>
 </tbody>
@@ -559,7 +630,7 @@ between the :attr:<a href="#id3"><span class="problematic" id="id4">`</span></a>
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<p>Called from <a class="reference internal" href="dyfunconn.html#dyfunconn.tvfcgs.tvfcg" title="dyfunconn.tvfcgs.tvfcg"><code class="xref py py-mod docutils literal"><span class="pre">dyfunconn.tvfcgs.tvfcg</span></code></a>.</p>
+<p>Called from <a class="reference internal" href="dyfunconn.html#dyfunconn.tvfcgs.tvfcg" title="dyfunconn.tvfcgs.tvfcg"><code class="xref py py-mod docutils literal notranslate"><span class="pre">dyfunconn.tvfcgs.tvfcg</span></code></a>.</p>
 </dd></dl>
 
 <dl class="method">
@@ -582,22 +653,38 @@ between the :attr:<a href="#id3"><span class="problematic" id="id4">`</span></a>
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<p>Called from <a class="reference internal" href="dyfunconn.html#dyfunconn.tvfcgs.tvfcg" title="dyfunconn.tvfcgs.tvfcg"><code class="xref py py-mod docutils literal"><span class="pre">dyfunconn.tvfcgs.tvfcg</span></code></a>.</p>
+<p>Called from <a class="reference internal" href="dyfunconn.html#dyfunconn.tvfcgs.tvfcg" title="dyfunconn.tvfcgs.tvfcg"><code class="xref py py-mod docutils literal notranslate"><span class="pre">dyfunconn.tvfcgs.tvfcg</span></code></a>.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="dyfunconn.fc.corr.Corr.mean">
 <code class="descname">mean</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/corr.html#Corr.mean"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.corr.Corr.mean" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The function used to compute the mean synchronization in a timeseries.</p>
+<p>This is needed because some estimators produce complex (imaginary), and
+special treatment is needed (i.e. taking only the real part).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>mtx</strong> : array-like</p>
+<blockquote class="last">
+<div><p>The average synchronization.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="dyfunconn.fc.corr.Corr.preprocess">
 <code class="descname">preprocess</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/corr.html#Corr.preprocess"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.corr.Corr.preprocess" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Preprocess the data.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="dyfunconn.fc.corr.Corr.typeCast">
-<code class="descname">typeCast</code><span class="sig-paren">(</span><em>data</em>, <em>cast_type=&lt;type 'numpy.float32'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#dyfunconn.fc.corr.Corr.typeCast" title="Permalink to this definition">¶</a></dt>
+<code class="descname">typeCast</code><span class="sig-paren">(</span><em>data</em>, <em>cast_type=&lt;class 'numpy.float32'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#dyfunconn.fc.corr.Corr.typeCast" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -606,7 +693,7 @@ between the :attr:<a href="#id3"><span class="problematic" id="id4">`</span></a>
 <dt id="dyfunconn.fc.corr.corr">
 <code class="descclassname">dyfunconn.fc.corr.</code><code class="descname">corr</code><span class="sig-paren">(</span><em>data</em>, <em>fb</em>, <em>fs</em>, <em>pairs=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/corr.html#corr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.corr.corr" title="Permalink to this definition">¶</a></dt>
 <dd><p>Correlation</p>
-<p>Compute the correlation for the given <code class="xref py py-attr docutils literal"><span class="pre">data</span></code>, between the <code class="xref py py-attr docutils literal"><span class="pre">pairs</span></code> (if given)
+<p>Compute the correlation for the given <code class="xref py py-attr docutils literal notranslate"><span class="pre">data</span></code>, between the <code class="xref py py-attr docutils literal notranslate"><span class="pre">pairs</span></code> (if given)
 of channels.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -644,7 +731,7 @@ of channels.</p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <dl class="last docutils">
-<dt><a class="reference internal" href="#dyfunconn.fc.Corr" title="dyfunconn.fc.Corr"><code class="xref py py-obj docutils literal"><span class="pre">dyfunconn.fc.Corr</span></code></a></dt>
+<dt><a class="reference internal" href="#dyfunconn.fc.Corr" title="dyfunconn.fc.Corr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dyfunconn.fc.Corr</span></code></a></dt>
 <dd>Correlation (Class Estimator)</dd>
 </dl>
 </div>
@@ -667,9 +754,9 @@ of channels.</p>
 <p>Directed Phase Lag Index (<em>dPLI</em>) was introduced in [<a class="reference internal" href="#stam2012">Stam2012</a>] to capture
 the phase and lag relationship as a measure of directed functional connectivity.</p>
 <ul class="simple">
-<li>if <span class="math">\(0.5 \le dPLI_{xy} \leq 1.0\)</span>, <span class="math">\(x\)</span> is leading <span class="math">\(y\)</span></li>
-<li>if <span class="math">\(0.0 \leq dPLI_{xy} = 0.5\)</span>, <span class="math">\(y\)</span> is leading <span class="math">\(x\)</span></li>
-<li>if <span class="math">\(dPLI_{xy} = 0.5\)</span>, neither <span class="math">\(x\)</span> nor <span class="math">\(y\)</span> is leading or lagging</li>
+<li>if <span class="math notranslate">\(0.5 \le dPLI_{xy} \leq 1.0\)</span>, <span class="math notranslate">\(x\)</span> is leading <span class="math notranslate">\(y\)</span></li>
+<li>if <span class="math notranslate">\(0.0 \leq dPLI_{xy} = 0.5\)</span>, <span class="math notranslate">\(y\)</span> is leading <span class="math notranslate">\(x\)</span></li>
+<li>if <span class="math notranslate">\(dPLI_{xy} = 0.5\)</span>, neither <span class="math notranslate">\(x\)</span> nor <span class="math notranslate">\(y\)</span> is leading or lagging</li>
 </ul>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -685,7 +772,7 @@ the phase and lag relationship as a measure of directed functional connectivity.
 <dt id="dyfunconn.fc.dpli.dpli">
 <code class="descclassname">dyfunconn.fc.dpli.</code><code class="descname">dpli</code><span class="sig-paren">(</span><em>data</em>, <em>fb</em>, <em>fs</em>, <em>pairs=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/dpli.html#dpli"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.dpli.dpli" title="Permalink to this definition">¶</a></dt>
 <dd><p>Directed Phase Lag Index</p>
-<p>Estimate the Directed Phase Lag Index for the given <code class="xref py py-attr docutils literal"><span class="pre">data</span></code>,
+<p>Estimate the Directed Phase Lag Index for the given <code class="xref py py-attr docutils literal notranslate"><span class="pre">data</span></code>,
 between the :attr:<a href="#id5"><span class="problematic" id="id6">`</span></a>pairs (if given) of channels.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -723,7 +810,7 @@ between the :attr:<a href="#id5"><span class="problematic" id="id6">`</span></a>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <dl class="last docutils">
-<dt><a class="reference internal" href="#dyfunconn.fc.PLI" title="dyfunconn.fc.PLI"><code class="xref py py-obj docutils literal"><span class="pre">dyfunconn.fc.PLI</span></code></a></dt>
+<dt><a class="reference internal" href="#dyfunconn.fc.PLI" title="dyfunconn.fc.PLI"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dyfunconn.fc.PLI</span></code></a></dt>
 <dd>Phase Lag Index</dd>
 </dl>
 </div>
@@ -734,35 +821,35 @@ between the :attr:<a href="#id5"><span class="problematic" id="id6">`</span></a>
 <span id="dyfunconn-fc-esc-module"></span><h2>dyfunconn.fc.esc module<a class="headerlink" href="#module-dyfunconn.fc.esc" title="Permalink to this headline">¶</a></h2>
 <p>Envelope-to-Signal Correlation</p>
 <p>Proposed by Bruns and Eckhorn [<a href="#id30"><span class="problematic" id="id31">Bruns2004_</span></a>], Envelope-to-Signal Correlation (<em>ESC</em>)
-is similar to Amplitude Envelope Correlation (<a class="reference internal" href="#dyfunconn.fc.aec" title="dyfunconn.fc.aec"><code class="xref py py-mod docutils literal"><span class="pre">dyfunconn.fc.aec</span></code></a>), but the
+is similar to Amplitude Envelope Correlation (<a class="reference internal" href="#dyfunconn.fc.aec" title="dyfunconn.fc.aec"><code class="xref py py-mod docutils literal notranslate"><span class="pre">dyfunconn.fc.aec</span></code></a>), but the
 the amplitude of the lower frequency oscillation is signed; and thus the phase
 information is preserved.</p>
-<div class="math">
+<div class="math notranslate">
 \[r_{ESC} = \text{corr}(\chi_{lo}, \alpha_{hi})\]</div>
-<p>Where <span class="math">\(\chi\)</span> is the input signal filtered to the frequency band <span class="math">\(lo\)</span>
-and <span class="math">\(\alpha\)</span> denotes the Instantaneous Amplitude of the same input signal
-at the frequency band <span class="math">\(hi\)</span>.</p>
+<p>Where <span class="math notranslate">\(\chi\)</span> is the input signal filtered to the frequency band <span class="math notranslate">\(lo\)</span>
+and <span class="math notranslate">\(\alpha\)</span> denotes the Instantaneous Amplitude of the same input signal
+at the frequency band <span class="math notranslate">\(hi\)</span>.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <hr class="docutils" />
-<table class="docutils citation" frame="void" id="id7" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[Penny2008]</td><td>Penny, W. D., Duzel, E., Miller, K. J., &amp; Ojemann, J. G. (2008). Testing for nested oscillation. Journal of neuroscience methods, 174(1), 50-61. Chicago</td></tr>
-</tbody>
-</table>
 <table class="docutils citation" frame="void" id="bruns2004" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[Bruns2004]</td><td>Bruns, A., &amp; Eckhorn, R. (2004). Task-related coupling from high-to low-frequency signals among visual cortical areas in human subdural recordings. International Journal of Psychophysiology, 51(2), 97-116.</td></tr>
 </tbody>
 </table>
+<table class="docutils citation" frame="void" id="id7" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Penny2008]</td><td>Penny, W. D., Duzel, E., Miller, K. J., &amp; Ojemann, J. G. (2008). Testing for nested oscillation. Journal of neuroscience methods, 174(1), 50-61. Chicago</td></tr>
+</tbody>
+</table>
 <dl class="function">
 <dt id="dyfunconn.fc.esc.esc">
 <code class="descclassname">dyfunconn.fc.esc.</code><code class="descname">esc</code><span class="sig-paren">(</span><em>data</em>, <em>fb_lo</em>, <em>fb_hi</em>, <em>fs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/esc.html#esc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.esc.esc" title="Permalink to this definition">¶</a></dt>
 <dd><p>Envelope-Signal-Correlation</p>
-<p>Estimate the Envelope-Signal-Correlation the given <code class="xref py py-attr docutils literal"><span class="pre">data</span></code>.</p>
+<p>Estimate the Envelope-Signal-Correlation the given <code class="xref py py-attr docutils literal notranslate"><span class="pre">data</span></code>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -809,7 +896,21 @@ at the frequency band <span class="math">\(hi\)</span>.</p>
 <dl class="class">
 <dt id="dyfunconn.fc.estimator.Estimator">
 <em class="property">class </em><code class="descclassname">dyfunconn.fc.estimator.</code><code class="descname">Estimator</code><span class="sig-paren">(</span><em>fs</em>, <em>pairs=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/estimator.html#Estimator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.estimator.Estimator" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base class for estimators.</p>
+<p>Through this abstract class, an estimator can provide the necessary methods
+to be used for a time-varying functional connectivity analysis.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">dynfunconn.tvfcgs.tvfcgs</span></code></dt>
+<dd>Time-Varying Functional Connectivity Graphs</dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">dynfunconn.tvfcgs.tvfcgs_cfc</span></code></dt>
+<dd>Time-Varying Functional Connectivity Graphs (for Cross frequency Coupling)</dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">dynfunconn.tvfcgs.tvfcgs_ts</span></code></dt>
+<dd>Time-Varying Functional Connectivity Graphs (from time series)</dd>
+</dl>
+</div>
 <p class="rubric">Methods</p>
 <table border="1" class="longtable docutils">
 <colgroup>
@@ -817,19 +918,19 @@ at the frequency band <span class="math">\(hi\)</span>.</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.estimator.Estimator.estimate" title="dyfunconn.fc.estimator.Estimator.estimate"><code class="xref py py-obj docutils literal"><span class="pre">estimate</span></code></a>(data[,&nbsp;data_against])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.estimator.Estimator.estimate" title="dyfunconn.fc.estimator.Estimator.estimate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">estimate</span></code></a>(data[,&nbsp;data_against])</td>
 <td>Estimate the connectivity within the given dataset.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.fc.estimator.Estimator.estimate_pair" title="dyfunconn.fc.estimator.Estimator.estimate_pair"><code class="xref py py-obj docutils literal"><span class="pre">estimate_pair</span></code></a>(ts1,&nbsp;ts2)</td>
+<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.fc.estimator.Estimator.estimate_pair" title="dyfunconn.fc.estimator.Estimator.estimate_pair"><code class="xref py py-obj docutils literal notranslate"><span class="pre">estimate_pair</span></code></a>(ts1,&nbsp;ts2)</td>
 <td>Estimate the connectivity between two signals (time series).</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.estimator.Estimator.mean" title="dyfunconn.fc.estimator.Estimator.mean"><code class="xref py py-obj docutils literal"><span class="pre">mean</span></code></a>(ts)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.estimator.Estimator.mean" title="dyfunconn.fc.estimator.Estimator.mean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mean</span></code></a>(ts)</td>
 <td>The function used to compute the mean synchronization in a timeseries.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.fc.estimator.Estimator.preprocess" title="dyfunconn.fc.estimator.Estimator.preprocess"><code class="xref py py-obj docutils literal"><span class="pre">preprocess</span></code></a>(data)</td>
+<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.fc.estimator.Estimator.preprocess" title="dyfunconn.fc.estimator.Estimator.preprocess"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preprocess</span></code></a>(data)</td>
 <td>Preprocess the data.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.estimator.Estimator.typeCast" title="dyfunconn.fc.estimator.Estimator.typeCast"><code class="xref py py-obj docutils literal"><span class="pre">typeCast</span></code></a>(data[,&nbsp;cast_type])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.estimator.Estimator.typeCast" title="dyfunconn.fc.estimator.Estimator.typeCast"><code class="xref py py-obj docutils literal notranslate"><span class="pre">typeCast</span></code></a>(data[,&nbsp;cast_type])</td>
 <td></td>
 </tr>
 </tbody>
@@ -876,7 +977,7 @@ special treatment is needed (i.e. taking only the real part).</p>
 
 <dl class="method">
 <dt id="dyfunconn.fc.estimator.Estimator.typeCast">
-<code class="descname">typeCast</code><span class="sig-paren">(</span><em>data</em>, <em>cast_type=&lt;type 'numpy.float32'&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/estimator.html#Estimator.typeCast"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.estimator.Estimator.typeCast" title="Permalink to this definition">¶</a></dt>
+<code class="descname">typeCast</code><span class="sig-paren">(</span><em>data</em>, <em>cast_type=&lt;class 'numpy.float32'&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/estimator.html#Estimator.typeCast"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.estimator.Estimator.typeCast" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -887,11 +988,11 @@ special treatment is needed (i.e. taking only the real part).</p>
 <p>General Linear Model</p>
 <p>General linear modeling (<em>GLM</em>) is used widely in neuroimaging [<a class="reference internal" href="#penny2006">Penny2006</a>] to detect
 coupling between a low and higher frequency.</p>
-<div class="math">
+<div class="math notranslate">
 \[\chi_{hf} = X_{\beta} + e\]</div>
-<p>Where <span class="math">\(\beta\)</span> are the corresponding regression coefficients and
-<span class="math">\(e\)</span> is the additive Gaussian noise. Finally, <span class="math">\(X\)</span> is the design
-matrix of size <span class="math">\(n \times 3\)</span> (<span class="math">\(n\)</span> the number of samples). Columns
+<p>Where <span class="math notranslate">\(\beta\)</span> are the corresponding regression coefficients and
+<span class="math notranslate">\(e\)</span> is the additive Gaussian noise. Finally, <span class="math notranslate">\(X\)</span> is the design
+matrix of size <span class="math notranslate">\(n \times 3\)</span> (<span class="math notranslate">\(n\)</span> the number of samples). Columns
 1 and 2, contain the cosines and sines counterparts of the instantaneous
 phases (of the low frequency) of the predictors, while the third row only 1s.</p>
 <div class="line-block">
@@ -914,7 +1015,7 @@ phases (of the low frequency) of the predictors, while the third row only 1s.</p
 <dt id="dyfunconn.fc.glm.glm">
 <code class="descclassname">dyfunconn.fc.glm.</code><code class="descname">glm</code><span class="sig-paren">(</span><em>data</em>, <em>fb_lo</em>, <em>fb_hi</em>, <em>fs</em>, <em>pairs=None</em>, <em>window_size=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/glm.html#glm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.glm.glm" title="Permalink to this definition">¶</a></dt>
 <dd><p>General Linear Model</p>
-<p>Estimate the <span class="math">\(r^2\)</span> for the given <code class="xref py py-attr docutils literal"><span class="pre">data</span></code>,
+<p>Estimate the <span class="math notranslate">\(r^2\)</span> for the given <code class="xref py py-attr docutils literal notranslate"><span class="pre">data</span></code>,
 between the :attr:<a href="#id9"><span class="problematic" id="id10">`</span></a>pairs (if given) of channels.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -951,11 +1052,11 @@ between the :attr:<a href="#id9"><span class="problematic" id="id10">`</span></a
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>ts</strong> : complex array-like, shape(n_windows, n_channels, n_channels)</p>
 <blockquote>
-<div><p>Estimated <span class="math">\(r^2\)</span> time series (in each window).</p>
+<div><p>Estimated <span class="math notranslate">\(r^2\)</span> time series (in each window).</p>
 </div></blockquote>
 <p><strong>ts_avg: complex array-like, shape(n_channels, n_channels)</strong> :</p>
 <blockquote class="last">
-<div><p>Average <span class="math">\(r^2\)</span> (across all windows).</p>
+<div><p>Average <span class="math notranslate">\(r^2\)</span> (across all windows).</p>
 </div></blockquote>
 </td>
 </tr>
@@ -973,7 +1074,7 @@ Chicago</p>
 <dl class="class">
 <dt id="dyfunconn.fc.icoherence.ICoherence">
 <em class="property">class </em><code class="descclassname">dyfunconn.fc.icoherence.</code><code class="descname">ICoherence</code><span class="sig-paren">(</span><em>fb</em>, <em>fs</em>, <em>pairs=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/icoherence.html#ICoherence"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.icoherence.ICoherence" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#dyfunconn.fc.estimator.Estimator" title="dyfunconn.fc.estimator.Estimator"><code class="xref py py-class docutils literal"><span class="pre">dyfunconn.fc.estimator.Estimator</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#dyfunconn.fc.estimator.Estimator" title="dyfunconn.fc.estimator.Estimator"><code class="xref py py-class docutils literal notranslate"><span class="pre">dyfunconn.fc.estimator.Estimator</span></code></a></p>
 <p>Imaginary Coherence</p>
 <p class="rubric">Methods</p>
 <table border="1" class="longtable docutils">
@@ -982,19 +1083,19 @@ Chicago</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.icoherence.ICoherence.estimate" title="dyfunconn.fc.icoherence.ICoherence.estimate"><code class="xref py py-obj docutils literal"><span class="pre">estimate</span></code></a>(data)</td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.icoherence.ICoherence.estimate" title="dyfunconn.fc.icoherence.ICoherence.estimate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">estimate</span></code></a>(data)</td>
+<td>Estimate the connectivity within the given dataset.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.fc.icoherence.ICoherence.estimate_pair" title="dyfunconn.fc.icoherence.ICoherence.estimate_pair"><code class="xref py py-obj docutils literal"><span class="pre">estimate_pair</span></code></a>(signal1,&nbsp;signal2)</td>
-<td></td>
+<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.fc.icoherence.ICoherence.estimate_pair" title="dyfunconn.fc.icoherence.ICoherence.estimate_pair"><code class="xref py py-obj docutils literal notranslate"><span class="pre">estimate_pair</span></code></a>(signal1,&nbsp;signal2)</td>
+<td>Estimate the connectivity between two signals (time series).</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.icoherence.ICoherence.mean" title="dyfunconn.fc.icoherence.ICoherence.mean"><code class="xref py py-obj docutils literal"><span class="pre">mean</span></code></a>(ts)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.icoherence.ICoherence.mean" title="dyfunconn.fc.icoherence.ICoherence.mean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mean</span></code></a>(ts)</td>
 <td>The function used to compute the mean synchronization in a timeseries.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.fc.icoherence.ICoherence.preprocess" title="dyfunconn.fc.icoherence.ICoherence.preprocess"><code class="xref py py-obj docutils literal"><span class="pre">preprocess</span></code></a>(data)</td>
-<td></td>
+<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.fc.icoherence.ICoherence.preprocess" title="dyfunconn.fc.icoherence.ICoherence.preprocess"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preprocess</span></code></a>(data)</td>
+<td>Preprocess the data.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.icoherence.ICoherence.typeCast" title="dyfunconn.fc.icoherence.ICoherence.typeCast"><code class="xref py py-obj docutils literal"><span class="pre">typeCast</span></code></a>(data[,&nbsp;cast_type])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.icoherence.ICoherence.typeCast" title="dyfunconn.fc.icoherence.ICoherence.typeCast"><code class="xref py py-obj docutils literal notranslate"><span class="pre">typeCast</span></code></a>(data[,&nbsp;cast_type])</td>
 <td></td>
 </tr>
 </tbody>
@@ -1002,12 +1103,16 @@ Chicago</p>
 <dl class="method">
 <dt id="dyfunconn.fc.icoherence.ICoherence.estimate">
 <code class="descname">estimate</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/icoherence.html#ICoherence.estimate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.icoherence.ICoherence.estimate" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Estimate the connectivity within the given dataset.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="dyfunconn.fc.icoherence.ICoherence.estimate_pair">
 <code class="descname">estimate_pair</code><span class="sig-paren">(</span><em>signal1</em>, <em>signal2</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/icoherence.html#ICoherence.estimate_pair"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.icoherence.ICoherence.estimate_pair" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Estimate the connectivity between two signals (time series).</p>
+<p class="rubric">Notes</p>
+<p>This is invoked from cross-frequency coupling methods.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="dyfunconn.fc.icoherence.ICoherence.mean">
@@ -1032,11 +1137,12 @@ special treatment is needed (i.e. taking only the real part).</p>
 <dl class="method">
 <dt id="dyfunconn.fc.icoherence.ICoherence.preprocess">
 <code class="descname">preprocess</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/icoherence.html#ICoherence.preprocess"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.icoherence.ICoherence.preprocess" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Preprocess the data.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="dyfunconn.fc.icoherence.ICoherence.typeCast">
-<code class="descname">typeCast</code><span class="sig-paren">(</span><em>data</em>, <em>cast_type=&lt;type 'numpy.float32'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#dyfunconn.fc.icoherence.ICoherence.typeCast" title="Permalink to this definition">¶</a></dt>
+<code class="descname">typeCast</code><span class="sig-paren">(</span><em>data</em>, <em>cast_type=&lt;class 'numpy.float32'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#dyfunconn.fc.icoherence.ICoherence.typeCast" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -1045,7 +1151,7 @@ special treatment is needed (i.e. taking only the real part).</p>
 <dt id="dyfunconn.fc.icoherence.icoherence">
 <code class="descclassname">dyfunconn.fc.icoherence.</code><code class="descname">icoherence</code><span class="sig-paren">(</span><em>data</em>, <em>fb</em>, <em>fs</em>, <em>pairs=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/icoherence.html#icoherence"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.icoherence.icoherence" title="Permalink to this definition">¶</a></dt>
 <dd><p>Imaginary Coherence</p>
-<p>Compute the Imaginary part of Coherence for the given <code class="xref py py-attr docutils literal"><span class="pre">data</span></code>,
+<p>Compute the Imaginary part of Coherence for the given <code class="xref py py-attr docutils literal notranslate"><span class="pre">data</span></code>,
 between the :attr:<a href="#id11"><span class="problematic" id="id12">`</span></a>pairs (if given) of channels.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1072,7 +1178,7 @@ between the :attr:<a href="#id11"><span class="problematic" id="id12">`</span></
 </div></blockquote>
 <p><strong>**kwargs :</strong> :</p>
 <blockquote>
-<div><p>Keyword arguments to be passed to <code class="xref py py-meth docutils literal"><span class="pre">matplotlib.mlab.csd()</span></code>.</p>
+<div><p>Keyword arguments to be passed to <code class="xref py py-meth docutils literal notranslate"><span class="pre">matplotlib.mlab.csd()</span></code>.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -1087,7 +1193,7 @@ between the :attr:<a href="#id11"><span class="problematic" id="id12">`</span></
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <dl class="last docutils">
-<dt><a class="reference internal" href="#dyfunconn.fc.coherence" title="dyfunconn.fc.coherence"><code class="xref py py-obj docutils literal"><span class="pre">dyfunconn.fc.coherence</span></code></a></dt>
+<dt><a class="reference internal" href="#dyfunconn.fc.coherence" title="dyfunconn.fc.coherence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dyfunconn.fc.coherence</span></code></a></dt>
 <dd>Coherence</dd>
 </dl>
 </div>
@@ -1097,10 +1203,10 @@ between the :attr:<a href="#id11"><span class="problematic" id="id12">`</span></
 <div class="section" id="module-dyfunconn.fc.iplv">
 <span id="dyfunconn-fc-iplv-module"></span><h2>dyfunconn.fc.iplv module<a class="headerlink" href="#module-dyfunconn.fc.iplv" title="Permalink to this headline">¶</a></h2>
 <p>Imaginary part of Phase Locking Value</p>
-<p>Imaginary Phase Locking Value (<em>IPLV</em>) was proposed to resolve PLV&#8217;s sensitivity to
+<p>Imaginary Phase Locking Value (<em>IPLV</em>) was proposed to resolve PLV’s sensitivity to
 volume conduction and common reference effects.</p>
 <p>IPLV is computed similarly as PLV, but taking the imaginary part of the summation:</p>
-<div class="math">
+<div class="math notranslate">
 \[ImPLV = \frac{1}{N} \left | Im \left ( \sum_{t=1}^{N} e^{i (\phi_{j1}(t)  - \phi_{j2}(t))} \right ) \right |\]</div>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -1109,13 +1215,13 @@ volume conduction and common reference effects.</p>
 <table class="docutils citation" frame="void" id="sadaghiani2012" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[Sadaghiani2012]</td><td>Sadaghiani, S., Scheeringa, R., Lehongre, K., Morillon, B., Giraud, A. L., D&#8217;Esposito, M., &amp; Kleinschmidt, A. (2012). Alpha-band phase synchrony is related to activity in the fronto-parietal adaptive control network. The Journal of Neuroscience, 32(41), 14305-14310.</td></tr>
+<tr><td class="label">[Sadaghiani2012]</td><td>Sadaghiani, S., Scheeringa, R., Lehongre, K., Morillon, B., Giraud, A. L., D’Esposito, M., &amp; Kleinschmidt, A. (2012). Alpha-band phase synchrony is related to activity in the fronto-parietal adaptive control network. The Journal of Neuroscience, 32(41), 14305-14310.</td></tr>
 </tbody>
 </table>
 <dl class="class">
 <dt id="dyfunconn.fc.iplv.IPLV">
 <em class="property">class </em><code class="descclassname">dyfunconn.fc.iplv.</code><code class="descname">IPLV</code><span class="sig-paren">(</span><em>fb</em>, <em>fs</em>, <em>pairs=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/iplv.html#IPLV"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.iplv.IPLV" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#dyfunconn.fc.estimator.Estimator" title="dyfunconn.fc.estimator.Estimator"><code class="xref py py-class docutils literal"><span class="pre">dyfunconn.fc.estimator.Estimator</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#dyfunconn.fc.estimator.Estimator" title="dyfunconn.fc.estimator.Estimator"><code class="xref py py-class docutils literal notranslate"><span class="pre">dyfunconn.fc.estimator.Estimator</span></code></a></p>
 <p class="rubric">Methods</p>
 <table border="1" class="longtable docutils">
 <colgroup>
@@ -1123,7 +1229,7 @@ volume conduction and common reference effects.</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.iplv.IPLV.estimate" title="dyfunconn.fc.iplv.IPLV.estimate"><code class="xref py py-obj docutils literal"><span class="pre">estimate</span></code></a>(data)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.iplv.IPLV.estimate" title="dyfunconn.fc.iplv.IPLV.estimate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">estimate</span></code></a>(data)</td>
 <td><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1134,7 +1240,7 @@ volume conduction and common reference effects.</p>
 </table>
 </td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.fc.iplv.IPLV.estimate_pair" title="dyfunconn.fc.iplv.IPLV.estimate_pair"><code class="xref py py-obj docutils literal"><span class="pre">estimate_pair</span></code></a>(ts1,&nbsp;ts2)</td>
+<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.fc.iplv.IPLV.estimate_pair" title="dyfunconn.fc.iplv.IPLV.estimate_pair"><code class="xref py py-obj docutils literal notranslate"><span class="pre">estimate_pair</span></code></a>(ts1,&nbsp;ts2)</td>
 <td><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1145,13 +1251,13 @@ volume conduction and common reference effects.</p>
 </table>
 </td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.iplv.IPLV.mean" title="dyfunconn.fc.iplv.IPLV.mean"><code class="xref py py-obj docutils literal"><span class="pre">mean</span></code></a>(ts)</td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.iplv.IPLV.mean" title="dyfunconn.fc.iplv.IPLV.mean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mean</span></code></a>(ts)</td>
+<td>The function used to compute the mean synchronization in a timeseries.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.fc.iplv.IPLV.preprocess" title="dyfunconn.fc.iplv.IPLV.preprocess"><code class="xref py py-obj docutils literal"><span class="pre">preprocess</span></code></a>(data)</td>
-<td></td>
+<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.fc.iplv.IPLV.preprocess" title="dyfunconn.fc.iplv.IPLV.preprocess"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preprocess</span></code></a>(data)</td>
+<td>Preprocess the data.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.iplv.IPLV.typeCast" title="dyfunconn.fc.iplv.IPLV.typeCast"><code class="xref py py-obj docutils literal"><span class="pre">typeCast</span></code></a>(data[,&nbsp;cast_type])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.iplv.IPLV.typeCast" title="dyfunconn.fc.iplv.IPLV.typeCast"><code class="xref py py-obj docutils literal notranslate"><span class="pre">typeCast</span></code></a>(data[,&nbsp;cast_type])</td>
 <td></td>
 </tr>
 </tbody>
@@ -1170,7 +1276,7 @@ volume conduction and common reference effects.</p>
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<p>Called from <a class="reference internal" href="dyfunconn.html#dyfunconn.tvfcgs.tvfcg" title="dyfunconn.tvfcgs.tvfcg"><code class="xref py py-mod docutils literal"><span class="pre">dyfunconn.tvfcgs.tvfcg</span></code></a>.</p>
+<p>Called from <a class="reference internal" href="dyfunconn.html#dyfunconn.tvfcgs.tvfcg" title="dyfunconn.tvfcgs.tvfcg"><code class="xref py py-mod docutils literal notranslate"><span class="pre">dyfunconn.tvfcgs.tvfcg</span></code></a>.</p>
 </dd></dl>
 
 <dl class="method">
@@ -1193,22 +1299,38 @@ volume conduction and common reference effects.</p>
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<p>Called from <a class="reference internal" href="dyfunconn.html#dyfunconn.tvfcgs.tvfcg" title="dyfunconn.tvfcgs.tvfcg"><code class="xref py py-mod docutils literal"><span class="pre">dyfunconn.tvfcgs.tvfcg</span></code></a>.</p>
+<p>Called from <a class="reference internal" href="dyfunconn.html#dyfunconn.tvfcgs.tvfcg" title="dyfunconn.tvfcgs.tvfcg"><code class="xref py py-mod docutils literal notranslate"><span class="pre">dyfunconn.tvfcgs.tvfcg</span></code></a>.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="dyfunconn.fc.iplv.IPLV.mean">
 <code class="descname">mean</code><span class="sig-paren">(</span><em>ts</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/iplv.html#IPLV.mean"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.iplv.IPLV.mean" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The function used to compute the mean synchronization in a timeseries.</p>
+<p>This is needed because some estimators produce complex (imaginary), and
+special treatment is needed (i.e. taking only the real part).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>mtx</strong> : array-like</p>
+<blockquote class="last">
+<div><p>The average synchronization.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="dyfunconn.fc.iplv.IPLV.preprocess">
 <code class="descname">preprocess</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/iplv.html#IPLV.preprocess"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.iplv.IPLV.preprocess" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Preprocess the data.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="dyfunconn.fc.iplv.IPLV.typeCast">
-<code class="descname">typeCast</code><span class="sig-paren">(</span><em>data</em>, <em>cast_type=&lt;type 'numpy.float32'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#dyfunconn.fc.iplv.IPLV.typeCast" title="Permalink to this definition">¶</a></dt>
+<code class="descname">typeCast</code><span class="sig-paren">(</span><em>data</em>, <em>cast_type=&lt;class 'numpy.float32'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#dyfunconn.fc.iplv.IPLV.typeCast" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -1348,7 +1470,7 @@ phase of a low frequency drive the power of a higher frequency.</p>
 <dl class="class">
 <dt id="dyfunconn.fc.pac.PAC">
 <em class="property">class </em><code class="descclassname">dyfunconn.fc.pac.</code><code class="descname">PAC</code><span class="sig-paren">(</span><em>f_lo</em>, <em>f_hi</em>, <em>fs</em>, <em>estimator</em>, <em>pairs=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/pac.html#PAC"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.pac.PAC" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#dyfunconn.fc.estimator.Estimator" title="dyfunconn.fc.estimator.Estimator"><code class="xref py py-class docutils literal"><span class="pre">dyfunconn.fc.estimator.Estimator</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#dyfunconn.fc.estimator.Estimator" title="dyfunconn.fc.estimator.Estimator"><code class="xref py py-class docutils literal notranslate"><span class="pre">dyfunconn.fc.estimator.Estimator</span></code></a></p>
 <p>Phase Amplitude Coupling (PAC)</p>
 <p class="rubric">Methods</p>
 <table border="1" class="longtable docutils">
@@ -1357,19 +1479,19 @@ phase of a low frequency drive the power of a higher frequency.</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.pac.PAC.estimate" title="dyfunconn.fc.pac.PAC.estimate"><code class="xref py py-obj docutils literal"><span class="pre">estimate</span></code></a>(phases,&nbsp;phases_lohi)</td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.pac.PAC.estimate" title="dyfunconn.fc.pac.PAC.estimate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">estimate</span></code></a>(phases,&nbsp;phases_lohi)</td>
+<td>Estimate the connectivity within the given dataset.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.fc.pac.PAC.estimate_pair" title="dyfunconn.fc.pac.PAC.estimate_pair"><code class="xref py py-obj docutils literal"><span class="pre">estimate_pair</span></code></a>(phase1,&nbsp;phase1_lohi)</td>
-<td></td>
+<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.fc.pac.PAC.estimate_pair" title="dyfunconn.fc.pac.PAC.estimate_pair"><code class="xref py py-obj docutils literal notranslate"><span class="pre">estimate_pair</span></code></a>(phase1,&nbsp;phase1_lohi)</td>
+<td>Estimate the connectivity between two signals (time series).</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.pac.PAC.mean" title="dyfunconn.fc.pac.PAC.mean"><code class="xref py py-obj docutils literal"><span class="pre">mean</span></code></a>(ts)</td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.pac.PAC.mean" title="dyfunconn.fc.pac.PAC.mean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mean</span></code></a>(ts)</td>
+<td>The function used to compute the mean synchronization in a timeseries.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.fc.pac.PAC.preprocess" title="dyfunconn.fc.pac.PAC.preprocess"><code class="xref py py-obj docutils literal"><span class="pre">preprocess</span></code></a>(data)</td>
-<td></td>
+<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.fc.pac.PAC.preprocess" title="dyfunconn.fc.pac.PAC.preprocess"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preprocess</span></code></a>(data)</td>
+<td>Preprocess the data.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.pac.PAC.typeCast" title="dyfunconn.fc.pac.PAC.typeCast"><code class="xref py py-obj docutils literal"><span class="pre">typeCast</span></code></a>(data[,&nbsp;cast_type])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.pac.PAC.typeCast" title="dyfunconn.fc.pac.PAC.typeCast"><code class="xref py py-obj docutils literal notranslate"><span class="pre">typeCast</span></code></a>(data[,&nbsp;cast_type])</td>
 <td></td>
 </tr>
 </tbody>
@@ -1377,26 +1499,46 @@ phase of a low frequency drive the power of a higher frequency.</p>
 <dl class="method">
 <dt id="dyfunconn.fc.pac.PAC.estimate">
 <code class="descname">estimate</code><span class="sig-paren">(</span><em>phases</em>, <em>phases_lohi</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/pac.html#PAC.estimate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.pac.PAC.estimate" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Estimate the connectivity within the given dataset.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="dyfunconn.fc.pac.PAC.estimate_pair">
 <code class="descname">estimate_pair</code><span class="sig-paren">(</span><em>phase1</em>, <em>phase1_lohi</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/pac.html#PAC.estimate_pair"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.pac.PAC.estimate_pair" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Estimate the connectivity between two signals (time series).</p>
+<p class="rubric">Notes</p>
+<p>This is invoked from cross-frequency coupling methods.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="dyfunconn.fc.pac.PAC.mean">
 <code class="descname">mean</code><span class="sig-paren">(</span><em>ts</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/pac.html#PAC.mean"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.pac.PAC.mean" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The function used to compute the mean synchronization in a timeseries.</p>
+<p>This is needed because some estimators produce complex (imaginary), and
+special treatment is needed (i.e. taking only the real part).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>mtx</strong> : array-like</p>
+<blockquote class="last">
+<div><p>The average synchronization.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="dyfunconn.fc.pac.PAC.preprocess">
 <code class="descname">preprocess</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/pac.html#PAC.preprocess"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.pac.PAC.preprocess" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Preprocess the data.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="dyfunconn.fc.pac.PAC.typeCast">
-<code class="descname">typeCast</code><span class="sig-paren">(</span><em>data</em>, <em>cast_type=&lt;type 'numpy.float32'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#dyfunconn.fc.pac.PAC.typeCast" title="Permalink to this definition">¶</a></dt>
+<code class="descname">typeCast</code><span class="sig-paren">(</span><em>data</em>, <em>cast_type=&lt;class 'numpy.float32'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#dyfunconn.fc.pac.PAC.typeCast" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -1436,9 +1578,9 @@ between the specified <em>pairs</em> of channels.</p>
 <div><p>Estimator used
 Valid options:</p>
 <blockquote>
-<div><p>&#8216;iplv&#8217; : Imaginary Phase Locking Value
-&#8216;plv&#8217;  : Phase Locking Value
-&#8216;pli&#8217;  : Phase Lag Index</p>
+<div><p>‘iplv’ : Imaginary Phase Locking Value
+‘plv’  : Phase Locking Value
+‘pli’  : Phase Lag Index</p>
 </div></blockquote>
 </div></blockquote>
 </td>
@@ -1471,9 +1613,9 @@ Valid options:</p>
 <div class="section" id="module-dyfunconn.fc.pec">
 <span id="dyfunconn-fc-pec-module"></span><h2>dyfunconn.fc.pec module<a class="headerlink" href="#module-dyfunconn.fc.pec" title="Permalink to this headline">¶</a></h2>
 <p>Power-Envelope Correlation</p>
-<p>Similarly to <a class="reference internal" href="#dyfunconn.fc.aec" title="dyfunconn.fc.aec"><code class="xref py py-mod docutils literal"><span class="pre">dyfunconn.fc.aec</span></code></a>, we can use the followig formula to estimate the correlations in power
+<p>Similarly to <a class="reference internal" href="#dyfunconn.fc.aec" title="dyfunconn.fc.aec"><code class="xref py py-mod docutils literal notranslate"><span class="pre">dyfunconn.fc.aec</span></code></a>, we can use the followig formula to estimate the correlations in power
 between the different frequency bands [<a class="reference internal" href="#friston1996">Friston1996</a>].</p>
-<div class="math">
+<div class="math notranslate">
 \[r_{PAEC} = \text{corr}(\alpha_{lo}^2, \alpha_{hi}^2)\]</div>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -1528,13 +1670,13 @@ between the different frequency bands [<a class="reference internal" href="#fris
 <p>Phase Lag Index (<em>PLI</em>) [<a class="reference internal" href="#stam2007">Stam2007</a>], proposed  as an alternative (to PLV) phase synchronization estimator that is less prone to the effects
 of common sources (namely, volume conduction and active reference electrodes). These effects can artificially generate
 functional connectivity as the same signal signal is measured at different electrodes [<a class="reference internal" href="#hardmeier2014">Hardmeier2014</a>].</p>
-<p>PLI estimates the asymmetry in the distribution of two time series&#8217; instantaneous phase differences.</p>
-<p>Given two time series of equal length <span class="math">\(x(t)\)</span> and <span class="math">\(y(t)\)</span>, we extract their respective instantaneous phases
-<span class="math">\(\phi_x(t)\)</span> and <span class="math">\(\phi_y(t)\)</span> using the Hilbert transform (consult <a class="reference internal" href="dyfunconn.html#dyfunconn.analytic_signal" title="dyfunconn.analytic_signal"><code class="xref py py-mod docutils literal"><span class="pre">dyfunconn.analytic_signal</span></code></a> for more details).
+<p>PLI estimates the asymmetry in the distribution of two time series’ instantaneous phase differences.</p>
+<p>Given two time series of equal length <span class="math notranslate">\(x(t)\)</span> and <span class="math notranslate">\(y(t)\)</span>, we extract their respective instantaneous phases
+<span class="math notranslate">\(\phi_x(t)\)</span> and <span class="math notranslate">\(\phi_y(t)\)</span> using the Hilbert transform (consult <a class="reference internal" href="dyfunconn.html#dyfunconn.analytic_signal" title="dyfunconn.analytic_signal"><code class="xref py py-mod docutils literal notranslate"><span class="pre">dyfunconn.analytic_signal</span></code></a> for more details).
 Then, for such a pair of phases, PLI is computed as follows:</p>
-<div class="math">
+<div class="math notranslate">
 \[PLI = | \left \langle sign [ sin ( \phi_x(t) - \phi_y(t) ) ] \right \rangle |\]</div>
-<p>Where, <span class="math">\(sign\)</span> refers to the signum function, left langle right rangle denotes the mean value and || the absolute value.</p>
+<p>Where, <span class="math notranslate">\(sign\)</span> refers to the signum function, left langle right rangle denotes the mean value and || the absolute value.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -1554,7 +1696,7 @@ Then, for such a pair of phases, PLI is computed as follows:</p>
 <dl class="class">
 <dt id="dyfunconn.fc.pli.PLI">
 <em class="property">class </em><code class="descclassname">dyfunconn.fc.pli.</code><code class="descname">PLI</code><span class="sig-paren">(</span><em>fb</em>, <em>fs</em>, <em>pairs=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/pli.html#PLI"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.pli.PLI" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#dyfunconn.fc.estimator.Estimator" title="dyfunconn.fc.estimator.Estimator"><code class="xref py py-class docutils literal"><span class="pre">dyfunconn.fc.estimator.Estimator</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#dyfunconn.fc.estimator.Estimator" title="dyfunconn.fc.estimator.Estimator"><code class="xref py py-class docutils literal notranslate"><span class="pre">dyfunconn.fc.estimator.Estimator</span></code></a></p>
 <p>Phase Lag Index (PLI)</p>
 <p class="rubric">Methods</p>
 <table border="1" class="longtable docutils">
@@ -1563,19 +1705,19 @@ Then, for such a pair of phases, PLI is computed as follows:</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.pli.PLI.estimate" title="dyfunconn.fc.pli.PLI.estimate"><code class="xref py py-obj docutils literal"><span class="pre">estimate</span></code></a>(data)</td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.pli.PLI.estimate" title="dyfunconn.fc.pli.PLI.estimate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">estimate</span></code></a>(data)</td>
+<td>Estimate the connectivity within the given dataset.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.fc.pli.PLI.estimate_pair" title="dyfunconn.fc.pli.PLI.estimate_pair"><code class="xref py py-obj docutils literal"><span class="pre">estimate_pair</span></code></a>(signal1,&nbsp;signal2)</td>
-<td></td>
+<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.fc.pli.PLI.estimate_pair" title="dyfunconn.fc.pli.PLI.estimate_pair"><code class="xref py py-obj docutils literal notranslate"><span class="pre">estimate_pair</span></code></a>(signal1,&nbsp;signal2)</td>
+<td>Estimate the connectivity between two signals (time series).</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.pli.PLI.mean" title="dyfunconn.fc.pli.PLI.mean"><code class="xref py py-obj docutils literal"><span class="pre">mean</span></code></a>(ts)</td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.pli.PLI.mean" title="dyfunconn.fc.pli.PLI.mean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mean</span></code></a>(ts)</td>
+<td>The function used to compute the mean synchronization in a timeseries.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.fc.pli.PLI.preprocess" title="dyfunconn.fc.pli.PLI.preprocess"><code class="xref py py-obj docutils literal"><span class="pre">preprocess</span></code></a>(data)</td>
-<td></td>
+<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.fc.pli.PLI.preprocess" title="dyfunconn.fc.pli.PLI.preprocess"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preprocess</span></code></a>(data)</td>
+<td>Preprocess the data.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.pli.PLI.typeCast" title="dyfunconn.fc.pli.PLI.typeCast"><code class="xref py py-obj docutils literal"><span class="pre">typeCast</span></code></a>(data[,&nbsp;cast_type])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.pli.PLI.typeCast" title="dyfunconn.fc.pli.PLI.typeCast"><code class="xref py py-obj docutils literal notranslate"><span class="pre">typeCast</span></code></a>(data[,&nbsp;cast_type])</td>
 <td></td>
 </tr>
 </tbody>
@@ -1583,26 +1725,46 @@ Then, for such a pair of phases, PLI is computed as follows:</p>
 <dl class="method">
 <dt id="dyfunconn.fc.pli.PLI.estimate">
 <code class="descname">estimate</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/pli.html#PLI.estimate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.pli.PLI.estimate" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Estimate the connectivity within the given dataset.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="dyfunconn.fc.pli.PLI.estimate_pair">
 <code class="descname">estimate_pair</code><span class="sig-paren">(</span><em>signal1</em>, <em>signal2</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/pli.html#PLI.estimate_pair"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.pli.PLI.estimate_pair" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Estimate the connectivity between two signals (time series).</p>
+<p class="rubric">Notes</p>
+<p>This is invoked from cross-frequency coupling methods.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="dyfunconn.fc.pli.PLI.mean">
 <code class="descname">mean</code><span class="sig-paren">(</span><em>ts</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/pli.html#PLI.mean"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.pli.PLI.mean" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The function used to compute the mean synchronization in a timeseries.</p>
+<p>This is needed because some estimators produce complex (imaginary), and
+special treatment is needed (i.e. taking only the real part).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>mtx</strong> : array-like</p>
+<blockquote class="last">
+<div><p>The average synchronization.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="dyfunconn.fc.pli.PLI.preprocess">
 <code class="descname">preprocess</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/pli.html#PLI.preprocess"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.pli.PLI.preprocess" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Preprocess the data.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="dyfunconn.fc.pli.PLI.typeCast">
-<code class="descname">typeCast</code><span class="sig-paren">(</span><em>data</em>, <em>cast_type=&lt;type 'numpy.float32'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#dyfunconn.fc.pli.PLI.typeCast" title="Permalink to this definition">¶</a></dt>
+<code class="descname">typeCast</code><span class="sig-paren">(</span><em>data</em>, <em>cast_type=&lt;class 'numpy.float32'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#dyfunconn.fc.pli.PLI.typeCast" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -1611,7 +1773,7 @@ Then, for such a pair of phases, PLI is computed as follows:</p>
 <dt id="dyfunconn.fc.pli.pli">
 <code class="descclassname">dyfunconn.fc.pli.</code><code class="descname">pli</code><span class="sig-paren">(</span><em>data</em>, <em>fb</em>, <em>fs</em>, <em>pairs=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/pli.html#pli"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.pli.pli" title="Permalink to this definition">¶</a></dt>
 <dd><p>Phase Lag Index</p>
-<p>Compute the PLI for the given <code class="xref py py-attr docutils literal"><span class="pre">data</span></code>, between the <code class="xref py py-attr docutils literal"><span class="pre">pairs</span></code> (if given)
+<p>Compute the PLI for the given <code class="xref py py-attr docutils literal notranslate"><span class="pre">data</span></code>, between the <code class="xref py py-attr docutils literal notranslate"><span class="pre">pairs</span></code> (if given)
 of channels.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1653,7 +1815,7 @@ of channels.</p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <dl class="last docutils">
-<dt><a class="reference internal" href="#dyfunconn.fc.PLI" title="dyfunconn.fc.PLI"><code class="xref py py-obj docutils literal"><span class="pre">dyfunconn.fc.PLI</span></code></a></dt>
+<dt><a class="reference internal" href="#dyfunconn.fc.PLI" title="dyfunconn.fc.PLI"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dyfunconn.fc.PLI</span></code></a></dt>
 <dd>Phase Lag Index</dd>
 </dl>
 </div>
@@ -1665,13 +1827,13 @@ of channels.</p>
 <p>Phase Locking Value</p>
 <p>One of the pioneer methods called Phase Locking Value (<em>PLV</em>) is discussed in
 <a class="reference internal" href="#lachaux1998" id="id16">[Lachaux1998]</a>; it utilizes the Hilbert representation (consult
-<a class="reference internal" href="dyfunconn.html#dyfunconn.analytic_signal" title="dyfunconn.analytic_signal"><code class="xref py py-mod docutils literal"><span class="pre">dyfunconn.analytic_signal</span></code></a> for more details) an EEG time
-series (of <span class="math">\(N_{sensors}\)</span>) and quantifies their interaction based on their
+<a class="reference internal" href="dyfunconn.html#dyfunconn.analytic_signal" title="dyfunconn.analytic_signal"><code class="xref py py-mod docutils literal notranslate"><span class="pre">dyfunconn.analytic_signal</span></code></a> for more details) an EEG time
+series (of <span class="math notranslate">\(N_{sensors}\)</span>) and quantifies their interaction based on their
 instantaneous phase in a specific band frequency.</p>
 <p>So, for a pair of Instantaneous Phases of two time series of equal length,
-<span class="math">\(\phi_{j1}(t)\)</span> and <span class="math">\(\phi_{j2}(t)\)</span>, the Phase Locking Value for each
-sample in time (<span class="math">\(t\)</span>) is computed as:</p>
-<div class="math">
+<span class="math notranslate">\(\phi_{j1}(t)\)</span> and <span class="math notranslate">\(\phi_{j2}(t)\)</span>, the Phase Locking Value for each
+sample in time (<span class="math notranslate">\(t\)</span>) is computed as:</p>
+<div class="math notranslate">
 \[e^{i (\phi_{j1}(t)  - \phi_{j2}(t))}\]</div>
 <p>A value of zero means that no coupling (or negligible) observed between two
 phases, while a value of one denotes a perfect synchronization.</p>
@@ -1688,14 +1850,14 @@ phases, while a value of one denotes a perfect synchronization.</p>
 <dl class="class">
 <dt id="dyfunconn.fc.plv.PLV">
 <em class="property">class </em><code class="descclassname">dyfunconn.fc.plv.</code><code class="descname">PLV</code><span class="sig-paren">(</span><em>fb</em>, <em>fs</em>, <em>pairs=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/plv.html#PLV"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.plv.PLV" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#dyfunconn.fc.estimator.Estimator" title="dyfunconn.fc.estimator.Estimator"><code class="xref py py-class docutils literal"><span class="pre">dyfunconn.fc.estimator.Estimator</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#dyfunconn.fc.estimator.Estimator" title="dyfunconn.fc.estimator.Estimator"><code class="xref py py-class docutils literal notranslate"><span class="pre">dyfunconn.fc.estimator.Estimator</span></code></a></p>
 <p>Phase Locking Value (PLV)</p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <dl class="last docutils">
-<dt><a class="reference internal" href="#dyfunconn.fc.plv" title="dyfunconn.fc.plv"><code class="xref py py-obj docutils literal"><span class="pre">dyfunconn.fc.plv</span></code></a></dt>
+<dt><a class="reference internal" href="#dyfunconn.fc.plv" title="dyfunconn.fc.plv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dyfunconn.fc.plv</span></code></a></dt>
 <dd>Phase Locking Value</dd>
-<dt><a class="reference internal" href="dyfunconn.html#dyfunconn.tvfcg" title="dyfunconn.tvfcg"><code class="xref py py-obj docutils literal"><span class="pre">dyfunconn.tvfcg</span></code></a></dt>
+<dt><a class="reference internal" href="dyfunconn.html#dyfunconn.tvfcg" title="dyfunconn.tvfcg"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dyfunconn.tvfcg</span></code></a></dt>
 <dd>Time-Varying Functional Connectivity Graphs</dd>
 </dl>
 </div>
@@ -1706,7 +1868,7 @@ phases, while a value of one denotes a perfect synchronization.</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.plv.PLV.estimate" title="dyfunconn.fc.plv.PLV.estimate"><code class="xref py py-obj docutils literal"><span class="pre">estimate</span></code></a>(data)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.plv.PLV.estimate" title="dyfunconn.fc.plv.PLV.estimate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">estimate</span></code></a>(data)</td>
 <td><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1717,7 +1879,7 @@ phases, while a value of one denotes a perfect synchronization.</p>
 </table>
 </td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.fc.plv.PLV.estimate_pair" title="dyfunconn.fc.plv.PLV.estimate_pair"><code class="xref py py-obj docutils literal"><span class="pre">estimate_pair</span></code></a>(ts1,&nbsp;ts2)</td>
+<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.fc.plv.PLV.estimate_pair" title="dyfunconn.fc.plv.PLV.estimate_pair"><code class="xref py py-obj docutils literal notranslate"><span class="pre">estimate_pair</span></code></a>(ts1,&nbsp;ts2)</td>
 <td><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1728,13 +1890,13 @@ phases, while a value of one denotes a perfect synchronization.</p>
 </table>
 </td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.plv.PLV.mean" title="dyfunconn.fc.plv.PLV.mean"><code class="xref py py-obj docutils literal"><span class="pre">mean</span></code></a>(ts)</td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.plv.PLV.mean" title="dyfunconn.fc.plv.PLV.mean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mean</span></code></a>(ts)</td>
+<td>The function used to compute the mean synchronization in a timeseries.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.fc.plv.PLV.preprocess" title="dyfunconn.fc.plv.PLV.preprocess"><code class="xref py py-obj docutils literal"><span class="pre">preprocess</span></code></a>(data)</td>
-<td></td>
+<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.fc.plv.PLV.preprocess" title="dyfunconn.fc.plv.PLV.preprocess"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preprocess</span></code></a>(data)</td>
+<td>Preprocess the data.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.plv.PLV.typeCast" title="dyfunconn.fc.plv.PLV.typeCast"><code class="xref py py-obj docutils literal"><span class="pre">typeCast</span></code></a>(data[,&nbsp;cast_type])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.plv.PLV.typeCast" title="dyfunconn.fc.plv.PLV.typeCast"><code class="xref py py-obj docutils literal notranslate"><span class="pre">typeCast</span></code></a>(data[,&nbsp;cast_type])</td>
 <td></td>
 </tr>
 </tbody>
@@ -1759,7 +1921,7 @@ phases, while a value of one denotes a perfect synchronization.</p>
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<p>Called from <a class="reference internal" href="dyfunconn.html#dyfunconn.tvfcgs.tvfcg" title="dyfunconn.tvfcgs.tvfcg"><code class="xref py py-mod docutils literal"><span class="pre">dyfunconn.tvfcgs.tvfcg</span></code></a>.</p>
+<p>Called from <a class="reference internal" href="dyfunconn.html#dyfunconn.tvfcgs.tvfcg" title="dyfunconn.tvfcgs.tvfcg"><code class="xref py py-mod docutils literal notranslate"><span class="pre">dyfunconn.tvfcgs.tvfcg</span></code></a>.</p>
 </dd></dl>
 
 <dl class="method">
@@ -1782,22 +1944,38 @@ phases, while a value of one denotes a perfect synchronization.</p>
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<p>Called from <a class="reference internal" href="dyfunconn.html#dyfunconn.tvfcgs.tvfcg" title="dyfunconn.tvfcgs.tvfcg"><code class="xref py py-mod docutils literal"><span class="pre">dyfunconn.tvfcgs.tvfcg</span></code></a>.</p>
+<p>Called from <a class="reference internal" href="dyfunconn.html#dyfunconn.tvfcgs.tvfcg" title="dyfunconn.tvfcgs.tvfcg"><code class="xref py py-mod docutils literal notranslate"><span class="pre">dyfunconn.tvfcgs.tvfcg</span></code></a>.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="dyfunconn.fc.plv.PLV.mean">
 <code class="descname">mean</code><span class="sig-paren">(</span><em>ts</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/plv.html#PLV.mean"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.plv.PLV.mean" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The function used to compute the mean synchronization in a timeseries.</p>
+<p>This is needed because some estimators produce complex (imaginary), and
+special treatment is needed (i.e. taking only the real part).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>mtx</strong> : array-like</p>
+<blockquote class="last">
+<div><p>The average synchronization.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="dyfunconn.fc.plv.PLV.preprocess">
 <code class="descname">preprocess</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/plv.html#PLV.preprocess"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.plv.PLV.preprocess" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Preprocess the data.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="dyfunconn.fc.plv.PLV.typeCast">
-<code class="descname">typeCast</code><span class="sig-paren">(</span><em>data</em>, <em>cast_type=&lt;type 'numpy.float32'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#dyfunconn.fc.plv.PLV.typeCast" title="Permalink to this definition">¶</a></dt>
+<code class="descname">typeCast</code><span class="sig-paren">(</span><em>data</em>, <em>cast_type=&lt;class 'numpy.float32'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#dyfunconn.fc.plv.PLV.typeCast" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -1806,7 +1984,7 @@ phases, while a value of one denotes a perfect synchronization.</p>
 <dt id="dyfunconn.fc.plv.plv">
 <code class="descclassname">dyfunconn.fc.plv.</code><code class="descname">plv</code><span class="sig-paren">(</span><em>data</em>, <em>fb</em>, <em>fs</em>, <em>pairs=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/plv.html#plv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.plv.plv" title="Permalink to this definition">¶</a></dt>
 <dd><p>Phase Locking Value</p>
-<p>Compute the PLV for the given <code class="xref py py-attr docutils literal"><span class="pre">data</span></code>, between the <code class="xref py py-attr docutils literal"><span class="pre">pairs</span></code> (if given)
+<p>Compute the PLV for the given <code class="xref py py-attr docutils literal notranslate"><span class="pre">data</span></code>, between the <code class="xref py py-attr docutils literal notranslate"><span class="pre">pairs</span></code> (if given)
 of channels.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1848,11 +2026,11 @@ of channels.</p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <dl class="last docutils">
-<dt><a class="reference internal" href="#dyfunconn.fc.PLV" title="dyfunconn.fc.PLV"><code class="xref py py-obj docutils literal"><span class="pre">dyfunconn.fc.PLV</span></code></a></dt>
+<dt><a class="reference internal" href="#dyfunconn.fc.PLV" title="dyfunconn.fc.PLV"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dyfunconn.fc.PLV</span></code></a></dt>
 <dd>Phase Locking Value (Class Estimator)</dd>
-<dt><a class="reference internal" href="#dyfunconn.fc.iplv" title="dyfunconn.fc.iplv"><code class="xref py py-obj docutils literal"><span class="pre">dyfunconn.fc.iplv</span></code></a></dt>
+<dt><a class="reference internal" href="#dyfunconn.fc.iplv" title="dyfunconn.fc.iplv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dyfunconn.fc.iplv</span></code></a></dt>
 <dd>Imaginary part of PLV</dd>
-<dt><a class="reference internal" href="#dyfunconn.fc.pli" title="dyfunconn.fc.pli"><code class="xref py py-obj docutils literal"><span class="pre">dyfunconn.fc.pli</span></code></a></dt>
+<dt><a class="reference internal" href="#dyfunconn.fc.pli" title="dyfunconn.fc.pli"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dyfunconn.fc.pli</span></code></a></dt>
 <dd>Phase Lag Index</dd>
 </dl>
 </div>
@@ -1862,27 +2040,27 @@ of channels.</p>
 <div class="section" id="module-dyfunconn.fc.rho_index">
 <span id="dyfunconn-fc-rho-index-module"></span><h2>dyfunconn.fc.rho_index module<a class="headerlink" href="#module-dyfunconn.fc.rho_index" title="Permalink to this headline">¶</a></h2>
 <p>ρ index</p>
-<div class="math">
+<div class="math notranslate">
 \[\r_{p, q}(t) = \frac{H_{max} - H}{H_{max}}\]</div>
-<p>Where <span class="math">\(H\)</span> is the Shannon entropy estimated within <span class="math">\(M\)</span> number of
-phase bins, and <span class="math">\(H_{max} = ln(M)\)</span> is the maximal entropy and
-and <span class="math">\(p_k\)</span> is the relative frequency of finding frequency difference
-in the <span class="math">\(k\)</span> th phase bin.</p>
-<div class="math">
+<p>Where <span class="math notranslate">\(H\)</span> is the Shannon entropy estimated within <span class="math notranslate">\(M\)</span> number of
+phase bins, and <span class="math notranslate">\(H_{max} = ln(M)\)</span> is the maximal entropy and
+and <span class="math notranslate">\(p_k\)</span> is the relative frequency of finding frequency difference
+in the <span class="math notranslate">\(k\)</span> th phase bin.</p>
+<div class="math notranslate">
 \[H = - \sum_{k=1}^M p_k ln(p_k)\]</div>
-<p>The computed value varies within the range <span class="math">\([0, 1]\)</span></p>
+<p>The computed value varies within the range <span class="math notranslate">\([0, 1]\)</span></p>
 <hr class="docutils" />
 <table class="docutils citation" frame="void" id="tass1998" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[Tass1998]</td><td>Tass, P., Rosenblum, M. G., Weule, J., Kurths, J., Pikovsky, A., Volkmann, J., ... &amp; Freund, H. J. (1998). Detection of n: m phase locking from noisy data: application to magnetoencephalography. Physical review letters, 81(15), 3291.</td></tr>
+<tr><td class="label">[Tass1998]</td><td>Tass, P., Rosenblum, M. G., Weule, J., Kurths, J., Pikovsky, A., Volkmann, J., … &amp; Freund, H. J. (1998). Detection of n: m phase locking from noisy data: application to magnetoencephalography. Physical review letters, 81(15), 3291.</td></tr>
 </tbody>
 </table>
 <dl class="function">
 <dt id="dyfunconn.fc.rho_index.rho_index">
 <code class="descclassname">dyfunconn.fc.rho_index.</code><code class="descname">rho_index</code><span class="sig-paren">(</span><em>data</em>, <em>n_bins</em>, <em>fb</em>, <em>fs</em>, <em>pairs=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/rho_index.html#rho_index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.rho_index.rho_index" title="Permalink to this definition">¶</a></dt>
 <dd><p>Synchronization Index</p>
-<p>Compute the synchronization index for the given <code class="xref py py-attr docutils literal"><span class="pre">data</span></code>, between the :attr:<a href="#id17"><span class="problematic" id="id18">`</span></a>pairs (if given)
+<p>Compute the synchronization index for the given <code class="xref py py-attr docutils literal notranslate"><span class="pre">data</span></code>, between the :attr:<a href="#id17"><span class="problematic" id="id18">`</span></a>pairs (if given)
 of channels.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1970,7 +2148,7 @@ channels.</p>
 </div></blockquote>
 <p><strong>**kwargs :</strong> :</p>
 <blockquote>
-<div><p>Keyword arguments to be passed to <code class="xref py py-meth docutils literal"><span class="pre">matplotlib.mlab.csd()</span></code>.</p>
+<div><p>Keyword arguments to be passed to <code class="xref py py-meth docutils literal notranslate"><span class="pre">matplotlib.mlab.csd()</span></code>.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -2015,7 +2193,7 @@ channels.</p>
 </div></blockquote>
 <p><strong>**kwargs :</strong> :</p>
 <blockquote>
-<div><p>Keyword arguments to be passed to <code class="xref py py-meth docutils literal"><span class="pre">matplotlib.mlab.csd()</span></code>.</p>
+<div><p>Keyword arguments to be passed to <code class="xref py py-meth docutils literal notranslate"><span class="pre">matplotlib.mlab.csd()</span></code>.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -2040,7 +2218,21 @@ channels.</p>
 <dl class="class">
 <dt id="dyfunconn.fc.Estimator">
 <em class="property">class </em><code class="descclassname">dyfunconn.fc.</code><code class="descname">Estimator</code><span class="sig-paren">(</span><em>fs</em>, <em>pairs=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/estimator.html#Estimator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.Estimator" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base class for estimators.</p>
+<p>Through this abstract class, an estimator can provide the necessary methods
+to be used for a time-varying functional connectivity analysis.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">dynfunconn.tvfcgs.tvfcgs</span></code></dt>
+<dd>Time-Varying Functional Connectivity Graphs</dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">dynfunconn.tvfcgs.tvfcgs_cfc</span></code></dt>
+<dd>Time-Varying Functional Connectivity Graphs (for Cross frequency Coupling)</dd>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">dynfunconn.tvfcgs.tvfcgs_ts</span></code></dt>
+<dd>Time-Varying Functional Connectivity Graphs (from time series)</dd>
+</dl>
+</div>
 <p class="rubric">Methods</p>
 <table border="1" class="longtable docutils">
 <colgroup>
@@ -2048,19 +2240,19 @@ channels.</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.Estimator.estimate" title="dyfunconn.fc.Estimator.estimate"><code class="xref py py-obj docutils literal"><span class="pre">estimate</span></code></a>(data[,&nbsp;data_against])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.Estimator.estimate" title="dyfunconn.fc.Estimator.estimate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">estimate</span></code></a>(data[,&nbsp;data_against])</td>
 <td>Estimate the connectivity within the given dataset.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.fc.Estimator.estimate_pair" title="dyfunconn.fc.Estimator.estimate_pair"><code class="xref py py-obj docutils literal"><span class="pre">estimate_pair</span></code></a>(ts1,&nbsp;ts2)</td>
+<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.fc.Estimator.estimate_pair" title="dyfunconn.fc.Estimator.estimate_pair"><code class="xref py py-obj docutils literal notranslate"><span class="pre">estimate_pair</span></code></a>(ts1,&nbsp;ts2)</td>
 <td>Estimate the connectivity between two signals (time series).</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.Estimator.mean" title="dyfunconn.fc.Estimator.mean"><code class="xref py py-obj docutils literal"><span class="pre">mean</span></code></a>(ts)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.Estimator.mean" title="dyfunconn.fc.Estimator.mean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mean</span></code></a>(ts)</td>
 <td>The function used to compute the mean synchronization in a timeseries.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.fc.Estimator.preprocess" title="dyfunconn.fc.Estimator.preprocess"><code class="xref py py-obj docutils literal"><span class="pre">preprocess</span></code></a>(data)</td>
+<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.fc.Estimator.preprocess" title="dyfunconn.fc.Estimator.preprocess"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preprocess</span></code></a>(data)</td>
 <td>Preprocess the data.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.Estimator.typeCast" title="dyfunconn.fc.Estimator.typeCast"><code class="xref py py-obj docutils literal"><span class="pre">typeCast</span></code></a>(data[,&nbsp;cast_type])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.Estimator.typeCast" title="dyfunconn.fc.Estimator.typeCast"><code class="xref py py-obj docutils literal notranslate"><span class="pre">typeCast</span></code></a>(data[,&nbsp;cast_type])</td>
 <td></td>
 </tr>
 </tbody>
@@ -2107,7 +2299,7 @@ special treatment is needed (i.e. taking only the real part).</p>
 
 <dl class="method">
 <dt id="dyfunconn.fc.Estimator.typeCast">
-<code class="descname">typeCast</code><span class="sig-paren">(</span><em>data</em>, <em>cast_type=&lt;type 'numpy.float32'&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/estimator.html#Estimator.typeCast"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.Estimator.typeCast" title="Permalink to this definition">¶</a></dt>
+<code class="descname">typeCast</code><span class="sig-paren">(</span><em>data</em>, <em>cast_type=&lt;class 'numpy.float32'&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/estimator.html#Estimator.typeCast"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.Estimator.typeCast" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -2115,14 +2307,14 @@ special treatment is needed (i.e. taking only the real part).</p>
 <dl class="class">
 <dt id="dyfunconn.fc.PLV">
 <em class="property">class </em><code class="descclassname">dyfunconn.fc.</code><code class="descname">PLV</code><span class="sig-paren">(</span><em>fb</em>, <em>fs</em>, <em>pairs=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/plv.html#PLV"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.PLV" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#dyfunconn.fc.estimator.Estimator" title="dyfunconn.fc.estimator.Estimator"><code class="xref py py-class docutils literal"><span class="pre">dyfunconn.fc.estimator.Estimator</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#dyfunconn.fc.estimator.Estimator" title="dyfunconn.fc.estimator.Estimator"><code class="xref py py-class docutils literal notranslate"><span class="pre">dyfunconn.fc.estimator.Estimator</span></code></a></p>
 <p>Phase Locking Value (PLV)</p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <dl class="last docutils">
-<dt><a class="reference internal" href="#dyfunconn.fc.plv" title="dyfunconn.fc.plv"><code class="xref py py-obj docutils literal"><span class="pre">dyfunconn.fc.plv</span></code></a></dt>
+<dt><a class="reference internal" href="#dyfunconn.fc.plv" title="dyfunconn.fc.plv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dyfunconn.fc.plv</span></code></a></dt>
 <dd>Phase Locking Value</dd>
-<dt><a class="reference internal" href="dyfunconn.html#dyfunconn.tvfcg" title="dyfunconn.tvfcg"><code class="xref py py-obj docutils literal"><span class="pre">dyfunconn.tvfcg</span></code></a></dt>
+<dt><a class="reference internal" href="dyfunconn.html#dyfunconn.tvfcg" title="dyfunconn.tvfcg"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dyfunconn.tvfcg</span></code></a></dt>
 <dd>Time-Varying Functional Connectivity Graphs</dd>
 </dl>
 </div>
@@ -2133,7 +2325,7 @@ special treatment is needed (i.e. taking only the real part).</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.PLV.estimate" title="dyfunconn.fc.PLV.estimate"><code class="xref py py-obj docutils literal"><span class="pre">estimate</span></code></a>(data)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.PLV.estimate" title="dyfunconn.fc.PLV.estimate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">estimate</span></code></a>(data)</td>
 <td><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -2144,7 +2336,7 @@ special treatment is needed (i.e. taking only the real part).</p>
 </table>
 </td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.fc.PLV.estimate_pair" title="dyfunconn.fc.PLV.estimate_pair"><code class="xref py py-obj docutils literal"><span class="pre">estimate_pair</span></code></a>(ts1,&nbsp;ts2)</td>
+<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.fc.PLV.estimate_pair" title="dyfunconn.fc.PLV.estimate_pair"><code class="xref py py-obj docutils literal notranslate"><span class="pre">estimate_pair</span></code></a>(ts1,&nbsp;ts2)</td>
 <td><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -2155,13 +2347,13 @@ special treatment is needed (i.e. taking only the real part).</p>
 </table>
 </td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.PLV.mean" title="dyfunconn.fc.PLV.mean"><code class="xref py py-obj docutils literal"><span class="pre">mean</span></code></a>(ts)</td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.PLV.mean" title="dyfunconn.fc.PLV.mean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mean</span></code></a>(ts)</td>
+<td>The function used to compute the mean synchronization in a timeseries.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.fc.PLV.preprocess" title="dyfunconn.fc.PLV.preprocess"><code class="xref py py-obj docutils literal"><span class="pre">preprocess</span></code></a>(data)</td>
-<td></td>
+<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.fc.PLV.preprocess" title="dyfunconn.fc.PLV.preprocess"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preprocess</span></code></a>(data)</td>
+<td>Preprocess the data.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.PLV.typeCast" title="dyfunconn.fc.PLV.typeCast"><code class="xref py py-obj docutils literal"><span class="pre">typeCast</span></code></a>(data[,&nbsp;cast_type])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.PLV.typeCast" title="dyfunconn.fc.PLV.typeCast"><code class="xref py py-obj docutils literal notranslate"><span class="pre">typeCast</span></code></a>(data[,&nbsp;cast_type])</td>
 <td></td>
 </tr>
 </tbody>
@@ -2186,7 +2378,7 @@ special treatment is needed (i.e. taking only the real part).</p>
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<p>Called from <a class="reference internal" href="dyfunconn.html#dyfunconn.tvfcgs.tvfcg" title="dyfunconn.tvfcgs.tvfcg"><code class="xref py py-mod docutils literal"><span class="pre">dyfunconn.tvfcgs.tvfcg</span></code></a>.</p>
+<p>Called from <a class="reference internal" href="dyfunconn.html#dyfunconn.tvfcgs.tvfcg" title="dyfunconn.tvfcgs.tvfcg"><code class="xref py py-mod docutils literal notranslate"><span class="pre">dyfunconn.tvfcgs.tvfcg</span></code></a>.</p>
 </dd></dl>
 
 <dl class="method">
@@ -2209,22 +2401,38 @@ special treatment is needed (i.e. taking only the real part).</p>
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<p>Called from <a class="reference internal" href="dyfunconn.html#dyfunconn.tvfcgs.tvfcg" title="dyfunconn.tvfcgs.tvfcg"><code class="xref py py-mod docutils literal"><span class="pre">dyfunconn.tvfcgs.tvfcg</span></code></a>.</p>
+<p>Called from <a class="reference internal" href="dyfunconn.html#dyfunconn.tvfcgs.tvfcg" title="dyfunconn.tvfcgs.tvfcg"><code class="xref py py-mod docutils literal notranslate"><span class="pre">dyfunconn.tvfcgs.tvfcg</span></code></a>.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="dyfunconn.fc.PLV.mean">
 <code class="descname">mean</code><span class="sig-paren">(</span><em>ts</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/plv.html#PLV.mean"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.PLV.mean" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The function used to compute the mean synchronization in a timeseries.</p>
+<p>This is needed because some estimators produce complex (imaginary), and
+special treatment is needed (i.e. taking only the real part).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>mtx</strong> : array-like</p>
+<blockquote class="last">
+<div><p>The average synchronization.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="dyfunconn.fc.PLV.preprocess">
 <code class="descname">preprocess</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/plv.html#PLV.preprocess"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.PLV.preprocess" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Preprocess the data.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="dyfunconn.fc.PLV.typeCast">
-<code class="descname">typeCast</code><span class="sig-paren">(</span><em>data</em>, <em>cast_type=&lt;type 'numpy.float32'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#dyfunconn.fc.PLV.typeCast" title="Permalink to this definition">¶</a></dt>
+<code class="descname">typeCast</code><span class="sig-paren">(</span><em>data</em>, <em>cast_type=&lt;class 'numpy.float32'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#dyfunconn.fc.PLV.typeCast" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -2233,7 +2441,7 @@ special treatment is needed (i.e. taking only the real part).</p>
 <dt id="dyfunconn.fc.plv">
 <code class="descclassname">dyfunconn.fc.</code><code class="descname">plv</code><span class="sig-paren">(</span><em>data</em>, <em>fb</em>, <em>fs</em>, <em>pairs=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/plv.html#plv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.plv" title="Permalink to this definition">¶</a></dt>
 <dd><p>Phase Locking Value</p>
-<p>Compute the PLV for the given <code class="xref py py-attr docutils literal"><span class="pre">data</span></code>, between the <code class="xref py py-attr docutils literal"><span class="pre">pairs</span></code> (if given)
+<p>Compute the PLV for the given <code class="xref py py-attr docutils literal notranslate"><span class="pre">data</span></code>, between the <code class="xref py py-attr docutils literal notranslate"><span class="pre">pairs</span></code> (if given)
 of channels.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2275,11 +2483,11 @@ of channels.</p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <dl class="last docutils">
-<dt><a class="reference internal" href="#dyfunconn.fc.PLV" title="dyfunconn.fc.PLV"><code class="xref py py-obj docutils literal"><span class="pre">dyfunconn.fc.PLV</span></code></a></dt>
+<dt><a class="reference internal" href="#dyfunconn.fc.PLV" title="dyfunconn.fc.PLV"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dyfunconn.fc.PLV</span></code></a></dt>
 <dd>Phase Locking Value (Class Estimator)</dd>
-<dt><a class="reference internal" href="#dyfunconn.fc.iplv" title="dyfunconn.fc.iplv"><code class="xref py py-obj docutils literal"><span class="pre">dyfunconn.fc.iplv</span></code></a></dt>
+<dt><a class="reference internal" href="#dyfunconn.fc.iplv" title="dyfunconn.fc.iplv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dyfunconn.fc.iplv</span></code></a></dt>
 <dd>Imaginary part of PLV</dd>
-<dt><a class="reference internal" href="#dyfunconn.fc.pli" title="dyfunconn.fc.pli"><code class="xref py py-obj docutils literal"><span class="pre">dyfunconn.fc.pli</span></code></a></dt>
+<dt><a class="reference internal" href="#dyfunconn.fc.pli" title="dyfunconn.fc.pli"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dyfunconn.fc.pli</span></code></a></dt>
 <dd>Phase Lag Index</dd>
 </dl>
 </div>
@@ -2288,7 +2496,7 @@ of channels.</p>
 <dl class="class">
 <dt id="dyfunconn.fc.PLI">
 <em class="property">class </em><code class="descclassname">dyfunconn.fc.</code><code class="descname">PLI</code><span class="sig-paren">(</span><em>fb</em>, <em>fs</em>, <em>pairs=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/pli.html#PLI"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.PLI" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#dyfunconn.fc.estimator.Estimator" title="dyfunconn.fc.estimator.Estimator"><code class="xref py py-class docutils literal"><span class="pre">dyfunconn.fc.estimator.Estimator</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#dyfunconn.fc.estimator.Estimator" title="dyfunconn.fc.estimator.Estimator"><code class="xref py py-class docutils literal notranslate"><span class="pre">dyfunconn.fc.estimator.Estimator</span></code></a></p>
 <p>Phase Lag Index (PLI)</p>
 <p class="rubric">Methods</p>
 <table border="1" class="longtable docutils">
@@ -2297,19 +2505,19 @@ of channels.</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.PLI.estimate" title="dyfunconn.fc.PLI.estimate"><code class="xref py py-obj docutils literal"><span class="pre">estimate</span></code></a>(data)</td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.PLI.estimate" title="dyfunconn.fc.PLI.estimate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">estimate</span></code></a>(data)</td>
+<td>Estimate the connectivity within the given dataset.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.fc.PLI.estimate_pair" title="dyfunconn.fc.PLI.estimate_pair"><code class="xref py py-obj docutils literal"><span class="pre">estimate_pair</span></code></a>(signal1,&nbsp;signal2)</td>
-<td></td>
+<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.fc.PLI.estimate_pair" title="dyfunconn.fc.PLI.estimate_pair"><code class="xref py py-obj docutils literal notranslate"><span class="pre">estimate_pair</span></code></a>(signal1,&nbsp;signal2)</td>
+<td>Estimate the connectivity between two signals (time series).</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.PLI.mean" title="dyfunconn.fc.PLI.mean"><code class="xref py py-obj docutils literal"><span class="pre">mean</span></code></a>(ts)</td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.PLI.mean" title="dyfunconn.fc.PLI.mean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mean</span></code></a>(ts)</td>
+<td>The function used to compute the mean synchronization in a timeseries.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.fc.PLI.preprocess" title="dyfunconn.fc.PLI.preprocess"><code class="xref py py-obj docutils literal"><span class="pre">preprocess</span></code></a>(data)</td>
-<td></td>
+<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.fc.PLI.preprocess" title="dyfunconn.fc.PLI.preprocess"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preprocess</span></code></a>(data)</td>
+<td>Preprocess the data.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.PLI.typeCast" title="dyfunconn.fc.PLI.typeCast"><code class="xref py py-obj docutils literal"><span class="pre">typeCast</span></code></a>(data[,&nbsp;cast_type])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.PLI.typeCast" title="dyfunconn.fc.PLI.typeCast"><code class="xref py py-obj docutils literal notranslate"><span class="pre">typeCast</span></code></a>(data[,&nbsp;cast_type])</td>
 <td></td>
 </tr>
 </tbody>
@@ -2317,26 +2525,46 @@ of channels.</p>
 <dl class="method">
 <dt id="dyfunconn.fc.PLI.estimate">
 <code class="descname">estimate</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/pli.html#PLI.estimate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.PLI.estimate" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Estimate the connectivity within the given dataset.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="dyfunconn.fc.PLI.estimate_pair">
 <code class="descname">estimate_pair</code><span class="sig-paren">(</span><em>signal1</em>, <em>signal2</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/pli.html#PLI.estimate_pair"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.PLI.estimate_pair" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Estimate the connectivity between two signals (time series).</p>
+<p class="rubric">Notes</p>
+<p>This is invoked from cross-frequency coupling methods.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="dyfunconn.fc.PLI.mean">
 <code class="descname">mean</code><span class="sig-paren">(</span><em>ts</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/pli.html#PLI.mean"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.PLI.mean" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The function used to compute the mean synchronization in a timeseries.</p>
+<p>This is needed because some estimators produce complex (imaginary), and
+special treatment is needed (i.e. taking only the real part).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>mtx</strong> : array-like</p>
+<blockquote class="last">
+<div><p>The average synchronization.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="dyfunconn.fc.PLI.preprocess">
 <code class="descname">preprocess</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/pli.html#PLI.preprocess"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.PLI.preprocess" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Preprocess the data.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="dyfunconn.fc.PLI.typeCast">
-<code class="descname">typeCast</code><span class="sig-paren">(</span><em>data</em>, <em>cast_type=&lt;type 'numpy.float32'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#dyfunconn.fc.PLI.typeCast" title="Permalink to this definition">¶</a></dt>
+<code class="descname">typeCast</code><span class="sig-paren">(</span><em>data</em>, <em>cast_type=&lt;class 'numpy.float32'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#dyfunconn.fc.PLI.typeCast" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -2345,7 +2573,7 @@ of channels.</p>
 <dt id="dyfunconn.fc.pli">
 <code class="descclassname">dyfunconn.fc.</code><code class="descname">pli</code><span class="sig-paren">(</span><em>data</em>, <em>fb</em>, <em>fs</em>, <em>pairs=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/pli.html#pli"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.pli" title="Permalink to this definition">¶</a></dt>
 <dd><p>Phase Lag Index</p>
-<p>Compute the PLI for the given <code class="xref py py-attr docutils literal"><span class="pre">data</span></code>, between the <code class="xref py py-attr docutils literal"><span class="pre">pairs</span></code> (if given)
+<p>Compute the PLI for the given <code class="xref py py-attr docutils literal notranslate"><span class="pre">data</span></code>, between the <code class="xref py py-attr docutils literal notranslate"><span class="pre">pairs</span></code> (if given)
 of channels.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2387,7 +2615,7 @@ of channels.</p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <dl class="last docutils">
-<dt><a class="reference internal" href="#dyfunconn.fc.PLI" title="dyfunconn.fc.PLI"><code class="xref py py-obj docutils literal"><span class="pre">dyfunconn.fc.PLI</span></code></a></dt>
+<dt><a class="reference internal" href="#dyfunconn.fc.PLI" title="dyfunconn.fc.PLI"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dyfunconn.fc.PLI</span></code></a></dt>
 <dd>Phase Lag Index</dd>
 </dl>
 </div>
@@ -2396,7 +2624,7 @@ of channels.</p>
 <dl class="class">
 <dt id="dyfunconn.fc.IPLV">
 <em class="property">class </em><code class="descclassname">dyfunconn.fc.</code><code class="descname">IPLV</code><span class="sig-paren">(</span><em>fb</em>, <em>fs</em>, <em>pairs=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/iplv.html#IPLV"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.IPLV" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#dyfunconn.fc.estimator.Estimator" title="dyfunconn.fc.estimator.Estimator"><code class="xref py py-class docutils literal"><span class="pre">dyfunconn.fc.estimator.Estimator</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#dyfunconn.fc.estimator.Estimator" title="dyfunconn.fc.estimator.Estimator"><code class="xref py py-class docutils literal notranslate"><span class="pre">dyfunconn.fc.estimator.Estimator</span></code></a></p>
 <p class="rubric">Methods</p>
 <table border="1" class="longtable docutils">
 <colgroup>
@@ -2404,7 +2632,7 @@ of channels.</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.IPLV.estimate" title="dyfunconn.fc.IPLV.estimate"><code class="xref py py-obj docutils literal"><span class="pre">estimate</span></code></a>(data)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.IPLV.estimate" title="dyfunconn.fc.IPLV.estimate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">estimate</span></code></a>(data)</td>
 <td><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -2415,7 +2643,7 @@ of channels.</p>
 </table>
 </td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.fc.IPLV.estimate_pair" title="dyfunconn.fc.IPLV.estimate_pair"><code class="xref py py-obj docutils literal"><span class="pre">estimate_pair</span></code></a>(ts1,&nbsp;ts2)</td>
+<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.fc.IPLV.estimate_pair" title="dyfunconn.fc.IPLV.estimate_pair"><code class="xref py py-obj docutils literal notranslate"><span class="pre">estimate_pair</span></code></a>(ts1,&nbsp;ts2)</td>
 <td><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -2426,13 +2654,13 @@ of channels.</p>
 </table>
 </td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.IPLV.mean" title="dyfunconn.fc.IPLV.mean"><code class="xref py py-obj docutils literal"><span class="pre">mean</span></code></a>(ts)</td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.IPLV.mean" title="dyfunconn.fc.IPLV.mean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mean</span></code></a>(ts)</td>
+<td>The function used to compute the mean synchronization in a timeseries.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.fc.IPLV.preprocess" title="dyfunconn.fc.IPLV.preprocess"><code class="xref py py-obj docutils literal"><span class="pre">preprocess</span></code></a>(data)</td>
-<td></td>
+<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.fc.IPLV.preprocess" title="dyfunconn.fc.IPLV.preprocess"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preprocess</span></code></a>(data)</td>
+<td>Preprocess the data.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.IPLV.typeCast" title="dyfunconn.fc.IPLV.typeCast"><code class="xref py py-obj docutils literal"><span class="pre">typeCast</span></code></a>(data[,&nbsp;cast_type])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.IPLV.typeCast" title="dyfunconn.fc.IPLV.typeCast"><code class="xref py py-obj docutils literal notranslate"><span class="pre">typeCast</span></code></a>(data[,&nbsp;cast_type])</td>
 <td></td>
 </tr>
 </tbody>
@@ -2451,7 +2679,7 @@ of channels.</p>
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<p>Called from <a class="reference internal" href="dyfunconn.html#dyfunconn.tvfcgs.tvfcg" title="dyfunconn.tvfcgs.tvfcg"><code class="xref py py-mod docutils literal"><span class="pre">dyfunconn.tvfcgs.tvfcg</span></code></a>.</p>
+<p>Called from <a class="reference internal" href="dyfunconn.html#dyfunconn.tvfcgs.tvfcg" title="dyfunconn.tvfcgs.tvfcg"><code class="xref py py-mod docutils literal notranslate"><span class="pre">dyfunconn.tvfcgs.tvfcg</span></code></a>.</p>
 </dd></dl>
 
 <dl class="method">
@@ -2474,22 +2702,38 @@ of channels.</p>
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<p>Called from <a class="reference internal" href="dyfunconn.html#dyfunconn.tvfcgs.tvfcg" title="dyfunconn.tvfcgs.tvfcg"><code class="xref py py-mod docutils literal"><span class="pre">dyfunconn.tvfcgs.tvfcg</span></code></a>.</p>
+<p>Called from <a class="reference internal" href="dyfunconn.html#dyfunconn.tvfcgs.tvfcg" title="dyfunconn.tvfcgs.tvfcg"><code class="xref py py-mod docutils literal notranslate"><span class="pre">dyfunconn.tvfcgs.tvfcg</span></code></a>.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="dyfunconn.fc.IPLV.mean">
 <code class="descname">mean</code><span class="sig-paren">(</span><em>ts</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/iplv.html#IPLV.mean"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.IPLV.mean" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The function used to compute the mean synchronization in a timeseries.</p>
+<p>This is needed because some estimators produce complex (imaginary), and
+special treatment is needed (i.e. taking only the real part).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>mtx</strong> : array-like</p>
+<blockquote class="last">
+<div><p>The average synchronization.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="dyfunconn.fc.IPLV.preprocess">
 <code class="descname">preprocess</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/iplv.html#IPLV.preprocess"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.IPLV.preprocess" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Preprocess the data.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="dyfunconn.fc.IPLV.typeCast">
-<code class="descname">typeCast</code><span class="sig-paren">(</span><em>data</em>, <em>cast_type=&lt;type 'numpy.float32'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#dyfunconn.fc.IPLV.typeCast" title="Permalink to this definition">¶</a></dt>
+<code class="descname">typeCast</code><span class="sig-paren">(</span><em>data</em>, <em>cast_type=&lt;class 'numpy.float32'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#dyfunconn.fc.IPLV.typeCast" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -2543,7 +2787,7 @@ between the <em>pairs</em> (if given) of channels.</p>
 <dt id="dyfunconn.fc.aec">
 <code class="descclassname">dyfunconn.fc.</code><code class="descname">aec</code><span class="sig-paren">(</span><em>data</em>, <em>fb_lo</em>, <em>fb_hi</em>, <em>fs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/aec.html#aec"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.aec" title="Permalink to this definition">¶</a></dt>
 <dd><p>Amplitude Envelope Correlation</p>
-<p>Estimate the Amplitude-Envelope Correlation for the given <code class="xref py py-attr docutils literal"><span class="pre">data</span></code>.</p>
+<p>Estimate the Amplitude-Envelope Correlation for the given <code class="xref py py-attr docutils literal notranslate"><span class="pre">data</span></code>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -2580,7 +2824,7 @@ between the <em>pairs</em> (if given) of channels.</p>
 <dt id="dyfunconn.fc.esc">
 <code class="descclassname">dyfunconn.fc.</code><code class="descname">esc</code><span class="sig-paren">(</span><em>data</em>, <em>fb_lo</em>, <em>fb_hi</em>, <em>fs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/esc.html#esc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.esc" title="Permalink to this definition">¶</a></dt>
 <dd><p>Envelope-Signal-Correlation</p>
-<p>Estimate the Envelope-Signal-Correlation the given <code class="xref py py-attr docutils literal"><span class="pre">data</span></code>.</p>
+<p>Estimate the Envelope-Signal-Correlation the given <code class="xref py py-attr docutils literal notranslate"><span class="pre">data</span></code>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -2703,7 +2947,7 @@ between the <em>pairs</em> (if given) of channels.</p>
 <dt id="dyfunconn.fc.glm">
 <code class="descclassname">dyfunconn.fc.</code><code class="descname">glm</code><span class="sig-paren">(</span><em>data</em>, <em>fb_lo</em>, <em>fb_hi</em>, <em>fs</em>, <em>pairs=None</em>, <em>window_size=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/glm.html#glm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.glm" title="Permalink to this definition">¶</a></dt>
 <dd><p>General Linear Model</p>
-<p>Estimate the <span class="math">\(r^2\)</span> for the given <code class="xref py py-attr docutils literal"><span class="pre">data</span></code>,
+<p>Estimate the <span class="math notranslate">\(r^2\)</span> for the given <code class="xref py py-attr docutils literal notranslate"><span class="pre">data</span></code>,
 between the :attr:<a href="#id20"><span class="problematic" id="id21">`</span></a>pairs (if given) of channels.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2740,11 +2984,11 @@ between the :attr:<a href="#id20"><span class="problematic" id="id21">`</span></
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>ts</strong> : complex array-like, shape(n_windows, n_channels, n_channels)</p>
 <blockquote>
-<div><p>Estimated <span class="math">\(r^2\)</span> time series (in each window).</p>
+<div><p>Estimated <span class="math notranslate">\(r^2\)</span> time series (in each window).</p>
 </div></blockquote>
 <p><strong>ts_avg: complex array-like, shape(n_channels, n_channels)</strong> :</p>
 <blockquote class="last">
-<div><p>Average <span class="math">\(r^2\)</span> (across all windows).</p>
+<div><p>Average <span class="math notranslate">\(r^2\)</span> (across all windows).</p>
 </div></blockquote>
 </td>
 </tr>
@@ -2756,7 +3000,7 @@ between the :attr:<a href="#id20"><span class="problematic" id="id21">`</span></
 <dt id="dyfunconn.fc.rho_index">
 <code class="descclassname">dyfunconn.fc.</code><code class="descname">rho_index</code><span class="sig-paren">(</span><em>data</em>, <em>n_bins</em>, <em>fb</em>, <em>fs</em>, <em>pairs=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/rho_index.html#rho_index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.rho_index" title="Permalink to this definition">¶</a></dt>
 <dd><p>Synchronization Index</p>
-<p>Compute the synchronization index for the given <code class="xref py py-attr docutils literal"><span class="pre">data</span></code>, between the :attr:<a href="#id22"><span class="problematic" id="id23">`</span></a>pairs (if given)
+<p>Compute the synchronization index for the given <code class="xref py py-attr docutils literal notranslate"><span class="pre">data</span></code>, between the :attr:<a href="#id22"><span class="problematic" id="id23">`</span></a>pairs (if given)
 of channels.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2800,7 +3044,7 @@ of channels.</p>
 <dl class="class">
 <dt id="dyfunconn.fc.PAC">
 <em class="property">class </em><code class="descclassname">dyfunconn.fc.</code><code class="descname">PAC</code><span class="sig-paren">(</span><em>f_lo</em>, <em>f_hi</em>, <em>fs</em>, <em>estimator</em>, <em>pairs=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/pac.html#PAC"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.PAC" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#dyfunconn.fc.estimator.Estimator" title="dyfunconn.fc.estimator.Estimator"><code class="xref py py-class docutils literal"><span class="pre">dyfunconn.fc.estimator.Estimator</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#dyfunconn.fc.estimator.Estimator" title="dyfunconn.fc.estimator.Estimator"><code class="xref py py-class docutils literal notranslate"><span class="pre">dyfunconn.fc.estimator.Estimator</span></code></a></p>
 <p>Phase Amplitude Coupling (PAC)</p>
 <p class="rubric">Methods</p>
 <table border="1" class="longtable docutils">
@@ -2809,19 +3053,19 @@ of channels.</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.PAC.estimate" title="dyfunconn.fc.PAC.estimate"><code class="xref py py-obj docutils literal"><span class="pre">estimate</span></code></a>(phases,&nbsp;phases_lohi)</td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.PAC.estimate" title="dyfunconn.fc.PAC.estimate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">estimate</span></code></a>(phases,&nbsp;phases_lohi)</td>
+<td>Estimate the connectivity within the given dataset.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.fc.PAC.estimate_pair" title="dyfunconn.fc.PAC.estimate_pair"><code class="xref py py-obj docutils literal"><span class="pre">estimate_pair</span></code></a>(phase1,&nbsp;phase1_lohi)</td>
-<td></td>
+<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.fc.PAC.estimate_pair" title="dyfunconn.fc.PAC.estimate_pair"><code class="xref py py-obj docutils literal notranslate"><span class="pre">estimate_pair</span></code></a>(phase1,&nbsp;phase1_lohi)</td>
+<td>Estimate the connectivity between two signals (time series).</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.PAC.mean" title="dyfunconn.fc.PAC.mean"><code class="xref py py-obj docutils literal"><span class="pre">mean</span></code></a>(ts)</td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.PAC.mean" title="dyfunconn.fc.PAC.mean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mean</span></code></a>(ts)</td>
+<td>The function used to compute the mean synchronization in a timeseries.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.fc.PAC.preprocess" title="dyfunconn.fc.PAC.preprocess"><code class="xref py py-obj docutils literal"><span class="pre">preprocess</span></code></a>(data)</td>
-<td></td>
+<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.fc.PAC.preprocess" title="dyfunconn.fc.PAC.preprocess"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preprocess</span></code></a>(data)</td>
+<td>Preprocess the data.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.PAC.typeCast" title="dyfunconn.fc.PAC.typeCast"><code class="xref py py-obj docutils literal"><span class="pre">typeCast</span></code></a>(data[,&nbsp;cast_type])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.PAC.typeCast" title="dyfunconn.fc.PAC.typeCast"><code class="xref py py-obj docutils literal notranslate"><span class="pre">typeCast</span></code></a>(data[,&nbsp;cast_type])</td>
 <td></td>
 </tr>
 </tbody>
@@ -2829,26 +3073,46 @@ of channels.</p>
 <dl class="method">
 <dt id="dyfunconn.fc.PAC.estimate">
 <code class="descname">estimate</code><span class="sig-paren">(</span><em>phases</em>, <em>phases_lohi</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/pac.html#PAC.estimate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.PAC.estimate" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Estimate the connectivity within the given dataset.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="dyfunconn.fc.PAC.estimate_pair">
 <code class="descname">estimate_pair</code><span class="sig-paren">(</span><em>phase1</em>, <em>phase1_lohi</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/pac.html#PAC.estimate_pair"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.PAC.estimate_pair" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Estimate the connectivity between two signals (time series).</p>
+<p class="rubric">Notes</p>
+<p>This is invoked from cross-frequency coupling methods.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="dyfunconn.fc.PAC.mean">
 <code class="descname">mean</code><span class="sig-paren">(</span><em>ts</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/pac.html#PAC.mean"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.PAC.mean" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The function used to compute the mean synchronization in a timeseries.</p>
+<p>This is needed because some estimators produce complex (imaginary), and
+special treatment is needed (i.e. taking only the real part).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>mtx</strong> : array-like</p>
+<blockquote class="last">
+<div><p>The average synchronization.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="dyfunconn.fc.PAC.preprocess">
 <code class="descname">preprocess</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/pac.html#PAC.preprocess"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.PAC.preprocess" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Preprocess the data.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="dyfunconn.fc.PAC.typeCast">
-<code class="descname">typeCast</code><span class="sig-paren">(</span><em>data</em>, <em>cast_type=&lt;type 'numpy.float32'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#dyfunconn.fc.PAC.typeCast" title="Permalink to this definition">¶</a></dt>
+<code class="descname">typeCast</code><span class="sig-paren">(</span><em>data</em>, <em>cast_type=&lt;class 'numpy.float32'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#dyfunconn.fc.PAC.typeCast" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -2888,9 +3152,9 @@ between the specified <em>pairs</em> of channels.</p>
 <div><p>Estimator used
 Valid options:</p>
 <blockquote>
-<div><p>&#8216;iplv&#8217; : Imaginary Phase Locking Value
-&#8216;plv&#8217;  : Phase Locking Value
-&#8216;pli&#8217;  : Phase Lag Index</p>
+<div><p>‘iplv’ : Imaginary Phase Locking Value
+‘plv’  : Phase Locking Value
+‘pli’  : Phase Lag Index</p>
 </div></blockquote>
 </div></blockquote>
 </td>
@@ -2918,7 +3182,7 @@ Valid options:</p>
 <dt id="dyfunconn.fc.dpli">
 <code class="descclassname">dyfunconn.fc.</code><code class="descname">dpli</code><span class="sig-paren">(</span><em>data</em>, <em>fb</em>, <em>fs</em>, <em>pairs=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/dpli.html#dpli"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.dpli" title="Permalink to this definition">¶</a></dt>
 <dd><p>Directed Phase Lag Index</p>
-<p>Estimate the Directed Phase Lag Index for the given <code class="xref py py-attr docutils literal"><span class="pre">data</span></code>,
+<p>Estimate the Directed Phase Lag Index for the given <code class="xref py py-attr docutils literal notranslate"><span class="pre">data</span></code>,
 between the :attr:<a href="#id24"><span class="problematic" id="id25">`</span></a>pairs (if given) of channels.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2956,7 +3220,7 @@ between the :attr:<a href="#id24"><span class="problematic" id="id25">`</span></
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <dl class="last docutils">
-<dt><a class="reference internal" href="#dyfunconn.fc.PLI" title="dyfunconn.fc.PLI"><code class="xref py py-obj docutils literal"><span class="pre">dyfunconn.fc.PLI</span></code></a></dt>
+<dt><a class="reference internal" href="#dyfunconn.fc.PLI" title="dyfunconn.fc.PLI"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dyfunconn.fc.PLI</span></code></a></dt>
 <dd>Phase Lag Index</dd>
 </dl>
 </div>
@@ -2993,7 +3257,7 @@ channels.</p>
 </div></blockquote>
 <p><strong>**kwargs :</strong> :</p>
 <blockquote>
-<div><p>Keyword arguments to be passed to <code class="xref py py-meth docutils literal"><span class="pre">matplotlib.mlab.csd()</span></code>.</p>
+<div><p>Keyword arguments to be passed to <code class="xref py py-meth docutils literal notranslate"><span class="pre">matplotlib.mlab.csd()</span></code>.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -3043,7 +3307,7 @@ channels.</p>
 </div></blockquote>
 <p><strong>**kwargs :</strong> :</p>
 <blockquote>
-<div><p>Keyword arguments to be passed to <code class="xref py py-meth docutils literal"><span class="pre">matplotlib.mlab.csd()</span></code>.</p>
+<div><p>Keyword arguments to be passed to <code class="xref py py-meth docutils literal notranslate"><span class="pre">matplotlib.mlab.csd()</span></code>.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -3061,7 +3325,7 @@ channels.</p>
 <dt id="dyfunconn.fc.coherence">
 <code class="descclassname">dyfunconn.fc.</code><code class="descname">coherence</code><span class="sig-paren">(</span><em>data</em>, <em>fb</em>, <em>fs</em>, <em>pairs=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/coherence.html#coherence"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.coherence" title="Permalink to this definition">¶</a></dt>
 <dd><p>Coherence</p>
-<p>Estimate the Coherence for the given <code class="xref py py-attr docutils literal"><span class="pre">data</span></code>,
+<p>Estimate the Coherence for the given <code class="xref py py-attr docutils literal notranslate"><span class="pre">data</span></code>,
 between the :attr:<a href="#id26"><span class="problematic" id="id27">`</span></a>pairs (if given) of channels.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -3088,7 +3352,7 @@ between the :attr:<a href="#id26"><span class="problematic" id="id27">`</span></
 </div></blockquote>
 <p><strong>**kwargs :</strong> :</p>
 <blockquote>
-<div><p>Keyword arguments to be passed to <code class="xref py py-meth docutils literal"><span class="pre">matplotlib.mlab.csd()</span></code>.</p>
+<div><p>Keyword arguments to be passed to <code class="xref py py-meth docutils literal notranslate"><span class="pre">matplotlib.mlab.csd()</span></code>.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -3103,9 +3367,9 @@ between the :attr:<a href="#id26"><span class="problematic" id="id27">`</span></
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <dl class="last docutils">
-<dt><code class="xref py py-obj docutils literal"><span class="pre">dyfunconn.fc.Coherece</span></code></dt>
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">dyfunconn.fc.Coherece</span></code></dt>
 <dd>Coherece (Class Estimator)</dd>
-<dt><a class="reference internal" href="#dyfunconn.fc.icoherence" title="dyfunconn.fc.icoherence"><code class="xref py py-obj docutils literal"><span class="pre">dyfunconn.fc.icoherence</span></code></a></dt>
+<dt><a class="reference internal" href="#dyfunconn.fc.icoherence" title="dyfunconn.fc.icoherence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dyfunconn.fc.icoherence</span></code></a></dt>
 <dd>Imaginary Coherence</dd>
 </dl>
 </div>
@@ -3115,7 +3379,7 @@ between the :attr:<a href="#id26"><span class="problematic" id="id27">`</span></
 <dt id="dyfunconn.fc.icoherence">
 <code class="descclassname">dyfunconn.fc.</code><code class="descname">icoherence</code><span class="sig-paren">(</span><em>data</em>, <em>fb</em>, <em>fs</em>, <em>pairs=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/icoherence.html#icoherence"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.icoherence" title="Permalink to this definition">¶</a></dt>
 <dd><p>Imaginary Coherence</p>
-<p>Compute the Imaginary part of Coherence for the given <code class="xref py py-attr docutils literal"><span class="pre">data</span></code>,
+<p>Compute the Imaginary part of Coherence for the given <code class="xref py py-attr docutils literal notranslate"><span class="pre">data</span></code>,
 between the :attr:<a href="#id28"><span class="problematic" id="id29">`</span></a>pairs (if given) of channels.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -3142,7 +3406,7 @@ between the :attr:<a href="#id28"><span class="problematic" id="id29">`</span></
 </div></blockquote>
 <p><strong>**kwargs :</strong> :</p>
 <blockquote>
-<div><p>Keyword arguments to be passed to <code class="xref py py-meth docutils literal"><span class="pre">matplotlib.mlab.csd()</span></code>.</p>
+<div><p>Keyword arguments to be passed to <code class="xref py py-meth docutils literal notranslate"><span class="pre">matplotlib.mlab.csd()</span></code>.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -3157,7 +3421,7 @@ between the :attr:<a href="#id28"><span class="problematic" id="id29">`</span></
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <dl class="last docutils">
-<dt><a class="reference internal" href="#dyfunconn.fc.coherence" title="dyfunconn.fc.coherence"><code class="xref py py-obj docutils literal"><span class="pre">dyfunconn.fc.coherence</span></code></a></dt>
+<dt><a class="reference internal" href="#dyfunconn.fc.coherence" title="dyfunconn.fc.coherence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dyfunconn.fc.coherence</span></code></a></dt>
 <dd>Coherence</dd>
 </dl>
 </div>
@@ -3167,7 +3431,7 @@ between the :attr:<a href="#id28"><span class="problematic" id="id29">`</span></
 <dt id="dyfunconn.fc.corr">
 <code class="descclassname">dyfunconn.fc.</code><code class="descname">corr</code><span class="sig-paren">(</span><em>data</em>, <em>fb</em>, <em>fs</em>, <em>pairs=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/corr.html#corr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.corr" title="Permalink to this definition">¶</a></dt>
 <dd><p>Correlation</p>
-<p>Compute the correlation for the given <code class="xref py py-attr docutils literal"><span class="pre">data</span></code>, between the <code class="xref py py-attr docutils literal"><span class="pre">pairs</span></code> (if given)
+<p>Compute the correlation for the given <code class="xref py py-attr docutils literal notranslate"><span class="pre">data</span></code>, between the <code class="xref py py-attr docutils literal notranslate"><span class="pre">pairs</span></code> (if given)
 of channels.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -3205,7 +3469,7 @@ of channels.</p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <dl class="last docutils">
-<dt><a class="reference internal" href="#dyfunconn.fc.Corr" title="dyfunconn.fc.Corr"><code class="xref py py-obj docutils literal"><span class="pre">dyfunconn.fc.Corr</span></code></a></dt>
+<dt><a class="reference internal" href="#dyfunconn.fc.Corr" title="dyfunconn.fc.Corr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dyfunconn.fc.Corr</span></code></a></dt>
 <dd>Correlation (Class Estimator)</dd>
 </dl>
 </div>
@@ -3214,14 +3478,14 @@ of channels.</p>
 <dl class="class">
 <dt id="dyfunconn.fc.Corr">
 <em class="property">class </em><code class="descclassname">dyfunconn.fc.</code><code class="descname">Corr</code><span class="sig-paren">(</span><em>fb</em>, <em>fs</em>, <em>pairs=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/corr.html#Corr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.Corr" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#dyfunconn.fc.estimator.Estimator" title="dyfunconn.fc.estimator.Estimator"><code class="xref py py-class docutils literal"><span class="pre">dyfunconn.fc.estimator.Estimator</span></code></a></p>
+<dd><p>Bases: <a class="reference internal" href="#dyfunconn.fc.estimator.Estimator" title="dyfunconn.fc.estimator.Estimator"><code class="xref py py-class docutils literal notranslate"><span class="pre">dyfunconn.fc.estimator.Estimator</span></code></a></p>
 <p>Correlation</p>
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <dl class="last docutils">
-<dt><a class="reference internal" href="#dyfunconn.fc.corr" title="dyfunconn.fc.corr"><code class="xref py py-obj docutils literal"><span class="pre">dyfunconn.fc.corr</span></code></a></dt>
+<dt><a class="reference internal" href="#dyfunconn.fc.corr" title="dyfunconn.fc.corr"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dyfunconn.fc.corr</span></code></a></dt>
 <dd>Correlation</dd>
-<dt><a class="reference internal" href="dyfunconn.html#dyfunconn.tvfcg" title="dyfunconn.tvfcg"><code class="xref py py-obj docutils literal"><span class="pre">dyfunconn.tvfcg</span></code></a></dt>
+<dt><a class="reference internal" href="dyfunconn.html#dyfunconn.tvfcg" title="dyfunconn.tvfcg"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dyfunconn.tvfcg</span></code></a></dt>
 <dd>Time-Varying Functional Connectivity Graphs</dd>
 </dl>
 </div>
@@ -3232,7 +3496,7 @@ of channels.</p>
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.Corr.estimate" title="dyfunconn.fc.Corr.estimate"><code class="xref py py-obj docutils literal"><span class="pre">estimate</span></code></a>(data)</td>
+<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.Corr.estimate" title="dyfunconn.fc.Corr.estimate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">estimate</span></code></a>(data)</td>
 <td><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -3243,7 +3507,7 @@ of channels.</p>
 </table>
 </td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.fc.Corr.estimate_pair" title="dyfunconn.fc.Corr.estimate_pair"><code class="xref py py-obj docutils literal"><span class="pre">estimate_pair</span></code></a>(ts1,&nbsp;ts2)</td>
+<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.fc.Corr.estimate_pair" title="dyfunconn.fc.Corr.estimate_pair"><code class="xref py py-obj docutils literal notranslate"><span class="pre">estimate_pair</span></code></a>(ts1,&nbsp;ts2)</td>
 <td><table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -3254,13 +3518,13 @@ of channels.</p>
 </table>
 </td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.Corr.mean" title="dyfunconn.fc.Corr.mean"><code class="xref py py-obj docutils literal"><span class="pre">mean</span></code></a>(value)</td>
-<td></td>
+<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.Corr.mean" title="dyfunconn.fc.Corr.mean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mean</span></code></a>(value)</td>
+<td>The function used to compute the mean synchronization in a timeseries.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.fc.Corr.preprocess" title="dyfunconn.fc.Corr.preprocess"><code class="xref py py-obj docutils literal"><span class="pre">preprocess</span></code></a>(data)</td>
-<td></td>
+<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.fc.Corr.preprocess" title="dyfunconn.fc.Corr.preprocess"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preprocess</span></code></a>(data)</td>
+<td>Preprocess the data.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.Corr.typeCast" title="dyfunconn.fc.Corr.typeCast"><code class="xref py py-obj docutils literal"><span class="pre">typeCast</span></code></a>(data[,&nbsp;cast_type])</td>
+<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.fc.Corr.typeCast" title="dyfunconn.fc.Corr.typeCast"><code class="xref py py-obj docutils literal notranslate"><span class="pre">typeCast</span></code></a>(data[,&nbsp;cast_type])</td>
 <td></td>
 </tr>
 </tbody>
@@ -3281,7 +3545,7 @@ of channels.</p>
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<p>Called from <a class="reference internal" href="dyfunconn.html#dyfunconn.tvfcgs.tvfcg" title="dyfunconn.tvfcgs.tvfcg"><code class="xref py py-mod docutils literal"><span class="pre">dyfunconn.tvfcgs.tvfcg</span></code></a>.</p>
+<p>Called from <a class="reference internal" href="dyfunconn.html#dyfunconn.tvfcgs.tvfcg" title="dyfunconn.tvfcgs.tvfcg"><code class="xref py py-mod docutils literal notranslate"><span class="pre">dyfunconn.tvfcgs.tvfcg</span></code></a>.</p>
 </dd></dl>
 
 <dl class="method">
@@ -3304,22 +3568,38 @@ of channels.</p>
 </tbody>
 </table>
 <p class="rubric">Notes</p>
-<p>Called from <a class="reference internal" href="dyfunconn.html#dyfunconn.tvfcgs.tvfcg" title="dyfunconn.tvfcgs.tvfcg"><code class="xref py py-mod docutils literal"><span class="pre">dyfunconn.tvfcgs.tvfcg</span></code></a>.</p>
+<p>Called from <a class="reference internal" href="dyfunconn.html#dyfunconn.tvfcgs.tvfcg" title="dyfunconn.tvfcgs.tvfcg"><code class="xref py py-mod docutils literal notranslate"><span class="pre">dyfunconn.tvfcgs.tvfcg</span></code></a>.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="dyfunconn.fc.Corr.mean">
 <code class="descname">mean</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/corr.html#Corr.mean"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.Corr.mean" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>The function used to compute the mean synchronization in a timeseries.</p>
+<p>This is needed because some estimators produce complex (imaginary), and
+special treatment is needed (i.e. taking only the real part).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>mtx</strong> : array-like</p>
+<blockquote class="last">
+<div><p>The average synchronization.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="dyfunconn.fc.Corr.preprocess">
 <code class="descname">preprocess</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/corr.html#Corr.preprocess"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.Corr.preprocess" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Preprocess the data.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="dyfunconn.fc.Corr.typeCast">
-<code class="descname">typeCast</code><span class="sig-paren">(</span><em>data</em>, <em>cast_type=&lt;type 'numpy.float32'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#dyfunconn.fc.Corr.typeCast" title="Permalink to this definition">¶</a></dt>
+<code class="descname">typeCast</code><span class="sig-paren">(</span><em>data</em>, <em>cast_type=&lt;class 'numpy.float32'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#dyfunconn.fc.Corr.typeCast" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -3360,7 +3640,7 @@ of channels.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Avraam Marimpis &amp; Stavros Dimitriadis.
+        &copy; Copyright 2018, Avraam Marimpis &amp; Stavros Dimitriadis.
 
     </p>
   </div>
@@ -3392,7 +3672,7 @@ of channels.</p>
       <script type="text/javascript" src="_static/jquery.js"></script>
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

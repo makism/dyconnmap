@@ -19,7 +19,7 @@ import scipy
 import itertools
 import sklearn
 
-from embed_delay import embed_delay
+from .embed_delay import embed_delay
 
 
 def rr_order_patterns(signal1, signal2, m, tau):
@@ -71,7 +71,7 @@ def rr_order_patterns(signal1, signal2, m, tau):
 
     factorial_dim = scipy.misc.factorial(m)
 
-    ipermlist = itertools.permutations(range(1, m + 1))
+    ipermlist = itertools.permutations(list(range(1, m + 1)))
     npermlist = np.zeros((np.int32(factorial_dim), m))
     for index, perm in enumerate(ipermlist):
         perm = np.reshape(perm, (1, -1)).astype(np.float32)

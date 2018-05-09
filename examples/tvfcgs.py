@@ -18,12 +18,12 @@ if __name__ == '__main__':
 
     now = time.time()
     ts, avg = plv(data, fb, fs)
-    print "Finished in", time.time() - now, "sec"
+    print("Finished in", time.time() - now, "sec")
 
     # TVFCGs from time seriess
     now = time.time()
     fcgs = tvfcg_ts(ts, [1.0, 4.0], 128)
-    print "Finished in", time.time() - now, "sec"
+    print("Finished in", time.time() - now, "sec")
 
     # TVFCGs
     fb = [1.0, 4.0]
@@ -40,11 +40,11 @@ if __name__ == '__main__':
 
     now = time.time()
     cfc_ts, cfc_avg = pac(data, lo, hi, fs, estimator)
-    print "Finished in", time.time() - now, "sec"
+    print("Finished in", time.time() - now, "sec")
 
     # TVFCGs + PAC
     pac_estimator = PAC(lo, hi, fs, estimator)
 
     now = time.time()
     fcgs = tvfcg_cfc(data, pac_estimator, lo, hi, fs)
-    print "Finished in", time.time() - now, "sec"
+    print("Finished in", time.time() - now, "sec")

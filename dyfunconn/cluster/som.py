@@ -25,6 +25,28 @@ from sklearn.neighbors import NearestNeighbors
 class SOM:
     """ Self Organizing Map
 
+    Parameters
+    ----------
+    grid : list of length 2
+        The X and Y sizes of the grid
+
+    iterations : int
+        The maximum iterations
+
+    lrate : float
+        The initial rearning rate
+
+    n_jobs : int
+        Number of parallel jobs (will be passed to scikit-learn))
+
+    rng : object or None
+        An object of type numpy.random.RandomState
+
+
+    Attributes
+    ----------
+    protos : array-like, shape(n_protos, n_features)
+        The prototypical vectors
 
     """
 
@@ -67,7 +89,7 @@ class SOM:
         [n_samples, _] = data.shape
 
         for self.currentIteration in range(self.numIterations):
-            learn_sample = data[self.rng.choice(n_samples, 1), ] #random.choice(data)
+            learn_sample = data[self.rng.choice(n_samples, 1), ]
             learn_sample = learn_sample.squeeze()
 
             dist = np.inf

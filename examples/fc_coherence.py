@@ -17,5 +17,5 @@ if __name__ == "__main__":
     coh = coherence(data, [1.0, 4.0], 128.0, **csdparams)
     icoh = icoherence(data, [1.0, 4.0], 128.0)
 
-    print "Coherence: \n", coh
-    print "Imagenary Coherence: \n", icoh
+    print("Coherence: \n", coh)
+    print("Imagenary Coherence: \n", icoh)

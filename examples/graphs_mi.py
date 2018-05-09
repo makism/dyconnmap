@@ -23,5 +23,5 @@ if __name__ == '__main__':
 
     mi, nmi = mutual_information(Ca, Cb)
 
-    print mi
-    print nmi
+    print(mi)
+    print(nmi)

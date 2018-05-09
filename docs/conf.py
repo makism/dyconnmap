@@ -66,8 +66,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'dyfunconn'
-copyright = u'2017, Avraam Marimpis & Stavros Dimitriadis'
+project = 'dyfunconn'
+copyright = '2018, Avraam Marimpis & Stavros Dimitriadis'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -233,8 +233,8 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    ('index', 'dyfunconn.tex', u'dyfunconn Documentation',
-     u'Marimpis Avraam', 'manual'),
+    ('index', 'dyfunconn.tex', 'dyfunconn Documentation',
+     'Marimpis Avraam', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -263,8 +263,8 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'dyfunconn', u'dyfunconn Documentation',
-     [u'Marimpis Avraam'], 1)
+    ('index', 'dyfunconn', 'dyfunconn Documentation',
+     ['Marimpis Avraam'], 1)
 ]
 
 # If true, show URL addresses after external links.
@@ -277,8 +277,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    ('index', 'dyfunconn', u'dyfunconn Documentation',
-     u'Marimpis Avraam', 'dyfunconn', 'One line description of project.',
+    ('index', 'dyfunconn', 'dyfunconn Documentation',
+     'Marimpis Avraam', 'dyfunconn', 'One line description of project.',
      'Miscellaneous'),
 ]
 
@@ -298,10 +298,10 @@ texinfo_documents = [
 # -- Options for Epub output ----------------------------------------------
 
 # Bibliographic Dublin Core info.
-epub_title = u'dyfunconn'
-epub_author = u'Marimpis Avraam'
-epub_publisher = u'Marimpis Avraam'
-epub_copyright = u'2015, Marimpis Avraam'
+epub_title = 'dyfunconn'
+epub_author = 'Marimpis Avraam & Dimitriadis Stavros'
+epub_publisher = 'Marimpis Avraam & Dimitriadis Stavros'
+epub_copyright = '2018, Marimpis Avraam & Dimitriadis Stavros'
 
 # The basename for the epub file. It defaults to the project name.
 #epub_basename = u'dyfunconn'

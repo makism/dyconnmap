@@ -202,8 +202,8 @@
 
     <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">filtered</span><span class="p">[:])</span>
     <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">r</span></div>
+</div>
+    <span class="k">return</span> <span class="n">r</span>
 
 
 <div class="viewcode-block" id="Corr"><a class="viewcode-back" href="../../../dyfunconn.fc.html#dyfunconn.fc.corr.Corr">[docs]</a><span class="k">class</span> <span class="nc">Corr</span><span class="p">(</span><span class="n">Estimator</span><span class="p">):</span>
@@ -224,8 +224,8 @@
 
 <div class="viewcode-block" id="Corr.preprocess"><a class="viewcode-back" href="../../../dyfunconn.fc.html#dyfunconn.fc.corr.Corr.preprocess">[docs]</a>    <span class="k">def</span> <span class="nf">preprocess</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
         <span class="n">filtered</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">analytic_signal</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">fb</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">fs</span><span class="p">)</span>
-
-        <span class="k">return</span> <span class="n">filtered</span></div>
+</div>
+        <span class="k">return</span> <span class="n">filtered</span>
 
 <div class="viewcode-block" id="Corr.estimate_pair"><a class="viewcode-back" href="../../../dyfunconn.fc.html#dyfunconn.fc.corr.Corr.estimate_pair">[docs]</a>    <span class="k">def</span> <span class="nf">estimate_pair</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ts1</span><span class="p">,</span> <span class="n">ts2</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -246,11 +246,11 @@
         <span class="n">n_samples</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ts1</span><span class="p">)</span>
 
         <span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">ts1</span><span class="p">,</span> <span class="n">ts2</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+</div>
+        <span class="k">return</span> <span class="n">r</span><span class="p">,</span> <span class="kc">None</span>
 
-        <span class="k">return</span> <span class="n">r</span><span class="p">,</span> <span class="kc">None</span></div>
-
-<div class="viewcode-block" id="Corr.mean"><a class="viewcode-back" href="../../../dyfunconn.fc.html#dyfunconn.fc.corr.Corr.mean">[docs]</a>    <span class="k">def</span> <span class="nf">mean</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">value</span></div>
+<div class="viewcode-block" id="Corr.mean"><a class="viewcode-back" href="../../../dyfunconn.fc.html#dyfunconn.fc.corr.Corr.mean">[docs]</a>    <span class="k">def</span> <span class="nf">mean</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span></div>
+        <span class="k">return</span> <span class="n">value</span>
 
 <div class="viewcode-block" id="Corr.estimate"><a class="viewcode-back" href="../../../dyfunconn.fc.html#dyfunconn.fc.corr.Corr.estimate">[docs]</a>    <span class="k">def</span> <span class="nf">estimate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
@@ -277,8 +277,8 @@
         <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">pairs</span><span class="p">:</span>
             <span class="n">f_data1</span><span class="p">,</span> <span class="n">f_data2</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">pair</span><span class="p">,</span> <span class="p">]</span>
             <span class="n">r</span><span class="p">[</span><span class="n">pair</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span><span class="p">(</span><span class="n">f_data1</span><span class="p">,</span> <span class="n">f_data2</span><span class="p">)[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-
-        <span class="k">return</span> <span class="n">r</span></div></div>
+</div></div>
+        <span class="k">return</span> <span class="n">r</span>
 </pre></div>
 
            </div>
@@ -293,7 +293,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Avraam Marimpis &amp; Stavros Dimitriadis.
+        &copy; Copyright 2018, Avraam Marimpis &amp; Stavros Dimitriadis.
 
     </p>
   </div>
@@ -325,7 +325,7 @@
       <script type="text/javascript" src="../../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

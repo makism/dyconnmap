@@ -157,7 +157,7 @@
 
 <span class="sd">Notes</span>
 <span class="sd">-----</span>
-<span class="sd">* This is a direct translation from `BCT&#39;s function &quot;mean_first_passage_time.m&quot; &lt;https://sites.google.com/site/bctnet/Home/functions/mean_first_passage_time.m&gt;``</span>
+<span class="sd">* This is a direct translation from `BCT&#39;s function &quot;mean_first_passage_time.m&quot;` (https://sites.google.com/site/bctnet/Home/functions/mean_first_passage_time.m)</span>
 <span class="sd">* Original author is Joaquin Goñi, IU Bloomington, 2012</span>
 
 <span class="sd">|</span>
@@ -209,8 +209,8 @@
 
     <span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">I</span> <span class="o">-</span> <span class="n">P</span> <span class="o">+</span> <span class="n">W</span><span class="p">)</span>
     <span class="n">MFPT</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="p">[</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span> <span class="o">-</span> <span class="n">Z</span><span class="p">)</span> <span class="o">/</span> <span class="n">W</span>
-
-    <span class="k">return</span> <span class="n">MFPT</span></div>
+</div>
+    <span class="k">return</span> <span class="n">MFPT</span>
 </pre></div>
 
            </div>
@@ -225,7 +225,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Avraam Marimpis &amp; Stavros Dimitriadis.
+        &copy; Copyright 2018, Avraam Marimpis &amp; Stavros Dimitriadis.
 
     </p>
   </div>
@@ -257,7 +257,7 @@
       <script type="text/javascript" src="../../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

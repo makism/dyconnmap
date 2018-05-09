@@ -154,14 +154,14 @@
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot; Time-Varying Functional Connectivity Graphs</span>
 
-<span class="sd">Time-varying functional connectivity graphs (TVFCGs) [Dimitriadis2010_ , Falani2008_] introduce the</span>
+<span class="sd">Time-varying functional connectivity graphs (TVFCGs) (Dimitriadis2010_, Falani2008_) introduce the</span>
 <span class="sd">idea of processing overlapping segments of neuroelectric signals by defining a</span>
 <span class="sd">frequency-dependent time window in which the synchronization is estimated;</span>
 <span class="sd">and then tabulating the results as adjacency matrices. These matrices have a</span>
 <span class="sd">natural graph-based representation called “functional connectivity graphs”</span>
 <span class="sd">(FCGs).</span>
 
-<span class="sd">An important aspect of the TVFCGs is the “cycle-criterion” (CC) [Cohen2008_].</span>
+<span class="sd">An important aspect of the TVFCGs is the “cycle-criterion” (CC) (Cohen2008_).</span>
 <span class="sd">It regulates the amount of the oscillation cycles that will be considered in</span>
 <span class="sd">measuring the phase synchrony. In the original proposal :math:`CC = 2.0` was</span>
 <span class="sd">introduced, resulting into a time-window with width twice the lower period.</span>
@@ -201,7 +201,7 @@
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="kn">from</span> <span class="nn">fc.estimator</span> <span class="k">import</span> <span class="n">Estimator</span>
+<span class="kn">from</span> <span class="nn">.fc.estimator</span> <span class="k">import</span> <span class="n">Estimator</span>
 
 
 <div class="viewcode-block" id="tvfcg"><a class="viewcode-back" href="../../dyfunconn.html#dyfunconn.tvfcgs.tvfcg">[docs]</a><span class="k">def</span> <span class="nf">tvfcg</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">estimator_instance</span><span class="p">,</span> <span class="n">fb</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="n">cc</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="n">pairs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -260,8 +260,8 @@
     <span class="k">if</span> <span class="n">pairs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">pairs</span> <span class="o">=</span> <span class="p">[(</span><span class="n">win_id</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">win_id</span> <span class="o">*</span> <span class="n">step</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">window_length</span> <span class="o">+</span> <span class="p">(</span><span class="n">win_id</span> <span class="o">*</span> <span class="n">step</span><span class="p">)),</span> <span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">)</span>
                  <span class="k">for</span> <span class="n">win_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">windows</span><span class="p">)</span>
-                 <span class="k">for</span> <span class="n">c1</span> <span class="ow">in</span> <span class="n">xrange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_channels</span><span class="p">)</span>
-                 <span class="k">for</span> <span class="n">c2</span> <span class="ow">in</span> <span class="n">xrange</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span> <span class="n">n_channels</span><span class="p">)</span>
+                 <span class="k">for</span> <span class="n">c1</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_channels</span><span class="p">)</span>
+                 <span class="k">for</span> <span class="n">c2</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span> <span class="n">n_channels</span><span class="p">)</span>
                  <span class="k">if</span> <span class="n">c1</span> <span class="o">!=</span> <span class="n">c2</span>
                  <span class="p">]</span>
 
@@ -278,8 +278,8 @@
             <span class="c1"># slice = estimator(slice1, slice2)</span>
 
         <span class="n">fcgs</span><span class="p">[</span><span class="n">win_id</span><span class="p">,</span> <span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">]</span> <span class="o">=</span> <span class="n">avg_func</span><span class="p">(</span><span class="n">slice_ts</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">fcgs</span></div>
+</div>
+    <span class="k">return</span> <span class="n">fcgs</span>
 
 
 <div class="viewcode-block" id="tvfcg_cfc"><a class="viewcode-back" href="../../dyfunconn.html#dyfunconn.tvfcgs.tvfcg_cfc">[docs]</a><span class="k">def</span> <span class="nf">tvfcg_cfc</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">estimator_instance</span><span class="p">,</span> <span class="n">fb_lo</span><span class="p">,</span> <span class="n">fb_hi</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">cc</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">pairs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
@@ -348,8 +348,8 @@
     <span class="k">if</span> <span class="n">pairs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">pairs</span> <span class="o">=</span> <span class="p">[(</span><span class="n">win_id</span><span class="p">,</span> <span class="p">(</span><span class="n">win_id</span> <span class="o">*</span> <span class="n">step</span><span class="p">),</span> <span class="n">window_length</span> <span class="o">+</span> <span class="p">(</span><span class="n">win_id</span> <span class="o">*</span> <span class="n">step</span><span class="p">),</span> <span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">)</span>
                  <span class="k">for</span> <span class="n">win_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">windows</span><span class="p">)</span>
-                 <span class="k">for</span> <span class="n">c1</span> <span class="ow">in</span> <span class="n">xrange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_channels</span><span class="p">)</span>
-                 <span class="k">for</span> <span class="n">c2</span> <span class="ow">in</span> <span class="n">xrange</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span> <span class="n">n_channels</span><span class="p">)</span>
+                 <span class="k">for</span> <span class="n">c1</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_channels</span><span class="p">)</span>
+                 <span class="k">for</span> <span class="n">c2</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span> <span class="n">n_channels</span><span class="p">)</span>
                  <span class="k">if</span> <span class="n">c1</span> <span class="o">!=</span> <span class="n">c2</span>
                  <span class="p">]</span>
 
@@ -361,8 +361,8 @@
         <span class="n">aslice</span> <span class="o">=</span> <span class="n">avg_func</span><span class="p">(</span><span class="n">slice_ts</span><span class="p">)</span>
 
         <span class="n">fcgs</span><span class="p">[</span><span class="n">win_id</span><span class="p">,</span> <span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">]</span> <span class="o">=</span> <span class="n">aslice</span>
-
-    <span class="k">return</span> <span class="n">fcgs</span></div>
+</div>
+    <span class="k">return</span> <span class="n">fcgs</span>
 
 
 <div class="viewcode-block" id="tvfcg_ts"><a class="viewcode-back" href="../../dyfunconn.html#dyfunconn.tvfcgs.tvfcg_ts">[docs]</a><span class="k">def</span> <span class="nf">tvfcg_ts</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">fb</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">cc</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">pairs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">avg_func</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">):</span>
@@ -421,8 +421,8 @@
         <span class="n">slice_ts</span> <span class="o">=</span> <span class="n">ts</span><span class="p">[</span><span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">,</span> <span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span>
 
         <span class="n">fcgs</span><span class="p">[</span><span class="n">win_id</span><span class="p">,</span> <span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">]</span> <span class="o">=</span> <span class="n">avg_func</span><span class="p">(</span><span class="n">slice_ts</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">fcgs</span></div>
+</div>
+    <span class="k">return</span> <span class="n">fcgs</span>
 
 
 <div class="viewcode-block" id="tvfcg_compute_windows"><a class="viewcode-back" href="../../dyfunconn.html#dyfunconn.tvfcgs.tvfcg_compute_windows">[docs]</a><span class="k">def</span> <span class="nf">tvfcg_compute_windows</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">fb_lo</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="n">cc</span><span class="p">,</span> <span class="n">step</span><span class="p">):</span>
@@ -467,8 +467,8 @@
     <span class="k">if</span> <span class="n">window_length</span> <span class="o">&gt;=</span> <span class="n">n_samples</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span>
             <span class="s2">&quot;The size of window cannot be greater than the number of samples&quot;</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">windows</span><span class="p">,</span> <span class="n">window_length</span></div>
+</div>
+    <span class="k">return</span> <span class="n">windows</span><span class="p">,</span> <span class="n">window_length</span>
 
 
 <span class="k">def</span> <span class="nf">_validate_estimator</span><span class="p">(</span><span class="n">estimator_instance</span><span class="p">):</span>
@@ -500,7 +500,7 @@
 <span class="sd">    This function is used mainly internally.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">estimator_instance</span><span class="p">,</span> <span class="n">Estimator</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Given object is not an Estimator.&quot;</span><span class="p">)</span>
 
     <span class="n">preprocess</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">estimator_instance</span><span class="p">,</span> <span class="s2">&quot;preprocess&quot;</span><span class="p">)</span>
     <span class="n">estimator</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">estimator_instance</span><span class="p">,</span> <span class="s2">&quot;estimate_pair&quot;</span><span class="p">)</span>
@@ -530,7 +530,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2017, Avraam Marimpis &amp; Stavros Dimitriadis.
+        &copy; Copyright 2018, Avraam Marimpis &amp; Stavros Dimitriadis.
 
     </p>
   </div>
@@ -562,7 +562,7 @@
       <script type="text/javascript" src="../../_static/jquery.js"></script>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
