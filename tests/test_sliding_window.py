@@ -13,7 +13,17 @@ from dyfunconn import sliding_window_indx
 
 
 def test_sliding_window_indx():
-    result_fcgs = np.load("data/test_tvfcgs_plv.npy")
-    np.testing.assert_array_equal(tvfcg_plv_fcgs, result_fcgs)
+    result_indices1 = np.load("data/test_sliding_indices1.npy")
+    result_indices3 = np.load("data/test_sliding_indices3.npy")
+    result_indices6 = np.load("data/test_sliding_indices6.npy")
 
-    # win_id, start_offset, end_offset, source, target = sliding_window_indx(data, )
+    ts = np.zeros((4, 100))
+    wlen = 10
+
+    indices1 = sliding_window_indx(ts, window_length=wlen, overlap=0.5)
+    indices3 = sliding_window_indx(ts, window_length=wlen, overlap=0.75)
+    indices6 = sliding_window_indx(ts, window_length=wlen, overlap=0.90)
+
+    np.testing.assert_array_equal(result_indices1, indices1)
+    np.testing.assert_array_equal(result_indices3, indices3)
+    np.testing.assert_array_equal(result_indices6, indices6)
