@@ -300,8 +300,8 @@
 <div class="section" id="module-dyfunconn.analytic_signal">
 <span id="dyfunconn-analytic-signal-module"></span><h2>dyfunconn.analytic_signal module<a class="headerlink" href="#module-dyfunconn.analytic_signal" title="Permalink to this headline">¶</a></h2>
 <p>Analytic Signal</p>
-<p>For a time series <span class="math notranslate">\(x(t)\)</span>, filtered with a passband <span class="math notranslate">\(N`th order Butterworth filter [Butter1930]_
-in the frequency range :math:`F_{lo} - F_{hi}\)</span>; first we compute its analytic representation <a class="reference internal" href="#cohen1995" id="id1">[Cohen1995]</a> , <a class="reference internal" href="#freeman2007" id="id2">[Freeman2007]</a>:</p>
+<p>For a time series <span class="math notranslate">\(x(t)\)</span>, filtered with a passband <span class="math notranslate">\(N`th order Butterworth filter (Butter1930_)
+in the frequency range :math:`F_{lo} - F_{hi}\)</span>; first we compute its analytic representation (<a class="reference internal" href="#cohen1995">Cohen1995</a> , <a class="reference internal" href="#freeman2007">Freeman2007</a>):</p>
 <div class="math notranslate">
 \[u_j(t) = \frac{1}{\pi} \textrm{PV} \int_{+\infty}^{-\infty} { \frac{V_j(t')}{t-t'} dt'}\]</div>
 <p>where <span class="math notranslate">\(PV\)</span> signifies the Cauchy Principal Value. The above equation results
@@ -316,7 +316,7 @@ EEG recording electrode id.</p>
 \[\phi_j (t) = atan \frac{u_j(t)} {v_j(t)}\]</div>
 <p>The values in <span class="math notranslate">\(\phi_j(t)\)</span> are originally bound to <span class="math notranslate">\([-\pi, \pi]\)</span>,
 however we employed an <em>unwrap</em> transformation (a phase correction
-algorithm) in order to eliminate the discontinuities <a class="reference internal" href="dyfunconn.graphs.html#id10" id="id3">[Dimitriadis2010]</a>, <a class="reference internal" href="#freeman2002" id="id4">[Freeman2002]</a>.</p>
+algorithm) in order to eliminate the discontinuities (<a href="#id2"><span class="problematic" id="id3">Dimitriadis2010_</span></a>, <a class="reference internal" href="#freeman2002">Freeman2002</a>).</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -324,13 +324,13 @@ algorithm) in order to eliminate the discontinuities <a class="reference interna
 <table class="docutils citation" frame="void" id="cohen1995" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[Cohen1995]</a></td><td>Cohen, L. (1995). Time-frequency analysis (Vol. 1, No. 995,299). Prentice hall.</td></tr>
+<tr><td class="label">[Cohen1995]</td><td>Cohen, L. (1995). Time-frequency analysis (Vol. 1, No. 995,299). Prentice hall.</td></tr>
 </tbody>
 </table>
 <table class="docutils citation" frame="void" id="freeman2007" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[Freeman2007]</a></td><td>Walter J. Freeman (2007) Hilbert transform for brain waves. Scholarpedia, 2(1):1338.</td></tr>
+<tr><td class="label">[Freeman2007]</td><td>Walter J. Freeman (2007) Hilbert transform for brain waves. Scholarpedia, 2(1):1338.</td></tr>
 </tbody>
 </table>
 <table class="docutils citation" frame="void" id="dimitriadis2010" rules="none">
@@ -342,7 +342,7 @@ algorithm) in order to eliminate the discontinuities <a class="reference interna
 <table class="docutils citation" frame="void" id="freeman2002" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id4">[Freeman2002]</a></td><td>Freeman, W. J., &amp; Rogers, L. J. (2002). Fine temporal resolution of analytic phase reveals episodic synchronization by state transitions in gamma EEGs. Journal of neurophysiology, 87(2), 937-945.</td></tr>
+<tr><td class="label">[Freeman2002]</td><td>Freeman, W. J., &amp; Rogers, L. J. (2002). Fine temporal resolution of analytic phase reveals episodic synchronization by state transitions in gamma EEGs. Journal of neurophysiology, 87(2), 937-945.</td></tr>
 </tbody>
 </table>
 <table class="docutils citation" frame="void" id="butter1930" rules="none">
@@ -460,10 +460,13 @@ You can access them with</p>
 </div>
 <div class="section" id="module-dyfunconn.sliding_window">
 <span id="dyfunconn-sliding-window-module"></span><h2>dyfunconn.sliding_window module<a class="headerlink" href="#module-dyfunconn.sliding_window" title="Permalink to this headline">¶</a></h2>
+<p>Sliding Window</p>
 <dl class="function">
-<dt id="dyfunconn.sliding_window.sliding_window">
-<code class="descclassname">dyfunconn.sliding_window.</code><code class="descname">sliding_window</code><span class="sig-paren">(</span><em>data</em>, <em>estimator_instance</em>, <em>window_length</em>, <em>overlap=0</em>, <em>pairs=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/sliding_window.html#sliding_window"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.sliding_window.sliding_window" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
+<dt id="dyfunconn.sliding_window.sliding_window_indx">
+<code class="descclassname">dyfunconn.sliding_window.</code><code class="descname">sliding_window_indx</code><span class="sig-paren">(</span><em>data</em>, <em>window_length</em>, <em>overlap=0.75</em>, <em>pairs=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/sliding_window.html#sliding_window_indx"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.sliding_window.sliding_window_indx" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the indices and pairs using a sliding window.</p>
+<p>Slide a window over <code class="docutils literal notranslate"><span class="pre">data</span></code>, and return the indices and offsets.</p>
+<table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
@@ -471,25 +474,27 @@ You can access them with</p>
 <blockquote>
 <div><p>Multichannel recording data.</p>
 </div></blockquote>
-<p><strong>estimator_instance</strong> : object</p>
-<blockquote>
-<div><p>An object of type <a class="reference internal" href="dyfunconn.fc.html#dyfunconn.fc.Estimator" title="dyfunconn.fc.Estimator"><code class="xref py py-mod docutils literal notranslate"><span class="pre">dyfunconn.fc.Estimator</span></code></a>.</p>
-</div></blockquote>
 <p><strong>window_length</strong> : int</p>
 <blockquote>
 <div><p>Number of samples to be used in the computation of the connectivity.</p>
 </div></blockquote>
-<p><strong>overlap</strong> : int</p>
+<p><strong>overlap</strong> : float</p>
 <blockquote>
-<div><p>Number of samples by which the window will slide (and overlap) over the
-time series.</p>
+<div><p>Percentage of the <code class="docutils literal notranslate"><span class="pre">window_length</span></code> by which the window will overlap when
+sliding forward.</p>
 </div></blockquote>
-<p><strong>pairs :</strong> :</p>
+<p><strong>pairs</strong> : array-like or <cite>None</cite></p>
+<blockquote>
+<div><ul class="simple">
+<li>If an <cite>array-like</cite> is given, notice that each element is a tuple of length two.</li>
+<li>If <cite>None</cite> is passed, complete connectivity will be assumed.</li>
+</ul>
+</div></blockquote>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>fcgs</strong> : array-like, shape(n_windows, n_channels, n_channels)</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>indices: array - like, shape(n_windows, start_offset, end_offset, n_channels, n_channels)</strong> :</p>
 <blockquote class="last">
-<div><p>The computed FCGs</p>
+<div><p>Indices of pairs.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -501,13 +506,13 @@ time series.</p>
 <div class="section" id="module-dyfunconn.tvfcgs">
 <span id="dyfunconn-tvfcgs-module"></span><h2>dyfunconn.tvfcgs module<a class="headerlink" href="#module-dyfunconn.tvfcgs" title="Permalink to this headline">¶</a></h2>
 <p>Time-Varying Functional Connectivity Graphs</p>
-<p>Time-varying functional connectivity graphs (TVFCGs) [<a href="#id6"><span class="problematic" id="id7">Dimitriadis2010_</span></a> , <a class="reference internal" href="#falani2008">Falani2008</a>] introduce the
+<p>Time-varying functional connectivity graphs (TVFCGs) (<a href="#id4"><span class="problematic" id="id5">Dimitriadis2010_</span></a>, <a class="reference internal" href="#falani2008">Falani2008</a>) introduce the
 idea of processing overlapping segments of neuroelectric signals by defining a
 frequency-dependent time window in which the synchronization is estimated;
 and then tabulating the results as adjacency matrices. These matrices have a
 natural graph-based representation called “functional connectivity graphs”
 (FCGs).</p>
-<p>An important aspect of the TVFCGs is the “cycle-criterion” (CC) [<a class="reference internal" href="#cohen2008">Cohen2008</a>].
+<p>An important aspect of the TVFCGs is the “cycle-criterion” (CC) (<a class="reference internal" href="#cohen2008">Cohen2008</a>).
 It regulates the amount of the oscillation cycles that will be considered in
 measuring the phase synchrony. In the original proposal <span class="math notranslate">\(CC = 2.0\)</span> was
 introduced, resulting into a time-window with width twice the lower period.
@@ -539,7 +544,7 @@ resulting into <span class="math notranslate">\(\frac{n}{step}\)</span> adjacenc
 <tr><td class="label">[Cohen2008]</td><td>Cohen, M. X. (2008). Assessing transient cross-frequency coupling in EEG data. Journal of neuroscience methods, 168(2), 494-499.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="id5" rules="none">
+<table class="docutils citation" frame="void" id="id1" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[Dimitriadis2010]</td><td>Dimitriadis, S. I., Laskaris, N. A., Tsirka, V., Vourkas, M., Micheloyannis, S., &amp; Fotopoulos, S. (2010). Tracking brain dynamics via time-dependent network analysis. Journal of neuroscience methods, 193(1), 145-155.</td></tr>
@@ -966,6 +971,47 @@ time series (<code class="docutils literal notranslate"><span class="pre">ts</sp
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>fcgs</strong> : array-like</p>
 <blockquote class="last">
 <div><p>The computed FCGs.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="dyfunconn.sliding_window_indx">
+<code class="descclassname">dyfunconn.</code><code class="descname">sliding_window_indx</code><span class="sig-paren">(</span><em>data</em>, <em>window_length</em>, <em>overlap=0.75</em>, <em>pairs=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/sliding_window.html#sliding_window_indx"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.sliding_window_indx" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the indices and pairs using a sliding window.</p>
+<p>Slide a window over <code class="docutils literal notranslate"><span class="pre">data</span></code>, and return the indices and offsets.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : array-like, shape(n_channels, n_samples)</p>
+<blockquote>
+<div><p>Multichannel recording data.</p>
+</div></blockquote>
+<p><strong>window_length</strong> : int</p>
+<blockquote>
+<div><p>Number of samples to be used in the computation of the connectivity.</p>
+</div></blockquote>
+<p><strong>overlap</strong> : float</p>
+<blockquote>
+<div><p>Percentage of the <code class="docutils literal notranslate"><span class="pre">window_length</span></code> by which the window will overlap when
+sliding forward.</p>
+</div></blockquote>
+<p><strong>pairs</strong> : array-like or <cite>None</cite></p>
+<blockquote>
+<div><ul class="simple">
+<li>If an <cite>array-like</cite> is given, notice that each element is a tuple of length two.</li>
+<li>If <cite>None</cite> is passed, complete connectivity will be assumed.</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>indices: array - like, shape(n_windows, start_offset, end_offset, n_channels, n_channels)</strong> :</p>
+<blockquote class="last">
+<div><p>Indices of pairs.</p>
 </div></blockquote>
 </td>
 </tr>

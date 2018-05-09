@@ -242,7 +242,7 @@ measure between two adjacency matrices <span class="math notranslate">\(A_1\)</s
 </table>
 <dl class="function">
 <dt id="dyfunconn.graphs.gdd.graph_diffusion_distance">
-<code class="descclassname">dyfunconn.graphs.gdd.</code><code class="descname">graph_diffusion_distance</code><span class="sig-paren">(</span><em>a</em>, <em>b</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/graphs/gdd.html#graph_diffusion_distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.graphs.gdd.graph_diffusion_distance" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">dyfunconn.graphs.gdd.</code><code class="descname">graph_diffusion_distance</code><span class="sig-paren">(</span><em>a</em>, <em>b</em>, <em>threshold=1e-14</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/graphs/gdd.html#graph_diffusion_distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.graphs.gdd.graph_diffusion_distance" title="Permalink to this definition">¶</a></dt>
 <dd><p>Graph Diffusion Distance</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -255,6 +255,10 @@ measure between two adjacency matrices <span class="math notranslate">\(A_1\)</s
 <p><strong>b</strong> : array-like, shape(N, N)</p>
 <blockquote>
 <div><p>Weighted matrix.</p>
+</div></blockquote>
+<p><strong>threshold</strong> : float</p>
+<blockquote>
+<div><p>A threshold to filter out the small eigenvalues. If the you get NaN or INFs, try lowering this threshold.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -695,7 +699,7 @@ fill the diagonal with zeroes. Default <cite>false</cite>.</p>
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-dyfunconn.graphs" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="dyfunconn.graphs.graph_diffusion_distance">
-<code class="descclassname">dyfunconn.graphs.</code><code class="descname">graph_diffusion_distance</code><span class="sig-paren">(</span><em>a</em>, <em>b</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/graphs/gdd.html#graph_diffusion_distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.graphs.graph_diffusion_distance" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">dyfunconn.graphs.</code><code class="descname">graph_diffusion_distance</code><span class="sig-paren">(</span><em>a</em>, <em>b</em>, <em>threshold=1e-14</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/graphs/gdd.html#graph_diffusion_distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.graphs.graph_diffusion_distance" title="Permalink to this definition">¶</a></dt>
 <dd><p>Graph Diffusion Distance</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -708,6 +712,10 @@ fill the diagonal with zeroes. Default <cite>false</cite>.</p>
 <p><strong>b</strong> : array-like, shape(N, N)</p>
 <blockquote>
 <div><p>Weighted matrix.</p>
+</div></blockquote>
+<p><strong>threshold</strong> : float</p>
+<blockquote>
+<div><p>A threshold to filter out the small eigenvalues. If the you get NaN or INFs, try lowering this threshold.</p>
 </div></blockquote>
 </td>
 </tr>
