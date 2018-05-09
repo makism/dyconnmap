@@ -15,7 +15,8 @@ Based on the code available at http://users.auth.gr/~stdimitr/files/software/vi.
 .. [Dimitriadis2012] Dimitriadis, S. I., Laskaris, N. A., Michael Vourkas, V. T., & Micheloyannis, S. (2012). An EEG study of brain connectivity dynamics at the resting state. Nonlinear Dynamics-Psychology and Life Sciences, 16(1), 5.
 
 """
-# Author: Avraam Marimpis <avraam.marimpis@gmail.com"
+# Author: Avraam Marimpis <avraam.marimpis@gmail.com>
+# Author: Stavros Dimitriadis <stdimitr@gmail.com>
 
 import numpy as np
 

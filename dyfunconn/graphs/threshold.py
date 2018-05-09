@@ -13,6 +13,7 @@ Notes
 
  """
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
+# Author: Stravros Dimitriadis <stidimitriadis@gmail.com>
 
 import numpy as np
 import networkx as nx
