@@ -110,7 +110,7 @@ class IPLV(Estimator):
 
     def mean(self, ts):
         l = float(np.shape(ts)[0])
-        return np.abs(np.imgag(np.sum(ts))) / l
+        return np.abs(np.imag(np.sum(ts))) / l
 
     def estimate(self, data):
         """
