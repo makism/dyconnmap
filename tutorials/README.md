@@ -14,6 +14,9 @@ and check your browser for instructions.
 
 Similar instructions for Windows are implied.
 
+#### fMRI data
+The fMRI time series are taken from https://paris-saclay-cds.github.io/autism_challenge/. You have to follow their instructions on how to retrieve the relavant fMRI data for the MSDL atlas.
+
 #### EEG data
 The EEG data were taken from https://physionet.org/pn4/eegmmidb/ [1, 2]
 
