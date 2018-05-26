@@ -17,7 +17,7 @@ from dyfunconn.ts import (aaft,
                           entropy,
                           rr_order_patterns,
                           wald,
-                          markov_matrix,
+                          markov_matrix, transition_rate, occupancy_time,
                           teager_kaiser_energy,
                           dcorr,
                           fisher_score,
@@ -266,6 +266,26 @@ def test_markov_chain():
 
     expected_result = np.load("data/ts_markov_chain.npy")
     np.testing.assert_array_almost_equal(mtx, expected_result)
+
+
+def test_markov_tr():
+    rng = np.random.RandomState(0)
+
+    symts = rng.randint(0, 4, 100)
+    tr = transition_rate(symts)
+
+    expected_result = np.load('data/test_ts_markov_tr.npy')
+    assert(expected_result == tr)
+
+
+def test_markov_oc():
+    rng = np.random.RandomState(0)
+
+    symts = rng.randint(0, 4, 100)
+    oc, _ = occupancy_time(symts)
+
+    expected_result = np.load('data/test_ts_markov_oc.npy')
+    np.testing.assert_array_equal(oc, expected_result)
 
 
 def test_sample_entropy():

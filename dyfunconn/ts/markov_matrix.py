@@ -1,44 +1,49 @@
 """ Markov matrix
 
-Markov matrix (also refere as "transition matrix") is a square matrix that tabulates
-the observed transition probabilities between symbols for a finite Markov Chain. It is a first-order descriptor
-by which the next symbol depends only on the current symbol (and not on the previous ones);
-a Markov Chain model.
-
-A transition matrix is formally depicted as:
-
-Given the probability :math:`Pr(j|i)` of moving between :math:`i` and :math:`j` elements,
-the transition matrix is depicted as:
-
-.. math::
-    P = \\begin{pmatrix}
-                  P_{1,1} & P_{1,2} & \\ldots & P_{1,j} & \\ldots & P_{1,S} \\\\
-                  P_{2,1} & P_{2,2} & \\ldots & P_{2,j} & \\ldots & P_{2,S} \\\\
-                  \\vdots & \\vdots & \\ddots & \\vdots & \\ddots & \\vdots \\\\
-                  P_{i,1} & P_{i,2} & \\ldots & P_{i,j} & \\ldots & P_{i,S} \\\\
-                  \\vdots & \\vdots & \\ddots & \\vdots & \\ddots & \\vdots \\\\
-                  P_{S,1} & P_{S,2} & \\ldots & P_{S,j} & \\ldots & P_{S,S} \\\\
-        \\end{pmatrix}
-
-Since the transition matrix is row-normalized, so as the total transition probability
-from state :math:`i` to all the others must be equal to :math:`1`.
-
-For more properties consult, among other links WolframMathWorld_ and WikipediaMarkovMatrix_.
-
-
-|
-
------
-
-.. [WolframMathWorld] http://mathworld.wolfram.com/StochasticMatrix.html
-.. [WikipediaMarkovMatrix] https://en.wikipedia.org/wiki/Stochastic_matrix
+Generation of markov matrix and some related state transition features.
 
 """
+# Author
+# Author
+
 import numpy as np
 
 
 def markov_matrix(symts):
     """ Markov Matrix
+
+    Markov matrix (also refered as "transition matrix") is a square matrix that tabulates
+    the observed transition probabilities between symbols for a finite Markov Chain. It is a first-order descriptor
+    by which the next symbol depends only on the current symbol (and not on the previous ones);
+    a Markov Chain model.
+
+    A transition matrix is formally depicted as:
+
+    Given the probability :math:`Pr(j|i)` of moving between :math:`i` and :math:`j` elements,
+    the transition matrix is depicted as:
+
+    .. math::
+        P = \\begin{pmatrix}
+                      P_{1,1} & P_{1,2} & \\ldots & P_{1,j} & \\ldots & P_{1,S} \\\\
+                      P_{2,1} & P_{2,2} & \\ldots & P_{2,j} & \\ldots & P_{2,S} \\\\
+                      \\vdots & \\vdots & \\ddots & \\vdots & \\ddots & \\vdots \\\\
+                      P_{i,1} & P_{i,2} & \\ldots & P_{i,j} & \\ldots & P_{i,S} \\\\
+                      \\vdots & \\vdots & \\ddots & \\vdots & \\ddots & \\vdots \\\\
+                      P_{S,1} & P_{S,2} & \\ldots & P_{S,j} & \\ldots & P_{S,S} \\\\
+            \\end{pmatrix}
+
+    Since the transition matrix is row-normalized, so as the total transition probability
+    from state :math:`i` to all the others must be equal to :math:`1`.
+
+    For more properties consult, among other links WolframMathWorld_ and WikipediaMarkovMatrix_.
+
+
+    |
+
+    -----
+
+    .. [WolframMathWorld] http://mathworld.wolfram.com/StochasticMatrix.html
+    .. [WikipediaMarkovMatrix] https://en.wikipedia.org/wiki/Stochastic_matrix
 
 
     Parameters
@@ -65,3 +70,90 @@ def markov_matrix(symts):
     mtx /= float(len(symts))
 
     return mtx
+
+
+def transition_rate(symts, weight=None):
+    """ Transition Rate
+
+    The total sum of transition between symbols.
+
+
+    Parameters
+    ----------
+    symts :
+
+    weight : float
+
+
+    Returns
+    -------
+
+    """
+    TR = 0.0
+
+    l = len(symts)
+
+    if weight is None:
+        weight = np.float32(l)
+
+    for pos in range(l - 1):
+        curr_sym = symts[pos]
+        next_sym = symts[pos + 1]
+
+        if curr_sym != next_sym:
+            TR += 1.0
+
+    return TR / weight
+
+
+def occupancy_time(symts, weight=None):
+    """ Occupancy Time
+
+
+    Parameters
+    ----------
+
+    symts :
+
+    weight :
+
+
+    Returns
+    -------
+
+    oc :
+
+    symbols :
+
+    """
+    symbols = np.unique(symts)
+    oc = np.zeros((len(symbols)))
+    l = len(symts)
+
+    if weight is None:
+        weight = np.float32(l)
+
+    for pos in range(l - 1):
+        curr_sym = symts[pos]
+        next_sym = symts[pos + 1]
+
+        if curr_sym == next_sym:
+            oc[curr_sym] += 1
+
+    oc /= weight
+
+    return oc, symbols
+
+
+if __name__ == '__main__':
+    rng = np.random.RandomState(0)
+
+    ts = rng.randint(0, high=4, size=(100, 1), dtype=np.int32)
+
+    tr = transition_rate(ts)
+    print(tr)
+
+    oc, _ = occupancy_time(ts)
+    print(oc)
+
+    print(np.sum(oc))
