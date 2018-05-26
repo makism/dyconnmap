@@ -143,17 +143,3 @@ def occupancy_time(symts, weight=None):
     oc /= weight
 
     return oc, symbols
-
-
-if __name__ == '__main__':
-    rng = np.random.RandomState(0)
-
-    ts = rng.randint(0, high=4, size=(100, 1), dtype=np.int32)
-
-    tr = transition_rate(ts)
-    print(tr)
-
-    oc, _ = occupancy_time(ts)
-    print(oc)
-
-    print(np.sum(oc))
