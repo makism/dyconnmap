@@ -20,6 +20,8 @@ from .dcorr import dcorr
 from .teager_kaiser_energy import teager_kaiser_energy
 from .ci import complexity_index
 from .fnn import fnn
+from .icc import icc_31
+from .cv import cv
 
 __all__ = ['fisher_z', 'fisher_z_plv', 'fisher_score',
            'sample_entropy',
@@ -36,5 +38,7 @@ __all__ = ['fisher_z', 'fisher_z_plv', 'fisher_score',
            'markov_matrix', 'transition_rate', 'occupancy_time',
            'teager_kaiser_energy',
            'complexity_index',
-           'fnn'
+           'fnn',
+           'icc_31',
+           'cv'
            ]

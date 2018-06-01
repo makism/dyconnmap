@@ -24,7 +24,9 @@ from dyfunconn.ts import (aaft,
                           fisher_z_plv,
                           fisher_z,
                           complexity_index,
-                          fnn)
+                          fnn,
+                          cv,
+                          icc_31)
 
 
 ts = None
@@ -378,3 +380,23 @@ def test_fnn():
 
     min_dimension = fnn(ts, tau=15)
     assert(min_dimension == 7)
+
+
+def test_icc_31():
+    X = [[9, 2, 5, 8],
+         [6, 1, 3, 2],
+         [8, 4, 6, 8],
+         [7, 1, 2, 6],
+         [10, 5, 6, 9],
+         [6, 2, 4, 7]]
+
+    icc_val = icc_31(X)
+    np.testing.assert_almost_equal(icc_val, 0.7148407148407155)
+
+
+def test_cv():
+    rng = np.random.RandomState(0)
+    X = rng.randint(0, 10, 100)
+
+    cv_val = cv(X)
+    np.testing.assert_almost_equal(cv_val, 0.64834403973994137)
