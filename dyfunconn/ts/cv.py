@@ -13,7 +13,7 @@ def cv(X):
 
     Parameters
     ----------
-    X : 
+    X :
 
 
     Returns

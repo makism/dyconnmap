@@ -15,7 +15,6 @@ Notes
 
 import numpy as np
 import scipy
-from scipy import stats
 
 
 def icc_31(X):
@@ -34,14 +33,11 @@ def icc_31(X):
         Intra-class correlation.
 
     """
-    n, k = np.shape(X)
+    _,  k = np.shape(X)
     _, ms, _, _ = _anova(X)
 
     BMS = ms[2]
-    WMS = ms[3]
-    JMS = ms[0]
     EMS = ms[4]
-
     icc = (BMS - EMS) / (BMS + (k-1) * EMS)
 
     return icc
