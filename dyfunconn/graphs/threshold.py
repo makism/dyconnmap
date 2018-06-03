@@ -506,4 +506,5 @@ def threshold_omst_global_cost_efficiency(mtx):
     # plt.legend()
     # plt.show()
 
-    return nCIJtree, CIJtree, degree, global_eff, global_cost_eff_max, cost_max
+    # return nCIJtree, CIJtree, degree, global_eff, global_cost_eff_max, cost_max
+    return nCIJtree, CIJtree, degree, global_eff, global_cost_eff_max, cost_max,cost,global_cost_eff
