@@ -44,7 +44,8 @@ def corr(data, fb, fs, pairs=None):
     --------
     dyfunconn.fc.Corr: Correlation (Class Estimator)
     """
-    n_channels, n_samples = np.shape(data)
+    # n_channels, n_samples = np.shape(data)
+    _, n_samples = np.shape(data)
     filtered, _, _ = analytic_signal(data, fb, fs)
 
     r = np.corrcoef(filtered[:])
@@ -90,7 +91,7 @@ class Corr(Estimator):
         -----
         Called from :mod:`dyfunconn.tvfcgs.tvfcg`.
         """
-        n_samples = len(ts1)
+        # n_samples = len(ts1)
 
         r = np.corrcoef(ts1, ts2)[0, 1]
 

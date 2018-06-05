@@ -12,7 +12,8 @@ def entropy(dts):
     """
     l = len(dts)
 
-    unique, counts = np.unique(dts, return_counts=True)
+    # unique, counts = np.unique(dts, return_counts=True)
+    _, counts = np.unique(dts, return_counts=True)
     len_counts = len(counts)
     counts = np.float32(counts)
 
