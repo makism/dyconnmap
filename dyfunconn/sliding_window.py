@@ -30,7 +30,7 @@ def sliding_window_indx(data, window_length, overlap=0.75, pairs=None):
     pairs : array-like or `None`
         - If an `array-like` is given, notice that each element is a tuple of length two.
         - If `None` is passed, complete connectivity will be assumed.
-    
+
 
     Returns
     -------

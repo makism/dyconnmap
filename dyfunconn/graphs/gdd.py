@@ -47,13 +47,13 @@ def graph_diffusion_distance(a, b, threshold=1e-14):
     ----------
     a : array-like, shape(N, N)
         Weighted matrix.
-      
+
     b : array-like, shape(N, N)
         Weighted matrix.
 
     threshold : float
         A threshold to filter out the small eigenvalues. If the you get NaN or INFs, try lowering this threshold.
-        
+
     Returns
     -------
     gdd : float
