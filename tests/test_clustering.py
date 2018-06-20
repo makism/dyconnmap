@@ -40,6 +40,8 @@ def test_clustering_ng():
     global rng
     global data
 
+    print(np.shape(data))
+
     protos = dyfunconn.cluster.NeuralGas(rng = rng).fit(data).protos
 
     result_protos = np.load("data/test_clustering_ng_protos.npy")
