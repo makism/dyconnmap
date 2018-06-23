@@ -9,12 +9,12 @@ from .ng import NeuralGas
 from .mng import MergeNeuralGas
 from .rng import RelationalNeuralGas
 from .som import SOM
-from .umatrix import umatrix, wrap_kernel, make_hexagon
+from .umatrix import umatrix
 
 
 __all__ = ['NeuralGas',
            'MergeNeuralGas',
            'RelationalNeuralGas',
            'SOM',
-           'umatrix', 'wrap_kernel', 'make_hexagon'
+           'umatrix'
           ]
