@@ -5,9 +5,9 @@
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
 import numpy as np
-np.set_printoptions(precision=3, linewidth=256, edgeitems=10)
 from sklearn.metrics.pairwise import pairwise_distances
-import sklearn
+from sklearn.neighbors import NearestNeighbors
+from sklearn.manifold import MDS
 
 
 class RelationalNeuralGas:
@@ -16,7 +16,7 @@ class RelationalNeuralGas:
 
     """
 
-    def __init__(self, n_protos=10, iterations=100, lrate=[0.3, 0.01]):
+    def __init__(self, n_protos=10, iterations=100, lrate=[0.3, 0.01], metric='euclidean', rng=None):
         self.n_protos = n_protos
         self.iterations = iterations
         self.lrate_i = lrate[0] * n_protos
@@ -26,8 +26,17 @@ class RelationalNeuralGas:
         self.coeff = None
         self.__multipl = None
 
+        if rng is None:
+            self.rng = np.random.RandomState()
+        else:
+            self.rng = rng
 
-    def fit(self, data, metric='euclidean'):
+        self.metric = metric
+
+        self.__symbols = None
+        self.__encoding = None
+
+    def fit(self, data):
         """ Fit
 
         Parameters
@@ -50,7 +59,7 @@ class RelationalNeuralGas:
 
 
         """
-        diss_mtx = pairwise_distances(data, metric=metric)
+        diss_mtx = pairwise_distances(data, metric=self.metric)
         np.fill_diagonal(diss_mtx, 0.0)
 
         N, _ = np.shape(diss_mtx)
@@ -84,12 +93,48 @@ class RelationalNeuralGas:
         return self
 
 
-    def encode(self, data):
-        """ Encode
+    def encode(self, data, metric=None):
+        """ Employ a nearest-neighbor rule to encode the given ``data`` using the codebook.
 
+        Parameters
+        ----------
+        data : real array-like, shape(n_samples, n_features)
+            Data matrix, each row represents a sample.
 
+        metric : string or None
+            One of the following valid options as defined for function http://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.pairwise_distances.html.
+
+            Valid options include:
+
+             - euclidean
+             - cityblock
+             - l1
+             - cosine
+
+             If `None` is passed, the matric used for learning the data will be used.
+
+        Returns
+        -------
+        encoded_data : real array-like, shape(n_samples, n_features)
+            ``data``, as represented by the prototypes in codebook.
+        ts_symbols : list, shape(n_samples, 1)
+            A discrete symbolic time series
         """
-        pass
+        # Perform a proposed data mining procedure as described in [Laskaris2004].
+        mds = MDS(1, random_state=self.rng)
+        protos_1d = mds.fit_transform(self.protos).ravel()
+        sorted_protos_1d = np.argsort(protos_1d)
+
+        sprotos = self.protos[sorted_protos_1d]
+
+        if metric is None:
+            metric = self.metric
+
+        nbrs = NearestNeighbors(n_neighbors=1, algorithm='auto', metric=metric).fit(sprotos)
+        _, self.__symbols = nbrs.kneighbors(data)
+        self.__encoding = sprotos[self.__symbols]
+
+        return (self.__encoding, self.__symbols)
 
 
     @staticmethod
@@ -109,7 +154,6 @@ class RelationalNeuralGas:
         -------
 
         """
-        N, _ = np.shape(mtx)
         num_protos, num_features = np.shape(coeff)
 
         distances = np.zeros((num_protos, num_features))
