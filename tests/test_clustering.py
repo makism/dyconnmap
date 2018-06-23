@@ -48,6 +48,12 @@ def test_clustering_ng():
     np.testing.assert_array_almost_equal(protos, result_protos)
 
 @nose.tools.with_setup(initialize)
+def test_clustring_rng():
+    global data
+
+    protos = dyfunconn.cluster.RelationalNeuralGas().fit(data).protos
+
+@nose.tools.with_setup(initialize)
 def test_clustring_mng():
     global rng
     global data
