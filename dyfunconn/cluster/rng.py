@@ -1,6 +1,13 @@
 # -*- coding: utf-8 -*-
 """ Relational Neural Gas
 
+
+|
+
+-----
+
+.. [Hasenfuss2008] Hasenfuss, A., Hammer, B., & Rossi, F. (2008, July). Patch Relational Neural Gas–Clustering of Huge Dissimilarity Datasets. In IAPR Workshop on Artificial Neural Networks in Pattern Recognition (pp. 1-12). Springer, Berlin, Heidelberg.
+
 """
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
@@ -11,8 +18,41 @@ from sklearn.manifold import MDS
 
 
 class RelationalNeuralGas:
-    """
+    """ Relational Neural Gas
 
+
+    Parameters
+    ----------
+    n_protos : int
+        The number of prototypes
+
+    iterations : int
+        The maximum iterations
+
+    lrate : list of length 2
+        The initial and final rearning rates
+
+    n_jobs : int
+        Number of parallel jobs (will be passed to scikit-learn))
+
+    metric : string
+        One of the following valid options as defined for function http://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.pairwise_distances.html.
+
+        Valid options include:
+
+         - euclidean
+         - cityblock
+         - l1
+         - cosine
+
+    rng : object or None
+        An object of type numpy.random.RandomState
+
+
+    Attributes
+    ----------
+    protos : array-like, shape(n_protos, n_features)
+        The prototypical vectors
 
     """
 
