@@ -32,27 +32,45 @@ def initialize():
     global rng
     global data
 
-    rng = np.random.RandomState(seed = 0)
-    data, _ = sklearn.datasets.make_moons(n_samples = 1024, noise = 0.125, random_state = rng)
+    rng = np.random.RandomState(seed=0)
+    data, _ = sklearn.datasets.make_moons(n_samples=1024, noise=0.125, random_state=rng)
 
 @nose.tools.with_setup(initialize)
 def test_clustering_ng():
     global rng
     global data
 
-    print(np.shape(data))
-
-    protos = dyfunconn.cluster.NeuralGas(rng = rng).fit(data).protos
+    ng = dyfunconn.cluster.NeuralGas(rng=rng).fit(data)
+    protos = ng.protos
+    _, symbols = ng.encode(data)
 
     result_protos = np.load("data/test_clustering_ng_protos.npy")
     np.testing.assert_array_almost_equal(protos, result_protos)
+
+    result_symbols = np.load("data/test_clustering_ng_symbols.npy")
+    np.testing.assert_array_almost_equal(symbols, result_symbols)
+
+@nose.tools.with_setup(initialize)
+def test_clustering_rng():
+    global rng
+    global data
+
+    reng = dyfunconn.cluster.RelationalNeuralGas(n_protos=10, iterations=100, rng=rng).fit(data)
+    protos = reng.protos
+    _, symbols = reng.encode(data)
+
+    result_protos = np.load("data/test_clustering_rng_protos.npy")
+    np.testing.assert_array_almost_equal(protos, result_protos)
+
+    result_symbols = np.load("data/test_clustering_rng_symbols.npy")
+    np.testing.assert_array_almost_equal(symbols, result_symbols)
 
 @nose.tools.with_setup(initialize)
 def test_clustring_mng():
     global rng
     global data
 
-    protos = dyfunconn.cluster.MergeNeuralGas(rng = rng).fit(data).protos
+    protos = dyfunconn.cluster.MergeNeuralGas(rng=rng).fit(data).protos
 
     result_protos = np.load("data/test_clustering_mng_protos.npy")
     np.testing.assert_array_almost_equal(protos, result_protos)
@@ -62,7 +80,7 @@ def test_clustering_som():
     global rng
     global data
 
-    protos = dyfunconn.cluster.SOM(grid=(8, 4), rng = rng).fit(data).weights
+    protos = dyfunconn.cluster.SOM(grid=(8, 4), rng=rng).fit(data).weights
 
     result_protos = np.load("data/test_clustering_som_protos.npy")
     np.testing.assert_array_almost_equal(protos, result_protos)
@@ -72,7 +90,7 @@ def test_clustering_som_umatrix():
     global rng
     global data
 
-    protos = dyfunconn.cluster.SOM(grid=(8, 4), rng = rng).fit(data).weights
+    protos = dyfunconn.cluster.SOM(grid=(8, 4), rng=rng).fit(data).weights
     umatrix = dyfunconn.cluster.umatrix(protos)
 
     result_umatrix = np.load("data/test_clustering_som_umatrix.npy")

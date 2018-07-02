@@ -311,6 +311,8 @@ def tvfcg_compute_windows(data, fb_lo, fs, cc, step):
     window_length = np.int32(np.round((cc / fb_lo[0]) * fs))
     windows = np.int32(np.round((n_samples - window_length) / step))
 
+    print("window_length = {0}".format(window_length))
+
     if window_length >= n_samples:
         raise Exception(
             "The size of window cannot be greater than the number of samples")

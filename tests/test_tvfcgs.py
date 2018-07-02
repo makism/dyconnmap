@@ -11,7 +11,7 @@ import numpy as np
 from numpy import testing
 
 # dynfunconn
-from dyfunconn import tvfcg, tvfcg_ts, tvfcg_cfc
+from dyfunconn import tvfcg, tvfcg_ts, tvfcg_cfc, tvfcg_compute_windows
 from dyfunconn.fc import PAC, PLV, plv
 
 
@@ -38,7 +38,7 @@ def setup_module(module):
     estimator = PLV(fb, fs)
     tvfcg_plv_fcgs = tvfcg(data, estimator, fb, fs)
     # tvfcg_plv_fcgs = np.real(tvfcg_plv_fcgs)
-    np.save("data/test_tvfcgs_plv.npy", tvfcg_plv_fcgs)
+    # np.save("data/test_tvfcgs_plv.npy", tvfcg_plv_fcgs)
 
     # TVFCGS with PAC and PLV
     data = original_data[..., 0:1024]
@@ -49,13 +49,30 @@ def setup_module(module):
     estimator = PLV(fb, fs)
     pac = PAC(f_lo, f_hi, fs, estimator)
     tvfcg_pac_plv_fcgs = tvfcg_cfc(data, pac, f_lo, f_hi, fs)
-    np.save("data/test_tvfcgs_pac_plv.npy", tvfcg_pac_plv_fcgs)
+    # np.save("data/test_tvfcgs_pac_plv.npy", tvfcg_pac_plv_fcgs)
 
     # TVFCGS with PLV (ts)
     # fb = [1.0, 4.0]
     # fs = 128.0
     # ts, avg = plv(data, fb, fs)
     # tvfcg_plv_ts = tvfcg_ts(ts, [1.0, 4.0], 128, avg_func=PLV.mean)
+
+
+def test_tvfcgs_compute_windows():
+    data = np.load("data/test_iplv_ts.npy")
+
+    fb = [1.0, 4.0]
+    fs = 128.0
+    cc = 2.0
+    step = 5
+
+    windows, window_length = tvfcg_compute_windows(data, fb, fs, cc, step)
+
+    result_windows = np.load('data/test_tvfcgs_compute_windows_windows.npy')
+    np.testing.assert_array_equal(windows, result_windows)
+
+    result_window_length = np.load('data/test_tvfcgs_compute_windows_window_length.npy')
+    np.testing.assert_array_equal(window_length, result_window_length)
 
 
 def test_tvfcgs_plv():
