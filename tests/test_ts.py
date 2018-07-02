@@ -289,6 +289,14 @@ def test_markov_oc():
     expected_result = np.load('data/test_ts_markov_oc.npy')
     np.testing.assert_array_equal(oc, expected_result)
 
+def test_markov_oc_2():
+    rng = np.random.RandomState(0)
+
+    symts = rng.randint(0, 4, 100)
+    oc, _ = occupancy_time(symts, symbol_states=4)
+
+    expected_result = np.load('data/test_ts_markov_oc.npy')
+    np.testing.assert_array_equal(oc, expected_result)
 
 def test_sample_entropy():
     rng = np.random.RandomState(0)

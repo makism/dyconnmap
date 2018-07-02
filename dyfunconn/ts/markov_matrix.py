@@ -106,7 +106,7 @@ def transition_rate(symts, weight=None):
     return TR / weight
 
 
-def occupancy_time(symts, weight=None):
+def occupancy_time(symts, symbol_states=None, weight=None):
     """ Occupancy Time
 
 
@@ -115,8 +115,13 @@ def occupancy_time(symts, weight=None):
 
     symts :
 
-    weight :
+    symbol_states : int
+        The maximum number of symbols. This is useful to define in case your
+        symbolic timeseries skips some states, in which case would produce
+        a matrix of different size.
 
+    weight : float
+        The weights of the reuslting transition symbols. Default `len(symts)`.
 
     Returns
     -------
@@ -127,7 +132,11 @@ def occupancy_time(symts, weight=None):
 
     """
     symbols = np.unique(symts)
-    oc = np.zeros((len(symbols)))
+
+    if symbol_states is None:
+        oc = np.zeros((len(symbols)))
+    else:
+        oc = np.zeros((symbol_states))
     l = len(symts)
 
     if weight is None:
