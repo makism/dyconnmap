@@ -56,16 +56,13 @@ def im_distance(X, Y, bandwidth=1.0):
     """
     distance = 0.0
 
-    N, _ = np.shape(X)
-
     l_mtx_a = scipy.sparse.csgraph.laplacian(X, normed=False)
     l_mtx_b = scipy.sparse.csgraph.laplacian(Y, normed=False)
 
-    k_eigs = N - 1
-    w_a, _ = scipy.sparse.linalg.eigs(l_mtx_a, k=k_eigs)
+    w_a, _ = scipy.linalg.eig(l_mtx_a)
     w_a = np.sqrt(w_a)
 
-    w_b, _ = scipy.sparse.linalg.eigs(l_mtx_b, k=k_eigs)
+    w_b, _ = scipy.linalg.eig(l_mtx_b)
     w_b = np.sqrt(w_b)
 
 
