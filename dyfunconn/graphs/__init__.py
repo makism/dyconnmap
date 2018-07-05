@@ -15,6 +15,9 @@ from .threshold import (threshold_mean_degree,
                         threshold_global_cost_efficiency,
                         threshold_omst_global_cost_efficiency)
 from .nodal import nodal_global_efficiency
+from .imd import im_distance
+from .spectral_euclidean_distance import spectral_euclidean_distance
+from .spectral_k_distance import spectral_k_distance
 
 
 __all__ = ['graph_diffusion_distance',
@@ -24,5 +27,8 @@ __all__ = ['graph_diffusion_distance',
            'threshold_shortest_paths',
            'k_core_decomposition',
            'threshold_global_cost_efficiency', 'threshold_omst_global_cost_efficiency',
-           'nodal_global_efficiency'
+           'nodal_global_efficiency',
+           'im_distance',
+           'spectral_k_distance',
+           'spectral_euclidean_distance'
            ]

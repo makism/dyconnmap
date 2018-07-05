@@ -20,6 +20,14 @@ dyfunconn.graphs.gdd module
     :undoc-members:
     :show-inheritance:
 
+dyfunconn.graphs.imd module
+---------------------------
+
+.. automodule:: dyfunconn.graphs.imd
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 dyfunconn.graphs.mean\_first\_passage\_time module
 --------------------------------------------------
 
@@ -44,10 +52,34 @@ dyfunconn.graphs.mpc module
     :undoc-members:
     :show-inheritance:
 
+dyfunconn.graphs.nodal module
+-----------------------------
+
+.. automodule:: dyfunconn.graphs.nodal
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 dyfunconn.graphs.rout\_efficiency module
 ----------------------------------------
 
 .. automodule:: dyfunconn.graphs.rout_efficiency
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+dyfunconn.graphs.spectral\_euclidean\_distance module
+-----------------------------------------------------
+
+.. automodule:: dyfunconn.graphs.spectral_euclidean_distance
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+dyfunconn.graphs.spectral\_k\_distance module
+---------------------------------------------
+
+.. automodule:: dyfunconn.graphs.spectral_k_distance
     :members:
     :undoc-members:
     :show-inheritance:
