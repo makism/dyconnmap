@@ -24,28 +24,19 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="dyfunconn  documentation" href="index.html"/>
-        <link rel="up" title="dyfunconn package" href="dyfunconn.html"/>
-        <link rel="next" title="dyfunconn.graphs package" href="dyfunconn.graphs.html"/>
-        <link rel="prev" title="dyfunconn.cluster package" href="dyfunconn.cluster.html"/> 
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="dyfunconn.graphs package" href="dyfunconn.graphs.html" />
+    <link rel="prev" title="dyfunconn.cluster package" href="dyfunconn.cluster.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -141,7 +132,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">dyfunconn</a>
@@ -149,9 +140,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -206,10 +198,10 @@
 <p>Amplitude Envelope Correlation (<em>AEC</em>), estimates the coupling
 (without phase coherence and even among different frequencies [<a class="reference internal" href="#bruns2000">Bruns2000</a>]) by
 computing the correlation coefficient of a signal’s amplitude envelope.</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[r_{AEC} = \text{corr}(\alpha_{lo}, \alpha_{hi})\]</div>
-<p>Where <span class="math notranslate">\(\alpha\)</span> denotes the Instantaneous Amplitude of a given signal,
-filtered in a specfic frequency band (<span class="math notranslate">\(lo\)</span> or <span class="math notranslate">\(hi\)</span>).</p>
+<p>Where <span class="math notranslate nohighlight">\(\alpha\)</span> denotes the Instantaneous Amplitude of a given signal,
+filtered in a specfic frequency band (<span class="math notranslate nohighlight">\(lo\)</span> or <span class="math notranslate nohighlight">\(hi\)</span>).</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -318,7 +310,7 @@ between the :attr:<a href="#id1"><span class="problematic" id="id2">`</span></a>
 <div class="section" id="module-dyfunconn.fc.canolty_pac">
 <span id="dyfunconn-fc-canolty-pac-module"></span><h2>dyfunconn.fc.canolty_pac module<a class="headerlink" href="#module-dyfunconn.fc.canolty_pac" title="Permalink to this headline">¶</a></h2>
 <p>Phase-Amplitude Coupling</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[pac = \left | \left |  \]</div>
 <p>rac{1}{N} sum_{t=1}^{N}{lpha_t e^{iphi t}}  
 ight | 
@@ -385,15 +377,15 @@ of channels.</p>
 <p>Coherence</p>
 <p>Coherence (<em>Coh</em>) is one of the most commonly utilized connectivity estimators; it is a
 measurement of the linear relationship of two signals at a specific frequency [<a class="reference internal" href="#nolte2004">Nolte2004</a>].</p>
-<p>Given two time series <span class="math notranslate">\(x\)</span> and <span class="math notranslate">\(y\)</span>, coherece is given by:</p>
-<div class="math notranslate">
+<p>Given two time series <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>, coherece is given by:</p>
+<div class="math notranslate nohighlight">
 \[coh^2_{xy}(f) = \frac{ |G_{xy}(f)^2| }{ G_{xx}(f) G_{yy}(f) }\]</div>
-<p>Where <span class="math notranslate">\(G_{xy}(f)\)</span> is the estimated cross-spectral density between <span class="math notranslate">\(x\)</span> and
-<span class="math notranslate">\(y\)</span>, while <span class="math notranslate">\(G_{xx}(f)\)</span> and <span class="math notranslate">\(G_{yy}(f)\)</span> are the autospectrum of
-<span class="math notranslate">\(x\)</span> and <span class="math notranslate">\(y\)</span> respectively.</p>
-<p>The result is a symmetric matrix of size <span class="math notranslate">\([n\_channels \times n\_channels]\)</span>
+<p>Where <span class="math notranslate nohighlight">\(G_{xy}(f)\)</span> is the estimated cross-spectral density between <span class="math notranslate nohighlight">\(x\)</span> and
+<span class="math notranslate nohighlight">\(y\)</span>, while <span class="math notranslate nohighlight">\(G_{xx}(f)\)</span> and <span class="math notranslate nohighlight">\(G_{yy}(f)\)</span> are the autospectrum of
+<span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> respectively.</p>
+<p>The result is a symmetric matrix of size <span class="math notranslate nohighlight">\([n\_channels \times n\_channels]\)</span>
 bearing no information about the directionality of the interaction, with values
-within the range <span class="math notranslate">\([0,1]\)</span>.</p>
+within the range <span class="math notranslate nohighlight">\([0,1]\)</span>.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -754,9 +746,9 @@ of channels.</p>
 <p>Directed Phase Lag Index (<em>dPLI</em>) was introduced in [<a class="reference internal" href="#stam2012">Stam2012</a>] to capture
 the phase and lag relationship as a measure of directed functional connectivity.</p>
 <ul class="simple">
-<li>if <span class="math notranslate">\(0.5 \le dPLI_{xy} \leq 1.0\)</span>, <span class="math notranslate">\(x\)</span> is leading <span class="math notranslate">\(y\)</span></li>
-<li>if <span class="math notranslate">\(0.0 \leq dPLI_{xy} = 0.5\)</span>, <span class="math notranslate">\(y\)</span> is leading <span class="math notranslate">\(x\)</span></li>
-<li>if <span class="math notranslate">\(dPLI_{xy} = 0.5\)</span>, neither <span class="math notranslate">\(x\)</span> nor <span class="math notranslate">\(y\)</span> is leading or lagging</li>
+<li>if <span class="math notranslate nohighlight">\(0.5 \le dPLI_{xy} \leq 1.0\)</span>, <span class="math notranslate nohighlight">\(x\)</span> is leading <span class="math notranslate nohighlight">\(y\)</span></li>
+<li>if <span class="math notranslate nohighlight">\(0.0 \leq dPLI_{xy} = 0.5\)</span>, <span class="math notranslate nohighlight">\(y\)</span> is leading <span class="math notranslate nohighlight">\(x\)</span></li>
+<li>if <span class="math notranslate nohighlight">\(dPLI_{xy} = 0.5\)</span>, neither <span class="math notranslate nohighlight">\(x\)</span> nor <span class="math notranslate nohighlight">\(y\)</span> is leading or lagging</li>
 </ul>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -824,11 +816,11 @@ between the :attr:<a href="#id5"><span class="problematic" id="id6">`</span></a>
 is similar to Amplitude Envelope Correlation (<a class="reference internal" href="#dyfunconn.fc.aec" title="dyfunconn.fc.aec"><code class="xref py py-mod docutils literal notranslate"><span class="pre">dyfunconn.fc.aec</span></code></a>), but the
 the amplitude of the lower frequency oscillation is signed; and thus the phase
 information is preserved.</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[r_{ESC} = \text{corr}(\chi_{lo}, \alpha_{hi})\]</div>
-<p>Where <span class="math notranslate">\(\chi\)</span> is the input signal filtered to the frequency band <span class="math notranslate">\(lo\)</span>
-and <span class="math notranslate">\(\alpha\)</span> denotes the Instantaneous Amplitude of the same input signal
-at the frequency band <span class="math notranslate">\(hi\)</span>.</p>
+<p>Where <span class="math notranslate nohighlight">\(\chi\)</span> is the input signal filtered to the frequency band <span class="math notranslate nohighlight">\(lo\)</span>
+and <span class="math notranslate nohighlight">\(\alpha\)</span> denotes the Instantaneous Amplitude of the same input signal
+at the frequency band <span class="math notranslate nohighlight">\(hi\)</span>.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -988,11 +980,11 @@ special treatment is needed (i.e. taking only the real part).</p>
 <p>General Linear Model</p>
 <p>General linear modeling (<em>GLM</em>) is used widely in neuroimaging [<a class="reference internal" href="#penny2006">Penny2006</a>] to detect
 coupling between a low and higher frequency.</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\chi_{hf} = X_{\beta} + e\]</div>
-<p>Where <span class="math notranslate">\(\beta\)</span> are the corresponding regression coefficients and
-<span class="math notranslate">\(e\)</span> is the additive Gaussian noise. Finally, <span class="math notranslate">\(X\)</span> is the design
-matrix of size <span class="math notranslate">\(n \times 3\)</span> (<span class="math notranslate">\(n\)</span> the number of samples). Columns
+<p>Where <span class="math notranslate nohighlight">\(\beta\)</span> are the corresponding regression coefficients and
+<span class="math notranslate nohighlight">\(e\)</span> is the additive Gaussian noise. Finally, <span class="math notranslate nohighlight">\(X\)</span> is the design
+matrix of size <span class="math notranslate nohighlight">\(n \times 3\)</span> (<span class="math notranslate nohighlight">\(n\)</span> the number of samples). Columns
 1 and 2, contain the cosines and sines counterparts of the instantaneous
 phases (of the low frequency) of the predictors, while the third row only 1s.</p>
 <div class="line-block">
@@ -1015,7 +1007,7 @@ phases (of the low frequency) of the predictors, while the third row only 1s.</p
 <dt id="dyfunconn.fc.glm.glm">
 <code class="descclassname">dyfunconn.fc.glm.</code><code class="descname">glm</code><span class="sig-paren">(</span><em>data</em>, <em>fb_lo</em>, <em>fb_hi</em>, <em>fs</em>, <em>pairs=None</em>, <em>window_size=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/glm.html#glm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.glm.glm" title="Permalink to this definition">¶</a></dt>
 <dd><p>General Linear Model</p>
-<p>Estimate the <span class="math notranslate">\(r^2\)</span> for the given <code class="xref py py-attr docutils literal notranslate"><span class="pre">data</span></code>,
+<p>Estimate the <span class="math notranslate nohighlight">\(r^2\)</span> for the given <code class="xref py py-attr docutils literal notranslate"><span class="pre">data</span></code>,
 between the :attr:<a href="#id9"><span class="problematic" id="id10">`</span></a>pairs (if given) of channels.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -1052,11 +1044,11 @@ between the :attr:<a href="#id9"><span class="problematic" id="id10">`</span></a
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>ts</strong> : complex array-like, shape(n_windows, n_channels, n_channels)</p>
 <blockquote>
-<div><p>Estimated <span class="math notranslate">\(r^2\)</span> time series (in each window).</p>
+<div><p>Estimated <span class="math notranslate nohighlight">\(r^2\)</span> time series (in each window).</p>
 </div></blockquote>
 <p><strong>ts_avg: complex array-like, shape(n_channels, n_channels)</strong> :</p>
 <blockquote class="last">
-<div><p>Average <span class="math notranslate">\(r^2\)</span> (across all windows).</p>
+<div><p>Average <span class="math notranslate nohighlight">\(r^2\)</span> (across all windows).</p>
 </div></blockquote>
 </td>
 </tr>
@@ -1206,7 +1198,7 @@ between the :attr:<a href="#id11"><span class="problematic" id="id12">`</span></
 <p>Imaginary Phase Locking Value (<em>IPLV</em>) was proposed to resolve PLV’s sensitivity to
 volume conduction and common reference effects.</p>
 <p>IPLV is computed similarly as PLV, but taking the imaginary part of the summation:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[ImPLV = \frac{1}{N} \left | Im \left ( \sum_{t=1}^{N} e^{i (\phi_{j1}(t)  - \phi_{j2}(t))} \right ) \right |\]</div>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -1615,7 +1607,7 @@ Valid options:</p>
 <p>Power-Envelope Correlation</p>
 <p>Similarly to <a class="reference internal" href="#dyfunconn.fc.aec" title="dyfunconn.fc.aec"><code class="xref py py-mod docutils literal notranslate"><span class="pre">dyfunconn.fc.aec</span></code></a>, we can use the followig formula to estimate the correlations in power
 between the different frequency bands [<a class="reference internal" href="#friston1996">Friston1996</a>].</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[r_{PAEC} = \text{corr}(\alpha_{lo}^2, \alpha_{hi}^2)\]</div>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -1671,12 +1663,12 @@ between the different frequency bands [<a class="reference internal" href="#fris
 of common sources (namely, volume conduction and active reference electrodes). These effects can artificially generate
 functional connectivity as the same signal signal is measured at different electrodes [<a class="reference internal" href="#hardmeier2014">Hardmeier2014</a>].</p>
 <p>PLI estimates the asymmetry in the distribution of two time series’ instantaneous phase differences.</p>
-<p>Given two time series of equal length <span class="math notranslate">\(x(t)\)</span> and <span class="math notranslate">\(y(t)\)</span>, we extract their respective instantaneous phases
-<span class="math notranslate">\(\phi_x(t)\)</span> and <span class="math notranslate">\(\phi_y(t)\)</span> using the Hilbert transform (consult <a class="reference internal" href="dyfunconn.html#dyfunconn.analytic_signal" title="dyfunconn.analytic_signal"><code class="xref py py-mod docutils literal notranslate"><span class="pre">dyfunconn.analytic_signal</span></code></a> for more details).
+<p>Given two time series of equal length <span class="math notranslate nohighlight">\(x(t)\)</span> and <span class="math notranslate nohighlight">\(y(t)\)</span>, we extract their respective instantaneous phases
+<span class="math notranslate nohighlight">\(\phi_x(t)\)</span> and <span class="math notranslate nohighlight">\(\phi_y(t)\)</span> using the Hilbert transform (consult <a class="reference internal" href="dyfunconn.html#dyfunconn.analytic_signal" title="dyfunconn.analytic_signal"><code class="xref py py-mod docutils literal notranslate"><span class="pre">dyfunconn.analytic_signal</span></code></a> for more details).
 Then, for such a pair of phases, PLI is computed as follows:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[PLI = | \left \langle sign [ sin ( \phi_x(t) - \phi_y(t) ) ] \right \rangle |\]</div>
-<p>Where, <span class="math notranslate">\(sign\)</span> refers to the signum function, left langle right rangle denotes the mean value and || the absolute value.</p>
+<p>Where, <span class="math notranslate nohighlight">\(sign\)</span> refers to the signum function, left langle right rangle denotes the mean value and || the absolute value.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -1828,12 +1820,12 @@ of channels.</p>
 <p>One of the pioneer methods called Phase Locking Value (<em>PLV</em>) is discussed in
 <a class="reference internal" href="#lachaux1998" id="id16">[Lachaux1998]</a>; it utilizes the Hilbert representation (consult
 <a class="reference internal" href="dyfunconn.html#dyfunconn.analytic_signal" title="dyfunconn.analytic_signal"><code class="xref py py-mod docutils literal notranslate"><span class="pre">dyfunconn.analytic_signal</span></code></a> for more details) an EEG time
-series (of <span class="math notranslate">\(N_{sensors}\)</span>) and quantifies their interaction based on their
+series (of <span class="math notranslate nohighlight">\(N_{sensors}\)</span>) and quantifies their interaction based on their
 instantaneous phase in a specific band frequency.</p>
 <p>So, for a pair of Instantaneous Phases of two time series of equal length,
-<span class="math notranslate">\(\phi_{j1}(t)\)</span> and <span class="math notranslate">\(\phi_{j2}(t)\)</span>, the Phase Locking Value for each
-sample in time (<span class="math notranslate">\(t\)</span>) is computed as:</p>
-<div class="math notranslate">
+<span class="math notranslate nohighlight">\(\phi_{j1}(t)\)</span> and <span class="math notranslate nohighlight">\(\phi_{j2}(t)\)</span>, the Phase Locking Value for each
+sample in time (<span class="math notranslate nohighlight">\(t\)</span>) is computed as:</p>
+<div class="math notranslate nohighlight">
 \[e^{i (\phi_{j1}(t)  - \phi_{j2}(t))}\]</div>
 <p>A value of zero means that no coupling (or negligible) observed between two
 phases, while a value of one denotes a perfect synchronization.</p>
@@ -2040,15 +2032,15 @@ of channels.</p>
 <div class="section" id="module-dyfunconn.fc.rho_index">
 <span id="dyfunconn-fc-rho-index-module"></span><h2>dyfunconn.fc.rho_index module<a class="headerlink" href="#module-dyfunconn.fc.rho_index" title="Permalink to this headline">¶</a></h2>
 <p>ρ index</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\r_{p, q}(t) = \frac{H_{max} - H}{H_{max}}\]</div>
-<p>Where <span class="math notranslate">\(H\)</span> is the Shannon entropy estimated within <span class="math notranslate">\(M\)</span> number of
-phase bins, and <span class="math notranslate">\(H_{max} = ln(M)\)</span> is the maximal entropy and
-and <span class="math notranslate">\(p_k\)</span> is the relative frequency of finding frequency difference
-in the <span class="math notranslate">\(k\)</span> th phase bin.</p>
-<div class="math notranslate">
+<p>Where <span class="math notranslate nohighlight">\(H\)</span> is the Shannon entropy estimated within <span class="math notranslate nohighlight">\(M\)</span> number of
+phase bins, and <span class="math notranslate nohighlight">\(H_{max} = ln(M)\)</span> is the maximal entropy and
+and <span class="math notranslate nohighlight">\(p_k\)</span> is the relative frequency of finding frequency difference
+in the <span class="math notranslate nohighlight">\(k\)</span> th phase bin.</p>
+<div class="math notranslate nohighlight">
 \[H = - \sum_{k=1}^M p_k ln(p_k)\]</div>
-<p>The computed value varies within the range <span class="math notranslate">\([0, 1]\)</span></p>
+<p>The computed value varies within the range <span class="math notranslate nohighlight">\([0, 1]\)</span></p>
 <hr class="docutils" />
 <table class="docutils citation" frame="void" id="tass1998" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
@@ -2947,7 +2939,7 @@ between the <em>pairs</em> (if given) of channels.</p>
 <dt id="dyfunconn.fc.glm">
 <code class="descclassname">dyfunconn.fc.</code><code class="descname">glm</code><span class="sig-paren">(</span><em>data</em>, <em>fb_lo</em>, <em>fb_hi</em>, <em>fs</em>, <em>pairs=None</em>, <em>window_size=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/glm.html#glm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.glm" title="Permalink to this definition">¶</a></dt>
 <dd><p>General Linear Model</p>
-<p>Estimate the <span class="math notranslate">\(r^2\)</span> for the given <code class="xref py py-attr docutils literal notranslate"><span class="pre">data</span></code>,
+<p>Estimate the <span class="math notranslate nohighlight">\(r^2\)</span> for the given <code class="xref py py-attr docutils literal notranslate"><span class="pre">data</span></code>,
 between the :attr:<a href="#id20"><span class="problematic" id="id21">`</span></a>pairs (if given) of channels.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -2984,11 +2976,11 @@ between the :attr:<a href="#id20"><span class="problematic" id="id21">`</span></
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>ts</strong> : complex array-like, shape(n_windows, n_channels, n_channels)</p>
 <blockquote>
-<div><p>Estimated <span class="math notranslate">\(r^2\)</span> time series (in each window).</p>
+<div><p>Estimated <span class="math notranslate nohighlight">\(r^2\)</span> time series (in each window).</p>
 </div></blockquote>
 <p><strong>ts_avg: complex array-like, shape(n_channels, n_channels)</strong> :</p>
 <blockquote class="last">
-<div><p>Average <span class="math notranslate">\(r^2\)</span> (across all windows).</p>
+<div><p>Average <span class="math notranslate nohighlight">\(r^2\)</span> (across all windows).</p>
 </div></blockquote>
 </td>
 </tr>
@@ -3620,9 +3612,7 @@ special treatment is needed (i.e. taking only the real part).</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -3644,7 +3634,7 @@ special treatment is needed (i.e. taking only the real part).</p>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -3663,6 +3653,7 @@ special treatment is needed (i.e. taking only the real part).</p>
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
             VERSION:'',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -3676,19 +3667,13 @@ special treatment is needed (i.e. taking only the real part).</p>
 
   
 
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

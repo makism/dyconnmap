@@ -24,26 +24,17 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="dyfunconn  documentation" href="../../../index.html"/>
-        <link rel="up" title="Module code" href="../../index.html"/> 
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
 
   
   <script src="../../../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -98,7 +89,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../index.html">dyfunconn</a>
@@ -106,9 +97,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -138,8 +130,6 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
-        
       </li>
     
   </ul>
@@ -166,13 +156,14 @@
 
 <span class="sd"> &quot;&quot;&quot;</span>
 <span class="c1"># Author: Avraam Marimpis &lt;avraam.marimpis@gmail.com&gt;</span>
+<span class="c1"># Author: Stravros Dimitriadis &lt;stidimitriadis@gmail.com&gt;</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 <span class="kn">import</span> <span class="nn">bct</span>
 
 
-<div class="viewcode-block" id="k_core_decomposition"><a class="viewcode-back" href="../../../dyfunconn.graphs.html#dyfunconn.graphs.k_core_decomposition">[docs]</a><span class="k">def</span> <span class="nf">k_core_decomposition</span><span class="p">(</span><span class="n">mtx</span><span class="p">,</span> <span class="n">threshold</span><span class="p">):</span>
+<div class="viewcode-block" id="k_core_decomposition"><a class="viewcode-back" href="../../../dyfunconn.graphs.html#dyfunconn.graphs.threshold.k_core_decomposition">[docs]</a><span class="k">def</span> <span class="nf">k_core_decomposition</span><span class="p">(</span><span class="n">mtx</span><span class="p">,</span> <span class="n">threshold</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Threshold a binary graph based on the detected k-cores.</span>
 
 <span class="sd">    .. [Alvarez2006] Alvarez-Hamelin, J. I., Dall&#39;Asta, L., Barrat, A., &amp; Vespignani, A. (2006). Large scale networks fingerprinting and visualization using the k-core decomposition. In Advances in neural information processing systems (pp. 41-50).</span>
@@ -216,11 +207,11 @@
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">degree</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">k_cores</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-</div>
-    <span class="k">return</span> <span class="n">k_cores</span>
+
+    <span class="k">return</span> <span class="n">k_cores</span></div>
 
 
-<div class="viewcode-block" id="threshold_mst_mean_degree"><a class="viewcode-back" href="../../../dyfunconn.graphs.html#dyfunconn.graphs.threshold_mst_mean_degree">[docs]</a><span class="k">def</span> <span class="nf">threshold_mst_mean_degree</span><span class="p">(</span><span class="n">mtx</span><span class="p">,</span> <span class="n">avg_degree</span><span class="p">):</span>
+<div class="viewcode-block" id="threshold_mst_mean_degree"><a class="viewcode-back" href="../../../dyfunconn.graphs.html#dyfunconn.graphs.threshold.threshold_mst_mean_degree">[docs]</a><span class="k">def</span> <span class="nf">threshold_mst_mean_degree</span><span class="p">(</span><span class="n">mtx</span><span class="p">,</span> <span class="n">avg_degree</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Threshold a graph based on mean using minimum spanning trees.</span>
 
 
@@ -308,11 +299,11 @@
         <span class="n">CIJtree</span><span class="p">[</span><span class="n">idx2</span><span class="p">,</span> <span class="n">idx1</span><span class="p">]</span> <span class="o">=</span> <span class="n">CIJtree</span><span class="p">[</span><span class="n">idx1</span><span class="p">,</span> <span class="n">idx2</span><span class="p">]</span>
 
     <span class="c1"># ravgdeg = avg_degree - abs_diff</span>
-</div>
-    <span class="k">return</span> <span class="n">CIJtree</span>
+
+    <span class="k">return</span> <span class="n">CIJtree</span></div>
 
 
-<div class="viewcode-block" id="threshold_mean_degree"><a class="viewcode-back" href="../../../dyfunconn.graphs.html#dyfunconn.graphs.threshold_mean_degree">[docs]</a><span class="k">def</span> <span class="nf">threshold_mean_degree</span><span class="p">(</span><span class="n">mtx</span><span class="p">,</span> <span class="n">threshold_mean_degree</span><span class="p">):</span>
+<div class="viewcode-block" id="threshold_mean_degree"><a class="viewcode-back" href="../../../dyfunconn.graphs.html#dyfunconn.graphs.threshold.threshold_mean_degree">[docs]</a><span class="k">def</span> <span class="nf">threshold_mean_degree</span><span class="p">(</span><span class="n">mtx</span><span class="p">,</span> <span class="n">threshold_mean_degree</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Threshold a graph based on the mean degree.</span>
 
 
@@ -373,11 +364,11 @@
             <span class="k">if</span> <span class="n">mtx</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="n">l</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">thres</span><span class="p">:</span>
                 <span class="n">binary_mtx</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="n">l</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
                 <span class="n">binary_mtx</span><span class="p">[</span><span class="n">l</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-</div>
-    <span class="k">return</span> <span class="n">binary_mtx</span>
+
+    <span class="k">return</span> <span class="n">binary_mtx</span></div>
 
 
-<div class="viewcode-block" id="threshold_shortest_paths"><a class="viewcode-back" href="../../../dyfunconn.graphs.html#dyfunconn.graphs.threshold_shortest_paths">[docs]</a><span class="k">def</span> <span class="nf">threshold_shortest_paths</span><span class="p">(</span><span class="n">mtx</span><span class="p">,</span> <span class="n">treatment</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="threshold_shortest_paths"><a class="viewcode-back" href="../../../dyfunconn.graphs.html#dyfunconn.graphs.threshold.threshold_shortest_paths">[docs]</a><span class="k">def</span> <span class="nf">threshold_shortest_paths</span><span class="p">(</span><span class="n">mtx</span><span class="p">,</span> <span class="n">treatment</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Threshold a graph via  via shortest path identification using Dijkstra&#39;s algorithm.</span>
 
 <span class="sd">    .. [Dimitriadis2010] Dimitriadis, S. I., Laskaris, N. A., Tsirka, V., Vourkas, M., Micheloyannis, S., &amp; Fotopoulos, S. (2010). Tracking brain dynamics via time-dependent network analysis. Journal of neuroscience methods, 193(1), 145-155.</span>
@@ -424,11 +415,11 @@
 
                 <span class="n">binary_mtx</span><span class="p">[</span><span class="n">r_path</span><span class="p">[</span><span class="n">ind1</span><span class="p">],</span> <span class="n">r_path</span><span class="p">[</span><span class="n">ind2</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">1</span>
                 <span class="n">binary_mtx</span><span class="p">[</span><span class="n">r_path</span><span class="p">[</span><span class="n">ind2</span><span class="p">],</span> <span class="n">r_path</span><span class="p">[</span><span class="n">ind1</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">1</span>
-</div>
-    <span class="k">return</span> <span class="n">binary_mtx</span>
+
+    <span class="k">return</span> <span class="n">binary_mtx</span></div>
 
 
-<div class="viewcode-block" id="threshold_global_cost_efficiency"><a class="viewcode-back" href="../../../dyfunconn.graphs.html#dyfunconn.graphs.threshold_global_cost_efficiency">[docs]</a><span class="k">def</span> <span class="nf">threshold_global_cost_efficiency</span><span class="p">(</span><span class="n">mtx</span><span class="p">,</span> <span class="n">iterations</span><span class="p">):</span>
+<div class="viewcode-block" id="threshold_global_cost_efficiency"><a class="viewcode-back" href="../../../dyfunconn.graphs.html#dyfunconn.graphs.threshold.threshold_global_cost_efficiency">[docs]</a><span class="k">def</span> <span class="nf">threshold_global_cost_efficiency</span><span class="p">(</span><span class="n">mtx</span><span class="p">,</span> <span class="n">iterations</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Threshold a graph based on the Global Efficiency - Cost formula.</span>
 
 <span class="sd">    .. [Basset2009] Bassett, D. S., Bullmore, E. T., Meyer-Lindenberg, A., Apud, J. A., Weinberger, D. R., &amp; Coppola, R. (2009). Cognitive fitness of cost-efficient brain functional networks. Proceedings of the National Academy of Sciences, 106(28), 11747-11752.</span>
@@ -514,11 +505,11 @@
     <span class="c1"># plt.ylabel(&#39;Global Cost Efficiency&#39;)</span>
     <span class="c1"># plt.legend()</span>
     <span class="c1"># plt.show()</span>
-</div>
-    <span class="k">return</span> <span class="n">binary_mtx</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">global_cost_eff_max</span><span class="p">,</span> <span class="n">efficiency</span><span class="p">,</span> <span class="n">cost_max</span>
+
+    <span class="k">return</span> <span class="n">binary_mtx</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">global_cost_eff_max</span><span class="p">,</span> <span class="n">efficiency</span><span class="p">,</span> <span class="n">cost_max</span></div>
 
 
-<div class="viewcode-block" id="threshold_omst_global_cost_efficiency"><a class="viewcode-back" href="../../../dyfunconn.graphs.html#dyfunconn.graphs.threshold_omst_global_cost_efficiency">[docs]</a><span class="k">def</span> <span class="nf">threshold_omst_global_cost_efficiency</span><span class="p">(</span><span class="n">mtx</span><span class="p">):</span>
+<div class="viewcode-block" id="threshold_omst_global_cost_efficiency"><a class="viewcode-back" href="../../../dyfunconn.graphs.html#dyfunconn.graphs.threshold.threshold_omst_global_cost_efficiency">[docs]</a><span class="k">def</span> <span class="nf">threshold_omst_global_cost_efficiency</span><span class="p">(</span><span class="n">mtx</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Threshold a graph by optimizing the formula GE-C via orthogonal MSTs.</span>
 
 <span class="sd">    .. [Dimitriadis2017a] Dimitriadis, S. I., Salis, C., Tarnanas, I., &amp; Linden, D. E. (2017). Topological Filtering of Dynamic Functional Brain Networks Unfolds Informative Chronnectomics: A Novel Data-Driven Thresholding Scheme Based on Orthogonal Minimal Spanning Trees (OMSTs). Frontiers in neuroinformatics, 11.</span>
@@ -657,14 +648,13 @@
     <span class="c1"># plt.ylabel(&#39;Global Cost Efficiency&#39;)</span>
     <span class="c1"># plt.legend()</span>
     <span class="c1"># plt.show()</span>
-</div>
-    <span class="k">return</span> <span class="n">nCIJtree</span><span class="p">,</span> <span class="n">CIJtree</span><span class="p">,</span> <span class="n">degree</span><span class="p">,</span> <span class="n">global_eff</span><span class="p">,</span> <span class="n">global_cost_eff_max</span><span class="p">,</span> <span class="n">cost_max</span>
+
+    <span class="c1"># return nCIJtree, CIJtree, degree, global_eff, global_cost_eff_max, cost_max</span>
+    <span class="k">return</span> <span class="n">nCIJtree</span><span class="p">,</span> <span class="n">CIJtree</span><span class="p">,</span> <span class="n">degree</span><span class="p">,</span> <span class="n">global_eff</span><span class="p">,</span> <span class="n">global_cost_eff_max</span><span class="p">,</span> <span class="n">cost_max</span><span class="p">,</span><span class="n">cost</span><span class="p">,</span><span class="n">global_cost_eff</span></div>
 </pre></div>
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -677,7 +667,7 @@
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -696,6 +686,7 @@
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
             VERSION:'',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -709,19 +700,13 @@
 
   
 
-  
-  
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

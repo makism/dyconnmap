@@ -24,28 +24,19 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="dyfunconn  documentation" href="index.html"/>
-        <link rel="up" title="dyfunconn package" href="dyfunconn.html"/>
-        <link rel="next" title="dyfunconn.sim_models package" href="dyfunconn.sim_models.html"/>
-        <link rel="prev" title="dyfunconn.fc package" href="dyfunconn.fc.html"/> 
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="dyfunconn.sim_models package" href="dyfunconn.sim_models.html" />
+    <link rel="prev" title="dyfunconn.fc package" href="dyfunconn.fc.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -96,10 +87,14 @@
 <li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.graphs.diffusion_efficiency">dyfunconn.graphs.diffusion_efficiency module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.graphs.gdd">dyfunconn.graphs.gdd module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.graphs.imd">dyfunconn.graphs.imd module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.graphs.mean_first_passage_time">dyfunconn.graphs.mean_first_passage_time module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.graphs.mi">dyfunconn.graphs.mi module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.graphs.mpc">dyfunconn.graphs.mpc module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.graphs.nodal">dyfunconn.graphs.nodal module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.graphs.rout_efficiency">dyfunconn.graphs.rout_efficiency module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.graphs.spectral_euclidean_distance">dyfunconn.graphs.spectral_euclidean_distance module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.graphs.spectral_k_distance">dyfunconn.graphs.spectral_k_distance module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.graphs.threshold">dyfunconn.graphs.threshold module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.graphs.vi">dyfunconn.graphs.vi module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.graphs">Module contents</a></li>
@@ -128,7 +123,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">dyfunconn</a>
@@ -136,9 +131,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -213,20 +209,20 @@
 between two (positive) weighted graphs based on the Laplacian exponential diffusion kernel.
 The notion backing this metric is that two graphs are similar if they emit comparable
 patterns of information transmission.</p>
-<p>This distance is computed by searching for a diffusion time <span class="math notranslate">\(t\)</span> that maximizes the
+<p>This distance is computed by searching for a diffusion time <span class="math notranslate nohighlight">\(t\)</span> that maximizes the
 value of the Frobenius norm between the two diffusion kernels. The Laplacian operator
-is defined as <span class="math notranslate">\(L = D - A\)</span>, where <span class="math notranslate">\(A\)</span> is the positive symmetric data matrix and <span class="math notranslate">\(D\)</span> is a diagonal
-degree matrix for the adjacency matrix <span class="math notranslate">\(A\)</span>. The diffusion process (per vertex) on the adjacency
-matrix <span class="math notranslate">\(A\)</span> is governed by a time-varying vector <span class="math notranslate">\(u(t)∈ R^N\)</span>. Thus, between each given pair of
-(vertices’) weights <span class="math notranslate">\(i\)</span> and <span class="math notranslate">\(j\)</span>, their flux is quantified by <span class="math notranslate">\(a_{ij} (u_i (t)u_j (t))\)</span>. The grand
-sum of these interactions is given by <span class="math notranslate">\(\hat{u}_j(t)=\sum_i{a_{ij}(u_i(t)u_j(t))=-Lu(t)}\)</span>.
-Given the initial condition <span class="math notranslate">\(u^0,t=0\)</span> this sum has the following analytic solution <span class="math notranslate">\(u(t)=exp⁡(-tL)u^0\)</span>.
+is defined as <span class="math notranslate nohighlight">\(L = D - A\)</span>, where <span class="math notranslate nohighlight">\(A\)</span> is the positive symmetric data matrix and <span class="math notranslate nohighlight">\(D\)</span> is a diagonal
+degree matrix for the adjacency matrix <span class="math notranslate nohighlight">\(A\)</span>. The diffusion process (per vertex) on the adjacency
+matrix <span class="math notranslate nohighlight">\(A\)</span> is governed by a time-varying vector <span class="math notranslate nohighlight">\(u(t)∈ R^N\)</span>. Thus, between each given pair of
+(vertices’) weights <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>, their flux is quantified by <span class="math notranslate nohighlight">\(a_{ij} (u_i (t)u_j (t))\)</span>. The grand
+sum of these interactions is given by <span class="math notranslate nohighlight">\(\hat{u}_j(t)=\sum_i{a_{ij}(u_i(t)u_j(t))=-Lu(t)}\)</span>.
+Given the initial condition <span class="math notranslate nohighlight">\(u^0,t=0\)</span> this sum has the following analytic solution <span class="math notranslate nohighlight">\(u(t)=exp⁡(-tL)u^0\)</span>.
 The resulting matrix is known as the Laplacian exponential diffusion kernel. Letting the diffusion process
-run for <span class="math notranslate">\(t\)</span> time we compute and store the diffusion patterns in each column. Finally, the actual distance
-measure between two adjacency matrices <span class="math notranslate">\(A_1\)</span> and  <span class="math notranslate">\(A_2\)</span>, at diffusion time <span class="math notranslate">\(t\)</span> is given by:</p>
-<div class="math notranslate">
+run for <span class="math notranslate nohighlight">\(t\)</span> time we compute and store the diffusion patterns in each column. Finally, the actual distance
+measure between two adjacency matrices <span class="math notranslate nohighlight">\(A_1\)</span> and  <span class="math notranslate nohighlight">\(A_2\)</span>, at diffusion time <span class="math notranslate nohighlight">\(t\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
 \[ξ(A_1, A_2 ; t) = ‖exp⁡(-tL_1 ) - exp⁡(-tL_2 )‖_F^2\]</div>
-<p>where <span class="math notranslate">\(‖∙‖_F\)</span> is the Frobenious norm.</p>
+<p>where <span class="math notranslate nohighlight">\(‖∙‖_F\)</span> is the Frobenious norm.</p>
 <div class="section" id="id1">
 <h3>Notes<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <p>Based on the code accompanied the original paper. Available at <a class="reference external" href="https://www.researchgate.net/publication/259621918_A_Matlab_code_for_computing_the_GDD_presented_in_the_paper">https://www.researchgate.net/publication/259621918_A_Matlab_code_for_computing_the_GDD_presented_in_the_paper</a></p>
@@ -277,6 +273,65 @@ measure between two adjacency matrices <span class="math notranslate">\(A_1\)</s
 </dd></dl>
 
 </div>
+</div>
+<div class="section" id="module-dyfunconn.graphs.imd">
+<span id="dyfunconn-graphs-imd-module"></span><h2>dyfunconn.graphs.imd module<a class="headerlink" href="#module-dyfunconn.graphs.imd" title="Permalink to this headline">¶</a></h2>
+<p>Ipsen-Mikhailov Distance</p>
+<p>Given two graphs, this method quantifies their difference by comparing their
+spectral densities. This spectral density is computed as the sum of Lorentz distributions <span class="math notranslate nohighlight">\(\rho(\omega)\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\rho(\omega) = K \sum_{i=1}^{N-1} \frac{\gamma}{ (\omega - \omega_i)^2 + \gamma^2 }\]</div>
+<p>Where <span class="math notranslate nohighlight">\(\gamma\)</span> is the bandwidth, and <span class="math notranslate nohighlight">\(K\)</span> a normalization constant such that <span class="math notranslate nohighlight">\(\int_{0}^{\infty}\rho(\omega)d\omega=1\)</span>.
+The spectral distance between two graphs <span class="math notranslate nohighlight">\(G\)</span> and <span class="math notranslate nohighlight">\(H\)</span> with densities <span class="math notranslate nohighlight">\(\rho_G(\omega)\)</span> and <span class="math notranslate nohighlight">\(\rho_H(\omega)\)</span> respectively, is defined as:</p>
+<div class="math notranslate nohighlight">
+\[\epsilon = \sqrt{ \int_{0}^{\infty}{[\rho_G(\omega) - \rho_H(\omega) ]^2 d(\omega)} }\]</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<hr class="docutils" />
+<table class="docutils citation" frame="void" id="ipsen2004" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Ipsen2004]</td><td>Ipsen, M. (2004). Evolutionary reconstruction of networks. In Function and Regulation of Cellular Systems (pp. 241-249). Birkhäuser, Basel.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="donnat2018" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Donnat2018]</td><td>Donnat, C., &amp; Holmes, S. (2018). Tracking Network Dynamics: a review of distances and similarity metrics. arXiv preprint arXiv:1801.07351.</td></tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="dyfunconn.graphs.imd.im_distance">
+<code class="descclassname">dyfunconn.graphs.imd.</code><code class="descname">im_distance</code><span class="sig-paren">(</span><em>X</em>, <em>Y</em>, <em>bandwidth=1.0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/graphs/imd.html#im_distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.graphs.imd.im_distance" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape(N, N)</p>
+<blockquote>
+<div><p>A weighted matrix.</p>
+</div></blockquote>
+<p><strong>Y</strong> : array-like, shape(N, N)</p>
+<blockquote>
+<div><p>A weighted matrix.</p>
+</div></blockquote>
+<p><strong>bandwidth</strong> : float</p>
+<blockquote>
+<div><p>Bandwidth of the kernel. Default <cite>1.0</cite>.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>distance</strong> : float</p>
+<blockquote class="last">
+<div><p>The estimated Ipsen-Mikhailov distance.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 </div>
 <div class="section" id="module-dyfunconn.graphs.mean_first_passage_time">
 <span id="dyfunconn-graphs-mean-first-passage-time-module"></span><h2>dyfunconn.graphs.mean_first_passage_time module<a class="headerlink" href="#module-dyfunconn.graphs.mean_first_passage_time" title="Permalink to this headline">¶</a></h2>
@@ -388,6 +443,34 @@ measure between two adjacency matrices <span class="math notranslate">\(A_1\)</s
 </dd></dl>
 
 </div>
+<div class="section" id="module-dyfunconn.graphs.nodal">
+<span id="dyfunconn-graphs-nodal-module"></span><h2>dyfunconn.graphs.nodal module<a class="headerlink" href="#module-dyfunconn.graphs.nodal" title="Permalink to this headline">¶</a></h2>
+<p>Nodal network features</p>
+<dl class="function">
+<dt id="dyfunconn.graphs.nodal.nodal_global_efficiency">
+<code class="descclassname">dyfunconn.graphs.nodal.</code><code class="descname">nodal_global_efficiency</code><span class="sig-paren">(</span><em>mtx</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/graphs/nodal.html#nodal_global_efficiency"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.graphs.nodal.nodal_global_efficiency" title="Permalink to this definition">¶</a></dt>
+<dd><p>Nodal Global Efficiency</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>mtx</strong> : array-like, shape(N, N)</p>
+<blockquote>
+<div><p>Symmetric, weighted and undirected connectivity matrix.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>nodal_ge</strong> : array-like, shape(N, 1)</p>
+<blockquote class="last">
+<div><p>The computed nodal global efficiency.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
 <div class="section" id="module-dyfunconn.graphs.rout_efficiency">
 <span id="dyfunconn-graphs-rout-efficiency-module"></span><h2>dyfunconn.graphs.rout_efficiency module<a class="headerlink" href="#module-dyfunconn.graphs.rout_efficiency" title="Permalink to this headline">¶</a></h2>
 <p>Rout Efficiency</p>
@@ -413,13 +496,127 @@ measure between two adjacency matrices <span class="math notranslate">\(A_1\)</s
 
 </div>
 </div>
-<div class="section" id="module-dyfunconn.graphs.threshold">
-<span id="dyfunconn-graphs-threshold-module"></span><h2>dyfunconn.graphs.threshold module<a class="headerlink" href="#module-dyfunconn.graphs.threshold" title="Permalink to this headline">¶</a></h2>
-<p>Thresholding schemes</p>
+<div class="section" id="module-dyfunconn.graphs.spectral_euclidean_distance">
+<span id="dyfunconn-graphs-spectral-euclidean-distance-module"></span><h2>dyfunconn.graphs.spectral_euclidean_distance module<a class="headerlink" href="#module-dyfunconn.graphs.spectral_euclidean_distance" title="Permalink to this headline">¶</a></h2>
+<p>Spectral Euclidean Distance</p>
+<p>The spectral distance between graphs is simply the Euclidean distance between the spectra.</p>
+<div class="math notranslate nohighlight">
+\[d(G, H) = \sqrt{ \sum_i{  (g_i  - h_j)^2   }  }\]</div>
 <div class="section" id="id5">
 <h3>Notes<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>This is a direct translation from <a href="#id6"><span class="problematic" id="id7">`</span></a>Data Driven Topological Filtering of Brain Networks via Orthogonal Minimal Spanning Trees &lt;<a class="reference external" href="https://github.com/stdimitr/topological_filtering_networks">https://github.com/stdimitr/topological_filtering_networks</a>&gt;’</li>
+<li>The input graphs can be a standard adjency matrix, or a variant of Laplacian.</li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<hr class="docutils" />
+<table class="docutils citation" frame="void" id="wilson2008" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Wilson2008]</td><td>Wilson, R. C., &amp; Zhu, P. (2008). A study of graph spectra for comparing graphs and trees. Pattern Recognition, 41(9), 2833-2841.</td></tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="dyfunconn.graphs.spectral_euclidean_distance.spectral_euclidean_distance">
+<code class="descclassname">dyfunconn.graphs.spectral_euclidean_distance.</code><code class="descname">spectral_euclidean_distance</code><span class="sig-paren">(</span><em>X</em>, <em>Y</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/graphs/spectral_euclidean_distance.html#spectral_euclidean_distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.graphs.spectral_euclidean_distance.spectral_euclidean_distance" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape(N, N)</p>
+<blockquote>
+<div><p>A weighted matrix.</p>
+</div></blockquote>
+<p><strong>Y</strong> : array-like, shape(N, N)</p>
+<blockquote>
+<div><p>A weighted matrix:</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>distance</strong> : float</p>
+<blockquote class="last">
+<div><p>The euclidean distance between the two spectrums.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="module-dyfunconn.graphs.spectral_k_distance">
+<span id="dyfunconn-graphs-spectral-k-distance-module"></span><h2>dyfunconn.graphs.spectral_k_distance module<a class="headerlink" href="#module-dyfunconn.graphs.spectral_k_distance" title="Permalink to this headline">¶</a></h2>
+<p>Spectral-K Distance</p>
+<p>Given two graphs <span class="math notranslate nohighlight">\(G\)</span> and <span class="math notranslate nohighlight">\(H\)</span>, we can use their <span class="math notranslate nohighlight">\(k\)</span> largest positive
+eigenvalues of their Laplacian counterparts to compute their distance.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}d(G, H) = \left\{\begin{matrix} \sqrt{\frac{ \sum_{i=1}^k{(g_i - h_i)^2} }{ \sum_{i=1}^l{g_i^2} }} &amp; ,\sum_{i=1}^l{g_i^2} \leq \sum_{j=1}^l{h_j^2}
+\\
+\sqrt{\frac{ \sum_{i=1}^k{(g_i - h_i)^2} }{ \sum_{j=1}^l{g_i^2} }} &amp; , \sum_{i=1}^l{g_i^2} &gt; \sum_{j=1}^l{h_j^2}
+\end{matrix}\right.\end{split}\]</div>
+<p>Where <span class="math notranslate nohighlight">\(g\)</span> and <span class="math notranslate nohighlight">\(h\)</span> denote the spectrums of the Laplacian matrices.</p>
+<p>This measure is non-negative, separated, symmetric and it satisfies the triangle
+inequality.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<hr class="docutils" />
+<table class="docutils citation" frame="void" id="jakobson2000" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Jakobson2000]</td><td>Jakobson, D., &amp; Rivin, I. (2000). Extremal metrics on graphs I. arXiv preprint math/0001169.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="pincombe2007" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Pincombe2007]</td><td>Pincombe, B. (2007). Detecting changes in time series of network graphs using minimum mean squared error and cumulative summation. ANZIAM Journal, 48, 450-473.</td></tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="dyfunconn.graphs.spectral_k_distance.spectral_k_distance">
+<code class="descclassname">dyfunconn.graphs.spectral_k_distance.</code><code class="descname">spectral_k_distance</code><span class="sig-paren">(</span><em>X</em>, <em>Y</em>, <em>k</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/graphs/spectral_k_distance.html#spectral_k_distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.graphs.spectral_k_distance.spectral_k_distance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Spectral-K Distance</p>
+<p>Use the largest <span class="math notranslate nohighlight">\(k\)</span> eigenvalues of the given graphs to compute the
+distance between them.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape(N, N)</p>
+<blockquote>
+<div><p>A weighted matrix.</p>
+</div></blockquote>
+<p><strong>Y</strong> : array-like, shape(N, N)</p>
+<blockquote>
+<div><p>A weighted matrixY</p>
+</div></blockquote>
+<p><strong>k</strong> : int</p>
+<blockquote>
+<div><p>Largest <cite>k</cite> eigenvalues to use.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>distance</strong> : float</p>
+<blockquote class="last">
+<div><p>Estimated distance based on selected largest eigenvalues.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-dyfunconn.graphs.threshold">
+<span id="dyfunconn-graphs-threshold-module"></span><h2>dyfunconn.graphs.threshold module<a class="headerlink" href="#module-dyfunconn.graphs.threshold" title="Permalink to this headline">¶</a></h2>
+<p>Thresholding schemes</p>
+<div class="section" id="id6">
+<h3>Notes<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>This is a direct translation from <a href="#id7"><span class="problematic" id="id8">`</span></a>Data Driven Topological Filtering of Brain Networks via Orthogonal Minimal Spanning Trees &lt;<a class="reference external" href="https://github.com/stdimitr/topological_filtering_networks">https://github.com/stdimitr/topological_filtering_networks</a>&gt;’</li>
 <li>Original author is Stravros Dimitriadis &lt;<a class="reference external" href="mailto:stidimitriadis&#37;&#52;&#48;gmail&#46;com">stidimitriadis<span>&#64;</span>gmail<span>&#46;</span>com</a>&gt;</li>
 </ul>
 <div class="line-block">
@@ -588,7 +785,7 @@ measure between two adjacency matrices <span class="math notranslate">\(A_1\)</s
 <tr><td class="label">[Dimitriadis2017n]</td><td>Dimitriadis, S. I., Antonakakis, M., Simos, P., Fletcher, J. M., &amp; Papanicolaou, A. C. (2017). Data-driven Topological Filtering based on Orthogonal Minimal Spanning Trees: Application to Multi-Group MEG Resting-State Connectivity. Brain Connectivity, (ja).</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="id8" rules="none">
+<table class="docutils citation" frame="void" id="id9" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[Basset2009]</td><td>Bassett, D. S., Bullmore, E. T., Meyer-Lindenberg, A., Apud, J. A., Weinberger, D. R., &amp; Coppola, R. (2009). Cognitive fitness of cost-efficient brain functional networks. Proceedings of the National Academy of Sciences, 106(28), 11747-11752.</td></tr>
@@ -674,8 +871,8 @@ fill the diagonal with zeroes. Default <cite>false</cite>.</p>
 <div class="section" id="module-dyfunconn.graphs.vi">
 <span id="dyfunconn-graphs-vi-module"></span><h2>dyfunconn.graphs.vi module<a class="headerlink" href="#module-dyfunconn.graphs.vi" title="Permalink to this headline">¶</a></h2>
 <p>Variation of Information</p>
-<div class="section" id="id9">
-<h3>Notes<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id10">
+<h3>Notes<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <p>Based on the code available at <a class="reference external" href="http://users.auth.gr/~stdimitr/files/software/vi.rar">http://users.auth.gr/~stdimitr/files/software/vi.rar</a></p>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -822,7 +1019,7 @@ fill the diagonal with zeroes. Default <cite>false</cite>.</p>
 <dt id="dyfunconn.graphs.threshold_shortest_paths">
 <code class="descclassname">dyfunconn.graphs.</code><code class="descname">threshold_shortest_paths</code><span class="sig-paren">(</span><em>mtx</em>, <em>treatment=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/graphs/threshold.html#threshold_shortest_paths"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.graphs.threshold_shortest_paths" title="Permalink to this definition">¶</a></dt>
 <dd><p>Threshold a graph via  via shortest path identification using Dijkstra’s algorithm.</p>
-<table class="docutils citation" frame="void" id="id10" rules="none">
+<table class="docutils citation" frame="void" id="id11" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[Dimitriadis2010]</td><td>Dimitriadis, S. I., Laskaris, N. A., Tsirka, V., Vourkas, M., Micheloyannis, S., &amp; Fotopoulos, S. (2010). Tracking brain dynamics via time-dependent network analysis. Journal of neuroscience methods, 193(1), 145-155.</td></tr>
@@ -857,13 +1054,13 @@ fill the diagonal with zeroes. Default <cite>false</cite>.</p>
 <dt id="dyfunconn.graphs.k_core_decomposition">
 <code class="descclassname">dyfunconn.graphs.</code><code class="descname">k_core_decomposition</code><span class="sig-paren">(</span><em>mtx</em>, <em>threshold</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/graphs/threshold.html#k_core_decomposition"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.graphs.k_core_decomposition" title="Permalink to this definition">¶</a></dt>
 <dd><p>Threshold a binary graph based on the detected k-cores.</p>
-<table class="docutils citation" frame="void" id="id11" rules="none">
+<table class="docutils citation" frame="void" id="id12" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[Alvarez2006]</td><td>Alvarez-Hamelin, J. I., Dall’Asta, L., Barrat, A., &amp; Vespignani, A. (2006). Large scale networks fingerprinting and visualization using the k-core decomposition. In Advances in neural information processing systems (pp. 41-50).</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="id12" rules="none">
+<table class="docutils citation" frame="void" id="id13" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[Hagman2008]</td><td>Hagmann, P., Cammoun, L., Gigandet, X., Meuli, R., Honey, C. J., Wedeen, V. J., &amp; Sporns, O. (2008). Mapping the structural core of human cerebral cortex. PLoS biology, 6(7), e159.</td></tr>
@@ -897,7 +1094,7 @@ fill the diagonal with zeroes. Default <cite>false</cite>.</p>
 <dt id="dyfunconn.graphs.threshold_global_cost_efficiency">
 <code class="descclassname">dyfunconn.graphs.</code><code class="descname">threshold_global_cost_efficiency</code><span class="sig-paren">(</span><em>mtx</em>, <em>iterations</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/graphs/threshold.html#threshold_global_cost_efficiency"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.graphs.threshold_global_cost_efficiency" title="Permalink to this definition">¶</a></dt>
 <dd><p>Threshold a graph based on the Global Efficiency - Cost formula.</p>
-<table class="docutils citation" frame="void" id="id13" rules="none">
+<table class="docutils citation" frame="void" id="id14" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[Basset2009]</td><td>Bassett, D. S., Bullmore, E. T., Meyer-Lindenberg, A., Apud, J. A., Weinberger, D. R., &amp; Coppola, R. (2009). Cognitive fitness of cost-efficient brain functional networks. Proceedings of the National Academy of Sciences, 106(28), 11747-11752.</td></tr>
@@ -947,19 +1144,19 @@ fill the diagonal with zeroes. Default <cite>false</cite>.</p>
 <dt id="dyfunconn.graphs.threshold_omst_global_cost_efficiency">
 <code class="descclassname">dyfunconn.graphs.</code><code class="descname">threshold_omst_global_cost_efficiency</code><span class="sig-paren">(</span><em>mtx</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/graphs/threshold.html#threshold_omst_global_cost_efficiency"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.graphs.threshold_omst_global_cost_efficiency" title="Permalink to this definition">¶</a></dt>
 <dd><p>Threshold a graph by optimizing the formula GE-C via orthogonal MSTs.</p>
-<table class="docutils citation" frame="void" id="id14" rules="none">
+<table class="docutils citation" frame="void" id="id15" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[Dimitriadis2017a]</td><td>Dimitriadis, S. I., Salis, C., Tarnanas, I., &amp; Linden, D. E. (2017). Topological Filtering of Dynamic Functional Brain Networks Unfolds Informative Chronnectomics: A Novel Data-Driven Thresholding Scheme Based on Orthogonal Minimal Spanning Trees (OMSTs). Frontiers in neuroinformatics, 11.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="id15" rules="none">
+<table class="docutils citation" frame="void" id="id16" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[Dimitriadis2017n]</td><td>Dimitriadis, S. I., Antonakakis, M., Simos, P., Fletcher, J. M., &amp; Papanicolaou, A. C. (2017). Data-driven Topological Filtering based on Orthogonal Minimal Spanning Trees: Application to Multi-Group MEG Resting-State Connectivity. Brain Connectivity, (ja).</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="id16" rules="none">
+<table class="docutils citation" frame="void" id="id17" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[Basset2009]</td><td>Bassett, D. S., Bullmore, E. T., Meyer-Lindenberg, A., Apud, J. A., Weinberger, D. R., &amp; Coppola, R. (2009). Cognitive fitness of cost-efficient brain functional networks. Proceedings of the National Academy of Sciences, 106(28), 11747-11752.</td></tr>
@@ -1005,14 +1202,128 @@ fill the diagonal with zeroes. Default <cite>false</cite>.</p>
 </table>
 </dd></dl>
 
+<dl class="function">
+<dt id="dyfunconn.graphs.nodal_global_efficiency">
+<code class="descclassname">dyfunconn.graphs.</code><code class="descname">nodal_global_efficiency</code><span class="sig-paren">(</span><em>mtx</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/graphs/nodal.html#nodal_global_efficiency"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.graphs.nodal_global_efficiency" title="Permalink to this definition">¶</a></dt>
+<dd><p>Nodal Global Efficiency</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>mtx</strong> : array-like, shape(N, N)</p>
+<blockquote>
+<div><p>Symmetric, weighted and undirected connectivity matrix.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>nodal_ge</strong> : array-like, shape(N, 1)</p>
+<blockquote class="last">
+<div><p>The computed nodal global efficiency.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="dyfunconn.graphs.im_distance">
+<code class="descclassname">dyfunconn.graphs.</code><code class="descname">im_distance</code><span class="sig-paren">(</span><em>X</em>, <em>Y</em>, <em>bandwidth=1.0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/graphs/imd.html#im_distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.graphs.im_distance" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape(N, N)</p>
+<blockquote>
+<div><p>A weighted matrix.</p>
+</div></blockquote>
+<p><strong>Y</strong> : array-like, shape(N, N)</p>
+<blockquote>
+<div><p>A weighted matrix.</p>
+</div></blockquote>
+<p><strong>bandwidth</strong> : float</p>
+<blockquote>
+<div><p>Bandwidth of the kernel. Default <cite>1.0</cite>.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>distance</strong> : float</p>
+<blockquote class="last">
+<div><p>The estimated Ipsen-Mikhailov distance.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="dyfunconn.graphs.spectral_k_distance">
+<code class="descclassname">dyfunconn.graphs.</code><code class="descname">spectral_k_distance</code><span class="sig-paren">(</span><em>X</em>, <em>Y</em>, <em>k</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/graphs/spectral_k_distance.html#spectral_k_distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.graphs.spectral_k_distance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Spectral-K Distance</p>
+<p>Use the largest <span class="math notranslate nohighlight">\(k\)</span> eigenvalues of the given graphs to compute the
+distance between them.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape(N, N)</p>
+<blockquote>
+<div><p>A weighted matrix.</p>
+</div></blockquote>
+<p><strong>Y</strong> : array-like, shape(N, N)</p>
+<blockquote>
+<div><p>A weighted matrixY</p>
+</div></blockquote>
+<p><strong>k</strong> : int</p>
+<blockquote>
+<div><p>Largest <cite>k</cite> eigenvalues to use.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>distance</strong> : float</p>
+<blockquote class="last">
+<div><p>Estimated distance based on selected largest eigenvalues.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="dyfunconn.graphs.spectral_euclidean_distance">
+<code class="descclassname">dyfunconn.graphs.</code><code class="descname">spectral_euclidean_distance</code><span class="sig-paren">(</span><em>X</em>, <em>Y</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/graphs/spectral_euclidean_distance.html#spectral_euclidean_distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.graphs.spectral_euclidean_distance" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>X</strong> : array-like, shape(N, N)</p>
+<blockquote>
+<div><p>A weighted matrix.</p>
+</div></blockquote>
+<p><strong>Y</strong> : array-like, shape(N, N)</p>
+<blockquote>
+<div><p>A weighted matrix:</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>distance</strong> : float</p>
+<blockquote class="last">
+<div><p>The euclidean distance between the two spectrums.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 </div>
 </div>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -1034,7 +1345,7 @@ fill the diagonal with zeroes. Default <cite>false</cite>.</p>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -1053,6 +1364,7 @@ fill the diagonal with zeroes. Default <cite>false</cite>.</p>
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
             VERSION:'',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -1066,19 +1378,13 @@ fill the diagonal with zeroes. Default <cite>false</cite>.</p>
 
   
 
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

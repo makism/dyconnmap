@@ -24,25 +24,17 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../genindex.html"/>
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="dyfunconn  documentation" href="../index.html"/> 
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -97,7 +89,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">dyfunconn</a>
@@ -105,9 +97,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -135,8 +128,6 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
-        
       </li>
     
   </ul>
@@ -151,6 +142,7 @@
 <ul><li><a href="dyfunconn/analytic_signal.html">dyfunconn.analytic_signal</a></li>
 <li><a href="dyfunconn/cluster/mng.html">dyfunconn.cluster.mng</a></li>
 <li><a href="dyfunconn/cluster/ng.html">dyfunconn.cluster.ng</a></li>
+<li><a href="dyfunconn/cluster/rng.html">dyfunconn.cluster.rng</a></li>
 <li><a href="dyfunconn/cluster/som.html">dyfunconn.cluster.som</a></li>
 <li><a href="dyfunconn/cluster/umatrix.html">dyfunconn.cluster.umatrix</a></li>
 <li><a href="dyfunconn/fc/aec.html">dyfunconn.fc.aec</a></li>
@@ -176,21 +168,27 @@
 <li><a href="dyfunconn/fc/wpli.html">dyfunconn.fc.wpli</a></li>
 <li><a href="dyfunconn/graphs/diffusion_efficiency.html">dyfunconn.graphs.diffusion_efficiency</a></li>
 <li><a href="dyfunconn/graphs/gdd.html">dyfunconn.graphs.gdd</a></li>
+<li><a href="dyfunconn/graphs/imd.html">dyfunconn.graphs.imd</a></li>
 <li><a href="dyfunconn/graphs/mean_first_passage_time.html">dyfunconn.graphs.mean_first_passage_time</a></li>
 <li><a href="dyfunconn/graphs/mi.html">dyfunconn.graphs.mi</a></li>
 <li><a href="dyfunconn/graphs/mpc.html">dyfunconn.graphs.mpc</a></li>
+<li><a href="dyfunconn/graphs/nodal.html">dyfunconn.graphs.nodal</a></li>
 <li><a href="dyfunconn/graphs/rout_efficiency.html">dyfunconn.graphs.rout_efficiency</a></li>
+<li><a href="dyfunconn/graphs/spectral_euclidean_distance.html">dyfunconn.graphs.spectral_euclidean_distance</a></li>
+<li><a href="dyfunconn/graphs/spectral_k_distance.html">dyfunconn.graphs.spectral_k_distance</a></li>
 <li><a href="dyfunconn/graphs/threshold.html">dyfunconn.graphs.threshold</a></li>
 <li><a href="dyfunconn/graphs/vi.html">dyfunconn.graphs.vi</a></li>
 <li><a href="dyfunconn/sim_models/makinen.html">dyfunconn.sim_models.makinen</a></li>
 <li><a href="dyfunconn/sliding_window.html">dyfunconn.sliding_window</a></li>
 <li><a href="dyfunconn/ts/ci.html">dyfunconn.ts.ci</a></li>
+<li><a href="dyfunconn/ts/cv.html">dyfunconn.ts.cv</a></li>
 <li><a href="dyfunconn/ts/dcorr.html">dyfunconn.ts.dcorr</a></li>
 <li><a href="dyfunconn/ts/embed_delay.html">dyfunconn.ts.embed_delay</a></li>
 <li><a href="dyfunconn/ts/entropy.html">dyfunconn.ts.entropy</a></li>
 <li><a href="dyfunconn/ts/fisher_score.html">dyfunconn.ts.fisher_score</a></li>
 <li><a href="dyfunconn/ts/fisher_z.html">dyfunconn.ts.fisher_z</a></li>
 <li><a href="dyfunconn/ts/fnn.html">dyfunconn.ts.fnn</a></li>
+<li><a href="dyfunconn/ts/icc.html">dyfunconn.ts.icc</a></li>
 <li><a href="dyfunconn/ts/markov_matrix.html">dyfunconn.ts.markov_matrix</a></li>
 <li><a href="dyfunconn/ts/ordinal_pattern_similarity.html">dyfunconn.ts.ordinal_pattern_similarity</a></li>
 <li><a href="dyfunconn/ts/permutation_entropy.html">dyfunconn.ts.permutation_entropy</a></li>
@@ -204,9 +202,7 @@
 </ul>
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -219,7 +215,7 @@
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -238,6 +234,7 @@
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
             VERSION:'',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -251,19 +248,13 @@
 
   
 
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

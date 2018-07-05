@@ -24,28 +24,19 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="dyfunconn  documentation" href="index.html"/>
-        <link rel="up" title="dyfunconn package" href="dyfunconn.html"/>
-        <link rel="next" title="dyfunconn.fc package" href="dyfunconn.fc.html"/>
-        <link rel="prev" title="dyfunconn package" href="dyfunconn.html"/> 
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="dyfunconn.fc package" href="dyfunconn.fc.html" />
+    <link rel="prev" title="dyfunconn package" href="dyfunconn.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -125,7 +116,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">dyfunconn</a>
@@ -133,9 +124,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -350,30 +342,30 @@ Neural Gas does not assume a preconstructed lattice thus the adaptation cannot b
 neighbor neurons (like in SOMs) because be definition there are no neighbors.</p>
 <p>The adaptation-convergence is driven by a stochastic gradient function with a soft-max adaptation rule that minimizes the
 average distortion error.</p>
-<p>First, we construct a number of neurons ( <span class="math notranslate">\(N_\vec{w}\)</span> ) with random weights ( <span class="math notranslate">\(\vec{w}\)</span> ).
-Then we train the model by feeding it feature vectors sequentially drawn from the distribution <span class="math notranslate">\(P(t)\)</span>.
-When a new feature vector is presented to the model, we sort all neurons’ weights (<span class="math notranslate">\(N_\vec{w})\)</span> based on their
-Euclidean distance from <span class="math notranslate">\(\vec{x}\)</span>. Then, the adaptation if done by:</p>
-<div class="math notranslate">
+<p>First, we construct a number of neurons ( <span class="math notranslate nohighlight">\(N_\vec{w}\)</span> ) with random weights ( <span class="math notranslate nohighlight">\(\vec{w}\)</span> ).
+Then we train the model by feeding it feature vectors sequentially drawn from the distribution <span class="math notranslate nohighlight">\(P(t)\)</span>.
+When a new feature vector is presented to the model, we sort all neurons’ weights (<span class="math notranslate nohighlight">\(N_\vec{w})\)</span> based on their
+Euclidean distance from <span class="math notranslate nohighlight">\(\vec{x}\)</span>. Then, the adaptation if done by:</p>
+<div class="math notranslate nohighlight">
 \[\vec{w} \leftarrow \vec{w} + [ N_{\vec{w}} \cdot  e(t)) \cdot  h(k)) \cdot  (\vec{x} - \vec{w}) ], \forall \vec{w} \in N_{\vec{w}}\]</div>
 <p>where,</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[ \begin{align}\begin{aligned}h(t)=exp{ \frac{-k}{\sigma^2}(t) }\\\sigma^2 = {\lambda_i(\frac{\lambda_T}{\lambda_0})}^{(\frac{t}{T_{max}})}\\e(t) = {e_i(\frac{e_T}{e_0})}^{(\frac{t}{T_{max}})}\end{aligned}\end{align} \]</div>
-<p>The parameter <span class="math notranslate">\(\lambda\)</span>, governs the initial and final learning rate, while the parameter <span class="math notranslate">\(e\)</span> the training respectively.</p>
-<p>After the presentation of a feature vector, increase the itaration counter <span class="math notranslate">\(t\)</span> and repeat
-until all desired criteria are met, or <span class="math notranslate">\(t = T_{max}\)</span>.</p>
-<p>With these prototypes, we can represent all the input feature vectors <span class="math notranslate">\(\vec{x}\)</span> using a Nearest Neighbor rule.
+<p>The parameter <span class="math notranslate nohighlight">\(\lambda\)</span>, governs the initial and final learning rate, while the parameter <span class="math notranslate nohighlight">\(e\)</span> the training respectively.</p>
+<p>After the presentation of a feature vector, increase the itaration counter <span class="math notranslate nohighlight">\(t\)</span> and repeat
+until all desired criteria are met, or <span class="math notranslate nohighlight">\(t = T_{max}\)</span>.</p>
+<p>With these prototypes, we can represent all the input feature vectors <span class="math notranslate nohighlight">\(\vec{x}\)</span> using a Nearest Neighbor rule.
 The quality of this encoding can measured by the normalized distortion error:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\frac{ \sum_{t=1}^T \left | \left | X(t) - X^\ast(t))  \right | \right |^2 }{ \sum_{t=1}^T \left | \left | X(t) - \overline{X})  \right | \right |^2 }\]</div>
 <p>where</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\overline{X}` = \frac{1}{T} \sum_{t=1}^T{X(t)}\]</div>
-<p><span class="math notranslate">\(T\)</span> is the number of reference prototypes; in <span class="math notranslate">\(X\)</span> the input patterns are stored; <span class="math notranslate">\(X^\ast\)</span> contains
+<p><span class="math notranslate nohighlight">\(T\)</span> is the number of reference prototypes; in <span class="math notranslate nohighlight">\(X\)</span> the input patterns are stored; <span class="math notranslate nohighlight">\(X^\ast\)</span> contains
 the approximated patterns as produced by the Nearest Neighbor rule.</p>
 <div class="section" id="id2">
 <h3>Notes<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<p>For faster convergence, we can also draw random weights from the given probability distribution <span class="math notranslate">\(P(t)\)</span></p>
+<p>For faster convergence, we can also draw random weights from the given probability distribution <span class="math notranslate nohighlight">\(P(t)\)</span></p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -392,7 +384,7 @@ the approximated patterns as produced by the Nearest Neighbor rule.</p>
 </table>
 <dl class="class">
 <dt id="dyfunconn.cluster.ng.NeuralGas">
-<em class="property">class </em><code class="descclassname">dyfunconn.cluster.ng.</code><code class="descname">NeuralGas</code><span class="sig-paren">(</span><em>n_protos=10, iterations=1024, epsilon=[10, 0.001], lrate=[0.5, 0.005], n_jobs=1, rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/ng.html#NeuralGas"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.ng.NeuralGas" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">dyfunconn.cluster.ng.</code><code class="descname">NeuralGas</code><span class="sig-paren">(</span><em>n_protos=10, iterations=1024, epsilon=[10, 0.001], lrate=[0.5, 0.005], n_jobs=1, metric='euclidean', rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/ng.html#NeuralGas"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.ng.NeuralGas" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Neural Gas</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -418,6 +410,19 @@ the approximated patterns as produced by the Nearest Neighbor rule.</p>
 <p><strong>n_jobs</strong> : int</p>
 <blockquote>
 <div><p>Number of parallel jobs (will be passed to scikit-learn))</p>
+</div></blockquote>
+<p><strong>metric</strong> : string</p>
+<blockquote>
+<div><p>One of the following valid options as defined for function <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.pairwise_distances.html">http://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.pairwise_distances.html</a>.</p>
+<p>Valid options include:</p>
+<blockquote>
+<div><ul class="simple">
+<li>euclidean</li>
+<li>cityblock</li>
+<li>l1</li>
+<li>cosine</li>
+</ul>
+</div></blockquote>
 </div></blockquote>
 <p><strong>rng</strong> : object or None</p>
 <blockquote>
@@ -456,7 +461,7 @@ the approximated patterns as produced by the Nearest Neighbor rule.</p>
 </table>
 <dl class="method">
 <dt id="dyfunconn.cluster.ng.NeuralGas.encode">
-<code class="descname">encode</code><span class="sig-paren">(</span><em>data</em>, <em>metric='euclidean'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/ng.html#NeuralGas.encode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.ng.NeuralGas.encode" title="Permalink to this definition">¶</a></dt>
+<code class="descname">encode</code><span class="sig-paren">(</span><em>data</em>, <em>metric=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/ng.html#NeuralGas.encode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.ng.NeuralGas.encode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Employ a nearest-neighbor rule to encode the given <code class="docutils literal notranslate"><span class="pre">data</span></code> using the codebook.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -466,7 +471,7 @@ the approximated patterns as produced by the Nearest Neighbor rule.</p>
 <blockquote>
 <div><p>Data matrix, each row represents a sample.</p>
 </div></blockquote>
-<p><strong>metric</strong> : string</p>
+<p><strong>metric</strong> : string or None</p>
 <blockquote>
 <div><p>One of the following valid options as defined for function <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.pairwise_distances.html">http://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.pairwise_distances.html</a>.</p>
 <p>Valid options include:</p>
@@ -477,6 +482,7 @@ the approximated patterns as produced by the Nearest Neighbor rule.</p>
 <li>l1</li>
 <li>cosine</li>
 </ul>
+<p>If <cite>None</cite> is passed, the matric used for learning the data will be used.</p>
 </div></blockquote>
 </div></blockquote>
 </td>
@@ -525,15 +531,169 @@ the approximated patterns as produced by the Nearest Neighbor rule.</p>
 </div>
 <div class="section" id="module-dyfunconn.cluster.rng">
 <span id="dyfunconn-cluster-rng-module"></span><h2>dyfunconn.cluster.rng module<a class="headerlink" href="#module-dyfunconn.cluster.rng" title="Permalink to this headline">¶</a></h2>
+<p>Relational Neural Gas</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<hr class="docutils" />
+<table class="docutils citation" frame="void" id="hasenfuss2008" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Hasenfuss2008]</td><td>Hasenfuss, A., Hammer, B., &amp; Rossi, F. (2008, July). Patch Relational Neural Gas–Clustering of Huge Dissimilarity Datasets. In IAPR Workshop on Artificial Neural Networks in Pattern Recognition (pp. 1-12). Springer, Berlin, Heidelberg.</td></tr>
+</tbody>
+</table>
+<dl class="class">
+<dt id="dyfunconn.cluster.rng.RelationalNeuralGas">
+<em class="property">class </em><code class="descclassname">dyfunconn.cluster.rng.</code><code class="descname">RelationalNeuralGas</code><span class="sig-paren">(</span><em>n_protos=10, iterations=100, lrate=[0.3, 0.01], metric='euclidean', rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/rng.html#RelationalNeuralGas"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.rng.RelationalNeuralGas" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Relational Neural Gas</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>n_protos</strong> : int</p>
+<blockquote>
+<div><p>The number of prototypes</p>
+</div></blockquote>
+<p><strong>iterations</strong> : int</p>
+<blockquote>
+<div><p>The maximum iterations</p>
+</div></blockquote>
+<p><strong>lrate</strong> : list of length 2</p>
+<blockquote>
+<div><p>The initial and final rearning rates</p>
+</div></blockquote>
+<p><strong>n_jobs</strong> : int</p>
+<blockquote>
+<div><p>Number of parallel jobs (will be passed to scikit-learn))</p>
+</div></blockquote>
+<p><strong>metric</strong> : string</p>
+<blockquote>
+<div><p>One of the following valid options as defined for function <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.pairwise_distances.html">http://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.pairwise_distances.html</a>.</p>
+<p>Valid options include:</p>
+<blockquote>
+<div><ul class="simple">
+<li>euclidean</li>
+<li>cityblock</li>
+<li>l1</li>
+<li>cosine</li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<p><strong>rng</strong> : object or None</p>
+<blockquote>
+<div><p>An object of type numpy.random.RandomState</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Attributes:</th><td class="field-body"><p class="first"><strong>protos</strong> : array-like, shape(n_protos, n_features)</p>
+<blockquote class="last">
+<div><p>The prototypical vectors</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.cluster.rng.RelationalNeuralGas.encode" title="dyfunconn.cluster.rng.RelationalNeuralGas.encode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encode</span></code></a>(data[,&nbsp;metric])</td>
+<td>Employ a nearest-neighbor rule to encode the given <code class="docutils literal notranslate"><span class="pre">data</span></code> using the codebook.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.cluster.rng.RelationalNeuralGas.fit" title="dyfunconn.cluster.rng.RelationalNeuralGas.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a>(data)</td>
+<td>Fit</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="dyfunconn.cluster.rng.RelationalNeuralGas.encode">
+<code class="descname">encode</code><span class="sig-paren">(</span><em>data</em>, <em>metric=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/rng.html#RelationalNeuralGas.encode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.rng.RelationalNeuralGas.encode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Employ a nearest-neighbor rule to encode the given <code class="docutils literal notranslate"><span class="pre">data</span></code> using the codebook.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : real array-like, shape(n_samples, n_features)</p>
+<blockquote>
+<div><p>Data matrix, each row represents a sample.</p>
+</div></blockquote>
+<p><strong>metric</strong> : string or None</p>
+<blockquote>
+<div><p>One of the following valid options as defined for function <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.pairwise_distances.html">http://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.pairwise_distances.html</a>.</p>
+<p>Valid options include:</p>
+<blockquote>
+<div><ul class="simple">
+<li>euclidean</li>
+<li>cityblock</li>
+<li>l1</li>
+<li>cosine</li>
+</ul>
+<p>If <cite>None</cite> is passed, the matric used for learning the data will be used.</p>
+</div></blockquote>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>encoded_data</strong> : real array-like, shape(n_samples, n_features)</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">data</span></code>, as represented by the prototypes in codebook.</p>
+</div></blockquote>
+<p><strong>ts_symbols</strong> : list, shape(n_samples, 1)</p>
+<blockquote class="last">
+<div><p>A discrete symbolic time series</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dyfunconn.cluster.rng.RelationalNeuralGas.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/rng.html#RelationalNeuralGas.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.rng.RelationalNeuralGas.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : real array-like, shape(n_samples, n_features)</p>
+<blockquote>
+<div><p>Data matrix, each row represents a sample.</p>
+</div></blockquote>
+<p><strong>metric</strong> : string or None</p>
+<blockquote class="last">
+<div><p>One of the following valid options as defined for function <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.pairwise_distances.html">http://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.pairwise_distances.html</a>.</p>
+<p>Valid options include:</p>
+<blockquote>
+<div><ul class="simple">
+<li>euclidean</li>
+<li>cityblock</li>
+<li>l1</li>
+<li>cosine</li>
+</ul>
+<p>If <cite>None</cite> is passed, the matric used for learning the data will be used</p>
+</div></blockquote>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 <div class="section" id="module-dyfunconn.cluster.som">
 <span id="dyfunconn-cluster-som-module"></span><h2>dyfunconn.cluster.som module<a class="headerlink" href="#module-dyfunconn.cluster.som" title="Permalink to this headline">¶</a></h2>
 <p>Self Organizing Map</p>
-<p><span class="math notranslate">\(T\)</span> is the number of reference prototypes; in <span class="math notranslate">\(X\)</span> the input patterns are stored; <span class="math notranslate">\(X^\ast\)</span> contains
+<p><span class="math notranslate nohighlight">\(T\)</span> is the number of reference prototypes; in <span class="math notranslate nohighlight">\(X\)</span> the input patterns are stored; <span class="math notranslate nohighlight">\(X^\ast\)</span> contains
 the approximated patterns as produced by the Nearest Neighbor rule.</p>
 <div class="section" id="id3">
 <h3>Notes<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-<p>For faster convergence, we can also draw random weights from the given probability distribution <span class="math notranslate">\(P(t)\)</span></p>
+<p>For faster convergence, we can also draw random weights from the given probability distribution <span class="math notranslate nohighlight">\(P(t)\)</span></p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
@@ -669,7 +829,7 @@ the approximated patterns as produced by the Nearest Neighbor rule.</p>
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-dyfunconn.cluster" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="dyfunconn.cluster.NeuralGas">
-<em class="property">class </em><code class="descclassname">dyfunconn.cluster.</code><code class="descname">NeuralGas</code><span class="sig-paren">(</span><em>n_protos=10, iterations=1024, epsilon=[10, 0.001], lrate=[0.5, 0.005], n_jobs=1, rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/ng.html#NeuralGas"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.NeuralGas" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">dyfunconn.cluster.</code><code class="descname">NeuralGas</code><span class="sig-paren">(</span><em>n_protos=10, iterations=1024, epsilon=[10, 0.001], lrate=[0.5, 0.005], n_jobs=1, metric='euclidean', rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/ng.html#NeuralGas"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.NeuralGas" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Neural Gas</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -695,6 +855,19 @@ the approximated patterns as produced by the Nearest Neighbor rule.</p>
 <p><strong>n_jobs</strong> : int</p>
 <blockquote>
 <div><p>Number of parallel jobs (will be passed to scikit-learn))</p>
+</div></blockquote>
+<p><strong>metric</strong> : string</p>
+<blockquote>
+<div><p>One of the following valid options as defined for function <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.pairwise_distances.html">http://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.pairwise_distances.html</a>.</p>
+<p>Valid options include:</p>
+<blockquote>
+<div><ul class="simple">
+<li>euclidean</li>
+<li>cityblock</li>
+<li>l1</li>
+<li>cosine</li>
+</ul>
+</div></blockquote>
 </div></blockquote>
 <p><strong>rng</strong> : object or None</p>
 <blockquote>
@@ -733,7 +906,7 @@ the approximated patterns as produced by the Nearest Neighbor rule.</p>
 </table>
 <dl class="method">
 <dt id="dyfunconn.cluster.NeuralGas.encode">
-<code class="descname">encode</code><span class="sig-paren">(</span><em>data</em>, <em>metric='euclidean'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/ng.html#NeuralGas.encode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.NeuralGas.encode" title="Permalink to this definition">¶</a></dt>
+<code class="descname">encode</code><span class="sig-paren">(</span><em>data</em>, <em>metric=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/ng.html#NeuralGas.encode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.NeuralGas.encode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Employ a nearest-neighbor rule to encode the given <code class="docutils literal notranslate"><span class="pre">data</span></code> using the codebook.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -743,7 +916,7 @@ the approximated patterns as produced by the Nearest Neighbor rule.</p>
 <blockquote>
 <div><p>Data matrix, each row represents a sample.</p>
 </div></blockquote>
-<p><strong>metric</strong> : string</p>
+<p><strong>metric</strong> : string or None</p>
 <blockquote>
 <div><p>One of the following valid options as defined for function <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.pairwise_distances.html">http://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.pairwise_distances.html</a>.</p>
 <p>Valid options include:</p>
@@ -754,6 +927,7 @@ the approximated patterns as produced by the Nearest Neighbor rule.</p>
 <li>l1</li>
 <li>cosine</li>
 </ul>
+<p>If <cite>None</cite> is passed, the matric used for learning the data will be used.</p>
 </div></blockquote>
 </div></blockquote>
 </td>
@@ -940,6 +1114,149 @@ the approximated patterns as produced by the Nearest Neighbor rule.</p>
 </dd></dl>
 
 <dl class="class">
+<dt id="dyfunconn.cluster.RelationalNeuralGas">
+<em class="property">class </em><code class="descclassname">dyfunconn.cluster.</code><code class="descname">RelationalNeuralGas</code><span class="sig-paren">(</span><em>n_protos=10, iterations=100, lrate=[0.3, 0.01], metric='euclidean', rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/rng.html#RelationalNeuralGas"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.RelationalNeuralGas" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Relational Neural Gas</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>n_protos</strong> : int</p>
+<blockquote>
+<div><p>The number of prototypes</p>
+</div></blockquote>
+<p><strong>iterations</strong> : int</p>
+<blockquote>
+<div><p>The maximum iterations</p>
+</div></blockquote>
+<p><strong>lrate</strong> : list of length 2</p>
+<blockquote>
+<div><p>The initial and final rearning rates</p>
+</div></blockquote>
+<p><strong>n_jobs</strong> : int</p>
+<blockquote>
+<div><p>Number of parallel jobs (will be passed to scikit-learn))</p>
+</div></blockquote>
+<p><strong>metric</strong> : string</p>
+<blockquote>
+<div><p>One of the following valid options as defined for function <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.pairwise_distances.html">http://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.pairwise_distances.html</a>.</p>
+<p>Valid options include:</p>
+<blockquote>
+<div><ul class="simple">
+<li>euclidean</li>
+<li>cityblock</li>
+<li>l1</li>
+<li>cosine</li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<p><strong>rng</strong> : object or None</p>
+<blockquote>
+<div><p>An object of type numpy.random.RandomState</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Attributes:</th><td class="field-body"><p class="first"><strong>protos</strong> : array-like, shape(n_protos, n_features)</p>
+<blockquote class="last">
+<div><p>The prototypical vectors</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Methods</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.cluster.RelationalNeuralGas.encode" title="dyfunconn.cluster.RelationalNeuralGas.encode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encode</span></code></a>(data[,&nbsp;metric])</td>
+<td>Employ a nearest-neighbor rule to encode the given <code class="docutils literal notranslate"><span class="pre">data</span></code> using the codebook.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.cluster.RelationalNeuralGas.fit" title="dyfunconn.cluster.RelationalNeuralGas.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a>(data)</td>
+<td>Fit</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="dyfunconn.cluster.RelationalNeuralGas.encode">
+<code class="descname">encode</code><span class="sig-paren">(</span><em>data</em>, <em>metric=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/rng.html#RelationalNeuralGas.encode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.RelationalNeuralGas.encode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Employ a nearest-neighbor rule to encode the given <code class="docutils literal notranslate"><span class="pre">data</span></code> using the codebook.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : real array-like, shape(n_samples, n_features)</p>
+<blockquote>
+<div><p>Data matrix, each row represents a sample.</p>
+</div></blockquote>
+<p><strong>metric</strong> : string or None</p>
+<blockquote>
+<div><p>One of the following valid options as defined for function <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.pairwise_distances.html">http://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.pairwise_distances.html</a>.</p>
+<p>Valid options include:</p>
+<blockquote>
+<div><ul class="simple">
+<li>euclidean</li>
+<li>cityblock</li>
+<li>l1</li>
+<li>cosine</li>
+</ul>
+<p>If <cite>None</cite> is passed, the matric used for learning the data will be used.</p>
+</div></blockquote>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>encoded_data</strong> : real array-like, shape(n_samples, n_features)</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">data</span></code>, as represented by the prototypes in codebook.</p>
+</div></blockquote>
+<p><strong>ts_symbols</strong> : list, shape(n_samples, 1)</p>
+<blockquote class="last">
+<div><p>A discrete symbolic time series</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="dyfunconn.cluster.RelationalNeuralGas.fit">
+<code class="descname">fit</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/rng.html#RelationalNeuralGas.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.RelationalNeuralGas.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fit</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : real array-like, shape(n_samples, n_features)</p>
+<blockquote>
+<div><p>Data matrix, each row represents a sample.</p>
+</div></blockquote>
+<p><strong>metric</strong> : string or None</p>
+<blockquote class="last">
+<div><p>One of the following valid options as defined for function <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.pairwise_distances.html">http://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.pairwise_distances.html</a>.</p>
+<p>Valid options include:</p>
+<blockquote>
+<div><ul class="simple">
+<li>euclidean</li>
+<li>cityblock</li>
+<li>l1</li>
+<li>cosine</li>
+</ul>
+<p>If <cite>None</cite> is passed, the matric used for learning the data will be used</p>
+</div></blockquote>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
 <dt id="dyfunconn.cluster.SOM">
 <em class="property">class </em><code class="descclassname">dyfunconn.cluster.</code><code class="descname">SOM</code><span class="sig-paren">(</span><em>grid=(10</em>, <em>10)</em>, <em>iterations=1024</em>, <em>lrate=0.1</em>, <em>n_jobs=1</em>, <em>rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/som.html#SOM"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.SOM" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
@@ -1059,9 +1376,7 @@ the approximated patterns as produced by the Nearest Neighbor rule.</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -1083,7 +1398,7 @@ the approximated patterns as produced by the Nearest Neighbor rule.</p>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -1102,6 +1417,7 @@ the approximated patterns as produced by the Nearest Neighbor rule.</p>
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
             VERSION:'',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -1115,19 +1431,13 @@ the approximated patterns as produced by the Nearest Neighbor rule.</p>
 
   
 
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>
