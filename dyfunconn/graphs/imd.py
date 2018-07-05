@@ -28,9 +28,6 @@ The spectral distance between two graphs :math:`G` and :math:`H` with densities 
 
 import numpy as np
 import scipy
-from scipy import sparse
-from scipy.sparse import linalg
-from scipy import integrate
 from scipy.integrate import quad
 
 

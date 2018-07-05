@@ -27,10 +27,6 @@ inequality.
 
 import numpy as np
 import scipy
-from scipy import sparse
-from scipy.sparse import linalg
-from scipy import integrate
-from scipy.integrate import quad
 
 
 def spectral_k_distance(X, Y, k):
