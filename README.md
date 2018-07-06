@@ -18,11 +18,14 @@ Built on [NumPy](http://www.numpy.org/), [SciPy](http://www.scipy.org/), [matplo
 
 #### Resources
 
+* [Installation](https://github.com/makism/dyfunconn/blob/master/INSTALL.md)
+
 * [Documenation](http://dyfunconn.readthedocs.io/?badge=latest)
 
 * [Tutorials](https://github.com/makism/dyfunconn/tree/master/tutorials)
 
 * [Examples](https://github.com/makism/dyfunconn/tree/master/examples)
+
 
 ---
 
