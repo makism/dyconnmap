@@ -11,7 +11,8 @@ from dyfunconn.graphs import (threshold_mean_degree,
                               threshold_shortest_paths,
                               k_core_decomposition,
                               threshold_global_cost_efficiency,
-                              threshold_omst_global_cost_efficiency)
+                              threshold_omst_global_cost_efficiency,
+                              threshold_eco)
 
 
 def test_graphs_threshold_mean_degree():
@@ -68,3 +69,15 @@ def test_graphs_threshold_omst_global_cost_efficiency():
     _, CIJtree, _, _, _, _, _, _ = threshold_omst_global_cost_efficiency(graph)
 
     np.testing.assert_array_equal(expected, CIJtree)
+
+
+def test_graphs_threshold_eco():
+    graph = np.load('data/test_graphs_threshold_graph2.npy')
+
+    filterted, binary, _ = threshold_eco(graph)
+
+    expected = np.load('data/test_graphs_threshold_eco_filtered.npy')
+    np.testing.assert_array_equal(expected, filterted)
+
+    expected = np.load('data/test_graphs_threshold_eco_binary.npy')
+    np.testing.assert_array_equal(expected, binary)

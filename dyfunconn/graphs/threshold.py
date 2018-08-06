@@ -508,3 +508,41 @@ def threshold_omst_global_cost_efficiency(mtx):
 
     # return nCIJtree, CIJtree, degree, global_eff, global_cost_eff_max, cost_max
     return nCIJtree, CIJtree, degree, global_eff, global_cost_eff_max, cost_max,cost,global_cost_eff
+
+
+def threshold_eco(mtx):
+    """ Ecological Filtering
+
+    .. [Fallani2017] Fallani, F. D. V., Latora, V., & Chavez, M. (2017). A topological criterion for filtering information in complex brain networks. PLoS computational biology, 13(1), e1005305.
+
+    """
+    m, n = np.shape(mtx)
+
+    bin_mtx = np.zeros_like(mtx)
+    eco_mtx = np.zeros_like(mtx)
+
+    A = np.triu(mtx)
+    eco_conns = np.int32(np.ceil(1.5 * m))
+
+    ind = np.where(A)
+
+    ind_vals = np.zeros((len(ind[0]), 3))
+    ind_vals[:, 0] = ind[0]
+    ind_vals[:, 1] = ind[1]
+    ind_vals[:, 2] = A[ind[0], ind[1]]
+
+    sort_ind_vals = ind_vals[ind_vals[:, 2].argsort()[::-1]]
+
+    for i in range(eco_conns):
+        row = sort_ind_vals[i]
+        x = np.int32(row[0])
+        y = np.int32(row[1])
+        v = row[2]
+
+        bin_mtx[x, y] = 1
+        bin_mtx[y, x] = 1
+
+        eco_mtx[x, y] = v
+        eco_mtx[y, x] = v
+
+    return bin_mtx, eco_mtx, eco_conns

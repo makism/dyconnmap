@@ -13,7 +13,8 @@ from .threshold import (threshold_mean_degree,
                         threshold_shortest_paths,
                         k_core_decomposition,
                         threshold_global_cost_efficiency,
-                        threshold_omst_global_cost_efficiency)
+                        threshold_omst_global_cost_efficiency,
+                        threshold_eco)
 from .nodal import nodal_global_efficiency
 
 
@@ -24,5 +25,6 @@ __all__ = ['graph_diffusion_distance',
            'threshold_shortest_paths',
            'k_core_decomposition',
            'threshold_global_cost_efficiency', 'threshold_omst_global_cost_efficiency',
+           'threshold_eco',
            'nodal_global_efficiency'
            ]
