@@ -6,10 +6,9 @@
 """
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
+import numpy as np
 from .estimator import Estimator
 from ..analytic_signal import analytic_signal
-
-import numpy as np
 
 
 def corr(data, fb, fs, pairs=None):
@@ -73,7 +72,7 @@ class Corr(Estimator):
 
         return filtered
 
-    def estimate_pair(self, ts1, ts2):
+    def estimate_pair(self, signal1, signal2):
         """
 
         Returns
@@ -91,14 +90,14 @@ class Corr(Estimator):
         """
         # n_samples = len(ts1)
 
-        r = np.corrcoef(ts1, ts2)[0, 1]
+        r = np.corrcoef(signal1, signal2)[0, 1]
 
         return r, None
 
     def mean(self, value):
         return value
 
-    def estimate(self, data):
+    def estimate(self, data, data_against=None):
         """
 
 
@@ -112,7 +111,7 @@ class Corr(Estimator):
         -----
         Called from :mod:`dyfunconn.tvfcgs.tvfcg`.
         """
-        n_channels, n_samples = np.shape(data)
+        n_channels, _ = np.shape(data)
 
         r = np.zeros((n_channels, n_channels), dtype=self.data_type)
 

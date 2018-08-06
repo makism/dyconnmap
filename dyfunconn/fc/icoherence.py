@@ -96,7 +96,7 @@ class ICoherence(Estimator):
         self.fs = fs
 
     def preprocess(self, data):
-        n_channels, n_samples = np.shape(data)
+        n_channels, _ = np.shape(data)
 
         filtered, _, _ = analytic_signal(data, self.fb, self.fs)
 
@@ -141,5 +141,5 @@ class ICoherence(Estimator):
 
         return icoh, 0.0
 
-    def estimate(self, data):
+    def estimate(self, data, data_against=None):
         return None

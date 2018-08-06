@@ -1,20 +1,25 @@
 # -*- coding: utf-8 -*-
 """ Phase Lag Index
 
-Phase Lag Index (*PLI*) [Stam2007_], proposed  as an alternative (to PLV) phase synchronization estimator that is less prone to the effects
-of common sources (namely, volume conduction and active reference electrodes). These effects can artificially generate
-functional connectivity as the same signal signal is measured at different electrodes [Hardmeier2014_].
+Phase Lag Index (*PLI*) [Stam2007_], proposed  as an alternative (to PLV) phase
+synchronization estimator that is less prone to the effects of common sources
+(namely, volume conduction and active reference electrodes). These effects can
+artificially generate functional connectivity as the same signal signal is
+measured at different electrodes [Hardmeier2014_].
 
 PLI estimates the asymmetry in the distribution of two time series' instantaneous phase differences.
 
-Given two time series of equal length :math:`x(t)` and :math:`y(t)`, we extract their respective instantaneous phases
-:math:`\phi_x(t)` and :math:`\phi_y(t)` using the Hilbert transform (consult :py:mod:`dyfunconn.analytic_signal` for more details).
+Given two time series of equal length :math:`x(t)` and :math:`y(t)`, we extract
+their respective instantaneous phases :math:`\phi_x(t)` and :math:`\phi_y(t)`
+using the Hilbert transform (consult :py:mod:`dyfunconn.analytic_signal` for
+more details).
 Then, for such a pair of phases, PLI is computed as follows:
 
 .. math::
     PLI = | \\left \\langle sign [ sin ( \\phi_x(t) - \\phi_y(t) ) ] \\right \\rangle |
 
-Where, :math:`sign` refers to the signum function, \\left \\langle \\right \\rangle denotes the mean value and || the absolute value.
+Where, :math:`sign` refers to the signum function, \\left \\langle \\right \\rangle
+denotes the mean value and || the absolute value.
 
 |
 
@@ -26,10 +31,9 @@ Where, :math:`sign` refers to the signum function, \\left \\langle \\right \\ran
 """
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
+import numpy as np
 from .estimator import Estimator
 from ..analytic_signal import analytic_signal
-
-import numpy as np
 
 
 def pli(data, fb, fs, pairs=None):
@@ -68,10 +72,10 @@ def pli(data, fb, fs, pairs=None):
     --------
     dyfunconn.fc.PLI: Phase Lag Index
     """
-    pli = PLI(fb, fs, pairs)
-    pp_data = pli.preprocess(data)
+    estimator = PLI(fb, fs, pairs)
+    pp_data = estimator.preprocess(data)
 
-    return pli.estimate(pp_data)
+    return estimator.estimate(pp_data)
 
 
 class PLI(Estimator):
@@ -100,7 +104,7 @@ class PLI(Estimator):
 
         return ts_pli, avg_pli
 
-    def estimate(self, data):
+    def estimate(self, data, data_against=None):
         n_channels, n_samples = np.shape(data)
 
         if self.pairs is None:

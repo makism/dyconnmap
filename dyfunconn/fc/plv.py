@@ -69,10 +69,10 @@ def plv(data, fb, fs, pairs=None):
     dyfunconn.fc.iplv: Imaginary part of PLV
     dyfunconn.fc.pli: Phase Lag Index
     """
-    plv = PLV(fb, fs, pairs)
-    pp_data = plv.preprocess(data)
+    estimator = PLV(fb, fs, pairs)
+    pp_data = estimator.preprocess(data)
 
-    return plv.estimate(pp_data)
+    return estimator.estimate(pp_data)
 
 
 class PLV(Estimator):
@@ -97,7 +97,7 @@ class PLV(Estimator):
 
         return u_phases
 
-    def estimate_pair(self, ts1, ts2):
+    def estimate_pair(self, signal1, signal2):
         """
 
         Returns
@@ -113,9 +113,9 @@ class PLV(Estimator):
         -----
         Called from :mod:`dyfunconn.tvfcgs.tvfcg`.
         """
-        n_samples = len(ts1)
+        n_samples = len(signal1)
 
-        ts_plv = np.exp(1j * (ts1 - ts2))
+        ts_plv = np.exp(1j * (signal1 - signal2))
         avg_plv = np.abs(np.sum((ts_plv))) / float(n_samples)
 
         return ts_plv, avg_plv
@@ -124,7 +124,7 @@ class PLV(Estimator):
         l = float(np.shape(ts)[0])
         return np.abs(np.sum(ts)) / l
 
-    def estimate(self, data):
+    def estimate(self, data, data_against=None):
         """
 
 
