@@ -72,7 +72,7 @@ def coherence(data, fb, fs, pairs=None, **kwargs):
     dyfunconn.fc.Coherece: Coherece (Class Estimator)
     dyfunconn.fc.icoherence: Imaginary Coherence
     """
-    n_channels, n_samples = np.shape(data)
+    n_channels, _ = np.shape(data)
     filtered, _, _ = analytic_signal(data, fb, fs)
 
     if pairs is None:
@@ -84,11 +84,11 @@ def coherence(data, fb, fs, pairs=None, **kwargs):
     for pair in pairs:
         filt1, filt2 = filtered[pair, ]
 
-        csdxx, fxx = mlab.csd(x=filt1, y=filt1, Fs=fs,
+        csdxx, _ = mlab.csd(x=filt1, y=filt1, Fs=fs,
                             scale_by_freq=True, sides='onesided', **kwargs)
-        csdyy, fyy = mlab.csd(x=filt2, y=filt2, Fs=fs,
+        csdyy, _ = mlab.csd(x=filt2, y=filt2, Fs=fs,
                             scale_by_freq=True, sides='onesided', **kwargs)
-        csdxy, fxy = mlab.csd(x=filt1, y=filt2, Fs=fs,
+        csdxy, _ = mlab.csd(x=filt1, y=filt2, Fs=fs,
                             scale_by_freq=True, sides='onesided', **kwargs)
 
         cohv = np.abs(csdxy * np.conj(csdxy)) / (csdxx * csdyy)

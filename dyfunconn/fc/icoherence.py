@@ -54,7 +54,7 @@ def icoherence(data, fb, fs, pairs=None, **kwargs):
     --------
     dyfunconn.fc.coherence: Coherence
     """
-    n_channels, n_samples = np.shape(data)
+    n_channels, _ = np.shape(data)
     filtered, _, _ = analytic_signal(data, fb, fs)
 
     if pairs is None:

@@ -57,7 +57,7 @@ def rho_index(data, n_bins, fb, fs, pairs=None):
     rho : array-likem, shape(n_channels, n_channels)
         Estimated rho index.
     """
-    n_channels, n_samples = np.shape(data)
+    n_channels, _ = np.shape(data)
 
     _, _, u_phases = analytic_signal(data, fb, fs=128, order=3)
 
@@ -72,7 +72,7 @@ def rho_index(data, n_bins, fb, fs, pairs=None):
 
         du = (u_phase1 - u_phase2) % (2.0 * np.pi)
 
-        hist, bins = np.histogram(du, n_bins)
+        hist, _ = np.histogram(du, n_bins)
         n_hist = hist / float(np.sum(hist))
 
         Smax = np.log(n_bins)

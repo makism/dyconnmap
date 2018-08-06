@@ -44,8 +44,6 @@ def corr(data, fb, fs, pairs=None):
     --------
     dyfunconn.fc.Corr: Correlation (Class Estimator)
     """
-    # n_channels, n_samples = np.shape(data)
-    _, n_samples = np.shape(data)
     filtered, _, _ = analytic_signal(data, fb, fs)
 
     r = np.corrcoef(filtered[:])
