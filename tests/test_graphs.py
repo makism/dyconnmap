@@ -7,7 +7,10 @@ from numpy import testing
 from dyfunconn.graphs import (graph_diffusion_distance,
                               variation_information,
                               mutual_information,
-                              nodal_global_efficiency)
+                              nodal_global_efficiency,
+                              im_distance,
+                              spectral_euclidean_distance,
+                              spectral_k_distance)
 
 
 def test_graph_diffusion_distance():
@@ -53,3 +56,36 @@ def test_nodal_global_efficiency():
     nodal_ge = nodal_global_efficiency(inv_mtx)
 
     np.testing.assert_array_equal(nodal_ge, result)
+
+
+def test_im_distance():
+    X = np.load('data/test_graphs_spectral_mtx1_10x10.npy')
+    Y = np.load('data/test_graphs_spectral_mtx2_10x10.npy')
+
+    result = im_distance(X, Y, bandwidth=1.0)
+
+    np.testing.assert_almost_equal(result, 0.02694184095918512)
+
+
+def test_im_distance2():
+    X = np.load('data/test_graphs_spectral_mtx1_10x10.npy')
+    Y = np.load('data/test_graphs_spectral_mtx2_10x10.npy')
+
+    result = im_distance(X, Y, bandwidth=0.1)
+    np.testing.assert_almost_equal(result, 0.3210282386813861)
+
+
+def test_spectral_k_distance():
+    X = np.load('data/test_graphs_spectral_mtx1_10x10.npy')
+    Y = np.load('data/test_graphs_spectral_mtx2_10x10.npy')
+
+    result = spectral_k_distance(X, Y, k=4)
+    np.testing.assert_almost_equal(result, 0.041686646880904045)
+
+
+def test_spectral_euclidean_distance():
+    X = np.load('data/test_graphs_spectral_mtx1_10x10.npy')
+    Y = np.load('data/test_graphs_spectral_mtx2_10x10.npy')
+
+    result = spectral_euclidean_distance(X, Y)
+    np.testing.assert_almost_equal(result, 0.5364200234417833)

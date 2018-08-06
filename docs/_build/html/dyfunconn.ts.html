@@ -24,27 +24,18 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="genindex.html"/>
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="dyfunconn  documentation" href="index.html"/>
-        <link rel="up" title="dyfunconn package" href="dyfunconn.html"/>
-        <link rel="prev" title="dyfunconn.sim_models package" href="dyfunconn.sim_models.html"/> 
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="dyfunconn.sim_models package" href="dyfunconn.sim_models.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -96,12 +87,14 @@
 <li class="toctree-l3 current"><a class="current reference internal" href="#">dyfunconn.ts package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.ts.ci">dyfunconn.ts.ci module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.ts.cv">dyfunconn.ts.cv module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.ts.dcorr">dyfunconn.ts.dcorr module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.ts.embed_delay">dyfunconn.ts.embed_delay module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.ts.entropy">dyfunconn.ts.entropy module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.ts.fisher_score">dyfunconn.ts.fisher_score module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.ts.fisher_z">dyfunconn.ts.fisher_z module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.ts.fnn">dyfunconn.ts.fnn module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.ts.icc">dyfunconn.ts.icc module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.ts.markov_matrix">dyfunconn.ts.markov_matrix module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.ts.ordinal_pattern_similarity">dyfunconn.ts.ordinal_pattern_similarity module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.ts.permutation_entropy">dyfunconn.ts.permutation_entropy module</a></li>
@@ -135,7 +128,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">dyfunconn</a>
@@ -143,9 +136,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -270,6 +264,30 @@ of the input symbolic time series.</p>
 
 </div>
 </div>
+<div class="section" id="module-dyfunconn.ts.cv">
+<span id="dyfunconn-ts-cv-module"></span><h2>dyfunconn.ts.cv module<a class="headerlink" href="#module-dyfunconn.ts.cv" title="Permalink to this headline">¶</a></h2>
+<p>Coefficient of Variation</p>
+<dl class="function">
+<dt id="dyfunconn.ts.cv.cv">
+<code class="descclassname">dyfunconn.ts.cv.</code><code class="descname">cv</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/cv.html#cv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.cv.cv" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>X :</strong> :</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>cv</strong> : float</p>
+<blockquote class="last">
+<div><p>The computed coefficient of variation.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
 <div class="section" id="module-dyfunconn.ts.dcorr">
 <span id="dyfunconn-ts-dcorr-module"></span><h2>dyfunconn.ts.dcorr module<a class="headerlink" href="#module-dyfunconn.ts.dcorr" title="Permalink to this headline">¶</a></h2>
 <p>Distance Correlation</p>
@@ -307,8 +325,8 @@ hem as time delay vectors in phase space. This new reconstruction, describes the
 tmporal evolution of a system in a state space; a trajectory of interchanging states.
 The need for this state space, stems from the fact that the original system may
 contain latent and unobserved variables that we would like to expose. Thus, we
-construct <span class="math notranslate">\(m\)</span>-dimensional phase vectors from <span class="math notranslate">\(\tau\)</span>-time delayed samples (<a href="#id28"><span class="problematic" id="id29">Takens1981_</span></a>):</p>
-<div class="math notranslate">
+construct <span class="math notranslate nohighlight">\(m\)</span>-dimensional phase vectors from <span class="math notranslate nohighlight">\(\tau\)</span>-time delayed samples (<a href="#id31"><span class="problematic" id="id32">Takens1981_</span></a>):</p>
+<div class="math notranslate nohighlight">
 \[s_n = (s_(n-(m-1)τ),s_(n-(m-2)) τ, …, s_n)\]</div>
 <p>This new space, is shown to preserve the dynamics properties of the original
 phase space. For more on the subject, the interested readers are encouraged to
@@ -420,17 +438,17 @@ consult the work of Bradley and Kantz (<a class="reference internal" href="#brad
 <dt id="dyfunconn.ts.fisher_z.fisher_z">
 <code class="descclassname">dyfunconn.ts.fisher_z.</code><code class="descname">fisher_z</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/fisher_z.html#fisher_z"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.fisher_z.fisher_z" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fisher’s z-transformation</p>
-<p>For a given dataset <span class="math notranslate">\(p\)</span> bound to <span class="math notranslate">\([0.0, 1.0]\)</span>, we can use Fisher’s z-transformation to normalize it
+<p>For a given dataset <span class="math notranslate nohighlight">\(p\)</span> bound to <span class="math notranslate nohighlight">\([0.0, 1.0]\)</span>, we can use Fisher’s z-transformation to normalize it
 in an approximately Gaussian distribution.</p>
 <p>This transformation is computed as follows:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[z_p := \frac{1}{2} \text{ln} \left ( \frac{1+p}{1-p} \right ) = \text{arctanh}(p)\]</div>
 </dd></dl>
 
 <dl class="function">
 <dt id="dyfunconn.ts.fisher_z.fisher_z_plv">
 <code class="descclassname">dyfunconn.ts.fisher_z.</code><code class="descname">fisher_z_plv</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/fisher_z.html#fisher_z_plv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.fisher_z.fisher_z_plv" title="Permalink to this definition">¶</a></dt>
-<dd><div class="math notranslate">
+<dd><div class="math notranslate nohighlight">
 \[z^p_j = sin^{-1}(2 * PLV_j - 1)\]</div>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -508,17 +526,71 @@ reached, or the the number of neighbors is reduced to specific percentage.</p>
 </dd></dl>
 
 </div>
+<div class="section" id="module-dyfunconn.ts.icc">
+<span id="dyfunconn-ts-icc-module"></span><h2>dyfunconn.ts.icc module<a class="headerlink" href="#module-dyfunconn.ts.icc" title="Permalink to this headline">¶</a></h2>
+<p>Intra-class Correlation (3, 1)</p>
+<div class="section" id="id4">
+<h3>Notes<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Based on the code available at &lt;<a class="reference external" href="https://github.com/ekmolloy/fmri_test-retest">https://github.com/ekmolloy/fmri_test-retest</a>&gt;</li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<table class="docutils citation" frame="void" id="mcgraw1996" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[McGraw1996]</td><td>McGraw, K. O., &amp; Wong, S. P. (1996). Forming inferences about some intraclass correlation coefficients. Psychological methods, 1(1), 30.</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="birn2013" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[Birn2013]</td><td>Birn, R. M., Molloy, E. K., Patriat, R., Parker, T., Meier, T. B., Kirk, G. R., … &amp; Prabhakaran, V. (2013). The effect of scan length on the reliability of resting-state fMRI connectivity estimates. Neuroimage, 83, 550-558.</td></tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="dyfunconn.ts.icc.icc_31">
+<code class="descclassname">dyfunconn.ts.icc.</code><code class="descname">icc_31</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/icc.html#icc_31"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.icc.icc_31" title="Permalink to this definition">¶</a></dt>
+<dd><p>ICC (3,1)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>X :</strong> :</p>
+<blockquote>
+<div><p>Input data</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>icc</strong> : float</p>
+<blockquote class="last">
+<div><p>Intra-class correlation.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
 <div class="section" id="module-dyfunconn.ts.markov_matrix">
 <span id="dyfunconn-ts-markov-matrix-module"></span><h2>dyfunconn.ts.markov_matrix module<a class="headerlink" href="#module-dyfunconn.ts.markov_matrix" title="Permalink to this headline">¶</a></h2>
 <p>Markov matrix</p>
-<p>Markov matrix (also refere as “transition matrix”) is a square matrix that tabulates
+<p>Generation of markov matrix and some related state transition features.</p>
+<dl class="function">
+<dt id="dyfunconn.ts.markov_matrix.markov_matrix">
+<code class="descclassname">dyfunconn.ts.markov_matrix.</code><code class="descname">markov_matrix</code><span class="sig-paren">(</span><em>symts</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/markov_matrix.html#markov_matrix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.markov_matrix.markov_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Markov Matrix</p>
+<p>Markov matrix (also refered as “transition matrix”) is a square matrix that tabulates
 the observed transition probabilities between symbols for a finite Markov Chain. It is a first-order descriptor
 by which the next symbol depends only on the current symbol (and not on the previous ones);
 a Markov Chain model.</p>
 <p>A transition matrix is formally depicted as:</p>
-<p>Given the probability <span class="math notranslate">\(Pr(j|i)\)</span> of moving between <span class="math notranslate">\(i\)</span> and <span class="math notranslate">\(j\)</span> elements,
+<p>Given the probability <span class="math notranslate nohighlight">\(Pr(j|i)\)</span> of moving between <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> elements,
 the transition matrix is depicted as:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[\begin{split}P = \begin{pmatrix}
               P_{1,1} &amp; P_{1,2} &amp; \ldots &amp; P_{1,j} &amp; \ldots &amp; P_{1,S} \\
               P_{2,1} &amp; P_{2,2} &amp; \ldots &amp; P_{2,j} &amp; \ldots &amp; P_{2,S} \\
@@ -528,12 +600,11 @@ the transition matrix is depicted as:</p>
               P_{S,1} &amp; P_{S,2} &amp; \ldots &amp; P_{S,j} &amp; \ldots &amp; P_{S,S} \\
     \end{pmatrix}\end{split}\]</div>
 <p>Since the transition matrix is row-normalized, so as the total transition probability
-from state <span class="math notranslate">\(i\)</span> to all the others must be equal to <span class="math notranslate">\(1\)</span>.</p>
-<p>For more properties consult, among other links <a class="reference internal" href="#wolframmathworld">WolframMathWorld</a> and <a class="reference internal" href="#wikipediamarkovmatrix">WikipediaMarkovMatrix</a>.</p>
+from state <span class="math notranslate nohighlight">\(i\)</span> to all the others must be equal to <span class="math notranslate nohighlight">\(1\)</span>.</p>
+<p>For more properties consult, among other links <a href="#id33"><span class="problematic" id="id34">WolframMathWorld_</span></a> and <a href="#id35"><span class="problematic" id="id36">WikipediaMarkovMatrix_</span></a>.</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<hr class="docutils" />
 <table class="docutils citation" frame="void" id="wolframmathworld" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
@@ -546,10 +617,6 @@ from state <span class="math notranslate">\(i\)</span> to all the others must be
 <tr><td class="label">[WikipediaMarkovMatrix]</td><td><a class="reference external" href="https://en.wikipedia.org/wiki/Stochastic_matrix">https://en.wikipedia.org/wiki/Stochastic_matrix</a></td></tr>
 </tbody>
 </table>
-<dl class="function">
-<dt id="dyfunconn.ts.markov_matrix.markov_matrix">
-<code class="descclassname">dyfunconn.ts.markov_matrix.</code><code class="descname">markov_matrix</code><span class="sig-paren">(</span><em>symts</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/markov_matrix.html#markov_matrix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.markov_matrix.markov_matrix" title="Permalink to this definition">¶</a></dt>
-<dd><p>Markov Matrix</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -570,6 +637,52 @@ from state <span class="math notranslate">\(i\)</span> to all the others must be
 </table>
 </dd></dl>
 
+<dl class="function">
+<dt id="dyfunconn.ts.markov_matrix.occupancy_time">
+<code class="descclassname">dyfunconn.ts.markov_matrix.</code><code class="descname">occupancy_time</code><span class="sig-paren">(</span><em>symts</em>, <em>symbol_states=None</em>, <em>weight=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/markov_matrix.html#occupancy_time"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.markov_matrix.occupancy_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Occupancy Time</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>symts :</strong> :</p>
+<p><strong>symbol_states</strong> : int</p>
+<blockquote>
+<div><p>The maximum number of symbols. This is useful to define in case your
+symbolic timeseries skips some states, in which case would produce
+a matrix of different size.</p>
+</div></blockquote>
+<p><strong>weight</strong> : float</p>
+<blockquote>
+<div><p>The weights of the reuslting transition symbols. Default <cite>len(symts)</cite>.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>oc :</strong> :</p>
+<p class="last"><strong>symbols :</strong> :</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="dyfunconn.ts.markov_matrix.transition_rate">
+<code class="descclassname">dyfunconn.ts.markov_matrix.</code><code class="descname">transition_rate</code><span class="sig-paren">(</span><em>symts</em>, <em>weight=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/markov_matrix.html#transition_rate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.markov_matrix.transition_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transition Rate</p>
+<p>The total sum of transition between symbols.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>symts :</strong> :</p>
+<p class="last"><strong>weight</strong> : float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 </div>
 <div class="section" id="module-dyfunconn.ts.ordinal_pattern_similarity">
 <span id="dyfunconn-ts-ordinal-pattern-similarity-module"></span><h2>dyfunconn.ts.ordinal_pattern_similarity module<a class="headerlink" href="#module-dyfunconn.ts.ordinal_pattern_similarity" title="Permalink to this headline">¶</a></h2>
@@ -578,13 +691,13 @@ from state <span class="math notranslate">\(i\)</span> to all the others must be
 <div class="line"><br /></div>
 </div>
 <hr class="docutils" />
-<table class="docutils citation" frame="void" id="id4" rules="none">
+<table class="docutils citation" frame="void" id="id5" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[Stam2007]</td><td>Stam, C. J., Nolte, G., &amp; Daffertshofer, A. (2007). Phase lag index: assessment of functional connectivity from multi channel EEG and MEG with diminished bias from common sources. Human brain mapping, 28(11), 1178-1193.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="id5" rules="none">
+<table class="docutils citation" frame="void" id="id6" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[Hardmeier2014]</td><td>Hardmeier, M., Hatz, F., Bousleiman, H., Schindler, C., Stam, C. J., &amp; Fuhr, P. (2014). Reproducibility of functional connectivity and graph measures based on the phase lag index (PLI) and weighted phase lag index (wPLI) derived from high resolution EEG. PloS one, 9(10), e108648.</td></tr>
@@ -630,11 +743,11 @@ from state <span class="math notranslate">\(i\)</span> to all the others must be
 <ul class="simple">
 <li>The results may vary from the original MATLAB script because of
 the permutations’ order.</li>
-<li>The permutations are generated from <span class="math notranslate">\([1, dim+1]\)</span> so there are
-no occurances of <span class="math notranslate">\(0.\)</span></li>
-<li>The extra <span class="math notranslate">\(+1\)</span> in the lines
+<li>The permutations are generated from <span class="math notranslate nohighlight">\([1, dim+1]\)</span> so there are
+no occurances of <span class="math notranslate nohighlight">\(0.\)</span></li>
+<li>The extra <span class="math notranslate nohighlight">\(+1\)</span> in the lines
 .. python: I = sklearn.preprocessing.normalize(I + 1)
-is in order to avoid :math:<a href="#id6"><span class="problematic" id="id7">`</span></a>0`s.</li>
+is in order to avoid :math:<a href="#id7"><span class="problematic" id="id8">`</span></a>0`s.</li>
 </ul>
 </dd></dl>
 
@@ -646,13 +759,13 @@ is in order to avoid :math:<a href="#id6"><span class="problematic" id="id7">`</
 <div class="line"><br /></div>
 </div>
 <hr class="docutils" />
-<table class="docutils citation" frame="void" id="id8" rules="none">
+<table class="docutils citation" frame="void" id="id9" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[Stam2007]</td><td>Stam, C. J., Nolte, G., &amp; Daffertshofer, A. (2007). Phase lag index: assessment of functional connectivity from multi channel EEG and MEG with diminished bias from common sources. Human brain mapping, 28(11), 1178-1193.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="id9" rules="none">
+<table class="docutils citation" frame="void" id="id10" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[Hardmeier2014]</td><td>Hardmeier, M., Hatz, F., Bousleiman, H., Schindler, C., Stam, C. J., &amp; Fuhr, P. (2014). Reproducibility of functional connectivity and graph measures based on the phase lag index (PLI) and weighted phase lag index (wPLI) derived from high resolution EEG. PloS one, 9(10), e108648.</td></tr>
@@ -702,13 +815,13 @@ is in order to avoid :math:<a href="#id6"><span class="problematic" id="id7">`</
 <div class="line"><br /></div>
 </div>
 <hr class="docutils" />
-<table class="docutils citation" frame="void" id="id10" rules="none">
+<table class="docutils citation" frame="void" id="id11" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[Stam2007]</td><td>Stam, C. J., Nolte, G., &amp; Daffertshofer, A. (2007). Phase lag index: assessment of functional connectivity from multi channel EEG and MEG with diminished bias from common sources. Human brain mapping, 28(11), 1178-1193.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="id11" rules="none">
+<table class="docutils citation" frame="void" id="id12" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[Hardmeier2014]</td><td>Hardmeier, M., Hatz, F., Bousleiman, H., Schindler, C., Stam, C. J., &amp; Fuhr, P. (2014). Reproducibility of functional connectivity and graph measures based on the phase lag index (PLI) and weighted phase lag index (wPLI) derived from high resolution EEG. PloS one, 9(10), e108648.</td></tr>
@@ -746,12 +859,12 @@ is in order to avoid :math:<a href="#id6"><span class="problematic" id="id7">`</
 <li>The results may vary from the original MATLAB script because of
 the permutations’ order.</li>
 <li>The results may vary from the original MATLAB script because of
-the order of the indices in the <a href="#id12"><span class="problematic" id="id13">:python:`numpy.where`</span></a>.</li>
-<li>The permutations are generated from <span class="math notranslate">\([1, dim+1]\)</span> so there are
-no occurances of <span class="math notranslate">\(0.\)</span></li>
-<li>The extra <span class="math notranslate">\(+1\)</span> in the lines
+the order of the indices in the <a href="#id13"><span class="problematic" id="id14">:python:`numpy.where`</span></a>.</li>
+<li>The permutations are generated from <span class="math notranslate nohighlight">\([1, dim+1]\)</span> so there are
+no occurances of <span class="math notranslate nohighlight">\(0.\)</span></li>
+<li>The extra <span class="math notranslate nohighlight">\(+1\)</span> in the lines
 .. python: I = sklearn.preprocessing.normalize(I + 1)
-is in order to avoid :math:<a href="#id14"><span class="problematic" id="id15">`</span></a>0`s.</li>
+is in order to avoid :math:<a href="#id15"><span class="problematic" id="id16">`</span></a>0`s.</li>
 </ul>
 </dd></dl>
 
@@ -759,20 +872,20 @@ is in order to avoid :math:<a href="#id14"><span class="problematic" id="id15">`
 <div class="section" id="module-dyfunconn.ts.sampen">
 <span id="dyfunconn-ts-sampen-module"></span><h2>dyfunconn.ts.sampen module<a class="headerlink" href="#module-dyfunconn.ts.sampen" title="Permalink to this headline">¶</a></h2>
 <p>Sample Entropy</p>
-<div class="section" id="id16">
-<h3>Notes<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id17">
+<h3>Notes<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
 <p>Based on <a class="reference external" href="https://nl.mathworks.com/matlabcentral/fileexchange/35784-sample-entropy">https://nl.mathworks.com/matlabcentral/fileexchange/35784-sample-entropy</a></p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <hr class="docutils" />
-<table class="docutils citation" frame="void" id="id17" rules="none">
+<table class="docutils citation" frame="void" id="id18" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[Stam2007]</td><td>Stam, C. J., Nolte, G., &amp; Daffertshofer, A. (2007). Phase lag index: assessment of functional connectivity from multi channel EEG and MEG with diminished bias from common sources. Human brain mapping, 28(11), 1178-1193.</td></tr>
 </tbody>
 </table>
-<table class="docutils citation" frame="void" id="id18" rules="none">
+<table class="docutils citation" frame="void" id="id19" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[Hardmeier2014]</td><td>Hardmeier, M., Hatz, F., Bousleiman, H., Schindler, C., Stam, C. J., &amp; Fuhr, P. (2014). Reproducibility of functional connectivity and graph measures based on the phase lag index (PLI) and weighted phase lag index (wPLI) derived from high resolution EEG. PloS one, 9(10), e108648.</td></tr>
@@ -1041,22 +1154,22 @@ is in order to avoid :math:<a href="#id14"><span class="problematic" id="id15">`
 <dt id="dyfunconn.ts.fisher_z">
 <code class="descclassname">dyfunconn.ts.</code><code class="descname">fisher_z</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/fisher_z.html#fisher_z"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.fisher_z" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fisher’s z-transformation</p>
-<p>For a given dataset <span class="math notranslate">\(p\)</span> bound to <span class="math notranslate">\([0.0, 1.0]\)</span>, we can use Fisher’s z-transformation to normalize it
+<p>For a given dataset <span class="math notranslate nohighlight">\(p\)</span> bound to <span class="math notranslate nohighlight">\([0.0, 1.0]\)</span>, we can use Fisher’s z-transformation to normalize it
 in an approximately Gaussian distribution.</p>
 <p>This transformation is computed as follows:</p>
-<div class="math notranslate">
+<div class="math notranslate nohighlight">
 \[z_p := \frac{1}{2} \text{ln} \left ( \frac{1+p}{1-p} \right ) = \text{arctanh}(p)\]</div>
 </dd></dl>
 
 <dl class="function">
 <dt id="dyfunconn.ts.fisher_z_plv">
 <code class="descclassname">dyfunconn.ts.</code><code class="descname">fisher_z_plv</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/fisher_z.html#fisher_z_plv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.fisher_z_plv" title="Permalink to this definition">¶</a></dt>
-<dd><div class="math notranslate">
+<dd><div class="math notranslate nohighlight">
 \[z^p_j = sin^{-1}(2 * PLV_j - 1)\]</div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<table class="docutils citation" frame="void" id="id19" rules="none">
+<table class="docutils citation" frame="void" id="id20" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
 <tr><td class="label">[Mormann2005]</td><td>Mormann, F., Fell, J., Axmacher, N., Weber, B., Lehnertz, K., Elger, C. E., &amp; Fernández, G. (2005). Phase/amplitude reset and theta–gamma interaction in the human medial temporal lobe during a continuous word recognition memory task. Hippocampus, 15(7), 890-900.</td></tr>
@@ -1342,11 +1455,11 @@ in an approximately Gaussian distribution.</p>
 <ul class="simple">
 <li>The results may vary from the original MATLAB script because of
 the permutations’ order.</li>
-<li>The permutations are generated from <span class="math notranslate">\([1, dim+1]\)</span> so there are
-no occurances of <span class="math notranslate">\(0.\)</span></li>
-<li>The extra <span class="math notranslate">\(+1\)</span> in the lines
+<li>The permutations are generated from <span class="math notranslate nohighlight">\([1, dim+1]\)</span> so there are
+no occurances of <span class="math notranslate nohighlight">\(0.\)</span></li>
+<li>The extra <span class="math notranslate nohighlight">\(+1\)</span> in the lines
 .. python: I = sklearn.preprocessing.normalize(I + 1)
-is in order to avoid :math:<a href="#id20"><span class="problematic" id="id21">`</span></a>0`s.</li>
+is in order to avoid :math:<a href="#id21"><span class="problematic" id="id22">`</span></a>0`s.</li>
 </ul>
 </dd></dl>
 
@@ -1426,11 +1539,11 @@ is in order to avoid :math:<a href="#id20"><span class="problematic" id="id21">`
 <ul class="simple">
 <li>The results may vary from the original MATLAB script because of
 the permutations’ order.</li>
-<li>The permutations are generated from <span class="math notranslate">\([1, dim+1]\)</span> so there are
-no occurances of <span class="math notranslate">\(0.\)</span></li>
-<li>The extra <span class="math notranslate">\(+1\)</span> in the lines
+<li>The permutations are generated from <span class="math notranslate nohighlight">\([1, dim+1]\)</span> so there are
+no occurances of <span class="math notranslate nohighlight">\(0.\)</span></li>
+<li>The extra <span class="math notranslate nohighlight">\(+1\)</span> in the lines
 .. python: I = sklearn.preprocessing.normalize(I + 1)
-is in order to avoid :math:<a href="#id22"><span class="problematic" id="id23">`</span></a>0`s.</li>
+is in order to avoid :math:<a href="#id23"><span class="problematic" id="id24">`</span></a>0`s.</li>
 </ul>
 </dd></dl>
 
@@ -1466,12 +1579,12 @@ is in order to avoid :math:<a href="#id22"><span class="problematic" id="id23">`
 <li>The results may vary from the original MATLAB script because of
 the permutations’ order.</li>
 <li>The results may vary from the original MATLAB script because of
-the order of the indices in the <a href="#id24"><span class="problematic" id="id25">:python:`numpy.where`</span></a>.</li>
-<li>The permutations are generated from <span class="math notranslate">\([1, dim+1]\)</span> so there are
-no occurances of <span class="math notranslate">\(0.\)</span></li>
-<li>The extra <span class="math notranslate">\(+1\)</span> in the lines
+the order of the indices in the <a href="#id25"><span class="problematic" id="id26">:python:`numpy.where`</span></a>.</li>
+<li>The permutations are generated from <span class="math notranslate nohighlight">\([1, dim+1]\)</span> so there are
+no occurances of <span class="math notranslate nohighlight">\(0.\)</span></li>
+<li>The extra <span class="math notranslate nohighlight">\(+1\)</span> in the lines
 .. python: I = sklearn.preprocessing.normalize(I + 1)
-is in order to avoid :math:<a href="#id26"><span class="problematic" id="id27">`</span></a>0`s.</li>
+is in order to avoid :math:<a href="#id27"><span class="problematic" id="id28">`</span></a>0`s.</li>
 </ul>
 </dd></dl>
 
@@ -1530,6 +1643,40 @@ is in order to avoid :math:<a href="#id26"><span class="problematic" id="id27">`
 <dt id="dyfunconn.ts.markov_matrix">
 <code class="descclassname">dyfunconn.ts.</code><code class="descname">markov_matrix</code><span class="sig-paren">(</span><em>symts</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/markov_matrix.html#markov_matrix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.markov_matrix" title="Permalink to this definition">¶</a></dt>
 <dd><p>Markov Matrix</p>
+<p>Markov matrix (also refered as “transition matrix”) is a square matrix that tabulates
+the observed transition probabilities between symbols for a finite Markov Chain. It is a first-order descriptor
+by which the next symbol depends only on the current symbol (and not on the previous ones);
+a Markov Chain model.</p>
+<p>A transition matrix is formally depicted as:</p>
+<p>Given the probability <span class="math notranslate nohighlight">\(Pr(j|i)\)</span> of moving between <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> elements,
+the transition matrix is depicted as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}P = \begin{pmatrix}
+              P_{1,1} &amp; P_{1,2} &amp; \ldots &amp; P_{1,j} &amp; \ldots &amp; P_{1,S} \\
+              P_{2,1} &amp; P_{2,2} &amp; \ldots &amp; P_{2,j} &amp; \ldots &amp; P_{2,S} \\
+              \vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \ddots &amp; \vdots \\
+              P_{i,1} &amp; P_{i,2} &amp; \ldots &amp; P_{i,j} &amp; \ldots &amp; P_{i,S} \\
+              \vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \ddots &amp; \vdots \\
+              P_{S,1} &amp; P_{S,2} &amp; \ldots &amp; P_{S,j} &amp; \ldots &amp; P_{S,S} \\
+    \end{pmatrix}\end{split}\]</div>
+<p>Since the transition matrix is row-normalized, so as the total transition probability
+from state <span class="math notranslate nohighlight">\(i\)</span> to all the others must be equal to <span class="math notranslate nohighlight">\(1\)</span>.</p>
+<p>For more properties consult, among other links <a href="#id37"><span class="problematic" id="id38">WolframMathWorld_</span></a> and <a href="#id39"><span class="problematic" id="id40">WikipediaMarkovMatrix_</span></a>.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<table class="docutils citation" frame="void" id="id29" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[WolframMathWorld]</td><td><a class="reference external" href="http://mathworld.wolfram.com/StochasticMatrix.html">http://mathworld.wolfram.com/StochasticMatrix.html</a></td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="id30" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[WikipediaMarkovMatrix]</td><td><a class="reference external" href="https://en.wikipedia.org/wiki/Stochastic_matrix">https://en.wikipedia.org/wiki/Stochastic_matrix</a></td></tr>
+</tbody>
+</table>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1544,6 +1691,52 @@ is in order to avoid :math:<a href="#id26"><span class="problematic" id="id27">`
 <blockquote class="last">
 <div><p>The transition matrix.</p>
 </div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="dyfunconn.ts.transition_rate">
+<code class="descclassname">dyfunconn.ts.</code><code class="descname">transition_rate</code><span class="sig-paren">(</span><em>symts</em>, <em>weight=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/markov_matrix.html#transition_rate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.transition_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transition Rate</p>
+<p>The total sum of transition between symbols.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>symts :</strong> :</p>
+<p class="last"><strong>weight</strong> : float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="dyfunconn.ts.occupancy_time">
+<code class="descclassname">dyfunconn.ts.</code><code class="descname">occupancy_time</code><span class="sig-paren">(</span><em>symts</em>, <em>symbol_states=None</em>, <em>weight=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/markov_matrix.html#occupancy_time"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.occupancy_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Occupancy Time</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>symts :</strong> :</p>
+<p><strong>symbol_states</strong> : int</p>
+<blockquote>
+<div><p>The maximum number of symbols. This is useful to define in case your
+symbolic timeseries skips some states, in which case would produce
+a matrix of different size.</p>
+</div></blockquote>
+<p><strong>weight</strong> : float</p>
+<blockquote>
+<div><p>The weights of the reuslting transition symbols. Default <cite>len(symts)</cite>.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>oc :</strong> :</p>
+<p class="last"><strong>symbols :</strong> :</p>
 </td>
 </tr>
 </tbody>
@@ -1654,14 +1847,56 @@ of the input symbolic time series.</p>
 reached, or the the number of neighbors is reduced to specific percentage.</p>
 </dd></dl>
 
+<dl class="function">
+<dt id="dyfunconn.ts.icc_31">
+<code class="descclassname">dyfunconn.ts.</code><code class="descname">icc_31</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/icc.html#icc_31"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.icc_31" title="Permalink to this definition">¶</a></dt>
+<dd><p>ICC (3,1)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>X :</strong> :</p>
+<blockquote>
+<div><p>Input data</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>icc</strong> : float</p>
+<blockquote class="last">
+<div><p>Intra-class correlation.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="dyfunconn.ts.cv">
+<code class="descclassname">dyfunconn.ts.</code><code class="descname">cv</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/cv.html#cv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.cv" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>X :</strong> :</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>cv</strong> : float</p>
+<blockquote class="last">
+<div><p>The computed coefficient of variation.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 </div>
 </div>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -1681,7 +1916,7 @@ reached, or the the number of neighbors is reduced to specific percentage.</p>
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -1700,6 +1935,7 @@ reached, or the the number of neighbors is reduced to specific percentage.</p>
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
             VERSION:'',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -1713,19 +1949,13 @@ reached, or the the number of neighbors is reduced to specific percentage.</p>
 
   
 
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

@@ -24,26 +24,17 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Index"
-              href="../../../genindex.html"/>
-        <link rel="search" title="Search" href="../../../search.html"/>
-    <link rel="top" title="dyfunconn  documentation" href="../../../index.html"/>
-        <link rel="up" title="Module code" href="../../index.html"/> 
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
 
   
   <script src="../../../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -98,7 +89,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../../index.html">dyfunconn</a>
@@ -106,9 +97,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -138,8 +130,6 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
-        
       </li>
     
   </ul>
@@ -153,45 +143,50 @@
   <h1>Source code for dyfunconn.ts.markov_matrix</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot; Markov matrix</span>
 
-<span class="sd">Markov matrix (also refere as &quot;transition matrix&quot;) is a square matrix that tabulates</span>
-<span class="sd">the observed transition probabilities between symbols for a finite Markov Chain. It is a first-order descriptor</span>
-<span class="sd">by which the next symbol depends only on the current symbol (and not on the previous ones);</span>
-<span class="sd">a Markov Chain model.</span>
-
-<span class="sd">A transition matrix is formally depicted as:</span>
-
-<span class="sd">Given the probability :math:`Pr(j|i)` of moving between :math:`i` and :math:`j` elements,</span>
-<span class="sd">the transition matrix is depicted as:</span>
-
-<span class="sd">.. math::</span>
-<span class="sd">    P = \\begin{pmatrix}</span>
-<span class="sd">                  P_{1,1} &amp; P_{1,2} &amp; \\ldots &amp; P_{1,j} &amp; \\ldots &amp; P_{1,S} \\\\</span>
-<span class="sd">                  P_{2,1} &amp; P_{2,2} &amp; \\ldots &amp; P_{2,j} &amp; \\ldots &amp; P_{2,S} \\\\</span>
-<span class="sd">                  \\vdots &amp; \\vdots &amp; \\ddots &amp; \\vdots &amp; \\ddots &amp; \\vdots \\\\</span>
-<span class="sd">                  P_{i,1} &amp; P_{i,2} &amp; \\ldots &amp; P_{i,j} &amp; \\ldots &amp; P_{i,S} \\\\</span>
-<span class="sd">                  \\vdots &amp; \\vdots &amp; \\ddots &amp; \\vdots &amp; \\ddots &amp; \\vdots \\\\</span>
-<span class="sd">                  P_{S,1} &amp; P_{S,2} &amp; \\ldots &amp; P_{S,j} &amp; \\ldots &amp; P_{S,S} \\\\</span>
-<span class="sd">        \\end{pmatrix}</span>
-
-<span class="sd">Since the transition matrix is row-normalized, so as the total transition probability</span>
-<span class="sd">from state :math:`i` to all the others must be equal to :math:`1`.</span>
-
-<span class="sd">For more properties consult, among other links WolframMathWorld_ and WikipediaMarkovMatrix_.</span>
-
-
-<span class="sd">|</span>
-
-<span class="sd">-----</span>
-
-<span class="sd">.. [WolframMathWorld] http://mathworld.wolfram.com/StochasticMatrix.html</span>
-<span class="sd">.. [WikipediaMarkovMatrix] https://en.wikipedia.org/wiki/Stochastic_matrix</span>
+<span class="sd">Generation of markov matrix and some related state transition features.</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
+<span class="c1"># Author</span>
+<span class="c1"># Author</span>
+
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 
 <div class="viewcode-block" id="markov_matrix"><a class="viewcode-back" href="../../../dyfunconn.ts.html#dyfunconn.ts.markov_matrix.markov_matrix">[docs]</a><span class="k">def</span> <span class="nf">markov_matrix</span><span class="p">(</span><span class="n">symts</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Markov Matrix</span>
+
+<span class="sd">    Markov matrix (also refered as &quot;transition matrix&quot;) is a square matrix that tabulates</span>
+<span class="sd">    the observed transition probabilities between symbols for a finite Markov Chain. It is a first-order descriptor</span>
+<span class="sd">    by which the next symbol depends only on the current symbol (and not on the previous ones);</span>
+<span class="sd">    a Markov Chain model.</span>
+
+<span class="sd">    A transition matrix is formally depicted as:</span>
+
+<span class="sd">    Given the probability :math:`Pr(j|i)` of moving between :math:`i` and :math:`j` elements,</span>
+<span class="sd">    the transition matrix is depicted as:</span>
+
+<span class="sd">    .. math::</span>
+<span class="sd">        P = \\begin{pmatrix}</span>
+<span class="sd">                      P_{1,1} &amp; P_{1,2} &amp; \\ldots &amp; P_{1,j} &amp; \\ldots &amp; P_{1,S} \\\\</span>
+<span class="sd">                      P_{2,1} &amp; P_{2,2} &amp; \\ldots &amp; P_{2,j} &amp; \\ldots &amp; P_{2,S} \\\\</span>
+<span class="sd">                      \\vdots &amp; \\vdots &amp; \\ddots &amp; \\vdots &amp; \\ddots &amp; \\vdots \\\\</span>
+<span class="sd">                      P_{i,1} &amp; P_{i,2} &amp; \\ldots &amp; P_{i,j} &amp; \\ldots &amp; P_{i,S} \\\\</span>
+<span class="sd">                      \\vdots &amp; \\vdots &amp; \\ddots &amp; \\vdots &amp; \\ddots &amp; \\vdots \\\\</span>
+<span class="sd">                      P_{S,1} &amp; P_{S,2} &amp; \\ldots &amp; P_{S,j} &amp; \\ldots &amp; P_{S,S} \\\\</span>
+<span class="sd">            \\end{pmatrix}</span>
+
+<span class="sd">    Since the transition matrix is row-normalized, so as the total transition probability</span>
+<span class="sd">    from state :math:`i` to all the others must be equal to :math:`1`.</span>
+
+<span class="sd">    For more properties consult, among other links WolframMathWorld_ and WikipediaMarkovMatrix_.</span>
+
+
+<span class="sd">    |</span>
+
+<span class="sd">    -----</span>
+
+<span class="sd">    .. [WolframMathWorld] http://mathworld.wolfram.com/StochasticMatrix.html</span>
+<span class="sd">    .. [WikipediaMarkovMatrix] https://en.wikipedia.org/wiki/Stochastic_matrix</span>
 
 
 <span class="sd">    Parameters</span>
@@ -216,14 +211,94 @@
         <span class="n">mtx</span><span class="p">[</span><span class="n">curr_sym</span><span class="p">,</span> <span class="n">next_sym</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
 
     <span class="n">mtx</span> <span class="o">/=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">symts</span><span class="p">))</span>
-</div>
-    <span class="k">return</span> <span class="n">mtx</span>
+
+    <span class="k">return</span> <span class="n">mtx</span></div>
+
+
+<div class="viewcode-block" id="transition_rate"><a class="viewcode-back" href="../../../dyfunconn.ts.html#dyfunconn.ts.markov_matrix.transition_rate">[docs]</a><span class="k">def</span> <span class="nf">transition_rate</span><span class="p">(</span><span class="n">symts</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Transition Rate</span>
+
+<span class="sd">    The total sum of transition between symbols.</span>
+
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    symts :</span>
+
+<span class="sd">    weight : float</span>
+
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">TR</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+    <span class="n">l</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">symts</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">weight</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">weight</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">pos</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">l</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">curr_sym</span> <span class="o">=</span> <span class="n">symts</span><span class="p">[</span><span class="n">pos</span><span class="p">]</span>
+        <span class="n">next_sym</span> <span class="o">=</span> <span class="n">symts</span><span class="p">[</span><span class="n">pos</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">curr_sym</span> <span class="o">!=</span> <span class="n">next_sym</span><span class="p">:</span>
+            <span class="n">TR</span> <span class="o">+=</span> <span class="mf">1.0</span>
+
+    <span class="k">return</span> <span class="n">TR</span> <span class="o">/</span> <span class="n">weight</span></div>
+
+
+<div class="viewcode-block" id="occupancy_time"><a class="viewcode-back" href="../../../dyfunconn.ts.html#dyfunconn.ts.markov_matrix.occupancy_time">[docs]</a><span class="k">def</span> <span class="nf">occupancy_time</span><span class="p">(</span><span class="n">symts</span><span class="p">,</span> <span class="n">symbol_states</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Occupancy Time</span>
+
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+
+<span class="sd">    symts :</span>
+
+<span class="sd">    symbol_states : int</span>
+<span class="sd">        The maximum number of symbols. This is useful to define in case your</span>
+<span class="sd">        symbolic timeseries skips some states, in which case would produce</span>
+<span class="sd">        a matrix of different size.</span>
+
+<span class="sd">    weight : float</span>
+<span class="sd">        The weights of the reuslting transition symbols. Default `len(symts)`.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+
+<span class="sd">    oc :</span>
+
+<span class="sd">    symbols :</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">symbols</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">symts</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">symbol_states</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">oc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">symbols</span><span class="p">)))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">oc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">symbol_states</span><span class="p">))</span>
+    <span class="n">l</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">symts</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">weight</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">weight</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">pos</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">l</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">curr_sym</span> <span class="o">=</span> <span class="n">symts</span><span class="p">[</span><span class="n">pos</span><span class="p">]</span>
+        <span class="n">next_sym</span> <span class="o">=</span> <span class="n">symts</span><span class="p">[</span><span class="n">pos</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="n">curr_sym</span> <span class="o">==</span> <span class="n">next_sym</span><span class="p">:</span>
+            <span class="n">oc</span><span class="p">[</span><span class="n">curr_sym</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="n">oc</span> <span class="o">/=</span> <span class="n">weight</span>
+
+    <span class="k">return</span> <span class="n">oc</span><span class="p">,</span> <span class="n">symbols</span></div>
 </pre></div>
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -236,7 +311,7 @@
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -255,6 +330,7 @@
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../../',
             VERSION:'',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -268,19 +344,13 @@
 
   
 
-  
-  
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

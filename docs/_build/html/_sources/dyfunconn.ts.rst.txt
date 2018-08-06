@@ -12,6 +12,14 @@ dyfunconn.ts.ci module
     :undoc-members:
     :show-inheritance:
 
+dyfunconn.ts.cv module
+----------------------
+
+.. automodule:: dyfunconn.ts.cv
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 dyfunconn.ts.dcorr module
 -------------------------
 
@@ -56,6 +64,14 @@ dyfunconn.ts.fnn module
 -----------------------
 
 .. automodule:: dyfunconn.ts.fnn
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+dyfunconn.ts.icc module
+-----------------------
+
+.. automodule:: dyfunconn.ts.icc
     :members:
     :undoc-members:
     :show-inheritance:
