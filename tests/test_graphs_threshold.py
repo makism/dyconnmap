@@ -66,7 +66,7 @@ def test_graphs_threshold_omst_global_cost_efficiency():
     expected = np.load('data/test_graphs_threshold_omst_gce.npy')
 
     graph = np.load('data/test_graphs_threshold_graph.npy')
-    _, CIJtree, _, _, _, _, _, _ = threshold_omst_global_cost_efficiency(graph)
+    _, CIJtree, _, _, _, _, _, _ = threshold_omst_global_cost_efficiency(graph, n_msts=None)
 
     np.testing.assert_array_equal(expected, CIJtree)
 

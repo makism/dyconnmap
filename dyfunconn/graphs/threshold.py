@@ -366,7 +366,7 @@ def threshold_global_cost_efficiency(mtx, iterations):
     return binary_mtx, threshold, global_cost_eff_max, efficiency, cost_max
 
 
-def threshold_omst_global_cost_efficiency(mtx):
+def threshold_omst_global_cost_efficiency(mtx, n_msts=None):
     """ Threshold a graph by optimizing the formula GE-C via orthogonal MSTs.
 
     .. [Dimitriadis2017a] Dimitriadis, S. I., Salis, C., Tarnanas, I., & Linden, D. E. (2017). Topological Filtering of Dynamic Functional Brain Networks Unfolds Informative Chronnectomics: A Novel Data-Driven Thresholding Scheme Based on Orthogonal Minimal Spanning Trees (OMSTs). Frontiers in neuroinformatics, 11.
@@ -380,6 +380,9 @@ def threshold_omst_global_cost_efficiency(mtx):
     mtx : array-like, shape(N, N)
         Symmetric, weighted and undirected connectivity matrix.
 
+    n_msts : int or None
+        Maximum number of OMSTs to compute. Default `None`; an exhaustive
+        computation will be performed.
 
     Returns
     -------
@@ -413,7 +416,11 @@ def threshold_omst_global_cost_efficiency(mtx):
 
     # Find the number of orthogonal msts according to the desired mean degree
     num_edges = len(np.where(imtx > 0.0)[0])
-    num_msts = np.round(num_edges/(N-1)) + 1
+
+    if n_msts is None:
+        num_msts = np.round(num_edges/(N-1)) + 1
+    else:
+        num_msts = n_msts
     pos_num_msts = np.round(num_edges / (N - 1))
 
     if num_msts > pos_num_msts:
@@ -435,11 +442,11 @@ def threshold_omst_global_cost_efficiency(mtx):
     for no in range(num_msts):
         tmp_mtx = 1.0 / CIJnotintree
         # ugly code ~_~
-        # graph = nx.from_numpy_matrix(tmp_mtx)
-        graph = nx.Graph()
-        for x in range(N):
-            for y in range(x+1, N):
-                graph.add_edge(x, y, weight=tmp_mtx[x][y])
+        graph = nx.from_numpy_matrix(tmp_mtx)
+        # graph = nx.Graph()
+        # for x in range(N):
+        #     for y in range(x+1, N):
+        #         graph.add_edge(x, y, weight=tmp_mtx[x][y])
         mst = nx.minimum_spanning_tree(graph)
         links = list(mst.edges())
 
