@@ -4,6 +4,7 @@
 The Laplcian energy (LE) for a graph :math:`G` is computed as
 
 .. math::
+    LE(G) = \sum_{i=1}^n | {\mu_i - \frac{2m}{n}} |
     ξ(A_1, A_2 ; t) = ‖exp⁡(-tL_1 ) - exp⁡(-tL_2 )‖_F^2
 
 Where :math:``\mu_i` denote the eigenvalue associated with the node of the Laplcian
