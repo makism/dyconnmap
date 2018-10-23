@@ -62,20 +62,3 @@ def __impl_degree(mtx):
     degree = np.sum(int_mtx, axis=0)
 
     return degree
-
-if __name__ == '__main__':
-    rng = np.random.RandomState(1)
-    mtx = rng.rand(5, 5)
-
-    mtx = np.abs(mtx)
-    mtx[1, 3] = 0.0
-    mtx[3, 1] = 0.0
-    mtx[4, 2] = 0.0
-    mtx[2, 4] = 0.0
-
-    mtx = mtx + mtx.T
-    mtx = mtx / 2.0
-    np.fill_diagonal(mtx, 1.0)
-
-    le = laplacian_energy(mtx)
-    print(le)
