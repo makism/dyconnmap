@@ -10,7 +10,8 @@ from dyfunconn.graphs import (graph_diffusion_distance,
                               nodal_global_efficiency,
                               im_distance,
                               spectral_euclidean_distance,
-                              spectral_k_distance)
+                              spectral_k_distance,
+                              laplacian_energy)
 
 
 def test_graph_diffusion_distance():
@@ -89,3 +90,10 @@ def test_spectral_euclidean_distance():
 
     result = spectral_euclidean_distance(X, Y)
     np.testing.assert_almost_equal(result, 0.5364200234417833)
+
+
+def test_laplacian_energy():
+    X = np.load('data/test_graphs_spectral_mtx1_10x10.npy')
+
+    result = laplacian_energy(X)
+    np.testing.assert_almost_equal(result, 57.178145779690524)

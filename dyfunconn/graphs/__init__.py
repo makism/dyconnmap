@@ -19,6 +19,7 @@ from .nodal import nodal_global_efficiency
 from .imd import im_distance
 from .spectral_euclidean_distance import spectral_euclidean_distance
 from .spectral_k_distance import spectral_k_distance
+from .laplacian_energy import laplacian_energy
 
 
 __all__ = ['graph_diffusion_distance',
@@ -32,5 +33,6 @@ __all__ = ['graph_diffusion_distance',
            'nodal_global_efficiency',
            'im_distance',
            'spectral_k_distance',
-           'spectral_euclidean_distance'
+           'spectral_euclidean_distance',
+           'laplacian_energy'
            ]
