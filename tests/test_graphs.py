@@ -98,7 +98,7 @@ def test_mpc_strength():
     mlgraph = np.load('data/test_graphs_mpc_mtx.npy')
     mpc_strength = multilayer_pc_strength(mlgraph)
 
-    expected = np.load('/home/makism/Github/dyfunconn/tests/data/test_graphs_mpc_strength.npy')
+    expected = np.load('data/test_graphs_mpc_strength.npy')
 
     np.testing.assert_array_equal(mpc_strength, expected)
 
@@ -107,6 +107,6 @@ def test_mpc_degree():
     mlgraph = np.load('data/test_graphs_mpc_mtx.npy')
     mpc_deg = multilayer_pc_degree(mlgraph)
 
-    expected = np.load('/home/makism/Github/dyfunconn/tests/data/test_graphs_mpc_deg.npy')
+    expected = np.load('data/test_graphs_mpc_deg.npy')
 
     np.testing.assert_array_equal(mpc_deg, expected)
