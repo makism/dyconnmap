@@ -11,7 +11,8 @@ from dyfunconn.graphs import (graph_diffusion_distance,
                               im_distance,
                               spectral_euclidean_distance,
                               spectral_k_distance,
-                              laplacian_energy)
+                              laplacian_energy,
+                              multilayer_pc_degree, multilayer_pc_strength)
 
 
 def test_graph_diffusion_distance():
@@ -25,12 +26,6 @@ def test_graph_diffusion_distance():
 
 
 def test_variation_information():
-    # mtx1 = np.load("data/test_graphs_vi_mtx1_30x30.npy")
-    # mtx2 = np.load("data/test_graphs_vi_mtx2_30x30.npy")
-
-    # Ca, Qa = bct.modularity_dir(mtx1, 2.0)
-    # Cb, Qb = bct.modularity_dir(mtx2, 2.0)
-
     Ca = np.load('data/test_graphs_vi_mtx1_30x30_comm_struct.npy')
     Cb = np.load('data/test_graphs_vi_mtx2_30x30_comm_struct.npy')
 
@@ -97,3 +92,21 @@ def test_laplacian_energy():
 
     result = laplacian_energy(X)
     np.testing.assert_almost_equal(result, 57.178145779690524)
+
+
+def test_mpc_strength():
+    mlgraph = np.load('data/test_graphs_mpc_mtx.npy')
+    mpc_strength = multilayer_pc_strength(mlgraph)
+
+    expected = np.load('/home/makism/Github/dyfunconn/tests/data/test_graphs_mpc_strength.npy')
+
+    np.testing.assert_array_equal(mpc_strength, expected)
+
+
+def test_mpc_degree():
+    mlgraph = np.load('data/test_graphs_mpc_mtx.npy')
+    mpc_deg = multilayer_pc_degree(mlgraph)
+
+    expected = np.load('/home/makism/Github/dyfunconn/tests/data/test_graphs_mpc_deg.npy')
+
+    np.testing.assert_array_equal(mpc_deg, expected)

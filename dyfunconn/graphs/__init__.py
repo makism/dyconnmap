@@ -20,6 +20,7 @@ from .imd import im_distance
 from .spectral_euclidean_distance import spectral_euclidean_distance
 from .spectral_k_distance import spectral_k_distance
 from .laplacian_energy import laplacian_energy
+from .mpc import multilayer_pc_strength, multilayer_pc_degree
 
 
 __all__ = ['graph_diffusion_distance',
@@ -34,5 +35,6 @@ __all__ = ['graph_diffusion_distance',
            'im_distance',
            'spectral_k_distance',
            'spectral_euclidean_distance',
-           'laplacian_energy'
+           'laplacian_energy',
+           'multilayer_pc_degree', 'multilayer_pc_strength'
            ]
