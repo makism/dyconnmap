@@ -15,7 +15,7 @@ Based on the code available at http://users.auth.gr/~stdimitr/files/software/vi.
 .. [Strehl2002] Strehl, A., & Ghosh, J. (2002). Cluster ensembles---a knowledge reuse framework for combining multiple partitions. Journal of machine learning research, 3(Dec), 583-617.
 
 """
-# Author: Avraam Marimpis <avraam.marimpis@gmail.com"
+# Author: Avraam Marimpis <avraam.marimpis@gmail.com>"
 
 import numpy as np
 
