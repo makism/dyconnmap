@@ -182,8 +182,10 @@ def test_phase_rand():
     rng = np.random.RandomState(0)
 
     rp = phase_rand(ts, num_surr, rng)
+    rp = np.float32(rp)
 
     expected_result = np.load("data/test_ts_phase_rand.npy")
+    expected_result = np.float32(expected_result)
     np.testing.assert_array_equal(rp, expected_result)
 
 
