@@ -25,7 +25,7 @@ for extra_dirs in ("docs", "examples", "tests"):
         data_files.append(('share/' + name + '/' + dirname, fileslist))
 
 setup(name='dyfunconn',
-      version='v1.0.0-beta.3',
+      version='v1.0.0-beta.4',
       description='A dynamic functional connectivity module in Python',
       author='Avraam Marimpis, Stavros Dimitriadis',
       author_email='Avraam.Marimpis@gmail.com, STIDimitriadis@gmail.com',
