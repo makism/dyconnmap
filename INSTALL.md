@@ -22,10 +22,15 @@ Installation
 ##### Using pip
 The easiest way to install `dyfunconn` is through `pip`.
 From a terminal just type:
-> pip install dyfunconn
+> $ pip search dyfunconn
+
+> dyfunconn (1.0.0b3)  - A dynamic functional connectivity module in Python
+
+and to install it:
+> $ pip install dyfunconn
 
 You may want to check also the _testing_ repository:
-> pip install --index-url https://test.pypi.org/simple dyfunconn
+> $ pip install --index-url https://test.pypi.org/simple dyfunconn
 
 ##### From source code
 
