@@ -63,10 +63,25 @@ def test_graphs_threshold_global_cost_efficiency():
 
 
 def test_graphs_threshold_omst_global_cost_efficiency():
+    # the function is optmized at the 3rd OMST.
+
     expected = np.load('data/test_graphs_threshold_omst_gce.npy')
 
     graph = np.load('data/test_graphs_threshold_graph.npy')
     _, CIJtree, _, _, _, _, _, _ = threshold_omst_global_cost_efficiency(graph, n_msts=None)
+
+    np.testing.assert_array_equal(expected, CIJtree)
+
+
+def test_graphs_threshold_omst_global_cost_efficiency2():
+    # the function is optmized at the 3rd OMST, so it is going to yeild the same results
+    # as the exhaustive search
+
+    expected = np.load('data/test_graphs_threshold_omst_gce.npy')
+
+    graph = np.load('data/test_graphs_threshold_graph.npy')
+    n_msts = 5
+    _, CIJtree, _, _, _, _, _, _ = threshold_omst_global_cost_efficiency(graph, n_msts=n_msts)
 
     np.testing.assert_array_equal(expected, CIJtree)
 
