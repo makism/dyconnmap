@@ -37,10 +37,10 @@ def iplv(data, fb=None, fs=None, pairs=None):
     data : array-like, shape(n_rois, n_samples)
         Multichannel recording data.
 
-    fb : list of length 2
+    fb : list of length 2, optional
         The low and high frequencies.
 
-    fs : float
+    fs : float, optional
         Sampling frequency.
 
     pairs : array-like or `None`
@@ -53,7 +53,7 @@ def iplv(data, fb=None, fs=None, pairs=None):
     ts : array-like, shape(n_rois, n_rois, n_samples)
         Estimated IPLV time series.
 
-    avg : array-like, shape = [n_rois, n_rois]
+    avg : array-like, shape(n_rois, n_rois)
         Average IPLV.
     """
     iplv = IPLV(fb, fs, pairs)
@@ -77,11 +77,14 @@ class IPLV(Estimator):
 
         self.fb = fb
         self.fs = fs
+        self._skip_filter = fb is None and fs is None
         self.data_type = np.complex
 
     def preprocess(self, data):
-        _, u_phases, _ = analytic_signal(data, self.fb, self.fs)
-        # _, u_phases = analytic_signal(data, self.fb, self.fs)
+        if self._skip_filter:
+            _, u_phases = analytic_signal(data)
+        else:
+            _, u_phases, _ = analytic_signal(data, self.fb, self.fs)
 
         return u_phases
 
