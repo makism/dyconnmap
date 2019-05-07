@@ -6,25 +6,32 @@ import numpy as np
 from numpy import testing
 
 # dynfunconn
-from dyfunconn.fc import (aec,
-                          #   biplv,
-                          coherence,
-                          dpli,
-                          esc,
-                          glm,
-                          icoherence,
-                          iplv,
-                          #mi,
-                          mutual_information,
-                          nesc,
-                          pac,
-                          pec,
-                          pli,
-                          plv, PLV,
-                          rho_index,
-                          #sl,
-                          wpli, dwpli,
-                          corr, Corr, crosscorr, partcorr)
+from dyfunconn.fc import (
+    aec,
+    #   biplv,
+    coherence,
+    dpli,
+    esc,
+    glm,
+    icoherence,
+    iplv,
+    # mi,
+    mutual_information,
+    nesc,
+    pac,
+    pec,
+    pli,
+    plv,
+    PLV,
+    rho_index,
+    # sl,
+    wpli,
+    dwpli,
+    corr,
+    Corr,
+    crosscorr,
+    partcorr,
+)
 
 
 def test_aec():
@@ -39,7 +46,7 @@ def test_aec():
 def test_coherence():
     data = np.load("../examples/data/eeg_32chans_10secs.npy")
 
-    csdparams = {'NFFT': 256, 'noverlap': 256 / 2.0}
+    csdparams = {"NFFT": 256, "noverlap": 256 / 2.0}
 
     coh = coherence(data, [1.0, 4.0], 128.0, **csdparams)
 
@@ -74,8 +81,7 @@ def test_glm():
     fb_hi = [25.0, 40.0]
     fs = 128.0
 
-    ts, ts_avg = glm(data, fb_lo, fb_hi, fs, pairs=None,
-                     window_size=window_size)
+    ts, ts_avg = glm(data, fb_lo, fb_hi, fs, pairs=None, window_size=window_size)
 
     expected = np.load("data/test_glm_ts.npy")
     np.testing.assert_array_equal(ts, expected)
@@ -87,7 +93,7 @@ def test_glm():
 def test_icoherence():
     data = np.load("../examples/data/eeg_32chans_10secs.npy")
 
-    csdparams = {'NFFT': 256, 'noverlap': 256 / 2.0}
+    csdparams = {"NFFT": 256, "noverlap": 256 / 2.0}
 
     icoh = icoherence(data, [1.0, 4.0], 128.0, **csdparams)
 
@@ -100,10 +106,21 @@ def test_iplv():
     ts, avg = iplv(data, [1.0, 4.0], 128.0)
 
     expected_ts = np.load("data/test_iplv_ts.npy")
-    np.testing.assert_array_equal(ts, expected_ts)
+    np.testing.assert_allclose(ts, expected_ts, rtol=1e-10, atol=0.0)
 
     expected_avg = np.load("data/test_iplv_avg.npy")
-    np.testing.assert_array_equal(avg, expected_avg)
+    np.testing.assert_allclose(avg, expected_avg, rtol=1e-10, atol=0.0)
+
+
+def test_iplv_nofilter():
+    data = np.load("../examples/data/rois39_samples100.npy")
+    ts, avg = iplv(data)
+
+    expected_ts = np.load("data/test_iplv_nofilter_ts.npy")
+    np.testing.assert_allclose(ts, expected_ts, rtol=1e-10, atol=0.0)
+
+    expected_avg = np.load("data/test_iplv_nofilter_avg.npy")
+    np.testing.assert_allclose(avg, expected_avg, rtol=1e-10, atol=0.0)
 
 
 def test_mui():
@@ -140,7 +157,7 @@ def test_pac_multiple_channels():
 
     fs = 128
     fb_lo = [1.0, 4.0]
-    fb_hi = [20.0, 30.0, ]
+    fb_hi = [20.0, 30.0]
 
     estimator = PLV(fb_lo, fs)
     ts, avg = pac(data, fb_lo, fb_hi, 128, estimator)
@@ -173,9 +190,9 @@ def test_pli():
     data = np.load("../examples/data/eeg_32chans_10secs.npy")
     n_channels, n_samples = np.shape(data)
 
-    pairs = [(r1, r2) for r1 in range(n_channels)
-             for r2 in range(n_channels)
-             if r1 != r2]
+    pairs = [
+        (r1, r2) for r1 in range(n_channels) for r2 in range(n_channels) if r1 != r2
+    ]
     ts, avg = pli(data, [1.0, 4.0], 128.0, pairs)
 
     expected_ts = np.load("data/test_pli_ts.npy")
@@ -210,10 +227,9 @@ def test_sl():
 
 
 def test_wpli():
-    data = np.load(
-        "../examples/data/eeg_32chans_10secs.npy")
+    data = np.load("../examples/data/eeg_32chans_10secs.npy")
 
-    csdparams = {'NFFT': 256, 'noverlap': 256 / 2.0}
+    csdparams = {"NFFT": 256, "noverlap": 256 / 2.0}
 
     wpliv = wpli(data, [1.0, 4.0], 128.0, **csdparams)
 
@@ -222,10 +238,9 @@ def test_wpli():
 
 
 def test_dwpli():
-    data = np.load(
-        "../examples/data/eeg_32chans_10secs.npy")
+    data = np.load("../examples/data/eeg_32chans_10secs.npy")
 
-    csdparams = {'NFFT': 256, 'noverlap': 256 / 2.0}
+    csdparams = {"NFFT": 256, "noverlap": 256 / 2.0}
 
     dwpliv = dwpli(data, [1.0, 4.0], 128.0, **csdparams)
 
@@ -234,8 +249,7 @@ def test_dwpli():
 
 
 def test_corr():
-    data = np.load(
-        "../examples/data/eeg_32chans_10secs.npy")
+    data = np.load("../examples/data/eeg_32chans_10secs.npy")
 
     r = corr(data, [1.0, 4.0], 128.0)
 
@@ -244,8 +258,7 @@ def test_corr():
 
 
 def test_corr_class():
-    data = np.load(
-        "../examples/data/eeg_32chans_10secs.npy")
+    data = np.load("../examples/data/eeg_32chans_10secs.npy")
 
     obj_corr = Corr([1.0, 4.0], 128.0)
     pp_data = obj_corr.preprocess(data)
@@ -256,8 +269,7 @@ def test_corr_class():
 
 
 def test_crosscorr():
-    data = np.load(
-        "../examples/data/eeg_32chans_10secs.npy")
+    data = np.load("../examples/data/eeg_32chans_10secs.npy")
 
     r = crosscorr(data, [1.0, 4.0], 128.0)
 
@@ -275,8 +287,7 @@ def test_partcorr():
     environment.
 
     """
-    data = np.load(
-        "../examples/data/eeg_32chans_10secs.npy")
+    data = np.load("../examples/data/eeg_32chans_10secs.npy")
 
     r = partcorr(data, [1.0, 4.0], 128.0)
 
