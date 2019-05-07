@@ -25,16 +25,16 @@ from ..analytic_signal import analytic_signal
 import numpy as np
 
 
-def iplv(data, fb, fs, pairs=None):
+def iplv(data, fb=None, fs=None, pairs=None):
     """ Imaginary part of Phase Locking Value
 
     Compute the Imaginary part of Phase Locking Value for the given *data*,
-    between the *pairs* (if given) of channels.
+    between the *pairs* (if given) of rois.
 
 
     Parameters
     ----------
-    data : array-like, shape(n_channels, n_samples)
+    data : array-like, shape(n_rois, n_samples)
         Multichannel recording data.
 
     fb : list of length 2
@@ -50,10 +50,10 @@ def iplv(data, fb, fs, pairs=None):
 
     Returns
     -------
-    ts : array-like, shape(n_channels, n_channels, n_samples)
+    ts : array-like, shape(n_rois, n_rois, n_samples)
         Estimated IPLV time series.
 
-    avg : array-like, shape = [n_electrodes, n_electrodes]
+    avg : array-like, shape = [n_rois, n_rois]
         Average IPLV.
     """
     iplv = IPLV(fb, fs, pairs)
@@ -63,7 +63,6 @@ def iplv(data, fb, fs, pairs=None):
 
 
 class IPLV(Estimator):
-
     def __init__(self, fb, fs, pairs=None):
         """ Imaginary part of PLV (iPLV)
 
@@ -132,12 +131,15 @@ class IPLV(Estimator):
         avg = np.zeros((n_channels, n_channels))
 
         if self.pairs is None:
-            self.pairs = [(r1, r2) for r1 in range(n_channels)
-                          for r2 in range(r1, n_channels)
-                          if r1 != r2]
+            self.pairs = [
+                (r1, r2)
+                for r1 in range(n_channels)
+                for r2 in range(r1, n_channels)
+                if r1 != r2
+            ]
 
         for pair in self.pairs:
-            u_phases1, u_phases2 = data[pair, ]
+            u_phases1, u_phases2 = data[pair,]
             ts_plv = np.exp(1j * (u_phases1 - u_phases2))
             avg_plv = np.abs(np.imag(np.sum((ts_plv)))) / float(n_samples)
 
