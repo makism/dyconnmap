@@ -73,11 +73,7 @@ class IPLV(Estimator):
         dyfunconn.fc.plv: Phase Locking Value
         dyfunconn.tvfcg: Time-Varying Functional Connectivity Graphs
         """
-        Estimator.__init__(self, fs, pairs)
-
-        self.fb = fb
-        self.fs = fs
-        self._skip_filter = fb is None and fs is None
+        Estimator.__init__(self, fb, fs, pairs)
         self.data_type = np.complex
 
     def preprocess(self, data):

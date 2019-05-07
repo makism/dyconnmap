@@ -22,10 +22,12 @@ class Estimator(object, metaclass=ABCMeta):
     dynfunconn.tvfcgs.tvfcgs_ts: Time-Varying Functional Connectivity Graphs (from time series)
     """
 
-    def __init__(self, fs, pairs=None):
+    def __init__(self, fb=None, fs=None, pairs=None):
         self.fs = fs
+        self.fb = fb
         self.pairs = pairs
         self.data_type = np.float32
+        self._skip_filter = fb is None and fs is None
 
     def preprocess(self, data):
         """ Preprocess the data.
