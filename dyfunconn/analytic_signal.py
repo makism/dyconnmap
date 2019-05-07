@@ -100,6 +100,6 @@ def analytic_signal(signal, fb=None, fs=None, order=3):
     unwrapped_phase = np.unwrap(np.angle(hilberted_signal))
 
     if not skip_filter:
-        return (filtered_signal, hilberted_signal, unwrapped_phase)
+        return (hilberted_signal, unwrapped_phase, signal)
     else:
         return (hilberted_signal, unwrapped_phase)
