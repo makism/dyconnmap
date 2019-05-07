@@ -53,14 +53,14 @@ def analytic_signal(signal, fb=None, fs=None, order=3):
     signal: real array-like, shape(n_rois, n_samples)
         Input signal
 
-    fb: list of length 2
-        Optional. The low and high frequencies.
+    fb: list of length 2, optional
+        The low and high frequencies.
 
-    fs: int
-        Optional. Sampling frequency.
+    fs: int, optional.
+        Sampling frequency.
 
-    order : int
-        Optional. The Filter order. Default `3`.
+    order : int, optional
+        The Filter order. Default `3`.
 
     Returns
     -------
