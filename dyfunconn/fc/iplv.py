@@ -63,7 +63,7 @@ def iplv(data, fb=None, fs=None, pairs=None):
 
 
 class IPLV(Estimator):
-    def __init__(self, fb, fs, pairs=None):
+    def __init__(self, fb=None, fs=None, pairs=None):
         """ Imaginary part of PLV (iPLV)
 
 
@@ -80,7 +80,8 @@ class IPLV(Estimator):
         self.data_type = np.complex
 
     def preprocess(self, data):
-        _, _, u_phases = analytic_signal(data, self.fb, self.fs)
+        _, u_phases, _ = analytic_signal(data, self.fb, self.fs)
+        # _, u_phases = analytic_signal(data, self.fb, self.fs)
 
         return u_phases
 
@@ -125,17 +126,14 @@ class IPLV(Estimator):
         -----
         Called from :mod:`dyfunconn.tvfcgs.tvfcg`.
         """
-        n_channels, n_samples = np.shape(data)
+        n_rois, n_samples = np.shape(data)
 
-        ts = np.zeros((n_channels, n_channels, n_samples), dtype=np.complex)
-        avg = np.zeros((n_channels, n_channels))
+        ts = np.zeros((n_rois, n_rois, n_samples), dtype=np.complex)
+        avg = np.zeros((n_rois, n_rois))
 
         if self.pairs is None:
             self.pairs = [
-                (r1, r2)
-                for r1 in range(n_channels)
-                for r2 in range(r1, n_channels)
-                if r1 != r2
+                (r1, r2) for r1 in range(n_rois) for r2 in range(r1, n_rois) if r1 != r2
             ]
 
         for pair in self.pairs:
