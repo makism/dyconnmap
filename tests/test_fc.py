@@ -196,10 +196,10 @@ def test_pli():
     ts, avg = pli(data, [1.0, 4.0], 128.0, pairs)
 
     expected_ts = np.load("data/test_pli_ts.npy")
-    np.testing.assert_array_equal(ts, expected_ts)
+    np.testing.assert_allclose(ts, expected_ts, rtol=1e-10, atol=0.0)
 
     expected_avg = np.load("data/test_pli_avg.npy")
-    np.testing.assert_array_equal(avg, expected_avg)
+    np.testing.assert_allclose(avg, expected_avg, rtol=1e-10, atol=0.0)
 
 
 def test_plv():
@@ -207,10 +207,10 @@ def test_plv():
     ts, avg = plv(data, [1.0, 4.0], 128.0)
 
     expected_ts = np.load("data/test_plv_ts.npy")
-    np.testing.assert_array_equal(ts, expected_ts)
+    np.testing.assert_allclose(ts, expected_ts, rtol=1e-10, atol=0.0)
 
     expected_avg = np.load("data/test_plv_avg.npy")
-    np.testing.assert_array_equal(avg, expected_avg)
+    np.testing.assert_allclose(avg, expected_avg, rtol=1e-10, atol=0.0)
 
 
 def test_rho_index():

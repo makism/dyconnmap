@@ -36,7 +36,7 @@ from .estimator import Estimator
 from ..analytic_signal import analytic_signal
 
 
-def pli(data, fb, fs, pairs=None):
+def pli(data, fb=None, fs=None, pairs=None):
     """ Phase Lag Index
 
     Compute the PLI for the given :attr:`data`, between the :attr:`pairs` (if given)
@@ -45,13 +45,13 @@ def pli(data, fb, fs, pairs=None):
 
     Parameters
     ----------
-    data : array-like, shape(n_electrodes, n_samples)
+    data : array-like, shape(n_rois, n_samples)
         Multichannel recording data.
 
-    fb : list of length 2
-        The lower and upper frequency.
+    fb : list of length 2, optional
+        The low and high frequencies.
 
-    fs : float
+    fs : float, optional
         Sampling frequency.
 
     pairs : array-like or `None`
@@ -61,10 +61,10 @@ def pli(data, fb, fs, pairs=None):
 
     Returns
     -------
-    ts : array-like, shape(n_electrodes, n_electrodes, n_samples)
+    ts : array-like, shape(n_rois, n_rois, n_samples)
         Estimated PLI time series.
 
-    avg : array-like, shape(n_electrodes, n_electrodes)
+    avg : array-like, shape(n_rois, n_rois)
         Average PLI.
 
 
@@ -84,14 +84,14 @@ class PLI(Estimator):
 
     """
 
-    def __init__(self, fb, fs, pairs=None):
-        Estimator.__init__(self, fs, pairs)
-
-        self.fb = fb
-        self.fs = fs
+    def __init__(self, fb=None, fs=None, pairs=None):
+        Estimator.__init__(self, fb, fs, pairs)
 
     def preprocess(self, data):
-        _, _, u_phases = analytic_signal(data, self.fb, self.fs)
+        if self._skip_filter:
+            _, u_phases = analytic_signal(data)
+        else:
+            _, u_phases, _ = analytic_signal(data, self.fb, self.fs)
 
         return u_phases
 
@@ -108,15 +108,18 @@ class PLI(Estimator):
         n_channels, n_samples = np.shape(data)
 
         if self.pairs is None:
-            self.pairs = [(r1, r2) for r1 in range(n_channels)
-                          for r2 in range(r1, n_channels)
-                          if r1 != r2]
+            self.pairs = [
+                (r1, r2)
+                for r1 in range(n_channels)
+                for r2 in range(r1, n_channels)
+                if r1 != r2
+            ]
 
         ts = np.zeros((n_channels, n_channels, n_samples))
         avg = np.zeros((n_channels, n_channels))
 
         for pair in self.pairs:
-            u_phases1, u_phases2 = data[pair, ]
+            u_phases1, u_phases2 = data[pair,]
             ts_pli = np.sin(u_phases1 - u_phases2)
             avg_pli = np.abs(np.sum(np.sign(ts_pli)) / float(n_samples))
 

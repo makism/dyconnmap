@@ -11,7 +11,7 @@ from .estimator import Estimator
 from ..analytic_signal import analytic_signal
 
 
-def corr(data, fb, fs, pairs=None):
+def corr(data, fb=None, fs=None, pairs=None):
     """ Correlation
 
     Compute the correlation for the given :attr:`data`, between the :attr:`pairs` (if given)
@@ -20,13 +20,13 @@ def corr(data, fb, fs, pairs=None):
 
     Parameters
     ----------
-    data : array-like, shape(n_channels, n_samples)
+    data : array-like, shape(n_rois, n_samples)
         Multichannel recording data.
 
-    fb : list of length 2
-        The lower and upper frequency.
+    fb : list of length 2, optional
+        The low and high frequencies.
 
-    fs : float
+    fs : float, optional
         Sampling frequency.
 
     pairs : array-like or `None`
@@ -36,16 +36,21 @@ def corr(data, fb, fs, pairs=None):
 
     Returns
     -------
-    r : array-like, shape(n_channels, n_channels)
+    r : array-like, shape(n_rois, n_rois)
         Estimated correlation values.
 
     See also
     --------
-    dyfunconn.fc.Corr: Correlation (Class Estimator)
+    dyfunconn.fc.Corr: Correlation
     """
-    filtered, _, _ = analytic_signal(data, fb, fs)
+    X = None
+    if fb is None and fs is None:
+        _, _, filtered = analytic_signal(data, fb, fs)
+        X = filtered
+    else:
+        X = data
 
-    r = np.corrcoef(filtered[:])
+    r = np.corrcoef(X[:])
     r = np.float32(r)
 
     return r
@@ -61,16 +66,15 @@ class Corr(Estimator):
     dyfunconn.tvfcg: Time-Varying Functional Connectivity Graphs
     """
 
-    def __init__(self, fb, fs, pairs=None):
-        Estimator.__init__(self, fs, pairs)
-
-        self.fb = fb
-        self.fs = fs
+    def __init__(self, fb=None, fs=None, pairs=None):
+        Estimator.__init__(self, fb, fs, pairs)
 
     def preprocess(self, data):
-        filtered, _, _ = analytic_signal(data, self.fb, self.fs)
-
-        return filtered
+        if self._skip_filter:
+            return data
+        else:
+            _, _, filtered = analytic_signal(data, self.fb, self.fs)
+            return filtered
 
     def estimate_pair(self, signal1, signal2):
         """
@@ -116,11 +120,12 @@ class Corr(Estimator):
         r = np.zeros((n_channels, n_channels), dtype=self.data_type)
 
         if self.pairs is None:
-            self.pairs = [(r1, r2) for r1 in range(n_channels)
-                          for r2 in range(n_channels)]
+            self.pairs = [
+                (r1, r2) for r1 in range(n_channels) for r2 in range(n_channels)
+            ]
 
         for pair in self.pairs:
-            f_data1, f_data2 = data[pair, ]
+            f_data1, f_data2 = data[pair,]
             r[pair] = np.corrcoef(f_data1, f_data2)[0, 1]
 
         return r
