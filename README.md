@@ -29,3 +29,16 @@ Built on [NumPy](http://www.numpy.org/), [SciPy](http://www.scipy.org/), [matplo
 * [Tutorials](https://github.com/makism/dyfunconn/tree/master/tutorials)
 
 * [Examples](https://github.com/makism/dyfunconn/tree/master/examples)
+
+
+#### Cittation
+
+If you use dyfunconn in a published work, please consider citing.
+
+<table align="center">
+    <tr>
+        <td align="left">1.</td>
+        <td align="left">Marimpis, A. D., & Dimitriadis, S. I. (2017). dyfunconn: dynamic functional connectivity–a neuroimaging Python module. F1000Research, 6. https://doi.org/10.7490/f1000research.1114652.1</td>
+    </tr>
+</table>
+
