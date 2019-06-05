@@ -33,7 +33,7 @@ Built on [NumPy](http://www.numpy.org/), [SciPy](http://www.scipy.org/), [matplo
 
 #### Cittation
 
-If you use dyfunconn in a published work, please consider citing.
+If you use _dyfunconn_ in a published work, please consider citing.
 
 <table align="center">
     <tr>
