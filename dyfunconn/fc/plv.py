@@ -31,7 +31,7 @@ from ..analytic_signal import analytic_signal
 import numpy as np
 
 
-def plv(data, fb, fs, pairs=None):
+def plv(data, fb=None, fs=None, pairs=None):
     """ Phase Locking Value
 
     Compute the PLV for the given :attr:`data`, between the :attr:`pairs` (if given)
@@ -40,13 +40,13 @@ def plv(data, fb, fs, pairs=None):
 
     Parameters
     ----------
-    data : array-like, shape(n_channels, n_samples)
+    data : array-like, shape(n_rois, n_samples)
         Multichannel recording data.
 
-    fb : list of length 2
-        The lower and upper frequency.
+    fb : list of length 2, optional
+        The low and high frequencies.
 
-    fs : float
+    fs : float, optional
         Sampling frequency.
 
     pairs : array-like or `None`
@@ -56,10 +56,10 @@ def plv(data, fb, fs, pairs=None):
 
     Returns
     -------
-    ts : complex array-like, shape(n_channels, n_channels, n_samples)
+    ts : array-like, shape(n_rois, n_rois, n_samples)
         Estimated PLV time series.
 
-    avg : array-like, shape(n_channels, n_channels)
+    avg : array-like, shape(n_rois, n_rois)
         Average PLV.
 
 
@@ -85,15 +85,15 @@ class PLV(Estimator):
     dyfunconn.tvfcg: Time-Varying Functional Connectivity Graphs
     """
 
-    def __init__(self, fb, fs, pairs=None):
-        Estimator.__init__(self, fs, pairs)
-
-        self.fb = fb
-        self.fs = fs
+    def __init__(self, fb=None, fs=None, pairs=None):
+        Estimator.__init__(self, fb, fs, pairs)
         self.data_type = np.complex
 
     def preprocess(self, data):
-        _, _, u_phases = analytic_signal(data, self.fb, self.fs)
+        if self._skip_filter:
+            _, u_phases = analytic_signal(data)
+        else:
+            _, u_phases, _ = analytic_signal(data, self.fb, self.fs)
 
         return u_phases
 
@@ -147,12 +147,15 @@ class PLV(Estimator):
         avg = np.zeros((n_channels, n_channels))
 
         if self.pairs is None:
-            self.pairs = [(r1, r2) for r1 in range(n_channels)
-                          for r2 in range(r1, n_channels)
-                          if r1 != r2]
+            self.pairs = [
+                (r1, r2)
+                for r1 in range(n_channels)
+                for r2 in range(r1, n_channels)
+                if r1 != r2
+            ]
 
         for pair in self.pairs:
-            u_phases1, u_phases2 = data[pair, ]
+            u_phases1, u_phases2 = data[pair,]
             ts_plv = np.exp(1j * (u_phases1 - u_phases2))
             avg_plv = np.abs(np.sum((ts_plv))) / float(n_samples)
 

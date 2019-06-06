@@ -63,16 +63,17 @@ def iplv(data, fb=None, fs=None, pairs=None):
 
 
 class IPLV(Estimator):
+    """ Imaginary part of PLV (iPLV)
+
+
+    See also
+    --------
+    dyfunconn.fc.iplv: Imaginary part of PLV
+    dyfunconn.fc.plv: Phase Locking Value
+    dyfunconn.tvfcg: Time-Varying Functional Connectivity Graphs
+    """
+
     def __init__(self, fb=None, fs=None, pairs=None):
-        """ Imaginary part of PLV (iPLV)
-
-
-        See also
-        --------
-        dyfunconn.fc.iplv: Imaginary part of PLV
-        dyfunconn.fc.plv: Phase Locking Value
-        dyfunconn.tvfcg: Time-Varying Functional Connectivity Graphs
-        """
         Estimator.__init__(self, fb, fs, pairs)
         self.data_type = np.complex
 
