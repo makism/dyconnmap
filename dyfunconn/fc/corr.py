@@ -44,7 +44,7 @@ def corr(data, fb=None, fs=None, pairs=None):
     dyfunconn.fc.Corr: Correlation
     """
     X = None
-    if fb is None and fs is None:
+    if fb is not None and fs is not None:
         _, _, filtered = analytic_signal(data, fb, fs)
         X = filtered
     else:
