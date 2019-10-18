@@ -105,18 +105,15 @@ class PLI(Estimator):
         return ts_pli, avg_pli
 
     def estimate(self, data, data_against=None):
-        n_channels, n_samples = np.shape(data)
+        n_rois, n_samples = np.shape(data)
 
         if self.pairs is None:
             self.pairs = [
-                (r1, r2)
-                for r1 in range(n_channels)
-                for r2 in range(r1, n_channels)
-                if r1 != r2
+                (r1, r2) for r1 in range(n_rois) for r2 in range(r1, n_rois) if r1 != r2
             ]
 
-        ts = np.zeros((n_channels, n_channels, n_samples))
-        avg = np.zeros((n_channels, n_channels))
+        ts = np.zeros((n_rois, n_rois, n_samples))
+        avg = np.zeros((n_rois, n_rois))
 
         for pair in self.pairs:
             u_phases1, u_phases2 = data[pair,]
