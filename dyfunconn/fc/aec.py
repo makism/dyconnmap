@@ -53,8 +53,8 @@ def aec(data, fb_lo, fb_hi, fs):
     r : array-like, shape(n_channels, n_channels)
         Estimated Pearson correlation coefficient.
     """
-    _, h_lo, _ = analytic_signal(data, fb_lo, fs)
-    _, h_hi, _ = analytic_signal(data, fb_hi, fs)
+    h_lo, _, _ = analytic_signal(data, fb_lo, fs)
+    h_hi, _, _ = analytic_signal(data, fb_hi, fs)
 
     r = np.corrcoef(np.abs(h_lo), np.abs(h_hi))
     r = np.float32(r)
