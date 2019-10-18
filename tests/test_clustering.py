@@ -22,11 +22,9 @@ import dyfunconn
 from dyfunconn import cluster
 
 
-
-
-
 rng = None
 data = None
+
 
 def initialize():
     global rng
@@ -34,6 +32,7 @@ def initialize():
 
     rng = np.random.RandomState(seed=0)
     data, _ = sklearn.datasets.make_moons(n_samples=1024, noise=0.125, random_state=rng)
+
 
 @nose.tools.with_setup(initialize)
 def test_clustering_ng():
@@ -50,12 +49,15 @@ def test_clustering_ng():
     result_symbols = np.load("data/test_clustering_ng_symbols.npy")
     np.testing.assert_array_almost_equal(symbols, result_symbols)
 
+
 @nose.tools.with_setup(initialize)
 def test_clustering_rng():
     global rng
     global data
 
-    reng = dyfunconn.cluster.RelationalNeuralGas(n_protos=10, iterations=100, rng=rng).fit(data)
+    reng = dyfunconn.cluster.RelationalNeuralGas(
+        n_protos=10, iterations=100, rng=rng
+    ).fit(data)
     protos = reng.protos
     _, symbols = reng.encode(data)
 
@@ -64,6 +66,7 @@ def test_clustering_rng():
 
     result_symbols = np.load("data/test_clustering_rng_symbols.npy")
     np.testing.assert_array_almost_equal(symbols, result_symbols)
+
 
 @nose.tools.with_setup(initialize)
 def test_clustring_mng():
@@ -75,6 +78,18 @@ def test_clustring_mng():
     result_protos = np.load("data/test_clustering_mng_protos.npy")
     np.testing.assert_array_almost_equal(protos, result_protos)
 
+
+@nose.tools.with_setup(initialize)
+def test_clustering_gng():
+    global rng
+    global data
+
+    protos = dyfunconn.cluster.GrowingNeuralGas(rng=rng).fit(data).protos
+
+    result_protos = np.load("data/test_clustering_gng_protos.npy")
+    np.testing.assert_array_almost_equal(protos, result_protos)
+
+
 @nose.tools.with_setup(initialize)
 def test_clustering_som():
     global rng
@@ -84,6 +99,7 @@ def test_clustering_som():
 
     result_protos = np.load("data/test_clustering_som_protos.npy")
     np.testing.assert_array_almost_equal(protos, result_protos)
+
 
 @nose.tools.with_setup(initialize)
 def test_clustering_som_umatrix():
