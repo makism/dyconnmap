@@ -107,7 +107,7 @@ class Corr(Estimator):
 
         Returns
         -------
-        r : array-like, shape(n_channels, n_channels, n_samples)
+        r : array-like, shape(n_rois, n_rois, n_samples)
             Estimated correlation values.
 
 
@@ -115,14 +115,12 @@ class Corr(Estimator):
         -----
         Called from :mod:`dyfunconn.tvfcgs.tvfcg`.
         """
-        n_channels, _ = np.shape(data)
+        n_rois, _ = np.shape(data)
 
-        r = np.zeros((n_channels, n_channels), dtype=self.data_type)
+        r = np.zeros((n_rois, n_rois), dtype=self.data_type)
 
         if self.pairs is None:
-            self.pairs = [
-                (r1, r2) for r1 in range(n_channels) for r2 in range(n_channels)
-            ]
+            self.pairs = [(r1, r2) for r1 in range(n_rois) for r2 in range(n_rois)]
 
         for pair in self.pairs:
             f_data1, f_data2 = data[pair,]
