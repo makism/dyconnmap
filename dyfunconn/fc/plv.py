@@ -31,6 +31,20 @@ from ..analytic_signal import analytic_signal
 import numpy as np
 
 
+def plv_fast(data, pairs=None):
+    """ Phase Lag Index (fast)
+
+    """
+    n_rois, n_samples = np.shape(data)
+
+    _, u_phases = analytic_signal(data)
+
+    Q = np.exp(1j * u_phases)
+    W = (1.0 / n_samples) * np.abs(np.matmul(Q, Q.T))
+
+    return W
+
+
 def plv(data, fb=None, fs=None, pairs=None):
     """ Phase Locking Value
 
@@ -141,17 +155,14 @@ class PLV(Estimator):
         -----
         Called from :mod:`dyfunconn.tvfcgs.tvfcg`.
         """
-        n_channels, n_samples = np.shape(data)
+        n_rois, n_samples = np.shape(data)
 
-        ts = np.zeros((n_channels, n_channels, n_samples), dtype=np.complex)
-        avg = np.zeros((n_channels, n_channels))
+        ts = np.zeros((n_rois, n_rois, n_samples), dtype=np.complex)
+        avg = np.zeros((n_rois, n_rois))
 
         if self.pairs is None:
             self.pairs = [
-                (r1, r2)
-                for r1 in range(n_channels)
-                for r2 in range(r1, n_channels)
-                if r1 != r2
+                (r1, r2) for r1 in range(n_rois) for r2 in range(r1, n_rois) if r1 != r2
             ]
 
         for pair in self.pairs:
