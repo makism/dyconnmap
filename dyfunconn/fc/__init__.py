@@ -1,11 +1,11 @@
-    # -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 """
 
 """
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
 from .estimator import Estimator
-from .plv import PLV, plv
+from .plv import PLV, plv, plv_fast
 from .pli import PLI, pli
 from .iplv import IPLV, iplv
 from .aec import aec
@@ -25,22 +25,31 @@ from .partcorr import partcorr
 from .rho_index import rho_index
 
 
-__all__ = ['Estimator',
-           'PLV', 'plv',
-           'PLI', 'pli',
-           'IPLV', 'iplv',
-           'aec',
-           'esc',
-           'nesc',
-           'pec',
-           'glm',
-           'rho_index',
-           'PAC', 'pac',
-           'mutual_information',
-           'dpli',
-           'wpli', 'dwpli',
-           'coherence',
-           'icoherence',
-           'corr', 'Corr',
-           'crosscorr',
-           'partcorr']
+__all__ = [
+    "Estimator",
+    "PLV",
+    "plv",
+    "plv_fast",
+    "PLI",
+    "pli",
+    "IPLV",
+    "iplv",
+    "aec",
+    "esc",
+    "nesc",
+    "pec",
+    "glm",
+    "rho_index",
+    "PAC",
+    "pac",
+    "mutual_information",
+    "dpli",
+    "wpli",
+    "dwpli",
+    "coherence",
+    "icoherence",
+    "corr",
+    "Corr",
+    "crosscorr",
+    "partcorr",
+]
