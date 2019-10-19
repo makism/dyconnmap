@@ -73,7 +73,7 @@ def ordinal_pattern_similarity(signal1, signal2, m, tau):
     len1 = len(x)
     len2 = len(y)
 
-    factorial_dim = scipy.misc.factorial(m, exact=True)
+    factorial_dim = scipy.special.factorial(m, exact=True)
 
     ipermlist = itertools.permutations(list(range(1, m + 1)))
     npermlist = np.zeros((np.int32(factorial_dim), m))

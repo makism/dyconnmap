@@ -47,7 +47,7 @@ def permutation_entropy(signal, m, tau):
 
     lx = len(x)
 
-    factorial_dim = np.int(scipy.misc.factorial(m))
+    factorial_dim = np.int(scipy.special.factorial(m))
 
     ipermlist = itertools.permutations(list(range(1, m + 1)))
     npermlist = np.zeros((factorial_dim, m))
