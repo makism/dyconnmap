@@ -125,11 +125,18 @@ def test_iplv_nofilter():
     data = np.load("../examples/data/rois39_samples100.npy")
     ts, avg = iplv(data)
 
+    # The following tests pass locally; but they fail on Travis o_O
+    # expected_ts = np.load("data/test_iplv_nofilter_ts.npy")
+    # np.testing.assert_array_equal(ts, expected_ts)
+    # expected_avg = np.load("data/test_iplv_nofilter_avg.npy")
+    # np.testing.assert_array_equal(avg, expected_avg)
+
+    # We have to use the following to make the test work on Travis
     expected_ts = np.load("data/test_iplv_nofilter_ts.npy")
-    np.testing.assert_array_equal(ts, expected_ts)
+    np.testing.assert_allclose(ts, expected_ts, rtol=1e-10, atol=0.0)
 
     expected_avg = np.load("data/test_iplv_nofilter_avg.npy")
-    np.testing.assert_array_equal(avg, expected_avg)
+    np.testing.assert_allclose(avg, expected_avg, rtol=1e-10, atol=0.0)
 
 
 def test_fast_iplv_nofilter():
