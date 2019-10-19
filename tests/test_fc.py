@@ -15,6 +15,7 @@ from dyfunconn.fc import (
     glm,
     icoherence,
     iplv,
+    iplv_fast,
     # mi,
     mutual_information,
     nesc,
@@ -108,11 +109,16 @@ def test_iplv():
     data = np.load("../examples/data/eeg_32chans_10secs.npy")
     ts, avg = iplv(data, [1.0, 4.0], 128.0)
 
+    ts = np.float32(ts)
+    avg = np.float32(avg)
+
     expected_ts = np.load("data/test_iplv_ts.npy")
-    np.testing.assert_allclose(ts, expected_ts, rtol=1e-10, atol=0.0)
+    expected_ts = np.float32(expected_ts)
+    np.testing.assert_array_equal(ts, expected_ts)
 
     expected_avg = np.load("data/test_iplv_avg.npy")
-    np.testing.assert_allclose(avg, expected_avg, rtol=1e-10, atol=0.0)
+    expected_avg = np.float32(expected_avg)
+    np.testing.assert_array_equal(avg, expected_avg)
 
 
 def test_iplv_nofilter():
@@ -120,10 +126,26 @@ def test_iplv_nofilter():
     ts, avg = iplv(data)
 
     expected_ts = np.load("data/test_iplv_nofilter_ts.npy")
-    np.testing.assert_allclose(ts, expected_ts, rtol=1e-10, atol=0.0)
+    np.testing.assert_array_equal(ts, expected_ts)
 
     expected_avg = np.load("data/test_iplv_nofilter_avg.npy")
-    np.testing.assert_allclose(avg, expected_avg, rtol=1e-10, atol=0.0)
+    np.testing.assert_array_equal(avg, expected_avg)
+
+
+def test_fast_iplv_nofilter():
+    data = np.load("../examples/data/rois39_samples100.npy")
+    avg = iplv_fast(data)
+
+    # iPLV returns a fully symmetrical matrix, so we have to
+    # fill with zeros the diagonal and the lower triagular
+    np.fill_diagonal(avg, 0.0)
+    avg[np.tril_indices_from(avg)] = 0.0
+
+    avg = np.float32(avg)
+
+    expected_avg = np.load("data/test_iplv_nofilter_avg.npy")
+    expected_avg = np.float32(expected_avg)
+    np.testing.assert_array_equal(avg, expected_avg)
 
 
 def test_mui():

@@ -25,6 +25,21 @@ from ..analytic_signal import analytic_signal
 import numpy as np
 
 
+def iplv_fast(data, pairs=None):
+    """ Imaginary part of Phase Locking Value
+
+    """
+    n_rois, n_samples = np.shape(data)
+
+    _, u_phases = analytic_signal(data)
+    Q = np.exp(1j * u_phases)
+
+    Q = np.matrix(Q)
+    W = np.abs(np.imag(Q @ Q.conj().transpose())) / np.float32(n_samples)
+
+    return W
+
+
 def iplv(data, fb=None, fs=None, pairs=None):
     """ Imaginary part of Phase Locking Value
 

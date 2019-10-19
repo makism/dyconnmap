@@ -7,7 +7,7 @@
 from .estimator import Estimator
 from .plv import PLV, plv, plv_fast
 from .pli import PLI, pli
-from .iplv import IPLV, iplv
+from .iplv import IPLV, iplv, iplv_fast
 from .aec import aec
 from .esc import esc
 from .nesc import nesc
@@ -34,6 +34,7 @@ __all__ = [
     "pli",
     "IPLV",
     "iplv",
+    "iplv_fast",
     "aec",
     "esc",
     "nesc",
