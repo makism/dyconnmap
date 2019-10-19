@@ -66,18 +66,18 @@ def wpli(data, fb, fs, pairs=None, **kwargs):
     n_channels, n_samples = np.shape(data)
 
     if pairs is None:
-        pairs = [(r1, r2) for r1 in range(n_channels)
-                 for r2 in range(n_channels)]
+        pairs = [(r1, r2) for r1 in range(n_channels) for r2 in range(n_channels)]
 
-    filtered, _, _ = analytic_signal(data, fb, fs)
+    _, _, filtered = analytic_signal(data, fb, fs)
     filtered = data
 
     wpliv = np.zeros((n_channels, n_channels))
 
     for pair in pairs:
-        filt1, filt2 = filtered[pair, ]
-        csdxy, _ = mlab.csd(filt1, filt2, Fs=fs,
-                            scale_by_freq=True, sides='onesided', **kwargs)
+        filt1, filt2 = filtered[pair,]
+        csdxy, _ = mlab.csd(
+            filt1, filt2, Fs=fs, scale_by_freq=True, sides="onesided", **kwargs
+        )
 
         Ixy = np.imag(csdxy)
 
@@ -128,18 +128,18 @@ def dwpli(data, fb, fs, pairs=None, **kwargs):
     n_channels, n_samples = np.shape(data)
 
     if pairs is None:
-        pairs = [(r1, r2) for r1 in range(n_channels)
-                 for r2 in range(n_channels)]
+        pairs = [(r1, r2) for r1 in range(n_channels) for r2 in range(n_channels)]
 
-    filtered, _, _ = analytic_signal(data, fb, fs)
+    _, _, filtered = analytic_signal(data, fb, fs)
     filtered = data
 
     dwpliv = np.zeros((n_channels, n_channels))
 
     for pair in pairs:
-        filt1, filt2 = filtered[pair, ]
-        csdxy, _ = mlab.csd(filt1, filt2, Fs=fs,
-                            scale_by_freq=True, sides='onesided', **kwargs)
+        filt1, filt2 = filtered[pair,]
+        csdxy, _ = mlab.csd(
+            filt1, filt2, Fs=fs, scale_by_freq=True, sides="onesided", **kwargs
+        )
 
         Ixy = np.imag(csdxy)
 
@@ -147,7 +147,8 @@ def dwpli(data, fb, fs, pairs=None, **kwargs):
         denom = np.nansum(np.abs(Ixy))
 
         sumsquare = np.nansum(np.power(Ixy, 2.0))
-        dwpliv[pair] = (np.power(num, 2.0) - sumsquare) / \
-            (np.power(denom, 2.0) - sumsquare)
+        dwpliv[pair] = (np.power(num, 2.0) - sumsquare) / (
+            np.power(denom, 2.0) - sumsquare
+        )
 
     return dwpliv

@@ -74,13 +74,13 @@ class PAC(Estimator):
         self.pairs = pairs
 
     def preprocess(self, data):
-        _, hilberted_lo, _ = analytic_signal(data, self.f_lo, self.fs)
+        hilberted_lo, _, _ = analytic_signal(data, self.f_lo, self.fs)
         phase = np.angle(hilberted_lo)
 
-        _, hilberted_hi, _ = analytic_signal(data, self.f_hi, self.fs)
+        hilberted_hi, _, _ = analytic_signal(data, self.f_hi, self.fs)
         amp = np.abs(hilberted_hi)
 
-        _, hilberted_lohi, _ = analytic_signal(amp, self.f_lo, self.fs)
+        hilberted_lohi, _, _ = analytic_signal(amp, self.f_lo, self.fs)
         phase_lohi = np.angle(hilberted_lohi)
 
         return phase, phase_lohi
@@ -98,8 +98,8 @@ class PAC(Estimator):
 
         for pair in self.pairs:
             p1, p2 = pair
-            phase1 = phases[p1, ]
-            phase1_lohi = phases_lohi[p2, ]
+            phase1 = phases[p1,]
+            phase1_lohi = phases_lohi[p2,]
 
             ts, avg = self.estimator.estimate_pair(phase1, phase1_lohi)
 

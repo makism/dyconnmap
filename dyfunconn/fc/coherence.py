@@ -73,23 +73,25 @@ def coherence(data, fb, fs, pairs=None, **kwargs):
     dyfunconn.fc.icoherence: Imaginary Coherence
     """
     n_channels, _ = np.shape(data)
-    filtered, _, _ = analytic_signal(data, fb, fs)
+    _, _, filtered = analytic_signal(data, fb, fs)
 
     if pairs is None:
-        pairs = [(r1, r2) for r1 in range(n_channels)
-                 for r2 in range(n_channels)]
+        pairs = [(r1, r2) for r1 in range(n_channels) for r2 in range(n_channels)]
 
     coh = np.zeros((n_channels, n_channels))
 
     for pair in pairs:
-        filt1, filt2 = filtered[pair, ]
+        filt1, filt2 = filtered[pair,]
 
-        csdxx, _ = mlab.csd(x=filt1, y=filt1, Fs=fs,
-                            scale_by_freq=True, sides='onesided', **kwargs)
-        csdyy, _ = mlab.csd(x=filt2, y=filt2, Fs=fs,
-                            scale_by_freq=True, sides='onesided', **kwargs)
-        csdxy, _ = mlab.csd(x=filt1, y=filt2, Fs=fs,
-                            scale_by_freq=True, sides='onesided', **kwargs)
+        csdxx, _ = mlab.csd(
+            x=filt1, y=filt1, Fs=fs, scale_by_freq=True, sides="onesided", **kwargs
+        )
+        csdyy, _ = mlab.csd(
+            x=filt2, y=filt2, Fs=fs, scale_by_freq=True, sides="onesided", **kwargs
+        )
+        csdxy, _ = mlab.csd(
+            x=filt1, y=filt2, Fs=fs, scale_by_freq=True, sides="onesided", **kwargs
+        )
 
         cohv = np.abs(csdxy * np.conj(csdxy)) / (csdxx * csdyy)
 
@@ -120,21 +122,40 @@ class Coherence(Estimator):
     def preprocess(self, data):
         n_channels, n_samples = np.shape(data)
 
-        filtered, _, _ = analytic_signal(data, self.fb, self.fs)
+        _, _, filtered = analytic_signal(data, self.fb, self.fs)
 
         if self.pairs is None:
-            self.pairs = [(r1, r2) for r1 in range(n_channels)
-                          for r2 in range(n_channels)]
+            self.pairs = [
+                (r1, r2) for r1 in range(n_channels) for r2 in range(n_channels)
+            ]
 
         return filtered
 
     def estimate_pair(self, ts1, ts2):
-        csdxx, fxx = mlab.csd(x=ts1, y=ts1, Fs=self.fs,
-                            scale_by_freq=True, sides='onesided', **self.csdargs)
-        csdyy, fyy = mlab.csd(x=ts2, y=ts2, Fs=self.fs,
-                            scale_by_freq=True, sides='onesided', **self.csdargs)
-        csdxy, fxy = mlab.csd(x=ts1, y=ts2, Fs=self.fs,
-                            scale_by_freq=True, sides='onesided', **self.csdargs)
+        csdxx, fxx = mlab.csd(
+            x=ts1,
+            y=ts1,
+            Fs=self.fs,
+            scale_by_freq=True,
+            sides="onesided",
+            **self.csdargs
+        )
+        csdyy, fyy = mlab.csd(
+            x=ts2,
+            y=ts2,
+            Fs=self.fs,
+            scale_by_freq=True,
+            sides="onesided",
+            **self.csdargs
+        )
+        csdxy, fxy = mlab.csd(
+            x=ts1,
+            y=ts2,
+            Fs=self.fs,
+            scale_by_freq=True,
+            sides="onesided",
+            **self.csdargs
+        )
 
         cohv = np.abs(csdxy * np.conj(csdxy)) / (csdxx * csdyy)
 

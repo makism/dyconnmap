@@ -76,11 +76,10 @@ def glm(data, fb_lo, fb_hi, fs, pairs=None, window_size=-1):
         window_size = -1
 
     if pairs is None:
-        pairs = [(r1, r2) for r1 in range(n_channels)
-                 for r2 in range(n_channels)]
+        pairs = [(r1, r2) for r1 in range(n_channels) for r2 in range(n_channels)]
 
-    _, l_hilb, _ = analytic_signal(data, fb_lo, fs)
-    _, h_hilb, _ = analytic_signal(data, fb_hi, fs)
+    l_hilb, _, _ = analytic_signal(data, fb_lo, fs)
+    h_hilb, _, _ = analytic_signal(data, fb_hi, fs)
 
     lf = np.angle(l_hilb) % np.pi
     hfa = np.abs(h_hilb)
@@ -94,8 +93,8 @@ def glm(data, fb_lo, fb_hi, fs, pairs=None, window_size=-1):
         for pair in pairs:
             source_channel, target_channel = pair
 
-            slide_lf = lf[source_channel, start_window: end_window]
-            slide_hfa = hfa[target_channel, start_window: end_window]
+            slide_lf = lf[source_channel, start_window:end_window]
+            slide_hfa = hfa[target_channel, start_window:end_window]
 
             s = np.size(slide_lf)
             y = np.reshape(slide_hfa, (s, 1))
