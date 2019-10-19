@@ -38,9 +38,10 @@ def plv_fast(data, pairs=None):
     n_rois, n_samples = np.shape(data)
 
     _, u_phases = analytic_signal(data)
-
     Q = np.exp(1j * u_phases)
-    W = (1.0 / n_samples) * np.abs(np.matmul(Q, Q.T))
+
+    Q = np.matrix(Q)
+    W = np.abs(Q @ Q.conj().transpose()) / np.float32(n_samples)
 
     return W
 
