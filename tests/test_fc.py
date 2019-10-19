@@ -23,6 +23,7 @@ from dyfunconn.fc import (
     pli,
     plv,
     PLV,
+    plv_fast,
     rho_index,
     # sl,
     wpli,
@@ -209,33 +210,33 @@ def test_pli():
 
 def test_plv():
     data = np.load("../examples/data/eeg_32chans_10secs.npy")
-
-    # import scipy
-    # from scipy import io as sio
-
-    # data = sio.loadmat("/home/makism/Development/Matlab/PLVs/data.mat")
-    # data = data["data"]
-
     ts, avg = plv(data)
 
-    # print(avg)
-    # print(np.shape(avg))
+    ts = np.float32(ts)
+    avg = np.float32(avg)
 
-    # from dyfunconn.fc import plv_fast
-
-    # W = plv_fast(data)
-    # print(W)
-    # print(np.shape(W))
-
-    # expected_ts = np.load("data/test_plv_ts.npy")
-    # np.testing.assert_allclose(ts, expected_ts, rtol=1e-10, atol=0.0)
+    expected_ts = np.load("data/test_plv_ts.npy")
+    expected_ts = np.float32(expected_ts)
+    np.testing.assert_array_equal(ts, expected_ts)  # , rtol=1e-10, atol=0.0)
 
     expected_avg = np.load("data/test_plv_avg.npy")
+    expected_avg = np.float32(expected_avg)
+    np.testing.assert_array_equal(avg, expected_avg)  # , rtol=1e-10, atol=0.0)
 
-    print(avg)
 
-    print(expected_avg)
-    # np.testing.assert_allclose(avg, expected_avg, rtol=1e-10, atol=0.0)
+def test_fast_plv():
+    data = np.load("../examples/data/eeg_32chans_10secs.npy")
+    avg = plv_fast(data)
+
+    avg = np.float32(avg)
+
+    # PLV returns a fully symmetrical matrix, so we have to
+    # fill with zeros the diagonal and the lower triagular
+    np.fill_diagonal(avg, 0.0)
+    avg[np.tril_indices_from(avg)] = 0.0
+
+    expected_avg = np.load("data/test_plv_avg.npy")
+    np.testing.assert_array_equal(avg, expected_avg)
 
 
 def test_rho_index():
