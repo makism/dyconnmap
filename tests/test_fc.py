@@ -51,7 +51,8 @@ def test_coherence():
     coh = coherence(data, [1.0, 4.0], 128.0, **csdparams)
 
     expected = np.load("data/test_coherence.npy")
-    np.testing.assert_array_equal(coh, expected)
+    # np.testing.assert_array_equal(coh, expected)
+    np.testing.assert_allclose(coh, expected, rtol=1e-10, atol=0.0)
 
 
 def test_dpli():
@@ -98,7 +99,8 @@ def test_icoherence():
     icoh = icoherence(data, [1.0, 4.0], 128.0, **csdparams)
 
     expected = np.load("data/test_icoherence.npy")
-    np.testing.assert_array_equal(icoh, expected)
+    # np.testing.assert_array_equal(icoh, expected)
+    np.testing.assert_allclose(icoh, expected, rtol=1e-10, atol=0.0)
 
 
 def test_iplv():
@@ -161,16 +163,19 @@ def test_pac_multiple_channels():
 
     estimator = PLV(fb_lo, fs)
     ts, avg = pac(data, fb_lo, fb_hi, 128, estimator)
-
-    ts = np.real(ts)
+    ts = np.nan_to_num(ts)
+    avg = np.nan_to_num(avg)
 
     expected_ts = np.load("data/test_pac_plv_ts.npy")
-    expected_ts = np.real(ts)
-
+    expected_ts = np.nan_to_num(ts)
     np.testing.assert_array_equal(ts, expected_ts)
 
+    avg = np.float32(avg)
+
     expected_avg = np.load("data/test_pac_plv_avg.npy")
-    np.testing.assert_array_equal(avg, expected_avg)
+    expected_avg = np.nan_to_num(expected_avg)
+    expected_avg = np.float32(expected_avg)
+    np.testing.assert_allclose(avg, expected_avg, rtol=1e-10, atol=0.0)
 
 
 def test_pec():
@@ -204,21 +209,32 @@ def test_pli():
 
 def test_plv():
     data = np.load("../examples/data/eeg_32chans_10secs.npy")
+
+    # import scipy
+    # from scipy import io as sio
+
+    # data = sio.loadmat("/home/makism/Development/Matlab/PLVs/data.mat")
+    # data = data["data"]
+
     ts, avg = plv(data)
 
-    print(avg)
-    print(np.shape(avg))
+    # print(avg)
+    # print(np.shape(avg))
 
-    from dyfunconn.fc import plv_fast
+    # from dyfunconn.fc import plv_fast
 
-    W = plv_fast(data)
-    print(W)
-    print(np.shape(W))
+    # W = plv_fast(data)
+    # print(W)
+    # print(np.shape(W))
 
     # expected_ts = np.load("data/test_plv_ts.npy")
     # np.testing.assert_allclose(ts, expected_ts, rtol=1e-10, atol=0.0)
 
-    # expected_avg = np.load("data/test_plv_avg.npy")
+    expected_avg = np.load("data/test_plv_avg.npy")
+
+    print(avg)
+
+    print(expected_avg)
     # np.testing.assert_allclose(avg, expected_avg, rtol=1e-10, atol=0.0)
 
 
@@ -241,9 +257,11 @@ def test_wpli():
     csdparams = {"NFFT": 256, "noverlap": 256 / 2.0}
 
     wpliv = wpli(data, [1.0, 4.0], 128.0, **csdparams)
+    wpliv = np.nan_to_num(wpliv)
 
     expected = np.load("data/test_wpli.npy")
-    np.testing.assert_array_equal(wpliv, expected)
+    expected = np.nan_to_num(expected)
+    np.testing.assert_allclose(wpliv, expected, rtol=1e-10, atol=0.0)
 
 
 def test_dwpli():
@@ -252,9 +270,11 @@ def test_dwpli():
     csdparams = {"NFFT": 256, "noverlap": 256 / 2.0}
 
     dwpliv = dwpli(data, [1.0, 4.0], 128.0, **csdparams)
+    dwpliv = np.nan_to_num(dwpliv)
 
     expected = np.load("data/test_dwpli.npy")
-    np.testing.assert_array_equal(dwpliv, expected)
+    expected = np.nan_to_num(expected)
+    np.testing.assert_allclose(dwpliv, expected, rtol=1e-10, atol=0.0)
 
 
 def test_corr():
