@@ -32,7 +32,7 @@ import numpy as np
 
 
 def plv_fast(data, pairs=None):
-    """ Phase Lag Index (fast)
+    """ Phase Locking Value
 
     """
     n_rois, n_samples = np.shape(data)
