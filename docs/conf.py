@@ -50,7 +50,7 @@ intersphinx_mapping = {
     }
 
 
-autosummary_generate = False
+autosummary_generate = []
 autodoc_default_flags = ['members', 'inherited-members']
 
 # Add any paths that contain templates here, relative to this directory.
