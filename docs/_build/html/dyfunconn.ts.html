@@ -222,7 +222,7 @@ The unnormalized measure can be used to compare sequences of equal lengths.</p>
 <dd><p>Complexity Index</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>x</strong> : array-like, shape(N)</p>
+<dd class="field-odd"><p><strong>x</strong> : array-like, shape(n_samples)</p>
 <blockquote>
 <div><p>Input symbolic time series.</p>
 </div></blockquote>
@@ -265,10 +265,14 @@ of the input symbolic time series.</p>
 <p>Coefficient of Variation</p>
 <dl class="function">
 <dt id="dyfunconn.ts.cv.cv">
-<code class="sig-prename descclassname">dyfunconn.ts.cv.</code><code class="sig-name descname">cv</code><span class="sig-paren">(</span><em class="sig-param">X</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/cv.html#cv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.cv.cv" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list">
+<code class="sig-prename descclassname">dyfunconn.ts.cv.</code><code class="sig-name descname">cv</code><span class="sig-paren">(</span><em class="sig-param">x</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/cv.html#cv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.cv.cv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Coefficient of Variation</p>
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>X :</strong> :</p>
+<dd class="field-odd"><p><strong>x</strong> : array-like, shape(n_samples)</p>
+<blockquote>
+<div><p>Input time series</p>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><strong>cv</strong> : float</p>
@@ -292,8 +296,14 @@ of the input symbolic time series.</p>
 <dd><p>Distance Correlation</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>x :</strong> :</p>
-<p><strong>y :</strong> :</p>
+<dd class="field-odd"><p><strong>x</strong> : array-like, shape(n_samples)</p>
+<blockquote>
+<div><p>Input time series.</p>
+</div></blockquote>
+<p><strong>y</strong> : array-like, shape(N)</p>
+<blockquote>
+<div><p>Input time series.</p>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><strong>val</strong> : float</p>
@@ -337,7 +347,7 @@ consult the work of Bradley and Kantz (<a class="reference internal" href="#brad
 <dd><p>Embed delay</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>ts</strong> : array-like, shape(1, n_samples)</p>
+<dd class="field-odd"><p><strong>ts</strong> : array-like, shape(n_samples)</p>
 <blockquote>
 <div><p>One-dimensional symbolic time series.</p>
 </div></blockquote>
@@ -365,8 +375,22 @@ consult the work of Bradley and Kantz (<a class="reference internal" href="#brad
 <p>Entropy</p>
 <dl class="function">
 <dt id="dyfunconn.ts.entropy.entropy">
-<code class="sig-prename descclassname">dyfunconn.ts.entropy.</code><code class="sig-name descname">entropy</code><span class="sig-paren">(</span><em class="sig-param">dts</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/entropy.html#entropy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.entropy.entropy" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyfunconn.ts.entropy.</code><code class="sig-name descname">entropy</code><span class="sig-paren">(</span><em class="sig-param">x</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/entropy.html#entropy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.entropy.entropy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Entropy</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> : array-like, shape(N)</p>
+<blockquote>
+<div><p>Input symbolic time series.</p>
+</div></blockquote>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>entropy</strong> : float</p>
+<blockquote>
+<div><p>The computed entropy.</p>
+</div></blockquote>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -808,7 +832,7 @@ is in order to avoid :math:<a href="#id15"><span class="problematic" id="id16">`
 <dd><p>Sample Entropy</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>data</strong> : array-like, shape(1, n_samples)</p>
+<dd class="field-odd"><p><strong>data</strong> : array-like, shape(n_samples)</p>
 <blockquote>
 <div><p>Symbolic time series.</p>
 </div></blockquote>
@@ -852,9 +876,9 @@ is in order to avoid :math:<a href="#id15"><span class="problematic" id="id16">`
 <dd><p>Entropy Reduction Rate</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>sym_ts</strong> : array-like, shape(N)</p>
+<dd class="field-odd"><p><strong>sym_ts</strong> : array-like, shape(n_samples)</p>
 <blockquote>
-<div><p>Symblic time series (1D)</p>
+<div><p>Input symblic time series.</p>
 </div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -1063,7 +1087,7 @@ in an approximately Gaussian distribution.</p>
 <dd><p>Sample Entropy</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>data</strong> : array-like, shape(1, n_samples)</p>
+<dd class="field-odd"><p><strong>data</strong> : array-like, shape(n_samples)</p>
 <blockquote>
 <div><p>Symbolic time series.</p>
 </div></blockquote>
@@ -1102,7 +1126,7 @@ in an approximately Gaussian distribution.</p>
 <dd><p>Embed delay</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>ts</strong> : array-like, shape(1, n_samples)</p>
+<dd class="field-odd"><p><strong>ts</strong> : array-like, shape(n_samples)</p>
 <blockquote>
 <div><p>One-dimensional symbolic time series.</p>
 </div></blockquote>
@@ -1200,9 +1224,9 @@ in an approximately Gaussian distribution.</p>
 <dd><p>Entropy Reduction Rate</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>sym_ts</strong> : array-like, shape(N)</p>
+<dd class="field-odd"><p><strong>sym_ts</strong> : array-like, shape(n_samples)</p>
 <blockquote>
-<div><p>Symblic time series (1D)</p>
+<div><p>Input symblic time series.</p>
 </div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -1417,8 +1441,22 @@ is in order to avoid :math:<a href="#id27"><span class="problematic" id="id28">`
 
 <dl class="function">
 <dt id="dyfunconn.ts.entropy">
-<code class="sig-prename descclassname">dyfunconn.ts.</code><code class="sig-name descname">entropy</code><span class="sig-paren">(</span><em class="sig-param">dts</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/entropy.html#entropy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.entropy" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyfunconn.ts.</code><code class="sig-name descname">entropy</code><span class="sig-paren">(</span><em class="sig-param">x</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/entropy.html#entropy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.entropy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Entropy</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> : array-like, shape(N)</p>
+<blockquote>
+<div><p>Input symbolic time series.</p>
+</div></blockquote>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>entropy</strong> : float</p>
+<blockquote>
+<div><p>The computed entropy.</p>
+</div></blockquote>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -1446,8 +1484,14 @@ is in order to avoid :math:<a href="#id27"><span class="problematic" id="id28">`
 <dd><p>Distance Correlation</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>x :</strong> :</p>
-<p><strong>y :</strong> :</p>
+<dd class="field-odd"><p><strong>x</strong> : array-like, shape(n_samples)</p>
+<blockquote>
+<div><p>Input time series.</p>
+</div></blockquote>
+<p><strong>y</strong> : array-like, shape(N)</p>
+<blockquote>
+<div><p>Input time series.</p>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><strong>val</strong> : float</p>
@@ -1563,7 +1607,7 @@ a matrix of different size.</p>
 <dd><p>Complexity Index</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>x</strong> : array-like, shape(N)</p>
+<dd class="field-odd"><p><strong>x</strong> : array-like, shape(n_samples)</p>
 <blockquote>
 <div><p>Input symbolic time series.</p>
 </div></blockquote>
@@ -1661,10 +1705,14 @@ reached, or the the number of neighbors is reduced to specific percentage.</p>
 
 <dl class="function">
 <dt id="dyfunconn.ts.cv">
-<code class="sig-prename descclassname">dyfunconn.ts.</code><code class="sig-name descname">cv</code><span class="sig-paren">(</span><em class="sig-param">X</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/cv.html#cv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.cv" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list">
+<code class="sig-prename descclassname">dyfunconn.ts.</code><code class="sig-name descname">cv</code><span class="sig-paren">(</span><em class="sig-param">x</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/cv.html#cv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.cv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Coefficient of Variation</p>
+<dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>X :</strong> :</p>
+<dd class="field-odd"><p><strong>x</strong> : array-like, shape(n_samples)</p>
+<blockquote>
+<div><p>Input time series</p>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><strong>cv</strong> : float</p>

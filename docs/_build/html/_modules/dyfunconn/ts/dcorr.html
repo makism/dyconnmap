@@ -162,16 +162,17 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    x :</span>
+<span class="sd">    x : array-like, shape(n_samples)</span>
+<span class="sd">        Input time series.</span>
 
-<span class="sd">    y :</span>
+<span class="sd">    y : array-like, shape(N)</span>
+<span class="sd">        Input time series.</span>
 
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    val : float</span>
 <span class="sd">        The computed distance correlation.</span>
-
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">lx</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
     <span class="n">ly</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
