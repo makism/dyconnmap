@@ -16,7 +16,7 @@ The following software is required for `dyfunconn` to work properly:
 
     This is required for building the documentation from the source code.
 
-Consult the accompanying `requirement.txt` file.
+Consult the accompanying `requirement.txt` file for specific versions.
 
 Installation
 ============
