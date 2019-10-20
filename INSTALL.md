@@ -44,7 +44,7 @@ If you prefer to install `dyfunconn` locally, instead run:
 
 If you opt for the later option, you will have to set the environmental
 variable $PYTHONPATH from the terminal as follows:
-> export PYTHONPATH="$HOME/.local/dyunconn/lib/python3.6/site-packages/"
+> $ export PYTHONPATH="$HOME/.local/dyunconn/lib/python3.6/site-packages/"
 
 
 Documentation
