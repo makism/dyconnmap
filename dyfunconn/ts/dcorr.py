@@ -16,16 +16,17 @@ def dcorr(x, y):
 
     Parameters
     ----------
-    x :
+    x : array-like, shape(n_samples)
+        Input time series.
 
-    y :
+    y : array-like, shape(N)
+        Input time series.
 
 
     Returns
     -------
     val : float
         The computed distance correlation.
-
     """
     lx = len(x)
     ly = len(y)

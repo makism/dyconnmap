@@ -27,7 +27,7 @@ def complexity_index(x, sub_len=-1, normalize=False, iterations=100):
 
     Parameters
     ----------
-    x : array-like, shape(N)
+    x : array-like, shape(n_samples)
         Input symbolic time series.
 
     sub_len : int

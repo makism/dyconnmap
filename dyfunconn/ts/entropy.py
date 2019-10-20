@@ -6,14 +6,25 @@
 
 import numpy as np
 
-def entropy(dts):
+
+def entropy(x):
     """ Entropy
 
+    Parameters
+    ----------
+    x : array-like, shape(N)
+        Input symbolic time series.
+
+
+    Returns
+    -------
+    entropy : float
+        The computed entropy.
     """
-    l = len(dts)
+    l = len(x)
 
     # unique, counts = np.unique(dts, return_counts=True)
-    _, counts = np.unique(dts, return_counts=True)
+    _, counts = np.unique(x, return_counts=True)
     len_counts = len(counts)
     counts = np.float32(counts)
 

@@ -27,7 +27,7 @@ def sample_entropy(data, dim=2, tau=None, r=None):
 
     Parameters
     ----------
-    data : array-like, shape(1, n_samples)
+    data : array-like, shape(n_samples)
         Symbolic time series.
 
     dim : int
