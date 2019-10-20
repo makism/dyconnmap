@@ -131,7 +131,7 @@ def __compute_complexity_index(x, sub_len=-1):
 
             if num_words > 0:
                 idx1 = shift
-                idx2 = real_word_len* num_words + shift
+                idx2 = real_word_len * num_words + shift
                 sliced = x[idx1:idx2]
                 words = np.reshape(sliced, (num_words, real_word_len)).T
 
@@ -174,7 +174,7 @@ def __rowsBaseConv(x, base=None):
     _, p = np.shape(x)
 
     bases = np.ones(p) * base
-    indices = list(range(p-1, -1, -1))
+    indices = list(range(p - 1, -1, -1))
     base = np.power(bases, indices)
 
     result = x.dot(base)
