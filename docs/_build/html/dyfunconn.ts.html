@@ -17,33 +17,36 @@
   
 
   
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="dyfunconn.sim_models package" href="dyfunconn.sim_models.html" /> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -80,6 +83,7 @@
               <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="dyfunconn.html">dyfunconn package</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="dyfunconn.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="dyfunconn.chronnectomics.html">dyfunconn.chronnectomics package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dyfunconn.cluster.html">dyfunconn.cluster package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dyfunconn.fc.html">dyfunconn.fc package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dyfunconn.graphs.html">dyfunconn.graphs package</a></li>
@@ -198,33 +202,27 @@ The unnormalized measure can be used to compare sequences of equal lengths.</p>
 <div class="section" id="notes">
 <h3>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>This is a direct translation from the <cite>Complexity toolbox available at</cite> <a class="reference external" href="http://users.auth.gr/~stdimitr/files/software/complexitiy.rar">http://users.auth.gr/~stdimitr/files/software/complexitiy.rar</a></li>
-<li>Original author is Stravros Dimitriadis &lt;<a class="reference external" href="mailto:stidimitriadis&#37;&#52;&#48;gmail&#46;com">stidimitriadis<span>&#64;</span>gmail<span>&#46;</span>com</a>&gt;</li>
+<li><p>This is a direct translation from the <cite>Complexity toolbox available at</cite> <a class="reference external" href="http://users.auth.gr/~stdimitr/files/software/complexitiy.rar">http://users.auth.gr/~stdimitr/files/software/complexitiy.rar</a></p></li>
+<li><p>Original author is Stravros Dimitriadis &lt;<a class="reference external" href="mailto:stidimitriadis&#37;&#52;&#48;gmail&#46;com">stidimitriadis<span>&#64;</span>gmail<span>&#46;</span>com</a>&gt;</p></li>
 </ul>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<table class="docutils citation" frame="void" id="janson2004" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[Janson2004]</td><td>Janson, S., Lonardi, S., &amp; Szpankowski, W. (2004). On average sequence complexity. Theoretical Computer Science, 326(1-3), 213-227.</td></tr>
-</tbody>
-</table>
-<table class="docutils citation" frame="void" id="rapp2007" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[Rapp2007]</td><td>Rapp, P. E. (2007). Quantitative characterization of animal behavior following blast exposure. Cognitive neurodynamics, 1(4), 287-293.</td></tr>
-</tbody>
-</table>
+<dl class="citation">
+<dt class="label" id="janson2004"><span class="brackets">Janson2004</span></dt>
+<dd><p>Janson, S., Lonardi, S., &amp; Szpankowski, W. (2004). On average sequence complexity. Theoretical Computer Science, 326(1-3), 213-227.</p>
+</dd>
+<dt class="label" id="rapp2007"><span class="brackets">Rapp2007</span></dt>
+<dd><p>Rapp, P. E. (2007). Quantitative characterization of animal behavior following blast exposure. Cognitive neurodynamics, 1(4), 287-293.</p>
+</dd>
+</dl>
 <dl class="function">
 <dt id="dyfunconn.ts.ci.complexity_index">
-<code class="descclassname">dyfunconn.ts.ci.</code><code class="descname">complexity_index</code><span class="sig-paren">(</span><em>x</em>, <em>sub_len=-1</em>, <em>normalize=False</em>, <em>iterations=100</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/ci.html#complexity_index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.ci.complexity_index" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyfunconn.ts.ci.</code><code class="sig-name descname">complexity_index</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">sub_len=-1</em>, <em class="sig-param">normalize=False</em>, <em class="sig-param">iterations=100</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/ci.html#complexity_index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.ci.complexity_index" title="Permalink to this definition">¶</a></dt>
 <dd><p>Complexity Index</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>x</strong> : array-like, shape(N)</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> : array-like, shape(N)</p>
 <blockquote>
 <div><p>Input symbolic time series.</p>
 </div></blockquote>
@@ -240,9 +238,9 @@ The unnormalized measure can be used to compare sequences of equal lengths.</p>
 <blockquote>
 <div><p>Number of iterations to perform randomization. Default is <cite>100</cite>.</p>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>normal_ci</strong> : float</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>normal_ci</strong> : float</p>
 <blockquote>
 <div><p>The computed omplexity index after normalization against the randomization
 procedure.</p>
@@ -252,14 +250,12 @@ procedure.</p>
 <div><p>The computed complexity index.</p>
 </div></blockquote>
 <p><strong>spectrum</strong> : array-like</p>
-<blockquote class="last">
+<blockquote>
 <div><p>A list of the number of distinct subwords of length 1, up to the size
 of the input symbolic time series.</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -269,22 +265,18 @@ of the input symbolic time series.</p>
 <p>Coefficient of Variation</p>
 <dl class="function">
 <dt id="dyfunconn.ts.cv.cv">
-<code class="descclassname">dyfunconn.ts.cv.</code><code class="descname">cv</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/cv.html#cv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.cv.cv" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>X :</strong> :</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>cv</strong> : float</p>
-<blockquote class="last">
+<code class="sig-prename descclassname">dyfunconn.ts.cv.</code><code class="sig-name descname">cv</code><span class="sig-paren">(</span><em class="sig-param">X</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/cv.html#cv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.cv.cv" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>X :</strong> :</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>cv</strong> : float</p>
+<blockquote>
 <div><p>The computed coefficient of variation.</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -296,24 +288,20 @@ of the input symbolic time series.</p>
 <p>Snippet adapted from: <a class="reference external" href="https://gist.github.com/Satra/aa3d19a12b74e9ab7941">https://gist.github.com/Satra/aa3d19a12b74e9ab7941</a></p>
 <dl class="function">
 <dt id="dyfunconn.ts.dcorr.dcorr">
-<code class="descclassname">dyfunconn.ts.dcorr.</code><code class="descname">dcorr</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/dcorr.html#dcorr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.dcorr.dcorr" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyfunconn.ts.dcorr.</code><code class="sig-name descname">dcorr</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/dcorr.html#dcorr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.dcorr.dcorr" title="Permalink to this definition">¶</a></dt>
 <dd><p>Distance Correlation</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>x :</strong> :</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x :</strong> :</p>
 <p><strong>y :</strong> :</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>val</strong> : float</p>
-<blockquote class="last">
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>val</strong> : float</p>
+<blockquote>
 <div><p>The computed distance correlation.</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -335,27 +323,21 @@ consult the work of Bradley and Kantz (<a class="reference internal" href="#brad
 <div class="line"><br /></div>
 </div>
 <hr class="docutils" />
-<table class="docutils citation" frame="void" id="taken1981" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[Taken1981]</td><td>Takens, F. (1981). Detecting strange attractors in turbulence. Lecture notes in mathematics, 898(1), 366-381.</td></tr>
-</tbody>
-</table>
-<table class="docutils citation" frame="void" id="bradley2015" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[Bradley2015]</td><td>Bradley, E., &amp; Kantz, H. (2015). Nonlinear time-series analysis revisited. Chaos: An Interdisciplinary Journal of Nonlinear Science, 25(9), 097610.</td></tr>
-</tbody>
-</table>
+<dl class="citation">
+<dt class="label" id="taken1981"><span class="brackets">Taken1981</span></dt>
+<dd><p>Takens, F. (1981). Detecting strange attractors in turbulence. Lecture notes in mathematics, 898(1), 366-381.</p>
+</dd>
+<dt class="label" id="bradley2015"><span class="brackets">Bradley2015</span></dt>
+<dd><p>Bradley, E., &amp; Kantz, H. (2015). Nonlinear time-series analysis revisited. Chaos: An Interdisciplinary Journal of Nonlinear Science, 25(9), 097610.</p>
+</dd>
+</dl>
 <dl class="function">
 <dt id="dyfunconn.ts.embed_delay.embed_delay">
-<code class="descclassname">dyfunconn.ts.embed_delay.</code><code class="descname">embed_delay</code><span class="sig-paren">(</span><em>ts</em>, <em>dim</em>, <em>tau</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/embed_delay.html#embed_delay"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.embed_delay.embed_delay" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyfunconn.ts.embed_delay.</code><code class="sig-name descname">embed_delay</code><span class="sig-paren">(</span><em class="sig-param">ts</em>, <em class="sig-param">dim</em>, <em class="sig-param">tau</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/embed_delay.html#embed_delay"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.embed_delay.embed_delay" title="Permalink to this definition">¶</a></dt>
 <dd><p>Embed delay</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>ts</strong> : array-like, shape(1, n_samples)</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ts</strong> : array-like, shape(1, n_samples)</p>
 <blockquote>
 <div><p>One-dimensional symbolic time series.</p>
 </div></blockquote>
@@ -367,16 +349,14 @@ consult the work of Bradley and Kantz (<a class="reference internal" href="#brad
 <blockquote>
 <div><p>Time delay factor.</p>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>y</strong> : array-like</p>
-<blockquote class="last">
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>y</strong> : array-like</p>
+<blockquote>
 <div><p>The embedded timeseries.</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -385,7 +365,7 @@ consult the work of Bradley and Kantz (<a class="reference internal" href="#brad
 <p>Entropy</p>
 <dl class="function">
 <dt id="dyfunconn.ts.entropy.entropy">
-<code class="descclassname">dyfunconn.ts.entropy.</code><code class="descname">entropy</code><span class="sig-paren">(</span><em>dts</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/entropy.html#entropy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.entropy.entropy" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyfunconn.ts.entropy.</code><code class="sig-name descname">entropy</code><span class="sig-paren">(</span><em class="sig-param">dts</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/entropy.html#entropy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.entropy.entropy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Entropy</p>
 </dd></dl>
 
@@ -397,21 +377,17 @@ consult the work of Bradley and Kantz (<a class="reference internal" href="#brad
 <div class="line"><br /></div>
 </div>
 <hr class="docutils" />
-<table class="docutils citation" frame="void" id="stam2007" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[Stam2007]</td><td>Stam, C. J., Nolte, G., &amp; Daffertshofer, A. (2007). Phase lag index: assessment of functional connectivity from multi channel EEG and MEG with diminished bias from common sources. Human brain mapping, 28(11), 1178-1193.</td></tr>
-</tbody>
-</table>
-<table class="docutils citation" frame="void" id="hardmeier2014" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[Hardmeier2014]</td><td>Hardmeier, M., Hatz, F., Bousleiman, H., Schindler, C., Stam, C. J., &amp; Fuhr, P. (2014). Reproducibility of functional connectivity and graph measures based on the phase lag index (PLI) and weighted phase lag index (wPLI) derived from high resolution EEG. PloS one, 9(10), e108648.</td></tr>
-</tbody>
-</table>
+<dl class="citation">
+<dt class="label" id="stam2007"><span class="brackets">Stam2007</span></dt>
+<dd><p>Stam, C. J., Nolte, G., &amp; Daffertshofer, A. (2007). Phase lag index: assessment of functional connectivity from multi channel EEG and MEG with diminished bias from common sources. Human brain mapping, 28(11), 1178-1193.</p>
+</dd>
+<dt class="label" id="hardmeier2014"><span class="brackets">Hardmeier2014</span></dt>
+<dd><p>Hardmeier, M., Hatz, F., Bousleiman, H., Schindler, C., Stam, C. J., &amp; Fuhr, P. (2014). Reproducibility of functional connectivity and graph measures based on the phase lag index (PLI) and weighted phase lag index (wPLI) derived from high resolution EEG. PloS one, 9(10), e108648.</p>
+</dd>
+</dl>
 <dl class="function">
 <dt id="dyfunconn.ts.fisher_score.fisher_score">
-<code class="descclassname">dyfunconn.ts.fisher_score.</code><code class="descname">fisher_score</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/fisher_score.html#fisher_score"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.fisher_score.fisher_score" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyfunconn.ts.fisher_score.</code><code class="sig-name descname">fisher_score</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/fisher_score.html#fisher_score"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.fisher_score.fisher_score" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -422,21 +398,17 @@ consult the work of Bradley and Kantz (<a class="reference internal" href="#brad
 <div class="line"><br /></div>
 </div>
 <hr class="docutils" />
-<table class="docutils citation" frame="void" id="id2" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[Stam2007]</td><td>Stam, C. J., Nolte, G., &amp; Daffertshofer, A. (2007). Phase lag index: assessment of functional connectivity from multi channel EEG and MEG with diminished bias from common sources. Human brain mapping, 28(11), 1178-1193.</td></tr>
-</tbody>
-</table>
-<table class="docutils citation" frame="void" id="id3" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[Hardmeier2014]</td><td>Hardmeier, M., Hatz, F., Bousleiman, H., Schindler, C., Stam, C. J., &amp; Fuhr, P. (2014). Reproducibility of functional connectivity and graph measures based on the phase lag index (PLI) and weighted phase lag index (wPLI) derived from high resolution EEG. PloS one, 9(10), e108648.</td></tr>
-</tbody>
-</table>
+<dl class="citation">
+<dt class="label" id="id2"><span class="brackets">Stam2007</span></dt>
+<dd><p>Stam, C. J., Nolte, G., &amp; Daffertshofer, A. (2007). Phase lag index: assessment of functional connectivity from multi channel EEG and MEG with diminished bias from common sources. Human brain mapping, 28(11), 1178-1193.</p>
+</dd>
+<dt class="label" id="id3"><span class="brackets">Hardmeier2014</span></dt>
+<dd><p>Hardmeier, M., Hatz, F., Bousleiman, H., Schindler, C., Stam, C. J., &amp; Fuhr, P. (2014). Reproducibility of functional connectivity and graph measures based on the phase lag index (PLI) and weighted phase lag index (wPLI) derived from high resolution EEG. PloS one, 9(10), e108648.</p>
+</dd>
+</dl>
 <dl class="function">
 <dt id="dyfunconn.ts.fisher_z.fisher_z">
-<code class="descclassname">dyfunconn.ts.fisher_z.</code><code class="descname">fisher_z</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/fisher_z.html#fisher_z"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.fisher_z.fisher_z" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyfunconn.ts.fisher_z.</code><code class="sig-name descname">fisher_z</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/fisher_z.html#fisher_z"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.fisher_z.fisher_z" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fisher’s z-transformation</p>
 <p>For a given dataset <span class="math notranslate nohighlight">\(p\)</span> bound to <span class="math notranslate nohighlight">\([0.0, 1.0]\)</span>, we can use Fisher’s z-transformation to normalize it
 in an approximately Gaussian distribution.</p>
@@ -447,18 +419,17 @@ in an approximately Gaussian distribution.</p>
 
 <dl class="function">
 <dt id="dyfunconn.ts.fisher_z.fisher_z_plv">
-<code class="descclassname">dyfunconn.ts.fisher_z.</code><code class="descname">fisher_z_plv</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/fisher_z.html#fisher_z_plv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.fisher_z.fisher_z_plv" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyfunconn.ts.fisher_z.</code><code class="sig-name descname">fisher_z_plv</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/fisher_z.html#fisher_z_plv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.fisher_z.fisher_z_plv" title="Permalink to this definition">¶</a></dt>
 <dd><div class="math notranslate nohighlight">
 \[z^p_j = sin^{-1}(2 * PLV_j - 1)\]</div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<table class="docutils citation" frame="void" id="mormann2005" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[Mormann2005]</td><td>Mormann, F., Fell, J., Axmacher, N., Weber, B., Lehnertz, K., Elger, C. E., &amp; Fernández, G. (2005). Phase/amplitude reset and theta–gamma interaction in the human medial temporal lobe during a continuous word recognition memory task. Hippocampus, 15(7), 890-900.</td></tr>
-</tbody>
-</table>
+<dl class="citation">
+<dt class="label" id="mormann2005"><span class="brackets">Mormann2005</span></dt>
+<dd><p>Mormann, F., Fell, J., Axmacher, N., Weber, B., Lehnertz, K., Elger, C. E., &amp; Fernández, G. (2005). Phase/amplitude reset and theta–gamma interaction in the human medial temporal lobe during a continuous word recognition memory task. Hippocampus, 15(7), 890-900.</p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -469,27 +440,21 @@ in an approximately Gaussian distribution.</p>
 <div class="line"><br /></div>
 </div>
 <hr class="docutils" />
-<table class="docutils citation" frame="void" id="kennel1992" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[Kennel1992]</td><td>Kennel, M. B., Brown, R., &amp; Abarbanel, H. D. (1992). Determining embedding dimension for phase-space reconstruction using a geometrical construction. Physical review A, 45(6), 3403.</td></tr>
-</tbody>
-</table>
-<table class="docutils citation" frame="void" id="abarbane2012" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[Abarbane2012]</td><td>Abarbanel, H. (2012). Analysis of observed chaotic data. Springer Science &amp; Business Media.</td></tr>
-</tbody>
-</table>
+<dl class="citation">
+<dt class="label" id="kennel1992"><span class="brackets">Kennel1992</span></dt>
+<dd><p>Kennel, M. B., Brown, R., &amp; Abarbanel, H. D. (1992). Determining embedding dimension for phase-space reconstruction using a geometrical construction. Physical review A, 45(6), 3403.</p>
+</dd>
+<dt class="label" id="abarbane2012"><span class="brackets">Abarbane2012</span></dt>
+<dd><p>Abarbanel, H. (2012). Analysis of observed chaotic data. Springer Science &amp; Business Media.</p>
+</dd>
+</dl>
 <dl class="function">
 <dt id="dyfunconn.ts.fnn.fnn">
-<code class="descclassname">dyfunconn.ts.fnn.</code><code class="descname">fnn</code><span class="sig-paren">(</span><em>ts</em>, <em>tau</em>, <em>max_dim=20</em>, <em>neighbors_reduction=0.1</em>, <em>rtol=15.0</em>, <em>atol=2.0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/fnn.html#fnn"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.fnn.fnn" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyfunconn.ts.fnn.</code><code class="sig-name descname">fnn</code><span class="sig-paren">(</span><em class="sig-param">ts</em>, <em class="sig-param">tau</em>, <em class="sig-param">max_dim=20</em>, <em class="sig-param">neighbors_reduction=0.1</em>, <em class="sig-param">rtol=15.0</em>, <em class="sig-param">atol=2.0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/fnn.html#fnn"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.fnn.fnn" title="Permalink to this definition">¶</a></dt>
 <dd><p>False Nearest Neighbors</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>ts</strong> : array-like, 1d</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ts</strong> : array-like, 1d</p>
 <p><strong>tau</strong> : int</p>
 <blockquote>
 <div><p>Time-delay parameter.</p>
@@ -510,16 +475,14 @@ in an approximately Gaussian distribution.</p>
 <blockquote>
 <div><p>Second threshold, criterion to identify a false neighbor.</p>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>min_dimension</strong> : int</p>
-<blockquote class="last">
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>min_dimension</strong> : int</p>
+<blockquote>
 <div><p>Minimum embedding dimension.</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <p class="rubric">Notes</p>
 <p>The execution stops either when the maxium number of embedding dimensions is
 reached, or the the number of neighbors is reduced to specific percentage.</p>
@@ -532,45 +495,37 @@ reached, or the the number of neighbors is reduced to specific percentage.</p>
 <div class="section" id="id4">
 <h3>Notes<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Based on the code available at &lt;<a class="reference external" href="https://github.com/ekmolloy/fmri_test-retest">https://github.com/ekmolloy/fmri_test-retest</a>&gt;</li>
+<li><p>Based on the code available at &lt;<a class="reference external" href="https://github.com/ekmolloy/fmri_test-retest">https://github.com/ekmolloy/fmri_test-retest</a>&gt;</p></li>
 </ul>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<table class="docutils citation" frame="void" id="mcgraw1996" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[McGraw1996]</td><td>McGraw, K. O., &amp; Wong, S. P. (1996). Forming inferences about some intraclass correlation coefficients. Psychological methods, 1(1), 30.</td></tr>
-</tbody>
-</table>
-<table class="docutils citation" frame="void" id="birn2013" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[Birn2013]</td><td>Birn, R. M., Molloy, E. K., Patriat, R., Parker, T., Meier, T. B., Kirk, G. R., … &amp; Prabhakaran, V. (2013). The effect of scan length on the reliability of resting-state fMRI connectivity estimates. Neuroimage, 83, 550-558.</td></tr>
-</tbody>
-</table>
+<dl class="citation">
+<dt class="label" id="mcgraw1996"><span class="brackets">McGraw1996</span></dt>
+<dd><p>McGraw, K. O., &amp; Wong, S. P. (1996). Forming inferences about some intraclass correlation coefficients. Psychological methods, 1(1), 30.</p>
+</dd>
+<dt class="label" id="birn2013"><span class="brackets">Birn2013</span></dt>
+<dd><p>Birn, R. M., Molloy, E. K., Patriat, R., Parker, T., Meier, T. B., Kirk, G. R., … &amp; Prabhakaran, V. (2013). The effect of scan length on the reliability of resting-state fMRI connectivity estimates. Neuroimage, 83, 550-558.</p>
+</dd>
+</dl>
 <dl class="function">
 <dt id="dyfunconn.ts.icc.icc_31">
-<code class="descclassname">dyfunconn.ts.icc.</code><code class="descname">icc_31</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/icc.html#icc_31"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.icc.icc_31" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyfunconn.ts.icc.</code><code class="sig-name descname">icc_31</code><span class="sig-paren">(</span><em class="sig-param">X</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/icc.html#icc_31"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.icc.icc_31" title="Permalink to this definition">¶</a></dt>
 <dd><p>ICC (3,1)</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>X :</strong> :</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>X :</strong> :</p>
 <blockquote>
 <div><p>Input data</p>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>icc</strong> : float</p>
-<blockquote class="last">
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>icc</strong> : float</p>
+<blockquote>
 <div><p>Intra-class correlation.</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -581,7 +536,7 @@ reached, or the the number of neighbors is reduced to specific percentage.</p>
 <p>Generation of markov matrix and some related state transition features.</p>
 <dl class="function">
 <dt id="dyfunconn.ts.markov_matrix.markov_matrix">
-<code class="descclassname">dyfunconn.ts.markov_matrix.</code><code class="descname">markov_matrix</code><span class="sig-paren">(</span><em>symts</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/markov_matrix.html#markov_matrix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.markov_matrix.markov_matrix" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyfunconn.ts.markov_matrix.</code><code class="sig-name descname">markov_matrix</code><span class="sig-paren">(</span><em class="sig-param">symts</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/markov_matrix.html#markov_matrix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.markov_matrix.markov_matrix" title="Permalink to this definition">¶</a></dt>
 <dd><p>Markov Matrix</p>
 <p>Markov matrix (also refered as “transition matrix”) is a square matrix that tabulates
 the observed transition probabilities between symbols for a finite Markov Chain. It is a first-order descriptor
@@ -605,47 +560,37 @@ from state <span class="math notranslate nohighlight">\(i\)</span> to all the ot
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<table class="docutils citation" frame="void" id="wolframmathworld" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[WolframMathWorld]</td><td><a class="reference external" href="http://mathworld.wolfram.com/StochasticMatrix.html">http://mathworld.wolfram.com/StochasticMatrix.html</a></td></tr>
-</tbody>
-</table>
-<table class="docutils citation" frame="void" id="wikipediamarkovmatrix" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[WikipediaMarkovMatrix]</td><td><a class="reference external" href="https://en.wikipedia.org/wiki/Stochastic_matrix">https://en.wikipedia.org/wiki/Stochastic_matrix</a></td></tr>
-</tbody>
-</table>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>symts</strong> : array-like, shape(N)</p>
+<dl class="citation">
+<dt class="label" id="wolframmathworld"><span class="brackets">WolframMathWorld</span></dt>
+<dd><p><a class="reference external" href="http://mathworld.wolfram.com/StochasticMatrix.html">http://mathworld.wolfram.com/StochasticMatrix.html</a></p>
+</dd>
+<dt class="label" id="wikipediamarkovmatrix"><span class="brackets">WikipediaMarkovMatrix</span></dt>
+<dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Stochastic_matrix">https://en.wikipedia.org/wiki/Stochastic_matrix</a></p>
+</dd>
+</dl>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>symts</strong> : array-like, shape(N)</p>
 <blockquote>
 <div><p>One-dimensional discrete time series.</p>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>mtx</strong> : matrix</p>
-<blockquote class="last">
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>mtx</strong> : matrix</p>
+<blockquote>
 <div><p>The transition matrix.</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="dyfunconn.ts.markov_matrix.occupancy_time">
-<code class="descclassname">dyfunconn.ts.markov_matrix.</code><code class="descname">occupancy_time</code><span class="sig-paren">(</span><em>symts</em>, <em>symbol_states=None</em>, <em>weight=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/markov_matrix.html#occupancy_time"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.markov_matrix.occupancy_time" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyfunconn.ts.markov_matrix.</code><code class="sig-name descname">occupancy_time</code><span class="sig-paren">(</span><em class="sig-param">symts</em>, <em class="sig-param">symbol_states=None</em>, <em class="sig-param">weight=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/markov_matrix.html#occupancy_time"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.markov_matrix.occupancy_time" title="Permalink to this definition">¶</a></dt>
 <dd><p>Occupancy Time</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>symts :</strong> :</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>symts :</strong> :</p>
 <p><strong>symbol_states</strong> : int</p>
 <blockquote>
 <div><p>The maximum number of symbols. This is useful to define in case your
@@ -656,31 +601,25 @@ a matrix of different size.</p>
 <blockquote>
 <div><p>The weights of the reuslting transition symbols. Default <cite>len(symts)</cite>.</p>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>oc :</strong> :</p>
-<p class="last"><strong>symbols :</strong> :</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>oc :</strong> :</p>
+<p><strong>symbols :</strong> :</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="dyfunconn.ts.markov_matrix.transition_rate">
-<code class="descclassname">dyfunconn.ts.markov_matrix.</code><code class="descname">transition_rate</code><span class="sig-paren">(</span><em>symts</em>, <em>weight=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/markov_matrix.html#transition_rate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.markov_matrix.transition_rate" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyfunconn.ts.markov_matrix.</code><code class="sig-name descname">transition_rate</code><span class="sig-paren">(</span><em class="sig-param">symts</em>, <em class="sig-param">weight=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/markov_matrix.html#transition_rate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.markov_matrix.transition_rate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transition Rate</p>
 <p>The total sum of transition between symbols.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>symts :</strong> :</p>
-<p class="last"><strong>weight</strong> : float</p>
-</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>symts :</strong> :</p>
+<p><strong>weight</strong> : float</p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -691,27 +630,21 @@ a matrix of different size.</p>
 <div class="line"><br /></div>
 </div>
 <hr class="docutils" />
-<table class="docutils citation" frame="void" id="id5" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[Stam2007]</td><td>Stam, C. J., Nolte, G., &amp; Daffertshofer, A. (2007). Phase lag index: assessment of functional connectivity from multi channel EEG and MEG with diminished bias from common sources. Human brain mapping, 28(11), 1178-1193.</td></tr>
-</tbody>
-</table>
-<table class="docutils citation" frame="void" id="id6" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[Hardmeier2014]</td><td>Hardmeier, M., Hatz, F., Bousleiman, H., Schindler, C., Stam, C. J., &amp; Fuhr, P. (2014). Reproducibility of functional connectivity and graph measures based on the phase lag index (PLI) and weighted phase lag index (wPLI) derived from high resolution EEG. PloS one, 9(10), e108648.</td></tr>
-</tbody>
-</table>
+<dl class="citation">
+<dt class="label" id="id5"><span class="brackets">Stam2007</span></dt>
+<dd><p>Stam, C. J., Nolte, G., &amp; Daffertshofer, A. (2007). Phase lag index: assessment of functional connectivity from multi channel EEG and MEG with diminished bias from common sources. Human brain mapping, 28(11), 1178-1193.</p>
+</dd>
+<dt class="label" id="id6"><span class="brackets">Hardmeier2014</span></dt>
+<dd><p>Hardmeier, M., Hatz, F., Bousleiman, H., Schindler, C., Stam, C. J., &amp; Fuhr, P. (2014). Reproducibility of functional connectivity and graph measures based on the phase lag index (PLI) and weighted phase lag index (wPLI) derived from high resolution EEG. PloS one, 9(10), e108648.</p>
+</dd>
+</dl>
 <dl class="function">
 <dt id="dyfunconn.ts.ordinal_pattern_similarity.ordinal_pattern_similarity">
-<code class="descclassname">dyfunconn.ts.ordinal_pattern_similarity.</code><code class="descname">ordinal_pattern_similarity</code><span class="sig-paren">(</span><em>signal1</em>, <em>signal2</em>, <em>m</em>, <em>tau</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/ordinal_pattern_similarity.html#ordinal_pattern_similarity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.ordinal_pattern_similarity.ordinal_pattern_similarity" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyfunconn.ts.ordinal_pattern_similarity.</code><code class="sig-name descname">ordinal_pattern_similarity</code><span class="sig-paren">(</span><em class="sig-param">signal1</em>, <em class="sig-param">signal2</em>, <em class="sig-param">m</em>, <em class="sig-param">tau</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/ordinal_pattern_similarity.html#ordinal_pattern_similarity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.ordinal_pattern_similarity.ordinal_pattern_similarity" title="Permalink to this definition">¶</a></dt>
 <dd><p>Ordinal Pattern Similarity</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>signal1 :</strong> :</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>signal1 :</strong> :</p>
 <p><strong>signal2 :</strong> :</p>
 <p><strong>m</strong> : int</p>
 <blockquote>
@@ -721,9 +654,9 @@ a matrix of different size.</p>
 <blockquote>
 <div><p>Time delay parameter.</p>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>dissimilarity</strong> : float</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>dissimilarity</strong> : float</p>
 <blockquote>
 <div><p>The dissimilarity index as computed from the ordinal patterns.</p>
 </div></blockquote>
@@ -732,22 +665,20 @@ a matrix of different size.</p>
 <div><p>The time series of ordinal patterns for input signals.</p>
 </div></blockquote>
 <p><strong>patterns_distribution</strong> : array</p>
-<blockquote class="last">
+<blockquote>
 <div><p>Distribution of the patterns.</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <p class="rubric">Notes</p>
 <ul class="simple">
-<li>The results may vary from the original MATLAB script because of
-the permutations’ order.</li>
-<li>The permutations are generated from <span class="math notranslate nohighlight">\([1, dim+1]\)</span> so there are
-no occurances of <span class="math notranslate nohighlight">\(0.\)</span></li>
-<li>The extra <span class="math notranslate nohighlight">\(+1\)</span> in the lines
+<li><p>The results may vary from the original MATLAB script because of
+the permutations’ order.</p></li>
+<li><p>The permutations are generated from <span class="math notranslate nohighlight">\([1, dim+1]\)</span> so there are
+no occurances of <span class="math notranslate nohighlight">\(0.\)</span></p></li>
+<li><p>The extra <span class="math notranslate nohighlight">\(+1\)</span> in the lines
 .. python: I = sklearn.preprocessing.normalize(I + 1)
-is in order to avoid :math:<a href="#id7"><span class="problematic" id="id8">`</span></a>0`s.</li>
+is in order to avoid :math:<a href="#id7"><span class="problematic" id="id8">`</span></a>0`s.</p></li>
 </ul>
 </dd></dl>
 
@@ -759,27 +690,21 @@ is in order to avoid :math:<a href="#id7"><span class="problematic" id="id8">`</
 <div class="line"><br /></div>
 </div>
 <hr class="docutils" />
-<table class="docutils citation" frame="void" id="id9" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[Stam2007]</td><td>Stam, C. J., Nolte, G., &amp; Daffertshofer, A. (2007). Phase lag index: assessment of functional connectivity from multi channel EEG and MEG with diminished bias from common sources. Human brain mapping, 28(11), 1178-1193.</td></tr>
-</tbody>
-</table>
-<table class="docutils citation" frame="void" id="id10" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[Hardmeier2014]</td><td>Hardmeier, M., Hatz, F., Bousleiman, H., Schindler, C., Stam, C. J., &amp; Fuhr, P. (2014). Reproducibility of functional connectivity and graph measures based on the phase lag index (PLI) and weighted phase lag index (wPLI) derived from high resolution EEG. PloS one, 9(10), e108648.</td></tr>
-</tbody>
-</table>
+<dl class="citation">
+<dt class="label" id="id9"><span class="brackets">Stam2007</span></dt>
+<dd><p>Stam, C. J., Nolte, G., &amp; Daffertshofer, A. (2007). Phase lag index: assessment of functional connectivity from multi channel EEG and MEG with diminished bias from common sources. Human brain mapping, 28(11), 1178-1193.</p>
+</dd>
+<dt class="label" id="id10"><span class="brackets">Hardmeier2014</span></dt>
+<dd><p>Hardmeier, M., Hatz, F., Bousleiman, H., Schindler, C., Stam, C. J., &amp; Fuhr, P. (2014). Reproducibility of functional connectivity and graph measures based on the phase lag index (PLI) and weighted phase lag index (wPLI) derived from high resolution EEG. PloS one, 9(10), e108648.</p>
+</dd>
+</dl>
 <dl class="function">
 <dt id="dyfunconn.ts.permutation_entropy.permutation_entropy">
-<code class="descclassname">dyfunconn.ts.permutation_entropy.</code><code class="descname">permutation_entropy</code><span class="sig-paren">(</span><em>signal</em>, <em>m</em>, <em>tau</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/permutation_entropy.html#permutation_entropy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.permutation_entropy.permutation_entropy" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyfunconn.ts.permutation_entropy.</code><code class="sig-name descname">permutation_entropy</code><span class="sig-paren">(</span><em class="sig-param">signal</em>, <em class="sig-param">m</em>, <em class="sig-param">tau</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/permutation_entropy.html#permutation_entropy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.permutation_entropy.permutation_entropy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Permutation Entropy</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>signal</strong> : array-like, shape(N)</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>signal</strong> : array-like, shape(N)</p>
 <blockquote>
 <div><p>Symblic time series (1D).</p>
 </div></blockquote>
@@ -791,20 +716,18 @@ is in order to avoid :math:<a href="#id7"><span class="problematic" id="id8">`</
 <blockquote>
 <div><p>Time delay parameter.</p>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>pe</strong> : float</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>pe</strong> : float</p>
 <blockquote>
 <div><p>Permutation entropy.</p>
 </div></blockquote>
 <p><strong>npe</strong> : float</p>
-<blockquote class="last">
+<blockquote>
 <div><p>Normalized permutation entropy.</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -815,26 +738,20 @@ is in order to avoid :math:<a href="#id7"><span class="problematic" id="id8">`</
 <div class="line"><br /></div>
 </div>
 <hr class="docutils" />
-<table class="docutils citation" frame="void" id="id11" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[Stam2007]</td><td>Stam, C. J., Nolte, G., &amp; Daffertshofer, A. (2007). Phase lag index: assessment of functional connectivity from multi channel EEG and MEG with diminished bias from common sources. Human brain mapping, 28(11), 1178-1193.</td></tr>
-</tbody>
-</table>
-<table class="docutils citation" frame="void" id="id12" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[Hardmeier2014]</td><td>Hardmeier, M., Hatz, F., Bousleiman, H., Schindler, C., Stam, C. J., &amp; Fuhr, P. (2014). Reproducibility of functional connectivity and graph measures based on the phase lag index (PLI) and weighted phase lag index (wPLI) derived from high resolution EEG. PloS one, 9(10), e108648.</td></tr>
-</tbody>
-</table>
+<dl class="citation">
+<dt class="label" id="id11"><span class="brackets">Stam2007</span></dt>
+<dd><p>Stam, C. J., Nolte, G., &amp; Daffertshofer, A. (2007). Phase lag index: assessment of functional connectivity from multi channel EEG and MEG with diminished bias from common sources. Human brain mapping, 28(11), 1178-1193.</p>
+</dd>
+<dt class="label" id="id12"><span class="brackets">Hardmeier2014</span></dt>
+<dd><p>Hardmeier, M., Hatz, F., Bousleiman, H., Schindler, C., Stam, C. J., &amp; Fuhr, P. (2014). Reproducibility of functional connectivity and graph measures based on the phase lag index (PLI) and weighted phase lag index (wPLI) derived from high resolution EEG. PloS one, 9(10), e108648.</p>
+</dd>
+</dl>
 <dl class="function">
 <dt id="dyfunconn.ts.rr_order_patterns.rr_order_patterns">
-<code class="descclassname">dyfunconn.ts.rr_order_patterns.</code><code class="descname">rr_order_patterns</code><span class="sig-paren">(</span><em>signal1</em>, <em>signal2</em>, <em>m</em>, <em>tau</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/rr_order_patterns.html#rr_order_patterns"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.rr_order_patterns.rr_order_patterns" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>signal1 :</strong> :</p>
+<code class="sig-prename descclassname">dyfunconn.ts.rr_order_patterns.</code><code class="sig-name descname">rr_order_patterns</code><span class="sig-paren">(</span><em class="sig-param">signal1</em>, <em class="sig-param">signal2</em>, <em class="sig-param">m</em>, <em class="sig-param">tau</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/rr_order_patterns.html#rr_order_patterns"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.rr_order_patterns.rr_order_patterns" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>signal1 :</strong> :</p>
 <p><strong>signal2 :</strong> :</p>
 <p><strong>m</strong> : int</p>
 <blockquote>
@@ -844,27 +761,25 @@ is in order to avoid :math:<a href="#id7"><span class="problematic" id="id8">`</
 <blockquote>
 <div><p>Time delay parameter.</p>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>cstr</strong> : float</p>
-<blockquote class="last">
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>cstr</strong> : float</p>
+<blockquote>
 <div><p>Coupling strength.</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <p class="rubric">Notes</p>
 <ul class="simple">
-<li>The results may vary from the original MATLAB script because of
-the permutations’ order.</li>
-<li>The results may vary from the original MATLAB script because of
-the order of the indices in the <a href="#id13"><span class="problematic" id="id14">:python:`numpy.where`</span></a>.</li>
-<li>The permutations are generated from <span class="math notranslate nohighlight">\([1, dim+1]\)</span> so there are
-no occurances of <span class="math notranslate nohighlight">\(0.\)</span></li>
-<li>The extra <span class="math notranslate nohighlight">\(+1\)</span> in the lines
+<li><p>The results may vary from the original MATLAB script because of
+the permutations’ order.</p></li>
+<li><p>The results may vary from the original MATLAB script because of
+the order of the indices in the <a href="#id13"><span class="problematic" id="id14">:python:`numpy.where`</span></a>.</p></li>
+<li><p>The permutations are generated from <span class="math notranslate nohighlight">\([1, dim+1]\)</span> so there are
+no occurances of <span class="math notranslate nohighlight">\(0.\)</span></p></li>
+<li><p>The extra <span class="math notranslate nohighlight">\(+1\)</span> in the lines
 .. python: I = sklearn.preprocessing.normalize(I + 1)
-is in order to avoid :math:<a href="#id15"><span class="problematic" id="id16">`</span></a>0`s.</li>
+is in order to avoid :math:<a href="#id15"><span class="problematic" id="id16">`</span></a>0`s.</p></li>
 </ul>
 </dd></dl>
 
@@ -879,27 +794,21 @@ is in order to avoid :math:<a href="#id15"><span class="problematic" id="id16">`
 <div class="line"><br /></div>
 </div>
 <hr class="docutils" />
-<table class="docutils citation" frame="void" id="id18" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[Stam2007]</td><td>Stam, C. J., Nolte, G., &amp; Daffertshofer, A. (2007). Phase lag index: assessment of functional connectivity from multi channel EEG and MEG with diminished bias from common sources. Human brain mapping, 28(11), 1178-1193.</td></tr>
-</tbody>
-</table>
-<table class="docutils citation" frame="void" id="id19" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[Hardmeier2014]</td><td>Hardmeier, M., Hatz, F., Bousleiman, H., Schindler, C., Stam, C. J., &amp; Fuhr, P. (2014). Reproducibility of functional connectivity and graph measures based on the phase lag index (PLI) and weighted phase lag index (wPLI) derived from high resolution EEG. PloS one, 9(10), e108648.</td></tr>
-</tbody>
-</table>
+<dl class="citation">
+<dt class="label" id="id18"><span class="brackets">Stam2007</span></dt>
+<dd><p>Stam, C. J., Nolte, G., &amp; Daffertshofer, A. (2007). Phase lag index: assessment of functional connectivity from multi channel EEG and MEG with diminished bias from common sources. Human brain mapping, 28(11), 1178-1193.</p>
+</dd>
+<dt class="label" id="id19"><span class="brackets">Hardmeier2014</span></dt>
+<dd><p>Hardmeier, M., Hatz, F., Bousleiman, H., Schindler, C., Stam, C. J., &amp; Fuhr, P. (2014). Reproducibility of functional connectivity and graph measures based on the phase lag index (PLI) and weighted phase lag index (wPLI) derived from high resolution EEG. PloS one, 9(10), e108648.</p>
+</dd>
+</dl>
 <dl class="function">
 <dt id="dyfunconn.ts.sampen.sample_entropy">
-<code class="descclassname">dyfunconn.ts.sampen.</code><code class="descname">sample_entropy</code><span class="sig-paren">(</span><em>data</em>, <em>dim=2</em>, <em>tau=None</em>, <em>r=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/sampen.html#sample_entropy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.sampen.sample_entropy" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyfunconn.ts.sampen.</code><code class="sig-name descname">sample_entropy</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">dim=2</em>, <em class="sig-param">tau=None</em>, <em class="sig-param">r=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/sampen.html#sample_entropy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.sampen.sample_entropy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sample Entropy</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : array-like, shape(1, n_samples)</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> : array-like, shape(1, n_samples)</p>
 <blockquote>
 <div><p>Symbolic time series.</p>
 </div></blockquote>
@@ -915,21 +824,19 @@ is in order to avoid :math:<a href="#id15"><span class="problematic" id="id16">`
 <blockquote>
 <div><p>Tolerance factor. If <cite>None</cite>, <cite>0.2 * std(data)</cite> is passed.</p>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>SampEn</strong> : float</p>
-<blockquote class="last">
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>SampEn</strong> : float</p>
+<blockquote>
 <div><p>Sample entropy.</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<dl class="last docutils">
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">dyfunconn.ts.embed_ts</span></code></dt>
-<dd>Embedded timeseries</dd>
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">dyfunconn.ts.embed_ts</span></code></dt><dd><p>Embedded timeseries</p>
+</dd>
 </dl>
 </div>
 </dd></dl>
@@ -941,37 +848,31 @@ is in order to avoid :math:<a href="#id15"><span class="problematic" id="id16">`
 <p>Symbolic Transfer Entropy</p>
 <dl class="function">
 <dt id="dyfunconn.ts.ste.entropy_reduction_rate">
-<code class="descclassname">dyfunconn.ts.ste.</code><code class="descname">entropy_reduction_rate</code><span class="sig-paren">(</span><em>sym_ts</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/ste.html#entropy_reduction_rate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.ste.entropy_reduction_rate" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyfunconn.ts.ste.</code><code class="sig-name descname">entropy_reduction_rate</code><span class="sig-paren">(</span><em class="sig-param">sym_ts</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/ste.html#entropy_reduction_rate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.ste.entropy_reduction_rate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Entropy Reduction Rate</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>sym_ts</strong> : array-like, shape(N)</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>sym_ts</strong> : array-like, shape(N)</p>
 <blockquote>
 <div><p>Symblic time series (1D)</p>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>entredrate</strong> : float</p>
-<blockquote class="last">
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>entredrate</strong> : float</p>
+<blockquote>
 <div><p>The estimated entropy reduction rate.</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="dyfunconn.ts.ste.symoblic_transfer_entropy">
-<code class="descclassname">dyfunconn.ts.ste.</code><code class="descname">symoblic_transfer_entropy</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>s=1</em>, <em>delay=0</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/ste.html#symoblic_transfer_entropy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.ste.symoblic_transfer_entropy" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyfunconn.ts.ste.</code><code class="sig-name descname">symoblic_transfer_entropy</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">y</em>, <em class="sig-param">s=1</em>, <em class="sig-param">delay=0</em>, <em class="sig-param">verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/ste.html#symoblic_transfer_entropy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.ste.symoblic_transfer_entropy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Symbolic Tranfer Entropy</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>x</strong> : array-like, shape(N)</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> : array-like, shape(N)</p>
 <blockquote>
 <div><p>Symblic time series (1D).</p>
 </div></blockquote>
@@ -991,9 +892,9 @@ is in order to avoid :math:<a href="#id15"><span class="problematic" id="id16">`
 <blockquote>
 <div><p>Print computation messages.</p>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>tent_diff</strong> : float</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>tent_diff</strong> : float</p>
 <blockquote>
 <div><p>The difference of the tranfer entropies of the two time series.</p>
 </div></blockquote>
@@ -1002,13 +903,11 @@ is in order to avoid :math:<a href="#id15"><span class="problematic" id="id16">`
 <div><p>The estimated tranfer entropy of x -&gt; y.</p>
 </div></blockquote>
 <p><strong>tentyx</strong> : float</p>
-<blockquote class="last">
+<blockquote>
 <div><p>The estimated tranfer entropy of y -&gt; x.</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -1017,70 +916,56 @@ is in order to avoid :math:<a href="#id15"><span class="problematic" id="id16">`
 <p>Surrogate Analysis</p>
 <dl class="function">
 <dt id="dyfunconn.ts.surrogates.aaft">
-<code class="descclassname">dyfunconn.ts.surrogates.</code><code class="descname">aaft</code><span class="sig-paren">(</span><em>ts</em>, <em>num_surr=1</em>, <em>rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/surrogates.html#aaft"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.surrogates.aaft" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyfunconn.ts.surrogates.</code><code class="sig-name descname">aaft</code><span class="sig-paren">(</span><em class="sig-param">ts</em>, <em class="sig-param">num_surr=1</em>, <em class="sig-param">rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/surrogates.html#aaft"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.surrogates.aaft" title="Permalink to this definition">¶</a></dt>
 <dd><p>Amplitude Adjusted Fourier Transform</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>ts :</strong> :</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ts :</strong> :</p>
 <p><strong>num_surr :</strong> :</p>
 <p><strong>rng</strong> : object or None</p>
-<blockquote class="last">
+<blockquote>
 <div><p>An object of type numpy.random.RandomState</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="dyfunconn.ts.surrogates.fdr">
-<code class="descclassname">dyfunconn.ts.surrogates.</code><code class="descname">fdr</code><span class="sig-paren">(</span><em>p_values</em>, <em>q=0.01</em>, <em>method='pdep'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/surrogates.html#fdr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.surrogates.fdr" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyfunconn.ts.surrogates.</code><code class="sig-name descname">fdr</code><span class="sig-paren">(</span><em class="sig-param">p_values</em>, <em class="sig-param">q=0.01</em>, <em class="sig-param">method='pdep'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/surrogates.html#fdr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.surrogates.fdr" title="Permalink to this definition">¶</a></dt>
 <dd><p>False Discovery Rate</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>p_values :</strong> :</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>p_values :</strong> :</p>
 <p><strong>q :</strong> :</p>
-<p class="last"><strong>method :</strong> :</p>
-</td>
-</tr>
-</tbody>
-</table>
+<p><strong>method :</strong> :</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="dyfunconn.ts.surrogates.phase_rand">
-<code class="descclassname">dyfunconn.ts.surrogates.</code><code class="descname">phase_rand</code><span class="sig-paren">(</span><em>data</em>, <em>num_surr=1</em>, <em>rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/surrogates.html#phase_rand"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.surrogates.phase_rand" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyfunconn.ts.surrogates.</code><code class="sig-name descname">phase_rand</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">num_surr=1</em>, <em class="sig-param">rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/surrogates.html#phase_rand"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.surrogates.phase_rand" title="Permalink to this definition">¶</a></dt>
 <dd><p>Phase-randomized suggorates</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data :</strong> :</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data :</strong> :</p>
 <p><strong>num_surr :</strong> :</p>
 <p><strong>rng</strong> : object or None</p>
-<blockquote class="last">
+<blockquote>
 <div><p>An object of type numpy.random.RandomState</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="dyfunconn.ts.surrogates.surrogate_analysis">
-<code class="descclassname">dyfunconn.ts.surrogates.</code><code class="descname">surrogate_analysis</code><span class="sig-paren">(</span><em>ts1</em>, <em>ts2</em>, <em>num_surr=1000</em>, <em>estimator_func=None</em>, <em>ts1_no_surr=False</em>, <em>rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/surrogates.html#surrogate_analysis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.surrogates.surrogate_analysis" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyfunconn.ts.surrogates.</code><code class="sig-name descname">surrogate_analysis</code><span class="sig-paren">(</span><em class="sig-param">ts1</em>, <em class="sig-param">ts2</em>, <em class="sig-param">num_surr=1000</em>, <em class="sig-param">estimator_func=None</em>, <em class="sig-param">ts1_no_surr=False</em>, <em class="sig-param">rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/surrogates.html#surrogate_analysis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.surrogates.surrogate_analysis" title="Permalink to this definition">¶</a></dt>
 <dd><p>Surrogate Analysis</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>ts1 :</strong> :</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ts1 :</strong> :</p>
 <p><strong>ts2 :</strong> :</p>
 <p><strong>num_surr</strong> : int</p>
 <p><strong>estimator_func</strong> : function</p>
@@ -1089,16 +974,14 @@ is in order to avoid :math:<a href="#id15"><span class="problematic" id="id16">`
 <blockquote>
 <div><p>An object of type numpy.random.RandomState</p>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>p_val</strong> : float</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>p_val</strong> : float</p>
 <p><strong>corr_surr :</strong> :</p>
 <p><strong>surrogates :</strong> :</p>
-<p class="last"><strong>r_value</strong> : float</p>
-</td>
-</tr>
-</tbody>
-</table>
+<p><strong>r_value</strong> : float</p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -1108,16 +991,13 @@ is in order to avoid :math:<a href="#id15"><span class="problematic" id="id16">`
 <p>ref: <a class="reference external" href="https://www.c-motion.com/v3dwiki/index.php/Teager_Kaiser_Energy">https://www.c-motion.com/v3dwiki/index.php/Teager_Kaiser_Energy</a></p>
 <dl class="function">
 <dt id="dyfunconn.ts.teager_kaiser_energy.teager_kaiser_energy">
-<code class="descclassname">dyfunconn.ts.teager_kaiser_energy.</code><code class="descname">teager_kaiser_energy</code><span class="sig-paren">(</span><em>ts</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/teager_kaiser_energy.html#teager_kaiser_energy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.teager_kaiser_energy.teager_kaiser_energy" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyfunconn.ts.teager_kaiser_energy.</code><code class="sig-name descname">teager_kaiser_energy</code><span class="sig-paren">(</span><em class="sig-param">ts</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/teager_kaiser_energy.html#teager_kaiser_energy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.teager_kaiser_energy.teager_kaiser_energy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Teager Kaiser Energy</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>ts</strong> : array of size [1 x samples]</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ts</strong> : array of size [1 x samples]</p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -1126,23 +1006,19 @@ is in order to avoid :math:<a href="#id15"><span class="problematic" id="id16">`
 <p>Wald test</p>
 <dl class="function">
 <dt id="dyfunconn.ts.wald.wald">
-<code class="descclassname">dyfunconn.ts.wald.</code><code class="descname">wald</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/wald.html#wald"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.wald.wald" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>x :</strong> :</p>
+<code class="sig-prename descclassname">dyfunconn.ts.wald.</code><code class="sig-name descname">wald</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/wald.html#wald"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.wald.wald" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x :</strong> :</p>
 <p><strong>y :</strong> :</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>w</strong> : float</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>w</strong> : float</p>
 <p><strong>r</strong> : float</p>
 <p><strong>edges</strong> : array-like</p>
-<p class="last"><strong>weights</strong> : array-like</p>
-</td>
-</tr>
-</tbody>
-</table>
+<p><strong>weights</strong> : array-like</p>
+</dd>
+</dl>
 <p class="rubric">Notes</p>
 <p>The input time series will be padded with zeros if needed.</p>
 </dd></dl>
@@ -1152,7 +1028,7 @@ is in order to avoid :math:<a href="#id15"><span class="problematic" id="id16">`
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-dyfunconn.ts" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="dyfunconn.ts.fisher_z">
-<code class="descclassname">dyfunconn.ts.</code><code class="descname">fisher_z</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/fisher_z.html#fisher_z"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.fisher_z" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyfunconn.ts.</code><code class="sig-name descname">fisher_z</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/fisher_z.html#fisher_z"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.fisher_z" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fisher’s z-transformation</p>
 <p>For a given dataset <span class="math notranslate nohighlight">\(p\)</span> bound to <span class="math notranslate nohighlight">\([0.0, 1.0]\)</span>, we can use Fisher’s z-transformation to normalize it
 in an approximately Gaussian distribution.</p>
@@ -1163,34 +1039,31 @@ in an approximately Gaussian distribution.</p>
 
 <dl class="function">
 <dt id="dyfunconn.ts.fisher_z_plv">
-<code class="descclassname">dyfunconn.ts.</code><code class="descname">fisher_z_plv</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/fisher_z.html#fisher_z_plv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.fisher_z_plv" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyfunconn.ts.</code><code class="sig-name descname">fisher_z_plv</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/fisher_z.html#fisher_z_plv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.fisher_z_plv" title="Permalink to this definition">¶</a></dt>
 <dd><div class="math notranslate nohighlight">
 \[z^p_j = sin^{-1}(2 * PLV_j - 1)\]</div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<table class="docutils citation" frame="void" id="id20" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[Mormann2005]</td><td>Mormann, F., Fell, J., Axmacher, N., Weber, B., Lehnertz, K., Elger, C. E., &amp; Fernández, G. (2005). Phase/amplitude reset and theta–gamma interaction in the human medial temporal lobe during a continuous word recognition memory task. Hippocampus, 15(7), 890-900.</td></tr>
-</tbody>
-</table>
+<dl class="citation">
+<dt class="label" id="id20"><span class="brackets">Mormann2005</span></dt>
+<dd><p>Mormann, F., Fell, J., Axmacher, N., Weber, B., Lehnertz, K., Elger, C. E., &amp; Fernández, G. (2005). Phase/amplitude reset and theta–gamma interaction in the human medial temporal lobe during a continuous word recognition memory task. Hippocampus, 15(7), 890-900.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="dyfunconn.ts.fisher_score">
-<code class="descclassname">dyfunconn.ts.</code><code class="descname">fisher_score</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/fisher_score.html#fisher_score"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.fisher_score" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyfunconn.ts.</code><code class="sig-name descname">fisher_score</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/fisher_score.html#fisher_score"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.fisher_score" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
 <dt id="dyfunconn.ts.sample_entropy">
-<code class="descclassname">dyfunconn.ts.</code><code class="descname">sample_entropy</code><span class="sig-paren">(</span><em>data</em>, <em>dim=2</em>, <em>tau=None</em>, <em>r=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/sampen.html#sample_entropy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.sample_entropy" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyfunconn.ts.</code><code class="sig-name descname">sample_entropy</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">dim=2</em>, <em class="sig-param">tau=None</em>, <em class="sig-param">r=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/sampen.html#sample_entropy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.sample_entropy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sample Entropy</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : array-like, shape(1, n_samples)</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> : array-like, shape(1, n_samples)</p>
 <blockquote>
 <div><p>Symbolic time series.</p>
 </div></blockquote>
@@ -1206,34 +1079,30 @@ in an approximately Gaussian distribution.</p>
 <blockquote>
 <div><p>Tolerance factor. If <cite>None</cite>, <cite>0.2 * std(data)</cite> is passed.</p>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>SampEn</strong> : float</p>
-<blockquote class="last">
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>SampEn</strong> : float</p>
+<blockquote>
 <div><p>Sample entropy.</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<dl class="last docutils">
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">dyfunconn.ts.embed_ts</span></code></dt>
-<dd>Embedded timeseries</dd>
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">dyfunconn.ts.embed_ts</span></code></dt><dd><p>Embedded timeseries</p>
+</dd>
 </dl>
 </div>
 </dd></dl>
 
 <dl class="function">
 <dt id="dyfunconn.ts.embed_delay">
-<code class="descclassname">dyfunconn.ts.</code><code class="descname">embed_delay</code><span class="sig-paren">(</span><em>ts</em>, <em>dim</em>, <em>tau</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/embed_delay.html#embed_delay"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.embed_delay" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyfunconn.ts.</code><code class="sig-name descname">embed_delay</code><span class="sig-paren">(</span><em class="sig-param">ts</em>, <em class="sig-param">dim</em>, <em class="sig-param">tau</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/embed_delay.html#embed_delay"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.embed_delay" title="Permalink to this definition">¶</a></dt>
 <dd><p>Embed delay</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>ts</strong> : array-like, shape(1, n_samples)</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ts</strong> : array-like, shape(1, n_samples)</p>
 <blockquote>
 <div><p>One-dimensional symbolic time series.</p>
 </div></blockquote>
@@ -1245,84 +1114,68 @@ in an approximately Gaussian distribution.</p>
 <blockquote>
 <div><p>Time delay factor.</p>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>y</strong> : array-like</p>
-<blockquote class="last">
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>y</strong> : array-like</p>
+<blockquote>
 <div><p>The embedded timeseries.</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="dyfunconn.ts.aaft">
-<code class="descclassname">dyfunconn.ts.</code><code class="descname">aaft</code><span class="sig-paren">(</span><em>ts</em>, <em>num_surr=1</em>, <em>rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/surrogates.html#aaft"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.aaft" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyfunconn.ts.</code><code class="sig-name descname">aaft</code><span class="sig-paren">(</span><em class="sig-param">ts</em>, <em class="sig-param">num_surr=1</em>, <em class="sig-param">rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/surrogates.html#aaft"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.aaft" title="Permalink to this definition">¶</a></dt>
 <dd><p>Amplitude Adjusted Fourier Transform</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>ts :</strong> :</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ts :</strong> :</p>
 <p><strong>num_surr :</strong> :</p>
 <p><strong>rng</strong> : object or None</p>
-<blockquote class="last">
+<blockquote>
 <div><p>An object of type numpy.random.RandomState</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="dyfunconn.ts.fdr">
-<code class="descclassname">dyfunconn.ts.</code><code class="descname">fdr</code><span class="sig-paren">(</span><em>p_values</em>, <em>q=0.01</em>, <em>method='pdep'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/surrogates.html#fdr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.fdr" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyfunconn.ts.</code><code class="sig-name descname">fdr</code><span class="sig-paren">(</span><em class="sig-param">p_values</em>, <em class="sig-param">q=0.01</em>, <em class="sig-param">method='pdep'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/surrogates.html#fdr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.fdr" title="Permalink to this definition">¶</a></dt>
 <dd><p>False Discovery Rate</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>p_values :</strong> :</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>p_values :</strong> :</p>
 <p><strong>q :</strong> :</p>
-<p class="last"><strong>method :</strong> :</p>
-</td>
-</tr>
-</tbody>
-</table>
+<p><strong>method :</strong> :</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="dyfunconn.ts.phase_rand">
-<code class="descclassname">dyfunconn.ts.</code><code class="descname">phase_rand</code><span class="sig-paren">(</span><em>data</em>, <em>num_surr=1</em>, <em>rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/surrogates.html#phase_rand"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.phase_rand" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyfunconn.ts.</code><code class="sig-name descname">phase_rand</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">num_surr=1</em>, <em class="sig-param">rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/surrogates.html#phase_rand"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.phase_rand" title="Permalink to this definition">¶</a></dt>
 <dd><p>Phase-randomized suggorates</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data :</strong> :</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data :</strong> :</p>
 <p><strong>num_surr :</strong> :</p>
 <p><strong>rng</strong> : object or None</p>
-<blockquote class="last">
+<blockquote>
 <div><p>An object of type numpy.random.RandomState</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="dyfunconn.ts.surrogate_analysis">
-<code class="descclassname">dyfunconn.ts.</code><code class="descname">surrogate_analysis</code><span class="sig-paren">(</span><em>ts1</em>, <em>ts2</em>, <em>num_surr=1000</em>, <em>estimator_func=None</em>, <em>ts1_no_surr=False</em>, <em>rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/surrogates.html#surrogate_analysis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.surrogate_analysis" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyfunconn.ts.</code><code class="sig-name descname">surrogate_analysis</code><span class="sig-paren">(</span><em class="sig-param">ts1</em>, <em class="sig-param">ts2</em>, <em class="sig-param">num_surr=1000</em>, <em class="sig-param">estimator_func=None</em>, <em class="sig-param">ts1_no_surr=False</em>, <em class="sig-param">rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/surrogates.html#surrogate_analysis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.surrogate_analysis" title="Permalink to this definition">¶</a></dt>
 <dd><p>Surrogate Analysis</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>ts1 :</strong> :</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ts1 :</strong> :</p>
 <p><strong>ts2 :</strong> :</p>
 <p><strong>num_surr</strong> : int</p>
 <p><strong>estimator_func</strong> : function</p>
@@ -1331,51 +1184,43 @@ in an approximately Gaussian distribution.</p>
 <blockquote>
 <div><p>An object of type numpy.random.RandomState</p>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>p_val</strong> : float</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>p_val</strong> : float</p>
 <p><strong>corr_surr :</strong> :</p>
 <p><strong>surrogates :</strong> :</p>
-<p class="last"><strong>r_value</strong> : float</p>
-</td>
-</tr>
-</tbody>
-</table>
+<p><strong>r_value</strong> : float</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="dyfunconn.ts.entropy_reduction_rate">
-<code class="descclassname">dyfunconn.ts.</code><code class="descname">entropy_reduction_rate</code><span class="sig-paren">(</span><em>sym_ts</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/ste.html#entropy_reduction_rate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.entropy_reduction_rate" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyfunconn.ts.</code><code class="sig-name descname">entropy_reduction_rate</code><span class="sig-paren">(</span><em class="sig-param">sym_ts</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/ste.html#entropy_reduction_rate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.entropy_reduction_rate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Entropy Reduction Rate</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>sym_ts</strong> : array-like, shape(N)</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>sym_ts</strong> : array-like, shape(N)</p>
 <blockquote>
 <div><p>Symblic time series (1D)</p>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>entredrate</strong> : float</p>
-<blockquote class="last">
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>entredrate</strong> : float</p>
+<blockquote>
 <div><p>The estimated entropy reduction rate.</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="dyfunconn.ts.symoblic_transfer_entropy">
-<code class="descclassname">dyfunconn.ts.</code><code class="descname">symoblic_transfer_entropy</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>s=1</em>, <em>delay=0</em>, <em>verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/ste.html#symoblic_transfer_entropy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.symoblic_transfer_entropy" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyfunconn.ts.</code><code class="sig-name descname">symoblic_transfer_entropy</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">y</em>, <em class="sig-param">s=1</em>, <em class="sig-param">delay=0</em>, <em class="sig-param">verbose=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/ste.html#symoblic_transfer_entropy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.symoblic_transfer_entropy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Symbolic Tranfer Entropy</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>x</strong> : array-like, shape(N)</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> : array-like, shape(N)</p>
 <blockquote>
 <div><p>Symblic time series (1D).</p>
 </div></blockquote>
@@ -1395,9 +1240,9 @@ in an approximately Gaussian distribution.</p>
 <blockquote>
 <div><p>Print computation messages.</p>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>tent_diff</strong> : float</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>tent_diff</strong> : float</p>
 <blockquote>
 <div><p>The difference of the tranfer entropies of the two time series.</p>
 </div></blockquote>
@@ -1406,24 +1251,20 @@ in an approximately Gaussian distribution.</p>
 <div><p>The estimated tranfer entropy of x -&gt; y.</p>
 </div></blockquote>
 <p><strong>tentyx</strong> : float</p>
-<blockquote class="last">
+<blockquote>
 <div><p>The estimated tranfer entropy of y -&gt; x.</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="dyfunconn.ts.ordinal_pattern_similarity">
-<code class="descclassname">dyfunconn.ts.</code><code class="descname">ordinal_pattern_similarity</code><span class="sig-paren">(</span><em>signal1</em>, <em>signal2</em>, <em>m</em>, <em>tau</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/ordinal_pattern_similarity.html#ordinal_pattern_similarity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.ordinal_pattern_similarity" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyfunconn.ts.</code><code class="sig-name descname">ordinal_pattern_similarity</code><span class="sig-paren">(</span><em class="sig-param">signal1</em>, <em class="sig-param">signal2</em>, <em class="sig-param">m</em>, <em class="sig-param">tau</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/ordinal_pattern_similarity.html#ordinal_pattern_similarity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.ordinal_pattern_similarity" title="Permalink to this definition">¶</a></dt>
 <dd><p>Ordinal Pattern Similarity</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>signal1 :</strong> :</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>signal1 :</strong> :</p>
 <p><strong>signal2 :</strong> :</p>
 <p><strong>m</strong> : int</p>
 <blockquote>
@@ -1433,9 +1274,9 @@ in an approximately Gaussian distribution.</p>
 <blockquote>
 <div><p>Time delay parameter.</p>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>dissimilarity</strong> : float</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>dissimilarity</strong> : float</p>
 <blockquote>
 <div><p>The dissimilarity index as computed from the ordinal patterns.</p>
 </div></blockquote>
@@ -1444,34 +1285,30 @@ in an approximately Gaussian distribution.</p>
 <div><p>The time series of ordinal patterns for input signals.</p>
 </div></blockquote>
 <p><strong>patterns_distribution</strong> : array</p>
-<blockquote class="last">
+<blockquote>
 <div><p>Distribution of the patterns.</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <p class="rubric">Notes</p>
 <ul class="simple">
-<li>The results may vary from the original MATLAB script because of
-the permutations’ order.</li>
-<li>The permutations are generated from <span class="math notranslate nohighlight">\([1, dim+1]\)</span> so there are
-no occurances of <span class="math notranslate nohighlight">\(0.\)</span></li>
-<li>The extra <span class="math notranslate nohighlight">\(+1\)</span> in the lines
+<li><p>The results may vary from the original MATLAB script because of
+the permutations’ order.</p></li>
+<li><p>The permutations are generated from <span class="math notranslate nohighlight">\([1, dim+1]\)</span> so there are
+no occurances of <span class="math notranslate nohighlight">\(0.\)</span></p></li>
+<li><p>The extra <span class="math notranslate nohighlight">\(+1\)</span> in the lines
 .. python: I = sklearn.preprocessing.normalize(I + 1)
-is in order to avoid :math:<a href="#id21"><span class="problematic" id="id22">`</span></a>0`s.</li>
+is in order to avoid :math:<a href="#id21"><span class="problematic" id="id22">`</span></a>0`s.</p></li>
 </ul>
 </dd></dl>
 
 <dl class="function">
 <dt id="dyfunconn.ts.permutation_entropy">
-<code class="descclassname">dyfunconn.ts.</code><code class="descname">permutation_entropy</code><span class="sig-paren">(</span><em>signal</em>, <em>m</em>, <em>tau</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/permutation_entropy.html#permutation_entropy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.permutation_entropy" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyfunconn.ts.</code><code class="sig-name descname">permutation_entropy</code><span class="sig-paren">(</span><em class="sig-param">signal</em>, <em class="sig-param">m</em>, <em class="sig-param">tau</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/permutation_entropy.html#permutation_entropy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.permutation_entropy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Permutation Entropy</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>signal</strong> : array-like, shape(N)</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>signal</strong> : array-like, shape(N)</p>
 <blockquote>
 <div><p>Symblic time series (1D).</p>
 </div></blockquote>
@@ -1483,31 +1320,27 @@ is in order to avoid :math:<a href="#id21"><span class="problematic" id="id22">`
 <blockquote>
 <div><p>Time delay parameter.</p>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>pe</strong> : float</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>pe</strong> : float</p>
 <blockquote>
 <div><p>Permutation entropy.</p>
 </div></blockquote>
 <p><strong>npe</strong> : float</p>
-<blockquote class="last">
+<blockquote>
 <div><p>Normalized permutation entropy.</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt>
-<code class="descclassname">dyfunconn.ts.</code><code class="descname">ordinal_pattern_similarity</code><span class="sig-paren">(</span><em>signal1</em>, <em>signal2</em>, <em>m</em>, <em>tau</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/ordinal_pattern_similarity.html#ordinal_pattern_similarity"><span class="viewcode-link">[source]</span></a></dt>
+<code class="sig-prename descclassname">dyfunconn.ts.</code><code class="sig-name descname">ordinal_pattern_similarity</code><span class="sig-paren">(</span><em class="sig-param">signal1</em>, <em class="sig-param">signal2</em>, <em class="sig-param">m</em>, <em class="sig-param">tau</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/ordinal_pattern_similarity.html#ordinal_pattern_similarity"><span class="viewcode-link">[source]</span></a></dt>
 <dd><p>Ordinal Pattern Similarity</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>signal1 :</strong> :</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>signal1 :</strong> :</p>
 <p><strong>signal2 :</strong> :</p>
 <p><strong>m</strong> : int</p>
 <blockquote>
@@ -1517,9 +1350,9 @@ is in order to avoid :math:<a href="#id21"><span class="problematic" id="id22">`
 <blockquote>
 <div><p>Time delay parameter.</p>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>dissimilarity</strong> : float</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>dissimilarity</strong> : float</p>
 <blockquote>
 <div><p>The dissimilarity index as computed from the ordinal patterns.</p>
 </div></blockquote>
@@ -1528,33 +1361,29 @@ is in order to avoid :math:<a href="#id21"><span class="problematic" id="id22">`
 <div><p>The time series of ordinal patterns for input signals.</p>
 </div></blockquote>
 <p><strong>patterns_distribution</strong> : array</p>
-<blockquote class="last">
+<blockquote>
 <div><p>Distribution of the patterns.</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <p class="rubric">Notes</p>
 <ul class="simple">
-<li>The results may vary from the original MATLAB script because of
-the permutations’ order.</li>
-<li>The permutations are generated from <span class="math notranslate nohighlight">\([1, dim+1]\)</span> so there are
-no occurances of <span class="math notranslate nohighlight">\(0.\)</span></li>
-<li>The extra <span class="math notranslate nohighlight">\(+1\)</span> in the lines
+<li><p>The results may vary from the original MATLAB script because of
+the permutations’ order.</p></li>
+<li><p>The permutations are generated from <span class="math notranslate nohighlight">\([1, dim+1]\)</span> so there are
+no occurances of <span class="math notranslate nohighlight">\(0.\)</span></p></li>
+<li><p>The extra <span class="math notranslate nohighlight">\(+1\)</span> in the lines
 .. python: I = sklearn.preprocessing.normalize(I + 1)
-is in order to avoid :math:<a href="#id23"><span class="problematic" id="id24">`</span></a>0`s.</li>
+is in order to avoid :math:<a href="#id23"><span class="problematic" id="id24">`</span></a>0`s.</p></li>
 </ul>
 </dd></dl>
 
 <dl class="function">
 <dt id="dyfunconn.ts.rr_order_patterns">
-<code class="descclassname">dyfunconn.ts.</code><code class="descname">rr_order_patterns</code><span class="sig-paren">(</span><em>signal1</em>, <em>signal2</em>, <em>m</em>, <em>tau</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/rr_order_patterns.html#rr_order_patterns"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.rr_order_patterns" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>signal1 :</strong> :</p>
+<code class="sig-prename descclassname">dyfunconn.ts.</code><code class="sig-name descname">rr_order_patterns</code><span class="sig-paren">(</span><em class="sig-param">signal1</em>, <em class="sig-param">signal2</em>, <em class="sig-param">m</em>, <em class="sig-param">tau</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/rr_order_patterns.html#rr_order_patterns"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.rr_order_patterns" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>signal1 :</strong> :</p>
 <p><strong>signal2 :</strong> :</p>
 <p><strong>m</strong> : int</p>
 <blockquote>
@@ -1564,84 +1393,74 @@ is in order to avoid :math:<a href="#id23"><span class="problematic" id="id24">`
 <blockquote>
 <div><p>Time delay parameter.</p>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>cstr</strong> : float</p>
-<blockquote class="last">
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>cstr</strong> : float</p>
+<blockquote>
 <div><p>Coupling strength.</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <p class="rubric">Notes</p>
 <ul class="simple">
-<li>The results may vary from the original MATLAB script because of
-the permutations’ order.</li>
-<li>The results may vary from the original MATLAB script because of
-the order of the indices in the <a href="#id25"><span class="problematic" id="id26">:python:`numpy.where`</span></a>.</li>
-<li>The permutations are generated from <span class="math notranslate nohighlight">\([1, dim+1]\)</span> so there are
-no occurances of <span class="math notranslate nohighlight">\(0.\)</span></li>
-<li>The extra <span class="math notranslate nohighlight">\(+1\)</span> in the lines
+<li><p>The results may vary from the original MATLAB script because of
+the permutations’ order.</p></li>
+<li><p>The results may vary from the original MATLAB script because of
+the order of the indices in the <a href="#id25"><span class="problematic" id="id26">:python:`numpy.where`</span></a>.</p></li>
+<li><p>The permutations are generated from <span class="math notranslate nohighlight">\([1, dim+1]\)</span> so there are
+no occurances of <span class="math notranslate nohighlight">\(0.\)</span></p></li>
+<li><p>The extra <span class="math notranslate nohighlight">\(+1\)</span> in the lines
 .. python: I = sklearn.preprocessing.normalize(I + 1)
-is in order to avoid :math:<a href="#id27"><span class="problematic" id="id28">`</span></a>0`s.</li>
+is in order to avoid :math:<a href="#id27"><span class="problematic" id="id28">`</span></a>0`s.</p></li>
 </ul>
 </dd></dl>
 
 <dl class="function">
 <dt id="dyfunconn.ts.entropy">
-<code class="descclassname">dyfunconn.ts.</code><code class="descname">entropy</code><span class="sig-paren">(</span><em>dts</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/entropy.html#entropy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.entropy" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyfunconn.ts.</code><code class="sig-name descname">entropy</code><span class="sig-paren">(</span><em class="sig-param">dts</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/entropy.html#entropy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.entropy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Entropy</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="dyfunconn.ts.wald">
-<code class="descclassname">dyfunconn.ts.</code><code class="descname">wald</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/wald.html#wald"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.wald" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>x :</strong> :</p>
+<code class="sig-prename descclassname">dyfunconn.ts.</code><code class="sig-name descname">wald</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/wald.html#wald"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.wald" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x :</strong> :</p>
 <p><strong>y :</strong> :</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>w</strong> : float</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>w</strong> : float</p>
 <p><strong>r</strong> : float</p>
 <p><strong>edges</strong> : array-like</p>
-<p class="last"><strong>weights</strong> : array-like</p>
-</td>
-</tr>
-</tbody>
-</table>
+<p><strong>weights</strong> : array-like</p>
+</dd>
+</dl>
 <p class="rubric">Notes</p>
 <p>The input time series will be padded with zeros if needed.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="dyfunconn.ts.dcorr">
-<code class="descclassname">dyfunconn.ts.</code><code class="descname">dcorr</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/dcorr.html#dcorr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.dcorr" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyfunconn.ts.</code><code class="sig-name descname">dcorr</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/dcorr.html#dcorr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.dcorr" title="Permalink to this definition">¶</a></dt>
 <dd><p>Distance Correlation</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>x :</strong> :</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x :</strong> :</p>
 <p><strong>y :</strong> :</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>val</strong> : float</p>
-<blockquote class="last">
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>val</strong> : float</p>
+<blockquote>
 <div><p>The computed distance correlation.</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="dyfunconn.ts.markov_matrix">
-<code class="descclassname">dyfunconn.ts.</code><code class="descname">markov_matrix</code><span class="sig-paren">(</span><em>symts</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/markov_matrix.html#markov_matrix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.markov_matrix" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyfunconn.ts.</code><code class="sig-name descname">markov_matrix</code><span class="sig-paren">(</span><em class="sig-param">symts</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/markov_matrix.html#markov_matrix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.markov_matrix" title="Permalink to this definition">¶</a></dt>
 <dd><p>Markov Matrix</p>
 <p>Markov matrix (also refered as “transition matrix”) is a square matrix that tabulates
 the observed transition probabilities between symbols for a finite Markov Chain. It is a first-order descriptor
@@ -1665,64 +1484,50 @@ from state <span class="math notranslate nohighlight">\(i\)</span> to all the ot
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<table class="docutils citation" frame="void" id="id29" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[WolframMathWorld]</td><td><a class="reference external" href="http://mathworld.wolfram.com/StochasticMatrix.html">http://mathworld.wolfram.com/StochasticMatrix.html</a></td></tr>
-</tbody>
-</table>
-<table class="docutils citation" frame="void" id="id30" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[WikipediaMarkovMatrix]</td><td><a class="reference external" href="https://en.wikipedia.org/wiki/Stochastic_matrix">https://en.wikipedia.org/wiki/Stochastic_matrix</a></td></tr>
-</tbody>
-</table>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>symts</strong> : array-like, shape(N)</p>
+<dl class="citation">
+<dt class="label" id="id29"><span class="brackets">WolframMathWorld</span></dt>
+<dd><p><a class="reference external" href="http://mathworld.wolfram.com/StochasticMatrix.html">http://mathworld.wolfram.com/StochasticMatrix.html</a></p>
+</dd>
+<dt class="label" id="id30"><span class="brackets">WikipediaMarkovMatrix</span></dt>
+<dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Stochastic_matrix">https://en.wikipedia.org/wiki/Stochastic_matrix</a></p>
+</dd>
+</dl>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>symts</strong> : array-like, shape(N)</p>
 <blockquote>
 <div><p>One-dimensional discrete time series.</p>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>mtx</strong> : matrix</p>
-<blockquote class="last">
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>mtx</strong> : matrix</p>
+<blockquote>
 <div><p>The transition matrix.</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="dyfunconn.ts.transition_rate">
-<code class="descclassname">dyfunconn.ts.</code><code class="descname">transition_rate</code><span class="sig-paren">(</span><em>symts</em>, <em>weight=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/markov_matrix.html#transition_rate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.transition_rate" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyfunconn.ts.</code><code class="sig-name descname">transition_rate</code><span class="sig-paren">(</span><em class="sig-param">symts</em>, <em class="sig-param">weight=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/markov_matrix.html#transition_rate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.transition_rate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Transition Rate</p>
 <p>The total sum of transition between symbols.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>symts :</strong> :</p>
-<p class="last"><strong>weight</strong> : float</p>
-</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>symts :</strong> :</p>
+<p><strong>weight</strong> : float</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="dyfunconn.ts.occupancy_time">
-<code class="descclassname">dyfunconn.ts.</code><code class="descname">occupancy_time</code><span class="sig-paren">(</span><em>symts</em>, <em>symbol_states=None</em>, <em>weight=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/markov_matrix.html#occupancy_time"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.occupancy_time" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyfunconn.ts.</code><code class="sig-name descname">occupancy_time</code><span class="sig-paren">(</span><em class="sig-param">symts</em>, <em class="sig-param">symbol_states=None</em>, <em class="sig-param">weight=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/markov_matrix.html#occupancy_time"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.occupancy_time" title="Permalink to this definition">¶</a></dt>
 <dd><p>Occupancy Time</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>symts :</strong> :</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>symts :</strong> :</p>
 <p><strong>symbol_states</strong> : int</p>
 <blockquote>
 <div><p>The maximum number of symbols. This is useful to define in case your
@@ -1733,39 +1538,32 @@ a matrix of different size.</p>
 <blockquote>
 <div><p>The weights of the reuslting transition symbols. Default <cite>len(symts)</cite>.</p>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>oc :</strong> :</p>
-<p class="last"><strong>symbols :</strong> :</p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>oc :</strong> :</p>
+<p><strong>symbols :</strong> :</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="dyfunconn.ts.teager_kaiser_energy">
-<code class="descclassname">dyfunconn.ts.</code><code class="descname">teager_kaiser_energy</code><span class="sig-paren">(</span><em>ts</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/teager_kaiser_energy.html#teager_kaiser_energy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.teager_kaiser_energy" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyfunconn.ts.</code><code class="sig-name descname">teager_kaiser_energy</code><span class="sig-paren">(</span><em class="sig-param">ts</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/teager_kaiser_energy.html#teager_kaiser_energy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.teager_kaiser_energy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Teager Kaiser Energy</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>ts</strong> : array of size [1 x samples]</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ts</strong> : array of size [1 x samples]</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="dyfunconn.ts.complexity_index">
-<code class="descclassname">dyfunconn.ts.</code><code class="descname">complexity_index</code><span class="sig-paren">(</span><em>x</em>, <em>sub_len=-1</em>, <em>normalize=False</em>, <em>iterations=100</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/ci.html#complexity_index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.complexity_index" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyfunconn.ts.</code><code class="sig-name descname">complexity_index</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">sub_len=-1</em>, <em class="sig-param">normalize=False</em>, <em class="sig-param">iterations=100</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/ci.html#complexity_index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.complexity_index" title="Permalink to this definition">¶</a></dt>
 <dd><p>Complexity Index</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>x</strong> : array-like, shape(N)</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> : array-like, shape(N)</p>
 <blockquote>
 <div><p>Input symbolic time series.</p>
 </div></blockquote>
@@ -1781,9 +1579,9 @@ a matrix of different size.</p>
 <blockquote>
 <div><p>Number of iterations to perform randomization. Default is <cite>100</cite>.</p>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>normal_ci</strong> : float</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>normal_ci</strong> : float</p>
 <blockquote>
 <div><p>The computed omplexity index after normalization against the randomization
 procedure.</p>
@@ -1793,25 +1591,21 @@ procedure.</p>
 <div><p>The computed complexity index.</p>
 </div></blockquote>
 <p><strong>spectrum</strong> : array-like</p>
-<blockquote class="last">
+<blockquote>
 <div><p>A list of the number of distinct subwords of length 1, up to the size
 of the input symbolic time series.</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="dyfunconn.ts.fnn">
-<code class="descclassname">dyfunconn.ts.</code><code class="descname">fnn</code><span class="sig-paren">(</span><em>ts</em>, <em>tau</em>, <em>max_dim=20</em>, <em>neighbors_reduction=0.1</em>, <em>rtol=15.0</em>, <em>atol=2.0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/fnn.html#fnn"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.fnn" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyfunconn.ts.</code><code class="sig-name descname">fnn</code><span class="sig-paren">(</span><em class="sig-param">ts</em>, <em class="sig-param">tau</em>, <em class="sig-param">max_dim=20</em>, <em class="sig-param">neighbors_reduction=0.1</em>, <em class="sig-param">rtol=15.0</em>, <em class="sig-param">atol=2.0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/fnn.html#fnn"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.fnn" title="Permalink to this definition">¶</a></dt>
 <dd><p>False Nearest Neighbors</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>ts</strong> : array-like, 1d</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ts</strong> : array-like, 1d</p>
 <p><strong>tau</strong> : int</p>
 <blockquote>
 <div><p>Time-delay parameter.</p>
@@ -1832,16 +1626,14 @@ of the input symbolic time series.</p>
 <blockquote>
 <div><p>Second threshold, criterion to identify a false neighbor.</p>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>min_dimension</strong> : int</p>
-<blockquote class="last">
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>min_dimension</strong> : int</p>
+<blockquote>
 <div><p>Minimum embedding dimension.</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <p class="rubric">Notes</p>
 <p>The execution stops either when the maxium number of embedding dimensions is
 reached, or the the number of neighbors is reduced to specific percentage.</p>
@@ -1849,46 +1641,38 @@ reached, or the the number of neighbors is reduced to specific percentage.</p>
 
 <dl class="function">
 <dt id="dyfunconn.ts.icc_31">
-<code class="descclassname">dyfunconn.ts.</code><code class="descname">icc_31</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/icc.html#icc_31"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.icc_31" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyfunconn.ts.</code><code class="sig-name descname">icc_31</code><span class="sig-paren">(</span><em class="sig-param">X</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/icc.html#icc_31"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.icc_31" title="Permalink to this definition">¶</a></dt>
 <dd><p>ICC (3,1)</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>X :</strong> :</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>X :</strong> :</p>
 <blockquote>
 <div><p>Input data</p>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>icc</strong> : float</p>
-<blockquote class="last">
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>icc</strong> : float</p>
+<blockquote>
 <div><p>Intra-class correlation.</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="dyfunconn.ts.cv">
-<code class="descclassname">dyfunconn.ts.</code><code class="descname">cv</code><span class="sig-paren">(</span><em>X</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/cv.html#cv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.cv" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>X :</strong> :</p>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>cv</strong> : float</p>
-<blockquote class="last">
+<code class="sig-prename descclassname">dyfunconn.ts.</code><code class="sig-name descname">cv</code><span class="sig-paren">(</span><em class="sig-param">X</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/ts/cv.html#cv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.ts.cv" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>X :</strong> :</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>cv</strong> : float</p>
+<blockquote>
 <div><p>The computed coefficient of variation.</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -1903,7 +1687,7 @@ reached, or the the number of neighbors is reduced to specific percentage.</p>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="dyfunconn.sim_models.html" class="btn btn-neutral" title="dyfunconn.sim_models package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="dyfunconn.sim_models.html" class="btn btn-neutral float-left" title="dyfunconn.sim_models package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -1912,7 +1696,7 @@ reached, or the the number of neighbors is reduced to specific percentage.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Avraam Marimpis &amp; Stavros Dimitriadis.
+        &copy; Copyright 2018, Avraam Marimpis &amp; Stavros Dimitriadis
 
     </p>
   </div>
@@ -1929,33 +1713,16 @@ reached, or the the number of neighbors is reduced to specific percentage.</p>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  <script type="text/javascript" src="_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

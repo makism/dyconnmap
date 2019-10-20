@@ -17,32 +17,35 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -215,24 +218,26 @@
 <span class="sd">    dyfunconn.fc.Coherece: Coherece (Class Estimator)</span>
 <span class="sd">    dyfunconn.fc.icoherence: Imaginary Coherence</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">n_channels</span><span class="p">,</span> <span class="n">n_samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-    <span class="n">filtered</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">analytic_signal</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">fb</span><span class="p">,</span> <span class="n">fs</span><span class="p">)</span>
+    <span class="n">n_channels</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">filtered</span> <span class="o">=</span> <span class="n">analytic_signal</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">fb</span><span class="p">,</span> <span class="n">fs</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">pairs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">pairs</span> <span class="o">=</span> <span class="p">[(</span><span class="n">r1</span><span class="p">,</span> <span class="n">r2</span><span class="p">)</span> <span class="k">for</span> <span class="n">r1</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_channels</span><span class="p">)</span>
-                 <span class="k">for</span> <span class="n">r2</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_channels</span><span class="p">)]</span>
+        <span class="n">pairs</span> <span class="o">=</span> <span class="p">[(</span><span class="n">r1</span><span class="p">,</span> <span class="n">r2</span><span class="p">)</span> <span class="k">for</span> <span class="n">r1</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_channels</span><span class="p">)</span> <span class="k">for</span> <span class="n">r2</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_channels</span><span class="p">)]</span>
 
     <span class="n">coh</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_channels</span><span class="p">,</span> <span class="n">n_channels</span><span class="p">))</span>
 
     <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="n">pairs</span><span class="p">:</span>
-        <span class="n">filt1</span><span class="p">,</span> <span class="n">filt2</span> <span class="o">=</span> <span class="n">filtered</span><span class="p">[</span><span class="n">pair</span><span class="p">,</span> <span class="p">]</span>
+        <span class="n">filt1</span><span class="p">,</span> <span class="n">filt2</span> <span class="o">=</span> <span class="n">filtered</span><span class="p">[</span><span class="n">pair</span><span class="p">,]</span>
 
-        <span class="n">csdxx</span><span class="p">,</span> <span class="n">fxx</span> <span class="o">=</span> <span class="n">mlab</span><span class="o">.</span><span class="n">csd</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">filt1</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">filt1</span><span class="p">,</span> <span class="n">Fs</span><span class="o">=</span><span class="n">fs</span><span class="p">,</span>
-                            <span class="n">scale_by_freq</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sides</span><span class="o">=</span><span class="s1">&#39;onesided&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="n">csdyy</span><span class="p">,</span> <span class="n">fyy</span> <span class="o">=</span> <span class="n">mlab</span><span class="o">.</span><span class="n">csd</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">filt2</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">filt2</span><span class="p">,</span> <span class="n">Fs</span><span class="o">=</span><span class="n">fs</span><span class="p">,</span>
-                            <span class="n">scale_by_freq</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sides</span><span class="o">=</span><span class="s1">&#39;onesided&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="n">csdxy</span><span class="p">,</span> <span class="n">fxy</span> <span class="o">=</span> <span class="n">mlab</span><span class="o">.</span><span class="n">csd</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">filt1</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">filt2</span><span class="p">,</span> <span class="n">Fs</span><span class="o">=</span><span class="n">fs</span><span class="p">,</span>
-                            <span class="n">scale_by_freq</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sides</span><span class="o">=</span><span class="s1">&#39;onesided&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">csdxx</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">mlab</span><span class="o">.</span><span class="n">csd</span><span class="p">(</span>
+            <span class="n">x</span><span class="o">=</span><span class="n">filt1</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">filt1</span><span class="p">,</span> <span class="n">Fs</span><span class="o">=</span><span class="n">fs</span><span class="p">,</span> <span class="n">scale_by_freq</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sides</span><span class="o">=</span><span class="s2">&quot;onesided&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+        <span class="p">)</span>
+        <span class="n">csdyy</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">mlab</span><span class="o">.</span><span class="n">csd</span><span class="p">(</span>
+            <span class="n">x</span><span class="o">=</span><span class="n">filt2</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">filt2</span><span class="p">,</span> <span class="n">Fs</span><span class="o">=</span><span class="n">fs</span><span class="p">,</span> <span class="n">scale_by_freq</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sides</span><span class="o">=</span><span class="s2">&quot;onesided&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+        <span class="p">)</span>
+        <span class="n">csdxy</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">mlab</span><span class="o">.</span><span class="n">csd</span><span class="p">(</span>
+            <span class="n">x</span><span class="o">=</span><span class="n">filt1</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">filt2</span><span class="p">,</span> <span class="n">Fs</span><span class="o">=</span><span class="n">fs</span><span class="p">,</span> <span class="n">scale_by_freq</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sides</span><span class="o">=</span><span class="s2">&quot;onesided&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+        <span class="p">)</span>
 
         <span class="n">cohv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">csdxy</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">conj</span><span class="p">(</span><span class="n">csdxy</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">csdxx</span> <span class="o">*</span> <span class="n">csdyy</span><span class="p">)</span>
 
@@ -263,21 +268,40 @@
 <div class="viewcode-block" id="Coherence.preprocess"><a class="viewcode-back" href="../../../dyfunconn.fc.html#dyfunconn.fc.coherence.Coherence.preprocess">[docs]</a>    <span class="k">def</span> <span class="nf">preprocess</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
         <span class="n">n_channels</span><span class="p">,</span> <span class="n">n_samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
-        <span class="n">filtered</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">analytic_signal</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">fb</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">fs</span><span class="p">)</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">filtered</span> <span class="o">=</span> <span class="n">analytic_signal</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">fb</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">fs</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">pairs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">pairs</span> <span class="o">=</span> <span class="p">[(</span><span class="n">r1</span><span class="p">,</span> <span class="n">r2</span><span class="p">)</span> <span class="k">for</span> <span class="n">r1</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_channels</span><span class="p">)</span>
-                          <span class="k">for</span> <span class="n">r2</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_channels</span><span class="p">)]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">pairs</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="p">(</span><span class="n">r1</span><span class="p">,</span> <span class="n">r2</span><span class="p">)</span> <span class="k">for</span> <span class="n">r1</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_channels</span><span class="p">)</span> <span class="k">for</span> <span class="n">r2</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_channels</span><span class="p">)</span>
+            <span class="p">]</span>
 
         <span class="k">return</span> <span class="n">filtered</span></div>
 
 <div class="viewcode-block" id="Coherence.estimate_pair"><a class="viewcode-back" href="../../../dyfunconn.fc.html#dyfunconn.fc.coherence.Coherence.estimate_pair">[docs]</a>    <span class="k">def</span> <span class="nf">estimate_pair</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ts1</span><span class="p">,</span> <span class="n">ts2</span><span class="p">):</span>
-        <span class="n">csdxx</span><span class="p">,</span> <span class="n">fxx</span> <span class="o">=</span> <span class="n">mlab</span><span class="o">.</span><span class="n">csd</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">ts1</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">ts1</span><span class="p">,</span> <span class="n">Fs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">fs</span><span class="p">,</span>
-                            <span class="n">scale_by_freq</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sides</span><span class="o">=</span><span class="s1">&#39;onesided&#39;</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">csdargs</span><span class="p">)</span>
-        <span class="n">csdyy</span><span class="p">,</span> <span class="n">fyy</span> <span class="o">=</span> <span class="n">mlab</span><span class="o">.</span><span class="n">csd</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">ts2</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">ts2</span><span class="p">,</span> <span class="n">Fs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">fs</span><span class="p">,</span>
-                            <span class="n">scale_by_freq</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sides</span><span class="o">=</span><span class="s1">&#39;onesided&#39;</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">csdargs</span><span class="p">)</span>
-        <span class="n">csdxy</span><span class="p">,</span> <span class="n">fxy</span> <span class="o">=</span> <span class="n">mlab</span><span class="o">.</span><span class="n">csd</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">ts1</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">ts2</span><span class="p">,</span> <span class="n">Fs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">fs</span><span class="p">,</span>
-                            <span class="n">scale_by_freq</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sides</span><span class="o">=</span><span class="s1">&#39;onesided&#39;</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">csdargs</span><span class="p">)</span>
+        <span class="n">csdxx</span><span class="p">,</span> <span class="n">fxx</span> <span class="o">=</span> <span class="n">mlab</span><span class="o">.</span><span class="n">csd</span><span class="p">(</span>
+            <span class="n">x</span><span class="o">=</span><span class="n">ts1</span><span class="p">,</span>
+            <span class="n">y</span><span class="o">=</span><span class="n">ts1</span><span class="p">,</span>
+            <span class="n">Fs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">fs</span><span class="p">,</span>
+            <span class="n">scale_by_freq</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">sides</span><span class="o">=</span><span class="s2">&quot;onesided&quot;</span><span class="p">,</span>
+            <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">csdargs</span>
+        <span class="p">)</span>
+        <span class="n">csdyy</span><span class="p">,</span> <span class="n">fyy</span> <span class="o">=</span> <span class="n">mlab</span><span class="o">.</span><span class="n">csd</span><span class="p">(</span>
+            <span class="n">x</span><span class="o">=</span><span class="n">ts2</span><span class="p">,</span>
+            <span class="n">y</span><span class="o">=</span><span class="n">ts2</span><span class="p">,</span>
+            <span class="n">Fs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">fs</span><span class="p">,</span>
+            <span class="n">scale_by_freq</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">sides</span><span class="o">=</span><span class="s2">&quot;onesided&quot;</span><span class="p">,</span>
+            <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">csdargs</span>
+        <span class="p">)</span>
+        <span class="n">csdxy</span><span class="p">,</span> <span class="n">fxy</span> <span class="o">=</span> <span class="n">mlab</span><span class="o">.</span><span class="n">csd</span><span class="p">(</span>
+            <span class="n">x</span><span class="o">=</span><span class="n">ts1</span><span class="p">,</span>
+            <span class="n">y</span><span class="o">=</span><span class="n">ts2</span><span class="p">,</span>
+            <span class="n">Fs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">fs</span><span class="p">,</span>
+            <span class="n">scale_by_freq</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">sides</span><span class="o">=</span><span class="s2">&quot;onesided&quot;</span><span class="p">,</span>
+            <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">csdargs</span>
+        <span class="p">)</span>
 
         <span class="n">cohv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">csdxy</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">conj</span><span class="p">(</span><span class="n">csdxy</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">csdxx</span> <span class="o">*</span> <span class="n">csdyy</span><span class="p">)</span>
 
@@ -294,7 +318,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Avraam Marimpis &amp; Stavros Dimitriadis.
+        &copy; Copyright 2018, Avraam Marimpis &amp; Stavros Dimitriadis
 
     </p>
   </div>
@@ -311,33 +335,16 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../',
-            VERSION:'',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

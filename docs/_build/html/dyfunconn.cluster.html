@@ -17,34 +17,37 @@
   
 
   
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="dyfunconn.fc package" href="dyfunconn.fc.html" />
-    <link rel="prev" title="dyfunconn package" href="dyfunconn.html" /> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
+    <link rel="prev" title="dyfunconn.chronnectomics package" href="dyfunconn.chronnectomics.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -81,8 +84,10 @@
               <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="dyfunconn.html">dyfunconn package</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="dyfunconn.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="dyfunconn.chronnectomics.html">dyfunconn.chronnectomics package</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">dyfunconn.cluster package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.cluster.gng">dyfunconn.cluster.gng module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.cluster.mng">dyfunconn.cluster.mng module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.cluster.ng">dyfunconn.cluster.ng module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.cluster.rng">dyfunconn.cluster.rng module</a></li>
@@ -176,6 +181,75 @@
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 </div>
+<div class="section" id="module-dyfunconn.cluster.gng">
+<span id="dyfunconn-cluster-gng-module"></span><h2>dyfunconn.cluster.gng module<a class="headerlink" href="#module-dyfunconn.cluster.gng" title="Permalink to this headline">¶</a></h2>
+<p>Growing NeuralGas</p>
+<dl class="class">
+<dt id="dyfunconn.cluster.gng.GrowingNeuralGas">
+<em class="property">class </em><code class="sig-prename descclassname">dyfunconn.cluster.gng.</code><code class="sig-name descname">GrowingNeuralGas</code><span class="sig-paren">(</span><em class="sig-param">n_max_protos=30, l=300, a_max=88, a=0.5, b=0.0005, iterations=10000, lrate=[0.05, 0.0006], n_jobs=1, rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/gng.html#GrowingNeuralGas"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.gng.GrowingNeuralGas" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Growing Neural Gas</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>n_jobs</strong> : int</p>
+<blockquote>
+<div><p>Number of parallel jobs (will be passed to scikit-learn))</p>
+</div></blockquote>
+<p><strong>rng</strong> : object or None</p>
+<blockquote>
+<div><p>An object of type numpy.random.RandomState</p>
+</div></blockquote>
+</dd>
+<dt class="field-even">Attributes</dt>
+<dd class="field-even"><p><strong>protos</strong> : array-like, shape(n_protos, n_features)</p>
+<blockquote>
+<div><p>The prototypical vectors</p>
+</div></blockquote>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.cluster.gng.GrowingNeuralGas.encode" title="dyfunconn.cluster.gng.GrowingNeuralGas.encode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encode</span></code></a>(data[, metric])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#dyfunconn.cluster.gng.GrowingNeuralGas.fit" title="dyfunconn.cluster.gng.GrowingNeuralGas.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a>(data)</p></td>
+<td><p>Learn data, and construct a vector codebook.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="dyfunconn.cluster.gng.GrowingNeuralGas.encode">
+<code class="sig-name descname">encode</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">metric=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/gng.html#GrowingNeuralGas.encode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.gng.GrowingNeuralGas.encode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="dyfunconn.cluster.gng.GrowingNeuralGas.fit">
+<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/gng.html#GrowingNeuralGas.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.gng.GrowingNeuralGas.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Learn data, and construct a vector codebook.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> : real array-like, shape(n_samples, n_features)</p>
+<blockquote>
+<div><p>Data matrix, each row represents a sample.</p>
+</div></blockquote>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>self</strong> : object</p>
+<blockquote>
+<div><p>The instance itself</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
 <div class="section" id="module-dyfunconn.cluster.mng">
 <span id="dyfunconn-cluster-mng-module"></span><h2>dyfunconn.cluster.mng module<a class="headerlink" href="#module-dyfunconn.cluster.mng" title="Permalink to this headline">¶</a></h2>
 <p>Merge NeuralGas</p>
@@ -185,22 +259,19 @@
 <div class="line"><br /></div>
 </div>
 <hr class="docutils" />
-<table class="docutils citation" frame="void" id="strickert2003" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[Strickert2003]</td><td>Strickert, M., &amp; Hammer, B. (2003, September). Neural gas for sequences. In Proceedings of the Workshop on Self-Organizing Maps (WSOM’03) (pp. 53-57).</td></tr>
-</tbody>
-</table>
+<dl class="citation">
+<dt class="label" id="strickert2003"><span class="brackets">Strickert2003</span></dt>
+<dd><p>Strickert, M., &amp; Hammer, B. (2003, September). Neural gas for sequences. In Proceedings of the Workshop on Self-Organizing Maps (WSOM’03) (pp. 53-57).</p>
+</dd>
+</dl>
 <dl class="class">
 <dt id="dyfunconn.cluster.mng.MergeNeuralGas">
-<em class="property">class </em><code class="descclassname">dyfunconn.cluster.mng.</code><code class="descname">MergeNeuralGas</code><span class="sig-paren">(</span><em>n_protos=10, iterations=1024, merge_coeffs=[0.1, 0.0], g=[0.025, 0.025], epsilon=[10, 0.001], lrate=[0.5, 0.005], n_jobs=1, rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/mng.html#MergeNeuralGas"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.mng.MergeNeuralGas" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">dyfunconn.cluster.mng.</code><code class="sig-name descname">MergeNeuralGas</code><span class="sig-paren">(</span><em class="sig-param">n_protos=10, iterations=1024, merge_coeffs=[0.1, 0.0], g=[0.025, 0.025], epsilon=[10, 0.001], lrate=[0.5, 0.005], n_jobs=1, rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/mng.html#MergeNeuralGas"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.mng.MergeNeuralGas" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Merge Neural Gas</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>n_protos: int</strong> :</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>n_protos: int</strong> :</p>
 <blockquote>
 <div><p>The number of prototypes</p>
 </div></blockquote>
@@ -229,60 +300,44 @@
 <blockquote>
 <div><p>An object of type numpy.random.RandomState</p>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Attributes:</th><td class="field-body"><p class="first"><strong>protos</strong> : array-like, shape(n_protos, n_features)</p>
+</dd>
+<dt class="field-even">Attributes</dt>
+<dd class="field-even"><p><strong>protos</strong> : array-like, shape(n_protos, n_features)</p>
 <blockquote>
 <div><p>The prototypical vectors</p>
 </div></blockquote>
 <p><strong>distortion</strong> : float</p>
-<blockquote class="last">
+<blockquote>
 <div><p>The normalized distortion error</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <p class="rubric">Methods</p>
-<table border="1" class="longtable docutils">
+<table class="longtable docutils align-default">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.cluster.mng.MergeNeuralGas.encode" title="dyfunconn.cluster.mng.MergeNeuralGas.encode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encode</span></code></a>(data[,&nbsp;metric])</td>
-<td>Employ a nearest-neighbor rule to encode the given <code class="docutils literal notranslate"><span class="pre">data</span></code> using the codebook.</td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.cluster.mng.MergeNeuralGas.encode" title="dyfunconn.cluster.mng.MergeNeuralGas.encode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encode</span></code></a>(data[, metric])</p></td>
+<td><p>Employ a nearest-neighbor rule to encode the given <code class="docutils literal notranslate"><span class="pre">data</span></code> using the codebook.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.cluster.mng.MergeNeuralGas.fit" title="dyfunconn.cluster.mng.MergeNeuralGas.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a>(data)</td>
-<td><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">param data:</th><td class="field-body"><table class="first last docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">return:</th><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
-</td>
-</tr>
-</tbody>
-</table>
-</td>
+<tr class="row-even"><td><p><a class="reference internal" href="#dyfunconn.cluster.mng.MergeNeuralGas.fit" title="dyfunconn.cluster.mng.MergeNeuralGas.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a>(data)</p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">param data</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="method">
 <dt id="dyfunconn.cluster.mng.MergeNeuralGas.encode">
-<code class="descname">encode</code><span class="sig-paren">(</span><em>data</em>, <em>metric='euclidean'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/mng.html#MergeNeuralGas.encode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.mng.MergeNeuralGas.encode" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">encode</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">metric='euclidean'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/mng.html#MergeNeuralGas.encode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.mng.MergeNeuralGas.encode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Employ a nearest-neighbor rule to encode the given <code class="docutils literal notranslate"><span class="pre">data</span></code> using the codebook.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : real array-like, shape(n_samples, n_features)</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> : real array-like, shape(n_samples, n_features)</p>
 <blockquote>
 <div><p>Data matrix, each row represents a sample.</p>
 </div></blockquote>
@@ -292,42 +347,38 @@
 <p>Valid options include:</p>
 <blockquote>
 <div><ul class="simple">
-<li>euclidean</li>
-<li>cityblock</li>
-<li>l1</li>
-<li>cosine</li>
+<li><p>euclidean</p></li>
+<li><p>cityblock</p></li>
+<li><p>l1</p></li>
+<li><p>cosine</p></li>
 </ul>
 </div></blockquote>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>encoded_data</strong> : real array-like, shape(n_samples, n_features)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>encoded_data</strong> : real array-like, shape(n_samples, n_features)</p>
 <blockquote>
 <div><p><code class="docutils literal notranslate"><span class="pre">data</span></code>, as represented by the prototypes in codebook.</p>
 </div></blockquote>
 <p><strong>ts_symbols</strong> : list, shape(n_samples, 1)</p>
-<blockquote class="last">
+<blockquote>
 <div><p>A discrete symbolic time series</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="dyfunconn.cluster.mng.MergeNeuralGas.fit">
-<code class="descname">fit</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/mng.html#MergeNeuralGas.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.mng.MergeNeuralGas.fit" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> – </td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
+<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/mng.html#MergeNeuralGas.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.mng.MergeNeuralGas.fit" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -337,7 +388,7 @@
 <div class="section" id="module-dyfunconn.cluster.ng">
 <span id="dyfunconn-cluster-ng-module"></span><h2>dyfunconn.cluster.ng module<a class="headerlink" href="#module-dyfunconn.cluster.ng" title="Permalink to this headline">¶</a></h2>
 <p>NeuralGas</p>
-<p>Inspired by Self Organizing Maps (SOMs), Neural Gas (<em>NG</em>), an unsupervised adaptive algorithm coined by <a class="reference internal" href="#id4" id="id1">[Martinetz1991]</a>.
+<p>Inspired by Self Organizing Maps (SOMs), Neural Gas (<em>NG</em>), an unsupervised adaptive algorithm coined by <a class="reference internal" href="#id4" id="id1"><span>[Martinetz1991]</span></a>.
 Neural Gas does not assume a preconstructed lattice thus the adaptation cannot be based on the distances between the
 neighbor neurons (like in SOMs) because be definition there are no neighbors.</p>
 <p>The adaptation-convergence is driven by a stochastic gradient function with a soft-max adaptation rule that minimizes the
@@ -370,28 +421,22 @@ the approximated patterns as produced by the Nearest Neighbor rule.</p>
 <div class="line"><br /></div>
 </div>
 <hr class="docutils" />
-<table class="docutils citation" frame="void" id="martinetz1991" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[Martinetz1991]</td><td>Martinetz, T., Schulten, K., et al. A “neural-gas” network learns topologies. University of Illinois at Urbana-Champaign, 1991.</td></tr>
-</tbody>
-</table>
-<table class="docutils citation" frame="void" id="laskaris2004" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[Laskaris2004]</td><td>Laskaris, N. A., Fotopoulos, S., &amp; Ioannides, A. A. (2004). Mining information from event-related recordings. Signal Processing Magazine, IEEE, 21(3), 66-77.</td></tr>
-</tbody>
-</table>
+<dl class="citation">
+<dt class="label" id="martinetz1991"><span class="brackets">Martinetz1991</span></dt>
+<dd><p>Martinetz, T., Schulten, K., et al. A “neural-gas” network learns topologies. University of Illinois at Urbana-Champaign, 1991.</p>
+</dd>
+<dt class="label" id="laskaris2004"><span class="brackets">Laskaris2004</span></dt>
+<dd><p>Laskaris, N. A., Fotopoulos, S., &amp; Ioannides, A. A. (2004). Mining information from event-related recordings. Signal Processing Magazine, IEEE, 21(3), 66-77.</p>
+</dd>
+</dl>
 <dl class="class">
 <dt id="dyfunconn.cluster.ng.NeuralGas">
-<em class="property">class </em><code class="descclassname">dyfunconn.cluster.ng.</code><code class="descname">NeuralGas</code><span class="sig-paren">(</span><em>n_protos=10, iterations=1024, epsilon=[10, 0.001], lrate=[0.5, 0.005], n_jobs=1, metric='euclidean', rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/ng.html#NeuralGas"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.ng.NeuralGas" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">dyfunconn.cluster.ng.</code><code class="sig-name descname">NeuralGas</code><span class="sig-paren">(</span><em class="sig-param">n_protos=10, iterations=1024, epsilon=[10, 0.001], lrate=[0.5, 0.005], n_jobs=1, metric='euclidean', rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/ng.html#NeuralGas"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.ng.NeuralGas" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Neural Gas</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>n_protos</strong> : int</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>n_protos</strong> : int</p>
 <blockquote>
 <div><p>The number of prototypes</p>
 </div></blockquote>
@@ -417,10 +462,10 @@ the approximated patterns as produced by the Nearest Neighbor rule.</p>
 <p>Valid options include:</p>
 <blockquote>
 <div><ul class="simple">
-<li>euclidean</li>
-<li>cityblock</li>
-<li>l1</li>
-<li>cosine</li>
+<li><p>euclidean</p></li>
+<li><p>cityblock</p></li>
+<li><p>l1</p></li>
+<li><p>cosine</p></li>
 </ul>
 </div></blockquote>
 </div></blockquote>
@@ -428,46 +473,42 @@ the approximated patterns as produced by the Nearest Neighbor rule.</p>
 <blockquote>
 <div><p>An object of type numpy.random.RandomState</p>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Attributes:</th><td class="field-body"><p class="first"><strong>protos</strong> : array-like, shape(n_protos, n_features)</p>
+</dd>
+<dt class="field-even">Attributes</dt>
+<dd class="field-even"><p><strong>protos</strong> : array-like, shape(n_protos, n_features)</p>
 <blockquote>
 <div><p>The prototypical vectors</p>
 </div></blockquote>
 <p><strong>distortion</strong> : float</p>
-<blockquote class="last">
+<blockquote>
 <div><p>The normalized distortion error</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <p class="rubric">Notes</p>
 <p>Slightly based on <em>http://webloria.loria.fr/~rougier/downloads/ng.py</em></p>
 <p class="rubric">Methods</p>
-<table border="1" class="longtable docutils">
+<table class="longtable docutils align-default">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.cluster.ng.NeuralGas.encode" title="dyfunconn.cluster.ng.NeuralGas.encode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encode</span></code></a>(data[,&nbsp;metric])</td>
-<td>Employ a nearest-neighbor rule to encode the given <code class="docutils literal notranslate"><span class="pre">data</span></code> using the codebook.</td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.cluster.ng.NeuralGas.encode" title="dyfunconn.cluster.ng.NeuralGas.encode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encode</span></code></a>(data[, metric])</p></td>
+<td><p>Employ a nearest-neighbor rule to encode the given <code class="docutils literal notranslate"><span class="pre">data</span></code> using the codebook.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.cluster.ng.NeuralGas.fit" title="dyfunconn.cluster.ng.NeuralGas.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a>(data)</td>
-<td>Learn data, and construct a vector codebook.</td>
+<tr class="row-even"><td><p><a class="reference internal" href="#dyfunconn.cluster.ng.NeuralGas.fit" title="dyfunconn.cluster.ng.NeuralGas.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a>(data)</p></td>
+<td><p>Learn data, and construct a vector codebook.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="method">
 <dt id="dyfunconn.cluster.ng.NeuralGas.encode">
-<code class="descname">encode</code><span class="sig-paren">(</span><em>data</em>, <em>metric=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/ng.html#NeuralGas.encode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.ng.NeuralGas.encode" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">encode</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">metric=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/ng.html#NeuralGas.encode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.ng.NeuralGas.encode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Employ a nearest-neighbor rule to encode the given <code class="docutils literal notranslate"><span class="pre">data</span></code> using the codebook.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : real array-like, shape(n_samples, n_features)</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> : real array-like, shape(n_samples, n_features)</p>
 <blockquote>
 <div><p>Data matrix, each row represents a sample.</p>
 </div></blockquote>
@@ -477,52 +518,46 @@ the approximated patterns as produced by the Nearest Neighbor rule.</p>
 <p>Valid options include:</p>
 <blockquote>
 <div><ul class="simple">
-<li>euclidean</li>
-<li>cityblock</li>
-<li>l1</li>
-<li>cosine</li>
+<li><p>euclidean</p></li>
+<li><p>cityblock</p></li>
+<li><p>l1</p></li>
+<li><p>cosine</p></li>
 </ul>
 <p>If <cite>None</cite> is passed, the matric used for learning the data will be used.</p>
 </div></blockquote>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>encoded_data</strong> : real array-like, shape(n_samples, n_features)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>encoded_data</strong> : real array-like, shape(n_samples, n_features)</p>
 <blockquote>
 <div><p><code class="docutils literal notranslate"><span class="pre">data</span></code>, as represented by the prototypes in codebook.</p>
 </div></blockquote>
 <p><strong>ts_symbols</strong> : list, shape(n_samples, 1)</p>
-<blockquote class="last">
+<blockquote>
 <div><p>A discrete symbolic time series</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="dyfunconn.cluster.ng.NeuralGas.fit">
-<code class="descname">fit</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/ng.html#NeuralGas.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.ng.NeuralGas.fit" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/ng.html#NeuralGas.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.ng.NeuralGas.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Learn data, and construct a vector codebook.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : real array-like, shape(n_samples, n_features)</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> : real array-like, shape(n_samples, n_features)</p>
 <blockquote>
 <div><p>Data matrix, each row represents a sample.</p>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>self</strong> : object</p>
-<blockquote class="last">
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>self</strong> : object</p>
+<blockquote>
 <div><p>The instance itself</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -536,22 +571,19 @@ the approximated patterns as produced by the Nearest Neighbor rule.</p>
 <div class="line"><br /></div>
 </div>
 <hr class="docutils" />
-<table class="docutils citation" frame="void" id="hasenfuss2008" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[Hasenfuss2008]</td><td>Hasenfuss, A., Hammer, B., &amp; Rossi, F. (2008, July). Patch Relational Neural Gas–Clustering of Huge Dissimilarity Datasets. In IAPR Workshop on Artificial Neural Networks in Pattern Recognition (pp. 1-12). Springer, Berlin, Heidelberg.</td></tr>
-</tbody>
-</table>
+<dl class="citation">
+<dt class="label" id="hasenfuss2008"><span class="brackets">Hasenfuss2008</span></dt>
+<dd><p>Hasenfuss, A., Hammer, B., &amp; Rossi, F. (2008, July). Patch Relational Neural Gas–Clustering of Huge Dissimilarity Datasets. In IAPR Workshop on Artificial Neural Networks in Pattern Recognition (pp. 1-12). Springer, Berlin, Heidelberg.</p>
+</dd>
+</dl>
 <dl class="class">
 <dt id="dyfunconn.cluster.rng.RelationalNeuralGas">
-<em class="property">class </em><code class="descclassname">dyfunconn.cluster.rng.</code><code class="descname">RelationalNeuralGas</code><span class="sig-paren">(</span><em>n_protos=10, iterations=100, lrate=[0.3, 0.01], metric='euclidean', rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/rng.html#RelationalNeuralGas"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.rng.RelationalNeuralGas" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">dyfunconn.cluster.rng.</code><code class="sig-name descname">RelationalNeuralGas</code><span class="sig-paren">(</span><em class="sig-param">n_protos=10, iterations=100, lrate=[0.3, 0.01], metric='euclidean', rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/rng.html#RelationalNeuralGas"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.rng.RelationalNeuralGas" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Relational Neural Gas</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>n_protos</strong> : int</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>n_protos</strong> : int</p>
 <blockquote>
 <div><p>The number of prototypes</p>
 </div></blockquote>
@@ -573,10 +605,10 @@ the approximated patterns as produced by the Nearest Neighbor rule.</p>
 <p>Valid options include:</p>
 <blockquote>
 <div><ul class="simple">
-<li>euclidean</li>
-<li>cityblock</li>
-<li>l1</li>
-<li>cosine</li>
+<li><p>euclidean</p></li>
+<li><p>cityblock</p></li>
+<li><p>l1</p></li>
+<li><p>cosine</p></li>
 </ul>
 </div></blockquote>
 </div></blockquote>
@@ -584,40 +616,36 @@ the approximated patterns as produced by the Nearest Neighbor rule.</p>
 <blockquote>
 <div><p>An object of type numpy.random.RandomState</p>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Attributes:</th><td class="field-body"><p class="first"><strong>protos</strong> : array-like, shape(n_protos, n_features)</p>
-<blockquote class="last">
+</dd>
+<dt class="field-even">Attributes</dt>
+<dd class="field-even"><p><strong>protos</strong> : array-like, shape(n_protos, n_features)</p>
+<blockquote>
 <div><p>The prototypical vectors</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <p class="rubric">Methods</p>
-<table border="1" class="longtable docutils">
+<table class="longtable docutils align-default">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.cluster.rng.RelationalNeuralGas.encode" title="dyfunconn.cluster.rng.RelationalNeuralGas.encode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encode</span></code></a>(data[,&nbsp;metric])</td>
-<td>Employ a nearest-neighbor rule to encode the given <code class="docutils literal notranslate"><span class="pre">data</span></code> using the codebook.</td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.cluster.rng.RelationalNeuralGas.encode" title="dyfunconn.cluster.rng.RelationalNeuralGas.encode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encode</span></code></a>(data[, metric])</p></td>
+<td><p>Employ a nearest-neighbor rule to encode the given <code class="docutils literal notranslate"><span class="pre">data</span></code> using the codebook.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.cluster.rng.RelationalNeuralGas.fit" title="dyfunconn.cluster.rng.RelationalNeuralGas.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a>(data)</td>
-<td>Fit</td>
+<tr class="row-even"><td><p><a class="reference internal" href="#dyfunconn.cluster.rng.RelationalNeuralGas.fit" title="dyfunconn.cluster.rng.RelationalNeuralGas.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a>(data)</p></td>
+<td><p>Fit</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="method">
 <dt id="dyfunconn.cluster.rng.RelationalNeuralGas.encode">
-<code class="descname">encode</code><span class="sig-paren">(</span><em>data</em>, <em>metric=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/rng.html#RelationalNeuralGas.encode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.rng.RelationalNeuralGas.encode" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">encode</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">metric=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/rng.html#RelationalNeuralGas.encode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.rng.RelationalNeuralGas.encode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Employ a nearest-neighbor rule to encode the given <code class="docutils literal notranslate"><span class="pre">data</span></code> using the codebook.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : real array-like, shape(n_samples, n_features)</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> : real array-like, shape(n_samples, n_features)</p>
 <blockquote>
 <div><p>Data matrix, each row represents a sample.</p>
 </div></blockquote>
@@ -627,60 +655,54 @@ the approximated patterns as produced by the Nearest Neighbor rule.</p>
 <p>Valid options include:</p>
 <blockquote>
 <div><ul class="simple">
-<li>euclidean</li>
-<li>cityblock</li>
-<li>l1</li>
-<li>cosine</li>
+<li><p>euclidean</p></li>
+<li><p>cityblock</p></li>
+<li><p>l1</p></li>
+<li><p>cosine</p></li>
 </ul>
 <p>If <cite>None</cite> is passed, the matric used for learning the data will be used.</p>
 </div></blockquote>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>encoded_data</strong> : real array-like, shape(n_samples, n_features)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>encoded_data</strong> : real array-like, shape(n_samples, n_features)</p>
 <blockquote>
 <div><p><code class="docutils literal notranslate"><span class="pre">data</span></code>, as represented by the prototypes in codebook.</p>
 </div></blockquote>
 <p><strong>ts_symbols</strong> : list, shape(n_samples, 1)</p>
-<blockquote class="last">
+<blockquote>
 <div><p>A discrete symbolic time series</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="dyfunconn.cluster.rng.RelationalNeuralGas.fit">
-<code class="descname">fit</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/rng.html#RelationalNeuralGas.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.rng.RelationalNeuralGas.fit" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/rng.html#RelationalNeuralGas.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.rng.RelationalNeuralGas.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : real array-like, shape(n_samples, n_features)</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> : real array-like, shape(n_samples, n_features)</p>
 <blockquote>
 <div><p>Data matrix, each row represents a sample.</p>
 </div></blockquote>
 <p><strong>metric</strong> : string or None</p>
-<blockquote class="last">
+<blockquote>
 <div><p>One of the following valid options as defined for function <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.pairwise_distances.html">http://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.pairwise_distances.html</a>.</p>
 <p>Valid options include:</p>
 <blockquote>
 <div><ul class="simple">
-<li>euclidean</li>
-<li>cityblock</li>
-<li>l1</li>
-<li>cosine</li>
+<li><p>euclidean</p></li>
+<li><p>cityblock</p></li>
+<li><p>l1</p></li>
+<li><p>cosine</p></li>
 </ul>
 <p>If <cite>None</cite> is passed, the matric used for learning the data will be used</p>
 </div></blockquote>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -698,22 +720,19 @@ the approximated patterns as produced by the Nearest Neighbor rule.</p>
 <div class="line"><br /></div>
 </div>
 <hr class="docutils" />
-<table class="docutils citation" frame="void" id="id4" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[Martinetz1991]</td><td>Martinetz, T., Schulten, K., et al. A “neural-gas” network learns topologies. University of Illinois at Urbana-Champaign, 1991.</td></tr>
-</tbody>
-</table>
+<dl class="citation">
+<dt class="label" id="id4"><span class="brackets">Martinetz1991</span></dt>
+<dd><p>Martinetz, T., Schulten, K., et al. A “neural-gas” network learns topologies. University of Illinois at Urbana-Champaign, 1991.</p>
+</dd>
+</dl>
 <dl class="class">
 <dt id="dyfunconn.cluster.som.SOM">
-<em class="property">class </em><code class="descclassname">dyfunconn.cluster.som.</code><code class="descname">SOM</code><span class="sig-paren">(</span><em>grid=(10</em>, <em>10)</em>, <em>iterations=1024</em>, <em>lrate=0.1</em>, <em>n_jobs=1</em>, <em>rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/som.html#SOM"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.som.SOM" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">dyfunconn.cluster.som.</code><code class="sig-name descname">SOM</code><span class="sig-paren">(</span><em class="sig-param">grid=(10</em>, <em class="sig-param">10)</em>, <em class="sig-param">iterations=1024</em>, <em class="sig-param">lrate=0.1</em>, <em class="sig-param">n_jobs=1</em>, <em class="sig-param">rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/som.html#SOM"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.som.SOM" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Self Organizing Map</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>grid</strong> : list of length 2</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>grid</strong> : list of length 2</p>
 <blockquote>
 <div><p>The X and Y sizes of the grid</p>
 </div></blockquote>
@@ -733,43 +752,39 @@ the approximated patterns as produced by the Nearest Neighbor rule.</p>
 <blockquote>
 <div><p>An object of type numpy.random.RandomState</p>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Attributes:</th><td class="field-body"><p class="first"><strong>protos</strong> : array-like, shape(n_protos, n_features)</p>
-<blockquote class="last">
+</dd>
+<dt class="field-even">Attributes</dt>
+<dd class="field-even"><p><strong>protos</strong> : array-like, shape(n_protos, n_features)</p>
+<blockquote>
 <div><p>The prototypical vectors</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <p class="rubric">Methods</p>
-<table border="1" class="longtable docutils">
+<table class="longtable docutils align-default">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.cluster.som.SOM.encode" title="dyfunconn.cluster.som.SOM.encode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encode</span></code></a>(data[,&nbsp;metric])</td>
-<td>Employ a nearest-neighbor rule to encode the given <code class="docutils literal notranslate"><span class="pre">data</span></code> using the codebook.</td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.cluster.som.SOM.encode" title="dyfunconn.cluster.som.SOM.encode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encode</span></code></a>(data[, metric])</p></td>
+<td><p>Employ a nearest-neighbor rule to encode the given <code class="docutils literal notranslate"><span class="pre">data</span></code> using the codebook.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.cluster.som.SOM.findBMU" title="dyfunconn.cluster.som.SOM.findBMU"><code class="xref py py-obj docutils literal notranslate"><span class="pre">findBMU</span></code></a>(x,&nbsp;y)</td>
-<td></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#dyfunconn.cluster.som.SOM.findBMU" title="dyfunconn.cluster.som.SOM.findBMU"><code class="xref py py-obj docutils literal notranslate"><span class="pre">findBMU</span></code></a>(x, y)</p></td>
+<td><p></p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.cluster.som.SOM.fit" title="dyfunconn.cluster.som.SOM.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a>(data)</td>
-<td></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.cluster.som.SOM.fit" title="dyfunconn.cluster.som.SOM.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a>(data)</p></td>
+<td><p></p></td>
 </tr>
 </tbody>
 </table>
 <dl class="method">
 <dt id="dyfunconn.cluster.som.SOM.encode">
-<code class="descname">encode</code><span class="sig-paren">(</span><em>data</em>, <em>metric='euclidean'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/som.html#SOM.encode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.som.SOM.encode" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">encode</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">metric='euclidean'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/som.html#SOM.encode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.som.SOM.encode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Employ a nearest-neighbor rule to encode the given <code class="docutils literal notranslate"><span class="pre">data</span></code> using the codebook.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : real array-like, shape(n_samples, n_features)</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> : real array-like, shape(n_samples, n_features)</p>
 <blockquote>
 <div><p>Data matrix, each row represents a sample.</p>
 </div></blockquote>
@@ -779,37 +794,35 @@ the approximated patterns as produced by the Nearest Neighbor rule.</p>
 <p>Valid options include:</p>
 <blockquote>
 <div><ul class="simple">
-<li>euclidean</li>
-<li>cityblock</li>
-<li>l1</li>
-<li>cosine</li>
+<li><p>euclidean</p></li>
+<li><p>cityblock</p></li>
+<li><p>l1</p></li>
+<li><p>cosine</p></li>
 </ul>
 </div></blockquote>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>encoded_data</strong> : real array-like, shape(n_samples, n_features)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>encoded_data</strong> : real array-like, shape(n_samples, n_features)</p>
 <blockquote>
 <div><p><code class="docutils literal notranslate"><span class="pre">data</span></code>, as represented by the prototypes in codebook.</p>
 </div></blockquote>
 <p><strong>ts_symbols</strong> : list, shape(n_samples, 1)</p>
-<blockquote class="last">
+<blockquote>
 <div><p>A discrete symbolic time series</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="classmethod">
+<dl class="method">
 <dt id="dyfunconn.cluster.som.SOM.findBMU">
-<em class="property">classmethod </em><code class="descname">findBMU</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/som.html#SOM.findBMU"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.som.SOM.findBMU" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="sig-name descname">findBMU</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/som.html#SOM.findBMU"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.som.SOM.findBMU" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="dyfunconn.cluster.som.SOM.fit">
-<code class="descname">fit</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/som.html#SOM.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.som.SOM.fit" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/som.html#SOM.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.som.SOM.fit" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
@@ -821,7 +834,7 @@ the approximated patterns as produced by the Nearest Neighbor rule.</p>
 <p>UMatrix Visualization</p>
 <dl class="function">
 <dt id="dyfunconn.cluster.umatrix.umatrix">
-<code class="descclassname">dyfunconn.cluster.umatrix.</code><code class="descname">umatrix</code><span class="sig-paren">(</span><em>M</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/umatrix.html#umatrix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.umatrix.umatrix" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyfunconn.cluster.umatrix.</code><code class="sig-name descname">umatrix</code><span class="sig-paren">(</span><em class="sig-param">M</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/umatrix.html#umatrix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.umatrix.umatrix" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -829,14 +842,12 @@ the approximated patterns as produced by the Nearest Neighbor rule.</p>
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-dyfunconn.cluster" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="dyfunconn.cluster.NeuralGas">
-<em class="property">class </em><code class="descclassname">dyfunconn.cluster.</code><code class="descname">NeuralGas</code><span class="sig-paren">(</span><em>n_protos=10, iterations=1024, epsilon=[10, 0.001], lrate=[0.5, 0.005], n_jobs=1, metric='euclidean', rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/ng.html#NeuralGas"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.NeuralGas" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">dyfunconn.cluster.</code><code class="sig-name descname">NeuralGas</code><span class="sig-paren">(</span><em class="sig-param">n_protos=10, iterations=1024, epsilon=[10, 0.001], lrate=[0.5, 0.005], n_jobs=1, metric='euclidean', rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/ng.html#NeuralGas"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.NeuralGas" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Neural Gas</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>n_protos</strong> : int</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>n_protos</strong> : int</p>
 <blockquote>
 <div><p>The number of prototypes</p>
 </div></blockquote>
@@ -862,10 +873,10 @@ the approximated patterns as produced by the Nearest Neighbor rule.</p>
 <p>Valid options include:</p>
 <blockquote>
 <div><ul class="simple">
-<li>euclidean</li>
-<li>cityblock</li>
-<li>l1</li>
-<li>cosine</li>
+<li><p>euclidean</p></li>
+<li><p>cityblock</p></li>
+<li><p>l1</p></li>
+<li><p>cosine</p></li>
 </ul>
 </div></blockquote>
 </div></blockquote>
@@ -873,46 +884,42 @@ the approximated patterns as produced by the Nearest Neighbor rule.</p>
 <blockquote>
 <div><p>An object of type numpy.random.RandomState</p>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Attributes:</th><td class="field-body"><p class="first"><strong>protos</strong> : array-like, shape(n_protos, n_features)</p>
+</dd>
+<dt class="field-even">Attributes</dt>
+<dd class="field-even"><p><strong>protos</strong> : array-like, shape(n_protos, n_features)</p>
 <blockquote>
 <div><p>The prototypical vectors</p>
 </div></blockquote>
 <p><strong>distortion</strong> : float</p>
-<blockquote class="last">
+<blockquote>
 <div><p>The normalized distortion error</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <p class="rubric">Notes</p>
 <p>Slightly based on <em>http://webloria.loria.fr/~rougier/downloads/ng.py</em></p>
 <p class="rubric">Methods</p>
-<table border="1" class="longtable docutils">
+<table class="longtable docutils align-default">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.cluster.NeuralGas.encode" title="dyfunconn.cluster.NeuralGas.encode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encode</span></code></a>(data[,&nbsp;metric])</td>
-<td>Employ a nearest-neighbor rule to encode the given <code class="docutils literal notranslate"><span class="pre">data</span></code> using the codebook.</td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.cluster.NeuralGas.encode" title="dyfunconn.cluster.NeuralGas.encode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encode</span></code></a>(data[, metric])</p></td>
+<td><p>Employ a nearest-neighbor rule to encode the given <code class="docutils literal notranslate"><span class="pre">data</span></code> using the codebook.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.cluster.NeuralGas.fit" title="dyfunconn.cluster.NeuralGas.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a>(data)</td>
-<td>Learn data, and construct a vector codebook.</td>
+<tr class="row-even"><td><p><a class="reference internal" href="#dyfunconn.cluster.NeuralGas.fit" title="dyfunconn.cluster.NeuralGas.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a>(data)</p></td>
+<td><p>Learn data, and construct a vector codebook.</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="method">
 <dt id="dyfunconn.cluster.NeuralGas.encode">
-<code class="descname">encode</code><span class="sig-paren">(</span><em>data</em>, <em>metric=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/ng.html#NeuralGas.encode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.NeuralGas.encode" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">encode</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">metric=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/ng.html#NeuralGas.encode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.NeuralGas.encode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Employ a nearest-neighbor rule to encode the given <code class="docutils literal notranslate"><span class="pre">data</span></code> using the codebook.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : real array-like, shape(n_samples, n_features)</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> : real array-like, shape(n_samples, n_features)</p>
 <blockquote>
 <div><p>Data matrix, each row represents a sample.</p>
 </div></blockquote>
@@ -922,66 +929,58 @@ the approximated patterns as produced by the Nearest Neighbor rule.</p>
 <p>Valid options include:</p>
 <blockquote>
 <div><ul class="simple">
-<li>euclidean</li>
-<li>cityblock</li>
-<li>l1</li>
-<li>cosine</li>
+<li><p>euclidean</p></li>
+<li><p>cityblock</p></li>
+<li><p>l1</p></li>
+<li><p>cosine</p></li>
 </ul>
 <p>If <cite>None</cite> is passed, the matric used for learning the data will be used.</p>
 </div></blockquote>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>encoded_data</strong> : real array-like, shape(n_samples, n_features)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>encoded_data</strong> : real array-like, shape(n_samples, n_features)</p>
 <blockquote>
 <div><p><code class="docutils literal notranslate"><span class="pre">data</span></code>, as represented by the prototypes in codebook.</p>
 </div></blockquote>
 <p><strong>ts_symbols</strong> : list, shape(n_samples, 1)</p>
-<blockquote class="last">
+<blockquote>
 <div><p>A discrete symbolic time series</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="dyfunconn.cluster.NeuralGas.fit">
-<code class="descname">fit</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/ng.html#NeuralGas.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.NeuralGas.fit" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/ng.html#NeuralGas.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.NeuralGas.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Learn data, and construct a vector codebook.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : real array-like, shape(n_samples, n_features)</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> : real array-like, shape(n_samples, n_features)</p>
 <blockquote>
 <div><p>Data matrix, each row represents a sample.</p>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>self</strong> : object</p>
-<blockquote class="last">
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>self</strong> : object</p>
+<blockquote>
 <div><p>The instance itself</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="dyfunconn.cluster.MergeNeuralGas">
-<em class="property">class </em><code class="descclassname">dyfunconn.cluster.</code><code class="descname">MergeNeuralGas</code><span class="sig-paren">(</span><em>n_protos=10, iterations=1024, merge_coeffs=[0.1, 0.0], g=[0.025, 0.025], epsilon=[10, 0.001], lrate=[0.5, 0.005], n_jobs=1, rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/mng.html#MergeNeuralGas"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.MergeNeuralGas" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">dyfunconn.cluster.</code><code class="sig-name descname">MergeNeuralGas</code><span class="sig-paren">(</span><em class="sig-param">n_protos=10, iterations=1024, merge_coeffs=[0.1, 0.0], g=[0.025, 0.025], epsilon=[10, 0.001], lrate=[0.5, 0.005], n_jobs=1, rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/mng.html#MergeNeuralGas"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.MergeNeuralGas" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Merge Neural Gas</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>n_protos: int</strong> :</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>n_protos: int</strong> :</p>
 <blockquote>
 <div><p>The number of prototypes</p>
 </div></blockquote>
@@ -1010,60 +1009,44 @@ the approximated patterns as produced by the Nearest Neighbor rule.</p>
 <blockquote>
 <div><p>An object of type numpy.random.RandomState</p>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Attributes:</th><td class="field-body"><p class="first"><strong>protos</strong> : array-like, shape(n_protos, n_features)</p>
+</dd>
+<dt class="field-even">Attributes</dt>
+<dd class="field-even"><p><strong>protos</strong> : array-like, shape(n_protos, n_features)</p>
 <blockquote>
 <div><p>The prototypical vectors</p>
 </div></blockquote>
 <p><strong>distortion</strong> : float</p>
-<blockquote class="last">
+<blockquote>
 <div><p>The normalized distortion error</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <p class="rubric">Methods</p>
-<table border="1" class="longtable docutils">
+<table class="longtable docutils align-default">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.cluster.MergeNeuralGas.encode" title="dyfunconn.cluster.MergeNeuralGas.encode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encode</span></code></a>(data[,&nbsp;metric])</td>
-<td>Employ a nearest-neighbor rule to encode the given <code class="docutils literal notranslate"><span class="pre">data</span></code> using the codebook.</td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.cluster.MergeNeuralGas.encode" title="dyfunconn.cluster.MergeNeuralGas.encode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encode</span></code></a>(data[, metric])</p></td>
+<td><p>Employ a nearest-neighbor rule to encode the given <code class="docutils literal notranslate"><span class="pre">data</span></code> using the codebook.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.cluster.MergeNeuralGas.fit" title="dyfunconn.cluster.MergeNeuralGas.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a>(data)</td>
-<td><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">param data:</th><td class="field-body"><table class="first last docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">return:</th><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
-</td>
-</tr>
-</tbody>
-</table>
-</td>
+<tr class="row-even"><td><p><a class="reference internal" href="#dyfunconn.cluster.MergeNeuralGas.fit" title="dyfunconn.cluster.MergeNeuralGas.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a>(data)</p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">param data</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="method">
 <dt id="dyfunconn.cluster.MergeNeuralGas.encode">
-<code class="descname">encode</code><span class="sig-paren">(</span><em>data</em>, <em>metric='euclidean'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/mng.html#MergeNeuralGas.encode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.MergeNeuralGas.encode" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">encode</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">metric='euclidean'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/mng.html#MergeNeuralGas.encode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.MergeNeuralGas.encode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Employ a nearest-neighbor rule to encode the given <code class="docutils literal notranslate"><span class="pre">data</span></code> using the codebook.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : real array-like, shape(n_samples, n_features)</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> : real array-like, shape(n_samples, n_features)</p>
 <blockquote>
 <div><p>Data matrix, each row represents a sample.</p>
 </div></blockquote>
@@ -1073,56 +1056,50 @@ the approximated patterns as produced by the Nearest Neighbor rule.</p>
 <p>Valid options include:</p>
 <blockquote>
 <div><ul class="simple">
-<li>euclidean</li>
-<li>cityblock</li>
-<li>l1</li>
-<li>cosine</li>
+<li><p>euclidean</p></li>
+<li><p>cityblock</p></li>
+<li><p>l1</p></li>
+<li><p>cosine</p></li>
 </ul>
 </div></blockquote>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>encoded_data</strong> : real array-like, shape(n_samples, n_features)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>encoded_data</strong> : real array-like, shape(n_samples, n_features)</p>
 <blockquote>
 <div><p><code class="docutils literal notranslate"><span class="pre">data</span></code>, as represented by the prototypes in codebook.</p>
 </div></blockquote>
 <p><strong>ts_symbols</strong> : list, shape(n_samples, 1)</p>
-<blockquote class="last">
+<blockquote>
 <div><p>A discrete symbolic time series</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="dyfunconn.cluster.MergeNeuralGas.fit">
-<code class="descname">fit</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/mng.html#MergeNeuralGas.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.MergeNeuralGas.fit" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> – </td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"></td>
-</tr>
-</tbody>
-</table>
+<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/mng.html#MergeNeuralGas.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.MergeNeuralGas.fit" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="dyfunconn.cluster.RelationalNeuralGas">
-<em class="property">class </em><code class="descclassname">dyfunconn.cluster.</code><code class="descname">RelationalNeuralGas</code><span class="sig-paren">(</span><em>n_protos=10, iterations=100, lrate=[0.3, 0.01], metric='euclidean', rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/rng.html#RelationalNeuralGas"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.RelationalNeuralGas" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">dyfunconn.cluster.</code><code class="sig-name descname">RelationalNeuralGas</code><span class="sig-paren">(</span><em class="sig-param">n_protos=10, iterations=100, lrate=[0.3, 0.01], metric='euclidean', rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/rng.html#RelationalNeuralGas"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.RelationalNeuralGas" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Relational Neural Gas</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>n_protos</strong> : int</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>n_protos</strong> : int</p>
 <blockquote>
 <div><p>The number of prototypes</p>
 </div></blockquote>
@@ -1144,10 +1121,10 @@ the approximated patterns as produced by the Nearest Neighbor rule.</p>
 <p>Valid options include:</p>
 <blockquote>
 <div><ul class="simple">
-<li>euclidean</li>
-<li>cityblock</li>
-<li>l1</li>
-<li>cosine</li>
+<li><p>euclidean</p></li>
+<li><p>cityblock</p></li>
+<li><p>l1</p></li>
+<li><p>cosine</p></li>
 </ul>
 </div></blockquote>
 </div></blockquote>
@@ -1155,40 +1132,36 @@ the approximated patterns as produced by the Nearest Neighbor rule.</p>
 <blockquote>
 <div><p>An object of type numpy.random.RandomState</p>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Attributes:</th><td class="field-body"><p class="first"><strong>protos</strong> : array-like, shape(n_protos, n_features)</p>
-<blockquote class="last">
+</dd>
+<dt class="field-even">Attributes</dt>
+<dd class="field-even"><p><strong>protos</strong> : array-like, shape(n_protos, n_features)</p>
+<blockquote>
 <div><p>The prototypical vectors</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <p class="rubric">Methods</p>
-<table border="1" class="longtable docutils">
+<table class="longtable docutils align-default">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.cluster.RelationalNeuralGas.encode" title="dyfunconn.cluster.RelationalNeuralGas.encode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encode</span></code></a>(data[,&nbsp;metric])</td>
-<td>Employ a nearest-neighbor rule to encode the given <code class="docutils literal notranslate"><span class="pre">data</span></code> using the codebook.</td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.cluster.RelationalNeuralGas.encode" title="dyfunconn.cluster.RelationalNeuralGas.encode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encode</span></code></a>(data[, metric])</p></td>
+<td><p>Employ a nearest-neighbor rule to encode the given <code class="docutils literal notranslate"><span class="pre">data</span></code> using the codebook.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.cluster.RelationalNeuralGas.fit" title="dyfunconn.cluster.RelationalNeuralGas.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a>(data)</td>
-<td>Fit</td>
+<tr class="row-even"><td><p><a class="reference internal" href="#dyfunconn.cluster.RelationalNeuralGas.fit" title="dyfunconn.cluster.RelationalNeuralGas.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a>(data)</p></td>
+<td><p>Fit</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="method">
 <dt id="dyfunconn.cluster.RelationalNeuralGas.encode">
-<code class="descname">encode</code><span class="sig-paren">(</span><em>data</em>, <em>metric=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/rng.html#RelationalNeuralGas.encode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.RelationalNeuralGas.encode" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">encode</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">metric=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/rng.html#RelationalNeuralGas.encode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.RelationalNeuralGas.encode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Employ a nearest-neighbor rule to encode the given <code class="docutils literal notranslate"><span class="pre">data</span></code> using the codebook.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : real array-like, shape(n_samples, n_features)</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> : real array-like, shape(n_samples, n_features)</p>
 <blockquote>
 <div><p>Data matrix, each row represents a sample.</p>
 </div></blockquote>
@@ -1198,74 +1171,131 @@ the approximated patterns as produced by the Nearest Neighbor rule.</p>
 <p>Valid options include:</p>
 <blockquote>
 <div><ul class="simple">
-<li>euclidean</li>
-<li>cityblock</li>
-<li>l1</li>
-<li>cosine</li>
+<li><p>euclidean</p></li>
+<li><p>cityblock</p></li>
+<li><p>l1</p></li>
+<li><p>cosine</p></li>
 </ul>
 <p>If <cite>None</cite> is passed, the matric used for learning the data will be used.</p>
 </div></blockquote>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>encoded_data</strong> : real array-like, shape(n_samples, n_features)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>encoded_data</strong> : real array-like, shape(n_samples, n_features)</p>
 <blockquote>
 <div><p><code class="docutils literal notranslate"><span class="pre">data</span></code>, as represented by the prototypes in codebook.</p>
 </div></blockquote>
 <p><strong>ts_symbols</strong> : list, shape(n_samples, 1)</p>
-<blockquote class="last">
+<blockquote>
 <div><p>A discrete symbolic time series</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="dyfunconn.cluster.RelationalNeuralGas.fit">
-<code class="descname">fit</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/rng.html#RelationalNeuralGas.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.RelationalNeuralGas.fit" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/rng.html#RelationalNeuralGas.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.RelationalNeuralGas.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : real array-like, shape(n_samples, n_features)</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> : real array-like, shape(n_samples, n_features)</p>
 <blockquote>
 <div><p>Data matrix, each row represents a sample.</p>
 </div></blockquote>
 <p><strong>metric</strong> : string or None</p>
-<blockquote class="last">
+<blockquote>
 <div><p>One of the following valid options as defined for function <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.pairwise_distances.html">http://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.pairwise_distances.html</a>.</p>
 <p>Valid options include:</p>
 <blockquote>
 <div><ul class="simple">
-<li>euclidean</li>
-<li>cityblock</li>
-<li>l1</li>
-<li>cosine</li>
+<li><p>euclidean</p></li>
+<li><p>cityblock</p></li>
+<li><p>l1</p></li>
+<li><p>cosine</p></li>
 </ul>
 <p>If <cite>None</cite> is passed, the matric used for learning the data will be used</p>
 </div></blockquote>
 </div></blockquote>
-</td>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="dyfunconn.cluster.GrowingNeuralGas">
+<em class="property">class </em><code class="sig-prename descclassname">dyfunconn.cluster.</code><code class="sig-name descname">GrowingNeuralGas</code><span class="sig-paren">(</span><em class="sig-param">n_max_protos=30, l=300, a_max=88, a=0.5, b=0.0005, iterations=10000, lrate=[0.05, 0.0006], n_jobs=1, rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/gng.html#GrowingNeuralGas"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.GrowingNeuralGas" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Growing Neural Gas</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>n_jobs</strong> : int</p>
+<blockquote>
+<div><p>Number of parallel jobs (will be passed to scikit-learn))</p>
+</div></blockquote>
+<p><strong>rng</strong> : object or None</p>
+<blockquote>
+<div><p>An object of type numpy.random.RandomState</p>
+</div></blockquote>
+</dd>
+<dt class="field-even">Attributes</dt>
+<dd class="field-even"><p><strong>protos</strong> : array-like, shape(n_protos, n_features)</p>
+<blockquote>
+<div><p>The prototypical vectors</p>
+</div></blockquote>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.cluster.GrowingNeuralGas.encode" title="dyfunconn.cluster.GrowingNeuralGas.encode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encode</span></code></a>(data[, metric])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#dyfunconn.cluster.GrowingNeuralGas.fit" title="dyfunconn.cluster.GrowingNeuralGas.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a>(data)</p></td>
+<td><p>Learn data, and construct a vector codebook.</p></td>
 </tr>
 </tbody>
 </table>
+<dl class="method">
+<dt id="dyfunconn.cluster.GrowingNeuralGas.encode">
+<code class="sig-name descname">encode</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">metric=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/gng.html#GrowingNeuralGas.encode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.GrowingNeuralGas.encode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="dyfunconn.cluster.GrowingNeuralGas.fit">
+<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/gng.html#GrowingNeuralGas.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.GrowingNeuralGas.fit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Learn data, and construct a vector codebook.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> : real array-like, shape(n_samples, n_features)</p>
+<blockquote>
+<div><p>Data matrix, each row represents a sample.</p>
+</div></blockquote>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>self</strong> : object</p>
+<blockquote>
+<div><p>The instance itself</p>
+</div></blockquote>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="dyfunconn.cluster.SOM">
-<em class="property">class </em><code class="descclassname">dyfunconn.cluster.</code><code class="descname">SOM</code><span class="sig-paren">(</span><em>grid=(10</em>, <em>10)</em>, <em>iterations=1024</em>, <em>lrate=0.1</em>, <em>n_jobs=1</em>, <em>rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/som.html#SOM"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.SOM" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">dyfunconn.cluster.</code><code class="sig-name descname">SOM</code><span class="sig-paren">(</span><em class="sig-param">grid=(10</em>, <em class="sig-param">10)</em>, <em class="sig-param">iterations=1024</em>, <em class="sig-param">lrate=0.1</em>, <em class="sig-param">n_jobs=1</em>, <em class="sig-param">rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/som.html#SOM"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.SOM" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Self Organizing Map</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>grid</strong> : list of length 2</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>grid</strong> : list of length 2</p>
 <blockquote>
 <div><p>The X and Y sizes of the grid</p>
 </div></blockquote>
@@ -1285,43 +1315,39 @@ the approximated patterns as produced by the Nearest Neighbor rule.</p>
 <blockquote>
 <div><p>An object of type numpy.random.RandomState</p>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Attributes:</th><td class="field-body"><p class="first"><strong>protos</strong> : array-like, shape(n_protos, n_features)</p>
-<blockquote class="last">
+</dd>
+<dt class="field-even">Attributes</dt>
+<dd class="field-even"><p><strong>protos</strong> : array-like, shape(n_protos, n_features)</p>
+<blockquote>
 <div><p>The prototypical vectors</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <p class="rubric">Methods</p>
-<table border="1" class="longtable docutils">
+<table class="longtable docutils align-default">
 <colgroup>
-<col width="10%" />
-<col width="90%" />
+<col style="width: 10%" />
+<col style="width: 90%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.cluster.SOM.encode" title="dyfunconn.cluster.SOM.encode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encode</span></code></a>(data[,&nbsp;metric])</td>
-<td>Employ a nearest-neighbor rule to encode the given <code class="docutils literal notranslate"><span class="pre">data</span></code> using the codebook.</td>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.cluster.SOM.encode" title="dyfunconn.cluster.SOM.encode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">encode</span></code></a>(data[, metric])</p></td>
+<td><p>Employ a nearest-neighbor rule to encode the given <code class="docutils literal notranslate"><span class="pre">data</span></code> using the codebook.</p></td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="#dyfunconn.cluster.SOM.findBMU" title="dyfunconn.cluster.SOM.findBMU"><code class="xref py py-obj docutils literal notranslate"><span class="pre">findBMU</span></code></a>(x,&nbsp;y)</td>
-<td></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#dyfunconn.cluster.SOM.findBMU" title="dyfunconn.cluster.SOM.findBMU"><code class="xref py py-obj docutils literal notranslate"><span class="pre">findBMU</span></code></a>(x, y)</p></td>
+<td><p></p></td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="#dyfunconn.cluster.SOM.fit" title="dyfunconn.cluster.SOM.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a>(data)</td>
-<td></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.cluster.SOM.fit" title="dyfunconn.cluster.SOM.fit"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fit</span></code></a>(data)</p></td>
+<td><p></p></td>
 </tr>
 </tbody>
 </table>
 <dl class="method">
 <dt id="dyfunconn.cluster.SOM.encode">
-<code class="descname">encode</code><span class="sig-paren">(</span><em>data</em>, <em>metric='euclidean'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/som.html#SOM.encode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.SOM.encode" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">encode</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">metric='euclidean'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/som.html#SOM.encode"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.SOM.encode" title="Permalink to this definition">¶</a></dt>
 <dd><p>Employ a nearest-neighbor rule to encode the given <code class="docutils literal notranslate"><span class="pre">data</span></code> using the codebook.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>data</strong> : real array-like, shape(n_samples, n_features)</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> : real array-like, shape(n_samples, n_features)</p>
 <blockquote>
 <div><p>Data matrix, each row represents a sample.</p>
 </div></blockquote>
@@ -1331,44 +1357,42 @@ the approximated patterns as produced by the Nearest Neighbor rule.</p>
 <p>Valid options include:</p>
 <blockquote>
 <div><ul class="simple">
-<li>euclidean</li>
-<li>cityblock</li>
-<li>l1</li>
-<li>cosine</li>
+<li><p>euclidean</p></li>
+<li><p>cityblock</p></li>
+<li><p>l1</p></li>
+<li><p>cosine</p></li>
 </ul>
 </div></blockquote>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>encoded_data</strong> : real array-like, shape(n_samples, n_features)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>encoded_data</strong> : real array-like, shape(n_samples, n_features)</p>
 <blockquote>
 <div><p><code class="docutils literal notranslate"><span class="pre">data</span></code>, as represented by the prototypes in codebook.</p>
 </div></blockquote>
 <p><strong>ts_symbols</strong> : list, shape(n_samples, 1)</p>
-<blockquote class="last">
+<blockquote>
 <div><p>A discrete symbolic time series</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
-<dl class="classmethod">
+<dl class="method">
 <dt id="dyfunconn.cluster.SOM.findBMU">
-<em class="property">classmethod </em><code class="descname">findBMU</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/som.html#SOM.findBMU"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.SOM.findBMU" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="sig-name descname">findBMU</code><span class="sig-paren">(</span><em class="sig-param">x</em>, <em class="sig-param">y</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/som.html#SOM.findBMU"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.SOM.findBMU" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="method">
 <dt id="dyfunconn.cluster.SOM.fit">
-<code class="descname">fit</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/som.html#SOM.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.SOM.fit" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">fit</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/som.html#SOM.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.SOM.fit" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="function">
 <dt id="dyfunconn.cluster.umatrix">
-<code class="descclassname">dyfunconn.cluster.</code><code class="descname">umatrix</code><span class="sig-paren">(</span><em>M</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/umatrix.html#umatrix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.umatrix" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyfunconn.cluster.</code><code class="sig-name descname">umatrix</code><span class="sig-paren">(</span><em class="sig-param">M</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/umatrix.html#umatrix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.umatrix" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -1385,7 +1409,7 @@ the approximated patterns as produced by the Nearest Neighbor rule.</p>
         <a href="dyfunconn.fc.html" class="btn btn-neutral float-right" title="dyfunconn.fc package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="dyfunconn.html" class="btn btn-neutral" title="dyfunconn package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="dyfunconn.chronnectomics.html" class="btn btn-neutral float-left" title="dyfunconn.chronnectomics package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -1394,7 +1418,7 @@ the approximated patterns as produced by the Nearest Neighbor rule.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Avraam Marimpis &amp; Stavros Dimitriadis.
+        &copy; Copyright 2018, Avraam Marimpis &amp; Stavros Dimitriadis
 
     </p>
   </div>
@@ -1411,33 +1435,16 @@ the approximated patterns as produced by the Nearest Neighbor rule.</p>
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  <script type="text/javascript" src="_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>
