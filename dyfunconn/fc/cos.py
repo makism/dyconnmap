@@ -13,7 +13,7 @@ def cos(data, fb=None, fs=None, pairs=None):
     """
 
     """
-    n_samples, n_rois = np.shape(data)
+    n_rois, n_samples = np.shape(data)
 
     X = None
     if fb is not None and fs is not None:
@@ -25,7 +25,7 @@ def cos(data, fb=None, fs=None, pairs=None):
     conn_mtx = np.zeros((n_rois, n_rois), dtype=np.float32)
     for k in range(n_rois):
         for l in range(k + 1, n_rois):
-            val = np.sum(np.cos(X[k, :] - X[l, : ])) / np.float32(n_samples)
+            val = np.sum(np.cos(X[k, :] - X[l, :])) / np.float32(n_samples)
             val = np.abs(val)
 
             conn_mtx[k, l] = val
