@@ -9,7 +9,7 @@ Built on [NumPy](http://www.numpy.org/), [SciPy](http://www.scipy.org/), [matplo
 
 #### Workflow outline
 
-![workflow](docs/pipeline1_poster.svg.png)
+![workflow](docs/v2_pipeline.png.png)
 
 
 #### Publications
