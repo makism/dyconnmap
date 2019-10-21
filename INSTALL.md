@@ -22,35 +22,42 @@ Installation
 ##### Using pip
 The easiest way to install `dyfunconn` is through `pip`.
 From a terminal just type:
-> pip install dyfunconn
+> $ pip search dyfunconn
+
+> dyfunconn (1.0.0b3)  - A dynamic functional connectivity module in Python
+
+and to install it:
+> $ pip install dyfunconn
 
 You may want to check also the _testing_ repository:
-> pip install --index-url https://test.pypi.org/simple dyfunconn
+> $ pip install --index-url https://test.pypi.org/simple dyfunconn
 
 ##### From source code
 
 First clone the github repository, navigate into the directory and run:
-> python setup.py install
+> $ python setup.py install
 
 If you prefer to install `dyfunconn` locally, instead run:
-> python setupy.py install --prefix=$HOME/.local
+> $ python setupy.py install --prefix=$HOME/.local
 
 If you opt for the later option, you will have to set the environmental
 variable $PYTHONPATH from the terminal as follows:
-> export PYTHONPATH="$HOME/.local/dyunconn/lib/python2.7/site-packages/"
+> $ export PYTHONPATH="$HOME/.local/dyunconn/lib/python3.6/site-packages/"
 
 
 Documentation
 =============
 
 Once you have installed `dyfunconn`, navigate into the `tests` directory and run:
-> sphinx-apidoc -f -o docs/ dyfunconn/
-> cd docs
-> make html
+> $ sphinx-apidoc -f -o docs/ dyfunconn/
+
+> $ cd docs
+
+> $ make html
 
 
 Testing
 =======
 
 Once you have installed `dyfunconn`, navigate into the `tests` directory and run:
-> nosetests -svd .
+> $ nosetests -svd .
