@@ -355,10 +355,27 @@ def test_partcorr():
 
     expected = np.load("data/test_partcorr.npy")
 
+    # if "TRAVIS" in os.environ:
+    # np.testing.assert_allclose(r, expected, rtol=1e-10, atol=0.0)
+    # else:
     # np.testing.assert_array_equal(r, expected)
-
-    assert True
 
 
 def test_cos():
-    pass
+    data = np.load("../examples/data/eeg_32chans_10secs.npy")
+
+    conn = cos(data, [1.0, 4.0], 128.0)
+
+    expected = np.load("data/test_cos.npy")
+
+    np.testing.assert_array_equal(conn, expected)
+
+
+def test_cos_nofilter():
+    data = np.load("../examples/data/eeg_32chans_10secs.npy")
+
+    conn = cos(data)
+
+    expected = np.load("data/test_cos_nofilter.npy")
+
+    np.testing.assert_array_equal(conn, expected)
