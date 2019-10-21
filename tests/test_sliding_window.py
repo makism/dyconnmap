@@ -13,7 +13,15 @@ from dyfunconn import sliding_window_indx, sliding_window
 
 
 def test_sliding_window():
-    pass
+    rng = np.random.RandomState(1)
+
+    data = rng.rand(64, 100)
+
+    dfcg = sliding_window(data, window_length=25, step=1, pairs=None)
+
+    expected = np.load("data/test_sliding_window.npy")
+
+    np.testing.assert_array_equal(dfcg, expected)
 
 
 def test_sliding_window_indx():

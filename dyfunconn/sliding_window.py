@@ -29,8 +29,6 @@ def sliding_window(data, window_length=25, step=1, pairs=None):
             for l in range(k + 1, n_rois):
                 pass
 
-        print("{0}:{1} -> {2}".format(offset1, offset2, np.shape(sl)))
-
     return dfcg
 
 
