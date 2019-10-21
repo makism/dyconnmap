@@ -11,6 +11,7 @@ from .iplv import IPLV, iplv, iplv_fast
 from .aec import aec
 from .esc import esc
 from .nesc import nesc
+from .cos import cos
 from .pec import pec
 from .glm import glm
 from .pac import PAC, pac
@@ -53,4 +54,5 @@ __all__ = [
     "Corr",
     "crosscorr",
     "partcorr",
+    "cos",
 ]

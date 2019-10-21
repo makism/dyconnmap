@@ -5,7 +5,7 @@
 """
 
 from .tvfcgs import tvfcg, tvfcg_ts, tvfcg_cfc, tvfcg_compute_windows
-from .sliding_window import sliding_window_indx
+from .sliding_window import sliding_window_indx, sliding_window
 from .analytic_signal import analytic_signal
 
 __all__ = [

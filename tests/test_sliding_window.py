@@ -9,7 +9,11 @@ import numpy as np
 from numpy import testing
 
 # dynfunconn
-from dyfunconn import sliding_window_indx
+from dyfunconn import sliding_window_indx, sliding_window
+
+
+def test_sliding_window():
+    pass
 
 
 def test_sliding_window_indx():

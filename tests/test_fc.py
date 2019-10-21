@@ -27,6 +27,7 @@ from dyfunconn.fc import (
     PLV,
     plv_fast,
     rho_index,
+    cos,
     # sl,
     wpli,
     dwpli,
@@ -357,3 +358,7 @@ def test_partcorr():
     # np.testing.assert_array_equal(r, expected)
 
     assert True
+
+
+def test_cos():
+    pass
