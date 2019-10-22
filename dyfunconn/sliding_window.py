@@ -46,18 +46,6 @@ def sliding_window(data, estimator_instance, window_length=25, step=1, pairs=Non
             if c1 != c2
         ]
 
-    """
-    for slide in range(n_slides):
-        offset1 = np.int32(slide * step)
-        offset2 = np.int32(slide * step + window_length)
-
-        sl = data[offset1:offset2, :]
-
-        for k in range(n_rois):
-            for l in range(k + 1, n_rois):
-                pass
-    """
-
     for pair in pairs:
         slide_id, start, end, roi1, roi2 = pair
 
