@@ -20,8 +20,10 @@ def test_sliding_window():
 
     estimator = PLV()
     dfcg = sliding_window(data, estimator, window_length=25, step=1, pairs=None)
+    dfcg_r = np.real(dfcg)
 
     expected = np.load("data/test_sliding_window.npy")
+    expected = np.real(expected)
 
     np.testing.assert_array_equal(dfcg, expected)
 
