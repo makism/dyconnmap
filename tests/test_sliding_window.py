@@ -3,6 +3,7 @@
 
 
 """
+import os
 import nose
 from nose import tools
 import numpy as np
@@ -26,7 +27,10 @@ def test_sliding_window():
 
     expected = np.load("data/test_sliding_window.npy")
 
-    np.testing.assert_array_equal(dfcg_r, expected)
+    if "TRAVIS" in os.environ:
+        np.testing.assert_allclose(dfcg_r, expected, rtol=1e-9, atol=0.0)
+    else:
+        np.testing.assert_array_equal(dfcg_r, expected)
 
 
 def test_sliding_window_indx():
