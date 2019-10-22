@@ -25,7 +25,7 @@ def test_sliding_window():
     expected = np.load("data/test_sliding_window.npy")
     expected = np.real(expected)
 
-    np.testing.assert_array_equal(dfcg, expected)
+    np.testing.assert_array_equal(dfcg_r, expected)
 
 
 def test_sliding_window_indx():
