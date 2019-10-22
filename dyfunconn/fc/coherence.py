@@ -132,7 +132,7 @@ class Coherence(Estimator):
         return filtered
 
     def estimate_pair(self, ts1, ts2):
-        csdxx, fxx = mlab.csd(
+        csdxx, _ = mlab.csd(
             x=ts1,
             y=ts1,
             Fs=self.fs,
@@ -140,7 +140,7 @@ class Coherence(Estimator):
             sides="onesided",
             **self.csdargs
         )
-        csdyy, fyy = mlab.csd(
+        csdyy, _ = mlab.csd(
             x=ts2,
             y=ts2,
             Fs=self.fs,
@@ -148,7 +148,7 @@ class Coherence(Estimator):
             sides="onesided",
             **self.csdargs
         )
-        csdxy, fxy = mlab.csd(
+        csdxy, _ = mlab.csd(
             x=ts1,
             y=ts2,
             Fs=self.fs,
