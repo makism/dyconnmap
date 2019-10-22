@@ -6,28 +6,67 @@
 """
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
+from .tvfcgs import _validate_estimator
+
 import numpy as np
 
 
-def sliding_window(data, window_length=25, step=1, pairs=None):
+def sliding_window(data, estimator_instance, window_length=25, step=1, pairs=None):
     """
 
     """
-    n_samples, n_rois = np.shape(data)
+    preprocess, estimator, avg_func = _validate_estimator(estimator_instance)
+
+    # Preprocess the data (estimator function)
+    pp_data = preprocess(data)
+
+    n_rois, n_samples = np.shape(data)
+
+    if window_length >= n_samples:
+        raise Exception(
+            "The size of window cannot be greater than the number of samples"
+        )
 
     n_slides = np.int32(np.ceil((n_samples - window_length) / step + 1.0))
 
-    dfcg = np.zeros((n_slides, n_rois, n_rois))
+    dfcg = np.zeros((n_slides, n_rois, n_rois), dtype=estimator_instance.data_type)
 
+    if pairs is None:
+        pairs = [
+            (
+                win_id,
+                np.int32(win_id * step),
+                np.int32(win_id * step + window_length),
+                c1,
+                c2,
+            )
+            for win_id in range(n_slides)
+            for c1 in range(0, n_rois)
+            for c2 in range(c1, n_rois)
+            if c1 != c2
+        ]
+
+    """
     for slide in range(n_slides):
-        offset1 = np.int32((slide) * step)
-        offset2 = np.int32((slide) * step + window_length)
+        offset1 = np.int32(slide * step)
+        offset2 = np.int32(slide * step + window_length)
 
         sl = data[offset1:offset2, :]
 
         for k in range(n_rois):
             for l in range(k + 1, n_rois):
                 pass
+    """
+
+    for pair in pairs:
+        slide_id, start, end, roi1, roi2 = pair
+
+        slice1 = pp_data[roi1, ..., start:end]
+        slice2 = pp_data[roi2, ..., start:end]
+
+        slice_ts, _ = estimator(slice1, slice2)
+
+        dfcg[slide_id, roi1, roi2] = avg_func(slice_ts)
 
     return dfcg
 

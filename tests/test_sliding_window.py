@@ -10,14 +10,16 @@ from numpy import testing
 
 # dynfunconn
 from dyfunconn import sliding_window_indx, sliding_window
+from dyfunconn.fc import PLV
 
 
 def test_sliding_window():
     rng = np.random.RandomState(1)
 
-    data = rng.rand(64, 100)
+    data = np.load("../examples/data/random_timeseries.npy")
 
-    dfcg = sliding_window(data, window_length=25, step=1, pairs=None)
+    estimator = PLV()
+    dfcg = sliding_window(data, estimator, window_length=25, step=1, pairs=None)
 
     expected = np.load("data/test_sliding_window.npy")
 
