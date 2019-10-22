@@ -13,8 +13,6 @@ microstates) a which a state is active consecutive temporal segments (Dimitriadi
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
 import numpy as np
-import scipy
-from scipy import io as sio
 
 
 def dwell_time(x):

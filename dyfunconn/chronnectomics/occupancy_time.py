@@ -12,8 +12,6 @@ The fraction of number of distinct symbols occuring in the symbolic time series 
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
 import numpy as np
-import scipy
-from scipy import io as sio
 
 
 def occupancy_time(x):

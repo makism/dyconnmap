@@ -16,8 +16,6 @@ temporal segments. The higher the number of changes, the larger the FI will be.
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
 import numpy as np
-import scipy
-from scipy import io as sio
 
 
 def flexibility_index(x):
