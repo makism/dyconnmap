@@ -13,6 +13,8 @@ from dyfunconn.graphs import (
     spectral_euclidean_distance,
     spectral_k_distance,
     laplacian_energy,
+    multilayer_pc_strength,
+    multilayer_pc_degree,
 )
 
 
@@ -99,3 +101,21 @@ def test_laplacian_energy():
 
     result = laplacian_energy(X)
     np.testing.assert_almost_equal(result, 57.178145779690524)
+
+
+def test_mpc_strength_und():
+    X = np.load("data/test_mlgraph.npy")
+
+    result = multilayer_pc_strength(X)
+
+    expected = np.load("data/test_mlgraph_pc_strength.npy")
+    np.testing.assert_equal(result, expected)
+
+
+def test_mpc_degree_und():
+    X = np.load("data/test_mlgraph_mst.npy")
+
+    result = multilayer_pc_degree(X)
+
+    expected = np.load("data/test_mlgraph_mst_pc_degree.npy")
+    np.testing.assert_equal(result, expected)
