@@ -4,13 +4,16 @@ import numpy as np
 from numpy import testing
 
 # dyfunconn
-from dyfunconn.graphs import (graph_diffusion_distance,
-                              variation_information,
-                              mutual_information,
-                              nodal_global_efficiency,
-                              im_distance,
-                              spectral_euclidean_distance,
-                              spectral_k_distance)
+from dyfunconn.graphs import (
+    graph_diffusion_distance,
+    variation_information,
+    mutual_information,
+    nodal_global_efficiency,
+    im_distance,
+    spectral_euclidean_distance,
+    spectral_k_distance,
+    laplacian_energy,
+)
 
 
 def test_graph_diffusion_distance():
@@ -30,8 +33,8 @@ def test_variation_information():
     # Ca, Qa = bct.modularity_dir(mtx1, 2.0)
     # Cb, Qb = bct.modularity_dir(mtx2, 2.0)
 
-    Ca = np.load('data/test_graphs_vi_mtx1_30x30_comm_struct.npy')
-    Cb = np.load('data/test_graphs_vi_mtx2_30x30_comm_struct.npy')
+    Ca = np.load("data/test_graphs_vi_mtx1_30x30_comm_struct.npy")
+    Cb = np.load("data/test_graphs_vi_mtx2_30x30_comm_struct.npy")
 
     vi, nvi = variation_information(Ca, Cb)
 
@@ -40,8 +43,8 @@ def test_variation_information():
 
 
 def test_mutual_information():
-    Ca = np.load('data/test_graphs_vi_mtx1_30x30_comm_struct.npy')
-    Cb = np.load('data/test_graphs_vi_mtx2_30x30_comm_struct.npy')
+    Ca = np.load("data/test_graphs_vi_mtx1_30x30_comm_struct.npy")
+    Cb = np.load("data/test_graphs_vi_mtx2_30x30_comm_struct.npy")
 
     mi, nmi = mutual_information(Ca, Cb)
 
@@ -50,8 +53,8 @@ def test_mutual_information():
 
 
 def test_nodal_global_efficiency():
-    inv_mtx = np.load('data/test_graphs_inv_mtx.npy')
-    result = np.load('data/test_graphs_nodal_global_efficiency.npy')
+    inv_mtx = np.load("data/test_graphs_inv_mtx.npy")
+    result = np.load("data/test_graphs_nodal_global_efficiency.npy")
 
     nodal_ge = nodal_global_efficiency(inv_mtx)
 
@@ -59,8 +62,8 @@ def test_nodal_global_efficiency():
 
 
 def test_im_distance():
-    X = np.load('data/test_graphs_spectral_mtx1_10x10.npy')
-    Y = np.load('data/test_graphs_spectral_mtx2_10x10.npy')
+    X = np.load("data/test_graphs_spectral_mtx1_10x10.npy")
+    Y = np.load("data/test_graphs_spectral_mtx2_10x10.npy")
 
     result = im_distance(X, Y, bandwidth=1.0)
 
@@ -68,24 +71,31 @@ def test_im_distance():
 
 
 def test_im_distance2():
-    X = np.load('data/test_graphs_spectral_mtx1_10x10.npy')
-    Y = np.load('data/test_graphs_spectral_mtx2_10x10.npy')
+    X = np.load("data/test_graphs_spectral_mtx1_10x10.npy")
+    Y = np.load("data/test_graphs_spectral_mtx2_10x10.npy")
 
     result = im_distance(X, Y, bandwidth=0.1)
     np.testing.assert_almost_equal(result, 0.3210282386813861)
 
 
 def test_spectral_k_distance():
-    X = np.load('data/test_graphs_spectral_mtx1_10x10.npy')
-    Y = np.load('data/test_graphs_spectral_mtx2_10x10.npy')
+    X = np.load("data/test_graphs_spectral_mtx1_10x10.npy")
+    Y = np.load("data/test_graphs_spectral_mtx2_10x10.npy")
 
     result = spectral_k_distance(X, Y, k=4)
     np.testing.assert_almost_equal(result, 0.041686646880904045)
 
 
 def test_spectral_euclidean_distance():
-    X = np.load('data/test_graphs_spectral_mtx1_10x10.npy')
-    Y = np.load('data/test_graphs_spectral_mtx2_10x10.npy')
+    X = np.load("data/test_graphs_spectral_mtx1_10x10.npy")
+    Y = np.load("data/test_graphs_spectral_mtx2_10x10.npy")
 
     result = spectral_euclidean_distance(X, Y)
     np.testing.assert_almost_equal(result, 0.5364200234417833)
+
+
+def test_laplacian_energy():
+    X = np.load("data/test_graphs_spectral_mtx1_10x10.npy")
+
+    result = laplacian_energy(X)
+    np.testing.assert_almost_equal(result, 57.178145779690524)
