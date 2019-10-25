@@ -23,6 +23,7 @@ For a details please go through the original work (Gutman2006_).
 import numpy as np
 import scipy
 from scipy import sparse
+import bct
 
 
 def laplacian_energy(mtx):
@@ -41,26 +42,9 @@ def laplacian_energy(mtx):
         The Laplacian Energy.
     """
 
-    compute_degree = None
-    try:
-        import bct
-
-        compute_degree = bct.degrees_und
-    except:
-        compute_degree = __impl_degree
-
     lmtx = scipy.sparse.csgraph.laplacian(mtx, normed=False)
     w, v = np.linalg.eig(lmtx)
-    avg_degree = np.mean(compute_degree(mtx))
+    avg_degree = np.mean(bct.degrees_und(mtx))
     le = np.sum(np.abs(w - avg_degree))
 
     return le
-
-
-def __impl_degree(mtx):
-    bool_mtx = mtx.astype(np.bool)
-    int_mtx = bool_mtx.astype(np.int32)
-
-    degree = np.sum(int_mtx, axis=0)
-
-    return degree
