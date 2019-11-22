@@ -13,6 +13,7 @@
 
 import numpy as np
 import bct
+from scipy import linalg as LA
 
 
 def multilayer_pc_degree(mlgraph):
@@ -83,3 +84,79 @@ def multilayer_pc_strength(mlgraph):
         )
 
     return mpc
+
+
+def multilayer_pc_gamma(mlgraph):
+    """ Multilayer Participation Coefficient method from Guillon et al.
+
+
+
+    Parameters
+    ----------
+    mlgraph : array-like, shape(n_layers, n_rois, n_rois)
+        A multilayer graph.
+
+
+    Returns
+    -------
+    gamma : array-like, shapen(N^N, N^N)
+        Returns the original multilayer graph flattened, with the off diagional
+        containing the estimated interlayer multilayer participation coefficient.
+    """
+    num_layers, nun_rois, num_rois = np.shape(mlgraph)
+
+    flattened = LA.block_diag(*mlgraph)
+    for s1 in range(num_layers - 1):
+        l = list(range(0, num_layers - s1))
+
+        if s1 == num_layers - 2:
+            l = [0, num_layers - 1]
+
+        offset = (s1 + 1) * num_rois
+
+        tmp = mlgraph[l, :, :]
+        connectivity = __interslice_coupling(tmp)
+        num_conn_layers, _ = np.shape(connectivity)
+        values = connectivity.flatten()
+
+        np.fill_diagonal(flattened[offset:], values)
+        np.fill_diagonal(flattened[:, offset:], values)
+
+    return flattened
+
+
+def __interslice_coupling(mlgraph):
+    """
+
+
+
+    Parameters
+    ----------
+    mlgraph : array-like, shape(n_layers, n_rois, n_rois)
+        A multilayer graph. Each layer consists of a graph.
+
+
+    Returns
+    -------
+    gamma : array-like
+        Description
+    """
+    num_layers, nun_rois, num_rois = np.shape(mlgraph)
+
+    gamma = np.zeros((num_layers - 1, num_rois))
+
+    for l1 in range(num_layers - 1):
+        for r1 in range(num_rois):
+            sum1 = 0.0
+            str1 = 0.0
+            str2 = 0.0
+
+            for r2 in range(num_rois):
+                sum1 += mlgraph[l1, r1, r2] * mlgraph[l1 + 1, r1, r2]
+
+            str1 = np.sum(mlgraph[l1, r1, :])
+            str2 = np.sum(mlgraph[l1 + 1, r1, :])
+
+            gamma[l1, r1] = sum1 / np.sqrt(str1 * str2)
+
+    return gamma
