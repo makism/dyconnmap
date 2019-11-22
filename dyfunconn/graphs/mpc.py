@@ -99,7 +99,7 @@ def multilayer_pc_gamma(mlgraph):
 
     Returns
     -------
-    gamma : array-like, shapen(N^N, N^N)
+    gamma : array-like, shape(n_layers*n_rois, n_layers*n_rois)
         Returns the original multilayer graph flattened, with the off diagional
         containing the estimated interlayer multilayer participation coefficient.
     """
