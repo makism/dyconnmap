@@ -15,6 +15,6 @@ __all__ = [
     "tvfcg_cfc",
     "tvfcg_ts",
     "tvfcg_compute_windows",
-    "sliding_window_indx",
+    "sliding_window" "sliding_window_indx",
     "sim_models",
 ]
