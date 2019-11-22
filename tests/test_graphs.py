@@ -15,6 +15,7 @@ from dyfunconn.graphs import (
     laplacian_energy,
     multilayer_pc_strength,
     multilayer_pc_degree,
+    multilayer_pc_gamma,
 )
 
 
@@ -119,3 +120,12 @@ def test_mpc_degree_und():
 
     expected = np.load("data/test_mlgraph_mst_pc_degree.npy")
     np.testing.assert_equal(result, expected)
+
+
+def test_mpc_gamma():
+    X = np.load("data/test_mlgraph.npy")
+
+    gamma = multilayer_pc_gamma(X)
+
+    expected = np.load("data/test_mlgraph_pc_gamma.npy")
+    np.testing.assert_equal(gamma, expected)
