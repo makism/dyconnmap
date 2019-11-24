@@ -61,8 +61,10 @@ from sklearn.metrics.pairwise import pairwise_distances
 from sklearn.neighbors import NearestNeighbors
 from sklearn.manifold import MDS
 
+from .cluster import BaseCluster
 
-class GrowingNeuralGas:
+
+class GrowingNeuralGas(BaseCluster):
     """ Growing Neural Gas
 
 
@@ -280,24 +282,3 @@ class GrowingNeuralGas:
         )
 
         return self
-
-    def encode(self, data, metric=None):
-        """
-
-        """
-        mds = MDS(1, random_state=self.rng)
-        protos_1d = mds.fit_transform(self.protos).ravel()
-        sorted_protos_1d = np.argsort(protos_1d)
-
-        sprotos = self.protos[sorted_protos_1d]
-
-        if metric is None:
-            metric = self.metric
-
-        nbrs = NearestNeighbors(n_neighbors=1, algorithm="auto", metric=metric).fit(
-            sprotos
-        )
-        _, self.__symbols = nbrs.kneighbors(data)
-        self.__encoding = sprotos[self.__symbols]
-
-        return (self.__encoding, self.__symbols)

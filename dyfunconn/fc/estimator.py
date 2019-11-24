@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-""" Base classes for estimators
+""" Base class for estimators
 
 """
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>

@@ -43,8 +43,10 @@ import numpy as np
 from sklearn.metrics.pairwise import pairwise_distances
 from sklearn.neighbors import NearestNeighbors
 
+from .cluster import BaseCluster
 
-class MergeNeuralGas:
+
+class MergeNeuralGas(BaseCluster):
     """ Merge Neural Gas
 
 
@@ -152,34 +154,4 @@ class MergeNeuralGas:
         return self
 
     def encode(self, data, metric="euclidean"):
-        """ Employ a nearest-neighbor rule to encode the given ``data`` using the codebook.
-
-        Parameters
-        ----------
-        data : real array-like, shape(n_samples, n_features)
-            Data matrix, each row represents a sample.
-
-        metric : string
-            One of the following valid options as defined for function `http://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.pairwise_distances.html`.
-
-            Valid options include:
-
-             - euclidean
-             - cityblock
-             - l1
-             - cosine
-
-        Returns
-        -------
-        encoded_data : real array-like, shape(n_samples, n_features)
-            ``data``, as represented by the prototypes in codebook.
-        ts_symbols : list, shape(n_samples, 1)
-            A discrete symbolic time series
-        """
-        nbrs = NearestNeighbors(n_neighbors=1, algorithm="auto", metric=metric).fit(
-            self.protos
-        )
-        _, self.__symbols = nbrs.kneighbors(data)
-        self.__encoding = self.protos[self.__symbols]
-
-        return (self.__encoding, self.__symbols)
+        return super().encode(data, metric, sort=False)
