@@ -338,7 +338,39 @@ or an upper limit of elapsed iterations.</p>
 </div>
 <div class="section" id="module-dyfunconn.cluster.mng">
 <span id="dyfunconn-cluster-mng-module"></span><h2>dyfunconn.cluster.mng module<a class="headerlink" href="#module-dyfunconn.cluster.mng" title="Permalink to this headline">¶</a></h2>
-<p>Merge NeuralGas</p>
+<p>Merge Neural Gas</p>
+<p>Merge Neural Gas (MNG) is similar to the original Neural Gas algorithm, but each node,
+has an additional context vector (<span class="math notranslate nohighlight">\(c\)</span>) associated; and the best matching unit is
+determined by a linear combination of both the weight and context vector (thus the merge),
+from the previous iteration.</p>
+<p>Similar to Neural Gas, <span class="math notranslate nohighlight">\(N\)</span> nodes have their weights (<span class="math notranslate nohighlight">\(w\)</span>) and context vectors (<span class="math notranslate nohighlight">\(c\)</span>) randomly initialized.
+When the network is presented with a new input sequence <span class="math notranslate nohighlight">\(v\)</span>, the distance and the corresponding rank of each node <span class="math notranslate nohighlight">\(n\)</span> is estimated.</p>
+<ol class="arabic simple">
+<li><p>The distance is computed by: <span class="math notranslate nohighlight">\(d_i(n) = (1 - \alpha) * ||v-w_i||^2 + ||c(n)-c_i||^2\)</span> and the context by: <span class="math notranslate nohighlight">\(c(n) = (1 - \beta) * w_{I_{n}-1} + \beta * c_{I_{n}-1}\)</span>.</p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\alpha\)</span> is the balancing factor between <span class="math notranslate nohighlight">\(w\)</span> and <span class="math notranslate nohighlight">\(c\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\beta\)</span> is the merging degree between two subsequent iterations</p></li>
+<li><p><span class="math notranslate nohighlight">\(I_{n}-1\)</span> denotes the previous iteration</p></li>
+</ul>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p>Each node is adapted with:</p></li>
+</ol>
+<blockquote>
+<div><ol class="loweralpha simple">
+<li><p><span class="math notranslate nohighlight">\({\Delta}w_i = e_w(k) * h_{\lambda(k)} (r(d_i,d)) * (v-w_i)\)</span> and its context by</p></li>
+<li><p><span class="math notranslate nohighlight">\({\Delta}c_i = e_w(k) * h_{\lambda(k)} (r(d_i,d)) * (c(n)-c_i)\)</span></p></li>
+</ol>
+<blockquote>
+<div><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(r(d_i, d)\)</span> denotes the rank of the <span class="math notranslate nohighlight">\(i\)</span>-th node</p></li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+<p>As with Neural Gas, <span class="math notranslate nohighlight">\(h_{\lambda(k)}(r(d_i, d)) = exp(\frac{-r(d_i, d)}{\lambda(k)})\)</span> represents the neighborhood ranking function.
+<span class="math notranslate nohighlight">\(\lambda(k)\)</span> denotes the influence of the neighbood: <span class="math notranslate nohighlight">\({\lambda_0(\frac{\lambda_T}{\lambda_0})}^{(\frac{t}{T_{max}})}\)</span>.</p>
 <div class="section" id="notes">
 <h3>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h3>
 <div class="line-block">
@@ -352,39 +384,38 @@ or an upper limit of elapsed iterations.</p>
 </dl>
 <dl class="class">
 <dt id="dyfunconn.cluster.mng.MergeNeuralGas">
-<em class="property">class </em><code class="sig-prename descclassname">dyfunconn.cluster.mng.</code><code class="sig-name descname">MergeNeuralGas</code><span class="sig-paren">(</span><em class="sig-param">n_protos=10, iterations=1024, merge_coeffs=[0.1, 0.0], g=[0.025, 0.025], epsilon=[10, 0.001], lrate=[0.5, 0.005], n_jobs=1, rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/mng.html#MergeNeuralGas"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.mng.MergeNeuralGas" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">dyfunconn.cluster.mng.</code><code class="sig-name descname">MergeNeuralGas</code><span class="sig-paren">(</span><em class="sig-param">n_protos=10, iterations=1024, merge_coeffs=[0.1, 0.0], epsilon=[10, 0.001], lrate=[0.5, 0.005], n_jobs=1, rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/mng.html#MergeNeuralGas"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.mng.MergeNeuralGas" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Merge Neural Gas</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>n_protos: int</strong> :</p>
+<dd class="field-odd"><p><strong>n_protos</strong> : int</p>
 <blockquote>
 <div><p>The number of prototypes</p>
 </div></blockquote>
-<p><strong>iterations: int</strong> :</p>
+<p><strong>iterations</strong> : int</p>
 <blockquote>
 <div><p>The maximum iterations</p>
 </div></blockquote>
-<p><strong>merge_coeffs: list of length 2</strong> :</p>
+<p><strong>merge_coeffs</strong> : list of length 2</p>
 <blockquote>
 <div><p>The merging coefficients</p>
 </div></blockquote>
-<p><strong>g: list of length 2</strong> :</p>
-<p><strong>epsilon: list of length 2</strong> :</p>
+<p><strong>epsilon</strong> : list of length 2</p>
 <blockquote>
-<div><p>The initial and final training rates</p>
+<div><p>The initial and final training rates.</p>
 </div></blockquote>
-<p><strong>lrate: list of length 2</strong> :</p>
+<p><strong>lrate</strong> : list of length 2</p>
 <blockquote>
-<div><p>The initial and final rearning rates</p>
+<div><p>The initial and final rearning rates.</p>
 </div></blockquote>
-<p><strong>n_jobs: int</strong> :</p>
+<p><strong>n_jobs</strong> : int</p>
 <blockquote>
-<div><p>Number of parallel jobs (will be passed to scikit-learn))</p>
+<div><p>Number of parallel jobs (will be passed to scikit-learn)).</p>
 </div></blockquote>
-<p><strong>rng: object</strong> :</p>
+<p><strong>rng</strong> : object</p>
 <blockquote>
-<div><p>An object of type numpy.random.RandomState</p>
+<div><p>An object of type numpy.random.RandomState.</p>
 </div></blockquote>
 </dd>
 <dt class="field-even">Attributes</dt>
@@ -1061,39 +1092,38 @@ the approximated patterns as produced by the Nearest Neighbor rule.</p>
 
 <dl class="class">
 <dt id="dyfunconn.cluster.MergeNeuralGas">
-<em class="property">class </em><code class="sig-prename descclassname">dyfunconn.cluster.</code><code class="sig-name descname">MergeNeuralGas</code><span class="sig-paren">(</span><em class="sig-param">n_protos=10, iterations=1024, merge_coeffs=[0.1, 0.0], g=[0.025, 0.025], epsilon=[10, 0.001], lrate=[0.5, 0.005], n_jobs=1, rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/mng.html#MergeNeuralGas"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.MergeNeuralGas" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">dyfunconn.cluster.</code><code class="sig-name descname">MergeNeuralGas</code><span class="sig-paren">(</span><em class="sig-param">n_protos=10, iterations=1024, merge_coeffs=[0.1, 0.0], epsilon=[10, 0.001], lrate=[0.5, 0.005], n_jobs=1, rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/mng.html#MergeNeuralGas"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.MergeNeuralGas" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Merge Neural Gas</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>n_protos: int</strong> :</p>
+<dd class="field-odd"><p><strong>n_protos</strong> : int</p>
 <blockquote>
 <div><p>The number of prototypes</p>
 </div></blockquote>
-<p><strong>iterations: int</strong> :</p>
+<p><strong>iterations</strong> : int</p>
 <blockquote>
 <div><p>The maximum iterations</p>
 </div></blockquote>
-<p><strong>merge_coeffs: list of length 2</strong> :</p>
+<p><strong>merge_coeffs</strong> : list of length 2</p>
 <blockquote>
 <div><p>The merging coefficients</p>
 </div></blockquote>
-<p><strong>g: list of length 2</strong> :</p>
-<p><strong>epsilon: list of length 2</strong> :</p>
+<p><strong>epsilon</strong> : list of length 2</p>
 <blockquote>
-<div><p>The initial and final training rates</p>
+<div><p>The initial and final training rates.</p>
 </div></blockquote>
-<p><strong>lrate: list of length 2</strong> :</p>
+<p><strong>lrate</strong> : list of length 2</p>
 <blockquote>
-<div><p>The initial and final rearning rates</p>
+<div><p>The initial and final rearning rates.</p>
 </div></blockquote>
-<p><strong>n_jobs: int</strong> :</p>
+<p><strong>n_jobs</strong> : int</p>
 <blockquote>
-<div><p>Number of parallel jobs (will be passed to scikit-learn))</p>
+<div><p>Number of parallel jobs (will be passed to scikit-learn)).</p>
 </div></blockquote>
-<p><strong>rng: object</strong> :</p>
+<p><strong>rng</strong> : object</p>
 <blockquote>
-<div><p>An object of type numpy.random.RandomState</p>
+<div><p>An object of type numpy.random.RandomState.</p>
 </div></blockquote>
 </dd>
 <dt class="field-even">Attributes</dt>

@@ -145,7 +145,33 @@
             
   <h1>Source code for dyfunconn.cluster.mng</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="sd">&quot;&quot;&quot; Merge NeuralGas</span>
+<span class="sd">&quot;&quot;&quot; Merge Neural Gas</span>
+
+<span class="sd">Merge Neural Gas (MNG) is similar to the original Neural Gas algorithm, but each node,</span>
+<span class="sd">has an additional context vector (:math:`c`) associated; and the best matching unit is</span>
+<span class="sd">determined by a linear combination of both the weight and context vector (thus the merge),</span>
+<span class="sd">from the previous iteration.</span>
+
+<span class="sd">Similar to Neural Gas, :math:`N` nodes have their weights (:math:`w`) and context vectors (:math:`c`) randomly initialized.</span>
+<span class="sd">When the network is presented with a new input sequence :math:`v`, the distance and the corresponding rank of each node :math:`n` is estimated.</span>
+
+<span class="sd">1. The distance is computed by: :math:`d_i(n) = (1 - \\alpha) * ||v-w_i||^2 + ||c(n)-c_i||^2` and the context by: :math:`c(n) = (1 - \\beta) * w_{I_{n}-1} + \\beta * c_{I_{n}-1}`.</span>
+
+<span class="sd"> * :math:`\\alpha` is the balancing factor between :math:`w` and :math:`c`</span>
+
+<span class="sd"> * :math:`\\beta` is the merging degree between two subsequent iterations</span>
+
+<span class="sd"> * :math:`I_{n}-1` denotes the previous iteration</span>
+
+<span class="sd">2. Each node is adapted with:</span>
+
+<span class="sd"> a. :math:`{\\Delta}w_i = e_w(k) * h_{\\lambda(k)} (r(d_i,d)) * (v-w_i)` and its context by</span>
+<span class="sd"> b. :math:`{\\Delta}c_i = e_w(k) * h_{\\lambda(k)} (r(d_i,d)) * (c(n)-c_i)`</span>
+
+<span class="sd">  * :math:`r(d_i, d)` denotes the rank of the :math:`i`-th node</span>
+
+<span class="sd">As with Neural Gas, :math:`h_{\\lambda(k)}(r(d_i, d)) = exp(\\frac{-r(d_i, d)}{\\lambda(k)})` represents the neighborhood ranking function.</span>
+<span class="sd">:math:`\\lambda(k)` denotes the influence of the neighbood: :math:`{\\lambda_0(\\frac{\\lambda_T}{\\lambda_0})}^{(\\frac{t}{T_{max}})}`.</span>
 
 
 <span class="sd">Notes</span>
@@ -170,29 +196,26 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    n_protos: int</span>
+<span class="sd">    n_protos : int</span>
 <span class="sd">        The number of prototypes</span>
 
-<span class="sd">    iterations: int</span>
+<span class="sd">    iterations : int</span>
 <span class="sd">        The maximum iterations</span>
 
-<span class="sd">    merge_coeffs: list of length 2</span>
+<span class="sd">    merge_coeffs : list of length 2</span>
 <span class="sd">        The merging coefficients</span>
 
-<span class="sd">    g: list of length 2</span>
+<span class="sd">    epsilon : list of length 2</span>
+<span class="sd">        The initial and final training rates.</span>
 
+<span class="sd">    lrate : list of length 2</span>
+<span class="sd">        The initial and final rearning rates.</span>
 
-<span class="sd">    epsilon: list of length 2</span>
-<span class="sd">        The initial and final training rates</span>
+<span class="sd">    n_jobs : int</span>
+<span class="sd">        Number of parallel jobs (will be passed to scikit-learn)).</span>
 
-<span class="sd">    lrate: list of length 2</span>
-<span class="sd">        The initial and final rearning rates</span>
-
-<span class="sd">    n_jobs: int</span>
-<span class="sd">        Number of parallel jobs (will be passed to scikit-learn))</span>
-
-<span class="sd">    rng: object</span>
-<span class="sd">        An object of type numpy.random.RandomState</span>
+<span class="sd">    rng : object</span>
+<span class="sd">        An object of type numpy.random.RandomState.</span>
 
 
 <span class="sd">    Attributes</span>
@@ -204,11 +227,19 @@
 <span class="sd">        The normalized distortion error</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_protos</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span> <span class="n">merge_coeffs</span><span class="o">=</span><span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="n">g</span><span class="o">=</span><span class="p">[</span><span class="mf">0.025</span><span class="p">,</span> <span class="mf">0.025</span><span class="p">],</span> <span class="n">epsilon</span><span class="o">=</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">],</span> <span class="n">lrate</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.005</span><span class="p">],</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">rng</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">n_protos</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+        <span class="n">iterations</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span>
+        <span class="n">merge_coeffs</span><span class="o">=</span><span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+        <span class="n">epsilon</span><span class="o">=</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">],</span>
+        <span class="n">lrate</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.005</span><span class="p">],</span>
+        <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">rng</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">n_protos</span> <span class="o">=</span> <span class="n">n_protos</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">iterations</span> <span class="o">=</span> <span class="n">iterations</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="n">merge_coeffs</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">g1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">g2</span> <span class="o">=</span> <span class="n">g</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">epsilon_i</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">epsilon_f</span> <span class="o">=</span> <span class="n">epsilon</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">lrate_i</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">lrate_f</span> <span class="o">=</span> <span class="n">lrate</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">n_jobs</span> <span class="o">=</span> <span class="n">n_jobs</span>
@@ -231,8 +262,8 @@
 <span class="sd">        :return:</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="p">[</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">protos</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_protos</span><span class="p">),]</span> <span class="c1"># w</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">context</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">protos</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>                     <span class="c1"># c</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">protos</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_protos</span><span class="p">),]</span>  <span class="c1"># w</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">context</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">protos</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>  <span class="c1"># c</span>
 
         <span class="n">ct</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_obs</span><span class="p">))</span>
         <span class="n">wr</span> <span class="o">=</span> <span class="n">ct</span>
@@ -246,7 +277,9 @@
             <span class="n">lrate</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lrate_i</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lrate_f</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lrate_i</span><span class="p">))</span> <span class="o">**</span> <span class="n">t</span>
             <span class="n">epsilon</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">epsilon_i</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lrate_f</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lrate_i</span><span class="p">))</span> <span class="o">**</span> <span class="n">t</span>
 
-            <span class="n">d</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">)</span> <span class="o">*</span> <span class="n">pairwise_distances</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">protos</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">*</span> <span class="n">pairwise_distances</span><span class="p">(</span><span class="n">ct</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="p">)</span>
+            <span class="n">d</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">)</span> <span class="o">*</span> <span class="n">pairwise_distances</span><span class="p">(</span>
+                <span class="n">sample</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">protos</span>
+            <span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">*</span> <span class="n">pairwise_distances</span><span class="p">(</span><span class="n">ct</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="p">)</span>
             <span class="n">I</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">d</span><span class="p">))</span>
 
             <span class="n">min_id</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">I</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
@@ -264,7 +297,7 @@
 
         <span class="k">return</span> <span class="bp">self</span></div>
 
-<div class="viewcode-block" id="MergeNeuralGas.encode"><a class="viewcode-back" href="../../../dyfunconn.cluster.html#dyfunconn.cluster.mng.MergeNeuralGas.encode">[docs]</a>    <span class="k">def</span> <span class="nf">encode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">metric</span> <span class="o">=</span> <span class="s1">&#39;euclidean&#39;</span><span class="p">):</span>
+<div class="viewcode-block" id="MergeNeuralGas.encode"><a class="viewcode-back" href="../../../dyfunconn.cluster.html#dyfunconn.cluster.mng.MergeNeuralGas.encode">[docs]</a>    <span class="k">def</span> <span class="nf">encode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;euclidean&quot;</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot; Employ a nearest-neighbor rule to encode the given ``data`` using the codebook.</span>
 
 <span class="sd">        Parameters</span>
@@ -289,7 +322,9 @@
 <span class="sd">        ts_symbols : list, shape(n_samples, 1)</span>
 <span class="sd">            A discrete symbolic time series</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">nbrs</span> <span class="o">=</span> <span class="n">NearestNeighbors</span><span class="p">(</span><span class="n">n_neighbors</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">algorithm</span> <span class="o">=</span> <span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">metric</span> <span class="o">=</span> <span class="n">metric</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">protos</span><span class="p">)</span>
+        <span class="n">nbrs</span> <span class="o">=</span> <span class="n">NearestNeighbors</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="n">metric</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">protos</span>
+        <span class="p">)</span>
         <span class="n">_</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__symbols</span> <span class="o">=</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">kneighbors</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__encoding</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">protos</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">__symbols</span><span class="p">]</span>
 
