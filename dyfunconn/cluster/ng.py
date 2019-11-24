@@ -61,6 +61,7 @@ For faster convergence, we can also draw random weights from the given probabili
 
 import numpy as np
 from sklearn.metrics.pairwise import pairwise_distances
+from sklearn.neighbors import NearestNeighbors
 
 from .cluster import BaseCluster
 
