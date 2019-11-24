@@ -35,7 +35,7 @@ def plv_fast(data, pairs=None):
     """ Phase Locking Value
 
     """
-    n_rois, n_samples = np.shape(data)
+    _, n_samples = np.shape(data)
 
     _, u_phases = analytic_signal(data)
     Q = np.exp(1j * u_phases)

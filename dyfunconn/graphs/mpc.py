@@ -116,7 +116,7 @@ def multilayer_pc_gamma(mlgraph):
 
         tmp = mlgraph[l, :, :]
         connectivity = __interslice_coupling(tmp)
-        num_conn_layers, _ = np.shape(connectivity)
+        # num_conn_layers, _ = np.shape(connectivity)
         values = connectivity.flatten()
 
         np.fill_diagonal(flattened[offset:], values)
@@ -141,7 +141,8 @@ def __interslice_coupling(mlgraph):
     gamma : array-like
         Description
     """
-    num_layers, nun_rois, num_rois = np.shape(mlgraph)
+    # num_layers, nun_rois, num_rois = np.shape(mlgraph)
+    num_layers, _, _ = np.shape(mlgraph)
 
     gamma = np.zeros((num_layers - 1, num_rois))
 
