@@ -20,10 +20,26 @@ dyfunconn.graphs.imd module
    :undoc-members:
    :show-inheritance:
 
+dyfunconn.graphs.laplacian\_energy module
+-----------------------------------------
+
+.. automodule:: dyfunconn.graphs.laplacian_energy
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 dyfunconn.graphs.mi module
 --------------------------
 
 .. automodule:: dyfunconn.graphs.mi
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+dyfunconn.graphs.mpc module
+---------------------------
+
+.. automodule:: dyfunconn.graphs.mpc
    :members:
    :undoc-members:
    :show-inheritance:

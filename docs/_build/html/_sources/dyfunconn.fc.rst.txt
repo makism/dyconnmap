@@ -36,6 +36,14 @@ dyfunconn.fc.corr module
    :undoc-members:
    :show-inheritance:
 
+dyfunconn.fc.cos module
+-----------------------
+
+.. automodule:: dyfunconn.fc.cos
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 dyfunconn.fc.crosscorr module
 -----------------------------
 

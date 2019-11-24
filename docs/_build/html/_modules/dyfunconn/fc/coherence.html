@@ -278,7 +278,7 @@
         <span class="k">return</span> <span class="n">filtered</span></div>
 
 <div class="viewcode-block" id="Coherence.estimate_pair"><a class="viewcode-back" href="../../../dyfunconn.fc.html#dyfunconn.fc.coherence.Coherence.estimate_pair">[docs]</a>    <span class="k">def</span> <span class="nf">estimate_pair</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ts1</span><span class="p">,</span> <span class="n">ts2</span><span class="p">):</span>
-        <span class="n">csdxx</span><span class="p">,</span> <span class="n">fxx</span> <span class="o">=</span> <span class="n">mlab</span><span class="o">.</span><span class="n">csd</span><span class="p">(</span>
+        <span class="n">csdxx</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">mlab</span><span class="o">.</span><span class="n">csd</span><span class="p">(</span>
             <span class="n">x</span><span class="o">=</span><span class="n">ts1</span><span class="p">,</span>
             <span class="n">y</span><span class="o">=</span><span class="n">ts1</span><span class="p">,</span>
             <span class="n">Fs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">fs</span><span class="p">,</span>
@@ -286,7 +286,7 @@
             <span class="n">sides</span><span class="o">=</span><span class="s2">&quot;onesided&quot;</span><span class="p">,</span>
             <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">csdargs</span>
         <span class="p">)</span>
-        <span class="n">csdyy</span><span class="p">,</span> <span class="n">fyy</span> <span class="o">=</span> <span class="n">mlab</span><span class="o">.</span><span class="n">csd</span><span class="p">(</span>
+        <span class="n">csdyy</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">mlab</span><span class="o">.</span><span class="n">csd</span><span class="p">(</span>
             <span class="n">x</span><span class="o">=</span><span class="n">ts2</span><span class="p">,</span>
             <span class="n">y</span><span class="o">=</span><span class="n">ts2</span><span class="p">,</span>
             <span class="n">Fs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">fs</span><span class="p">,</span>
@@ -294,7 +294,7 @@
             <span class="n">sides</span><span class="o">=</span><span class="s2">&quot;onesided&quot;</span><span class="p">,</span>
             <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">csdargs</span>
         <span class="p">)</span>
-        <span class="n">csdxy</span><span class="p">,</span> <span class="n">fxy</span> <span class="o">=</span> <span class="n">mlab</span><span class="o">.</span><span class="n">csd</span><span class="p">(</span>
+        <span class="n">csdxy</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">mlab</span><span class="o">.</span><span class="n">csd</span><span class="p">(</span>
             <span class="n">x</span><span class="o">=</span><span class="n">ts1</span><span class="p">,</span>
             <span class="n">y</span><span class="o">=</span><span class="n">ts2</span><span class="p">,</span>
             <span class="n">Fs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">fs</span><span class="p">,</span>

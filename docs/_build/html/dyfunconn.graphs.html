@@ -91,7 +91,9 @@
 <li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.graphs.gdd">dyfunconn.graphs.gdd module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.graphs.imd">dyfunconn.graphs.imd module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.graphs.laplacian_energy">dyfunconn.graphs.laplacian_energy module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.graphs.mi">dyfunconn.graphs.mi module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.graphs.mpc">dyfunconn.graphs.mpc module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.graphs.nodal">dyfunconn.graphs.nodal module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.graphs.spectral_euclidean_distance">dyfunconn.graphs.spectral_euclidean_distance module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.graphs.spectral_k_distance">dyfunconn.graphs.spectral_k_distance module</a></li>
@@ -301,6 +303,40 @@ The spectral distance between two graphs <span class="math notranslate nohighlig
 </dd></dl>
 
 </div>
+<div class="section" id="module-dyfunconn.graphs.laplacian_energy">
+<span id="dyfunconn-graphs-laplacian-energy-module"></span><h2>dyfunconn.graphs.laplacian_energy module<a class="headerlink" href="#module-dyfunconn.graphs.laplacian_energy" title="Permalink to this headline">¶</a></h2>
+<p>Laplcian Energy</p>
+<p>The Laplcian energy (LE) for a graph <span class="math notranslate nohighlight">\(G\)</span> is computed as</p>
+<div class="math notranslate nohighlight">
+\[LE(G) = \sum_{i=1}^n | { \mu_{i} - \frac{2m}{n} } |
+ξ(A_1, A_2 ; t) = ‖exp⁡(-tL_1 ) - exp⁡(-tL_2 )‖_F^2\]</div>
+<p>Where <span class="math notranslate nohighlight">\(\mu_i\)</span> denote the eigenvalue associated with the node of the Laplcian
+matrix of <span class="math notranslate nohighlight">\(G\)</span> (Laplcian spectrum) and <span class="math notranslate nohighlight">\(\frac{2m}{n}\)</span> the average vertex degree.</p>
+<p>For a details please go through the original work (<a href="#id16"><span class="problematic" id="id17">Gutman2006_</span></a>).</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl class="function">
+<dt id="dyfunconn.graphs.laplacian_energy.laplacian_energy">
+<code class="sig-prename descclassname">dyfunconn.graphs.laplacian_energy.</code><code class="sig-name descname">laplacian_energy</code><span class="sig-paren">(</span><em class="sig-param">mtx</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/graphs/laplacian_energy.html#laplacian_energy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.graphs.laplacian_energy.laplacian_energy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Laplacian Energy</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mtx</strong> : array-like, shape(N, N)</p>
+<blockquote>
+<div><p>Symmetric, weighted and undirected connectivity matrix.</p>
+</div></blockquote>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>le</strong> : float</p>
+<blockquote>
+<div><p>The Laplacian Energy.</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
 <div class="section" id="module-dyfunconn.graphs.mi">
 <span id="dyfunconn-graphs-mi-module"></span><h2>dyfunconn.graphs.mi module<a class="headerlink" href="#module-dyfunconn.graphs.mi" title="Permalink to this headline">¶</a></h2>
 <p>Mutual Information</p>
@@ -330,6 +366,80 @@ The spectral distance between two graphs <span class="math notranslate nohighlig
 </dd></dl>
 
 </div>
+</div>
+<div class="section" id="module-dyfunconn.graphs.mpc">
+<span id="dyfunconn-graphs-mpc-module"></span><h2>dyfunconn.graphs.mpc module<a class="headerlink" href="#module-dyfunconn.graphs.mpc" title="Permalink to this headline">¶</a></h2>
+<p>Multilayer Participation Coefficient</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<hr class="docutils" />
+<dl class="citation">
+<dt class="label" id="guillon2016"><span class="brackets">Guillon2016</span></dt>
+<dd><p>Guillon, J., Attal, Y., Colliot, O., La Corte, V., Dubois, B., Schwartz, D., … &amp; Fallani, F. D. V. (2017). Loss of brain inter-frequency hubs in Alzheimer’s disease. Scientific reports, 7(1), 10879.</p>
+</dd>
+</dl>
+<dl class="function">
+<dt id="dyfunconn.graphs.mpc.multilayer_pc_degree">
+<code class="sig-prename descclassname">dyfunconn.graphs.mpc.</code><code class="sig-name descname">multilayer_pc_degree</code><span class="sig-paren">(</span><em class="sig-param">mlgraph</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/graphs/mpc.html#multilayer_pc_degree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.graphs.mpc.multilayer_pc_degree" title="Permalink to this definition">¶</a></dt>
+<dd><p>Multilayer Participation Coefficient (Degree)</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mlgraph</strong> : array-like, shape(n_layers, n_rois, n_rois)</p>
+<blockquote>
+<div><p>A multilayer (undirected) graph. Each layer consists of a graph.</p>
+</div></blockquote>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>mpc</strong> : array-like</p>
+<blockquote>
+<div><p>Participation coefficient based on the degree of the layers’ nodes.</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="dyfunconn.graphs.mpc.multilayer_pc_gamma">
+<code class="sig-prename descclassname">dyfunconn.graphs.mpc.</code><code class="sig-name descname">multilayer_pc_gamma</code><span class="sig-paren">(</span><em class="sig-param">mlgraph</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/graphs/mpc.html#multilayer_pc_gamma"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.graphs.mpc.multilayer_pc_gamma" title="Permalink to this definition">¶</a></dt>
+<dd><p>Multilayer Participation Coefficient method from Guillon et al.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mlgraph</strong> : array-like, shape(n_layers, n_rois, n_rois)</p>
+<blockquote>
+<div><p>A multilayer graph.</p>
+</div></blockquote>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>gamma</strong> : array-like, shape(n_layers*n_rois, n_layers*n_rois)</p>
+<blockquote>
+<div><p>Returns the original multilayer graph flattened, with the off diagional
+containing the estimated interlayer multilayer participation coefficient.</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="dyfunconn.graphs.mpc.multilayer_pc_strength">
+<code class="sig-prename descclassname">dyfunconn.graphs.mpc.</code><code class="sig-name descname">multilayer_pc_strength</code><span class="sig-paren">(</span><em class="sig-param">mlgraph</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/graphs/mpc.html#multilayer_pc_strength"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.graphs.mpc.multilayer_pc_strength" title="Permalink to this definition">¶</a></dt>
+<dd><p>Multilayer Participation Coefficient (Strength)</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mlgraph</strong> : array-like, shape(n_layers, n_rois, n_rois)</p>
+<blockquote>
+<div><p>A multilayer (undirected) graph. Each layer consists of a graph.</p>
+</div></blockquote>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>mpc</strong> : array-like</p>
+<blockquote>
+<div><p>Participation coefficient based on the strength of the layers’ nodes.</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+
 </div>
 <div class="section" id="module-dyfunconn.graphs.nodal">
 <span id="dyfunconn-graphs-nodal-module"></span><h2>dyfunconn.graphs.nodal module<a class="headerlink" href="#module-dyfunconn.graphs.nodal" title="Permalink to this headline">¶</a></h2>
@@ -1092,6 +1202,87 @@ distance between them.</p>
 <dd class="field-even"><p><strong>distance</strong> : float</p>
 <blockquote>
 <div><p>The euclidean distance between the two spectrums.</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="dyfunconn.graphs.laplacian_energy">
+<code class="sig-prename descclassname">dyfunconn.graphs.</code><code class="sig-name descname">laplacian_energy</code><span class="sig-paren">(</span><em class="sig-param">mtx</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/graphs/laplacian_energy.html#laplacian_energy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.graphs.laplacian_energy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Laplacian Energy</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mtx</strong> : array-like, shape(N, N)</p>
+<blockquote>
+<div><p>Symmetric, weighted and undirected connectivity matrix.</p>
+</div></blockquote>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>le</strong> : float</p>
+<blockquote>
+<div><p>The Laplacian Energy.</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="dyfunconn.graphs.multilayer_pc_strength">
+<code class="sig-prename descclassname">dyfunconn.graphs.</code><code class="sig-name descname">multilayer_pc_strength</code><span class="sig-paren">(</span><em class="sig-param">mlgraph</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/graphs/mpc.html#multilayer_pc_strength"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.graphs.multilayer_pc_strength" title="Permalink to this definition">¶</a></dt>
+<dd><p>Multilayer Participation Coefficient (Strength)</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mlgraph</strong> : array-like, shape(n_layers, n_rois, n_rois)</p>
+<blockquote>
+<div><p>A multilayer (undirected) graph. Each layer consists of a graph.</p>
+</div></blockquote>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>mpc</strong> : array-like</p>
+<blockquote>
+<div><p>Participation coefficient based on the strength of the layers’ nodes.</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="dyfunconn.graphs.multilayer_pc_degree">
+<code class="sig-prename descclassname">dyfunconn.graphs.</code><code class="sig-name descname">multilayer_pc_degree</code><span class="sig-paren">(</span><em class="sig-param">mlgraph</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/graphs/mpc.html#multilayer_pc_degree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.graphs.multilayer_pc_degree" title="Permalink to this definition">¶</a></dt>
+<dd><p>Multilayer Participation Coefficient (Degree)</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mlgraph</strong> : array-like, shape(n_layers, n_rois, n_rois)</p>
+<blockquote>
+<div><p>A multilayer (undirected) graph. Each layer consists of a graph.</p>
+</div></blockquote>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>mpc</strong> : array-like</p>
+<blockquote>
+<div><p>Participation coefficient based on the degree of the layers’ nodes.</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="dyfunconn.graphs.multilayer_pc_gamma">
+<code class="sig-prename descclassname">dyfunconn.graphs.</code><code class="sig-name descname">multilayer_pc_gamma</code><span class="sig-paren">(</span><em class="sig-param">mlgraph</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/graphs/mpc.html#multilayer_pc_gamma"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.graphs.multilayer_pc_gamma" title="Permalink to this definition">¶</a></dt>
+<dd><p>Multilayer Participation Coefficient method from Guillon et al.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mlgraph</strong> : array-like, shape(n_layers, n_rois, n_rois)</p>
+<blockquote>
+<div><p>A multilayer graph.</p>
+</div></blockquote>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>gamma</strong> : array-like, shape(n_layers*n_rois, n_layers*n_rois)</p>
+<blockquote>
+<div><p>Returns the original multilayer graph flattened, with the off diagional
+containing the estimated interlayer multilayer participation coefficient.</p>
 </div></blockquote>
 </dd>
 </dl>
