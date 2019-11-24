@@ -124,10 +124,7 @@ class Coherence(Estimator):
 
         _, _, filtered = analytic_signal(data, self.fb, self.fs)
 
-        if self.pairs is None:
-            self.pairs = [
-                (r1, r2) for r1 in range(n_channels) for r2 in range(n_channels)
-            ]
+        super().prepare_pairs(n_channels)
 
         return filtered
 

@@ -107,10 +107,12 @@ class PLI(Estimator):
     def estimate(self, data, data_against=None):
         n_rois, n_samples = np.shape(data)
 
-        if self.pairs is None:
-            self.pairs = [
-                (r1, r2) for r1 in range(n_rois) for r2 in range(r1, n_rois) if r1 != r2
-            ]
+        # if self.pairs is None:
+        # self.pairs = [
+        # (r1, r2) for r1 in range(n_rois) for r2 in range(r1, n_rois) if r1 != r2
+        # ]
+
+        super().prepare_pairs(n_rois)
 
         ts = np.zeros((n_rois, n_rois, n_samples))
         avg = np.zeros((n_rois, n_rois))

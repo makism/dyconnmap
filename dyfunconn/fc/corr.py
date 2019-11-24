@@ -119,8 +119,10 @@ class Corr(Estimator):
 
         r = np.zeros((n_rois, n_rois), dtype=self.data_type)
 
-        if self.pairs is None:
-            self.pairs = [(r1, r2) for r1 in range(n_rois) for r2 in range(n_rois)]
+        super().prepare_pairs(n_rois, True)
+
+        # if self.pairs is None:
+        # self.pairs = [(r1, r2) for r1 in range(n_rois) for r2 in range(n_rois)]
 
         for pair in self.pairs:
             f_data1, f_data2 = data[pair,]

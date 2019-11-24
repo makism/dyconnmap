@@ -102,10 +102,7 @@ class ICoherence(Estimator):
 
         _, _, filtered = analytic_signal(data, self.fb, self.fs)
 
-        if self.pairs is None:
-            self.pairs = [
-                (r1, r2) for r1 in range(n_channels) for r2 in range(n_channels)
-            ]
+        super().prepare_pairs(n_channels)
 
         # Store all the pair-wise auto/cross spectra.
         #  2nd axis, 1st dimension is the autospectra of the 1st channel (within a pair)

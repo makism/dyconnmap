@@ -161,10 +161,7 @@ class PLV(Estimator):
         ts = np.zeros((n_rois, n_rois, n_samples), dtype=np.complex)
         avg = np.zeros((n_rois, n_rois))
 
-        if self.pairs is None:
-            self.pairs = [
-                (r1, r2) for r1 in range(n_rois) for r2 in range(r1, n_rois) if r1 != r2
-            ]
+        super().prepare_pairs(n_rois)
 
         for pair in self.pairs:
             u_phases1, u_phases2 = data[pair,]
