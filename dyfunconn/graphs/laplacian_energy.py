@@ -4,11 +4,11 @@
 The Laplcian energy (LE) for a graph :math:`G` is computed as
 
 .. math::
-    LE(G) = \sum_{i=1}^n | {\mu_i - \frac{2m}{n}} |
+    LE(G) = \\sum_{i=1}^n | { \\mu_{i} - \\frac{2m}{n} } |
     ξ(A_1, A_2 ; t) = ‖exp⁡(-tL_1 ) - exp⁡(-tL_2 )‖_F^2
 
-Where :math:``\mu_i` denote the eigenvalue associated with the node of the Laplcian
-matrix of :math:`G` (Laplcian spectrum) and :math:`\frac{2m}{n}` the average vertex degree.
+Where :math:`\mu_i` denote the eigenvalue associated with the node of the Laplcian
+matrix of :math:`G` (Laplcian spectrum) and :math:`\\frac{2m}{n}` the average vertex degree.
 
 For a details please go through the original work (Gutman2006_).
 
