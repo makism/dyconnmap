@@ -18,7 +18,6 @@ For faster convergence, we can also draw random weights from the given probabili
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
 import numpy as np
-from sklearn.neighbors import NearestNeighbors
 
 from .cluster import BaseCluster
 
@@ -105,7 +104,7 @@ class SOM(BaseCluster):
                         dist = tmp_dist
                         I = (nodes_down, nodes_left)
 
-            bmu = self.weights[I[0], I[1]]
+            # bmu = self.weights[I[0], I[1]]
 
             self.neighborhoodRadius = self.mapRadius * np.exp(
                 float(-self.currentIteration) / self.timeConstant
@@ -122,8 +121,9 @@ class SOM(BaseCluster):
                         infl = np.exp(-(distToNodeSquared) / (2.0 * widthSquared))
                         w += self.learningRate * infl * (learn_sample - w)
 
-            learningRate = self.startLearningRate * np.exp(
-                float(-self.currentIteration) / self.numIterations
-            )
+            # Should the following line read: self.learningRate ?
+            # learningRate = self.startLearningRate * np.exp(
+            # float(-self.currentIteration) / self.numIterations
+            # )
 
         return self

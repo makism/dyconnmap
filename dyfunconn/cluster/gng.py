@@ -114,11 +114,13 @@ class GrowingNeuralGas(BaseCluster):
         a=0.5,
         b=0.0005,
         iterations=10000,
-        lrate=[0.05, 0.0006],
+        lrate=None,
+        # lrate=[0.05, 0.0006],
         n_jobs=1,
         rng=None,
     ):
-        self.ew, self.en = lrate
+        if lrate is None:
+            self.ew, self.en = [0.05, 0.0006]
         self.a_max = a_max
         self.total_lambda = l
         self.max_nodes = n_max_protos

@@ -118,16 +118,20 @@ class NeuralGas(BaseCluster):
         self,
         n_protos=10,
         iterations=1024,
-        epsilon=[10, 0.001],
-        lrate=[0.5, 0.005],
+        # epsilon=[10, 0.001],
+        epsilon=None,
+        # lrate=[0.5, 0.005],
+        lrate=None,
         n_jobs=1,
         metric="euclidean",
         rng=None,
     ):
         self.n_protos = n_protos
         self.iterations = iterations
-        self.epsilon_i, self.epsilon_f = epsilon
-        self.lrate_i, self.lrate_f = lrate
+        if epsilon is None:
+            self.epsilon_i, self.epsilon_f = [10, 0.001]
+        if lrate is None:
+            self.lrate_i, self.lrate_f = [0.5, 0.005]
         self.n_jobs = n_jobs
         self.protos = None
         self.distortion = 0.0
