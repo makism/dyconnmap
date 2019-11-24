@@ -17,7 +17,6 @@
 import numpy as np
 import scipy
 import itertools
-import sklearn
 from sklearn import preprocessing
 
 from .embed_delay import embed_delay
