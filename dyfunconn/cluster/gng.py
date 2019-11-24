@@ -1,6 +1,56 @@
 # -*- coding: utf-8 -*-
 """ Growing NeuralGas
 
+Growing Neural Gas (*GNG*) is a dynamic neural network (as in adaptive) that learns topologies.
+Compared to Neural Gas, GNG provides the functionality of adding or purging the constructed graph of
+nodes and edges when certain criterion are met.
+
+To do so, each node on the network stores a number of secondary information and statistics,
+such as, its learning vector, a local error, etc. Edge edge is assigned with a counter related
+to its age; so as older edges are pruned.
+
+The convergence of the algorithm depends either on the maximum number of nodes of the graph,
+or an upper limit of elapsed iterations.
+
+Briefly, the algorithm works as following:
+
+
+1. Create two nodes, with weights drawn randomly from the original distibution; connect these two nodes. Set the edge's age to zero.
+
+2. Draw randomly a sample (:math:`\\overrightarrow{x}`) from the distibution.
+
+3. For each node (:math:`n`) in the graph with associated weights :math:`\\overrightarrow{w}`, we compute the euclidean distance from :math:`\\overrightarrow{x}`: :math:`||\\overrightarrow{n}_w - \\overrightarrow{x}||^2`. Next, we find the two nodes closest :math:`\\overrightarrow{x}` with distances :math:`d_s` and :math:`d_t`.
+
+4. The best matching unit (:math:`s`) adjusts:
+ a. its weights: :math:`\\overrightarrow{s}_w \\leftarrow \\overrightarrow{s}_w + [e_w * (\\overrightarrow{x} - \\overrightarrow{s}_w)]`.
+ b. its local error: :math:`s_{error} \\leftarrow s_{error} + d_s`.
+
+5. Next, the nodes (:math:`N`) adjacent to :math:`s`:
+ a. update their weights: :math:`\\overrightarrow{N}_w \\leftarrow \\overrightarrow{N}_w + [e_n * (\\overrightarrow{x} - \\overrightarrow{N}_w)]`.
+ b. increase the age of the connecting edges by one.
+
+6. If the best and second mathing units (:math:`s` and :math:`t`) are connected, we reset the age of the connecting edge. Otherwise, we connect them.
+
+7. Regarding the pruning of the network. First we remove the edges with older than :math:`a_{max}`. In the seond pass, we remove any disconnected nodes.
+
+8. We check the iteration (:math:`iter`), whether is a multiple of :math:`\\lambda` and if the maximum number of iteration has been reached; then we add a new node (:math:`q`) in the graph:
+ a. Let :math:`u` denote the node with the highest error on the graph, and :math:`v` its neighbor with the highest error.
+ b. we disconnect :math:`u` and :math:`v`
+ c. :math:`q` is added between :math:`u` and :math:`v`: :math:`\\overrightarrow{q}_w \\leftarrow \\frac{ \\overrightarrow{u}_w + \\overrightarrow{v}_w }{2}`.
+ d. connect :math:`q` to :math:`u`, and :math:`q` to :math:`v`
+ e. reduce the local errors of both :math:`u` and :math:`v`: :math:`u_{error} \\leftarrow \\alpha * u_{error}` and :math:`v_{error} \\leftarrow \\alpha * v_{error}`
+ f. define the local error :math:`q`: :math:`q_{error} \\leftarrow u_{error}`
+
+8. Adjust the error of each node (:math:`n`) on the graph: :math:`n_{error} \\leftarrow n_{error} - \\beta * n_{error}`
+
+9. Finally, increate the iteration (:math:`iter`) and if any of the criterion is not satisfied, repeat from step #2.
+
+
+|
+
+-----
+
+.. [Fritzke1995] Fritzke, B. (1995). A growing neural gas network learns topologies. In Advances in neural information processing systems (pp. 625-632).
 
 """
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
@@ -18,12 +68,32 @@ class GrowingNeuralGas:
 
     Parameters
     ----------
+    n_max_protos : int
+        Maximum number of nodes.
+
+    l : int
+        Every iteration is checked if it is a multiple of this value.
+
+    a_max : int
+        Maximum age of edges.
+
+    a : float
+        Weights the local error of the nodes when adding a new node.
+
+    b : float
+        Weights the local error of all the nodes on the graph.
+
+    iterations : int
+        Total number of iterations.
+
+    lrate : list of length 2
+        The learning rates of the best matching unit and its neighbors.
 
     n_jobs : int
-        Number of parallel jobs (will be passed to scikit-learn))
+        Number of parallel jobs (will be passed to scikit-learn)).
 
     rng : object or None
-        An object of type numpy.random.RandomState
+        An object of type numpy.random.RandomState.
 
 
     Attributes
