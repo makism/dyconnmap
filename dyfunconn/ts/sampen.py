@@ -79,7 +79,7 @@ def sample_entropy(data, dim=2, tau=None, r=None):
         for i in range(0, N - m):
             a = tmpMat[:, i + 1 : N - dim]
             b = tmpMat[:, i]
-            b2 = np.matlib.repmat(b, N - dim - i - 1, 1)
+            b2 = matlib.repmat(b, N - dim - i - 1, 1)
 
             dist = np.abs(a.T - b2).T.max(0)
 

@@ -7,7 +7,6 @@ see @https://docs.scipy.org/doc/numpy/reference/generated/numpy.correlate.html
 """
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
-from .estimator import Estimator
 from ..analytic_signal import analytic_signal
 
 import numpy as np
