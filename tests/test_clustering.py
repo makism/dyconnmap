@@ -90,8 +90,6 @@ def test_clustering_gng():
     protos = gng.protos
     encoding, symbols = gng.encode(data)
 
-    np.save("data/test_clustering_gng_protos.npy", protos)
-
     result_protos = np.load("data/test_clustering_gng_protos.npy")
     np.testing.assert_array_almost_equal(protos, result_protos)
 
