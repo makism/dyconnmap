@@ -141,8 +141,7 @@ def __interslice_coupling(mlgraph):
     gamma : array-like
         Description
     """
-    # num_layers, nun_rois, num_rois = np.shape(mlgraph)
-    num_layers, _, _ = np.shape(mlgraph)
+    num_layers, num_rois, _ = np.shape(mlgraph)
 
     gamma = np.zeros((num_layers - 1, num_rois))
 
