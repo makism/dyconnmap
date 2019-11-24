@@ -184,6 +184,64 @@
 <div class="section" id="module-dyfunconn.cluster.gng">
 <span id="dyfunconn-cluster-gng-module"></span><h2>dyfunconn.cluster.gng module<a class="headerlink" href="#module-dyfunconn.cluster.gng" title="Permalink to this headline">¶</a></h2>
 <p>Growing NeuralGas</p>
+<p>Growing Neural Gas (<em>GNG</em>) is a dynamic neural network (as in adaptive) that learns topologies.
+Compared to Neural Gas, GNG provides the functionality of adding or purging the constructed graph of
+nodes and edges when certain criterion are met.</p>
+<p>To do so, each node on the network stores a number of secondary information and statistics,
+such as, its learning vector, a local error, etc. Edge edge is assigned with a counter related
+to its age; so as older edges are pruned.</p>
+<p>The convergence of the algorithm depends either on the maximum number of nodes of the graph,
+or an upper limit of elapsed iterations.</p>
+<p>Briefly, the algorithm works as following:</p>
+<ol class="arabic simple">
+<li><p>Create two nodes, with weights drawn randomly from the original distibution; connect these two nodes. Set the edge’s age to zero.</p></li>
+<li><p>Draw randomly a sample (<span class="math notranslate nohighlight">\(\overrightarrow{x}\)</span>) from the distibution.</p></li>
+<li><p>For each node (<span class="math notranslate nohighlight">\(n\)</span>) in the graph with associated weights <span class="math notranslate nohighlight">\(\overrightarrow{w}\)</span>, we compute the euclidean distance from <span class="math notranslate nohighlight">\(\overrightarrow{x}\)</span>: <span class="math notranslate nohighlight">\(||\overrightarrow{n}_w - \overrightarrow{x}||^2\)</span>. Next, we find the two nodes closest <span class="math notranslate nohighlight">\(\overrightarrow{x}\)</span> with distances <span class="math notranslate nohighlight">\(d_s\)</span> and <span class="math notranslate nohighlight">\(d_t\)</span>.</p></li>
+<li><p>The best matching unit (<span class="math notranslate nohighlight">\(s\)</span>) adjusts:</p></li>
+</ol>
+<blockquote>
+<div><ol class="loweralpha simple">
+<li><p>its weights: <span class="math notranslate nohighlight">\(\overrightarrow{s}_w \leftarrow \overrightarrow{s}_w + [e_w * (\overrightarrow{x} - \overrightarrow{s}_w)]\)</span>.</p></li>
+<li><p>its local error: <span class="math notranslate nohighlight">\(s_{error} \leftarrow s_{error} + d_s\)</span>.</p></li>
+</ol>
+</div></blockquote>
+<ol class="arabic simple" start="5">
+<li><p>Next, the nodes (<span class="math notranslate nohighlight">\(N\)</span>) adjacent to <span class="math notranslate nohighlight">\(s\)</span>:</p></li>
+</ol>
+<blockquote>
+<div><ol class="loweralpha simple">
+<li><p>update their weights: <span class="math notranslate nohighlight">\(\overrightarrow{N}_w \leftarrow \overrightarrow{N}_w + [e_n * (\overrightarrow{x} - \overrightarrow{N}_w)]\)</span>.</p></li>
+<li><p>increase the age of the connecting edges by one.</p></li>
+</ol>
+</div></blockquote>
+<ol class="arabic simple" start="6">
+<li><p>If the best and second mathing units (<span class="math notranslate nohighlight">\(s\)</span> and <span class="math notranslate nohighlight">\(t\)</span>) are connected, we reset the age of the connecting edge. Otherwise, we connect them.</p></li>
+<li><p>Regarding the pruning of the network. First we remove the edges with older than <span class="math notranslate nohighlight">\(a_{max}\)</span>. In the seond pass, we remove any disconnected nodes.</p></li>
+<li><p>We check the iteration (<span class="math notranslate nohighlight">\(iter\)</span>), whether is a multiple of <span class="math notranslate nohighlight">\(\lambda\)</span> and if the maximum number of iteration has been reached; then we add a new node (<span class="math notranslate nohighlight">\(q\)</span>) in the graph:</p></li>
+</ol>
+<blockquote>
+<div><ol class="loweralpha simple">
+<li><p>Let <span class="math notranslate nohighlight">\(u\)</span> denote the node with the highest error on the graph, and <span class="math notranslate nohighlight">\(v\)</span> its neighbor with the highest error.</p></li>
+<li><p>we disconnect <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(v\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(q\)</span> is added between <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(v\)</span>: <span class="math notranslate nohighlight">\(\overrightarrow{q}_w \leftarrow \frac{ \overrightarrow{u}_w + \overrightarrow{v}_w }{2}\)</span>.</p></li>
+<li><p>connect <span class="math notranslate nohighlight">\(q\)</span> to <span class="math notranslate nohighlight">\(u\)</span>, and <span class="math notranslate nohighlight">\(q\)</span> to <span class="math notranslate nohighlight">\(v\)</span></p></li>
+<li><p>reduce the local errors of both <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(v\)</span>: <span class="math notranslate nohighlight">\(u_{error} \leftarrow \alpha * u_{error}\)</span> and <span class="math notranslate nohighlight">\(v_{error} \leftarrow \alpha * v_{error}\)</span></p></li>
+<li><p>define the local error <span class="math notranslate nohighlight">\(q\)</span>: <span class="math notranslate nohighlight">\(q_{error} \leftarrow u_{error}\)</span></p></li>
+</ol>
+</div></blockquote>
+<ol class="arabic simple" start="8">
+<li><p>Adjust the error of each node (<span class="math notranslate nohighlight">\(n\)</span>) on the graph: <span class="math notranslate nohighlight">\(n_{error} \leftarrow n_{error} - \beta * n_{error}\)</span></p></li>
+<li><p>Finally, increate the iteration (<span class="math notranslate nohighlight">\(iter\)</span>) and if any of the criterion is not satisfied, repeat from step #2.</p></li>
+</ol>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<hr class="docutils" />
+<dl class="citation">
+<dt class="label" id="fritzke1995"><span class="brackets">Fritzke1995</span></dt>
+<dd><p>Fritzke, B. (1995). A growing neural gas network learns topologies. In Advances in neural information processing systems (pp. 625-632).</p>
+</dd>
+</dl>
 <dl class="class">
 <dt id="dyfunconn.cluster.gng.GrowingNeuralGas">
 <em class="property">class </em><code class="sig-prename descclassname">dyfunconn.cluster.gng.</code><code class="sig-name descname">GrowingNeuralGas</code><span class="sig-paren">(</span><em class="sig-param">n_max_protos=30, l=300, a_max=88, a=0.5, b=0.0005, iterations=10000, lrate=[0.05, 0.0006], n_jobs=1, rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/cluster/gng.html#GrowingNeuralGas"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.cluster.gng.GrowingNeuralGas" title="Permalink to this definition">¶</a></dt>
@@ -191,13 +249,41 @@
 <p>Growing Neural Gas</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>n_jobs</strong> : int</p>
+<dd class="field-odd"><p><strong>n_max_protos</strong> : int</p>
 <blockquote>
-<div><p>Number of parallel jobs (will be passed to scikit-learn))</p>
+<div><p>Maximum number of nodes.</p>
+</div></blockquote>
+<p><strong>l</strong> : int</p>
+<blockquote>
+<div><p>Every iteration is checked if it is a multiple of this value.</p>
+</div></blockquote>
+<p><strong>a_max</strong> : int</p>
+<blockquote>
+<div><p>Maximum age of edges.</p>
+</div></blockquote>
+<p><strong>a</strong> : float</p>
+<blockquote>
+<div><p>Weights the local error of the nodes when adding a new node.</p>
+</div></blockquote>
+<p><strong>b</strong> : float</p>
+<blockquote>
+<div><p>Weights the local error of all the nodes on the graph.</p>
+</div></blockquote>
+<p><strong>iterations</strong> : int</p>
+<blockquote>
+<div><p>Total number of iterations.</p>
+</div></blockquote>
+<p><strong>lrate</strong> : list of length 2</p>
+<blockquote>
+<div><p>The learning rates of the best matching unit and its neighbors.</p>
+</div></blockquote>
+<p><strong>n_jobs</strong> : int</p>
+<blockquote>
+<div><p>Number of parallel jobs (will be passed to scikit-learn)).</p>
 </div></blockquote>
 <p><strong>rng</strong> : object or None</p>
 <blockquote>
-<div><p>An object of type numpy.random.RandomState</p>
+<div><p>An object of type numpy.random.RandomState.</p>
 </div></blockquote>
 </dd>
 <dt class="field-even">Attributes</dt>
@@ -1230,13 +1316,41 @@ the approximated patterns as produced by the Nearest Neighbor rule.</p>
 <p>Growing Neural Gas</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>n_jobs</strong> : int</p>
+<dd class="field-odd"><p><strong>n_max_protos</strong> : int</p>
 <blockquote>
-<div><p>Number of parallel jobs (will be passed to scikit-learn))</p>
+<div><p>Maximum number of nodes.</p>
+</div></blockquote>
+<p><strong>l</strong> : int</p>
+<blockquote>
+<div><p>Every iteration is checked if it is a multiple of this value.</p>
+</div></blockquote>
+<p><strong>a_max</strong> : int</p>
+<blockquote>
+<div><p>Maximum age of edges.</p>
+</div></blockquote>
+<p><strong>a</strong> : float</p>
+<blockquote>
+<div><p>Weights the local error of the nodes when adding a new node.</p>
+</div></blockquote>
+<p><strong>b</strong> : float</p>
+<blockquote>
+<div><p>Weights the local error of all the nodes on the graph.</p>
+</div></blockquote>
+<p><strong>iterations</strong> : int</p>
+<blockquote>
+<div><p>Total number of iterations.</p>
+</div></blockquote>
+<p><strong>lrate</strong> : list of length 2</p>
+<blockquote>
+<div><p>The learning rates of the best matching unit and its neighbors.</p>
+</div></blockquote>
+<p><strong>n_jobs</strong> : int</p>
+<blockquote>
+<div><p>Number of parallel jobs (will be passed to scikit-learn)).</p>
 </div></blockquote>
 <p><strong>rng</strong> : object or None</p>
 <blockquote>
-<div><p>An object of type numpy.random.RandomState</p>
+<div><p>An object of type numpy.random.RandomState.</p>
 </div></blockquote>
 </dd>
 <dt class="field-even">Attributes</dt>

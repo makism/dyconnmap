@@ -147,6 +147,56 @@
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot; Growing NeuralGas</span>
 
+<span class="sd">Growing Neural Gas (*GNG*) is a dynamic neural network (as in adaptive) that learns topologies.</span>
+<span class="sd">Compared to Neural Gas, GNG provides the functionality of adding or purging the constructed graph of</span>
+<span class="sd">nodes and edges when certain criterion are met.</span>
+
+<span class="sd">To do so, each node on the network stores a number of secondary information and statistics,</span>
+<span class="sd">such as, its learning vector, a local error, etc. Edge edge is assigned with a counter related</span>
+<span class="sd">to its age; so as older edges are pruned.</span>
+
+<span class="sd">The convergence of the algorithm depends either on the maximum number of nodes of the graph,</span>
+<span class="sd">or an upper limit of elapsed iterations.</span>
+
+<span class="sd">Briefly, the algorithm works as following:</span>
+
+
+<span class="sd">1. Create two nodes, with weights drawn randomly from the original distibution; connect these two nodes. Set the edge&#39;s age to zero.</span>
+
+<span class="sd">2. Draw randomly a sample (:math:`\\overrightarrow{x}`) from the distibution.</span>
+
+<span class="sd">3. For each node (:math:`n`) in the graph with associated weights :math:`\\overrightarrow{w}`, we compute the euclidean distance from :math:`\\overrightarrow{x}`: :math:`||\\overrightarrow{n}_w - \\overrightarrow{x}||^2`. Next, we find the two nodes closest :math:`\\overrightarrow{x}` with distances :math:`d_s` and :math:`d_t`.</span>
+
+<span class="sd">4. The best matching unit (:math:`s`) adjusts:</span>
+<span class="sd"> a. its weights: :math:`\\overrightarrow{s}_w \\leftarrow \\overrightarrow{s}_w + [e_w * (\\overrightarrow{x} - \\overrightarrow{s}_w)]`.</span>
+<span class="sd"> b. its local error: :math:`s_{error} \\leftarrow s_{error} + d_s`.</span>
+
+<span class="sd">5. Next, the nodes (:math:`N`) adjacent to :math:`s`:</span>
+<span class="sd"> a. update their weights: :math:`\\overrightarrow{N}_w \\leftarrow \\overrightarrow{N}_w + [e_n * (\\overrightarrow{x} - \\overrightarrow{N}_w)]`.</span>
+<span class="sd"> b. increase the age of the connecting edges by one.</span>
+
+<span class="sd">6. If the best and second mathing units (:math:`s` and :math:`t`) are connected, we reset the age of the connecting edge. Otherwise, we connect them.</span>
+
+<span class="sd">7. Regarding the pruning of the network. First we remove the edges with older than :math:`a_{max}`. In the seond pass, we remove any disconnected nodes.</span>
+
+<span class="sd">8. We check the iteration (:math:`iter`), whether is a multiple of :math:`\\lambda` and if the maximum number of iteration has been reached; then we add a new node (:math:`q`) in the graph:</span>
+<span class="sd"> a. Let :math:`u` denote the node with the highest error on the graph, and :math:`v` its neighbor with the highest error.</span>
+<span class="sd"> b. we disconnect :math:`u` and :math:`v`</span>
+<span class="sd"> c. :math:`q` is added between :math:`u` and :math:`v`: :math:`\\overrightarrow{q}_w \\leftarrow \\frac{ \\overrightarrow{u}_w + \\overrightarrow{v}_w }{2}`.</span>
+<span class="sd"> d. connect :math:`q` to :math:`u`, and :math:`q` to :math:`v`</span>
+<span class="sd"> e. reduce the local errors of both :math:`u` and :math:`v`: :math:`u_{error} \\leftarrow \\alpha * u_{error}` and :math:`v_{error} \\leftarrow \\alpha * v_{error}`</span>
+<span class="sd"> f. define the local error :math:`q`: :math:`q_{error} \\leftarrow u_{error}`</span>
+
+<span class="sd">8. Adjust the error of each node (:math:`n`) on the graph: :math:`n_{error} \\leftarrow n_{error} - \\beta * n_{error}`</span>
+
+<span class="sd">9. Finally, increate the iteration (:math:`iter`) and if any of the criterion is not satisfied, repeat from step #2.</span>
+
+
+<span class="sd">|</span>
+
+<span class="sd">-----</span>
+
+<span class="sd">.. [Fritzke1995] Fritzke, B. (1995). A growing neural gas network learns topologies. In Advances in neural information processing systems (pp. 625-632).</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="c1"># Author: Avraam Marimpis &lt;avraam.marimpis@gmail.com&gt;</span>
@@ -164,12 +214,32 @@
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
+<span class="sd">    n_max_protos : int</span>
+<span class="sd">        Maximum number of nodes.</span>
+
+<span class="sd">    l : int</span>
+<span class="sd">        Every iteration is checked if it is a multiple of this value.</span>
+
+<span class="sd">    a_max : int</span>
+<span class="sd">        Maximum age of edges.</span>
+
+<span class="sd">    a : float</span>
+<span class="sd">        Weights the local error of the nodes when adding a new node.</span>
+
+<span class="sd">    b : float</span>
+<span class="sd">        Weights the local error of all the nodes on the graph.</span>
+
+<span class="sd">    iterations : int</span>
+<span class="sd">        Total number of iterations.</span>
+
+<span class="sd">    lrate : list of length 2</span>
+<span class="sd">        The learning rates of the best matching unit and its neighbors.</span>
 
 <span class="sd">    n_jobs : int</span>
-<span class="sd">        Number of parallel jobs (will be passed to scikit-learn))</span>
+<span class="sd">        Number of parallel jobs (will be passed to scikit-learn)).</span>
 
 <span class="sd">    rng : object or None</span>
-<span class="sd">        An object of type numpy.random.RandomState</span>
+<span class="sd">        An object of type numpy.random.RandomState.</span>
 
 
 <span class="sd">    Attributes</span>
