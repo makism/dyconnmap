@@ -58,8 +58,6 @@ Briefly, the algorithm works as following:
 import networkx as nx
 import numpy as np
 from sklearn.metrics.pairwise import pairwise_distances
-from sklearn.neighbors import NearestNeighbors
-from sklearn.manifold import MDS
 
 from .cluster import BaseCluster
 
