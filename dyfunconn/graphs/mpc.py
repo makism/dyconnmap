@@ -103,7 +103,7 @@ def multilayer_pc_gamma(mlgraph):
         Returns the original multilayer graph flattened, with the off diagional
         containing the estimated interlayer multilayer participation coefficient.
     """
-    num_layers, nun_rois, num_rois = np.shape(mlgraph)
+    num_layers, num_rois, _ = np.shape(mlgraph)
 
     flattened = LA.block_diag(*mlgraph)
     for s1 in range(num_layers - 1):
