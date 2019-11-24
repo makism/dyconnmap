@@ -41,7 +41,6 @@ Notes
 
 import numpy as np
 from sklearn.metrics.pairwise import pairwise_distances
-from sklearn.neighbors import NearestNeighbors
 
 from .cluster import BaseCluster
 
@@ -87,16 +86,25 @@ class MergeNeuralGas(BaseCluster):
         self,
         n_protos=10,
         iterations=1024,
-        merge_coeffs=[0.1, 0.0],
-        epsilon=[10, 0.001],
-        lrate=[0.5, 0.005],
+        # merge_coeffs=[0.1, 0.0],
+        merge_coeffs=None,
+        # epsilon=[10, 0.001],
+        epsilon=None,
+        # lrate=[0.5, 0.005],
+        lrate=None,
         n_jobs=1,
         rng=None,
     ):
         self.n_protos = n_protos
         self.iterations = iterations
+        if merge_coeffs is None:
+            merge_coeffs = [0.1, 0.0]
         self.a, self.b = merge_coeffs
+        if epsilon is None:
+            epsilon = [10, 0.001]
         self.epsilon_i, self.epsilon_f = epsilon
+        if lrate is None:
+            lrate = [0.5, 0.005]
         self.lrate_i, self.lrate_f = lrate
         self.n_jobs = n_jobs
         self.protos = None

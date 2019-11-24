@@ -60,12 +60,15 @@ class RelationalNeuralGas(BaseCluster):
         self,
         n_protos=10,
         iterations=100,
-        lrate=[0.3, 0.01],
+        # lrate=[0.3, 0.01],
+        lrate=None,
         metric="euclidean",
         rng=None,
     ):
         self.n_protos = n_protos
         self.iterations = iterations
+        if lrate is None:
+            lrate = [0.3, 0.01]
         self.lrate_i = lrate[0] * n_protos
         self.lrate_f = lrate[1]
         self.lrate = self.lrate_i
