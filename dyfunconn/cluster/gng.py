@@ -133,6 +133,8 @@ class GrowingNeuralGas:
         else:
             self.rng = rng
 
+        self.metric = "euclidean"
+
         self.__nodes = None
         self.__g = nx.Graph()
 
@@ -273,7 +275,9 @@ class GrowingNeuralGas:
                 g.nodes[node]["error"] -= self.beta * g.nodes[node]["error"]
 
         self.__g = g
-        self.protos = list([datadict["pos"] for node, datadict in g.nodes(data=True)])
+        self.protos = np.squeeze(
+            list([datadict["pos"] for node, datadict in g.nodes(data=True)])
+        )
 
         return self
 

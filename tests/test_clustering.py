@@ -84,10 +84,19 @@ def test_clustering_gng():
     global rng
     global data
 
-    protos = dyfunconn.cluster.GrowingNeuralGas(rng=rng).fit(data).protos
+    gng = dyfunconn.cluster.GrowingNeuralGas(rng=rng)
+    gng.fit(data)
+
+    protos = gng.protos
+    encoding, symbols = gng.encode(data)
+
+    np.save("data/test_clustering_gng_protos.npy", protos)
 
     result_protos = np.load("data/test_clustering_gng_protos.npy")
     np.testing.assert_array_almost_equal(protos, result_protos)
+
+    result_symbols = np.load("data/test_clustering_gng_symbols.npy")
+    np.testing.assert_array_almost_equal(symbols, result_symbols)
 
 
 @nose.tools.with_setup(initialize)
