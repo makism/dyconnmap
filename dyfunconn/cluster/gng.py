@@ -152,7 +152,7 @@ class GrowingNeuralGas:
         self : object
             The instance itself
         """
-        n_samples, n_features = np.shape(data)
+        n_samples, _ = np.shape(data)
 
         initial_indices = self.rng.choice(n_samples, size=2, replace=False)
 
@@ -165,10 +165,10 @@ class GrowingNeuralGas:
             sample_indice = self.rng.choice(n_samples, size=1, replace=False)
             sample = data[sample_indice, :]
 
-            all_pos = {
-                node_id: np.squeeze(datadict["pos"]).tolist()
-                for node_id, datadict in g.nodes(data=True)
-            }
+            # all_pos = {
+            # node_id: np.squeeze(datadict["pos"]).tolist()
+            # for node_id, datadict in g.nodes(data=True)
+            # }
 
             # Get nodes from the Graph
             nodes = [
@@ -235,7 +235,8 @@ class GrowingNeuralGas:
                     all_nodes, key=lambda nodedata: nodedata[1], reverse=True
                 )
 
-                n1, error = all_nodes[0]
+                # n1, error = all_nodes[0]
+                n1, _ = all_nodes[0]
 
                 neighborhood = list(g.neighbors(n1))
 
@@ -267,7 +268,8 @@ class GrowingNeuralGas:
                 g.node[new_node_id]["error"] = g.node[n1]["error"]
 
             # Global error reduction
-            for node, datadict in list(g.nodes(data=True)):
+            # for node, datadict in list(g.nodes(data=True)):
+            for node, _ in list(g.nodes(data=True)):
                 g.nodes[node]["error"] -= self.beta * g.nodes[node]["error"]
 
         self.__g = g

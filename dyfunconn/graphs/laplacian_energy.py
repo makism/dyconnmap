@@ -43,7 +43,7 @@ def laplacian_energy(mtx):
     """
 
     lmtx = scipy.sparse.csgraph.laplacian(mtx, normed=False)
-    w, v = np.linalg.eig(lmtx)
+    w, _ = np.linalg.eig(lmtx)
     avg_degree = np.mean(bct.degrees_und(mtx))
     le = np.sum(np.abs(w - avg_degree))
 
