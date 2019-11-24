@@ -69,7 +69,7 @@ def test_clustering_rng():
 
 
 @nose.tools.with_setup(initialize)
-def test_clustring_mng():
+def test_clustering_mng():
     global rng
     global data
 
