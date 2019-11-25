@@ -650,10 +650,43 @@ of channels.</p>
 </div>
 <div class="section" id="module-dyfunconn.fc.cos">
 <span id="dyfunconn-fc-cos-module"></span><h2>dyfunconn.fc.cos module<a class="headerlink" href="#module-dyfunconn.fc.cos" title="Permalink to this headline">¶</a></h2>
+<p>Cosine</p>
 <dl class="function">
 <dt id="dyfunconn.fc.cos.cos">
 <code class="sig-prename descclassname">dyfunconn.fc.cos.</code><code class="sig-name descname">cos</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">fb=None</em>, <em class="sig-param">fs=None</em>, <em class="sig-param">pairs=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/cos.html#cos"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.cos.cos" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Cosine</p>
+<p>Compute the correlation for the given <code class="xref py py-attr docutils literal notranslate"><span class="pre">data</span></code>, between the <code class="xref py py-attr docutils literal notranslate"><span class="pre">pairs</span></code> (if given)
+of channels.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> : array-like, shape(n_rois, n_samples)</p>
+<blockquote>
+<div><p>Multichannel recording data.</p>
+</div></blockquote>
+<p><strong>fb</strong> : list of length 2, optional</p>
+<blockquote>
+<div><p>The low and high frequencies.</p>
+</div></blockquote>
+<p><strong>fs</strong> : float, optional</p>
+<blockquote>
+<div><p>Sampling frequency.</p>
+</div></blockquote>
+<p><strong>pairs</strong> : array-like or <cite>None</cite></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>If an <cite>array-like</cite> is given, notice that each element is a tuple of length two.</p></li>
+<li><p>If <cite>None</cite> is passed, complete connectivity will be assumed.</p></li>
+</ul>
+</div></blockquote>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>c</strong> : array-like, shape(n_rois, n_rois)</p>
+<blockquote>
+<div><p>Estimated connectivity matrix.</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
 
 </div>
 <div class="section" id="module-dyfunconn.fc.crosscorr">
@@ -733,7 +766,7 @@ between the :attr:<a href="#id5"><span class="problematic" id="id6">`</span></a>
 <div class="section" id="module-dyfunconn.fc.esc">
 <span id="dyfunconn-fc-esc-module"></span><h2>dyfunconn.fc.esc module<a class="headerlink" href="#module-dyfunconn.fc.esc" title="Permalink to this headline">¶</a></h2>
 <p>Envelope-to-Signal Correlation</p>
-<p>Proposed by Bruns and Eckhorn [<a href="#id30"><span class="problematic" id="id31">Bruns2004_</span></a>], Envelope-to-Signal Correlation (<em>ESC</em>)
+<p>Proposed by Bruns and Eckhorn [<a href="#id31"><span class="problematic" id="id32">Bruns2004_</span></a>], Envelope-to-Signal Correlation (<em>ESC</em>)
 is similar to Amplitude Envelope Correlation (<a class="reference internal" href="#dyfunconn.fc.aec" title="dyfunconn.fc.aec"><code class="xref py py-mod docutils literal notranslate"><span class="pre">dyfunconn.fc.aec</span></code></a>), but the
 the amplitude of the lower frequency oscillation is signed; and thus the phase
 information is preserved.</p>
@@ -2032,17 +2065,24 @@ of channels.</p>
 <div class="section" id="module-dyfunconn.fc.wpli">
 <span id="dyfunconn-fc-wpli-module"></span><h2>dyfunconn.fc.wpli module<a class="headerlink" href="#module-dyfunconn.fc.wpli" title="Permalink to this headline">¶</a></h2>
 <p>Weighted Phase Lag Index and Debiased Weighted Phase Lag Index</p>
-<p>Weighted Phase Lag Index (<em>WPLI</em>) and Debiased Weighted Phase Lag Index (<em>dWPLI</em>)</p>
+<p>PLI is prone to noise and volume conduction effects; thus, Weighted Lag Index (<em>wPLI</em>) <a class="reference internal" href="#id20" id="id19"><span>[Vinck2011]</span></a>
+was proposed in [Vinck, 2011] alongside with an alternative, debiased design (<em>dwPLI</em>).
+Similar to PLI, wPLI operates on the cross-spectrum of two real-valued signals; but,
+it furthermore weights the cross-spectrum with the magnitude of the imaginary component.</p>
+<div class="math notranslate nohighlight">
+\[wPLI = \frac{|E\{ \Im(Z) \} |}{ E\{ \Im(Z) \} } = \frac{ | E\{ |\Im(Z)| sign(\Im(Z)) \} |  }{ E\{ |\Im(Z)| \} }\]</div>
+<p>Furthermore, to overcome the possible sample-bias, the authors defined a debiased variant of wPLI:</p>
+<div class="math notranslate nohighlight">
+\[dwPLI = \frac{\sum_{j=1}^N \sum_{k \neq j} \Im\{X_j\} \Im\{X_k\}}{\sum_{j=1}^N \sum_{k \neq j} \left| \Im\{X_j\} \Im\{X_k\} \right| }\]</div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <hr class="docutils" />
 <dl class="citation">
-<dt class="label" id="id19"><span class="brackets">Vinck2011</span></dt>
+<dt class="label" id="id20"><span class="brackets">Vinck2011</span></dt>
 <dd><p>Vinck, M., Oostenveld, R., van Wingerden, M., Battaglia, F., &amp; Pennartz, C. M. (2011). An improved index of phase-synchronization for electrophysiological data in the presence of volume-conduction, noise and sample-size bias. Neuroimage, 55(4), 1548-1565.</p>
 </dd>
 </dl>
-<p><a class="reference external" href="http://journal.frontiersin.org/article/10.3389/fncom.2015.00026/full">http://journal.frontiersin.org/article/10.3389/fncom.2015.00026/full</a></p>
 <dl class="function">
 <dt id="dyfunconn.fc.wpli.dwpli">
 <code class="sig-prename descclassname">dyfunconn.fc.wpli.</code><code class="sig-name descname">dwpli</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">fb</em>, <em class="sig-param">fs</em>, <em class="sig-param">pairs=None</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/wpli.html#dwpli"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.wpli.dwpli" title="Permalink to this definition">¶</a></dt>
@@ -2882,7 +2922,7 @@ between the <em>pairs</em> (if given) of rois.</p>
 <code class="sig-prename descclassname">dyfunconn.fc.</code><code class="sig-name descname">glm</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">fb_lo</em>, <em class="sig-param">fb_hi</em>, <em class="sig-param">fs</em>, <em class="sig-param">pairs=None</em>, <em class="sig-param">window_size=-1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/glm.html#glm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.glm" title="Permalink to this definition">¶</a></dt>
 <dd><p>General Linear Model</p>
 <p>Estimate the <span class="math notranslate nohighlight">\(r^2\)</span> for the given <code class="xref py py-attr docutils literal notranslate"><span class="pre">data</span></code>,
-between the :attr:<a href="#id20"><span class="problematic" id="id21">`</span></a>pairs (if given) of channels.</p>
+between the :attr:<a href="#id21"><span class="problematic" id="id22">`</span></a>pairs (if given) of channels.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>data</strong> : array-like, shape(n_channels, n_samples)</p>
@@ -2930,7 +2970,7 @@ between the :attr:<a href="#id20"><span class="problematic" id="id21">`</span></
 <dt id="dyfunconn.fc.rho_index">
 <code class="sig-prename descclassname">dyfunconn.fc.</code><code class="sig-name descname">rho_index</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">n_bins</em>, <em class="sig-param">fb</em>, <em class="sig-param">fs</em>, <em class="sig-param">pairs=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/rho_index.html#rho_index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.rho_index" title="Permalink to this definition">¶</a></dt>
 <dd><p>Synchronization Index</p>
-<p>Compute the synchronization index for the given <code class="xref py py-attr docutils literal notranslate"><span class="pre">data</span></code>, between the :attr:<a href="#id22"><span class="problematic" id="id23">`</span></a>pairs (if given)
+<p>Compute the synchronization index for the given <code class="xref py py-attr docutils literal notranslate"><span class="pre">data</span></code>, between the :attr:<a href="#id23"><span class="problematic" id="id24">`</span></a>pairs (if given)
 of channels.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -3118,7 +3158,7 @@ Valid options:</p>
 <code class="sig-prename descclassname">dyfunconn.fc.</code><code class="sig-name descname">dpli</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">fb</em>, <em class="sig-param">fs</em>, <em class="sig-param">pairs=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/dpli.html#dpli"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.dpli" title="Permalink to this definition">¶</a></dt>
 <dd><p>Directed Phase Lag Index</p>
 <p>Estimate the Directed Phase Lag Index for the given <code class="xref py py-attr docutils literal notranslate"><span class="pre">data</span></code>,
-between the :attr:<a href="#id24"><span class="problematic" id="id25">`</span></a>pairs (if given) of channels.</p>
+between the :attr:<a href="#id25"><span class="problematic" id="id26">`</span></a>pairs (if given) of channels.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>data</strong> : array-like, shape(n_channels, n_samples)</p>
@@ -3249,7 +3289,7 @@ channels.</p>
 <code class="sig-prename descclassname">dyfunconn.fc.</code><code class="sig-name descname">coherence</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">fb</em>, <em class="sig-param">fs</em>, <em class="sig-param">pairs=None</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/coherence.html#coherence"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.coherence" title="Permalink to this definition">¶</a></dt>
 <dd><p>Coherence</p>
 <p>Estimate the Coherence for the given <code class="xref py py-attr docutils literal notranslate"><span class="pre">data</span></code>,
-between the :attr:<a href="#id26"><span class="problematic" id="id27">`</span></a>pairs (if given) of channels.</p>
+between the :attr:<a href="#id27"><span class="problematic" id="id28">`</span></a>pairs (if given) of channels.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>data</strong> : array-like, shape(n_channels, n_samples)</p>
@@ -3299,7 +3339,7 @@ between the :attr:<a href="#id26"><span class="problematic" id="id27">`</span></
 <code class="sig-prename descclassname">dyfunconn.fc.</code><code class="sig-name descname">icoherence</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">fb</em>, <em class="sig-param">fs</em>, <em class="sig-param">pairs=None</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/icoherence.html#icoherence"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.icoherence" title="Permalink to this definition">¶</a></dt>
 <dd><p>Imaginary Coherence</p>
 <p>Compute the Imaginary part of Coherence for the given <code class="xref py py-attr docutils literal notranslate"><span class="pre">data</span></code>,
-between the :attr:<a href="#id28"><span class="problematic" id="id29">`</span></a>pairs (if given) of channels.</p>
+between the :attr:<a href="#id29"><span class="problematic" id="id30">`</span></a>pairs (if given) of channels.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>data</strong> : array-like, shape(n_channels, n_samples)</p>
@@ -3526,7 +3566,39 @@ special treatment is needed (i.e. taking only the real part).</p>
 <dl class="function">
 <dt id="dyfunconn.fc.cos">
 <code class="sig-prename descclassname">dyfunconn.fc.</code><code class="sig-name descname">cos</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">fb=None</em>, <em class="sig-param">fs=None</em>, <em class="sig-param">pairs=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/cos.html#cos"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.cos" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Cosine</p>
+<p>Compute the correlation for the given <code class="xref py py-attr docutils literal notranslate"><span class="pre">data</span></code>, between the <code class="xref py py-attr docutils literal notranslate"><span class="pre">pairs</span></code> (if given)
+of channels.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> : array-like, shape(n_rois, n_samples)</p>
+<blockquote>
+<div><p>Multichannel recording data.</p>
+</div></blockquote>
+<p><strong>fb</strong> : list of length 2, optional</p>
+<blockquote>
+<div><p>The low and high frequencies.</p>
+</div></blockquote>
+<p><strong>fs</strong> : float, optional</p>
+<blockquote>
+<div><p>Sampling frequency.</p>
+</div></blockquote>
+<p><strong>pairs</strong> : array-like or <cite>None</cite></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>If an <cite>array-like</cite> is given, notice that each element is a tuple of length two.</p></li>
+<li><p>If <cite>None</cite> is passed, complete connectivity will be assumed.</p></li>
+</ul>
+</div></blockquote>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>c</strong> : array-like, shape(n_rois, n_rois)</p>
+<blockquote>
+<div><p>Estimated connectivity matrix.</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
 
 </div>
 </div>

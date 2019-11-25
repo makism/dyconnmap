@@ -149,8 +149,7 @@
 <span class="sd">Generation of markov matrix and some related state transition features.</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="c1"># Author</span>
-<span class="c1"># Author</span>
+<span class="c1"># Author: Avraam Marimpis &lt;avraam.marimpis@gmail.com&gt;</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
@@ -209,7 +208,7 @@
 
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">symts</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
         <span class="n">curr_sym</span> <span class="o">=</span> <span class="n">symts</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-        <span class="n">next_sym</span> <span class="o">=</span> <span class="n">symts</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">next_sym</span> <span class="o">=</span> <span class="n">symts</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
 
         <span class="n">mtx</span><span class="p">[</span><span class="n">curr_sym</span><span class="p">,</span> <span class="n">next_sym</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
 
