@@ -6,6 +6,8 @@ Snippet adapted from: https://gist.github.com/Satra/aa3d19a12b74e9ab7941
 
 
 """
+# Author: Avraam Marimpis <avraam.marimpis@gmail.com>
+
 import numpy as np
 from scipy.spatial.distance import pdist, squareform
 

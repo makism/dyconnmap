@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
-"""
+""" Cosine
 
 
 """
+# Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
 from ..analytic_signal import analytic_signal
 
@@ -10,8 +11,32 @@ import numpy as np
 
 
 def cos(data, fb=None, fs=None, pairs=None):
-    """
+    """ Cosine
 
+    Compute the correlation for the given :attr:`data`, between the :attr:`pairs` (if given)
+    of channels.
+
+
+    Parameters
+    ----------
+    data : array-like, shape(n_rois, n_samples)
+        Multichannel recording data.
+
+    fb : list of length 2, optional
+        The low and high frequencies.
+
+    fs : float, optional
+        Sampling frequency.
+
+    pairs : array-like or `None`
+        - If an `array-like` is given, notice that each element is a tuple of length two.
+        - If `None` is passed, complete connectivity will be assumed.
+
+
+    Returns
+    -------
+    c : array-like, shape(n_rois, n_rois)
+        Estimated connectivity matrix.
     """
     n_rois, n_samples = np.shape(data)
 

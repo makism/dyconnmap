@@ -1,7 +1,19 @@
 # -*- coding: utf-8 -*-
 """ Weighted Phase Lag Index and Debiased Weighted Phase Lag Index
 
-Weighted Phase Lag Index (*WPLI*) and Debiased Weighted Phase Lag Index (*dWPLI*)
+PLI is prone to noise and volume conduction effects; thus, Weighted Lag Index (*wPLI*) [Vinck2011]_
+was proposed in [Vinck, 2011] alongside with an alternative, debiased design (*dwPLI*).
+Similar to PLI, wPLI operates on the cross-spectrum of two real-valued signals; but,
+it furthermore weights the cross-spectrum with the magnitude of the imaginary component.
+
+.. math::
+    wPLI = \\frac{|E\{ \\Im(Z) \} |}{ E\{ \\Im(Z) \} } = \\frac{ | E\{ |\\Im(Z)| sign(\\Im(Z)) \} |  }{ E\{ |\\Im(Z)| \} }
+
+
+Furthermore, to overcome the possible sample-bias, the authors defined a debiased variant of wPLI:
+
+.. math::
+    dwPLI = \\frac{\\sum_{j=1}^N \\sum_{k \\neq j} \\Im\{X_j\} \\Im\{X_k\}}{\\sum_{j=1}^N \\sum_{k \\neq j} \\left| \\Im\{X_j\} \\Im\{X_k\} \\right| }
 
 
 |
@@ -9,9 +21,6 @@ Weighted Phase Lag Index (*WPLI*) and Debiased Weighted Phase Lag Index (*dWPLI*
 -----
 
 .. [Vinck2011] Vinck, M., Oostenveld, R., van Wingerden, M., Battaglia, F., & Pennartz, C. M. (2011). An improved index of phase-synchronization for electrophysiological data in the presence of volume-conduction, noise and sample-size bias. Neuroimage, 55(4), 1548-1565.
-
-http://journal.frontiersin.org/article/10.3389/fncom.2015.00026/full
-
 """
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 

@@ -2,7 +2,7 @@
 """ Entropy
 
 """
-# Author: Avraam Marimpis <avraam.marimpis@gmail.com"
+# Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
 import numpy as np
 

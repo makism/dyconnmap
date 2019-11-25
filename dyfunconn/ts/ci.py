@@ -18,6 +18,8 @@ Notes
 .. [Rapp2007] Rapp, P. E. (2007). Quantitative characterization of animal behavior following blast exposure. Cognitive neurodynamics, 1(4), 287-293.
 
 """
+# Author: Avraam Marimpis <avraam.marimpis@gmail.com>
+
 import numpy as np
 
 

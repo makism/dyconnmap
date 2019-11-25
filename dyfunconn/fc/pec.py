@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """ Power-Envelope Correlation
 
-
 Similarly to :mod:`dyfunconn.fc.aec`, we can use the followig formula to estimate the correlations in power
 between the different frequency bands [Friston1996_].
 
