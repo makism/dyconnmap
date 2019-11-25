@@ -4,12 +4,6 @@
 
 """
 import numpy as np
-import scipy as sp
-import matplotlib.pyplot as plt
-from matplotlib import transforms
-from matplotlib.path import Path
-import sklearn
-from sklearn import preprocessing
 
 
 def umatrix(M):
@@ -26,13 +20,13 @@ def umatrix(M):
         for y in range(0, grid_x):
             dx = M[y, x] - M[y, x + 1]
             dx = np.sqrt(np.sum(np.power(dx, 2.0)))
-            U[2*y, 2*x+1] = dx
+            U[2 * y, 2 * x + 1] = dx
 
     for x in range(0, grid_y):
         for y in range(0, grid_x - 1):
-            dy = M[y, x] - M[y+1, x]
+            dy = M[y, x] - M[y + 1, x]
             dy = np.sqrt(np.sum(np.power(dy, 2.0)))
-            U[(2*y)+1, 2*x] = dy
+            U[(2 * y) + 1, 2 * x] = dy
 
     for x in range(0, grid_y - 1):
         for y in range(0, grid_x - 1):
@@ -40,18 +34,18 @@ def umatrix(M):
             dz1 = np.sqrt(np.sum(np.power(dz1, 2.0)))
             dz2 = M[y + 1, x] - M[y, x + 1]
             dz2 = np.sqrt(np.sum(np.power(dz2, 2.0)))
-            offX = (2*x) + 1
-            offY = (2*y) + 1
+            offX = (2 * x) + 1
+            offY = (2 * y) + 1
             U[offY, offX] = (dz1 + dz2) / (2 * np.sqrt(2.0))
 
     for x in range(0, grid_y):
         for y in range(0, grid_x):
-            offX = (2*x)
-            offY = (2*y)
+            offX = 2 * x
+            offY = 2 * y
             U[offY, offX] = np.inf
 
     indices = np.where(U == np.inf)
-    for x,y in zip(indices[0], indices[1]):
+    for x, y in zip(indices[0], indices[1]):
         center = (x, y)
         __wrap_kernel(center, U)
 
@@ -70,14 +64,14 @@ def __wrap_kernel(center, mtx):
     top = None
     bottom = None
 
-    if x-1 >= 0:
-        left = mtx[x-1, y]
-    if x+1 < np.shape(mtx)[0]:
-        right= mtx[x+1, y]
-    if y-1 >= 0:
-        top  = mtx[x, y-1]
-    if y+1 < np.shape(mtx)[1]:
-        bottom=mtx[x, y+1]
+    if x - 1 >= 0:
+        left = mtx[x - 1, y]
+    if x + 1 < np.shape(mtx)[0]:
+        right = mtx[x + 1, y]
+    if y - 1 >= 0:
+        top = mtx[x, y - 1]
+    if y + 1 < np.shape(mtx)[1]:
+        bottom = mtx[x, y + 1]
 
     neighbors = np.array([left, right, top, bottom])
     neighbors = neighbors[neighbors != np.array(None)]

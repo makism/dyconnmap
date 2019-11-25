@@ -120,7 +120,7 @@ class Coherence(Estimator):
         self.csdargs = kwargs
 
     def preprocess(self, data):
-        n_channels, n_samples = np.shape(data)
+        n_channels, _ = np.shape(data)
 
         _, _, filtered = analytic_signal(data, self.fb, self.fs)
 

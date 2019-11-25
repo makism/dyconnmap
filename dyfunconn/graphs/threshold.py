@@ -49,7 +49,7 @@ def k_core_decomposition(mtx, threshold):
     # in_degree = np.sum(mtx, 0)
     # out_degree = np.sum(mtx, 1)
 
-    degree = bct.degrees_und(mtx);
+    degree = bct.degrees_und(mtx)
 
     for i in range(N):
         if degree[i] < threshold:
@@ -92,13 +92,12 @@ def threshold_mst_mean_degree(mtx, avg_degree):
     CIJtree = np.zeros((N, N))
     CIJnotintree = mtx
 
-
     # Find the number of orthogonal msts according to the desired mean degree.
     num_edges = avg_degree * N
-    num_msts = np.int32(np.round(num_edges / (N-1)) + 1)
+    num_msts = np.int32(np.round(num_edges / (N - 1)) + 1)
 
     # Keep the N-1 connections of the num_msts MSTs.
-    mst_conn = np.zeros((num_msts * (N- 1), 2), dtype=np.int32)
+    mst_conn = np.zeros((num_msts * (N - 1), 2), dtype=np.int32)
 
     nCIJtree = np.zeros((num_msts, N, N), dtype=np.int32)
 
@@ -313,7 +312,7 @@ def threshold_global_cost_efficiency(mtx, iterations):
 
     step = 1.0 / iterations
 
-    thresholds = np.arange(0, 1+step, step)
+    thresholds = np.arange(0, 1 + step, step)
 
     N, _ = np.shape(mtx)
 
@@ -327,7 +326,7 @@ def threshold_global_cost_efficiency(mtx, iterations):
         tmp_binary = np.zeros_like(binary_mtx)
 
         for k in range(N):
-            for l in range(k+1, N):
+            for l in range(k + 1, N):
                 if mtx[k, l] > thresholds[i]:
                     tmp_binary[k, l] = 1
                     tmp_binary[l, k] = 1
@@ -344,7 +343,7 @@ def threshold_global_cost_efficiency(mtx, iterations):
     threshold = thresholds[indx_max]
 
     for k in range(N):
-        for l in range(k+1, N):
+        for l in range(k + 1, N):
             if mtx[k, l] >= threshold:
                 binary_mtx[k, l] = 1
                 binary_mtx[l, k] = 1
@@ -410,7 +409,7 @@ def threshold_omst_global_cost_efficiency(mtx, n_msts=None):
     N, _ = np.shape(imtx)
 
     for k in range(N):
-        for l in range(k+1, N):
+        for l in range(k + 1, N):
             imtx_uptril[l, k] = 0.0
     np.fill_diagonal(imtx_uptril, 0.0)
 
@@ -418,7 +417,7 @@ def threshold_omst_global_cost_efficiency(mtx, n_msts=None):
     num_edges = len(np.where(imtx > 0.0)[0])
 
     if n_msts is None:
-        num_msts = np.round(num_edges/(N-1)) + 1
+        num_msts = np.round(num_edges / (N - 1)) + 1
     else:
         num_msts = n_msts
     pos_num_msts = np.round(num_edges / (N - 1))
@@ -430,9 +429,9 @@ def threshold_omst_global_cost_efficiency(mtx, n_msts=None):
 
     # Keep the N-1 connections of the num_msts MSTs
     num_msts = np.int32(num_msts)
-    mst_conn = np.zeros((num_msts * (N-1), 2))
+    mst_conn = np.zeros((num_msts * (N - 1), 2))
 
-    nCIJtree = np.zeros((num_msts, N, N)) #, dtype=np.int32)
+    nCIJtree = np.zeros((num_msts, N, N))  # , dtype=np.int32)
     omst = np.zeros((num_msts, N, N), dtype=np.float32)
 
     # Repeat N-2 times
@@ -514,7 +513,16 @@ def threshold_omst_global_cost_efficiency(mtx, n_msts=None):
     # plt.show()
 
     # return nCIJtree, CIJtree, degree, global_eff, global_cost_eff_max, cost_max
-    return nCIJtree, CIJtree, degree, global_eff, global_cost_eff_max, cost_max,cost,global_cost_eff
+    return (
+        nCIJtree,
+        CIJtree,
+        degree,
+        global_eff,
+        global_cost_eff_max,
+        cost_max,
+        cost,
+        global_cost_eff,
+    )
 
 
 def threshold_eco(mtx):
@@ -523,7 +531,7 @@ def threshold_eco(mtx):
     .. [Fallani2017] Fallani, F. D. V., Latora, V., & Chavez, M. (2017). A topological criterion for filtering information in complex brain networks. PLoS computational biology, 13(1), e1005305.
 
     """
-    m, n = np.shape(mtx)
+    m, _ = np.shape(mtx)
 
     bin_mtx = np.zeros_like(mtx)
     eco_mtx = np.zeros_like(mtx)

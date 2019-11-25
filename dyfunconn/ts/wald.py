@@ -7,7 +7,6 @@
 
 import numpy as np
 import networkx as nx
-import sklearn
 from sklearn import metrics
 
 
@@ -42,9 +41,9 @@ def wald(x, y):
 
     ld = np.abs(lx - ly)
     if lx > ly:
-        y = np.lib.pad(y, ((0, ld), (0, 0)), 'constant', constant_values=0)
+        y = np.lib.pad(y, ((0, ld), (0, 0)), "constant", constant_values=0)
     else:
-        x = np.lib.pad(x, ((0, ld), (0, 0)), 'constant', constant_values=0)
+        x = np.lib.pad(x, ((0, ld), (0, 0)), "constant", constant_values=0)
 
     [m, _] = np.shape(x)
     [n, _] = np.shape(y)
@@ -52,7 +51,7 @@ def wald(x, y):
     N = m + n
 
     data = np.vstack((x, y))
-    dmtx = sklearn.metrics.pairwise_distances(data, data)
+    dmtx = metrics.pairwise_distances(data, data)
 
     g = nx.from_numpy_matrix(dmtx)
     mst_g = nx.minimum_spanning_tree(g)
@@ -60,7 +59,7 @@ def wald(x, y):
     weighted_edges = mst_g.edges(data=True)
 
     edges = [we[:-1] for we in weighted_edges]
-    weights = [we[::-2][0]['weight'] for we in weighted_edges]
+    weights = [we[::-2][0]["weight"] for we in weighted_edges]
 
     edges = np.array(edges) + 1
 
@@ -75,8 +74,10 @@ def wald(x, y):
 
     C = 0.5 * np.sum(degree_mst * (degree_mst - 1))
 
-    varrc = ((2.0 * m * n) / (N * (N - 1.0))) * ((2.0 * m * n - N) / N +
-                                                 (C - N + 2.0) / ((N - 2.0) * (N - 3.0)) * (N * (N - 1.0) - 4.0 * m * n + 2.0))
+    varrc = ((2.0 * m * n) / (N * (N - 1.0))) * (
+        (2.0 * m * n - N) / N
+        + (C - N + 2.0) / ((N - 2.0) * (N - 3.0)) * (N * (N - 1.0) - 4.0 * m * n + 2.0)
+    )
 
     W = (R - ER) / np.sqrt(varrc)
 
