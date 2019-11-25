@@ -1,19 +1,31 @@
 # -*- coding: utf-8 -*-
 """ Variation of Information
 
+Variation of Information (*VI*) [Meilla2007]_ is an information theoretic criterion
+for comparing two partitions. It is based on the classic notions of entropy and mutual information.
+In a nutshell, VI measures the amount of information that is lost or gained in changing from
+clustering :math:`A` to clustering :math:`B`. VI is a true metric, is always non-negative and symmetric.
+The following formula is used to compute the VI between two groups:
 
+.. math::
+    VI(A, B) = [H(A) - I(A, B)] + [H(B) - I(A, B)]
 
-Notes
------
-Based on the code available at http://users.auth.gr/~stdimitr/files/software/vi.rar
+Where :math:`H` denotes the entropy computed for each partition separately,
+and :math:`I` the mutual information between clusterings :math:`A` and :math:`B`.
+
+The resulting distance score can be adjusted to bound it between :math:`[0, 1]` as follows:
+
+.. math::
+    VI^{*}(A,B) = \\frac{1}{\\log{n}}VI(A, B)
+
 
 |
 
 -----
+
 .. [Meilla2007] Meilă, M. (2007). Comparing clusterings—an information based distance. Journal of multivariate analysis, 98(5), 873-895.
 .. [Dimitriadis2009] Dimitriadis, S. I., Laskaris, N. A., Del Rio-Portilla, Y., & Koudounis, G. C. (2009). Characterizing dynamic functional connectivity across sleep stages from EEG. Brain topography, 22(2), 119-133.
 .. [Dimitriadis2012] Dimitriadis, S. I., Laskaris, N. A., Michael Vourkas, V. T., & Micheloyannis, S. (2012). An EEG study of brain connectivity dynamics at the resting state. Nonlinear Dynamics-Psychology and Life Sciences, 16(1), 5.
-
 """
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 # Author: Stavros Dimitriadis <stdimitr@gmail.com>
@@ -24,12 +36,22 @@ from dyfunconn.ts.entropy import entropy
 
 
 def variation_information(indices_a, indices_b):
-    """
+    """ Variation of Information
+    
 
-    indices_a:
+    Parameters
+    ----------
+    indices_a : array-like, shape(n_samples)
+        Symbolic time series.
 
-    indices_b:
+    indices_b : array-like, shape(n_samples)
+        Symbolic time series.
 
+
+    Returns
+    -------
+    vi : float
+        Variation of information.
     """
     n1 = len(indices_a)
     n2 = len(indices_b)
