@@ -37,7 +37,7 @@ from dyfunconn.ts.entropy import entropy
 
 def variation_information(indices_a, indices_b):
     """ Variation of Information
-    
+
 
     Parameters
     ----------
