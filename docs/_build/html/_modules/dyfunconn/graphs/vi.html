@@ -147,19 +147,31 @@
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot; Variation of Information</span>
 
+<span class="sd">Variation of Information (*VI*) [Meilla2007]_ is an information theoretic criterion</span>
+<span class="sd">for comparing two partitions. It is based on the classic notions of entropy and mutual information.</span>
+<span class="sd">In a nutshell, VI measures the amount of information that is lost or gained in changing from</span>
+<span class="sd">clustering :math:`A` to clustering :math:`B`. VI is a true metric, is always non-negative and symmetric.</span>
+<span class="sd">The following formula is used to compute the VI between two groups:</span>
 
+<span class="sd">.. math::</span>
+<span class="sd">    VI(A, B) = [H(A) - I(A, B)] + [H(B) - I(A, B)]</span>
 
-<span class="sd">Notes</span>
-<span class="sd">-----</span>
-<span class="sd">Based on the code available at http://users.auth.gr/~stdimitr/files/software/vi.rar</span>
+<span class="sd">Where :math:`H` denotes the entropy computed for each partition separately,</span>
+<span class="sd">and :math:`I` the mutual information between clusterings :math:`A` and :math:`B`.</span>
+
+<span class="sd">The resulting distance score can be adjusted to bound it between :math:`[0, 1]` as follows:</span>
+
+<span class="sd">.. math::</span>
+<span class="sd">    VI^{*}(A,B) = \\frac{1}{\\log{n}}VI(A, B)</span>
+
 
 <span class="sd">|</span>
 
 <span class="sd">-----</span>
+
 <span class="sd">.. [Meilla2007] Meilă, M. (2007). Comparing clusterings—an information based distance. Journal of multivariate analysis, 98(5), 873-895.</span>
 <span class="sd">.. [Dimitriadis2009] Dimitriadis, S. I., Laskaris, N. A., Del Rio-Portilla, Y., &amp; Koudounis, G. C. (2009). Characterizing dynamic functional connectivity across sleep stages from EEG. Brain topography, 22(2), 119-133.</span>
 <span class="sd">.. [Dimitriadis2012] Dimitriadis, S. I., Laskaris, N. A., Michael Vourkas, V. T., &amp; Micheloyannis, S. (2012). An EEG study of brain connectivity dynamics at the resting state. Nonlinear Dynamics-Psychology and Life Sciences, 16(1), 5.</span>
-
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="c1"># Author: Avraam Marimpis &lt;avraam.marimpis@gmail.com&gt;</span>
 <span class="c1"># Author: Stavros Dimitriadis &lt;stdimitr@gmail.com&gt;</span>
@@ -172,10 +184,19 @@
 <div class="viewcode-block" id="variation_information"><a class="viewcode-back" href="../../../dyfunconn.graphs.html#dyfunconn.graphs.vi.variation_information">[docs]</a><span class="k">def</span> <span class="nf">variation_information</span><span class="p">(</span><span class="n">indices_a</span><span class="p">,</span> <span class="n">indices_b</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="sd">    indices_a:</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    indices_a : array-like, shape(n_samples)</span>
+<span class="sd">        Symbolic time series.</span>
 
-<span class="sd">    indices_b:</span>
+<span class="sd">    indices_b : array-like, shape(n_samples)</span>
+<span class="sd">        Symbolic time series.</span>
 
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    vi : float</span>
+<span class="sd">        Variation of information.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">n1</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">indices_a</span><span class="p">)</span>
     <span class="n">n2</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">indices_b</span><span class="p">)</span>
@@ -197,24 +218,30 @@
     <span class="k">return</span> <span class="n">VI_value</span><span class="p">,</span> <span class="n">NVI</span></div>
 
 
+<span class="k">def</span> <span class="nf">__unique_symbols</span><span class="p">(</span><span class="n">indices</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span>
+    <span class="n">unique</span><span class="p">,</span> <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="n">return_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">len_counts</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+    <span class="n">U</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">len_counts</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>
+    <span class="n">indices</span> <span class="o">=</span> <span class="n">indices</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">len_counts</span><span class="p">):</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">indices</span> <span class="o">==</span> <span class="n">unique</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">U</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">tmp</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">U</span>
+
+
 <span class="k">def</span> <span class="nf">__mi</span><span class="p">(</span><span class="n">indices_a</span><span class="p">,</span> <span class="n">entropy_a</span><span class="p">,</span> <span class="n">indices_b</span><span class="p">,</span> <span class="n">entropy_b</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">indices_a</span><span class="p">)</span>
 
-    <span class="n">unique</span><span class="p">,</span> <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">indices_a</span><span class="p">,</span> <span class="n">return_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">len_counts</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
-    <span class="n">Ua</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">len_counts</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>
-    <span class="n">indices_a</span> <span class="o">=</span> <span class="n">indices_a</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">len_counts</span><span class="p">):</span>
-        <span class="n">tmp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">indices_a</span> <span class="o">==</span> <span class="n">unique</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-        <span class="n">Ua</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">tmp</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">1</span>
-
-    <span class="n">unique</span><span class="p">,</span> <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">indices_b</span><span class="p">,</span> <span class="n">return_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">len_counts</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
-    <span class="n">Ub</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">len_counts</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>
-    <span class="n">indices_b</span> <span class="o">=</span> <span class="n">indices_b</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">len_counts</span><span class="p">):</span>
-        <span class="n">tmp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">indices_b</span> <span class="o">==</span> <span class="n">unique</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-        <span class="n">Ub</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">tmp</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">Ua</span> <span class="o">=</span> <span class="n">__unique_symbols</span><span class="p">(</span><span class="n">indices_a</span><span class="p">)</span>
+    <span class="n">Ub</span> <span class="o">=</span> <span class="n">__unique_symbols</span><span class="p">(</span><span class="n">indices_b</span><span class="p">)</span>
 
     <span class="n">Sab</span> <span class="o">=</span> <span class="n">Ua</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Ub</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
     <span class="n">Sa</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">Ua</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Ua</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">N</span><span class="p">))</span>

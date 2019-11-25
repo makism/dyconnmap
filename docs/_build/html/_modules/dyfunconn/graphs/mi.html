@@ -147,34 +147,51 @@
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot; Mutual Information</span>
 
-<span class="sd">Comparing two partitions using the mutual information theoretical metric.</span>
+<span class="sd">Normalized Mutual Information (*NMI*) proposed by [Strehl2002]_ as an extension to</span>
+<span class="sd">Mutual Information [cover] to enable interpretations and comparisons between two partitions.</span>
+<span class="sd">Given the entropies :math:`H(P^a)=-\\sum_{i=1}^{k_a}{\\frac{n_i^a}{n}\\log(\\frac{n_i^a}{n})}` where :math:`n_i^a` represents the</span>
+<span class="sd">number of patterns in group :math:`C_i^a \\in P^a` (and computed for :math:`H(P^b)` accordingly); the initial</span>
+<span class="sd">matching of these two groups :math:`P^a` and :math:`P^b` in terms of mutual information is</span>
+<span class="sd">[Fred2005_, Strehl2002_]:</span>
+
+<span class="sd">.. math::</span>
+<span class="sd">    I(P^a, P^b) = \\sum_{i=1}^{k_a} \\sum_{j=1}^{k_b} {\\frac{n_{ij}^{ab}}{n}} \\log \\left(\\frac{ \\frac{n_{ij}{ab}}{n} }{ \\frac{n_i^a}{n} \\frac{n_j^b}{n} } \\right)</span>
+
+<span class="sd">Where :math:`n_{ij}^{ab}` denotes the number of shared patterns between the clusters :math:`C_i^a` and :math:`C_j^b`.</span>
+<span class="sd">By exploiting the definition of mutual information, the following property holds true:</span>
+<span class="sd">:math:`I(P^a,P^b) \\leq  \\frac{H(P^a)+H(P^b)}{2}`. This leads to the definition of NMI as:</span>
 
 
-<span class="sd">Notes</span>
-<span class="sd">-----</span>
-<span class="sd">Based on the code available at http://users.auth.gr/~stdimitr/files/software/vi.rar</span>
+<span class="sd">.. math::</span>
+<span class="sd">    NMI(A, B) = \\frac{2I(P^a, P^b)}{ H(P^a) + H(P^b)} = \\frac{ -2\\sum_{i=1}^{k_a} \\sum_{j=1}^{k_b} {n_{ij}^{ab}} \\log \\left( \\frac{ n_{ij}^{ab} n }{ n_i^a n_j^n } \\right)  }{  \\sum_{i=1}^{k_a} n_i^a \\log \\left( \\frac{n_i^a}{n} \\right) + \\sum_{j=1}^{k_b} n_j^b \\log \\left( \\frac{n_j^b}{n} \\right)   }</span>
+
 
 <span class="sd">|</span>
 
 <span class="sd">-----</span>
+
 <span class="sd">.. [Fred2005] Fred, A. L., &amp; Jain, A. K. (2005). Combining multiple clusterings using evidence accumulation. IEEE transactions on pattern analysis and machine intelligence, 27(6), 835-850.</span>
 <span class="sd">.. [Strehl2002] Strehl, A., &amp; Ghosh, J. (2002). Cluster ensembles---a knowledge reuse framework for combining multiple partitions. Journal of machine learning research, 3(Dec), 583-617.</span>
-
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="c1"># Author: Avraam Marimpis &lt;avraam.marimpis@gmail.com&quot;</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="kn">from</span> <span class="nn">dyfunconn.ts.entropy</span> <span class="k">import</span> <span class="n">entropy</span>
+<span class="kn">from</span> <span class="nn">.vi</span> <span class="k">import</span> <span class="n">__unique_symbols</span>
 
 
 <div class="viewcode-block" id="mutual_information"><a class="viewcode-back" href="../../../dyfunconn.graphs.html#dyfunconn.graphs.mi.mutual_information">[docs]</a><span class="k">def</span> <span class="nf">mutual_information</span><span class="p">(</span><span class="n">indices_a</span><span class="p">,</span> <span class="n">indices_b</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Mutual Information</span>
 
 
-
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
+<span class="sd">    indices_a : array-like, shape(n_samples)</span>
+<span class="sd">        Symbolic time series.</span>
+
+<span class="sd">    indices_b : array-like, shape(n_samples)</span>
+<span class="sd">        Symbolic time series.</span>
 
 
 <span class="sd">    Returns</span>
@@ -191,21 +208,10 @@
     <span class="n">entropy_a</span> <span class="o">=</span> <span class="o">-</span><span class="n">entropy</span><span class="p">(</span><span class="n">indices_a</span><span class="p">)</span>
     <span class="n">entropy_b</span> <span class="o">=</span> <span class="o">-</span><span class="n">entropy</span><span class="p">(</span><span class="n">indices_b</span><span class="p">)</span>
 
+    <span class="n">Ua</span> <span class="o">=</span> <span class="n">__unique_symbols</span><span class="p">(</span><span class="n">indices_a</span><span class="p">)</span>
+    <span class="n">Ub</span> <span class="o">=</span> <span class="n">__unique_symbols</span><span class="p">(</span><span class="n">indices_b</span><span class="p">)</span>
+
     <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">indices_a</span><span class="p">)</span>
-    <span class="n">unique</span><span class="p">,</span> <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">indices_a</span><span class="p">,</span> <span class="n">return_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">len_counts</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
-    <span class="n">Ua</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">len_counts</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">len_counts</span><span class="p">):</span>
-        <span class="n">tmp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">indices_a</span> <span class="o">==</span> <span class="n">unique</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-        <span class="n">Ua</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">tmp</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">1</span>
-
-    <span class="n">unique</span><span class="p">,</span> <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">indices_b</span><span class="p">,</span> <span class="n">return_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">len_counts</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
-    <span class="n">Ub</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">len_counts</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">len_counts</span><span class="p">):</span>
-        <span class="n">tmp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">indices_b</span> <span class="o">==</span> <span class="n">unique</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-        <span class="n">Ub</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">tmp</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">1</span>
-
     <span class="n">Sab</span> <span class="o">=</span> <span class="n">Ua</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Ub</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
     <span class="n">Sa</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">Ua</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Ua</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">N</span><span class="p">))</span>
     <span class="n">Sb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">Ub</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">Ub</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">N</span><span class="p">))</span>

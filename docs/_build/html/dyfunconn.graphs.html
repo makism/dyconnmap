@@ -340,20 +340,48 @@ matrix of <span class="math notranslate nohighlight">\(G\)</span> (Laplcian spec
 <div class="section" id="module-dyfunconn.graphs.mi">
 <span id="dyfunconn-graphs-mi-module"></span><h2>dyfunconn.graphs.mi module<a class="headerlink" href="#module-dyfunconn.graphs.mi" title="Permalink to this headline">¶</a></h2>
 <p>Mutual Information</p>
-<p>Comparing two partitions using the mutual information theoretical metric.</p>
-<div class="section" id="id1">
-<h3>Notes<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<p>Based on the code available at <a class="reference external" href="http://users.auth.gr/~stdimitr/files/software/vi.rar">http://users.auth.gr/~stdimitr/files/software/vi.rar</a></p>
+<p>Normalized Mutual Information (<em>NMI</em>) proposed by <a class="reference internal" href="#strehl2002" id="id1"><span>[Strehl2002]</span></a> as an extension to
+Mutual Information [cover] to enable interpretations and comparisons between two partitions.
+Given the entropies <span class="math notranslate nohighlight">\(H(P^a)=-\sum_{i=1}^{k_a}{\frac{n_i^a}{n}\log(\frac{n_i^a}{n})}\)</span> where <span class="math notranslate nohighlight">\(n_i^a\)</span> represents the
+number of patterns in group <span class="math notranslate nohighlight">\(C_i^a \in P^a\)</span> (and computed for <span class="math notranslate nohighlight">\(H(P^b)\)</span> accordingly); the initial
+matching of these two groups <span class="math notranslate nohighlight">\(P^a\)</span> and <span class="math notranslate nohighlight">\(P^b\)</span> in terms of mutual information is
+[<a class="reference internal" href="#fred2005">Fred2005</a>, <a class="reference internal" href="#strehl2002">Strehl2002</a>]:</p>
+<div class="math notranslate nohighlight">
+\[I(P^a, P^b) = \sum_{i=1}^{k_a} \sum_{j=1}^{k_b} {\frac{n_{ij}^{ab}}{n}} \log \left(\frac{ \frac{n_{ij}{ab}}{n} }{ \frac{n_i^a}{n} \frac{n_j^b}{n} } \right)\]</div>
+<p>Where <span class="math notranslate nohighlight">\(n_{ij}^{ab}\)</span> denotes the number of shared patterns between the clusters <span class="math notranslate nohighlight">\(C_i^a\)</span> and <span class="math notranslate nohighlight">\(C_j^b\)</span>.
+By exploiting the definition of mutual information, the following property holds true:
+<span class="math notranslate nohighlight">\(I(P^a,P^b) \leq  \frac{H(P^a)+H(P^b)}{2}\)</span>. This leads to the definition of NMI as:</p>
+<div class="math notranslate nohighlight">
+\[NMI(A, B) = \frac{2I(P^a, P^b)}{ H(P^a) + H(P^b)} = \frac{ -2\sum_{i=1}^{k_a} \sum_{j=1}^{k_b} {n_{ij}^{ab}} \log \left( \frac{ n_{ij}^{ab} n }{ n_i^a n_j^n } \right)  }{  \sum_{i=1}^{k_a} n_i^a \log \left( \frac{n_i^a}{n} \right) + \sum_{j=1}^{k_b} n_j^b \log \left( \frac{n_j^b}{n} \right)   }\]</div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
+<hr class="docutils" />
+<dl class="citation">
+<dt class="label" id="fred2005"><span class="brackets">Fred2005</span></dt>
+<dd><p>Fred, A. L., &amp; Jain, A. K. (2005). Combining multiple clusterings using evidence accumulation. IEEE transactions on pattern analysis and machine intelligence, 27(6), 835-850.</p>
+</dd>
+<dt class="label" id="strehl2002"><span class="brackets"><a class="fn-backref" href="#id1">Strehl2002</a></span></dt>
+<dd><p>Strehl, A., &amp; Ghosh, J. (2002). Cluster ensembles—a knowledge reuse framework for combining multiple partitions. Journal of machine learning research, 3(Dec), 583-617.</p>
+</dd>
+</dl>
 <dl class="function">
 <dt id="dyfunconn.graphs.mi.mutual_information">
 <code class="sig-prename descclassname">dyfunconn.graphs.mi.</code><code class="sig-name descname">mutual_information</code><span class="sig-paren">(</span><em class="sig-param">indices_a</em>, <em class="sig-param">indices_b</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/graphs/mi.html#mutual_information"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.graphs.mi.mutual_information" title="Permalink to this definition">¶</a></dt>
 <dd><p>Mutual Information</p>
 <dl class="field-list">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><strong>MI</strong> : float</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>indices_a</strong> : array-like, shape(n_samples)</p>
+<blockquote>
+<div><p>Symbolic time series.</p>
+</div></blockquote>
+<p><strong>indices_b</strong> : array-like, shape(n_samples)</p>
+<blockquote>
+<div><p>Symbolic time series.</p>
+</div></blockquote>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>MI</strong> : float</p>
 <blockquote>
 <div><p>Mutual information.</p>
 </div></blockquote>
@@ -365,7 +393,6 @@ matrix of <span class="math notranslate nohighlight">\(G\)</span> (Laplcian spec
 </dl>
 </dd></dl>
 
-</div>
 </div>
 <div class="section" id="module-dyfunconn.graphs.mpc">
 <span id="dyfunconn-graphs-mpc-module"></span><h2>dyfunconn.graphs.mpc module<a class="headerlink" href="#module-dyfunconn.graphs.mpc" title="Permalink to this headline">¶</a></h2>
@@ -806,13 +833,29 @@ fill the diagonal with zeroes. Default <cite>false</cite>.</p>
 <div class="section" id="module-dyfunconn.graphs.vi">
 <span id="dyfunconn-graphs-vi-module"></span><h2>dyfunconn.graphs.vi module<a class="headerlink" href="#module-dyfunconn.graphs.vi" title="Permalink to this headline">¶</a></h2>
 <p>Variation of Information</p>
-<div class="section" id="id7">
-<h3>Notes<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
-<p>Based on the code available at <a class="reference external" href="http://users.auth.gr/~stdimitr/files/software/vi.rar">http://users.auth.gr/~stdimitr/files/software/vi.rar</a></p>
+<p>Variation of Information (<em>VI</em>) <a class="reference internal" href="#meilla2007" id="id7"><span>[Meilla2007]</span></a> is an information theoretic criterion
+for comparing two partitions. It is based on the classic notions of entropy and mutual information.
+In a nutshell, VI measures the amount of information that is lost or gained in changing from
+clustering <span class="math notranslate nohighlight">\(A\)</span> to clustering <span class="math notranslate nohighlight">\(B\)</span>. VI is a true metric, is always non-negative and symmetric.
+The following formula is used to compute the VI between two groups:</p>
+<div class="math notranslate nohighlight">
+\[VI(A, B) = [H(A) - I(A, B)] + [H(B) - I(A, B)]\]</div>
+<p>Where <span class="math notranslate nohighlight">\(H\)</span> denotes the entropy computed for each partition separately,
+and <span class="math notranslate nohighlight">\(I\)</span> the mutual information between clusterings <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>.</p>
+<p>The resulting distance score can be adjusted to bound it between <span class="math notranslate nohighlight">\([0, 1]\)</span> as follows:</p>
+<div class="math notranslate nohighlight">
+\[VI^{*}(A,B) = \frac{1}{\log{n}}VI(A, B)\]</div>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
+<hr class="docutils" />
 <dl class="citation">
+<dt class="label" id="meilla2007"><span class="brackets"><a class="fn-backref" href="#id7">Meilla2007</a></span></dt>
+<dd><p>Meilă, M. (2007). Comparing clusterings—an information based distance. Journal of multivariate analysis, 98(5), 873-895.</p>
+</dd>
+<dt class="label" id="dimitriadis2009"><span class="brackets">Dimitriadis2009</span></dt>
+<dd><p>Dimitriadis, S. I., Laskaris, N. A., Del Rio-Portilla, Y., &amp; Koudounis, G. C. (2009). Characterizing dynamic functional connectivity across sleep stages from EEG. Brain topography, 22(2), 119-133.</p>
+</dd>
 <dt class="label" id="dimitriadis2012"><span class="brackets">Dimitriadis2012</span></dt>
 <dd><p>Dimitriadis, S. I., Laskaris, N. A., Michael Vourkas, V. T., &amp; Micheloyannis, S. (2012). An EEG study of brain connectivity dynamics at the resting state. Nonlinear Dynamics-Psychology and Life Sciences, 16(1), 5.</p>
 </dd>
@@ -820,11 +863,26 @@ fill the diagonal with zeroes. Default <cite>false</cite>.</p>
 <dl class="function">
 <dt id="dyfunconn.graphs.vi.variation_information">
 <code class="sig-prename descclassname">dyfunconn.graphs.vi.</code><code class="sig-name descname">variation_information</code><span class="sig-paren">(</span><em class="sig-param">indices_a</em>, <em class="sig-param">indices_b</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/graphs/vi.html#variation_information"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.graphs.vi.variation_information" title="Permalink to this definition">¶</a></dt>
-<dd><p>indices_a:</p>
-<p>indices_b:</p>
+<dd><dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>indices_a</strong> : array-like, shape(n_samples)</p>
+<blockquote>
+<div><p>Symbolic time series.</p>
+</div></blockquote>
+<p><strong>indices_b</strong> : array-like, shape(n_samples)</p>
+<blockquote>
+<div><p>Symbolic time series.</p>
+</div></blockquote>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>vi</strong> : float</p>
+<blockquote>
+<div><p>Variation of information.</p>
+</div></blockquote>
+</dd>
+</dl>
 </dd></dl>
 
-</div>
 </div>
 <div class="section" id="module-dyfunconn.graphs">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-dyfunconn.graphs" title="Permalink to this headline">¶</a></h2>
@@ -863,8 +921,24 @@ fill the diagonal with zeroes. Default <cite>false</cite>.</p>
 <dl class="function">
 <dt id="dyfunconn.graphs.variation_information">
 <code class="sig-prename descclassname">dyfunconn.graphs.</code><code class="sig-name descname">variation_information</code><span class="sig-paren">(</span><em class="sig-param">indices_a</em>, <em class="sig-param">indices_b</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/graphs/vi.html#variation_information"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.graphs.variation_information" title="Permalink to this definition">¶</a></dt>
-<dd><p>indices_a:</p>
-<p>indices_b:</p>
+<dd><dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>indices_a</strong> : array-like, shape(n_samples)</p>
+<blockquote>
+<div><p>Symbolic time series.</p>
+</div></blockquote>
+<p><strong>indices_b</strong> : array-like, shape(n_samples)</p>
+<blockquote>
+<div><p>Symbolic time series.</p>
+</div></blockquote>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>vi</strong> : float</p>
+<blockquote>
+<div><p>Variation of information.</p>
+</div></blockquote>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
@@ -872,8 +946,18 @@ fill the diagonal with zeroes. Default <cite>false</cite>.</p>
 <code class="sig-prename descclassname">dyfunconn.graphs.</code><code class="sig-name descname">mutual_information</code><span class="sig-paren">(</span><em class="sig-param">indices_a</em>, <em class="sig-param">indices_b</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/graphs/mi.html#mutual_information"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.graphs.mutual_information" title="Permalink to this definition">¶</a></dt>
 <dd><p>Mutual Information</p>
 <dl class="field-list">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><strong>MI</strong> : float</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>indices_a</strong> : array-like, shape(n_samples)</p>
+<blockquote>
+<div><p>Symbolic time series.</p>
+</div></blockquote>
+<p><strong>indices_b</strong> : array-like, shape(n_samples)</p>
+<blockquote>
+<div><p>Symbolic time series.</p>
+</div></blockquote>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>MI</strong> : float</p>
 <blockquote>
 <div><p>Mutual information.</p>
 </div></blockquote>
