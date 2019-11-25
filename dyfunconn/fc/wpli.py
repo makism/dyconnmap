@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-""" Weighted Phase Lag Index
+""" Weighted Phase Lag Index and Debiased Weighted Phase Lag Index
 
-Weighted Phase Lag Index (*WPLI*),
+Weighted Phase Lag Index (*WPLI*) and Debiased Weighted Phase Lag Index (*dWPLI*)
 
 
 |
@@ -63,10 +63,10 @@ def wpli(data, fb, fs, pairs=None, **kwargs):
     ---------
     dyfunconn.wpli.dwpli: Debiased Weighted Phase Lag Index
     """
-    n_channels, n_samples = np.shape(data)
+    n_channels, _ = np.shape(data)
 
     if pairs is None:
-        pairs = [(r1, r2) for r1 in range(n_channels) for r2 in range(n_channels)]
+        pairs = __prepare_pairs(n_channels)
 
     _, _, filtered = analytic_signal(data, fb, fs)
     filtered = data
@@ -125,10 +125,10 @@ def dwpli(data, fb, fs, pairs=None, **kwargs):
     ---------
     dyfunconn.wpli.wpli: Weighted Phase Lag Index
     """
-    n_channels, n_samples = np.shape(data)
+    n_channels, _ = np.shape(data)
 
     if pairs is None:
-        pairs = [(r1, r2) for r1 in range(n_channels) for r2 in range(n_channels)]
+        pairs = __prepare_pairs(n_channels)
 
     _, _, filtered = analytic_signal(data, fb, fs)
     filtered = data
@@ -152,3 +152,7 @@ def dwpli(data, fb, fs, pairs=None, **kwargs):
         )
 
     return dwpliv
+
+
+def __prepare_pairs(rois):
+    return [(r1, r2) for r1 in range(rois) for r2 in range(rois)]
