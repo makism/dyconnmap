@@ -59,7 +59,7 @@ def __unique_symbols(indices):
     unique, counts = np.unique(indices, return_counts=True)
     len_counts = len(counts)
     U = np.zeros((len_counts, N))
-    indices_a = indices.flatten()
+    indices = indices.flatten()
     for i in range(len_counts):
         tmp = np.where(indices == unique[i])
         U[i, tmp[0]] = 1
