@@ -95,8 +95,9 @@ def tvfcg(data, estimator_instance, fb, fs, cc=2.0, step=5.0, pairs=None):
 
     #
     n_channels, n_samples = np.shape(data)
-    window_length = np.int32(np.round((cc / fb[0]) * fs))
-    windows = np.int32(np.round((n_samples - window_length) / step))
+    # window_length = np.int32(np.round((cc / fb[0]) * fs))
+    # windows = np.int32(np.round((n_samples - window_length) / step))
+    windows, window_length = tvfcg_compute_windows(data, fb, fs, cc, step)
 
     if window_length >= n_samples:
         raise Exception(
@@ -188,9 +189,9 @@ def tvfcg_cfc(
 
     #
     n_channels, n_samples = np.shape(data)
-
-    window_length = np.int32(np.round((cc / fb_lo[0]) * fs))
-    windows = np.int32(np.round((n_samples - window_length) / step))
+    # window_length = np.int32(np.round((cc / fb_lo[0]) * fs))
+    # windows = np.int32(np.round((n_samples - window_length) / step))
+    windows, window_length = tvfcg_compute_windows(data, fb_lo, fs, cc, step)
 
     if window_length >= n_samples:
         raise Exception(
@@ -318,11 +319,11 @@ def tvfcg_compute_windows(data, fb_lo, fs, cc, step):
     window_length : int
         The length of a sliding window; number of samples used to estimated the connectivity.
     """
-    _, _, n_samples = np.shape(data)
+    _, n_samples = np.shape(data)
     window_length = np.int32(np.round((cc / fb_lo[0]) * fs))
     windows = np.int32(np.round((n_samples - window_length) / step))
 
-    print("window_length = {0}".format(window_length))
+    # print("window_length = {0}".format(window_length))
 
     if window_length >= n_samples:
         raise Exception(
