@@ -18,7 +18,7 @@ from .pac import PAC, pac
 from .mui import mutual_information
 from .dpli import dpli
 from .wpli import wpli, dwpli
-from .coherence import coherence
+from .coherence import coherence, Coherence
 from .icoherence import icoherence
 from .corr import corr, Corr
 from .crosscorr import crosscorr
@@ -49,6 +49,7 @@ __all__ = [
     "wpli",
     "dwpli",
     "coherence",
+    "Coherence",
     "icoherence",
     "corr",
     "Corr",

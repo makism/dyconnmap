@@ -157,3 +157,32 @@ class Coherence(Estimator):
         cohv = np.abs(csdxy * np.conj(csdxy)) / (csdxx * csdyy)
 
         return np.sum(cohv) / len(cohv)
+
+    def estimate(self, data, data_against=None):
+        """
+
+
+        Returns
+        -------
+        ts : complex array-like, shape(n_channels, n_channels, n_samples)
+            Estimated PLV time series (complex valued).
+
+        avg : array-like, shape(n_channels, n_channels)
+            Average PLV.
+
+
+        Notes
+        -----
+        Called from :mod:`dyfunconn.tvfcgs.tvfcg`.
+        """
+        n_rois, n_samples = np.shape(data)
+
+        super().prepare_pairs(n_rois)
+
+        avg = np.zeros((n_rois, n_rois))
+
+        for pair in self.pairs:
+            ts1, ts2 = data[pair,]
+            avg[pair] = self.estimate_pair(ts1, ts2)
+
+        return (None, avg)

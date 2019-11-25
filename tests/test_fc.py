@@ -11,6 +11,7 @@ from dyfunconn.fc import (
     aec,
     #   biplv,
     coherence,
+    Coherence,
     dpli,
     esc,
     glm,
@@ -57,6 +58,24 @@ def test_coherence():
     expected = np.load("data/test_coherence.npy")
     # np.testing.assert_array_equal(coh, expected)
     np.testing.assert_allclose(coh, expected, rtol=1e-10, atol=0.0)
+
+
+def test_coherence_class():
+    data = np.load("../examples/data/eeg_32chans_10secs.npy")
+
+    csdparams = {"NFFT": 256, "noverlap": 256 / 2.0}
+
+    coh = Coherence([1.0, 4.0], 128.0, **csdparams)
+    pp_data = coh.preprocess(data)
+    _, avg = coh.estimate(pp_data)
+
+    expected = np.load("data/test_coherence.npy")
+
+    avg = avg + avg.T
+    np.fill_diagonal(avg, 1.0)
+
+    # np.testing.assert_array_equal(coh, expected)
+    np.testing.assert_allclose(avg, expected, rtol=1e-10, atol=0.0)
 
 
 def test_dpli():
