@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """ Merge Neural Gas
 
-Merge Neural Gas (MNG) is similar to the original Neural Gas algorithm, but each node,
+Merge Neural Gas (MNG) [Strickert2003]_ is similar to the original Neural Gas algorithm, but each node,
 has an additional context vector (:math:`c`) associated; and the best matching unit is
 determined by a linear combination of both the weight and context vector (thus the merge),
 from the previous iteration.

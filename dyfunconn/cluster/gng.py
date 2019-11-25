@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """ Growing NeuralGas
 
-Growing Neural Gas (*GNG*) is a dynamic neural network (as in adaptive) that learns topologies.
+Growing Neural Gas (*GNG*) [Fritzke1995]_ is a dynamic neural network (as in adaptive) that learns topologies.
 Compared to Neural Gas, GNG provides the functionality of adding or purging the constructed graph of
 nodes and edges when certain criterion are met.
 

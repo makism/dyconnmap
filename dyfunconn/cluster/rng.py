@@ -1,11 +1,15 @@
 # -*- coding: utf-8 -*-
 """ Relational Neural Gas
 
+Relational Neural Gas (RNG) [Hammer2007]_ is a variant of Neural Gas, that allows clustering and mining
+data from a pairwise similarity or dissimilarity matrix.
+
 
 |
 
 -----
 
+.. [Hammer2007] Hammer, B., & Hasenfuss, A. (2007, September). Relational neural gas. In Annual Conference on Artificial Intelligence (pp. 190-204). Springer, Berlin, Heidelberg.
 .. [Hasenfuss2008] Hasenfuss, A., Hammer, B., & Rossi, F. (2008, July). Patch Relational Neural Gas–Clustering of Huge Dissimilarity Datasets. In IAPR Workshop on Artificial Neural Networks in Pattern Recognition (pp. 1-12). Springer, Berlin, Heidelberg.
 
 """
