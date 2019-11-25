@@ -319,7 +319,7 @@ def tvfcg_compute_windows(data, fb_lo, fs, cc, step):
     window_length : int
         The length of a sliding window; number of samples used to estimated the connectivity.
     """
-    _, n_samples = np.shape(data)
+    *_, n_samples = np.shape(data)
     window_length = np.int32(np.round((cc / fb_lo[0]) * fs))
     windows = np.int32(np.round((n_samples - window_length) / step))
 
