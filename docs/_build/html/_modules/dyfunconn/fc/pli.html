@@ -253,10 +253,12 @@
 <div class="viewcode-block" id="PLI.estimate"><a class="viewcode-back" href="../../../dyfunconn.fc.html#dyfunconn.fc.pli.PLI.estimate">[docs]</a>    <span class="k">def</span> <span class="nf">estimate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">data_against</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="n">n_rois</span><span class="p">,</span> <span class="n">n_samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">pairs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">pairs</span> <span class="o">=</span> <span class="p">[</span>
-                <span class="p">(</span><span class="n">r1</span><span class="p">,</span> <span class="n">r2</span><span class="p">)</span> <span class="k">for</span> <span class="n">r1</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_rois</span><span class="p">)</span> <span class="k">for</span> <span class="n">r2</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">r1</span><span class="p">,</span> <span class="n">n_rois</span><span class="p">)</span> <span class="k">if</span> <span class="n">r1</span> <span class="o">!=</span> <span class="n">r2</span>
-            <span class="p">]</span>
+        <span class="c1"># if self.pairs is None:</span>
+        <span class="c1"># self.pairs = [</span>
+        <span class="c1"># (r1, r2) for r1 in range(n_rois) for r2 in range(r1, n_rois) if r1 != r2</span>
+        <span class="c1"># ]</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">prepare_pairs</span><span class="p">(</span><span class="n">n_rois</span><span class="p">)</span>
 
         <span class="n">ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_rois</span><span class="p">,</span> <span class="n">n_rois</span><span class="p">,</span> <span class="n">n_samples</span><span class="p">))</span>
         <span class="n">avg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_rois</span><span class="p">,</span> <span class="n">n_rois</span><span class="p">))</span>

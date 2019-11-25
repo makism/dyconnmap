@@ -208,10 +208,11 @@
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics.pairwise</span> <span class="k">import</span> <span class="n">pairwise_distances</span>
 <span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="k">import</span> <span class="n">NearestNeighbors</span>
-<span class="kn">from</span> <span class="nn">sklearn.manifold</span> <span class="k">import</span> <span class="n">MDS</span>
+
+<span class="kn">from</span> <span class="nn">.cluster</span> <span class="k">import</span> <span class="n">BaseCluster</span>
 
 
-<div class="viewcode-block" id="NeuralGas"><a class="viewcode-back" href="../../../dyfunconn.cluster.html#dyfunconn.cluster.ng.NeuralGas">[docs]</a><span class="k">class</span> <span class="nc">NeuralGas</span><span class="p">:</span>
+<div class="viewcode-block" id="NeuralGas"><a class="viewcode-back" href="../../../dyfunconn.cluster.html#dyfunconn.cluster.ng.NeuralGas">[docs]</a><span class="k">class</span> <span class="nc">NeuralGas</span><span class="p">(</span><span class="n">BaseCluster</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Neural Gas</span>
 
 
@@ -259,11 +260,24 @@
 <span class="sd">    Slightly based on *http://webloria.loria.fr/~rougier/downloads/ng.py*</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_protos</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span> <span class="n">epsilon</span><span class="o">=</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">],</span> <span class="n">lrate</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.005</span><span class="p">],</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;euclidean&#39;</span><span class="p">,</span> <span class="n">rng</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">n_protos</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+        <span class="n">iterations</span><span class="o">=</span><span class="mi">1024</span><span class="p">,</span>
+        <span class="c1"># epsilon=[10, 0.001],</span>
+        <span class="n">epsilon</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="c1"># lrate=[0.5, 0.005],</span>
+        <span class="n">lrate</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;euclidean&quot;</span><span class="p">,</span>
+        <span class="n">rng</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">n_protos</span> <span class="o">=</span> <span class="n">n_protos</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">iterations</span> <span class="o">=</span> <span class="n">iterations</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">epsilon_i</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">epsilon_f</span> <span class="o">=</span> <span class="n">epsilon</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">lrate_i</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">lrate_f</span> <span class="o">=</span> <span class="n">lrate</span>
+        <span class="k">if</span> <span class="n">epsilon</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">epsilon_i</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">epsilon_f</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">lrate</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">lrate_i</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">lrate_f</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.005</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">n_jobs</span> <span class="o">=</span> <span class="n">n_jobs</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">protos</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">distortion</span> <span class="o">=</span> <span class="mf">0.0</span>
@@ -292,19 +306,21 @@
 <span class="sd">            The instance itself</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="p">[</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">_</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">protos</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_protos</span><span class="p">),</span> <span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">protos</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_protos</span><span class="p">),]</span>
 
         <span class="n">avg_p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
         <span class="n">dist_from_avg_p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">pairwise_distances</span><span class="p">(</span><span class="n">avg_p</span><span class="p">,</span> <span class="n">data</span><span class="p">))</span>
 
         <span class="k">for</span> <span class="n">iteration</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">iterations</span><span class="p">):</span>
-            <span class="n">sample</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">]</span>
+            <span class="n">sample</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="mi">1</span><span class="p">),]</span>
 
             <span class="n">t</span> <span class="o">=</span> <span class="n">iteration</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">iterations</span><span class="p">)</span>
             <span class="n">lrate</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lrate_i</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lrate_f</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lrate_i</span><span class="p">))</span> <span class="o">**</span> <span class="n">t</span>
             <span class="n">epsilon</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">epsilon_i</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">epsilon_f</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">epsilon_i</span><span class="p">))</span> <span class="o">**</span> <span class="n">t</span>
 
-            <span class="n">D</span> <span class="o">=</span> <span class="n">pairwise_distances</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">protos</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">metric</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">n_jobs</span><span class="p">)</span>
+            <span class="n">D</span> <span class="o">=</span> <span class="n">pairwise_distances</span><span class="p">(</span>
+                <span class="n">sample</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">protos</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">metric</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">n_jobs</span>
+            <span class="p">)</span>
             <span class="n">I</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">D</span><span class="p">))</span>
 
             <span class="n">H</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">I</span> <span class="o">/</span> <span class="n">epsilon</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
@@ -313,54 +329,11 @@
             <span class="k">for</span> <span class="n">proto_id</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_protos</span><span class="p">):</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">protos</span><span class="p">[</span><span class="n">proto_id</span><span class="p">,</span> <span class="p">:]</span> <span class="o">+=</span> <span class="n">lrate</span> <span class="o">*</span> <span class="n">H</span><span class="p">[</span><span class="n">proto_id</span><span class="p">]</span> <span class="o">*</span> <span class="n">diff</span><span class="p">[</span><span class="n">proto_id</span><span class="p">,</span> <span class="p">:]</span>
 
-        <span class="n">nbrs</span> <span class="o">=</span> <span class="n">NearestNeighbors</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">protos</span><span class="p">)</span>
+        <span class="n">nbrs</span> <span class="o">=</span> <span class="n">NearestNeighbors</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">protos</span><span class="p">)</span>
         <span class="n">distances</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">kneighbors</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">distortion</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">distances</span><span class="p">)</span> <span class="o">/</span> <span class="n">dist_from_avg_p</span>
 
-        <span class="k">return</span> <span class="bp">self</span></div>
-
-<div class="viewcode-block" id="NeuralGas.encode"><a class="viewcode-back" href="../../../dyfunconn.cluster.html#dyfunconn.cluster.ng.NeuralGas.encode">[docs]</a>    <span class="k">def</span> <span class="nf">encode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; Employ a nearest-neighbor rule to encode the given ``data`` using the codebook.</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        data : real array-like, shape(n_samples, n_features)</span>
-<span class="sd">            Data matrix, each row represents a sample.</span>
-
-<span class="sd">        metric : string or None</span>
-<span class="sd">            One of the following valid options as defined for function http://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.pairwise_distances.html.</span>
-
-<span class="sd">            Valid options include:</span>
-
-<span class="sd">             - euclidean</span>
-<span class="sd">             - cityblock</span>
-<span class="sd">             - l1</span>
-<span class="sd">             - cosine</span>
-
-<span class="sd">             If `None` is passed, the matric used for learning the data will be used.</span>
-
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        encoded_data : real array-like, shape(n_samples, n_features)</span>
-<span class="sd">            ``data``, as represented by the prototypes in codebook.</span>
-<span class="sd">        ts_symbols : list, shape(n_samples, 1)</span>
-<span class="sd">            A discrete symbolic time series</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="c1"># Perform a proposed data mining procedure as described in [Laskaris2004].</span>
-        <span class="n">mds</span> <span class="o">=</span> <span class="n">MDS</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">rng</span><span class="p">)</span>
-        <span class="n">protos_1d</span> <span class="o">=</span> <span class="n">mds</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">protos</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
-        <span class="n">sorted_protos_1d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">protos_1d</span><span class="p">)</span>
-
-        <span class="n">sprotos</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">protos</span><span class="p">[</span><span class="n">sorted_protos_1d</span><span class="p">]</span>
-
-        <span class="k">if</span> <span class="n">metric</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">metric</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">metric</span>
-
-        <span class="n">nbrs</span> <span class="o">=</span> <span class="n">NearestNeighbors</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="n">metric</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">sprotos</span><span class="p">)</span>
-        <span class="n">_</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__symbols</span> <span class="o">=</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">kneighbors</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__encoding</span> <span class="o">=</span> <span class="n">sprotos</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">__symbols</span><span class="p">]</span>
-
-        <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__encoding</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__symbols</span><span class="p">)</span></div></div>
+        <span class="k">return</span> <span class="bp">self</span></div></div>
 </pre></div>
 
            </div>

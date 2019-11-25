@@ -175,7 +175,7 @@
     <span class="sd">&quot;&quot;&quot; Imaginary part of Phase Locking Value</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">n_rois</span><span class="p">,</span> <span class="n">n_samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">n_samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
     <span class="n">_</span><span class="p">,</span> <span class="n">u_phases</span> <span class="o">=</span> <span class="n">analytic_signal</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
     <span class="n">Q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">u_phases</span><span class="p">)</span>

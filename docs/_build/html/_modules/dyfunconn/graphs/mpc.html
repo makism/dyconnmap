@@ -249,7 +249,7 @@
 <span class="sd">        Returns the original multilayer graph flattened, with the off diagional</span>
 <span class="sd">        containing the estimated interlayer multilayer participation coefficient.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">num_layers</span><span class="p">,</span> <span class="n">nun_rois</span><span class="p">,</span> <span class="n">num_rois</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">mlgraph</span><span class="p">)</span>
+    <span class="n">num_layers</span><span class="p">,</span> <span class="n">num_rois</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">mlgraph</span><span class="p">)</span>
 
     <span class="n">flattened</span> <span class="o">=</span> <span class="n">LA</span><span class="o">.</span><span class="n">block_diag</span><span class="p">(</span><span class="o">*</span><span class="n">mlgraph</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">s1</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_layers</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
@@ -262,7 +262,7 @@
 
         <span class="n">tmp</span> <span class="o">=</span> <span class="n">mlgraph</span><span class="p">[</span><span class="n">l</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span>
         <span class="n">connectivity</span> <span class="o">=</span> <span class="n">__interslice_coupling</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
-        <span class="n">num_conn_layers</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">connectivity</span><span class="p">)</span>
+        <span class="c1"># num_conn_layers, _ = np.shape(connectivity)</span>
         <span class="n">values</span> <span class="o">=</span> <span class="n">connectivity</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
 
         <span class="n">np</span><span class="o">.</span><span class="n">fill_diagonal</span><span class="p">(</span><span class="n">flattened</span><span class="p">[</span><span class="n">offset</span><span class="p">:],</span> <span class="n">values</span><span class="p">)</span>
@@ -287,7 +287,7 @@
 <span class="sd">    gamma : array-like</span>
 <span class="sd">        Description</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">num_layers</span><span class="p">,</span> <span class="n">nun_rois</span><span class="p">,</span> <span class="n">num_rois</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">mlgraph</span><span class="p">)</span>
+    <span class="n">num_layers</span><span class="p">,</span> <span class="n">num_rois</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">mlgraph</span><span class="p">)</span>
 
     <span class="n">gamma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">num_layers</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">num_rois</span><span class="p">))</span>
 

@@ -147,7 +147,7 @@
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot; Growing NeuralGas</span>
 
-<span class="sd">Growing Neural Gas (*GNG*) is a dynamic neural network (as in adaptive) that learns topologies.</span>
+<span class="sd">Growing Neural Gas (*GNG*) [Fritzke1995]_ is a dynamic neural network (as in adaptive) that learns topologies.</span>
 <span class="sd">Compared to Neural Gas, GNG provides the functionality of adding or purging the constructed graph of</span>
 <span class="sd">nodes and edges when certain criterion are met.</span>
 
@@ -204,11 +204,11 @@
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics.pairwise</span> <span class="k">import</span> <span class="n">pairwise_distances</span>
-<span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="k">import</span> <span class="n">NearestNeighbors</span>
-<span class="kn">from</span> <span class="nn">sklearn.manifold</span> <span class="k">import</span> <span class="n">MDS</span>
+
+<span class="kn">from</span> <span class="nn">.cluster</span> <span class="k">import</span> <span class="n">BaseCluster</span>
 
 
-<div class="viewcode-block" id="GrowingNeuralGas"><a class="viewcode-back" href="../../../dyfunconn.cluster.html#dyfunconn.cluster.gng.GrowingNeuralGas">[docs]</a><span class="k">class</span> <span class="nc">GrowingNeuralGas</span><span class="p">:</span>
+<div class="viewcode-block" id="GrowingNeuralGas"><a class="viewcode-back" href="../../../dyfunconn.cluster.html#dyfunconn.cluster.gng.GrowingNeuralGas">[docs]</a><span class="k">class</span> <span class="nc">GrowingNeuralGas</span><span class="p">(</span><span class="n">BaseCluster</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Growing Neural Gas</span>
 
 
@@ -260,11 +260,13 @@
         <span class="n">a</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
         <span class="n">b</span><span class="o">=</span><span class="mf">0.0005</span><span class="p">,</span>
         <span class="n">iterations</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span>
-        <span class="n">lrate</span><span class="o">=</span><span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.0006</span><span class="p">],</span>
+        <span class="n">lrate</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="c1"># lrate=[0.05, 0.0006],</span>
         <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
         <span class="n">rng</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">ew</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">en</span> <span class="o">=</span> <span class="n">lrate</span>
+        <span class="k">if</span> <span class="n">lrate</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ew</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">en</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.0006</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">a_max</span> <span class="o">=</span> <span class="n">a_max</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">total_lambda</span> <span class="o">=</span> <span class="n">l</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">max_nodes</span> <span class="o">=</span> <span class="n">n_max_protos</span>
@@ -278,6 +280,8 @@
             <span class="bp">self</span><span class="o">.</span><span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">()</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">rng</span> <span class="o">=</span> <span class="n">rng</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">metric</span> <span class="o">=</span> <span class="s2">&quot;euclidean&quot;</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">__nodes</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">__g</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">Graph</span><span class="p">()</span>
@@ -298,7 +302,7 @@
 <span class="sd">        self : object</span>
 <span class="sd">            The instance itself</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">n_samples</span><span class="p">,</span> <span class="n">n_features</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="n">n_samples</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
         <span class="n">initial_indices</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
@@ -311,10 +315,10 @@
             <span class="n">sample_indice</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
             <span class="n">sample</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">sample_indice</span><span class="p">,</span> <span class="p">:]</span>
 
-            <span class="n">all_pos</span> <span class="o">=</span> <span class="p">{</span>
-                <span class="n">node_id</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">datadict</span><span class="p">[</span><span class="s2">&quot;pos&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
-                <span class="k">for</span> <span class="n">node_id</span><span class="p">,</span> <span class="n">datadict</span> <span class="ow">in</span> <span class="n">g</span><span class="o">.</span><span class="n">nodes</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-            <span class="p">}</span>
+            <span class="c1"># all_pos = {</span>
+            <span class="c1"># node_id: np.squeeze(datadict[&quot;pos&quot;]).tolist()</span>
+            <span class="c1"># for node_id, datadict in g.nodes(data=True)</span>
+            <span class="c1"># }</span>
 
             <span class="c1"># Get nodes from the Graph</span>
             <span class="n">nodes</span> <span class="o">=</span> <span class="p">[</span>
@@ -381,7 +385,8 @@
                     <span class="n">all_nodes</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">nodedata</span><span class="p">:</span> <span class="n">nodedata</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span>
                 <span class="p">)</span>
 
-                <span class="n">n1</span><span class="p">,</span> <span class="n">error</span> <span class="o">=</span> <span class="n">all_nodes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="c1"># n1, error = all_nodes[0]</span>
+                <span class="n">n1</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">all_nodes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
                 <span class="n">neighborhood</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">neighbors</span><span class="p">(</span><span class="n">n1</span><span class="p">))</span>
 
@@ -413,34 +418,16 @@
                 <span class="n">g</span><span class="o">.</span><span class="n">node</span><span class="p">[</span><span class="n">new_node_id</span><span class="p">][</span><span class="s2">&quot;error&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">node</span><span class="p">[</span><span class="n">n1</span><span class="p">][</span><span class="s2">&quot;error&quot;</span><span class="p">]</span>
 
             <span class="c1"># Global error reduction</span>
-            <span class="k">for</span> <span class="n">node</span><span class="p">,</span> <span class="n">datadict</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">nodes</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">)):</span>
+            <span class="c1"># for node, datadict in list(g.nodes(data=True)):</span>
+            <span class="k">for</span> <span class="n">node</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">g</span><span class="o">.</span><span class="n">nodes</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">)):</span>
                 <span class="n">g</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="s2">&quot;error&quot;</span><span class="p">]</span> <span class="o">-=</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta</span> <span class="o">*</span> <span class="n">g</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="n">node</span><span class="p">][</span><span class="s2">&quot;error&quot;</span><span class="p">]</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">__g</span> <span class="o">=</span> <span class="n">g</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">protos</span> <span class="o">=</span> <span class="nb">list</span><span class="p">([</span><span class="n">datadict</span><span class="p">[</span><span class="s2">&quot;pos&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">node</span><span class="p">,</span> <span class="n">datadict</span> <span class="ow">in</span> <span class="n">g</span><span class="o">.</span><span class="n">nodes</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">)])</span>
-
-        <span class="k">return</span> <span class="bp">self</span></div>
-
-<div class="viewcode-block" id="GrowingNeuralGas.encode"><a class="viewcode-back" href="../../../dyfunconn.cluster.html#dyfunconn.cluster.gng.GrowingNeuralGas.encode">[docs]</a>    <span class="k">def</span> <span class="nf">encode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
-
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">mds</span> <span class="o">=</span> <span class="n">MDS</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">rng</span><span class="p">)</span>
-        <span class="n">protos_1d</span> <span class="o">=</span> <span class="n">mds</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">protos</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
-        <span class="n">sorted_protos_1d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">protos_1d</span><span class="p">)</span>
-
-        <span class="n">sprotos</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">protos</span><span class="p">[</span><span class="n">sorted_protos_1d</span><span class="p">]</span>
-
-        <span class="k">if</span> <span class="n">metric</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">metric</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">metric</span>
-
-        <span class="n">nbrs</span> <span class="o">=</span> <span class="n">NearestNeighbors</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="n">metric</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
-            <span class="n">sprotos</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">protos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span>
+            <span class="nb">list</span><span class="p">([</span><span class="n">datadict</span><span class="p">[</span><span class="s2">&quot;pos&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">node</span><span class="p">,</span> <span class="n">datadict</span> <span class="ow">in</span> <span class="n">g</span><span class="o">.</span><span class="n">nodes</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">)])</span>
         <span class="p">)</span>
-        <span class="n">_</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__symbols</span> <span class="o">=</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">kneighbors</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__encoding</span> <span class="o">=</span> <span class="n">sprotos</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">__symbols</span><span class="p">]</span>
 
-        <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__encoding</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__symbols</span><span class="p">)</span></div></div>
+        <span class="k">return</span> <span class="bp">self</span></div></div>
 </pre></div>
 
            </div>

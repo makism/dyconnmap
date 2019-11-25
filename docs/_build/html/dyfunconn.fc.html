@@ -354,10 +354,13 @@ within the range <span class="math notranslate nohighlight">\([0,1]\)</span>.</p
 <tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.fc.coherence.Coherence.mean" title="dyfunconn.fc.coherence.Coherence.mean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mean</span></code></a>(ts)</p></td>
 <td><p>The function used to compute the mean synchronization in a timeseries.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#dyfunconn.fc.coherence.Coherence.preprocess" title="dyfunconn.fc.coherence.Coherence.preprocess"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preprocess</span></code></a>(data)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#dyfunconn.fc.coherence.Coherence.prepare_pairs" title="dyfunconn.fc.coherence.Coherence.prepare_pairs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prepare_pairs</span></code></a>(rois[, symmetric])</p></td>
+<td><p>Prepares a list of indices of ROIs sourced in an estimator.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.fc.coherence.Coherence.preprocess" title="dyfunconn.fc.coherence.Coherence.preprocess"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preprocess</span></code></a>(data)</p></td>
 <td><p>Preprocess the data.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.fc.coherence.Coherence.typeCast" title="dyfunconn.fc.coherence.Coherence.typeCast"><code class="xref py py-obj docutils literal notranslate"><span class="pre">typeCast</span></code></a>(data[, cast_type])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#dyfunconn.fc.coherence.Coherence.typeCast" title="dyfunconn.fc.coherence.Coherence.typeCast"><code class="xref py py-obj docutils literal notranslate"><span class="pre">typeCast</span></code></a>(data[, cast_type])</p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -387,6 +390,20 @@ special treatment is needed (i.e. taking only the real part).</p>
 <dd class="field-odd"><p><strong>mtx</strong> : array-like</p>
 <blockquote>
 <div><p>The average synchronization.</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="dyfunconn.fc.coherence.Coherence.prepare_pairs">
+<code class="sig-name descname">prepare_pairs</code><span class="sig-paren">(</span><em class="sig-param">rois</em>, <em class="sig-param">symmetric=False</em><span class="sig-paren">)</span><a class="headerlink" href="#dyfunconn.fc.coherence.Coherence.prepare_pairs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prepares a list of indices of ROIs sourced in an estimator.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>rois</strong> : int</p>
+<blockquote>
+<div><p>Number of rois</p>
 </div></blockquote>
 </dd>
 </dl>
@@ -498,10 +515,13 @@ between the :attr:<a href="#id3"><span class="problematic" id="id4">`</span></a>
 <tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.fc.corr.Corr.mean" title="dyfunconn.fc.corr.Corr.mean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mean</span></code></a>(value)</p></td>
 <td><p>The function used to compute the mean synchronization in a timeseries.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#dyfunconn.fc.corr.Corr.preprocess" title="dyfunconn.fc.corr.Corr.preprocess"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preprocess</span></code></a>(data)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#dyfunconn.fc.corr.Corr.prepare_pairs" title="dyfunconn.fc.corr.Corr.prepare_pairs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prepare_pairs</span></code></a>(rois[, symmetric])</p></td>
+<td><p>Prepares a list of indices of ROIs sourced in an estimator.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.fc.corr.Corr.preprocess" title="dyfunconn.fc.corr.Corr.preprocess"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preprocess</span></code></a>(data)</p></td>
 <td><p>Preprocess the data.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.fc.corr.Corr.typeCast" title="dyfunconn.fc.corr.Corr.typeCast"><code class="xref py py-obj docutils literal notranslate"><span class="pre">typeCast</span></code></a>(data[, cast_type])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#dyfunconn.fc.corr.Corr.typeCast" title="dyfunconn.fc.corr.Corr.typeCast"><code class="xref py py-obj docutils literal notranslate"><span class="pre">typeCast</span></code></a>(data[, cast_type])</p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -551,6 +571,20 @@ special treatment is needed (i.e. taking only the real part).</p>
 <dd class="field-odd"><p><strong>mtx</strong> : array-like</p>
 <blockquote>
 <div><p>The average synchronization.</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="dyfunconn.fc.corr.Corr.prepare_pairs">
+<code class="sig-name descname">prepare_pairs</code><span class="sig-paren">(</span><em class="sig-param">rois</em>, <em class="sig-param">symmetric=False</em><span class="sig-paren">)</span><a class="headerlink" href="#dyfunconn.fc.corr.Corr.prepare_pairs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prepares a list of indices of ROIs sourced in an estimator.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>rois</strong> : int</p>
+<blockquote>
+<div><p>Number of rois</p>
 </div></blockquote>
 </dd>
 </dl>
@@ -763,7 +797,7 @@ at the frequency band <span class="math notranslate nohighlight">\(hi\)</span>.<
 </div>
 <div class="section" id="module-dyfunconn.fc.estimator">
 <span id="dyfunconn-fc-estimator-module"></span><h2>dyfunconn.fc.estimator module<a class="headerlink" href="#module-dyfunconn.fc.estimator" title="Permalink to this headline">¶</a></h2>
-<p>Base classes for estimators</p>
+<p>Base class for estimators</p>
 <dl class="class">
 <dt id="dyfunconn.fc.estimator.Estimator">
 <em class="property">class </em><code class="sig-prename descclassname">dyfunconn.fc.estimator.</code><code class="sig-name descname">Estimator</code><span class="sig-paren">(</span><em class="sig-param">fb=None</em>, <em class="sig-param">fs=None</em>, <em class="sig-param">pairs=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/estimator.html#Estimator"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.estimator.Estimator" title="Permalink to this definition">¶</a></dt>
@@ -798,10 +832,13 @@ to be used for a time-varying functional connectivity analysis.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.fc.estimator.Estimator.mean" title="dyfunconn.fc.estimator.Estimator.mean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mean</span></code></a>(ts)</p></td>
 <td><p>The function used to compute the mean synchronization in a timeseries.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#dyfunconn.fc.estimator.Estimator.preprocess" title="dyfunconn.fc.estimator.Estimator.preprocess"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preprocess</span></code></a>(data)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#dyfunconn.fc.estimator.Estimator.prepare_pairs" title="dyfunconn.fc.estimator.Estimator.prepare_pairs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prepare_pairs</span></code></a>(rois[, symmetric])</p></td>
+<td><p>Prepares a list of indices of ROIs sourced in an estimator.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.fc.estimator.Estimator.preprocess" title="dyfunconn.fc.estimator.Estimator.preprocess"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preprocess</span></code></a>(data)</p></td>
 <td><p>Preprocess the data.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.fc.estimator.Estimator.typeCast" title="dyfunconn.fc.estimator.Estimator.typeCast"><code class="xref py py-obj docutils literal notranslate"><span class="pre">typeCast</span></code></a>(data[, cast_type])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#dyfunconn.fc.estimator.Estimator.typeCast" title="dyfunconn.fc.estimator.Estimator.typeCast"><code class="xref py py-obj docutils literal notranslate"><span class="pre">typeCast</span></code></a>(data[, cast_type])</p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -831,6 +868,20 @@ special treatment is needed (i.e. taking only the real part).</p>
 <dd class="field-odd"><p><strong>mtx</strong> : array-like</p>
 <blockquote>
 <div><p>The average synchronization.</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="dyfunconn.fc.estimator.Estimator.prepare_pairs">
+<code class="sig-name descname">prepare_pairs</code><span class="sig-paren">(</span><em class="sig-param">rois</em>, <em class="sig-param">symmetric=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/estimator.html#Estimator.prepare_pairs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.estimator.Estimator.prepare_pairs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prepares a list of indices of ROIs sourced in an estimator.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>rois</strong> : int</p>
+<blockquote>
+<div><p>Number of rois</p>
 </div></blockquote>
 </dd>
 </dl>
@@ -951,10 +1002,13 @@ Chicago</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.fc.icoherence.ICoherence.mean" title="dyfunconn.fc.icoherence.ICoherence.mean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mean</span></code></a>(ts)</p></td>
 <td><p>The function used to compute the mean synchronization in a timeseries.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#dyfunconn.fc.icoherence.ICoherence.preprocess" title="dyfunconn.fc.icoherence.ICoherence.preprocess"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preprocess</span></code></a>(data)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#dyfunconn.fc.icoherence.ICoherence.prepare_pairs" title="dyfunconn.fc.icoherence.ICoherence.prepare_pairs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prepare_pairs</span></code></a>(rois[, symmetric])</p></td>
+<td><p>Prepares a list of indices of ROIs sourced in an estimator.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.fc.icoherence.ICoherence.preprocess" title="dyfunconn.fc.icoherence.ICoherence.preprocess"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preprocess</span></code></a>(data)</p></td>
 <td><p>Preprocess the data.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.fc.icoherence.ICoherence.typeCast" title="dyfunconn.fc.icoherence.ICoherence.typeCast"><code class="xref py py-obj docutils literal notranslate"><span class="pre">typeCast</span></code></a>(data[, cast_type])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#dyfunconn.fc.icoherence.ICoherence.typeCast" title="dyfunconn.fc.icoherence.ICoherence.typeCast"><code class="xref py py-obj docutils literal notranslate"><span class="pre">typeCast</span></code></a>(data[, cast_type])</p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -984,6 +1038,20 @@ special treatment is needed (i.e. taking only the real part).</p>
 <dd class="field-odd"><p><strong>mtx</strong> : array-like</p>
 <blockquote>
 <div><p>The average synchronization.</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="dyfunconn.fc.icoherence.ICoherence.prepare_pairs">
+<code class="sig-name descname">prepare_pairs</code><span class="sig-paren">(</span><em class="sig-param">rois</em>, <em class="sig-param">symmetric=False</em><span class="sig-paren">)</span><a class="headerlink" href="#dyfunconn.fc.icoherence.ICoherence.prepare_pairs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prepares a list of indices of ROIs sourced in an estimator.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>rois</strong> : int</p>
+<blockquote>
+<div><p>Number of rois</p>
 </div></blockquote>
 </dd>
 </dl>
@@ -1108,10 +1176,13 @@ volume conduction and common reference effects.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.fc.iplv.IPLV.mean" title="dyfunconn.fc.iplv.IPLV.mean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mean</span></code></a>(ts)</p></td>
 <td><p>The function used to compute the mean synchronization in a timeseries.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#dyfunconn.fc.iplv.IPLV.preprocess" title="dyfunconn.fc.iplv.IPLV.preprocess"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preprocess</span></code></a>(data)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#dyfunconn.fc.iplv.IPLV.prepare_pairs" title="dyfunconn.fc.iplv.IPLV.prepare_pairs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prepare_pairs</span></code></a>(rois[, symmetric])</p></td>
+<td><p>Prepares a list of indices of ROIs sourced in an estimator.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.fc.iplv.IPLV.preprocess" title="dyfunconn.fc.iplv.IPLV.preprocess"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preprocess</span></code></a>(data)</p></td>
 <td><p>Preprocess the data.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.fc.iplv.IPLV.typeCast" title="dyfunconn.fc.iplv.IPLV.typeCast"><code class="xref py py-obj docutils literal notranslate"><span class="pre">typeCast</span></code></a>(data[, cast_type])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#dyfunconn.fc.iplv.IPLV.typeCast" title="dyfunconn.fc.iplv.IPLV.typeCast"><code class="xref py py-obj docutils literal notranslate"><span class="pre">typeCast</span></code></a>(data[, cast_type])</p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -1159,6 +1230,20 @@ special treatment is needed (i.e. taking only the real part).</p>
 <dd class="field-odd"><p><strong>mtx</strong> : array-like</p>
 <blockquote>
 <div><p>The average synchronization.</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="dyfunconn.fc.iplv.IPLV.prepare_pairs">
+<code class="sig-name descname">prepare_pairs</code><span class="sig-paren">(</span><em class="sig-param">rois</em>, <em class="sig-param">symmetric=False</em><span class="sig-paren">)</span><a class="headerlink" href="#dyfunconn.fc.iplv.IPLV.prepare_pairs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prepares a list of indices of ROIs sourced in an estimator.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>rois</strong> : int</p>
+<blockquote>
+<div><p>Number of rois</p>
 </div></blockquote>
 </dd>
 </dl>
@@ -1323,10 +1408,13 @@ phase of a low frequency drive the power of a higher frequency.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.fc.pac.PAC.mean" title="dyfunconn.fc.pac.PAC.mean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mean</span></code></a>(ts)</p></td>
 <td><p>The function used to compute the mean synchronization in a timeseries.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#dyfunconn.fc.pac.PAC.preprocess" title="dyfunconn.fc.pac.PAC.preprocess"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preprocess</span></code></a>(data)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#dyfunconn.fc.pac.PAC.prepare_pairs" title="dyfunconn.fc.pac.PAC.prepare_pairs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prepare_pairs</span></code></a>(rois[, symmetric])</p></td>
+<td><p>Prepares a list of indices of ROIs sourced in an estimator.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.fc.pac.PAC.preprocess" title="dyfunconn.fc.pac.PAC.preprocess"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preprocess</span></code></a>(data)</p></td>
 <td><p>Preprocess the data.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.fc.pac.PAC.typeCast" title="dyfunconn.fc.pac.PAC.typeCast"><code class="xref py py-obj docutils literal notranslate"><span class="pre">typeCast</span></code></a>(data[, cast_type])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#dyfunconn.fc.pac.PAC.typeCast" title="dyfunconn.fc.pac.PAC.typeCast"><code class="xref py py-obj docutils literal notranslate"><span class="pre">typeCast</span></code></a>(data[, cast_type])</p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -1356,6 +1444,20 @@ special treatment is needed (i.e. taking only the real part).</p>
 <dd class="field-odd"><p><strong>mtx</strong> : array-like</p>
 <blockquote>
 <div><p>The average synchronization.</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="dyfunconn.fc.pac.PAC.prepare_pairs">
+<code class="sig-name descname">prepare_pairs</code><span class="sig-paren">(</span><em class="sig-param">rois</em>, <em class="sig-param">symmetric=False</em><span class="sig-paren">)</span><a class="headerlink" href="#dyfunconn.fc.pac.PAC.prepare_pairs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prepares a list of indices of ROIs sourced in an estimator.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>rois</strong> : int</p>
+<blockquote>
+<div><p>Number of rois</p>
 </div></blockquote>
 </dd>
 </dl>
@@ -1537,10 +1639,13 @@ denotes the mean value and || the absolute value.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.fc.pli.PLI.mean" title="dyfunconn.fc.pli.PLI.mean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mean</span></code></a>(ts)</p></td>
 <td><p>The function used to compute the mean synchronization in a timeseries.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#dyfunconn.fc.pli.PLI.preprocess" title="dyfunconn.fc.pli.PLI.preprocess"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preprocess</span></code></a>(data)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#dyfunconn.fc.pli.PLI.prepare_pairs" title="dyfunconn.fc.pli.PLI.prepare_pairs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prepare_pairs</span></code></a>(rois[, symmetric])</p></td>
+<td><p>Prepares a list of indices of ROIs sourced in an estimator.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.fc.pli.PLI.preprocess" title="dyfunconn.fc.pli.PLI.preprocess"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preprocess</span></code></a>(data)</p></td>
 <td><p>Preprocess the data.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.fc.pli.PLI.typeCast" title="dyfunconn.fc.pli.PLI.typeCast"><code class="xref py py-obj docutils literal notranslate"><span class="pre">typeCast</span></code></a>(data[, cast_type])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#dyfunconn.fc.pli.PLI.typeCast" title="dyfunconn.fc.pli.PLI.typeCast"><code class="xref py py-obj docutils literal notranslate"><span class="pre">typeCast</span></code></a>(data[, cast_type])</p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -1570,6 +1675,20 @@ special treatment is needed (i.e. taking only the real part).</p>
 <dd class="field-odd"><p><strong>mtx</strong> : array-like</p>
 <blockquote>
 <div><p>The average synchronization.</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="dyfunconn.fc.pli.PLI.prepare_pairs">
+<code class="sig-name descname">prepare_pairs</code><span class="sig-paren">(</span><em class="sig-param">rois</em>, <em class="sig-param">symmetric=False</em><span class="sig-paren">)</span><a class="headerlink" href="#dyfunconn.fc.pli.PLI.prepare_pairs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prepares a list of indices of ROIs sourced in an estimator.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>rois</strong> : int</p>
+<blockquote>
+<div><p>Number of rois</p>
 </div></blockquote>
 </dd>
 </dl>
@@ -1699,10 +1818,13 @@ phases, while a value of one denotes a perfect synchronization.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.fc.plv.PLV.mean" title="dyfunconn.fc.plv.PLV.mean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mean</span></code></a>(ts)</p></td>
 <td><p>The function used to compute the mean synchronization in a timeseries.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#dyfunconn.fc.plv.PLV.preprocess" title="dyfunconn.fc.plv.PLV.preprocess"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preprocess</span></code></a>(data)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#dyfunconn.fc.plv.PLV.prepare_pairs" title="dyfunconn.fc.plv.PLV.prepare_pairs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prepare_pairs</span></code></a>(rois[, symmetric])</p></td>
+<td><p>Prepares a list of indices of ROIs sourced in an estimator.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.fc.plv.PLV.preprocess" title="dyfunconn.fc.plv.PLV.preprocess"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preprocess</span></code></a>(data)</p></td>
 <td><p>Preprocess the data.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.fc.plv.PLV.typeCast" title="dyfunconn.fc.plv.PLV.typeCast"><code class="xref py py-obj docutils literal notranslate"><span class="pre">typeCast</span></code></a>(data[, cast_type])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#dyfunconn.fc.plv.PLV.typeCast" title="dyfunconn.fc.plv.PLV.typeCast"><code class="xref py py-obj docutils literal notranslate"><span class="pre">typeCast</span></code></a>(data[, cast_type])</p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -1756,6 +1878,20 @@ special treatment is needed (i.e. taking only the real part).</p>
 <dd class="field-odd"><p><strong>mtx</strong> : array-like</p>
 <blockquote>
 <div><p>The average synchronization.</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="dyfunconn.fc.plv.PLV.prepare_pairs">
+<code class="sig-name descname">prepare_pairs</code><span class="sig-paren">(</span><em class="sig-param">rois</em>, <em class="sig-param">symmetric=False</em><span class="sig-paren">)</span><a class="headerlink" href="#dyfunconn.fc.plv.PLV.prepare_pairs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prepares a list of indices of ROIs sourced in an estimator.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>rois</strong> : int</p>
+<blockquote>
+<div><p>Number of rois</p>
 </div></blockquote>
 </dd>
 </dl>
@@ -2031,10 +2167,13 @@ to be used for a time-varying functional connectivity analysis.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.fc.Estimator.mean" title="dyfunconn.fc.Estimator.mean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mean</span></code></a>(ts)</p></td>
 <td><p>The function used to compute the mean synchronization in a timeseries.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#dyfunconn.fc.Estimator.preprocess" title="dyfunconn.fc.Estimator.preprocess"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preprocess</span></code></a>(data)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#dyfunconn.fc.Estimator.prepare_pairs" title="dyfunconn.fc.Estimator.prepare_pairs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prepare_pairs</span></code></a>(rois[, symmetric])</p></td>
+<td><p>Prepares a list of indices of ROIs sourced in an estimator.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.fc.Estimator.preprocess" title="dyfunconn.fc.Estimator.preprocess"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preprocess</span></code></a>(data)</p></td>
 <td><p>Preprocess the data.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.fc.Estimator.typeCast" title="dyfunconn.fc.Estimator.typeCast"><code class="xref py py-obj docutils literal notranslate"><span class="pre">typeCast</span></code></a>(data[, cast_type])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#dyfunconn.fc.Estimator.typeCast" title="dyfunconn.fc.Estimator.typeCast"><code class="xref py py-obj docutils literal notranslate"><span class="pre">typeCast</span></code></a>(data[, cast_type])</p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -2064,6 +2203,20 @@ special treatment is needed (i.e. taking only the real part).</p>
 <dd class="field-odd"><p><strong>mtx</strong> : array-like</p>
 <blockquote>
 <div><p>The average synchronization.</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="dyfunconn.fc.Estimator.prepare_pairs">
+<code class="sig-name descname">prepare_pairs</code><span class="sig-paren">(</span><em class="sig-param">rois</em>, <em class="sig-param">symmetric=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/estimator.html#Estimator.prepare_pairs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.Estimator.prepare_pairs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prepares a list of indices of ROIs sourced in an estimator.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>rois</strong> : int</p>
+<blockquote>
+<div><p>Number of rois</p>
 </div></blockquote>
 </dd>
 </dl>
@@ -2120,10 +2273,13 @@ special treatment is needed (i.e. taking only the real part).</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.fc.PLV.mean" title="dyfunconn.fc.PLV.mean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mean</span></code></a>(ts)</p></td>
 <td><p>The function used to compute the mean synchronization in a timeseries.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#dyfunconn.fc.PLV.preprocess" title="dyfunconn.fc.PLV.preprocess"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preprocess</span></code></a>(data)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#dyfunconn.fc.PLV.prepare_pairs" title="dyfunconn.fc.PLV.prepare_pairs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prepare_pairs</span></code></a>(rois[, symmetric])</p></td>
+<td><p>Prepares a list of indices of ROIs sourced in an estimator.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.fc.PLV.preprocess" title="dyfunconn.fc.PLV.preprocess"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preprocess</span></code></a>(data)</p></td>
 <td><p>Preprocess the data.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.fc.PLV.typeCast" title="dyfunconn.fc.PLV.typeCast"><code class="xref py py-obj docutils literal notranslate"><span class="pre">typeCast</span></code></a>(data[, cast_type])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#dyfunconn.fc.PLV.typeCast" title="dyfunconn.fc.PLV.typeCast"><code class="xref py py-obj docutils literal notranslate"><span class="pre">typeCast</span></code></a>(data[, cast_type])</p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -2177,6 +2333,20 @@ special treatment is needed (i.e. taking only the real part).</p>
 <dd class="field-odd"><p><strong>mtx</strong> : array-like</p>
 <blockquote>
 <div><p>The average synchronization.</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="dyfunconn.fc.PLV.prepare_pairs">
+<code class="sig-name descname">prepare_pairs</code><span class="sig-paren">(</span><em class="sig-param">rois</em>, <em class="sig-param">symmetric=False</em><span class="sig-paren">)</span><a class="headerlink" href="#dyfunconn.fc.PLV.prepare_pairs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prepares a list of indices of ROIs sourced in an estimator.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>rois</strong> : int</p>
+<blockquote>
+<div><p>Number of rois</p>
 </div></blockquote>
 </dd>
 </dl>
@@ -2274,10 +2444,13 @@ of channels.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.fc.PLI.mean" title="dyfunconn.fc.PLI.mean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mean</span></code></a>(ts)</p></td>
 <td><p>The function used to compute the mean synchronization in a timeseries.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#dyfunconn.fc.PLI.preprocess" title="dyfunconn.fc.PLI.preprocess"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preprocess</span></code></a>(data)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#dyfunconn.fc.PLI.prepare_pairs" title="dyfunconn.fc.PLI.prepare_pairs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prepare_pairs</span></code></a>(rois[, symmetric])</p></td>
+<td><p>Prepares a list of indices of ROIs sourced in an estimator.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.fc.PLI.preprocess" title="dyfunconn.fc.PLI.preprocess"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preprocess</span></code></a>(data)</p></td>
 <td><p>Preprocess the data.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.fc.PLI.typeCast" title="dyfunconn.fc.PLI.typeCast"><code class="xref py py-obj docutils literal notranslate"><span class="pre">typeCast</span></code></a>(data[, cast_type])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#dyfunconn.fc.PLI.typeCast" title="dyfunconn.fc.PLI.typeCast"><code class="xref py py-obj docutils literal notranslate"><span class="pre">typeCast</span></code></a>(data[, cast_type])</p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -2307,6 +2480,20 @@ special treatment is needed (i.e. taking only the real part).</p>
 <dd class="field-odd"><p><strong>mtx</strong> : array-like</p>
 <blockquote>
 <div><p>The average synchronization.</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="dyfunconn.fc.PLI.prepare_pairs">
+<code class="sig-name descname">prepare_pairs</code><span class="sig-paren">(</span><em class="sig-param">rois</em>, <em class="sig-param">symmetric=False</em><span class="sig-paren">)</span><a class="headerlink" href="#dyfunconn.fc.PLI.prepare_pairs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prepares a list of indices of ROIs sourced in an estimator.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>rois</strong> : int</p>
+<blockquote>
+<div><p>Number of rois</p>
 </div></blockquote>
 </dd>
 </dl>
@@ -2413,10 +2600,13 @@ of channels.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.fc.IPLV.mean" title="dyfunconn.fc.IPLV.mean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mean</span></code></a>(ts)</p></td>
 <td><p>The function used to compute the mean synchronization in a timeseries.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#dyfunconn.fc.IPLV.preprocess" title="dyfunconn.fc.IPLV.preprocess"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preprocess</span></code></a>(data)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#dyfunconn.fc.IPLV.prepare_pairs" title="dyfunconn.fc.IPLV.prepare_pairs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prepare_pairs</span></code></a>(rois[, symmetric])</p></td>
+<td><p>Prepares a list of indices of ROIs sourced in an estimator.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.fc.IPLV.preprocess" title="dyfunconn.fc.IPLV.preprocess"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preprocess</span></code></a>(data)</p></td>
 <td><p>Preprocess the data.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.fc.IPLV.typeCast" title="dyfunconn.fc.IPLV.typeCast"><code class="xref py py-obj docutils literal notranslate"><span class="pre">typeCast</span></code></a>(data[, cast_type])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#dyfunconn.fc.IPLV.typeCast" title="dyfunconn.fc.IPLV.typeCast"><code class="xref py py-obj docutils literal notranslate"><span class="pre">typeCast</span></code></a>(data[, cast_type])</p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -2464,6 +2654,20 @@ special treatment is needed (i.e. taking only the real part).</p>
 <dd class="field-odd"><p><strong>mtx</strong> : array-like</p>
 <blockquote>
 <div><p>The average synchronization.</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="dyfunconn.fc.IPLV.prepare_pairs">
+<code class="sig-name descname">prepare_pairs</code><span class="sig-paren">(</span><em class="sig-param">rois</em>, <em class="sig-param">symmetric=False</em><span class="sig-paren">)</span><a class="headerlink" href="#dyfunconn.fc.IPLV.prepare_pairs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prepares a list of indices of ROIs sourced in an estimator.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>rois</strong> : int</p>
+<blockquote>
+<div><p>Number of rois</p>
 </div></blockquote>
 </dd>
 </dl>
@@ -2784,10 +2988,13 @@ of channels.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.fc.PAC.mean" title="dyfunconn.fc.PAC.mean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mean</span></code></a>(ts)</p></td>
 <td><p>The function used to compute the mean synchronization in a timeseries.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#dyfunconn.fc.PAC.preprocess" title="dyfunconn.fc.PAC.preprocess"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preprocess</span></code></a>(data)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#dyfunconn.fc.PAC.prepare_pairs" title="dyfunconn.fc.PAC.prepare_pairs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prepare_pairs</span></code></a>(rois[, symmetric])</p></td>
+<td><p>Prepares a list of indices of ROIs sourced in an estimator.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.fc.PAC.preprocess" title="dyfunconn.fc.PAC.preprocess"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preprocess</span></code></a>(data)</p></td>
 <td><p>Preprocess the data.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.fc.PAC.typeCast" title="dyfunconn.fc.PAC.typeCast"><code class="xref py py-obj docutils literal notranslate"><span class="pre">typeCast</span></code></a>(data[, cast_type])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#dyfunconn.fc.PAC.typeCast" title="dyfunconn.fc.PAC.typeCast"><code class="xref py py-obj docutils literal notranslate"><span class="pre">typeCast</span></code></a>(data[, cast_type])</p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -2817,6 +3024,20 @@ special treatment is needed (i.e. taking only the real part).</p>
 <dd class="field-odd"><p><strong>mtx</strong> : array-like</p>
 <blockquote>
 <div><p>The average synchronization.</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="dyfunconn.fc.PAC.prepare_pairs">
+<code class="sig-name descname">prepare_pairs</code><span class="sig-paren">(</span><em class="sig-param">rois</em>, <em class="sig-param">symmetric=False</em><span class="sig-paren">)</span><a class="headerlink" href="#dyfunconn.fc.PAC.prepare_pairs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prepares a list of indices of ROIs sourced in an estimator.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>rois</strong> : int</p>
+<blockquote>
+<div><p>Number of rois</p>
 </div></blockquote>
 </dd>
 </dl>
@@ -3203,10 +3424,13 @@ of channels.</p>
 <tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.fc.Corr.mean" title="dyfunconn.fc.Corr.mean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mean</span></code></a>(value)</p></td>
 <td><p>The function used to compute the mean synchronization in a timeseries.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#dyfunconn.fc.Corr.preprocess" title="dyfunconn.fc.Corr.preprocess"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preprocess</span></code></a>(data)</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#dyfunconn.fc.Corr.prepare_pairs" title="dyfunconn.fc.Corr.prepare_pairs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prepare_pairs</span></code></a>(rois[, symmetric])</p></td>
+<td><p>Prepares a list of indices of ROIs sourced in an estimator.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.fc.Corr.preprocess" title="dyfunconn.fc.Corr.preprocess"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preprocess</span></code></a>(data)</p></td>
 <td><p>Preprocess the data.</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.fc.Corr.typeCast" title="dyfunconn.fc.Corr.typeCast"><code class="xref py py-obj docutils literal notranslate"><span class="pre">typeCast</span></code></a>(data[, cast_type])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#dyfunconn.fc.Corr.typeCast" title="dyfunconn.fc.Corr.typeCast"><code class="xref py py-obj docutils literal notranslate"><span class="pre">typeCast</span></code></a>(data[, cast_type])</p></td>
 <td><p></p></td>
 </tr>
 </tbody>
@@ -3256,6 +3480,20 @@ special treatment is needed (i.e. taking only the real part).</p>
 <dd class="field-odd"><p><strong>mtx</strong> : array-like</p>
 <blockquote>
 <div><p>The average synchronization.</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="dyfunconn.fc.Corr.prepare_pairs">
+<code class="sig-name descname">prepare_pairs</code><span class="sig-paren">(</span><em class="sig-param">rois</em>, <em class="sig-param">symmetric=False</em><span class="sig-paren">)</span><a class="headerlink" href="#dyfunconn.fc.Corr.prepare_pairs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prepares a list of indices of ROIs sourced in an estimator.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>rois</strong> : int</p>
+<blockquote>
+<div><p>Number of rois</p>
 </div></blockquote>
 </dd>
 </dl>

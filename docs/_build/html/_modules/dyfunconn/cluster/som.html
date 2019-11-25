@@ -164,10 +164,11 @@
 <span class="c1"># Author: Avraam Marimpis &lt;avraam.marimpis@gmail.com&gt;</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="k">import</span> <span class="n">NearestNeighbors</span>
+
+<span class="kn">from</span> <span class="nn">.cluster</span> <span class="k">import</span> <span class="n">BaseCluster</span>
 
 
-<div class="viewcode-block" id="SOM"><a class="viewcode-back" href="../../../dyfunconn.cluster.html#dyfunconn.cluster.som.SOM">[docs]</a><span class="k">class</span> <span class="nc">SOM</span><span class="p">:</span>
+<div class="viewcode-block" id="SOM"><a class="viewcode-back" href="../../../dyfunconn.cluster.html#dyfunconn.cluster.som.SOM">[docs]</a><span class="k">class</span> <span class="nc">SOM</span><span class="p">(</span><span class="n">BaseCluster</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Self Organizing Map</span>
 
 <span class="sd">    Parameters</span>
@@ -249,7 +250,7 @@
                         <span class="n">dist</span> <span class="o">=</span> <span class="n">tmp_dist</span>
                         <span class="n">I</span> <span class="o">=</span> <span class="p">(</span><span class="n">nodes_down</span><span class="p">,</span> <span class="n">nodes_left</span><span class="p">)</span>
 
-            <span class="n">bmu</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">weights</span><span class="p">[</span><span class="n">I</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">I</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
+            <span class="c1"># bmu = self.weights[I[0], I[1]]</span>
 
             <span class="bp">self</span><span class="o">.</span><span class="n">neighborhoodRadius</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mapRadius</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span>
                 <span class="nb">float</span><span class="p">(</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">currentIteration</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeConstant</span>
@@ -266,44 +267,12 @@
                         <span class="n">infl</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">distToNodeSquared</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">widthSquared</span><span class="p">))</span>
                         <span class="n">w</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">learningRate</span> <span class="o">*</span> <span class="n">infl</span> <span class="o">*</span> <span class="p">(</span><span class="n">learn_sample</span> <span class="o">-</span> <span class="n">w</span><span class="p">)</span>
 
-            <span class="n">learningRate</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">startLearningRate</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span>
-                <span class="nb">float</span><span class="p">(</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">currentIteration</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">numIterations</span>
-            <span class="p">)</span>
+            <span class="c1"># Should the following line read: self.learningRate ?</span>
+            <span class="c1"># learningRate = self.startLearningRate * np.exp(</span>
+            <span class="c1"># float(-self.currentIteration) / self.numIterations</span>
+            <span class="c1"># )</span>
 
-        <span class="k">return</span> <span class="bp">self</span></div>
-
-<div class="viewcode-block" id="SOM.encode"><a class="viewcode-back" href="../../../dyfunconn.cluster.html#dyfunconn.cluster.som.SOM.encode">[docs]</a>    <span class="k">def</span> <span class="nf">encode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;euclidean&quot;</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; Employ a nearest-neighbor rule to encode the given ``data`` using the codebook.</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        data : real array-like, shape(n_samples, n_features)</span>
-<span class="sd">            Data matrix, each row represents a sample.</span>
-
-<span class="sd">        metric : string</span>
-<span class="sd">            One of the following valid options as defined for function http://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.pairwise_distances.html.</span>
-
-<span class="sd">            Valid options include:</span>
-
-<span class="sd">             - euclidean</span>
-<span class="sd">             - cityblock</span>
-<span class="sd">             - l1</span>
-<span class="sd">             - cosine</span>
-
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        encoded_data : real array-like, shape(n_samples, n_features)</span>
-<span class="sd">            ``data``, as represented by the prototypes in codebook.</span>
-<span class="sd">        ts_symbols : list, shape(n_samples, 1)</span>
-<span class="sd">            A discrete symbolic time series</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">nbrs</span> <span class="o">=</span> <span class="n">NearestNeighbors</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="n">metric</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">protos</span>
-        <span class="p">)</span>
-        <span class="n">_</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__symbols</span> <span class="o">=</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">kneighbors</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__encoding</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">protos</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">__symbols</span><span class="p">]</span>
-
-        <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__encoding</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__symbols</span><span class="p">)</span></div></div>
+        <span class="k">return</span> <span class="bp">self</span></div></div>
 </pre></div>
 
            </div>
