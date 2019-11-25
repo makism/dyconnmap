@@ -20,6 +20,7 @@ Based on the code available at http://users.auth.gr/~stdimitr/files/software/vi.
 import numpy as np
 
 from dyfunconn.ts.entropy import entropy
+from .vi import __unique_symbols
 
 
 def mutual_information(indices_a, indices_b):
@@ -45,21 +46,10 @@ def mutual_information(indices_a, indices_b):
     entropy_a = -entropy(indices_a)
     entropy_b = -entropy(indices_b)
 
+    Ua = __unique_symbols(indices_a)
+    Ub = __unique_symbols(indices_b)
+
     N = len(indices_a)
-    unique, counts = np.unique(indices_a, return_counts=True)
-    len_counts = len(counts)
-    Ua = np.zeros((len_counts, N))
-    for i in range(len_counts):
-        tmp = np.where(indices_a == unique[i])
-        Ua[i, tmp[0]] = 1
-
-    unique, counts = np.unique(indices_b, return_counts=True)
-    len_counts = len(counts)
-    Ub = np.zeros((len_counts, N))
-    for i in range(len_counts):
-        tmp = np.where(indices_b == unique[i])
-        Ub[i, tmp[0]] = 1
-
     Sab = Ua.dot(Ub.T) / np.float32(N)
     Sa = np.diag(Ua.dot(Ua.T) / np.float32(N))
     Sb = np.diag(Ub.dot(Ub.T) / np.float32(N))

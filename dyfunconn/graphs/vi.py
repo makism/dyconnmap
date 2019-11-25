@@ -51,24 +51,30 @@ def variation_information(indices_a, indices_b):
     return VI_value, NVI
 
 
+def __unique_symbols(indices):
+    """
+
+    """
+    N = len(indices)
+    unique, counts = np.unique(indices, return_counts=True)
+    len_counts = len(counts)
+    U = np.zeros((len_counts, N))
+    indices_a = indices.flatten()
+    for i in range(len_counts):
+        tmp = np.where(indices == unique[i])
+        U[i, tmp[0]] = 1
+
+    return U
+
+
 def __mi(indices_a, entropy_a, indices_b, entropy_b):
+    """
+
+    """
     N = len(indices_a)
 
-    unique, counts = np.unique(indices_a, return_counts=True)
-    len_counts = len(counts)
-    Ua = np.zeros((len_counts, N))
-    indices_a = indices_a.flatten()
-    for i in range(len_counts):
-        tmp = np.where(indices_a == unique[i])
-        Ua[i, tmp[0]] = 1
-
-    unique, counts = np.unique(indices_b, return_counts=True)
-    len_counts = len(counts)
-    Ub = np.zeros((len_counts, N))
-    indices_b = indices_b.flatten()
-    for i in range(len_counts):
-        tmp = np.where(indices_b == unique[i])
-        Ub[i, tmp[0]] = 1
+    Ua = __unique_symbols(indices_a)
+    Ub = __unique_symbols(indices_b)
 
     Sab = Ua.dot(Ub.T) / np.float32(N)
     Sa = np.diag(Ua.dot(Ua.T) / np.float32(N))
