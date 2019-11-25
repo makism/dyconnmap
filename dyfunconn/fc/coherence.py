@@ -175,7 +175,7 @@ class Coherence(Estimator):
         -----
         Called from :mod:`dyfunconn.tvfcgs.tvfcg`.
         """
-        n_rois, n_samples = np.shape(data)
+        n_rois, _ = np.shape(data)
 
         super().prepare_pairs(n_rois)
 
