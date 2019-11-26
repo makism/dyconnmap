@@ -18,6 +18,7 @@ Based on https://nl.mathworks.com/matlabcentral/fileexchange/35784-sample-entrop
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
 import numpy as np
+from numpy import matlib
 
 
 def sample_entropy(data, dim=2, tau=None, r=None):
@@ -26,7 +27,7 @@ def sample_entropy(data, dim=2, tau=None, r=None):
 
     Parameters
     ----------
-    data : array-like, shape(1, n_samples)
+    data : array-like, shape(n_samples)
         Symbolic time series.
 
     dim : int
@@ -55,7 +56,7 @@ def sample_entropy(data, dim=2, tau=None, r=None):
     data = data.ravel()
 
     # do downsample
-    if tau  > 1:
+    if tau > 1:
         N = len(data)
         ds_data = [data[i] for i in range(0, N, tau)]
         data = ds_data
@@ -76,13 +77,13 @@ def sample_entropy(data, dim=2, tau=None, r=None):
         tmpMat = dataMat[0:m, :]
 
         for i in range(0, N - m):
-            a = tmpMat[:, i + 1:N - dim]
+            a = tmpMat[:, i + 1 : N - dim]
             b = tmpMat[:, i]
-            b2 = np.matlib.repmat(b, N - dim - i - 1, 1)
+            b2 = matlib.repmat(b, N - dim - i - 1, 1)
 
             dist = np.abs(a.T - b2).T.max(0)
 
-            D = (dist < r)
+            D = dist < r
             count[i] = np.sum(D) / float(N - dim)
 
         correl[m - dim] = np.sum(count) / float(N - dim)

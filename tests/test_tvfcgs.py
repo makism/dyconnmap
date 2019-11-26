@@ -8,6 +8,7 @@ from nose import tools
 import scipy as sp
 from scipy import io
 import numpy as np
+import os
 from numpy import testing
 
 # dynfunconn
@@ -37,8 +38,6 @@ def setup_module(module):
     fs = 128
     estimator = PLV(fb, fs)
     tvfcg_plv_fcgs = tvfcg(data, estimator, fb, fs)
-    # tvfcg_plv_fcgs = np.real(tvfcg_plv_fcgs)
-    # np.save("data/test_tvfcgs_plv.npy", tvfcg_plv_fcgs)
 
     # TVFCGS with PAC and PLV
     data = original_data[..., 0:1024]
@@ -49,13 +48,14 @@ def setup_module(module):
     estimator = PLV(fb, fs)
     pac = PAC(f_lo, f_hi, fs, estimator)
     tvfcg_pac_plv_fcgs = tvfcg_cfc(data, pac, f_lo, f_hi, fs)
-    # np.save("data/test_tvfcgs_pac_plv.npy", tvfcg_pac_plv_fcgs)
 
     # TVFCGS with PLV (ts)
-    # fb = [1.0, 4.0]
-    # fs = 128.0
-    # ts, avg = plv(data, fb, fs)
-    # tvfcg_plv_ts = tvfcg_ts(ts, [1.0, 4.0], 128, avg_func=PLV.mean)
+    fb = [1.0, 4.0]
+    fs = 128.0
+    estimator = PLV(fb, fs)
+    u_phases = estimator.preprocess(data)
+    ts, avg = estimator.estimate(u_phases)
+    tvfcg_plv_ts = tvfcg_ts(ts, [1.0, 4.0], 128, avg_func=estimator.mean)
 
 
 def test_tvfcgs_compute_windows():
@@ -68,10 +68,10 @@ def test_tvfcgs_compute_windows():
 
     windows, window_length = tvfcg_compute_windows(data, fb, fs, cc, step)
 
-    result_windows = np.load('data/test_tvfcgs_compute_windows_windows.npy')
+    result_windows = np.load("data/test_tvfcgs_compute_windows_windows.npy")
     np.testing.assert_array_equal(windows, result_windows)
 
-    result_window_length = np.load('data/test_tvfcgs_compute_windows_window_length.npy')
+    result_window_length = np.load("data/test_tvfcgs_compute_windows_window_length.npy")
     np.testing.assert_array_equal(window_length, result_window_length)
 
 
@@ -86,6 +86,11 @@ def test_tvfcgs_pac_plv():
 
 
 def test_tvfcgs_from_plv_ts():
-    assert True
-    # result_fcgs = np.load("data/test_tvfcgs_from_plv_ts.npy")
-    # np.testing.assert_array_equal(tvfcg_plv_ts, result_fcgs)
+    result_fcgs = np.load("data/test_tvfcgs_from_plv_ts.npy")
+
+    if "TRAVIS" in os.environ:
+        # We have to use the following to make the test work on Travis
+        np.testing.assert_allclose(tvfcg_plv_ts, result_fcgs, rtol=1e-10, atol=0.0)
+    else:
+        # The following tests pass locally; but they fail on Travis o_O
+        np.testing.assert_array_equal(tvfcg_plv_ts, result_fcgs)

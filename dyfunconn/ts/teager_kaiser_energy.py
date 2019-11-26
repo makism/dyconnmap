@@ -4,7 +4,7 @@
 ref: https://www.c-motion.com/v3dwiki/index.php/Teager_Kaiser_Energy
 
 """
-
+# Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
 import numpy as np
 

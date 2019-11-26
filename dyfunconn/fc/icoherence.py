@@ -55,23 +55,25 @@ def icoherence(data, fb, fs, pairs=None, **kwargs):
     dyfunconn.fc.coherence: Coherence
     """
     n_channels, _ = np.shape(data)
-    filtered, _, _ = analytic_signal(data, fb, fs)
+    _, _, filtered = analytic_signal(data, fb, fs)
 
     if pairs is None:
-        pairs = [(r1, r2) for r1 in range(n_channels)
-                 for r2 in range(n_channels)]
+        pairs = [(r1, r2) for r1 in range(n_channels) for r2 in range(n_channels)]
 
     icoh = np.zeros((n_channels, n_channels))
 
     for pair in pairs:
-        filt1, filt2 = filtered[pair, ]
+        filt1, filt2 = filtered[pair,]
 
-        csdxx, _ = mlab.csd(x=filt1, y=filt1, Fs=fs,
-                            scale_by_freq=True, sides='onesided', **kwargs)
-        csdyy, _ = mlab.csd(x=filt2, y=filt2, Fs=fs,
-                            scale_by_freq=True, sides='onesided', **kwargs)
-        csdxy, _ = mlab.csd(x=filt1, y=filt2, Fs=fs,
-                            scale_by_freq=True, sides='onesided', **kwargs)
+        csdxx, _ = mlab.csd(
+            x=filt1, y=filt1, Fs=fs, scale_by_freq=True, sides="onesided", **kwargs
+        )
+        csdyy, _ = mlab.csd(
+            x=filt2, y=filt2, Fs=fs, scale_by_freq=True, sides="onesided", **kwargs
+        )
+        csdxy, _ = mlab.csd(
+            x=filt1, y=filt2, Fs=fs, scale_by_freq=True, sides="onesided", **kwargs
+        )
 
         num = np.sum(np.abs(np.imag(csdxy)))
         denom = np.sqrt(np.sum(np.abs(csdxx)) * np.sum(np.abs(csdyy)))
@@ -98,11 +100,9 @@ class ICoherence(Estimator):
     def preprocess(self, data):
         n_channels, _ = np.shape(data)
 
-        filtered, _, _ = analytic_signal(data, self.fb, self.fs)
+        _, _, filtered = analytic_signal(data, self.fb, self.fs)
 
-        if self.pairs is None:
-            self.pairs = [(r1, r2) for r1 in range(n_channels)
-                          for r2 in range(n_channels)]
+        super().prepare_pairs(n_channels)
 
         # Store all the pair-wise auto/cross spectra.
         #  2nd axis, 1st dimension is the autospectra of the 1st channel (within a pair)
@@ -112,19 +112,40 @@ class ICoherence(Estimator):
         csds = np.zeros((n_channels, n_channels, 3, samples))
 
         for pair in self.pairs:
-            filt1, filt2 = filtered[pair, ]
+            filt1, filt2 = filtered[pair,]
 
-            csdxx, _ = mlab.csd(filt1, filt1, NFFT=self.csd_nfft, Fs=self.fs,
-                                noverlap=self.csd_noverlap, scale_by_freq=True, sides='onesided')
-            csdyy, _ = mlab.csd(filt2, filt2, NFFT=self.csd_nfft, Fs=self.fs,
-                                noverlap=self.csd_noverlap, scale_by_freq=True, sides='onesided')
-            csdxy, _ = mlab.csd(filt1, filt2, NFFT=self.csd_nfft, Fs=self.fs,
-                                noverlap=self.csd_noverlap, scale_by_freq=True, sides='onesided')
+            csdxx, _ = mlab.csd(
+                filt1,
+                filt1,
+                NFFT=self.csd_nfft,
+                Fs=self.fs,
+                noverlap=self.csd_noverlap,
+                scale_by_freq=True,
+                sides="onesided",
+            )
+            csdyy, _ = mlab.csd(
+                filt2,
+                filt2,
+                NFFT=self.csd_nfft,
+                Fs=self.fs,
+                noverlap=self.csd_noverlap,
+                scale_by_freq=True,
+                sides="onesided",
+            )
+            csdxy, _ = mlab.csd(
+                filt1,
+                filt2,
+                NFFT=self.csd_nfft,
+                Fs=self.fs,
+                noverlap=self.csd_noverlap,
+                scale_by_freq=True,
+                sides="onesided",
+            )
 
             r1, r2 = pair
-            csds[r1, r2, 0, ] = csdxx
-            csds[r1, r2, 1, ] = csdyy
-            csds[r1, r2, 2, ] = csdxy
+            csds[r1, r2, 0] = csdxx
+            csds[r1, r2, 1] = csdyy
+            csds[r1, r2, 2] = csdxy
 
         return csds
 

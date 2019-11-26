@@ -59,16 +59,19 @@ def rho_index(data, n_bins, fb, fs, pairs=None):
     """
     n_channels, _ = np.shape(data)
 
-    _, _, u_phases = analytic_signal(data, fb, fs=128, order=3)
+    _, u_phases, _ = analytic_signal(data, fb, fs=128, order=3)
 
     if pairs is None:
-        pairs = [(r1, r2) for r1 in range(n_channels)
-                 for r2 in range(r1, n_channels)
-                 if r1 != r2]
+        pairs = [
+            (r1, r2)
+            for r1 in range(n_channels)
+            for r2 in range(r1, n_channels)
+            if r1 != r2
+        ]
 
     rho_mtx = np.zeros((n_channels, n_channels))
     for pair in pairs:
-        u_phase1, u_phase2 = u_phases[pair, ]
+        u_phase1, u_phase2 = u_phases[pair,]
 
         du = (u_phase1 - u_phase2) % (2.0 * np.pi)
 

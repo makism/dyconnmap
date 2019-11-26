@@ -17,34 +17,37 @@
   
 
   
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="dyfunconn.ts package" href="dyfunconn.ts.html" />
     <link rel="prev" title="dyfunconn.graphs package" href="dyfunconn.graphs.html" /> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -81,6 +84,7 @@
               <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="dyfunconn.html">dyfunconn package</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="dyfunconn.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="dyfunconn.chronnectomics.html">dyfunconn.chronnectomics package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dyfunconn.cluster.html">dyfunconn.cluster package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dyfunconn.fc.html">dyfunconn.fc package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="dyfunconn.graphs.html">dyfunconn.graphs package</a></li>
@@ -181,27 +185,21 @@
 <div class="line"><br /></div>
 </div>
 <hr class="docutils" />
-<table class="docutils citation" frame="void" id="yeung" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[Yeung]</td><td>Yeung, N., Bogacz, R., Holroyd, C. B., Nieuwenhuis, S., &amp; Cohen, J. D. (2007). Theta phase resetting and the error‐related negativity. Psychophysiology, 44(1), 39-49.</td></tr>
-</tbody>
-</table>
-<table class="docutils citation" frame="void" id="makinen" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label">[Makinen]</td><td>Mäkinen, V., Tiitinen, H., &amp; May, P. (2005). Auditory event-related responses are generated independently of ongoing brain activity. Neuroimage, 24(4), 961-968.</td></tr>
-</tbody>
-</table>
+<dl class="citation">
+<dt class="label" id="yeung"><span class="brackets">Yeung</span></dt>
+<dd><p>Yeung, N., Bogacz, R., Holroyd, C. B., Nieuwenhuis, S., &amp; Cohen, J. D. (2007). Theta phase resetting and the error‐related negativity. Psychophysiology, 44(1), 39-49.</p>
+</dd>
+<dt class="label" id="makinen"><span class="brackets">Makinen</span></dt>
+<dd><p>Mäkinen, V., Tiitinen, H., &amp; May, P. (2005). Auditory event-related responses are generated independently of ongoing brain activity. Neuroimage, 24(4), 961-968.</p>
+</dd>
+</dl>
 <dl class="function">
 <dt id="dyfunconn.sim_models.makinen.makinen">
-<code class="descclassname">dyfunconn.sim_models.makinen.</code><code class="descname">makinen</code><span class="sig-paren">(</span><em>frames</em>, <em>epochs</em>, <em>fs</em>, <em>min_fr</em>, <em>max_fr</em>, <em>rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/sim_models/makinen.html#makinen"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.sim_models.makinen.makinen" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyfunconn.sim_models.makinen.</code><code class="sig-name descname">makinen</code><span class="sig-paren">(</span><em class="sig-param">frames</em>, <em class="sig-param">epochs</em>, <em class="sig-param">fs</em>, <em class="sig-param">min_fr</em>, <em class="sig-param">max_fr</em>, <em class="sig-param">rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/sim_models/makinen.html#makinen"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.sim_models.makinen.makinen" title="Permalink to this definition">¶</a></dt>
 <dd><p>Makinen</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>frames</strong> : int</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>frames</strong> : int</p>
 <blockquote>
 <div><p>Number of signal frames per each trial.</p>
 </div></blockquote>
@@ -222,36 +220,30 @@
 <div><p>Maximum frequency of the sinusoid which is being reset.</p>
 </div></blockquote>
 <p><strong>rng</strong> : object or None</p>
-<blockquote class="last">
+<blockquote>
 <div><p>An object of type numpy.random.RandomState</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="dyfunconn.sim_models.makinen.phasereset">
-<code class="descclassname">dyfunconn.sim_models.makinen.</code><code class="descname">phasereset</code><span class="sig-paren">(</span><em>frames</em>, <em>epochs</em>, <em>fs</em>, <em>min_fr</em>, <em>max_fr</em>, <em>rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/sim_models/makinen.html#phasereset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.sim_models.makinen.phasereset" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyfunconn.sim_models.makinen.</code><code class="sig-name descname">phasereset</code><span class="sig-paren">(</span><em class="sig-param">frames</em>, <em class="sig-param">epochs</em>, <em class="sig-param">fs</em>, <em class="sig-param">min_fr</em>, <em class="sig-param">max_fr</em>, <em class="sig-param">rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/sim_models/makinen.html#phasereset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.sim_models.makinen.phasereset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Phasereset</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>frames :</strong> :</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>frames :</strong> :</p>
 <p><strong>epochs :</strong> :</p>
 <p><strong>fs :</strong> :</p>
 <p><strong>min_fr :</strong> :</p>
 <p><strong>max_fr :</strong> :</p>
 <p><strong>rng</strong> : object or None</p>
-<blockquote class="last">
+<blockquote>
 <div><p>An object of type numpy.random.RandomState</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -260,13 +252,11 @@
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-dyfunconn.sim_models" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="dyfunconn.sim_models.makinen">
-<code class="descclassname">dyfunconn.sim_models.</code><code class="descname">makinen</code><span class="sig-paren">(</span><em>frames</em>, <em>epochs</em>, <em>fs</em>, <em>min_fr</em>, <em>max_fr</em>, <em>rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/sim_models/makinen.html#makinen"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.sim_models.makinen" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyfunconn.sim_models.</code><code class="sig-name descname">makinen</code><span class="sig-paren">(</span><em class="sig-param">frames</em>, <em class="sig-param">epochs</em>, <em class="sig-param">fs</em>, <em class="sig-param">min_fr</em>, <em class="sig-param">max_fr</em>, <em class="sig-param">rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/sim_models/makinen.html#makinen"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.sim_models.makinen" title="Permalink to this definition">¶</a></dt>
 <dd><p>Makinen</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>frames</strong> : int</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>frames</strong> : int</p>
 <blockquote>
 <div><p>Number of signal frames per each trial.</p>
 </div></blockquote>
@@ -287,36 +277,30 @@
 <div><p>Maximum frequency of the sinusoid which is being reset.</p>
 </div></blockquote>
 <p><strong>rng</strong> : object or None</p>
-<blockquote class="last">
+<blockquote>
 <div><p>An object of type numpy.random.RandomState</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">
 <dt id="dyfunconn.sim_models.phasereset">
-<code class="descclassname">dyfunconn.sim_models.</code><code class="descname">phasereset</code><span class="sig-paren">(</span><em>frames</em>, <em>epochs</em>, <em>fs</em>, <em>min_fr</em>, <em>max_fr</em>, <em>rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/sim_models/makinen.html#phasereset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.sim_models.phasereset" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyfunconn.sim_models.</code><code class="sig-name descname">phasereset</code><span class="sig-paren">(</span><em class="sig-param">frames</em>, <em class="sig-param">epochs</em>, <em class="sig-param">fs</em>, <em class="sig-param">min_fr</em>, <em class="sig-param">max_fr</em>, <em class="sig-param">rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/sim_models/makinen.html#phasereset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.sim_models.phasereset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Phasereset</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>frames :</strong> :</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>frames :</strong> :</p>
 <p><strong>epochs :</strong> :</p>
 <p><strong>fs :</strong> :</p>
 <p><strong>min_fr :</strong> :</p>
 <p><strong>max_fr :</strong> :</p>
 <p><strong>rng</strong> : object or None</p>
-<blockquote class="last">
+<blockquote>
 <div><p>An object of type numpy.random.RandomState</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
@@ -333,7 +317,7 @@
         <a href="dyfunconn.ts.html" class="btn btn-neutral float-right" title="dyfunconn.ts package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="dyfunconn.graphs.html" class="btn btn-neutral" title="dyfunconn.graphs package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="dyfunconn.graphs.html" class="btn btn-neutral float-left" title="dyfunconn.graphs package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -342,7 +326,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Avraam Marimpis &amp; Stavros Dimitriadis.
+        &copy; Copyright 2019, Avraam Marimpis &amp; Stavros Dimitriadis
 
     </p>
   </div>
@@ -359,33 +343,16 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  <script type="text/javascript" src="_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

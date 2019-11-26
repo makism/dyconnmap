@@ -1,4 +1,4 @@
- #-*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 """ Order Reccurence Plot
 
 
@@ -69,7 +69,7 @@ def rr_order_patterns(signal1, signal2, m, tau):
 
     lenx = len(x)
 
-    factorial_dim = scipy.misc.factorial(m)
+    factorial_dim = scipy.special.factorial(m)
 
     ipermlist = itertools.permutations(list(range(1, m + 1)))
     npermlist = np.zeros((np.int32(factorial_dim), m))

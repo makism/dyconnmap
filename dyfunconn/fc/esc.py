@@ -58,8 +58,8 @@ def esc(data, fb_lo, fb_hi, fs):
     r : array-like, shape(n_channels, n_channels)
         Estimated Pearson correlation coefficient.
     """
-    f, _, _ = analytic_signal(data, fb_lo, fs)
-    _, h, _ = analytic_signal(data, fb_hi, fs)
+    _, _, f = analytic_signal(data, fb_lo, fs)
+    h, _, _ = analytic_signal(data, fb_hi, fs)
 
     escv = np.corrcoef(f, np.abs(h))
     escv = np.float32(escv)

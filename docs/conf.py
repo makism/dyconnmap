@@ -50,7 +50,7 @@ intersphinx_mapping = {
     }
 
 
-autosummary_generate = False
+autosummary_generate = []
 autodoc_default_flags = ['members', 'inherited-members']
 
 # Add any paths that contain templates here, relative to this directory.
@@ -67,7 +67,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'dyfunconn'
-copyright = '2018, Avraam Marimpis & Stavros Dimitriadis'
+copyright = '2019, Avraam Marimpis & Stavros Dimitriadis'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the

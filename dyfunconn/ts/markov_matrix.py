@@ -3,8 +3,7 @@
 Generation of markov matrix and some related state transition features.
 
 """
-# Author
-# Author
+# Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
 import numpy as np
 
@@ -63,7 +62,7 @@ def markov_matrix(symts):
 
     for i in range(len(symts) - 1):
         curr_sym = symts[i]
-        next_sym = symts[i+1]
+        next_sym = symts[i + 1]
 
         mtx[curr_sym, next_sym] += 1
 

@@ -14,8 +14,8 @@ def entropy_reduction_rate(sym_ts):
 
     Parameters
     ----------
-    sym_ts : array-like, shape(N)
-        Symblic time series (1D)
+    sym_ts : array-like, shape(n_samples)
+        Input symblic time series.
 
 
     Returns
@@ -134,7 +134,8 @@ def symoblic_transfer_entropy(x, y, s=1, delay=0, verbose=False):
 
     tentxy = __transfer_entropy(y, x, pxy, num_symbols, s=s, delay=delay)
     tentyx = __transfer_entropy(
-        x, y, pxy, num_symbols, s=s, delay=delay, switch_indices=True)
+        x, y, pxy, num_symbols, s=s, delay=delay, switch_indices=True
+    )
     tent_diff = tentxy - tentyx
 
     if verbose:

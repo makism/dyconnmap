@@ -41,37 +41,38 @@ algorithm) in order to eliminate the discontinuities (Dimitriadis2010_, Freeman2
 
 import numpy as np
 import scipy
+import scipy.signal
 
 
-def analytic_signal(signal, fb, fs=128, order=3):
+def analytic_signal(signal, fb=None, fs=None, order=3):
     """ Passband filtering and Hilbert transformation
 
 
     Parameters
     ----------
-    signal: real array-like, shape(n_channels, n_samples)
+    signal: real array-like, shape(n_rois, n_samples)
         Input signal
 
-    fb: list of length 2
-        The low and high frequencies
+    fb: list of length 2, optional
+        The low and high frequencies.
 
-    fs: int
-        Sampling frequency
+    fs: int, optional.
+        Sampling frequency.
 
-    order : int
-        Filter order
+    order : int, optional
+        The Filter order. Default `3`.
 
     Returns
     -------
-    filtered_signal: real array-like, shape(n_channels, n_samples)
-        The input signal, filtered within the given frequencies
+    hilberted_signal: complex array-like, shape(n_rois, n_samples)
+        The Hilbert representation of the input signal.
 
-    hilberted_signal: complex array-like, shape(n_channels, n_samples)
-        The Hilbert representation of the input signal
+    unwrapped_phase: real array-like, shape(n_rois, n_samples)
+        The unwrapped phase of the Hilbert representation.
 
-    unwrapped_phase: real array-like, shape(n_channels, n_samples)
-        The unwrapped phase of the Hilbert representation
-
+    filtered_signal: real array-like, shape(n_rois, n_samples)
+        The input signal, filtered within the given frequencies. This is returned
+        only if `fb` and `fs` are passed.
 
     Notes
     -----
@@ -79,15 +80,26 @@ def analytic_signal(signal, fb, fs=128, order=3):
     and the two-pass filter `scipy.signal.filtfilt` to achieve results identical
     to MATLAB.
     """
-    fs = float(fs)
+    skip_filter = fb is None and fs is None
 
-    passband = [fb[0] / (fs / 2.0), fb[1] / (fs / 2.0)]
-    passband = np.ravel(passband)
-    b, a = scipy.signal.butter(
-        order, passband, 'bandpass', analog=False, output='ba')
+    if fs is None:
+        fs = 128.0
+    else:
+        fs = float(fs)
 
-    filtered_signal = scipy.signal.filtfilt(b, a, signal)
-    hilberted_signal = scipy.signal.hilbert(filtered_signal)
+    if not skip_filter:
+        passband = [fb[0] / (fs / 2.0), fb[1] / (fs / 2.0)]
+        passband = np.ravel(passband)
+        b, a = scipy.signal.butter(
+            order, passband, "bandpass", analog=False, output="ba"
+        )
+        filtered_signal = scipy.signal.filtfilt(b, a, signal)
+        signal = filtered_signal
+
+    hilberted_signal = scipy.signal.hilbert(signal)
     unwrapped_phase = np.unwrap(np.angle(hilberted_signal))
 
-    return (filtered_signal, hilberted_signal, unwrapped_phase)
+    if not skip_filter:
+        return (hilberted_signal, unwrapped_phase, signal)
+    else:
+        return (hilberted_signal, unwrapped_phase)

@@ -1,7 +1,19 @@
 # -*- coding: utf-8 -*-
-""" Weighted Phase Lag Index
+""" Weighted Phase Lag Index and Debiased Weighted Phase Lag Index
 
-Weighted Phase Lag Index (*WPLI*),
+PLI is prone to noise and volume conduction effects; thus, Weighted Lag Index (*wPLI*) [Vinck2011]_
+was proposed in [Vinck, 2011] alongside with an alternative, debiased design (*dwPLI*).
+Similar to PLI, wPLI operates on the cross-spectrum of two real-valued signals; but,
+it furthermore weights the cross-spectrum with the magnitude of the imaginary component.
+
+.. math::
+    wPLI = \\frac{|E\{ \\Im(Z) \} |}{ E\{ \\Im(Z) \} } = \\frac{ | E\{ |\\Im(Z)| sign(\\Im(Z)) \} |  }{ E\{ |\\Im(Z)| \} }
+
+
+Furthermore, to overcome the possible sample-bias, the authors defined a debiased variant of wPLI:
+
+.. math::
+    dwPLI = \\frac{\\sum_{j=1}^N \\sum_{k \\neq j} \\Im\{X_j\} \\Im\{X_k\}}{\\sum_{j=1}^N \\sum_{k \\neq j} \\left| \\Im\{X_j\} \\Im\{X_k\} \\right| }
 
 
 |
@@ -9,9 +21,6 @@ Weighted Phase Lag Index (*WPLI*),
 -----
 
 .. [Vinck2011] Vinck, M., Oostenveld, R., van Wingerden, M., Battaglia, F., & Pennartz, C. M. (2011). An improved index of phase-synchronization for electrophysiological data in the presence of volume-conduction, noise and sample-size bias. Neuroimage, 55(4), 1548-1565.
-
-http://journal.frontiersin.org/article/10.3389/fncom.2015.00026/full
-
 """
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
@@ -63,21 +72,21 @@ def wpli(data, fb, fs, pairs=None, **kwargs):
     ---------
     dyfunconn.wpli.dwpli: Debiased Weighted Phase Lag Index
     """
-    n_channels, n_samples = np.shape(data)
+    n_channels, _ = np.shape(data)
 
     if pairs is None:
-        pairs = [(r1, r2) for r1 in range(n_channels)
-                 for r2 in range(n_channels)]
+        pairs = __prepare_pairs(n_channels)
 
-    filtered, _, _ = analytic_signal(data, fb, fs)
+    _, _, filtered = analytic_signal(data, fb, fs)
     filtered = data
 
     wpliv = np.zeros((n_channels, n_channels))
 
     for pair in pairs:
-        filt1, filt2 = filtered[pair, ]
-        csdxy, _ = mlab.csd(filt1, filt2, Fs=fs,
-                            scale_by_freq=True, sides='onesided', **kwargs)
+        filt1, filt2 = filtered[pair,]
+        csdxy, _ = mlab.csd(
+            filt1, filt2, Fs=fs, scale_by_freq=True, sides="onesided", **kwargs
+        )
 
         Ixy = np.imag(csdxy)
 
@@ -125,21 +134,21 @@ def dwpli(data, fb, fs, pairs=None, **kwargs):
     ---------
     dyfunconn.wpli.wpli: Weighted Phase Lag Index
     """
-    n_channels, n_samples = np.shape(data)
+    n_channels, _ = np.shape(data)
 
     if pairs is None:
-        pairs = [(r1, r2) for r1 in range(n_channels)
-                 for r2 in range(n_channels)]
+        pairs = __prepare_pairs(n_channels)
 
-    filtered, _, _ = analytic_signal(data, fb, fs)
+    _, _, filtered = analytic_signal(data, fb, fs)
     filtered = data
 
     dwpliv = np.zeros((n_channels, n_channels))
 
     for pair in pairs:
-        filt1, filt2 = filtered[pair, ]
-        csdxy, _ = mlab.csd(filt1, filt2, Fs=fs,
-                            scale_by_freq=True, sides='onesided', **kwargs)
+        filt1, filt2 = filtered[pair,]
+        csdxy, _ = mlab.csd(
+            filt1, filt2, Fs=fs, scale_by_freq=True, sides="onesided", **kwargs
+        )
 
         Ixy = np.imag(csdxy)
 
@@ -147,7 +156,12 @@ def dwpli(data, fb, fs, pairs=None, **kwargs):
         denom = np.nansum(np.abs(Ixy))
 
         sumsquare = np.nansum(np.power(Ixy, 2.0))
-        dwpliv[pair] = (np.power(num, 2.0) - sumsquare) / \
-            (np.power(denom, 2.0) - sumsquare)
+        dwpliv[pair] = (np.power(num, 2.0) - sumsquare) / (
+            np.power(denom, 2.0) - sumsquare
+        )
 
     return dwpliv
+
+
+def __prepare_pairs(rois):
+    return [(r1, r2) for r1 in range(rois) for r2 in range(rois)]

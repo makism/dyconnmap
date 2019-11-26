@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-""" Base classes for estimators
+""" Base class for estimators
 
 """
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
@@ -22,10 +22,12 @@ class Estimator(object, metaclass=ABCMeta):
     dynfunconn.tvfcgs.tvfcgs_ts: Time-Varying Functional Connectivity Graphs (from time series)
     """
 
-    def __init__(self, fs, pairs=None):
+    def __init__(self, fb=None, fs=None, pairs=None):
         self.fs = fs
+        self.fb = fb
         self.pairs = pairs
         self.data_type = np.float32
+        self._skip_filter = fb is None and fs is None
 
     def preprocess(self, data):
         """ Preprocess the data.
@@ -62,6 +64,24 @@ class Estimator(object, metaclass=ABCMeta):
 
         """
         return np.mean(ts)
+
+    def prepare_pairs(self, rois, symmetric=False):
+        """ Prepares a list of indices of ROIs sourced in an estimator.
+
+
+        Parameters
+        ==========
+        rois : int
+            Number of rois
+
+        """
+        if self.pairs is None:
+            if symmetric:
+                self.pairs = [(r1, r2) for r1 in range(rois) for r2 in range(rois)]
+            else:
+                self.pairs = [
+                    (r1, r2) for r1 in range(rois) for r2 in range(r1, rois) if r1 != r2
+                ]
 
     def typeCast(self, data, cast_type=np.float32):
         return data.astype(cast_type)

@@ -7,13 +7,14 @@
 import numpy as np
 
 
-def cv(X):
-    """
+def cv(x):
+    """ Coefficient of Variation
 
 
     Parameters
     ----------
-    X :
+    x : array-like, shape(n_samples)
+        Input time series
 
 
     Returns
@@ -21,4 +22,4 @@ def cv(X):
     cv : float
         The computed coefficient of variation.
     """
-    return np.std(X) / np.mean(X)
+    return np.std(x) / np.mean(x)

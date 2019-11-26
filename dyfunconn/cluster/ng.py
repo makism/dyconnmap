@@ -62,10 +62,11 @@ For faster convergence, we can also draw random weights from the given probabili
 import numpy as np
 from sklearn.metrics.pairwise import pairwise_distances
 from sklearn.neighbors import NearestNeighbors
-from sklearn.manifold import MDS
+
+from .cluster import BaseCluster
 
 
-class NeuralGas:
+class NeuralGas(BaseCluster):
     """ Neural Gas
 
 
@@ -113,11 +114,24 @@ class NeuralGas:
     Slightly based on *http://webloria.loria.fr/~rougier/downloads/ng.py*
     """
 
-    def __init__(self, n_protos=10, iterations=1024, epsilon=[10, 0.001], lrate=[0.5, 0.005], n_jobs=1, metric='euclidean', rng=None):
+    def __init__(
+        self,
+        n_protos=10,
+        iterations=1024,
+        # epsilon=[10, 0.001],
+        epsilon=None,
+        # lrate=[0.5, 0.005],
+        lrate=None,
+        n_jobs=1,
+        metric="euclidean",
+        rng=None,
+    ):
         self.n_protos = n_protos
         self.iterations = iterations
-        self.epsilon_i, self.epsilon_f = epsilon
-        self.lrate_i, self.lrate_f = lrate
+        if epsilon is None:
+            self.epsilon_i, self.epsilon_f = [10, 0.001]
+        if lrate is None:
+            self.lrate_i, self.lrate_f = [0.5, 0.005]
         self.n_jobs = n_jobs
         self.protos = None
         self.distortion = 0.0
@@ -146,19 +160,21 @@ class NeuralGas:
             The instance itself
         """
         [n_samples, _] = data.shape
-        self.protos = data[self.rng.choice(n_samples, self.n_protos), ]
+        self.protos = data[self.rng.choice(n_samples, self.n_protos),]
 
         avg_p = np.mean(data, 0).reshape(1, -1)
         dist_from_avg_p = np.sum(pairwise_distances(avg_p, data))
 
         for iteration in range(self.iterations):
-            sample = data[self.rng.choice(n_samples, 1), ]
+            sample = data[self.rng.choice(n_samples, 1),]
 
             t = iteration / float(self.iterations)
             lrate = self.lrate_i * (self.lrate_f / float(self.lrate_i)) ** t
             epsilon = self.epsilon_i * (self.epsilon_f / float(self.epsilon_i)) ** t
 
-            D = pairwise_distances(sample, self.protos, metric=self.metric, n_jobs=self.n_jobs)
+            D = pairwise_distances(
+                sample, self.protos, metric=self.metric, n_jobs=self.n_jobs
+            )
             I = np.argsort(np.argsort(D))
 
             H = np.exp(-I / epsilon).ravel()
@@ -167,51 +183,8 @@ class NeuralGas:
             for proto_id in range(self.n_protos):
                 self.protos[proto_id, :] += lrate * H[proto_id] * diff[proto_id, :]
 
-        nbrs = NearestNeighbors(n_neighbors=1, algorithm='auto').fit(self.protos)
+        nbrs = NearestNeighbors(n_neighbors=1, algorithm="auto").fit(self.protos)
         distances, _ = nbrs.kneighbors(data)
         self.distortion = np.sum(distances) / dist_from_avg_p
 
         return self
-
-    def encode(self, data, metric=None):
-        """ Employ a nearest-neighbor rule to encode the given ``data`` using the codebook.
-
-        Parameters
-        ----------
-        data : real array-like, shape(n_samples, n_features)
-            Data matrix, each row represents a sample.
-
-        metric : string or None
-            One of the following valid options as defined for function http://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.pairwise_distances.html.
-
-            Valid options include:
-
-             - euclidean
-             - cityblock
-             - l1
-             - cosine
-
-             If `None` is passed, the matric used for learning the data will be used.
-
-        Returns
-        -------
-        encoded_data : real array-like, shape(n_samples, n_features)
-            ``data``, as represented by the prototypes in codebook.
-        ts_symbols : list, shape(n_samples, 1)
-            A discrete symbolic time series
-        """
-        # Perform a proposed data mining procedure as described in [Laskaris2004].
-        mds = MDS(1, random_state=self.rng)
-        protos_1d = mds.fit_transform(self.protos).ravel()
-        sorted_protos_1d = np.argsort(protos_1d)
-
-        sprotos = self.protos[sorted_protos_1d]
-
-        if metric is None:
-            metric = self.metric
-
-        nbrs = NearestNeighbors(n_neighbors=1, algorithm='auto', metric=metric).fit(sprotos)
-        _, self.__symbols = nbrs.kneighbors(data)
-        self.__encoding = sprotos[self.__symbols]
-
-        return (self.__encoding, self.__symbols)

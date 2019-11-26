@@ -35,7 +35,7 @@ def embed_delay(ts, dim, tau):
 
     Parameters
     ----------
-    ts : array-like, shape(1, n_samples)
+    ts : array-like, shape(n_samples)
         One-dimensional symbolic time series.
 
     dim : int

@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """ Power-Envelope Correlation
 
-
 Similarly to :mod:`dyfunconn.fc.aec`, we can use the followig formula to estimate the correlations in power
 between the different frequency bands [Friston1996_].
 
@@ -46,8 +45,8 @@ def pec(data, fb_lo, fb_hi, fs):
     r : array-like, shape(n_channels, n_channels)
         Estimated Pearson correlation coefficient.
     """
-    _, h_lo, _ = analytic_signal(data, fb_lo, fs)
-    _, h_hi, _ = analytic_signal(data, fb_hi, fs)
+    h_lo, _, _ = analytic_signal(data, fb_lo, fs)
+    h_hi, _, _ = analytic_signal(data, fb_hi, fs)
 
     r = np.corrcoef(np.power(np.abs(h_lo), 2.0), np.power(np.abs(h_hi), 2.0))
     r = np.float32(r)

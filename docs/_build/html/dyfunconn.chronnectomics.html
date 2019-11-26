@@ -1,0 +1,421 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>dyfunconn.chronnectomics package &mdash; dyfunconn  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="dyfunconn.cluster package" href="dyfunconn.cluster.html" />
+    <link rel="prev" title="dyfunconn package" href="dyfunconn.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> dyfunconn
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="dyfunconn.html">dyfunconn package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="dyfunconn.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">dyfunconn.chronnectomics package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.chronnectomics.dwell_time">dyfunconn.chronnectomics.dwell_time module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.chronnectomics.flexibility_index">dyfunconn.chronnectomics.flexibility_index module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.chronnectomics.occupancy_time">dyfunconn.chronnectomics.occupancy_time module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-dyfunconn.chronnectomics">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dyfunconn.cluster.html">dyfunconn.cluster package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dyfunconn.fc.html">dyfunconn.fc package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dyfunconn.graphs.html">dyfunconn.graphs package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dyfunconn.sim_models.html">dyfunconn.sim_models package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dyfunconn.ts.html">dyfunconn.ts package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.html#module-dyfunconn.analytic_signal">dyfunconn.analytic_signal module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.html#module-dyfunconn.bands">dyfunconn.bands module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.html#module-dyfunconn.sliding_window">dyfunconn.sliding_window module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.html#module-dyfunconn.tvfcgs">dyfunconn.tvfcgs module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dyfunconn.html#module-dyfunconn">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">dyfunconn</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="dyfunconn.html">dyfunconn package</a> &raquo;</li>
+        
+      <li>dyfunconn.chronnectomics package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/dyfunconn.chronnectomics.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="dyfunconn-chronnectomics-package">
+<h1>dyfunconn.chronnectomics package<a class="headerlink" href="#dyfunconn-chronnectomics-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-dyfunconn.chronnectomics.dwell_time">
+<span id="dyfunconn-chronnectomics-dwell-time-module"></span><h2>dyfunconn.chronnectomics.dwell_time module<a class="headerlink" href="#module-dyfunconn.chronnectomics.dwell_time" title="Permalink to this headline">¶</a></h2>
+<p>Dwell Time</p>
+<p>Dwell time measures the time (when used in the context of functional connectivity
+microstates) a which a state is active consecutive temporal segments (<a href="#id2"><span class="problematic" id="id3">Dimitriadis2019_</span></a>).</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl class="citation">
+<dt class="label" id="dimitriadis2019"><span class="brackets">Dimitriadis2019</span></dt>
+<dd><p>Dimitriadis, S. I., López, M. E., Maestu, F., &amp; Pereda, E. (2019). Modeling the Switching behavior of Functional Connectivity Microstates (FCμstates) as a Novel Biomarker for Mild Cognitive Impairment. Frontiers in Neuroscience, 13.</p>
+</dd>
+</dl>
+<dl class="function">
+<dt id="dyfunconn.chronnectomics.dwell_time.dwell_time">
+<code class="sig-prename descclassname">dyfunconn.chronnectomics.dwell_time.</code><code class="sig-name descname">dwell_time</code><span class="sig-paren">(</span><em class="sig-param">x</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/chronnectomics/dwell_time.html#dwell_time"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.chronnectomics.dwell_time.dwell_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dwell Time</p>
+<p>Compute the dwell time for the given symbolic, 1d time series.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> : array-like, shape(N)</p>
+<blockquote>
+<div><p>Input symbolic time series.</p>
+</div></blockquote>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>dwell</strong> : dictionary</p>
+<blockquote>
+<div><p>KVP, where K=symbol id and V=array of dwell time.</p>
+</div></blockquote>
+<p><strong>mean</strong> : dictionary</p>
+<blockquote>
+<div><p>KVP, where K=symbol id and V=mean dwell time.</p>
+</div></blockquote>
+<p><strong>std</strong> : dictionary</p>
+<blockquote>
+<div><p>KVP, where K=symbol id and V=std dwell time.</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-dyfunconn.chronnectomics.flexibility_index">
+<span id="dyfunconn-chronnectomics-flexibility-index-module"></span><h2>dyfunconn.chronnectomics.flexibility_index module<a class="headerlink" href="#module-dyfunconn.chronnectomics.flexibility_index" title="Permalink to this headline">¶</a></h2>
+<p>Flexibility Index</p>
+<p>In the context of graph clustering it was defined in (<a class="reference internal" href="#basset2011">Basset2011</a>), flexbility is the frequency
+of a nodea change module allegiance; the transition of brain states between consecutive
+temporal segments. The higher the number of changes, the larger the FI will be.</p>
+<div class="math notranslate nohighlight">
+\[FI = \frac{\text{number of transitions}} {\text{total symbols - 1}}\]</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl class="citation">
+<dt class="label" id="basset2011"><span class="brackets">Basset2011</span></dt>
+<dd><p>Bassett, D. S., Wymbs, N. F., Porter, M. A., Mucha, P. J., Carlson, J. M., &amp; Grafton, S. T. (2011). Dynamic reconfiguration of human brain networks during learning. Proceedings of the National Academy of Sciences, 108(18), 7641-7646.</p>
+</dd>
+</dl>
+<dl class="function">
+<dt id="dyfunconn.chronnectomics.flexibility_index.flexibility_index">
+<code class="sig-prename descclassname">dyfunconn.chronnectomics.flexibility_index.</code><code class="sig-name descname">flexibility_index</code><span class="sig-paren">(</span><em class="sig-param">x</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/chronnectomics/flexibility_index.html#flexibility_index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.chronnectomics.flexibility_index.flexibility_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flexibility Index</p>
+<p>Compute the flexibility index for the given symbolic, 1d time series.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> : array-like, shape(N)</p>
+<blockquote>
+<div><p>Input symbolic time series.</p>
+</div></blockquote>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>fi</strong> : float</p>
+<blockquote>
+<div><p>The flexibility index.</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-dyfunconn.chronnectomics.occupancy_time">
+<span id="dyfunconn-chronnectomics-occupancy-time-module"></span><h2>dyfunconn.chronnectomics.occupancy_time module<a class="headerlink" href="#module-dyfunconn.chronnectomics.occupancy_time" title="Permalink to this headline">¶</a></h2>
+<p>Occupancy Time</p>
+<p>The fraction of number of distinct symbols occuring in the symbolic time series (<a href="#id4"><span class="problematic" id="id5">Dimitriadis2019_</span></a>).</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl class="citation">
+<dt class="label" id="id1"><span class="brackets">Dimitriadis2019</span></dt>
+<dd><p>Dimitriadis, S. I., López, M. E., Maestu, F., &amp; Pereda, E. (2019). Modeling the Switching behavior of Functional Connectivity Microstates (FCμstates) as a Novel Biomarker for Mild Cognitive Impairment. Frontiers in Neuroscience, 13.</p>
+</dd>
+</dl>
+<dl class="function">
+<dt id="dyfunconn.chronnectomics.occupancy_time.occupancy_time">
+<code class="sig-prename descclassname">dyfunconn.chronnectomics.occupancy_time.</code><code class="sig-name descname">occupancy_time</code><span class="sig-paren">(</span><em class="sig-param">x</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/chronnectomics/occupancy_time.html#occupancy_time"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.chronnectomics.occupancy_time.occupancy_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Occupancy Time</p>
+<p>Compute the occupancy time for the given symbolic, 1d time series.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> : array-like, shape(N)</p>
+<blockquote>
+<div><p>Input symbolic time series.</p>
+</div></blockquote>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>ot</strong> : dictionary</p>
+<blockquote>
+<div><p>KVP, where K=symbol id and V=occupancy time.</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-dyfunconn.chronnectomics">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-dyfunconn.chronnectomics" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="dyfunconn.chronnectomics.dwell_time">
+<code class="sig-prename descclassname">dyfunconn.chronnectomics.</code><code class="sig-name descname">dwell_time</code><span class="sig-paren">(</span><em class="sig-param">x</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/chronnectomics/dwell_time.html#dwell_time"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.chronnectomics.dwell_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dwell Time</p>
+<p>Compute the dwell time for the given symbolic, 1d time series.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> : array-like, shape(N)</p>
+<blockquote>
+<div><p>Input symbolic time series.</p>
+</div></blockquote>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>dwell</strong> : dictionary</p>
+<blockquote>
+<div><p>KVP, where K=symbol id and V=array of dwell time.</p>
+</div></blockquote>
+<p><strong>mean</strong> : dictionary</p>
+<blockquote>
+<div><p>KVP, where K=symbol id and V=mean dwell time.</p>
+</div></blockquote>
+<p><strong>std</strong> : dictionary</p>
+<blockquote>
+<div><p>KVP, where K=symbol id and V=std dwell time.</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="dyfunconn.chronnectomics.flexibility_index">
+<code class="sig-prename descclassname">dyfunconn.chronnectomics.</code><code class="sig-name descname">flexibility_index</code><span class="sig-paren">(</span><em class="sig-param">x</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/chronnectomics/flexibility_index.html#flexibility_index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.chronnectomics.flexibility_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flexibility Index</p>
+<p>Compute the flexibility index for the given symbolic, 1d time series.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> : array-like, shape(N)</p>
+<blockquote>
+<div><p>Input symbolic time series.</p>
+</div></blockquote>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>fi</strong> : float</p>
+<blockquote>
+<div><p>The flexibility index.</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="dyfunconn.chronnectomics.occupancy_time">
+<code class="sig-prename descclassname">dyfunconn.chronnectomics.</code><code class="sig-name descname">occupancy_time</code><span class="sig-paren">(</span><em class="sig-param">x</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/chronnectomics/occupancy_time.html#occupancy_time"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.chronnectomics.occupancy_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Occupancy Time</p>
+<p>Compute the occupancy time for the given symbolic, 1d time series.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> : array-like, shape(N)</p>
+<blockquote>
+<div><p>Input symbolic time series.</p>
+</div></blockquote>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>ot</strong> : dictionary</p>
+<blockquote>
+<div><p>KVP, where K=symbol id and V=occupancy time.</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="dyfunconn.cluster.html" class="btn btn-neutral float-right" title="dyfunconn.cluster package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="dyfunconn.html" class="btn btn-neutral float-left" title="dyfunconn package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Avraam Marimpis &amp; Stavros Dimitriadis
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

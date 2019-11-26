@@ -17,7 +17,6 @@
 import numpy as np
 import scipy
 import itertools
-import sklearn
 from sklearn import preprocessing
 
 from .embed_delay import embed_delay
@@ -73,17 +72,17 @@ def ordinal_pattern_similarity(signal1, signal2, m, tau):
     len1 = len(x)
     len2 = len(y)
 
-    factorial_dim = scipy.misc.factorial(m, exact=True)
+    factorial_dim = scipy.special.factorial(m, exact=True)
 
     ipermlist = itertools.permutations(list(range(1, m + 1)))
     npermlist = np.zeros((np.int32(factorial_dim), m))
     for index, perm in enumerate(ipermlist):
         perm = np.reshape(perm, (1, -1)).astype(np.float32)
-        npermlist[index, :] = sklearn.preprocessing.normalize(perm)
+        npermlist[index, :] = preprocessing.normalize(perm)
 
     # Signal 1
     I = np.argsort(x).astype(np.float32)
-    I = sklearn.preprocessing.normalize(I + 1)
+    I = preprocessing.normalize(I + 1)
     X = np.dot(I, npermlist.T).T
     X = np.round(X, decimals=4)
 
@@ -91,7 +90,7 @@ def ordinal_pattern_similarity(signal1, signal2, m, tau):
 
     # Signal 2
     I = np.argsort(y).astype(np.float32)
-    I = sklearn.preprocessing.normalize(I + 1)
+    I = preprocessing.normalize(I + 1)
     Y = np.dot(I, npermlist.T).T
 
     Y = np.round(Y, decimals=4)

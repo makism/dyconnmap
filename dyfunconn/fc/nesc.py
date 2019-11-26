@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """ Amplitude-Normalized Envelope-to-Signal Correlation
 
+
 -----
 
 .. [Penny2008] Penny, W. D., Duzel, E., Miller, K. J., & Ojemann, J. G. (2008). Testing for nested oscillation. Journal of neuroscience methods, 174(1), 50-61. Chicago
@@ -41,8 +42,8 @@ def nesc(data, f_lo, f_hi, fs, pairs=None):
     r : array-like, shape(n_channels, n_channels)
         Estimated Pearson correlation coefficient.
     """
-    _, hilbert_lo, _ = analytic_signal(data, f_lo, fs)
-    _, hilbert_hi, _ = analytic_signal(data, f_hi, fs)
+    hilbert_lo, _, _ = analytic_signal(data, f_lo, fs)
+    hilbert_hi, _, _ = analytic_signal(data, f_hi, fs)
 
     phi = np.angle(hilbert_lo)
 

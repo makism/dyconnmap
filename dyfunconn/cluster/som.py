@@ -2,7 +2,6 @@
 """ Self Organizing Map
 
 
-
 :math:`T` is the number of reference prototypes; in :math:`X` the input patterns are stored; :math:`X^\\ast` contains
 the approximated patterns as produced by the Nearest Neighbor rule.
 
@@ -19,10 +18,11 @@ For faster convergence, we can also draw random weights from the given probabili
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
 import numpy as np
-from sklearn.neighbors import NearestNeighbors
+
+from .cluster import BaseCluster
 
 
-class SOM:
+class SOM(BaseCluster):
     """ Self Organizing Map
 
     Parameters
@@ -89,7 +89,7 @@ class SOM:
         [n_samples, _] = data.shape
 
         for self.currentIteration in range(self.numIterations):
-            learn_sample = data[self.rng.choice(n_samples, 1), ]
+            learn_sample = data[self.rng.choice(n_samples, 1),]
             learn_sample = learn_sample.squeeze()
 
             dist = np.inf
@@ -104,9 +104,11 @@ class SOM:
                         dist = tmp_dist
                         I = (nodes_down, nodes_left)
 
-            bmu = self.weights[I[0], I[1],]
+            # bmu = self.weights[I[0], I[1]]
 
-            self.neighborhoodRadius = self.mapRadius * np.exp(float(-self.currentIteration) / self.timeConstant)
+            self.neighborhoodRadius = self.mapRadius * np.exp(
+                float(-self.currentIteration) / self.timeConstant
+            )
             for nodes_down in range(self.grid_y):
                 for nodes_left in range(self.grid_x):
                     I2 = (nodes_down, nodes_left)
@@ -119,37 +121,9 @@ class SOM:
                         infl = np.exp(-(distToNodeSquared) / (2.0 * widthSquared))
                         w += self.learningRate * infl * (learn_sample - w)
 
-            learningRate = self.startLearningRate * np.exp(float(-self.currentIteration) / self.numIterations)
+            # Should the following line read: self.learningRate ?
+            # learningRate = self.startLearningRate * np.exp(
+            # float(-self.currentIteration) / self.numIterations
+            # )
 
         return self
-
-    def encode(self, data, metric = 'euclidean'):
-        """ Employ a nearest-neighbor rule to encode the given ``data`` using the codebook.
-
-        Parameters
-        ----------
-        data : real array-like, shape(n_samples, n_features)
-            Data matrix, each row represents a sample.
-
-        metric : string
-            One of the following valid options as defined for function http://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.pairwise_distances.html.
-
-            Valid options include:
-
-             - euclidean
-             - cityblock
-             - l1
-             - cosine
-
-        Returns
-        -------
-        encoded_data : real array-like, shape(n_samples, n_features)
-            ``data``, as represented by the prototypes in codebook.
-        ts_symbols : list, shape(n_samples, 1)
-            A discrete symbolic time series
-        """
-        nbrs = NearestNeighbors(n_neighbors = 1, algorithm = 'auto', metric = metric).fit(self.protos)
-        _, self.__symbols = nbrs.kneighbors(data)
-        self.__encoding = self.protos[self.__symbols]
-
-        return (self.__encoding, self.__symbols)

@@ -1,5 +1,31 @@
 # -*- coding: utf-8 -*-
-""" Merge NeuralGas
+""" Merge Neural Gas
+
+Merge Neural Gas (MNG) [Strickert2003]_ is similar to the original Neural Gas algorithm, but each node,
+has an additional context vector (:math:`c`) associated; and the best matching unit is
+determined by a linear combination of both the weight and context vector (thus the merge),
+from the previous iteration.
+
+Similar to Neural Gas, :math:`N` nodes have their weights (:math:`w`) and context vectors (:math:`c`) randomly initialized.
+When the network is presented with a new input sequence :math:`v`, the distance and the corresponding rank of each node :math:`n` is estimated.
+
+1. The distance is computed by: :math:`d_i(n) = (1 - \\alpha) * ||v-w_i||^2 + ||c(n)-c_i||^2` and the context by: :math:`c(n) = (1 - \\beta) * w_{I_{n}-1} + \\beta * c_{I_{n}-1}`.
+
+ * :math:`\\alpha` is the balancing factor between :math:`w` and :math:`c`
+
+ * :math:`\\beta` is the merging degree between two subsequent iterations
+
+ * :math:`I_{n}-1` denotes the previous iteration
+
+2. Each node is adapted with:
+
+ a. :math:`{\\Delta}w_i = e_w(k) * h_{\\lambda(k)} (r(d_i,d)) * (v-w_i)` and its context by
+ b. :math:`{\\Delta}c_i = e_w(k) * h_{\\lambda(k)} (r(d_i,d)) * (c(n)-c_i)`
+
+  * :math:`r(d_i, d)` denotes the rank of the :math:`i`-th node
+
+As with Neural Gas, :math:`h_{\\lambda(k)}(r(d_i, d)) = exp(\\frac{-r(d_i, d)}{\\lambda(k)})` represents the neighborhood ranking function.
+:math:`\\lambda(k)` denotes the influence of the neighbood: :math:`{\\lambda_0(\\frac{\\lambda_T}{\\lambda_0})}^{(\\frac{t}{T_{max}})}`.
 
 
 Notes
@@ -15,38 +41,36 @@ Notes
 
 import numpy as np
 from sklearn.metrics.pairwise import pairwise_distances
-from sklearn.neighbors import NearestNeighbors
+
+from .cluster import BaseCluster
 
 
-class MergeNeuralGas:
+class MergeNeuralGas(BaseCluster):
     """ Merge Neural Gas
 
 
     Parameters
     ----------
-    n_protos: int
+    n_protos : int
         The number of prototypes
 
-    iterations: int
+    iterations : int
         The maximum iterations
 
-    merge_coeffs: list of length 2
+    merge_coeffs : list of length 2
         The merging coefficients
 
-    g: list of length 2
+    epsilon : list of length 2
+        The initial and final training rates.
 
+    lrate : list of length 2
+        The initial and final rearning rates.
 
-    epsilon: list of length 2
-        The initial and final training rates
+    n_jobs : int
+        Number of parallel jobs (will be passed to scikit-learn)).
 
-    lrate: list of length 2
-        The initial and final rearning rates
-
-    n_jobs: int
-        Number of parallel jobs (will be passed to scikit-learn))
-
-    rng: object
-        An object of type numpy.random.RandomState
+    rng : object
+        An object of type numpy.random.RandomState.
 
 
     Attributes
@@ -58,12 +82,29 @@ class MergeNeuralGas:
         The normalized distortion error
     """
 
-    def __init__(self, n_protos=10, iterations=1024, merge_coeffs=[0.1, 0.0], g=[0.025, 0.025], epsilon=[10, 0.001], lrate=[0.5, 0.005], n_jobs=1, rng=None):
+    def __init__(
+        self,
+        n_protos=10,
+        iterations=1024,
+        # merge_coeffs=[0.1, 0.0],
+        merge_coeffs=None,
+        # epsilon=[10, 0.001],
+        epsilon=None,
+        # lrate=[0.5, 0.005],
+        lrate=None,
+        n_jobs=1,
+        rng=None,
+    ):
         self.n_protos = n_protos
         self.iterations = iterations
+        if merge_coeffs is None:
+            merge_coeffs = [0.1, 0.0]
         self.a, self.b = merge_coeffs
-        self.g1, self.g2 = g
+        if epsilon is None:
+            epsilon = [10, 0.001]
         self.epsilon_i, self.epsilon_f = epsilon
+        if lrate is None:
+            lrate = [0.5, 0.005]
         self.lrate_i, self.lrate_f = lrate
         self.n_jobs = n_jobs
         self.protos = None
@@ -85,8 +126,8 @@ class MergeNeuralGas:
         :return:
         """
         [n_samples, n_obs] = data.shape
-        self.protos = data[self.rng.choice(n_samples, self.n_protos),] # w
-        self.context = np.zeros(self.protos.shape)                     # c
+        self.protos = data[self.rng.choice(n_samples, self.n_protos),]  # w
+        self.context = np.zeros(self.protos.shape)  # c
 
         ct = np.zeros((1, n_obs))
         wr = ct
@@ -100,7 +141,9 @@ class MergeNeuralGas:
             lrate = self.lrate_i * (self.lrate_f / float(self.lrate_i)) ** t
             epsilon = self.epsilon_i * (self.lrate_f / float(self.lrate_i)) ** t
 
-            d = (1 - self.a) * pairwise_distances(sample, self.protos) + self.a * pairwise_distances(ct, self.context)
+            d = (1 - self.a) * pairwise_distances(
+                sample, self.protos
+            ) + self.a * pairwise_distances(ct, self.context)
             I = np.argsort(np.argsort(d))
 
             min_id = np.where(I == 0)[0]
@@ -118,33 +161,5 @@ class MergeNeuralGas:
 
         return self
 
-    def encode(self, data, metric = 'euclidean'):
-        """ Employ a nearest-neighbor rule to encode the given ``data`` using the codebook.
-
-        Parameters
-        ----------
-        data : real array-like, shape(n_samples, n_features)
-            Data matrix, each row represents a sample.
-
-        metric : string
-            One of the following valid options as defined for function `http://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.pairwise_distances.html`.
-
-            Valid options include:
-
-             - euclidean
-             - cityblock
-             - l1
-             - cosine
-
-        Returns
-        -------
-        encoded_data : real array-like, shape(n_samples, n_features)
-            ``data``, as represented by the prototypes in codebook.
-        ts_symbols : list, shape(n_samples, 1)
-            A discrete symbolic time series
-        """
-        nbrs = NearestNeighbors(n_neighbors = 1, algorithm = 'auto', metric = metric).fit(self.protos)
-        _, self.__symbols = nbrs.kneighbors(data)
-        self.__encoding = self.protos[self.__symbols]
-
-        return (self.__encoding, self.__symbols)
+    def encode(self, data, metric="euclidean"):
+        return super().encode(data, metric, sort=False)

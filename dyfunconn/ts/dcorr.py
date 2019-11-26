@@ -6,6 +6,8 @@ Snippet adapted from: https://gist.github.com/Satra/aa3d19a12b74e9ab7941
 
 
 """
+# Author: Avraam Marimpis <avraam.marimpis@gmail.com>
+
 import numpy as np
 from scipy.spatial.distance import pdist, squareform
 
@@ -16,16 +18,17 @@ def dcorr(x, y):
 
     Parameters
     ----------
-    x :
+    x : array-like, shape(n_samples)
+        Input time series.
 
-    y :
+    y : array-like, shape(N)
+        Input time series.
 
 
     Returns
     -------
     val : float
         The computed distance correlation.
-
     """
     lx = len(x)
     ly = len(y)

@@ -17,32 +17,35 @@
   
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
 </head>
 
 <body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -144,11 +147,15 @@
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot; Relational Neural Gas</span>
 
+<span class="sd">Relational Neural Gas (RNG) [Hammer2007]_ is a variant of Neural Gas, that allows clustering and mining</span>
+<span class="sd">data from a pairwise similarity or dissimilarity matrix.</span>
+
 
 <span class="sd">|</span>
 
 <span class="sd">-----</span>
 
+<span class="sd">.. [Hammer2007] Hammer, B., &amp; Hasenfuss, A. (2007, September). Relational neural gas. In Annual Conference on Artificial Intelligence (pp. 190-204). Springer, Berlin, Heidelberg.</span>
 <span class="sd">.. [Hasenfuss2008] Hasenfuss, A., Hammer, B., &amp; Rossi, F. (2008, July). Patch Relational Neural Gas–Clustering of Huge Dissimilarity Datasets. In IAPR Workshop on Artificial Neural Networks in Pattern Recognition (pp. 1-12). Springer, Berlin, Heidelberg.</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
@@ -156,11 +163,11 @@
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics.pairwise</span> <span class="k">import</span> <span class="n">pairwise_distances</span>
-<span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="k">import</span> <span class="n">NearestNeighbors</span>
-<span class="kn">from</span> <span class="nn">sklearn.manifold</span> <span class="k">import</span> <span class="n">MDS</span>
+
+<span class="kn">from</span> <span class="nn">.cluster</span> <span class="k">import</span> <span class="n">BaseCluster</span>
 
 
-<div class="viewcode-block" id="RelationalNeuralGas"><a class="viewcode-back" href="../../../dyfunconn.cluster.html#dyfunconn.cluster.rng.RelationalNeuralGas">[docs]</a><span class="k">class</span> <span class="nc">RelationalNeuralGas</span><span class="p">:</span>
+<div class="viewcode-block" id="RelationalNeuralGas"><a class="viewcode-back" href="../../../dyfunconn.cluster.html#dyfunconn.cluster.rng.RelationalNeuralGas">[docs]</a><span class="k">class</span> <span class="nc">RelationalNeuralGas</span><span class="p">(</span><span class="n">BaseCluster</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Relational Neural Gas</span>
 
 
@@ -199,9 +206,19 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_protos</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">lrate</span><span class="o">=</span><span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">],</span> <span class="n">metric</span><span class="o">=</span><span class="s1">&#39;euclidean&#39;</span><span class="p">,</span> <span class="n">rng</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">n_protos</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+        <span class="n">iterations</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+        <span class="c1"># lrate=[0.3, 0.01],</span>
+        <span class="n">lrate</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;euclidean&quot;</span><span class="p">,</span>
+        <span class="n">rng</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">n_protos</span> <span class="o">=</span> <span class="n">n_protos</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">iterations</span> <span class="o">=</span> <span class="n">iterations</span>
+        <span class="k">if</span> <span class="n">lrate</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">lrate</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">lrate_i</span> <span class="o">=</span> <span class="n">lrate</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">n_protos</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">lrate_f</span> <span class="o">=</span> <span class="n">lrate</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">lrate</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lrate_i</span>
@@ -248,7 +265,7 @@
         <span class="n">N</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">diss_mtx</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">__multipl</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">protos</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span><span class="o">/</span><span class="n">N</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">n_protos</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">protos</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="n">N</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">n_protos</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>
 
         <span class="k">for</span> <span class="n">iteration</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">iterations</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
             <span class="n">t</span> <span class="o">=</span> <span class="n">iteration</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">iterations</span><span class="p">)</span>
@@ -268,57 +285,14 @@
             <span class="n">tmp2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">tmp2</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">protos</span> <span class="o">=</span> <span class="n">tmp2</span>
 
-            <span class="bp">self</span><span class="o">.</span><span class="n">lrate</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lrate_i</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lrate_f</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lrate_i</span><span class="p">))</span> <span class="o">**</span> <span class="n">t</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">lrate</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">lrate_i</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lrate_f</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lrate_i</span><span class="p">))</span> <span class="o">**</span> <span class="n">t</span>
+            <span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">coeff</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">protos</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">protos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">coeff</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="bp">self</span></div>
-
-
-<div class="viewcode-block" id="RelationalNeuralGas.encode"><a class="viewcode-back" href="../../../dyfunconn.cluster.html#dyfunconn.cluster.rng.RelationalNeuralGas.encode">[docs]</a>    <span class="k">def</span> <span class="nf">encode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; Employ a nearest-neighbor rule to encode the given ``data`` using the codebook.</span>
-
-<span class="sd">        Parameters</span>
-<span class="sd">        ----------</span>
-<span class="sd">        data : real array-like, shape(n_samples, n_features)</span>
-<span class="sd">            Data matrix, each row represents a sample.</span>
-
-<span class="sd">        metric : string or None</span>
-<span class="sd">            One of the following valid options as defined for function http://scikit-learn.org/stable/modules/generated/sklearn.metrics.pairwise.pairwise_distances.html.</span>
-
-<span class="sd">            Valid options include:</span>
-
-<span class="sd">             - euclidean</span>
-<span class="sd">             - cityblock</span>
-<span class="sd">             - l1</span>
-<span class="sd">             - cosine</span>
-
-<span class="sd">             If `None` is passed, the matric used for learning the data will be used.</span>
-
-<span class="sd">        Returns</span>
-<span class="sd">        -------</span>
-<span class="sd">        encoded_data : real array-like, shape(n_samples, n_features)</span>
-<span class="sd">            ``data``, as represented by the prototypes in codebook.</span>
-<span class="sd">        ts_symbols : list, shape(n_samples, 1)</span>
-<span class="sd">            A discrete symbolic time series</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="c1"># Perform a proposed data mining procedure as described in [Laskaris2004].</span>
-        <span class="n">mds</span> <span class="o">=</span> <span class="n">MDS</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">rng</span><span class="p">)</span>
-        <span class="n">protos_1d</span> <span class="o">=</span> <span class="n">mds</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">protos</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
-        <span class="n">sorted_protos_1d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">protos_1d</span><span class="p">)</span>
-
-        <span class="n">sprotos</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">protos</span><span class="p">[</span><span class="n">sorted_protos_1d</span><span class="p">]</span>
-
-        <span class="k">if</span> <span class="n">metric</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">metric</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">metric</span>
-
-        <span class="n">nbrs</span> <span class="o">=</span> <span class="n">NearestNeighbors</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="n">metric</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">sprotos</span><span class="p">)</span>
-        <span class="n">_</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__symbols</span> <span class="o">=</span> <span class="n">nbrs</span><span class="o">.</span><span class="n">kneighbors</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">__encoding</span> <span class="o">=</span> <span class="n">sprotos</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">__symbols</span><span class="p">]</span>
-
-        <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__encoding</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">__symbols</span><span class="p">)</span></div>
-
 
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">__rdist</span><span class="p">(</span><span class="n">mtx</span><span class="p">,</span> <span class="n">coeff</span><span class="p">):</span>
@@ -358,7 +332,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Avraam Marimpis &amp; Stavros Dimitriadis.
+        &copy; Copyright 2019, Avraam Marimpis &amp; Stavros Dimitriadis
 
     </p>
   </div>
@@ -375,33 +349,16 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../',
-            VERSION:'',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-
   <script type="text/javascript">
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script> 
+  </script>
+
+  
+  
+    
+   
 
 </body>
 </html>

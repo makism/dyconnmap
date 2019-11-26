@@ -95,22 +95,27 @@ def tvfcg(data, estimator_instance, fb, fs, cc=2.0, step=5.0, pairs=None):
 
     #
     n_channels, n_samples = np.shape(data)
-    window_length = np.int32(np.round((cc / fb[0]) * fs))
-    windows = np.int32(np.round((n_samples - window_length) / step))
+    # window_length = np.int32(np.round((cc / fb[0]) * fs))
+    # windows = np.int32(np.round((n_samples - window_length) / step))
+    windows, window_length = tvfcg_compute_windows(data, fb, fs, cc, step)
 
     if window_length >= n_samples:
         raise Exception(
-            "The size of window cannot be greater than the number of samples")
+            "The size of window cannot be greater than the number of samples"
+        )
 
-    fcgs = np.zeros((windows, n_channels, n_channels), dtype=estimator_instance.data_type)
+    fcgs = np.zeros(
+        (windows, n_channels, n_channels), dtype=estimator_instance.data_type
+    )
 
     if pairs is None:
-        pairs = [(win_id, int(win_id * step), int(window_length + (win_id * step)), c1, c2)
-                 for win_id in range(windows)
-                 for c1 in range(0, n_channels)
-                 for c2 in range(c1, n_channels)
-                 if c1 != c2
-                 ]
+        pairs = [
+            (win_id, int(win_id * step), int(window_length + (win_id * step)), c1, c2)
+            for win_id in range(windows)
+            for c1 in range(0, n_channels)
+            for c2 in range(c1, n_channels)
+            if c1 != c2
+        ]
 
     for pair in pairs:
         win_id, start, end, c1, c2 = pair
@@ -122,14 +127,16 @@ def tvfcg(data, estimator_instance, fb, fs, cc=2.0, step=5.0, pairs=None):
         # try:
         slice_ts, _ = estimator(slice1, slice2)
         # except:
-            # slice = estimator(slice1, slice2)
+        #   slice = estimator(slice1, slice2)
 
         fcgs[win_id, c1, c2] = avg_func(slice_ts)
 
     return fcgs
 
 
-def tvfcg_cfc(data, estimator_instance, fb_lo, fb_hi, fs=128, cc=2.0, step=5, pairs=None):
+def tvfcg_cfc(
+    data, estimator_instance, fb_lo, fb_hi, fs=128, cc=2.0, step=5, pairs=None
+):
     """ Time-Varying Functional Connectivity Graphs (for Cross frequency Coupling)
 
     The TVFCGs are computed from the input ``data`` by employing the given
@@ -182,23 +189,25 @@ def tvfcg_cfc(data, estimator_instance, fb_lo, fb_hi, fs=128, cc=2.0, step=5, pa
 
     #
     n_channels, n_samples = np.shape(data)
-
-    window_length = np.int32(np.round((cc / fb_lo[0]) * fs))
-    windows = np.int32(np.round((n_samples - window_length) / step))
+    # window_length = np.int32(np.round((cc / fb_lo[0]) * fs))
+    # windows = np.int32(np.round((n_samples - window_length) / step))
+    windows, window_length = tvfcg_compute_windows(data, fb_lo, fs, cc, step)
 
     if window_length >= n_samples:
         raise Exception(
-            "The size of window cannot be greater than the number of samples")
+            "The size of window cannot be greater than the number of samples"
+        )
 
     fcgs = np.zeros((windows, n_channels, n_channels))
 
     if pairs is None:
-        pairs = [(win_id, (win_id * step), window_length + (win_id * step), c1, c2)
-                 for win_id in range(windows)
-                 for c1 in range(0, n_channels)
-                 for c2 in range(c1, n_channels)
-                 if c1 != c2
-                 ]
+        pairs = [
+            (win_id, (win_id * step), window_length + (win_id * step), c1, c2)
+            for win_id in range(windows)
+            for c1 in range(0, n_channels)
+            for c2 in range(c1, n_channels)
+            if c1 != c2
+        ]
 
     for pair in pairs:
         win_id, start, end, c1, c2 = pair
@@ -253,15 +262,18 @@ def tvfcg_ts(ts, fb, fs=128, cc=2.0, step=5, pairs=None, avg_func=np.mean):
 
     if window_length >= n_samples:
         raise Exception(
-            "The size of window cannot be greater than the number of samples")
+            "The size of window cannot be greater than the number of samples"
+        )
 
     fcgs = np.zeros((windows, n_channels, n_channels))
 
     if pairs is None:
-        pairs = [(win_id, (win_id * step), window_length + (win_id * step), c1, c2)
-                 for win_id in range(windows)
-                 for c1 in range(n_channels)
-                 for c2 in range(c1, n_channels)]
+        pairs = [
+            (win_id, (win_id * step), window_length + (win_id * step), c1, c2)
+            for win_id in range(windows)
+            for c1 in range(n_channels)
+            for c2 in range(c1, n_channels)
+        ]
 
     for pair in pairs:
         win_id, start, end, c1, c2 = pair
@@ -307,15 +319,16 @@ def tvfcg_compute_windows(data, fb_lo, fs, cc, step):
     window_length : int
         The length of a sliding window; number of samples used to estimated the connectivity.
     """
-    n_channels, n_channels, n_samples = np.shape(data)
+    *_, n_samples = np.shape(data)
     window_length = np.int32(np.round((cc / fb_lo[0]) * fs))
     windows = np.int32(np.round((n_samples - window_length) / step))
 
-    print("window_length = {0}".format(window_length))
+    # print("window_length = {0}".format(window_length))
 
     if window_length >= n_samples:
         raise Exception(
-            "The size of window cannot be greater than the number of samples")
+            "The size of window cannot be greater than the number of samples"
+        )
 
     return windows, window_length
 
