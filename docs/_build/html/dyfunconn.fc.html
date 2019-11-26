@@ -346,7 +346,11 @@ within the range <span class="math notranslate nohighlight">\([0,1]\)</span>.</p
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.fc.coherence.Coherence.estimate" title="dyfunconn.fc.coherence.Coherence.estimate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">estimate</span></code></a>(data[, data_against])</p></td>
-<td><p>Estimate the connectivity within the given dataset.</p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#dyfunconn.fc.coherence.Coherence.estimate_pair" title="dyfunconn.fc.coherence.Coherence.estimate_pair"><code class="xref py py-obj docutils literal notranslate"><span class="pre">estimate_pair</span></code></a>(ts1, ts2)</p></td>
 <td><p>Estimate the connectivity between two signals (time series).</p></td>
@@ -367,8 +371,21 @@ within the range <span class="math notranslate nohighlight">\([0,1]\)</span>.</p
 </table>
 <dl class="method">
 <dt id="dyfunconn.fc.coherence.Coherence.estimate">
-<code class="sig-name descname">estimate</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">data_against=None</em><span class="sig-paren">)</span><a class="headerlink" href="#dyfunconn.fc.coherence.Coherence.estimate" title="Permalink to this definition">¶</a></dt>
-<dd><p>Estimate the connectivity within the given dataset.</p>
+<code class="sig-name descname">estimate</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">data_against=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/coherence.html#Coherence.estimate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.coherence.Coherence.estimate" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>ts</strong> : complex array-like, shape(n_channels, n_channels, n_samples)</p>
+<blockquote>
+<div><p>Estimated PLV time series (complex valued).</p>
+</div></blockquote>
+<p><strong>avg</strong> : array-like, shape(n_channels, n_channels)</p>
+<blockquote>
+<div><p>Average PLV.</p>
+</div></blockquote>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Called from <a class="reference internal" href="dyfunconn.html#dyfunconn.tvfcgs.tvfcg" title="dyfunconn.tvfcgs.tvfcg"><code class="xref py py-mod docutils literal notranslate"><span class="pre">dyfunconn.tvfcgs.tvfcg</span></code></a>.</p>
 </dd></dl>
 
 <dl class="method">
@@ -3334,6 +3351,121 @@ between the :attr:<a href="#id27"><span class="problematic" id="id28">`</span></
 </div>
 </dd></dl>
 
+<dl class="class">
+<dt id="dyfunconn.fc.Coherence">
+<em class="property">class </em><code class="sig-prename descclassname">dyfunconn.fc.</code><code class="sig-name descname">Coherence</code><span class="sig-paren">(</span><em class="sig-param">fb</em>, <em class="sig-param">fs</em>, <em class="sig-param">pairs=None</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/coherence.html#Coherence"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.Coherence" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#dyfunconn.fc.estimator.Estimator" title="dyfunconn.fc.estimator.Estimator"><code class="xref py py-class docutils literal notranslate"><span class="pre">dyfunconn.fc.estimator.Estimator</span></code></a></p>
+<p>An <a class="reference internal" href="#dyfunconn.fc.Estimator" title="dyfunconn.fc.Estimator"><code class="xref py py-mod docutils literal notranslate"><span class="pre">dyfunconn.fc.Estimator</span></code></a> class that implements <a class="reference internal" href="#dyfunconn.fc.coherence" title="dyfunconn.fc.coherence"><code class="xref py py-mod docutils literal notranslate"><span class="pre">dyfunconn.fc.coherence</span></code></a>.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><a class="reference internal" href="#dyfunconn.fc.coherence" title="dyfunconn.fc.coherence"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dyfunconn.fc.coherence</span></code></a></dt><dd><p>Coherence</p>
+</dd>
+<dt><a class="reference internal" href="dyfunconn.html#dyfunconn.tvfcg" title="dyfunconn.tvfcg"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dyfunconn.tvfcg</span></code></a></dt><dd><p>Time-Varying Functional Connectivity Graphs</p>
+</dd>
+</dl>
+</div>
+<p class="rubric">Methods</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.fc.Coherence.estimate" title="dyfunconn.fc.Coherence.estimate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">estimate</span></code></a>(data[, data_against])</p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p></dd>
+</dl>
+</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#dyfunconn.fc.Coherence.estimate_pair" title="dyfunconn.fc.Coherence.estimate_pair"><code class="xref py py-obj docutils literal notranslate"><span class="pre">estimate_pair</span></code></a>(ts1, ts2)</p></td>
+<td><p>Estimate the connectivity between two signals (time series).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.fc.Coherence.mean" title="dyfunconn.fc.Coherence.mean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">mean</span></code></a>(ts)</p></td>
+<td><p>The function used to compute the mean synchronization in a timeseries.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#dyfunconn.fc.Coherence.prepare_pairs" title="dyfunconn.fc.Coherence.prepare_pairs"><code class="xref py py-obj docutils literal notranslate"><span class="pre">prepare_pairs</span></code></a>(rois[, symmetric])</p></td>
+<td><p>Prepares a list of indices of ROIs sourced in an estimator.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#dyfunconn.fc.Coherence.preprocess" title="dyfunconn.fc.Coherence.preprocess"><code class="xref py py-obj docutils literal notranslate"><span class="pre">preprocess</span></code></a>(data)</p></td>
+<td><p>Preprocess the data.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#dyfunconn.fc.Coherence.typeCast" title="dyfunconn.fc.Coherence.typeCast"><code class="xref py py-obj docutils literal notranslate"><span class="pre">typeCast</span></code></a>(data[, cast_type])</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="dyfunconn.fc.Coherence.estimate">
+<code class="sig-name descname">estimate</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">data_against=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/coherence.html#Coherence.estimate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.Coherence.estimate" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>ts</strong> : complex array-like, shape(n_channels, n_channels, n_samples)</p>
+<blockquote>
+<div><p>Estimated PLV time series (complex valued).</p>
+</div></blockquote>
+<p><strong>avg</strong> : array-like, shape(n_channels, n_channels)</p>
+<blockquote>
+<div><p>Average PLV.</p>
+</div></blockquote>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Called from <a class="reference internal" href="dyfunconn.html#dyfunconn.tvfcgs.tvfcg" title="dyfunconn.tvfcgs.tvfcg"><code class="xref py py-mod docutils literal notranslate"><span class="pre">dyfunconn.tvfcgs.tvfcg</span></code></a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dyfunconn.fc.Coherence.estimate_pair">
+<code class="sig-name descname">estimate_pair</code><span class="sig-paren">(</span><em class="sig-param">ts1</em>, <em class="sig-param">ts2</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/coherence.html#Coherence.estimate_pair"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.Coherence.estimate_pair" title="Permalink to this definition">¶</a></dt>
+<dd><p>Estimate the connectivity between two signals (time series).</p>
+<p class="rubric">Notes</p>
+<p>This is invoked from cross-frequency coupling methods.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dyfunconn.fc.Coherence.mean">
+<code class="sig-name descname">mean</code><span class="sig-paren">(</span><em class="sig-param">ts</em><span class="sig-paren">)</span><a class="headerlink" href="#dyfunconn.fc.Coherence.mean" title="Permalink to this definition">¶</a></dt>
+<dd><p>The function used to compute the mean synchronization in a timeseries.</p>
+<p>This is needed because some estimators produce complex (imaginary), and
+special treatment is needed (i.e. taking only the real part).</p>
+<dl class="field-list">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>mtx</strong> : array-like</p>
+<blockquote>
+<div><p>The average synchronization.</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="dyfunconn.fc.Coherence.prepare_pairs">
+<code class="sig-name descname">prepare_pairs</code><span class="sig-paren">(</span><em class="sig-param">rois</em>, <em class="sig-param">symmetric=False</em><span class="sig-paren">)</span><a class="headerlink" href="#dyfunconn.fc.Coherence.prepare_pairs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prepares a list of indices of ROIs sourced in an estimator.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>rois</strong> : int</p>
+<blockquote>
+<div><p>Number of rois</p>
+</div></blockquote>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="dyfunconn.fc.Coherence.preprocess">
+<code class="sig-name descname">preprocess</code><span class="sig-paren">(</span><em class="sig-param">data</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/coherence.html#Coherence.preprocess"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.Coherence.preprocess" title="Permalink to this definition">¶</a></dt>
+<dd><p>Preprocess the data.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="dyfunconn.fc.Coherence.typeCast">
+<code class="sig-name descname">typeCast</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">cast_type=&lt;class 'numpy.float32'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#dyfunconn.fc.Coherence.typeCast" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 <dl class="function">
 <dt id="dyfunconn.fc.icoherence">
 <code class="sig-prename descclassname">dyfunconn.fc.</code><code class="sig-name descname">icoherence</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">fb</em>, <em class="sig-param">fs</em>, <em class="sig-param">pairs=None</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyfunconn/fc/icoherence.html#icoherence"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyfunconn.fc.icoherence" title="Permalink to this definition">¶</a></dt>
@@ -3623,7 +3755,7 @@ of channels.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Avraam Marimpis &amp; Stavros Dimitriadis
+        &copy; Copyright 2019, Avraam Marimpis &amp; Stavros Dimitriadis
 
     </p>
   </div>

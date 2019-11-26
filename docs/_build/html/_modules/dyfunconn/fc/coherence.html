@@ -302,7 +302,36 @@
 
         <span class="n">cohv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">csdxy</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">conj</span><span class="p">(</span><span class="n">csdxy</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">csdxx</span> <span class="o">*</span> <span class="n">csdyy</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">cohv</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">cohv</span><span class="p">)</span></div></div>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">cohv</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">cohv</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Coherence.estimate"><a class="viewcode-back" href="../../../dyfunconn.fc.html#dyfunconn.fc.coherence.Coherence.estimate">[docs]</a>    <span class="k">def</span> <span class="nf">estimate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">data_against</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ts : complex array-like, shape(n_channels, n_channels, n_samples)</span>
+<span class="sd">            Estimated PLV time series (complex valued).</span>
+
+<span class="sd">        avg : array-like, shape(n_channels, n_channels)</span>
+<span class="sd">            Average PLV.</span>
+
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        Called from :mod:`dyfunconn.tvfcgs.tvfcg`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">n_rois</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">prepare_pairs</span><span class="p">(</span><span class="n">n_rois</span><span class="p">)</span>
+
+        <span class="n">avg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_rois</span><span class="p">,</span> <span class="n">n_rois</span><span class="p">))</span>
+
+        <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">pairs</span><span class="p">:</span>
+            <span class="n">ts1</span><span class="p">,</span> <span class="n">ts2</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">pair</span><span class="p">,]</span>
+            <span class="n">avg</span><span class="p">[</span><span class="n">pair</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">estimate_pair</span><span class="p">(</span><span class="n">ts1</span><span class="p">,</span> <span class="n">ts2</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="p">(</span><span class="kc">None</span><span class="p">,</span> <span class="n">avg</span><span class="p">)</span></div></div>
 </pre></div>
 
            </div>
@@ -315,7 +344,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Avraam Marimpis &amp; Stavros Dimitriadis
+        &copy; Copyright 2019, Avraam Marimpis &amp; Stavros Dimitriadis
 
     </p>
   </div>
