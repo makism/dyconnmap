@@ -48,7 +48,7 @@ setup(
     package_dir={"dyfunconn": "dyfunconn"},
     data_files=data_files,
     classifiers=[
-        "Development Status :: 5 - Stable",
+        "Development Status :: 5 - Production/Stable",
         "Programming Language :: Python :: 3.6",
         "Intended Audience :: Science/Research",
         "Intended Audience :: Developers",
