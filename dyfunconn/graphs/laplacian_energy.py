@@ -41,7 +41,6 @@ def laplacian_energy(mtx):
     le : float
         The Laplacian Energy.
     """
-
     lmtx = scipy.sparse.csgraph.laplacian(mtx, normed=False)
     w, _ = np.linalg.eig(lmtx)
     avg_degree = np.mean(bct.degrees_und(mtx))

@@ -3,11 +3,11 @@ Prerequisites
 
 The following software is required for `dyfunconn` to work properly:
 
-1. Python 3.6.x or newer (for Python 3)
-2. NumPy 1.11.x or newer
-3. SciPy 0.18.x or newer
-4. Matplotlib 1.5.x or newer
-5. NetworkX 1.11.x or newer
+1. Python 3.6+
+2. NumPy
+3. SciPy
+4. Matplotlib
+5. NetworkX
 6. nose (optional)
 
     This is required for executing the tests.
@@ -15,6 +15,8 @@ The following software is required for `dyfunconn` to work properly:
 7. Sphinx (optional)
 
     This is required for building the documentation from the source code.
+
+Consult the accompanying `requirement.txt` file for specific versions.
 
 Installation
 ============

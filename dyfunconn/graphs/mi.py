@@ -27,7 +27,7 @@ By exploiting the definition of mutual information, the following property holds
 .. [Fred2005] Fred, A. L., & Jain, A. K. (2005). Combining multiple clusterings using evidence accumulation. IEEE transactions on pattern analysis and machine intelligence, 27(6), 835-850.
 .. [Strehl2002] Strehl, A., & Ghosh, J. (2002). Cluster ensembles---a knowledge reuse framework for combining multiple partitions. Journal of machine learning research, 3(Dec), 583-617.
 """
-# Author: Avraam Marimpis <avraam.marimpis@gmail.com"
+# Author: Avraam Marimpis <avraam.marimpis@gmail.com>"
 
 import numpy as np
 

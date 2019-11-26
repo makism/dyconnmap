@@ -221,7 +221,6 @@ def test_pac_multiple_channels():
     expected_ts = np.load("data/test_pac_plv_ts.npy")
     expected_ts = np.nan_to_num(ts)
     np.testing.assert_array_equal(ts, expected_ts)
-
     avg = np.float32(avg)
 
     expected_avg = np.load("data/test_pac_plv_avg.npy")
@@ -287,7 +286,7 @@ def test_fast_plv():
     avg[np.tril_indices_from(avg)] = 0.0
 
     expected_avg = np.load("data/test_plv_avg.npy")
-    np.testing.assert_array_equal(avg, expected_avg)
+    np.testing.assert_allclose(avg, expected_avg, rtol=1e-10, atol=0.0)
 
 
 def test_rho_index():
@@ -326,6 +325,7 @@ def test_dwpli():
 
     expected = np.load("data/test_dwpli.npy")
     expected = np.nan_to_num(expected)
+
     np.testing.assert_allclose(dwpliv, expected, rtol=1e-10, atol=0.0)
 
 

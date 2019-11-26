@@ -1,0 +1,19 @@
+name: publish-pypi
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Publish package
+      if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
+      uses: pypa/gh-action-pypi-publish@master
+      with:
+        user: ${{ secrets.TWINE_USERNAME }}
+        password: ${{ secrets.TWINE_PASSWORD }}
