@@ -34,12 +34,12 @@ Built on [NumPy](http://www.numpy.org/), [SciPy](http://www.scipy.org/), [matplo
 
 #### Cittation
 
-If you use _dyconnmap_ / _dyfunconn_ in a published work, please consider citing.
+If you use _dyconnmap_ or _dyfunconn_ in a published work, please consider citing.
 
 <table align="center">
     <tr>
         <td align="left">1.</td>
-        <td align="left">Marimpis, A. D., & Dimitriadis, S. I. (2017). dyconnmap: dynamic functional connectivity–a neuroimaging Python module. F1000Research, 6. https://doi.org/10.7490/f1000research.1114652.1</td>
+        <td align="left">Marimpis, A. D., & Dimitriadis, S. I. (2017). dyfunncon: dynamic functional connectivity–a neuroimaging Python module. F1000Research, 6. https://doi.org/10.7490/f1000research.1114652.1</td>
     </tr>
 </table>
 
