@@ -1,5 +1,5 @@
 
-1. Modify the version parameter in `setup.cfg`.
+1. Modify the version parameter in `setup.py`.
 
 2. Push in `@master`, create a new tag and push on remote.
 
