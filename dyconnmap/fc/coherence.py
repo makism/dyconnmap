@@ -69,8 +69,8 @@ def coherence(data, fb, fs, pairs=None, **kwargs):
 
     See also
     --------
-    dyfunconn.fc.Coherece: Coherece (Class Estimator)
-    dyfunconn.fc.icoherence: Imaginary Coherence
+    dyconnmap.fc.Coherece: Coherece (Class Estimator)
+    dyconnmap.fc.icoherence: Imaginary Coherence
     """
     n_channels, _ = np.shape(data)
     _, _, filtered = analytic_signal(data, fb, fs)
@@ -103,13 +103,13 @@ def coherence(data, fb, fs, pairs=None, **kwargs):
 class Coherence(Estimator):
     """ Coherence
 
-    An :mod:`dyfunconn.fc.Estimator` class that implements :mod:`dyfunconn.fc.coherence`.
+    An :mod:`dyconnmap.fc.Estimator` class that implements :mod:`dyconnmap.fc.coherence`.
 
 
     See also
     --------
-    dyfunconn.fc.coherence: Coherence
-    dyfunconn.tvfcg: Time-Varying Functional Connectivity Graphs
+    dyconnmap.fc.coherence: Coherence
+    dyconnmap.tvfcg: Time-Varying Functional Connectivity Graphs
     """
 
     def __init__(self, fb, fs, pairs=None, **kwargs):
@@ -173,7 +173,7 @@ class Coherence(Estimator):
 
         Notes
         -----
-        Called from :mod:`dyfunconn.tvfcgs.tvfcg`.
+        Called from :mod:`dyconnmap.tvfcgs.tvfcg`.
         """
         n_rois, _ = np.shape(data)
 

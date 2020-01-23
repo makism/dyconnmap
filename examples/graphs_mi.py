@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from dyfunconn.graphs import mutual_information
+from dyconnmap.graphs import mutual_information
 
 import numpy as np
 import scipy

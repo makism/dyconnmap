@@ -1,6 +1,6 @@
 #### Requirements
 
-Check `dyfunconn`'s requirements, plus you will need `jupyter-notebook`.
+Check `dyconnmap`'s requirements, plus you will need `jupyter-notebook`.
 
 
 #### How to run (sample instructions)

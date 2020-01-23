@@ -11,7 +11,7 @@ PLI estimates the asymmetry in the distribution of two time series' instantaneou
 
 Given two time series of equal length :math:`x(t)` and :math:`y(t)`, we extract
 their respective instantaneous phases :math:`\phi_x(t)` and :math:`\phi_y(t)`
-using the Hilbert transform (consult :py:mod:`dyfunconn.analytic_signal` for
+using the Hilbert transform (consult :py:mod:`dyconnmap.analytic_signal` for
 more details).
 Then, for such a pair of phases, PLI is computed as follows:
 
@@ -70,7 +70,7 @@ def pli(data, fb=None, fs=None, pairs=None):
 
     See also
     --------
-    dyfunconn.fc.PLI: Phase Lag Index
+    dyconnmap.fc.PLI: Phase Lag Index
     """
     estimator = PLI(fb, fs, pairs)
     pp_data = estimator.preprocess(data)

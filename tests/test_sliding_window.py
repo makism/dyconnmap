@@ -10,8 +10,8 @@ import numpy as np
 from numpy import testing
 
 # dynfunconn
-from dyfunconn import sliding_window_indx, sliding_window
-from dyfunconn.fc import PLV
+from dyconnmap import sliding_window_indx, sliding_window
+from dyconnmap.fc import PLV
 
 
 def test_sliding_window():

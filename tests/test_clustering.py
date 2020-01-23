@@ -17,9 +17,9 @@ from numpy import testing
 import sklearn
 from sklearn import datasets
 
-# dynfunconn
-import dyfunconn
-from dyfunconn import cluster
+# dyconnmap
+import dyconnmap
+from dyconnmap import cluster
 
 
 rng = None
@@ -39,7 +39,7 @@ def test_clustering_ng():
     global rng
     global data
 
-    ng = dyfunconn.cluster.NeuralGas(rng=rng).fit(data)
+    ng = dyconnmap.cluster.NeuralGas(rng=rng).fit(data)
     protos = ng.protos
     _, symbols = ng.encode(data)
 
@@ -55,7 +55,7 @@ def test_clustering_rng():
     global rng
     global data
 
-    reng = dyfunconn.cluster.RelationalNeuralGas(
+    reng = dyconnmap.cluster.RelationalNeuralGas(
         n_protos=10, iterations=100, rng=rng
     ).fit(data)
     protos = reng.protos
@@ -73,7 +73,7 @@ def test_clustering_mng():
     global rng
     global data
 
-    protos = dyfunconn.cluster.MergeNeuralGas(rng=rng).fit(data).protos
+    protos = dyconnmap.cluster.MergeNeuralGas(rng=rng).fit(data).protos
 
     result_protos = np.load("data/test_clustering_mng_protos.npy")
     np.testing.assert_array_almost_equal(protos, result_protos)
@@ -84,7 +84,7 @@ def test_clustering_gng():
     global rng
     global data
 
-    gng = dyfunconn.cluster.GrowingNeuralGas(rng=rng)
+    gng = dyconnmap.cluster.GrowingNeuralGas(rng=rng)
     gng.fit(data)
 
     protos = gng.protos
@@ -102,7 +102,7 @@ def test_clustering_som():
     global rng
     global data
 
-    protos = dyfunconn.cluster.SOM(grid=(8, 4), rng=rng).fit(data).weights
+    protos = dyconnmap.cluster.SOM(grid=(8, 4), rng=rng).fit(data).weights
 
     result_protos = np.load("data/test_clustering_som_protos.npy")
     np.testing.assert_array_almost_equal(protos, result_protos)
@@ -113,8 +113,8 @@ def test_clustering_som_umatrix():
     global rng
     global data
 
-    protos = dyfunconn.cluster.SOM(grid=(8, 4), rng=rng).fit(data).weights
-    umatrix = dyfunconn.cluster.umatrix(protos)
+    protos = dyconnmap.cluster.SOM(grid=(8, 4), rng=rng).fit(data).weights
+    umatrix = dyconnmap.cluster.umatrix(protos)
 
     result_umatrix = np.load("data/test_clustering_som_umatrix.npy")
     np.testing.assert_array_equal(umatrix, result_umatrix)

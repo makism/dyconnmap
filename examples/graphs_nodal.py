@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from dyfunconn.graphs import nodal_global_efficiency
+from dyconnmap.graphs import nodal_global_efficiency
 import numpy as np
 
 if __name__ == '__main__':

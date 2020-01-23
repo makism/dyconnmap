@@ -4,8 +4,8 @@ import time
 import numpy as np
 np.set_printoptions(precision=3, linewidth=160, suppress=True)
 
-from dyfunconn.fc import plv, PLV, pac, PAC
-from dyfunconn import tvfcg, tvfcg_ts, tvfcg_cfc
+from dyconnmap.fc import plv, PLV, pac, PAC
+from dyconnmap import tvfcg, tvfcg_ts, tvfcg_cfc
 
 
 if __name__ == '__main__':

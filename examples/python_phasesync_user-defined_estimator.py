@@ -6,7 +6,7 @@ from scipy import io
 
 np.set_printoptions(precision=3, linewidth=160, suppress=True)
 
-from dyfunconn import PhaseSync
+from dyconnmap import PhaseSync
 
 
 def myestimator(data, synchpairs, ts, avg, fb, fs):
@@ -21,7 +21,7 @@ def myestimator(data, synchpairs, ts, avg, fb, fs):
     return (ts, avg)
 
 if __name__ == '__main__':
-    data = sp.io.loadmat("/home/makism/Github/dyfunconn/examples/data/10secs.mat")['X1']
+    data = sp.io.loadmat("/home/makism/Github/dyconnmap/examples/data/10secs.mat")['X1']
     data = data[0:2, 0:1024]
     psync = PhaseSync([1.0, 4.0], 128, estimator=myestimator)
     psync.timeseries(data)

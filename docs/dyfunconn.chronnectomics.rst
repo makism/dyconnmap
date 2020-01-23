@@ -1,29 +1,29 @@
-dyfunconn.chronnectomics package
+dyconnmap.chronnectomics package
 ================================
 
 Submodules
 ----------
 
-dyfunconn.chronnectomics.dwell\_time module
+dyconnmap.chronnectomics.dwell\_time module
 -------------------------------------------
 
-.. automodule:: dyfunconn.chronnectomics.dwell_time
+.. automodule:: dyconnmap.chronnectomics.dwell_time
    :members:
    :undoc-members:
    :show-inheritance:
 
-dyfunconn.chronnectomics.flexibility\_index module
+dyconnmap.chronnectomics.flexibility\_index module
 --------------------------------------------------
 
-.. automodule:: dyfunconn.chronnectomics.flexibility_index
+.. automodule:: dyconnmap.chronnectomics.flexibility_index
    :members:
    :undoc-members:
    :show-inheritance:
 
-dyfunconn.chronnectomics.occupancy\_time module
+dyconnmap.chronnectomics.occupancy\_time module
 -----------------------------------------------
 
-.. automodule:: dyfunconn.chronnectomics.occupancy_time
+.. automodule:: dyconnmap.chronnectomics.occupancy_time
    :members:
    :undoc-members:
    :show-inheritance:
@@ -32,7 +32,7 @@ dyfunconn.chronnectomics.occupancy\_time module
 Module contents
 ---------------
 
-.. automodule:: dyfunconn.chronnectomics
+.. automodule:: dyconnmap.chronnectomics
    :members:
    :undoc-members:
    :show-inheritance:

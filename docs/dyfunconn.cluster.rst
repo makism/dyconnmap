@@ -1,53 +1,53 @@
-dyfunconn.cluster package
+dyconnmap.cluster package
 =========================
 
 Submodules
 ----------
 
-dyfunconn.cluster.gng module
+dyconnmap.cluster.gng module
 ----------------------------
 
-.. automodule:: dyfunconn.cluster.gng
+.. automodule:: dyconnmap.cluster.gng
    :members:
    :undoc-members:
    :show-inheritance:
 
-dyfunconn.cluster.mng module
+dyconnmap.cluster.mng module
 ----------------------------
 
-.. automodule:: dyfunconn.cluster.mng
+.. automodule:: dyconnmap.cluster.mng
    :members:
    :undoc-members:
    :show-inheritance:
 
-dyfunconn.cluster.ng module
+dyconnmap.cluster.ng module
 ---------------------------
 
-.. automodule:: dyfunconn.cluster.ng
+.. automodule:: dyconnmap.cluster.ng
    :members:
    :undoc-members:
    :show-inheritance:
 
-dyfunconn.cluster.rng module
+dyconnmap.cluster.rng module
 ----------------------------
 
-.. automodule:: dyfunconn.cluster.rng
+.. automodule:: dyconnmap.cluster.rng
    :members:
    :undoc-members:
    :show-inheritance:
 
-dyfunconn.cluster.som module
+dyconnmap.cluster.som module
 ----------------------------
 
-.. automodule:: dyfunconn.cluster.som
+.. automodule:: dyconnmap.cluster.som
    :members:
    :undoc-members:
    :show-inheritance:
 
-dyfunconn.cluster.umatrix module
+dyconnmap.cluster.umatrix module
 --------------------------------
 
-.. automodule:: dyfunconn.cluster.umatrix
+.. automodule:: dyconnmap.cluster.umatrix
    :members:
    :undoc-members:
    :show-inheritance:
@@ -56,7 +56,7 @@ dyfunconn.cluster.umatrix module
 Module contents
 ---------------
 
-.. automodule:: dyfunconn.cluster
+.. automodule:: dyconnmap.cluster
    :members:
    :undoc-members:
    :show-inheritance:

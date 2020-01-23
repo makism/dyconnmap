@@ -12,8 +12,8 @@ import os
 from numpy import testing
 
 # dynfunconn
-from dyfunconn import tvfcg, tvfcg_ts, tvfcg_cfc, tvfcg_compute_windows
-from dyfunconn.fc import PAC, PLV, plv
+from dyconnmap import tvfcg, tvfcg_ts, tvfcg_cfc, tvfcg_compute_windows
+from dyconnmap.fc import PAC, PLV, plv
 
 
 tvfcg_plv_ts = None

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>dyfunconn.ts.surrogates &mdash; dyfunconn  documentation</title>
+  <title>dyconnmap.ts.surrogates &mdash; dyconnmap  documentation</title>
   
 
   
@@ -49,7 +49,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home"> dyfunconn
+            <a href="../../../index.html" class="icon icon-home"> dyconnmap
           
 
           
@@ -80,7 +80,7 @@
             
             
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../dyfunconn.html">dyfunconn package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dyconnmap.html">dyconnmap package</a></li>
 </ul>
 
             
@@ -95,7 +95,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../../index.html">dyfunconn</a>
+          <a href="../../../index.html">dyconnmap</a>
         
       </nav>
 
@@ -128,7 +128,7 @@
         
           <li><a href="../../index.html">Module code</a> &raquo;</li>
         
-      <li>dyfunconn.ts.surrogates</li>
+      <li>dyconnmap.ts.surrogates</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -143,7 +143,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <h1>Source code for dyfunconn.ts.surrogates</h1><div class="highlight"><pre>
+  <h1>Source code for dyconnmap.ts.surrogates</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot; Surrogate Analysis</span>
 
@@ -156,7 +156,7 @@
 <span class="kn">import</span> <span class="nn">numbers</span>
 
 
-<div class="viewcode-block" id="surrogate_analysis"><a class="viewcode-back" href="../../../dyfunconn.ts.html#dyfunconn.ts.surrogates.surrogate_analysis">[docs]</a><span class="k">def</span> <span class="nf">surrogate_analysis</span><span class="p">(</span><span class="n">ts1</span><span class="p">,</span> <span class="n">ts2</span><span class="p">,</span> <span class="n">num_surr</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">estimator_func</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ts1_no_surr</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">rng</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="surrogate_analysis"><a class="viewcode-back" href="../../../dyconnmap.ts.html#dyconnmap.ts.surrogates.surrogate_analysis">[docs]</a><span class="k">def</span> <span class="nf">surrogate_analysis</span><span class="p">(</span><span class="n">ts1</span><span class="p">,</span> <span class="n">ts2</span><span class="p">,</span> <span class="n">num_surr</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">estimator_func</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ts1_no_surr</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">rng</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Surrogate Analysis</span>
 
 
@@ -238,7 +238,7 @@
     <span class="k">return</span> <span class="n">p_vals</span><span class="p">,</span> <span class="n">surr_vals</span><span class="p">,</span> <span class="n">surrogates</span><span class="p">,</span> <span class="n">r_value</span></div>
 
 
-<div class="viewcode-block" id="aaft"><a class="viewcode-back" href="../../../dyfunconn.ts.html#dyfunconn.ts.surrogates.aaft">[docs]</a><span class="k">def</span> <span class="nf">aaft</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">num_surr</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">rng</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="aaft"><a class="viewcode-back" href="../../../dyconnmap.ts.html#dyconnmap.ts.surrogates.aaft">[docs]</a><span class="k">def</span> <span class="nf">aaft</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">num_surr</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">rng</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Amplitude Adjusted Fourier Transform</span>
 
 
@@ -279,7 +279,7 @@
     <span class="k">return</span> <span class="n">s</span></div>
 
 
-<div class="viewcode-block" id="fdr"><a class="viewcode-back" href="../../../dyfunconn.ts.html#dyfunconn.ts.surrogates.fdr">[docs]</a><span class="k">def</span> <span class="nf">fdr</span><span class="p">(</span><span class="n">p_values</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;pdep&quot;</span><span class="p">):</span>
+<div class="viewcode-block" id="fdr"><a class="viewcode-back" href="../../../dyconnmap.ts.html#dyconnmap.ts.surrogates.fdr">[docs]</a><span class="k">def</span> <span class="nf">fdr</span><span class="p">(</span><span class="n">p_values</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">&quot;pdep&quot;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; False Discovery Rate</span>
 
 
@@ -327,7 +327,7 @@
     <span class="k">return</span> <span class="n">h</span><span class="p">,</span> <span class="n">crit_p</span></div>
 
 
-<div class="viewcode-block" id="phase_rand"><a class="viewcode-back" href="../../../dyfunconn.ts.html#dyfunconn.ts.surrogates.phase_rand">[docs]</a><span class="k">def</span> <span class="nf">phase_rand</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">num_surr</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">rng</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="phase_rand"><a class="viewcode-back" href="../../../dyconnmap.ts.html#dyconnmap.ts.surrogates.phase_rand">[docs]</a><span class="k">def</span> <span class="nf">phase_rand</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">num_surr</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">rng</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Phase-randomized suggorates</span>
 
 

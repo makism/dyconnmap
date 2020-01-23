@@ -8,7 +8,7 @@ from mpl_toolkits.mplot3d import Axes3D
 import numpy as np
 np.set_printoptions(precision=3, linewidth=256)
 
-from dyfunconn.ts import embed_delay
+from dyconnmap.ts import embed_delay
 
 
 if __name__ == "__main__":

@@ -22,13 +22,13 @@ Built on [NumPy](http://www.numpy.org/), [SciPy](http://www.scipy.org/), [matplo
 
 #### Resources
 
-* [Installation](https://github.com/makism/dyfunconn/blob/master/INSTALL.md)
+* [Installation](https://github.com/makism/dyconnmap/blob/master/INSTALL.md)
 
-* [Documenation](http://dyfunconn.readthedocs.io/?badge=latest)
+* [Documenation](http://dyconnmap.readthedocs.io/?badge=latest)
 
-* [Tutorials](https://github.com/makism/dyfunconn/tree/master/tutorials)
+* [Tutorials](https://github.com/makism/dyconnmap/tree/master/tutorials)
 
-* [Examples](https://github.com/makism/dyfunconn/tree/master/examples)
+* [Examples](https://github.com/makism/dyconnmap/tree/master/examples)
 
 
 #### Cittation
@@ -38,7 +38,7 @@ If you use _dyconnmap_ in a published work, please consider citing.
 <table align="center">
     <tr>
         <td align="left">1.</td>
-        <td align="left">Marimpis, A. D., & Dimitriadis, S. I. (2017). dyfunconn: dynamic functional connectivity–a neuroimaging Python module. F1000Research, 6. https://doi.org/10.7490/f1000research.1114652.1</td>
+        <td align="left">Marimpis, A. D., & Dimitriadis, S. I. (2017). dyconnmap: dynamic functional connectivity–a neuroimaging Python module. F1000Research, 6. https://doi.org/10.7490/f1000research.1114652.1</td>
     </tr>
 </table>
 

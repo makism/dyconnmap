@@ -41,7 +41,7 @@ def corr(data, fb=None, fs=None, pairs=None):
 
     See also
     --------
-    dyfunconn.fc.Corr: Correlation
+    dyconnmap.fc.Corr: Correlation
     """
     X = None
     if fb is not None and fs is not None:
@@ -62,8 +62,8 @@ class Corr(Estimator):
 
     See also
     --------
-    dyfunconn.fc.corr: Correlation
-    dyfunconn.tvfcg: Time-Varying Functional Connectivity Graphs
+    dyconnmap.fc.corr: Correlation
+    dyconnmap.tvfcg: Time-Varying Functional Connectivity Graphs
     """
 
     def __init__(self, fb=None, fs=None, pairs=None):
@@ -90,7 +90,7 @@ class Corr(Estimator):
 
         Notes
         -----
-        Called from :mod:`dyfunconn.tvfcgs.tvfcg`.
+        Called from :mod:`dyconnmap.tvfcgs.tvfcg`.
         """
         # n_samples = len(ts1)
 
@@ -113,7 +113,7 @@ class Corr(Estimator):
 
         Notes
         -----
-        Called from :mod:`dyfunconn.tvfcgs.tvfcg`.
+        Called from :mod:`dyconnmap.tvfcgs.tvfcg`.
         """
         n_rois, _ = np.shape(data)
 

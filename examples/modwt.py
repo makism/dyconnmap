@@ -9,7 +9,7 @@ sys.path.append('/opt/src/wmtsa-python')
 
 import wmtsa.modwt
 
-from dyfunconn import analytic_signal
+from dyconnmap import analytic_signal
 
 
 

@@ -3,8 +3,8 @@
 import numpy as np
 from numpy import testing
 
-# dynfunconn
-from dyfunconn.chronnectomics import dwell_time, flexibility_index, occupancy_time
+# dyconnmap
+from dyconnmap.chronnectomics import dwell_time, flexibility_index, occupancy_time
 
 
 sts = None

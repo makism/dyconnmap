@@ -4,10 +4,10 @@ import time
 import numpy as np
 np.set_printoptions(precision=3, linewidth=80)
 
-from dyfunconn import tvfcg, tvfcg_cfc
-from dyfunconn.fc import MI, PLV, PLI
-from dyfunconn.fc import PAC
-from dyfunconn.fc import plv_within
+from dyconnmap import tvfcg, tvfcg_cfc
+from dyconnmap.fc import MI, PLV, PLI
+from dyconnmap.fc import PAC
+from dyconnmap.fc import plv_within
 
 
 def try_PLV(data):
@@ -82,7 +82,7 @@ def try_TVFCG_PAC(data):
 
 
 if __name__ == '__main__':
-    data = np.load("/home/makism/Github/dyfunconn/examples/data/10secs.npy")
+    data = np.load("/home/makism/Github/dyconnmap/examples/data/10secs.npy")
 
     # try_MI(data)
     try_PLV(data)

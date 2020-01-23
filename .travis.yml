@@ -9,8 +9,8 @@ install:
   - pip install -r requirements.txt
 
 script:
-  - cd /home/travis/build/makism/dyfunconn/tests/
-  - nosetests --cover-tests --with-coverage --cover-package=dyfunconn
+  - cd /home/travis/build/makism/dyconnmap/tests/
+  - nosetests --cover-tests --with-coverage --cover-package=dyconnmap
 
 after_success:
   - coveralls

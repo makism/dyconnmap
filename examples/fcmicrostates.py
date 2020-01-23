@@ -6,9 +6,9 @@
 import numpy as np
 np.set_printoptions(precision=3, linewidth=256)
 
-from dyfunconn.fc import plv
-from dyfunconn import tvfcg
-from dyfunconn.cluster import NeuralGas
+from dyconnmap.fc import plv
+from dyconnmap import tvfcg
+from dyconnmap.cluster import NeuralGas
 
 
 if __name__ == "__main__":

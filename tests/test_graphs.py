@@ -3,8 +3,8 @@
 import numpy as np
 from numpy import testing
 
-# dyfunconn
-from dyfunconn.graphs import (
+# dyconnmap
+from dyconnmap.graphs import (
     graph_diffusion_distance,
     variation_information,
     mutual_information,

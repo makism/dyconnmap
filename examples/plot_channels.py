@@ -1,12 +1,12 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-from dyfunconn.plot import EEGLabChanLocs
-from dyfunconn.plot import plot_head_outline, plot_montage
+from dyconnmap.plot import EEGLabChanLocs
+from dyconnmap.plot import plot_head_outline, plot_montage
 
 
 #
-locs = EEGLabChanLocs().fromFile("/home/makism/Github/dyfunconn/snippets/emotiv.ced")
+locs = EEGLabChanLocs().fromFile("/home/makism/Github/dyconnmap/snippets/emotiv.ced")
 electrodes = locs.project2d(0.9)
 labels = locs.chans_labels
 

@@ -8,7 +8,7 @@ from setuptools import setup
 
 # from distutils.core import setup
 
-name = "dyfunconn"
+name = "dyconnmap"
 rootdir = os.path.abspath(os.path.dirname(__file__))
 
 packages = []
@@ -26,14 +26,14 @@ for extra_dirs in ("docs", "examples", "tests"):
         data_files.append(("share/" + name + "/" + dirname, fileslist))
 
 setup(
-    name="dyfunconn",
+    name="dyconnmap",
     version="v1.0.0",
-    description="A dynamic functional connectivity module in Python",
+    description="A dynamic connectome mapping module in Python",
     author="Avraam Marimpis, Stavros Dimitriadis",
     author_email="Avraam.Marimpis@gmail.com, STIDimitriadis@gmail.com",
     license="BSD",
     keywords="eeg fMRI meg connectivity graphs neuroimage brain",
-    url="https://github.com/makism/dyfunconn",
+    url="https://github.com/makism/dyconnmap",
     python_requires="~=3.6",
     packages=packages,
     install_requires=[
@@ -45,7 +45,7 @@ setup(
         "scikit-learn",
         "bctpy",
     ],
-    package_dir={"dyfunconn": "dyfunconn"},
+    package_dir={"dyconnmap": "dyconnmap"},
     data_files=data_files,
     classifiers=[
         "Development Status :: 5 - Production/Stable",

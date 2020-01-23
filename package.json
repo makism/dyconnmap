@@ -1,5 +1,5 @@
 {
-	"name": "dyfunconn",
+	"name": "dyconnmap",
 	"version": "",
 	"description": "",
 	"keywords": [
@@ -23,7 +23,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/makism/dyfunconn"
+		"url": "https://github.com/makism/dyconnmap"
 	},
 	"homepage": "",
 	"bugs": "",

@@ -3,7 +3,7 @@
 import numpy as np
 np.set_printoptions(precision=3, linewidth=256)
 
-from dyfunconn.fc import pli
+from dyconnmap.fc import pli
 
 
 if __name__ == "__main__":

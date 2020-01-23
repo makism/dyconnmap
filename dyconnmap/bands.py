@@ -7,7 +7,7 @@ You can access them with
 .. code-block:: python
    :linenos:
 
-    from dyfunconn.bands import *
+    from dyconnmap.bands import *
     print(bands['alpha'])
 
 

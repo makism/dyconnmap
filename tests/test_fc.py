@@ -7,7 +7,7 @@ import numpy as np
 from numpy import testing
 
 # dynfunconn
-from dyfunconn.fc import (
+from dyconnmap.fc import (
     aec,
     #   biplv,
     coherence,

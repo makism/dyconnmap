@@ -29,10 +29,10 @@ from sklearn import discriminant_analysis
 import sys
 sys.path.append('/mnt/Other/DEAP/tmp/')
 
-from dyfunconn.fc import PLI, PAC
-from dyfunconn import bands
-from dyfunconn import tvfcg_cfc
-from dyfunconn import analytic_signal
+from dyconnmap.fc import PLI, PAC
+from dyconnmap import bands
+from dyconnmap import tvfcg_cfc
+from dyconnmap import analytic_signal
 
 
 # ### Process subject

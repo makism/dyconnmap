@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from dyfunconn.graphs import graph_diffusion_distance
+from dyconnmap.graphs import graph_diffusion_distance
 
 import numpy as np
 

@@ -31,7 +31,7 @@ By exploiting the definition of mutual information, the following property holds
 
 import numpy as np
 
-from dyfunconn.ts.entropy import entropy
+from dyconnmap.ts.entropy import entropy
 from .vi import __unique_symbols
 
 

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>dyfunconn.fc.plv &mdash; dyfunconn  documentation</title>
+  <title>dyconnmap.fc.plv &mdash; dyconnmap  documentation</title>
   
 
   
@@ -49,7 +49,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home"> dyfunconn
+            <a href="../../../index.html" class="icon icon-home"> dyconnmap
           
 
           
@@ -80,7 +80,7 @@
             
             
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../dyfunconn.html">dyfunconn package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dyconnmap.html">dyconnmap package</a></li>
 </ul>
 
             
@@ -95,7 +95,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../../index.html">dyfunconn</a>
+          <a href="../../../index.html">dyconnmap</a>
         
       </nav>
 
@@ -128,7 +128,7 @@
         
           <li><a href="../../index.html">Module code</a> &raquo;</li>
         
-      <li>dyfunconn.fc.plv</li>
+      <li>dyconnmap.fc.plv</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -143,13 +143,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <h1>Source code for dyfunconn.fc.plv</h1><div class="highlight"><pre>
+  <h1>Source code for dyconnmap.fc.plv</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot; Phase Locking Value</span>
 
 <span class="sd">One of the pioneer methods called Phase Locking Value (*PLV*) is discussed in</span>
 <span class="sd">[Lachaux1998]_; it utilizes the Hilbert representation (consult</span>
-<span class="sd">:py:mod:`dyfunconn.analytic_signal` for more details) an EEG time</span>
+<span class="sd">:py:mod:`dyconnmap.analytic_signal` for more details) an EEG time</span>
 <span class="sd">series (of :math:`N_{sensors}`) and quantifies their interaction based on their</span>
 <span class="sd">instantaneous phase in a specific band frequency.</span>
 
@@ -177,7 +177,7 @@
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 
-<div class="viewcode-block" id="plv_fast"><a class="viewcode-back" href="../../../dyfunconn.fc.html#dyfunconn.fc.plv.plv_fast">[docs]</a><span class="k">def</span> <span class="nf">plv_fast</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">pairs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="plv_fast"><a class="viewcode-back" href="../../../dyconnmap.fc.html#dyconnmap.fc.plv.plv_fast">[docs]</a><span class="k">def</span> <span class="nf">plv_fast</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">pairs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Phase Locking Value</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -192,7 +192,7 @@
     <span class="k">return</span> <span class="n">W</span></div>
 
 
-<div class="viewcode-block" id="plv"><a class="viewcode-back" href="../../../dyfunconn.fc.html#dyfunconn.fc.plv.plv">[docs]</a><span class="k">def</span> <span class="nf">plv</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">fb</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pairs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="plv"><a class="viewcode-back" href="../../../dyconnmap.fc.html#dyconnmap.fc.plv.plv">[docs]</a><span class="k">def</span> <span class="nf">plv</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">fb</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pairs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Phase Locking Value</span>
 
 <span class="sd">    Compute the PLV for the given :attr:`data`, between the :attr:`pairs` (if given)</span>
@@ -226,9 +226,9 @@
 
 <span class="sd">    See also</span>
 <span class="sd">    --------</span>
-<span class="sd">    dyfunconn.fc.PLV: Phase Locking Value (Class Estimator)</span>
-<span class="sd">    dyfunconn.fc.iplv: Imaginary part of PLV</span>
-<span class="sd">    dyfunconn.fc.pli: Phase Lag Index</span>
+<span class="sd">    dyconnmap.fc.PLV: Phase Locking Value (Class Estimator)</span>
+<span class="sd">    dyconnmap.fc.iplv: Imaginary part of PLV</span>
+<span class="sd">    dyconnmap.fc.pli: Phase Lag Index</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">estimator</span> <span class="o">=</span> <span class="n">PLV</span><span class="p">(</span><span class="n">fb</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="n">pairs</span><span class="p">)</span>
     <span class="n">pp_data</span> <span class="o">=</span> <span class="n">estimator</span><span class="o">.</span><span class="n">preprocess</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
@@ -236,21 +236,21 @@
     <span class="k">return</span> <span class="n">estimator</span><span class="o">.</span><span class="n">estimate</span><span class="p">(</span><span class="n">pp_data</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="PLV"><a class="viewcode-back" href="../../../dyfunconn.fc.html#dyfunconn.fc.plv.PLV">[docs]</a><span class="k">class</span> <span class="nc">PLV</span><span class="p">(</span><span class="n">Estimator</span><span class="p">):</span>
+<div class="viewcode-block" id="PLV"><a class="viewcode-back" href="../../../dyconnmap.fc.html#dyconnmap.fc.plv.PLV">[docs]</a><span class="k">class</span> <span class="nc">PLV</span><span class="p">(</span><span class="n">Estimator</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Phase Locking Value (PLV)</span>
 
 
 <span class="sd">    See also</span>
 <span class="sd">    --------</span>
-<span class="sd">    dyfunconn.fc.plv: Phase Locking Value</span>
-<span class="sd">    dyfunconn.tvfcg: Time-Varying Functional Connectivity Graphs</span>
+<span class="sd">    dyconnmap.fc.plv: Phase Locking Value</span>
+<span class="sd">    dyconnmap.tvfcg: Time-Varying Functional Connectivity Graphs</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fb</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pairs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="n">Estimator</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fb</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="n">pairs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">data_type</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">complex</span>
 
-<div class="viewcode-block" id="PLV.preprocess"><a class="viewcode-back" href="../../../dyfunconn.fc.html#dyfunconn.fc.plv.PLV.preprocess">[docs]</a>    <span class="k">def</span> <span class="nf">preprocess</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<div class="viewcode-block" id="PLV.preprocess"><a class="viewcode-back" href="../../../dyconnmap.fc.html#dyconnmap.fc.plv.PLV.preprocess">[docs]</a>    <span class="k">def</span> <span class="nf">preprocess</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_skip_filter</span><span class="p">:</span>
             <span class="n">_</span><span class="p">,</span> <span class="n">u_phases</span> <span class="o">=</span> <span class="n">analytic_signal</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
@@ -258,7 +258,7 @@
 
         <span class="k">return</span> <span class="n">u_phases</span></div>
 
-<div class="viewcode-block" id="PLV.estimate_pair"><a class="viewcode-back" href="../../../dyfunconn.fc.html#dyfunconn.fc.plv.PLV.estimate_pair">[docs]</a>    <span class="k">def</span> <span class="nf">estimate_pair</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">signal1</span><span class="p">,</span> <span class="n">signal2</span><span class="p">):</span>
+<div class="viewcode-block" id="PLV.estimate_pair"><a class="viewcode-back" href="../../../dyconnmap.fc.html#dyconnmap.fc.plv.PLV.estimate_pair">[docs]</a>    <span class="k">def</span> <span class="nf">estimate_pair</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">signal1</span><span class="p">,</span> <span class="n">signal2</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="sd">        Returns</span>
@@ -272,7 +272,7 @@
 
 <span class="sd">        Notes</span>
 <span class="sd">        -----</span>
-<span class="sd">        Called from :mod:`dyfunconn.tvfcgs.tvfcg`.</span>
+<span class="sd">        Called from :mod:`dyconnmap.tvfcgs.tvfcg`.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">n_samples</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">signal1</span><span class="p">)</span>
 
@@ -281,11 +281,11 @@
 
         <span class="k">return</span> <span class="n">ts_plv</span><span class="p">,</span> <span class="n">avg_plv</span></div>
 
-<div class="viewcode-block" id="PLV.mean"><a class="viewcode-back" href="../../../dyfunconn.fc.html#dyfunconn.fc.plv.PLV.mean">[docs]</a>    <span class="k">def</span> <span class="nf">mean</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ts</span><span class="p">):</span>
+<div class="viewcode-block" id="PLV.mean"><a class="viewcode-back" href="../../../dyconnmap.fc.html#dyconnmap.fc.plv.PLV.mean">[docs]</a>    <span class="k">def</span> <span class="nf">mean</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ts</span><span class="p">):</span>
         <span class="n">l</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">ts</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
         <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">ts</span><span class="p">))</span> <span class="o">/</span> <span class="n">l</span></div>
 
-<div class="viewcode-block" id="PLV.estimate"><a class="viewcode-back" href="../../../dyfunconn.fc.html#dyfunconn.fc.plv.PLV.estimate">[docs]</a>    <span class="k">def</span> <span class="nf">estimate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">data_against</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="PLV.estimate"><a class="viewcode-back" href="../../../dyconnmap.fc.html#dyconnmap.fc.plv.PLV.estimate">[docs]</a>    <span class="k">def</span> <span class="nf">estimate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">data_against</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 
 
@@ -300,7 +300,7 @@
 
 <span class="sd">        Notes</span>
 <span class="sd">        -----</span>
-<span class="sd">        Called from :mod:`dyfunconn.tvfcgs.tvfcg`.</span>
+<span class="sd">        Called from :mod:`dyconnmap.tvfcgs.tvfcg`.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">n_rois</span><span class="p">,</span> <span class="n">n_samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 

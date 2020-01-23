@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# dyfunconn documentation build configuration file, created by
+# dyconnmap documentation build configuration file, created by
 # sphinx-quickstart on Tue Dec 16 20:04:33 2014.
 #
 # This file is execfile()d with the current directory set to its
@@ -21,10 +21,10 @@ import os
 #sys.path.insert(0, os.path.abspath('.'))
 sys.path.insert(0, os.path.abspath('sphinxext'))
 sys.path.insert(1, os.path.abspath('../'))
-sys.path.insert(2, os.path.abspath('../dyfunconn/'))
-sys.path.insert(3, os.path.abspath('../dyfunconn/dyfunconn/'))
-sys.path.insert(4, os.path.abspath('dyfunconn/'))
-sys.path.insert(5, os.path.abspath('dyfunconn/dyfunconn/'))
+sys.path.insert(2, os.path.abspath('../dyconnmap/'))
+sys.path.insert(3, os.path.abspath('../dyconnmap/dyconnmap/'))
+sys.path.insert(4, os.path.abspath('dyconnmap/'))
+sys.path.insert(5, os.path.abspath('dyconnmap/dyconnmap/'))
 
 
 # -- General configuration ------------------------------------------------
@@ -66,7 +66,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = 'dyfunconn'
+project = 'dyconnmap'
 copyright = '2019, Avraam Marimpis & Stavros Dimitriadis'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -213,7 +213,7 @@ html_static_path = ['_static']
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'dyfunconndoc'
+htmlhelp_basename = 'dyconnmapdoc'
 
 
 # -- Options for LaTeX output ---------------------------------------------
@@ -233,7 +233,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    ('index', 'dyfunconn.tex', 'dyfunconn Documentation',
+    ('index', 'dyconnmap.tex', 'dyconnmap Documentation',
      'Marimpis Avraam', 'manual'),
 ]
 
@@ -263,7 +263,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'dyfunconn', 'dyfunconn Documentation',
+    ('index', 'dyconnmap', 'dyconnmap Documentation',
      ['Marimpis Avraam'], 1)
 ]
 
@@ -277,8 +277,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    ('index', 'dyfunconn', 'dyfunconn Documentation',
-     'Marimpis Avraam', 'dyfunconn', 'One line description of project.',
+    ('index', 'dyconnmap', 'dyconnmap Documentation',
+     'Marimpis Avraam', 'dyconnmap', 'One line description of project.',
      'Miscellaneous'),
 ]
 
@@ -298,13 +298,13 @@ texinfo_documents = [
 # -- Options for Epub output ----------------------------------------------
 
 # Bibliographic Dublin Core info.
-epub_title = 'dyfunconn'
+epub_title = 'dyconnmap'
 epub_author = 'Marimpis Avraam & Dimitriadis Stavros'
 epub_publisher = 'Marimpis Avraam & Dimitriadis Stavros'
 epub_copyright = '2018, Marimpis Avraam & Dimitriadis Stavros'
 
 # The basename for the epub file. It defaults to the project name.
-#epub_basename = u'dyfunconn'
+#epub_basename = u'dyconnmap'
 
 # The HTML theme for the epub output. Since the default themes are not optimized
 # for small screen space, using the same theme for HTML and epub output is

@@ -3,7 +3,7 @@
 
 One of the pioneer methods called Phase Locking Value (*PLV*) is discussed in
 [Lachaux1998]_; it utilizes the Hilbert representation (consult
-:py:mod:`dyfunconn.analytic_signal` for more details) an EEG time
+:py:mod:`dyconnmap.analytic_signal` for more details) an EEG time
 series (of :math:`N_{sensors}`) and quantifies their interaction based on their
 instantaneous phase in a specific band frequency.
 
@@ -80,9 +80,9 @@ def plv(data, fb=None, fs=None, pairs=None):
 
     See also
     --------
-    dyfunconn.fc.PLV: Phase Locking Value (Class Estimator)
-    dyfunconn.fc.iplv: Imaginary part of PLV
-    dyfunconn.fc.pli: Phase Lag Index
+    dyconnmap.fc.PLV: Phase Locking Value (Class Estimator)
+    dyconnmap.fc.iplv: Imaginary part of PLV
+    dyconnmap.fc.pli: Phase Lag Index
     """
     estimator = PLV(fb, fs, pairs)
     pp_data = estimator.preprocess(data)
@@ -96,8 +96,8 @@ class PLV(Estimator):
 
     See also
     --------
-    dyfunconn.fc.plv: Phase Locking Value
-    dyfunconn.tvfcg: Time-Varying Functional Connectivity Graphs
+    dyconnmap.fc.plv: Phase Locking Value
+    dyconnmap.tvfcg: Time-Varying Functional Connectivity Graphs
     """
 
     def __init__(self, fb=None, fs=None, pairs=None):
@@ -126,7 +126,7 @@ class PLV(Estimator):
 
         Notes
         -----
-        Called from :mod:`dyfunconn.tvfcgs.tvfcg`.
+        Called from :mod:`dyconnmap.tvfcgs.tvfcg`.
         """
         n_samples = len(signal1)
 
@@ -154,7 +154,7 @@ class PLV(Estimator):
 
         Notes
         -----
-        Called from :mod:`dyfunconn.tvfcgs.tvfcg`.
+        Called from :mod:`dyconnmap.tvfcgs.tvfcg`.
         """
         n_rois, n_samples = np.shape(data)
 

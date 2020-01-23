@@ -48,7 +48,7 @@ def sample_entropy(data, dim=2, tau=None, r=None):
 
     See also
     --------
-    dyfunconn.ts.embed_ts: Embedded timeseries
+    dyconnmap.ts.embed_ts: Embedded timeseries
     """
     if tau is None:
         tau = 1

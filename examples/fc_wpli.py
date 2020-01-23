@@ -4,12 +4,12 @@
 import numpy as np
 np.set_printoptions(precision=3, linewidth=256)
 
-from dyfunconn.fc import wpli, dwpli
+from dyconnmap.fc import wpli, dwpli
 
 
 if __name__ == "__main__":
     data = np.load(
-        "/home/makism/Github/dyfunconn/examples/data/eeg_32chans_10secs.npy")
+        "/home/makism/Github/dyconnmap/examples/data/eeg_32chans_10secs.npy")
     data = data[0:2, :]
 
     csdparams = {'NFFT': 128, 'noverlap': 128 / 2.0}

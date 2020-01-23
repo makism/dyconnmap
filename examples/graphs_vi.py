@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from dyfunconn.graphs import variation_information
+from dyconnmap.graphs import variation_information
 
 import numpy as np
 import bct

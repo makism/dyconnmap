@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>dyfunconn.graphs.threshold &mdash; dyfunconn  documentation</title>
+  <title>dyconnmap.graphs.threshold &mdash; dyconnmap  documentation</title>
   
 
   
@@ -49,7 +49,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home"> dyfunconn
+            <a href="../../../index.html" class="icon icon-home"> dyconnmap
           
 
           
@@ -80,7 +80,7 @@
             
             
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../dyfunconn.html">dyfunconn package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dyconnmap.html">dyconnmap package</a></li>
 </ul>
 
             
@@ -95,7 +95,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../../index.html">dyfunconn</a>
+          <a href="../../../index.html">dyconnmap</a>
         
       </nav>
 
@@ -128,7 +128,7 @@
         
           <li><a href="../../index.html">Module code</a> &raquo;</li>
         
-      <li>dyfunconn.graphs.threshold</li>
+      <li>dyconnmap.graphs.threshold</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -143,7 +143,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <h1>Source code for dyfunconn.graphs.threshold</h1><div class="highlight"><pre>
+  <h1>Source code for dyconnmap.graphs.threshold</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot; Thresholding schemes</span>
 
@@ -166,7 +166,7 @@
 <span class="kn">import</span> <span class="nn">bct</span>
 
 
-<div class="viewcode-block" id="k_core_decomposition"><a class="viewcode-back" href="../../../dyfunconn.graphs.html#dyfunconn.graphs.threshold.k_core_decomposition">[docs]</a><span class="k">def</span> <span class="nf">k_core_decomposition</span><span class="p">(</span><span class="n">mtx</span><span class="p">,</span> <span class="n">threshold</span><span class="p">):</span>
+<div class="viewcode-block" id="k_core_decomposition"><a class="viewcode-back" href="../../../dyconnmap.graphs.html#dyconnmap.graphs.threshold.k_core_decomposition">[docs]</a><span class="k">def</span> <span class="nf">k_core_decomposition</span><span class="p">(</span><span class="n">mtx</span><span class="p">,</span> <span class="n">threshold</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Threshold a binary graph based on the detected k-cores.</span>
 
 <span class="sd">    .. [Alvarez2006] Alvarez-Hamelin, J. I., Dall&#39;Asta, L., Barrat, A., &amp; Vespignani, A. (2006). Large scale networks fingerprinting and visualization using the k-core decomposition. In Advances in neural information processing systems (pp. 41-50).</span>
@@ -214,7 +214,7 @@
     <span class="k">return</span> <span class="n">k_cores</span></div>
 
 
-<div class="viewcode-block" id="threshold_mst_mean_degree"><a class="viewcode-back" href="../../../dyfunconn.graphs.html#dyfunconn.graphs.threshold.threshold_mst_mean_degree">[docs]</a><span class="k">def</span> <span class="nf">threshold_mst_mean_degree</span><span class="p">(</span><span class="n">mtx</span><span class="p">,</span> <span class="n">avg_degree</span><span class="p">):</span>
+<div class="viewcode-block" id="threshold_mst_mean_degree"><a class="viewcode-back" href="../../../dyconnmap.graphs.html#dyconnmap.graphs.threshold.threshold_mst_mean_degree">[docs]</a><span class="k">def</span> <span class="nf">threshold_mst_mean_degree</span><span class="p">(</span><span class="n">mtx</span><span class="p">,</span> <span class="n">avg_degree</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Threshold a graph based on mean using minimum spanning trees.</span>
 
 
@@ -305,7 +305,7 @@
     <span class="k">return</span> <span class="n">CIJtree</span></div>
 
 
-<div class="viewcode-block" id="threshold_mean_degree"><a class="viewcode-back" href="../../../dyfunconn.graphs.html#dyfunconn.graphs.threshold.threshold_mean_degree">[docs]</a><span class="k">def</span> <span class="nf">threshold_mean_degree</span><span class="p">(</span><span class="n">mtx</span><span class="p">,</span> <span class="n">threshold_mean_degree</span><span class="p">):</span>
+<div class="viewcode-block" id="threshold_mean_degree"><a class="viewcode-back" href="../../../dyconnmap.graphs.html#dyconnmap.graphs.threshold.threshold_mean_degree">[docs]</a><span class="k">def</span> <span class="nf">threshold_mean_degree</span><span class="p">(</span><span class="n">mtx</span><span class="p">,</span> <span class="n">threshold_mean_degree</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Threshold a graph based on the mean degree.</span>
 
 
@@ -370,7 +370,7 @@
     <span class="k">return</span> <span class="n">binary_mtx</span></div>
 
 
-<div class="viewcode-block" id="threshold_shortest_paths"><a class="viewcode-back" href="../../../dyfunconn.graphs.html#dyfunconn.graphs.threshold.threshold_shortest_paths">[docs]</a><span class="k">def</span> <span class="nf">threshold_shortest_paths</span><span class="p">(</span><span class="n">mtx</span><span class="p">,</span> <span class="n">treatment</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="threshold_shortest_paths"><a class="viewcode-back" href="../../../dyconnmap.graphs.html#dyconnmap.graphs.threshold.threshold_shortest_paths">[docs]</a><span class="k">def</span> <span class="nf">threshold_shortest_paths</span><span class="p">(</span><span class="n">mtx</span><span class="p">,</span> <span class="n">treatment</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Threshold a graph via  via shortest path identification using Dijkstra&#39;s algorithm.</span>
 
 <span class="sd">    .. [Dimitriadis2010] Dimitriadis, S. I., Laskaris, N. A., Tsirka, V., Vourkas, M., Micheloyannis, S., &amp; Fotopoulos, S. (2010). Tracking brain dynamics via time-dependent network analysis. Journal of neuroscience methods, 193(1), 145-155.</span>
@@ -421,7 +421,7 @@
     <span class="k">return</span> <span class="n">binary_mtx</span></div>
 
 
-<div class="viewcode-block" id="threshold_global_cost_efficiency"><a class="viewcode-back" href="../../../dyfunconn.graphs.html#dyfunconn.graphs.threshold.threshold_global_cost_efficiency">[docs]</a><span class="k">def</span> <span class="nf">threshold_global_cost_efficiency</span><span class="p">(</span><span class="n">mtx</span><span class="p">,</span> <span class="n">iterations</span><span class="p">):</span>
+<div class="viewcode-block" id="threshold_global_cost_efficiency"><a class="viewcode-back" href="../../../dyconnmap.graphs.html#dyconnmap.graphs.threshold.threshold_global_cost_efficiency">[docs]</a><span class="k">def</span> <span class="nf">threshold_global_cost_efficiency</span><span class="p">(</span><span class="n">mtx</span><span class="p">,</span> <span class="n">iterations</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Threshold a graph based on the Global Efficiency - Cost formula.</span>
 
 <span class="sd">    .. [Basset2009] Bassett, D. S., Bullmore, E. T., Meyer-Lindenberg, A., Apud, J. A., Weinberger, D. R., &amp; Coppola, R. (2009). Cognitive fitness of cost-efficient brain functional networks. Proceedings of the National Academy of Sciences, 106(28), 11747-11752.</span>
@@ -511,7 +511,7 @@
     <span class="k">return</span> <span class="n">binary_mtx</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">global_cost_eff_max</span><span class="p">,</span> <span class="n">efficiency</span><span class="p">,</span> <span class="n">cost_max</span></div>
 
 
-<div class="viewcode-block" id="threshold_omst_global_cost_efficiency"><a class="viewcode-back" href="../../../dyfunconn.graphs.html#dyfunconn.graphs.threshold.threshold_omst_global_cost_efficiency">[docs]</a><span class="k">def</span> <span class="nf">threshold_omst_global_cost_efficiency</span><span class="p">(</span><span class="n">mtx</span><span class="p">,</span> <span class="n">n_msts</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="threshold_omst_global_cost_efficiency"><a class="viewcode-back" href="../../../dyconnmap.graphs.html#dyconnmap.graphs.threshold.threshold_omst_global_cost_efficiency">[docs]</a><span class="k">def</span> <span class="nf">threshold_omst_global_cost_efficiency</span><span class="p">(</span><span class="n">mtx</span><span class="p">,</span> <span class="n">n_msts</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Threshold a graph by optimizing the formula GE-C via orthogonal MSTs.</span>
 
 <span class="sd">    .. [Dimitriadis2017a] Dimitriadis, S. I., Salis, C., Tarnanas, I., &amp; Linden, D. E. (2017). Topological Filtering of Dynamic Functional Brain Networks Unfolds Informative Chronnectomics: A Novel Data-Driven Thresholding Scheme Based on Orthogonal Minimal Spanning Trees (OMSTs). Frontiers in neuroinformatics, 11.</span>
@@ -671,7 +671,7 @@
     <span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="threshold_eco"><a class="viewcode-back" href="../../../dyfunconn.graphs.html#dyfunconn.graphs.threshold.threshold_eco">[docs]</a><span class="k">def</span> <span class="nf">threshold_eco</span><span class="p">(</span><span class="n">mtx</span><span class="p">):</span>
+<div class="viewcode-block" id="threshold_eco"><a class="viewcode-back" href="../../../dyconnmap.graphs.html#dyconnmap.graphs.threshold.threshold_eco">[docs]</a><span class="k">def</span> <span class="nf">threshold_eco</span><span class="p">(</span><span class="n">mtx</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Ecological Filtering</span>
 
 <span class="sd">    .. [Fallani2017] Fallani, F. D. V., Latora, V., &amp; Chavez, M. (2017). A topological criterion for filtering information in complex brain networks. PLoS computational biology, 13(1), e1005305.</span>

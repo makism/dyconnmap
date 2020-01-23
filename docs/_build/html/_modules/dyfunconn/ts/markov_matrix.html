@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>dyfunconn.ts.markov_matrix &mdash; dyfunconn  documentation</title>
+  <title>dyconnmap.ts.markov_matrix &mdash; dyconnmap  documentation</title>
   
 
   
@@ -49,7 +49,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home"> dyfunconn
+            <a href="../../../index.html" class="icon icon-home"> dyconnmap
           
 
           
@@ -80,7 +80,7 @@
             
             
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../dyfunconn.html">dyfunconn package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dyconnmap.html">dyconnmap package</a></li>
 </ul>
 
             
@@ -95,7 +95,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../../index.html">dyfunconn</a>
+          <a href="../../../index.html">dyconnmap</a>
         
       </nav>
 
@@ -128,7 +128,7 @@
         
           <li><a href="../../index.html">Module code</a> &raquo;</li>
         
-      <li>dyfunconn.ts.markov_matrix</li>
+      <li>dyconnmap.ts.markov_matrix</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -143,7 +143,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <h1>Source code for dyfunconn.ts.markov_matrix</h1><div class="highlight"><pre>
+  <h1>Source code for dyconnmap.ts.markov_matrix</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot; Markov matrix</span>
 
 <span class="sd">Generation of markov matrix and some related state transition features.</span>
@@ -154,7 +154,7 @@
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 
-<div class="viewcode-block" id="markov_matrix"><a class="viewcode-back" href="../../../dyfunconn.ts.html#dyfunconn.ts.markov_matrix.markov_matrix">[docs]</a><span class="k">def</span> <span class="nf">markov_matrix</span><span class="p">(</span><span class="n">symts</span><span class="p">):</span>
+<div class="viewcode-block" id="markov_matrix"><a class="viewcode-back" href="../../../dyconnmap.ts.html#dyconnmap.ts.markov_matrix.markov_matrix">[docs]</a><span class="k">def</span> <span class="nf">markov_matrix</span><span class="p">(</span><span class="n">symts</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Markov Matrix</span>
 
 <span class="sd">    Markov matrix (also refered as &quot;transition matrix&quot;) is a square matrix that tabulates</span>
@@ -217,7 +217,7 @@
     <span class="k">return</span> <span class="n">mtx</span></div>
 
 
-<div class="viewcode-block" id="transition_rate"><a class="viewcode-back" href="../../../dyfunconn.ts.html#dyfunconn.ts.markov_matrix.transition_rate">[docs]</a><span class="k">def</span> <span class="nf">transition_rate</span><span class="p">(</span><span class="n">symts</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="transition_rate"><a class="viewcode-back" href="../../../dyconnmap.ts.html#dyconnmap.ts.markov_matrix.transition_rate">[docs]</a><span class="k">def</span> <span class="nf">transition_rate</span><span class="p">(</span><span class="n">symts</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Transition Rate</span>
 
 <span class="sd">    The total sum of transition between symbols.</span>
@@ -251,7 +251,7 @@
     <span class="k">return</span> <span class="n">TR</span> <span class="o">/</span> <span class="n">weight</span></div>
 
 
-<div class="viewcode-block" id="occupancy_time"><a class="viewcode-back" href="../../../dyfunconn.ts.html#dyfunconn.ts.markov_matrix.occupancy_time">[docs]</a><span class="k">def</span> <span class="nf">occupancy_time</span><span class="p">(</span><span class="n">symts</span><span class="p">,</span> <span class="n">symbol_states</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="occupancy_time"><a class="viewcode-back" href="../../../dyconnmap.ts.html#dyconnmap.ts.markov_matrix.occupancy_time">[docs]</a><span class="k">def</span> <span class="nf">occupancy_time</span><span class="p">(</span><span class="n">symts</span><span class="p">,</span> <span class="n">symbol_states</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Occupancy Time</span>
 
 

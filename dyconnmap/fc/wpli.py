@@ -70,7 +70,7 @@ def wpli(data, fb, fs, pairs=None, **kwargs):
 
     Seer also
     ---------
-    dyfunconn.wpli.dwpli: Debiased Weighted Phase Lag Index
+    dyconnmap.wpli.dwpli: Debiased Weighted Phase Lag Index
     """
     n_channels, _ = np.shape(data)
 
@@ -132,7 +132,7 @@ def dwpli(data, fb, fs, pairs=None, **kwargs):
 
     Seer also
     ---------
-    dyfunconn.wpli.wpli: Weighted Phase Lag Index
+    dyconnmap.wpli.wpli: Weighted Phase Lag Index
     """
     n_channels, _ = np.shape(data)
 

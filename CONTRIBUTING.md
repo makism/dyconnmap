@@ -1,4 +1,4 @@
-## Contributing to dyfunconn
+## Contributing to dyconnmap
 
 #### Reporting issues
 

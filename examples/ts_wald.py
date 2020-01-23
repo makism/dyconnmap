@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 np.set_printoptions(precision=3, linewidth=256)
 
-from dyfunconn.ts import wald
+from dyconnmap.ts import wald
 
 
 import matplotlib.pyplot as plt

@@ -4,13 +4,13 @@ import time
 import numpy as np
 np.set_printoptions(precision=3, linewidth=160, suppress=True)
 
-from dyfunconn.fc import ICoherence
-from dyfunconn import tvfcg
+from dyconnmap.fc import ICoherence
+from dyconnmap import tvfcg
 
 
 if __name__ == '__main__':
     data = np.load(
-        "/home/makism/Github/dyfunconn/examples/data/eeg_32chans_10secs.npy")
+        "/home/makism/Github/dyconnmap/examples/data/eeg_32chans_10secs.npy")
 
     n_channels, n_samples = np.shape(data)
 

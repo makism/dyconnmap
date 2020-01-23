@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-import dyfunconn
-from dyfunconn import cluster
+import dyconnmap
+from dyconnmap import cluster
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -11,7 +11,7 @@ from sklearn import datasets
 rng = np.random.RandomState(seed = 0)
 data, _ = sklearn.datasets.make_moons(n_samples = 1024, noise = 0.125, random_state = rng)
 
-som = dyfunconn.cluster.SOM(grid=(8, 4), rng = rng).fit(data)
+som = dyconnmap.cluster.SOM(grid=(8, 4), rng = rng).fit(data)
 
 #
 # MUST TEST WITH THE FOLLOWING CODEBOOK
@@ -23,7 +23,7 @@ cb = som.weights
 
 # grid_x, grid_y, dim = np.shape(cb)
 
-U = dyfunconn.cluster.umatrix(cb)#, grid_x, grid_y, dim)
+U = dyconnmap.cluster.umatrix(cb)#, grid_x, grid_y, dim)
 
 # np.save("umatrix.npy", U)
 
@@ -56,9 +56,9 @@ U = dyfunconn.cluster.umatrix(cb)#, grid_x, grid_y, dim)
 # data, labels = sklearn.datasets.make_moons(n_samples=1024, noise=0.125, random_state=rng)
 #
 #
-# protos1, mng_symbols = dyfunconn.cluster.MergeNeuralGas(rng=rng).fit(data).encode(data)
+# protos1, mng_symbols = dyconnmap.cluster.MergeNeuralGas(rng=rng).fit(data).encode(data)
 # mng_symbols = mng_symbols.ravel()
-# protos2, ng_symbols = dyfunconn.cluster.NeuralGas(rng=rng).fit(data).encode(data)
+# protos2, ng_symbols = dyconnmap.cluster.NeuralGas(rng=rng).fit(data).encode(data)
 # ng_symbols = ng_symbols.ravel()
 #
 #

@@ -4,7 +4,7 @@ import numpy as np
 from numpy import testing
 
 # dynfunconn
-from dyfunconn.ts import (
+from dyconnmap.ts import (
     aaft,
     fdr,
     phase_rand,
@@ -360,7 +360,7 @@ def test_fisher_score():
 
 def test_fisher_z_plv():
     """ WIP """
-    from dyfunconn.fc import plv
+    from dyconnmap.fc import plv
 
     np.set_printoptions(precision=2, linewidth=256)
 

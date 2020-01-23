@@ -5,7 +5,7 @@
 import numpy as np
 np.set_printoptions(precision=3, linewidth=256)
 
-from dyfunconn.ts import complexity_index
+from dyconnmap.ts import complexity_index
 
 
 if __name__ == "__main__":

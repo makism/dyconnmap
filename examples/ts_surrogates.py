@@ -3,14 +3,14 @@
 import numpy as np
 np.set_printoptions(precision=3, linewidth=256)
 
-from dyfunconn.ts import fdr, surrogate_analysis
+from dyconnmap.ts import fdr, surrogate_analysis
 
 
 if __name__ == "__main__":
     rng = np.random.RandomState(0)
 
     data = np.load(
-        "/home/makism/Github/dyfunconn/examples/data/eeg_32chans_10secs.npy")
+        "/home/makism/Github/dyconnmap/examples/data/eeg_32chans_10secs.npy")
     ts1 = data[0, :].ravel()
     ts2 = data[1, :].ravel()
 

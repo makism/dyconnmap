@@ -3,7 +3,7 @@
 
 
 Proposed by Bruns and Eckhorn [Bruns2004_], Envelope-to-Signal Correlation (*ESC*)
-is similar to Amplitude Envelope Correlation (:mod:`dyfunconn.fc.aec`), but the
+is similar to Amplitude Envelope Correlation (:mod:`dyconnmap.fc.aec`), but the
 the amplitude of the lower frequency oscillation is signed; and thus the phase
 information is preserved.
 

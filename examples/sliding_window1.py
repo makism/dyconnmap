@@ -5,7 +5,7 @@
 
 import numpy as np
 
-from dyfunconn import sliding_window_indx
+from dyconnmap import sliding_window_indx
 
 
 if __name__ == '__main__':

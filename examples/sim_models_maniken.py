@@ -4,7 +4,7 @@ np.set_printoptions(precision=3, linewidth=256)
 
 import matplotlib.pyplot as plt
 
-from dyfunconn import sim_models
+from dyconnmap import sim_models
 
 
 if __name__ ==  "__main__":

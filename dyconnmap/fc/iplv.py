@@ -83,9 +83,9 @@ class IPLV(Estimator):
 
     See also
     --------
-    dyfunconn.fc.iplv: Imaginary part of PLV
-    dyfunconn.fc.plv: Phase Locking Value
-    dyfunconn.tvfcg: Time-Varying Functional Connectivity Graphs
+    dyconnmap.fc.iplv: Imaginary part of PLV
+    dyconnmap.fc.plv: Phase Locking Value
+    dyconnmap.tvfcg: Time-Varying Functional Connectivity Graphs
     """
 
     def __init__(self, fb=None, fs=None, pairs=None):
@@ -114,7 +114,7 @@ class IPLV(Estimator):
 
         Notes
         -----
-        Called from :mod:`dyfunconn.tvfcgs.tvfcg`.
+        Called from :mod:`dyconnmap.tvfcgs.tvfcg`.
         """
         n_samples = len(ts1)
 
@@ -139,7 +139,7 @@ class IPLV(Estimator):
 
         Notes
         -----
-        Called from :mod:`dyfunconn.tvfcgs.tvfcg`.
+        Called from :mod:`dyconnmap.tvfcgs.tvfcg`.
         """
         n_rois, n_samples = np.shape(data)
 

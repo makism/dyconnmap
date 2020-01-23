@@ -3,7 +3,7 @@
 import numpy as np
 np.set_printoptions(precision=3, linewidth=256)
 
-from dyfunconn.ts import markov_matrix
+from dyconnmap.ts import markov_matrix
 
 
 if __name__ == "__main__":

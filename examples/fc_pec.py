@@ -3,12 +3,12 @@
 import numpy as np
 np.set_printoptions(precision=3, linewidth=256)
 
-from dyfunconn.fc import pec
+from dyconnmap.fc import pec
 
 
 if __name__ == "__main__":
     data = np.load(
-        "/home/makism/Github/dyfunconn/examples/data/eeg_32chans_10secs.npy")
+        "/home/makism/Github/dyconnmap/examples/data/eeg_32chans_10secs.npy")
     data = data[0:2, :]
 
     fb_lo = [1.0, 4.0]

@@ -8,7 +8,7 @@ import numpy as np
 import scipy
 from scipy import io
 
-from dyfunconn.ts import sample_entropy
+from dyconnmap.ts import sample_entropy
 
 
 if __name__ == "__main__":

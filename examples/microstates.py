@@ -18,8 +18,8 @@ np.set_printoptions(precision=3, linewidth=256)
 
 
 #%%
-import dyfunconn
-from dyfunconn.microstates import microstates
+import dyconnmap
+from dyconnmap.microstates import microstates
 
 
 #%%

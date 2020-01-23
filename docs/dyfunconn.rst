@@ -1,4 +1,4 @@
-dyfunconn package
+dyconnmap package
 =================
 
 Subpackages
@@ -6,44 +6,44 @@ Subpackages
 
 .. toctree::
 
-   dyfunconn.chronnectomics
-   dyfunconn.cluster
-   dyfunconn.fc
-   dyfunconn.graphs
-   dyfunconn.sim_models
-   dyfunconn.ts
+   dyconnmap.chronnectomics
+   dyconnmap.cluster
+   dyconnmap.fc
+   dyconnmap.graphs
+   dyconnmap.sim_models
+   dyconnmap.ts
 
 Submodules
 ----------
 
-dyfunconn.analytic\_signal module
+dyconnmap.analytic\_signal module
 ---------------------------------
 
-.. automodule:: dyfunconn.analytic_signal
+.. automodule:: dyconnmap.analytic_signal
    :members:
    :undoc-members:
    :show-inheritance:
 
-dyfunconn.bands module
+dyconnmap.bands module
 ----------------------
 
-.. automodule:: dyfunconn.bands
+.. automodule:: dyconnmap.bands
    :members:
    :undoc-members:
    :show-inheritance:
 
-dyfunconn.sliding\_window module
+dyconnmap.sliding\_window module
 --------------------------------
 
-.. automodule:: dyfunconn.sliding_window
+.. automodule:: dyconnmap.sliding_window
    :members:
    :undoc-members:
    :show-inheritance:
 
-dyfunconn.tvfcgs module
+dyconnmap.tvfcgs module
 -----------------------
 
-.. automodule:: dyfunconn.tvfcgs
+.. automodule:: dyconnmap.tvfcgs
    :members:
    :undoc-members:
    :show-inheritance:
@@ -52,7 +52,7 @@ dyfunconn.tvfcgs module
 Module contents
 ---------------
 
-.. automodule:: dyfunconn
+.. automodule:: dyconnmap
    :members:
    :undoc-members:
    :show-inheritance:

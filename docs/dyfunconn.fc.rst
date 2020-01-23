@@ -1,173 +1,173 @@
-dyfunconn.fc package
+dyconnmap.fc package
 ====================
 
 Submodules
 ----------
 
-dyfunconn.fc.aec module
+dyconnmap.fc.aec module
 -----------------------
 
-.. automodule:: dyfunconn.fc.aec
+.. automodule:: dyconnmap.fc.aec
    :members:
    :undoc-members:
    :show-inheritance:
 
-dyfunconn.fc.biplv module
+dyconnmap.fc.biplv module
 -------------------------
 
-.. automodule:: dyfunconn.fc.biplv
+.. automodule:: dyconnmap.fc.biplv
    :members:
    :undoc-members:
    :show-inheritance:
 
-dyfunconn.fc.coherence module
+dyconnmap.fc.coherence module
 -----------------------------
 
-.. automodule:: dyfunconn.fc.coherence
+.. automodule:: dyconnmap.fc.coherence
    :members:
    :undoc-members:
    :show-inheritance:
 
-dyfunconn.fc.corr module
+dyconnmap.fc.corr module
 ------------------------
 
-.. automodule:: dyfunconn.fc.corr
+.. automodule:: dyconnmap.fc.corr
    :members:
    :undoc-members:
    :show-inheritance:
 
-dyfunconn.fc.cos module
+dyconnmap.fc.cos module
 -----------------------
 
-.. automodule:: dyfunconn.fc.cos
+.. automodule:: dyconnmap.fc.cos
    :members:
    :undoc-members:
    :show-inheritance:
 
-dyfunconn.fc.crosscorr module
+dyconnmap.fc.crosscorr module
 -----------------------------
 
-.. automodule:: dyfunconn.fc.crosscorr
+.. automodule:: dyconnmap.fc.crosscorr
    :members:
    :undoc-members:
    :show-inheritance:
 
-dyfunconn.fc.dpli module
+dyconnmap.fc.dpli module
 ------------------------
 
-.. automodule:: dyfunconn.fc.dpli
+.. automodule:: dyconnmap.fc.dpli
    :members:
    :undoc-members:
    :show-inheritance:
 
-dyfunconn.fc.esc module
+dyconnmap.fc.esc module
 -----------------------
 
-.. automodule:: dyfunconn.fc.esc
+.. automodule:: dyconnmap.fc.esc
    :members:
    :undoc-members:
    :show-inheritance:
 
-dyfunconn.fc.estimator module
+dyconnmap.fc.estimator module
 -----------------------------
 
-.. automodule:: dyfunconn.fc.estimator
+.. automodule:: dyconnmap.fc.estimator
    :members:
    :undoc-members:
    :show-inheritance:
 
-dyfunconn.fc.glm module
+dyconnmap.fc.glm module
 -----------------------
 
-.. automodule:: dyfunconn.fc.glm
+.. automodule:: dyconnmap.fc.glm
    :members:
    :undoc-members:
    :show-inheritance:
 
-dyfunconn.fc.icoherence module
+dyconnmap.fc.icoherence module
 ------------------------------
 
-.. automodule:: dyfunconn.fc.icoherence
+.. automodule:: dyconnmap.fc.icoherence
    :members:
    :undoc-members:
    :show-inheritance:
 
-dyfunconn.fc.iplv module
+dyconnmap.fc.iplv module
 ------------------------
 
-.. automodule:: dyfunconn.fc.iplv
+.. automodule:: dyconnmap.fc.iplv
    :members:
    :undoc-members:
    :show-inheritance:
 
-dyfunconn.fc.mui module
+dyconnmap.fc.mui module
 -----------------------
 
-.. automodule:: dyfunconn.fc.mui
+.. automodule:: dyconnmap.fc.mui
    :members:
    :undoc-members:
    :show-inheritance:
 
-dyfunconn.fc.nesc module
+dyconnmap.fc.nesc module
 ------------------------
 
-.. automodule:: dyfunconn.fc.nesc
+.. automodule:: dyconnmap.fc.nesc
    :members:
    :undoc-members:
    :show-inheritance:
 
-dyfunconn.fc.pac module
+dyconnmap.fc.pac module
 -----------------------
 
-.. automodule:: dyfunconn.fc.pac
+.. automodule:: dyconnmap.fc.pac
    :members:
    :undoc-members:
    :show-inheritance:
 
-dyfunconn.fc.partcorr module
+dyconnmap.fc.partcorr module
 ----------------------------
 
-.. automodule:: dyfunconn.fc.partcorr
+.. automodule:: dyconnmap.fc.partcorr
    :members:
    :undoc-members:
    :show-inheritance:
 
-dyfunconn.fc.pec module
+dyconnmap.fc.pec module
 -----------------------
 
-.. automodule:: dyfunconn.fc.pec
+.. automodule:: dyconnmap.fc.pec
    :members:
    :undoc-members:
    :show-inheritance:
 
-dyfunconn.fc.pli module
+dyconnmap.fc.pli module
 -----------------------
 
-.. automodule:: dyfunconn.fc.pli
+.. automodule:: dyconnmap.fc.pli
    :members:
    :undoc-members:
    :show-inheritance:
 
-dyfunconn.fc.plv module
+dyconnmap.fc.plv module
 -----------------------
 
-.. automodule:: dyfunconn.fc.plv
+.. automodule:: dyconnmap.fc.plv
    :members:
    :undoc-members:
    :show-inheritance:
 
-dyfunconn.fc.rho\_index module
+dyconnmap.fc.rho\_index module
 ------------------------------
 
-.. automodule:: dyfunconn.fc.rho_index
+.. automodule:: dyconnmap.fc.rho_index
    :members:
    :undoc-members:
    :show-inheritance:
 
-dyfunconn.fc.wpli module
+dyconnmap.fc.wpli module
 ------------------------
 
-.. automodule:: dyfunconn.fc.wpli
+.. automodule:: dyconnmap.fc.wpli
    :members:
    :undoc-members:
    :show-inheritance:
@@ -176,7 +176,7 @@ dyfunconn.fc.wpli module
 Module contents
 ---------------
 
-.. automodule:: dyfunconn.fc
+.. automodule:: dyconnmap.fc
    :members:
    :undoc-members:
    :show-inheritance:

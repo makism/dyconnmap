@@ -1,7 +1,7 @@
-dyfunconn
+dyconnmap
 =========
 
 .. toctree::
    :maxdepth: 4
 
-   dyfunconn
+   dyconnmap

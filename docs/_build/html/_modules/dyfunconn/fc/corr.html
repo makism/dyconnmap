@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>dyfunconn.fc.corr &mdash; dyfunconn  documentation</title>
+  <title>dyconnmap.fc.corr &mdash; dyconnmap  documentation</title>
   
 
   
@@ -49,7 +49,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home"> dyfunconn
+            <a href="../../../index.html" class="icon icon-home"> dyconnmap
           
 
           
@@ -80,7 +80,7 @@
             
             
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../dyfunconn.html">dyfunconn package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dyconnmap.html">dyconnmap package</a></li>
 </ul>
 
             
@@ -95,7 +95,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../../index.html">dyfunconn</a>
+          <a href="../../../index.html">dyconnmap</a>
         
       </nav>
 
@@ -128,7 +128,7 @@
         
           <li><a href="../../index.html">Module code</a> &raquo;</li>
         
-      <li>dyfunconn.fc.corr</li>
+      <li>dyconnmap.fc.corr</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -143,7 +143,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <h1>Source code for dyfunconn.fc.corr</h1><div class="highlight"><pre>
+  <h1>Source code for dyconnmap.fc.corr</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot; Correlation</span>
 
@@ -157,7 +157,7 @@
 <span class="kn">from</span> <span class="nn">..analytic_signal</span> <span class="k">import</span> <span class="n">analytic_signal</span>
 
 
-<div class="viewcode-block" id="corr"><a class="viewcode-back" href="../../../dyfunconn.fc.html#dyfunconn.fc.corr.corr">[docs]</a><span class="k">def</span> <span class="nf">corr</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">fb</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pairs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="corr"><a class="viewcode-back" href="../../../dyconnmap.fc.html#dyconnmap.fc.corr.corr">[docs]</a><span class="k">def</span> <span class="nf">corr</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">fb</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pairs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Correlation</span>
 
 <span class="sd">    Compute the correlation for the given :attr:`data`, between the :attr:`pairs` (if given)</span>
@@ -187,7 +187,7 @@
 
 <span class="sd">    See also</span>
 <span class="sd">    --------</span>
-<span class="sd">    dyfunconn.fc.Corr: Correlation</span>
+<span class="sd">    dyconnmap.fc.Corr: Correlation</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">X</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="k">if</span> <span class="n">fb</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">fs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -202,27 +202,27 @@
     <span class="k">return</span> <span class="n">r</span></div>
 
 
-<div class="viewcode-block" id="Corr"><a class="viewcode-back" href="../../../dyfunconn.fc.html#dyfunconn.fc.corr.Corr">[docs]</a><span class="k">class</span> <span class="nc">Corr</span><span class="p">(</span><span class="n">Estimator</span><span class="p">):</span>
+<div class="viewcode-block" id="Corr"><a class="viewcode-back" href="../../../dyconnmap.fc.html#dyconnmap.fc.corr.Corr">[docs]</a><span class="k">class</span> <span class="nc">Corr</span><span class="p">(</span><span class="n">Estimator</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Correlation</span>
 
 
 <span class="sd">    See also</span>
 <span class="sd">    --------</span>
-<span class="sd">    dyfunconn.fc.corr: Correlation</span>
-<span class="sd">    dyfunconn.tvfcg: Time-Varying Functional Connectivity Graphs</span>
+<span class="sd">    dyconnmap.fc.corr: Correlation</span>
+<span class="sd">    dyconnmap.tvfcg: Time-Varying Functional Connectivity Graphs</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fb</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pairs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="n">Estimator</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fb</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="n">pairs</span><span class="p">)</span>
 
-<div class="viewcode-block" id="Corr.preprocess"><a class="viewcode-back" href="../../../dyfunconn.fc.html#dyfunconn.fc.corr.Corr.preprocess">[docs]</a>    <span class="k">def</span> <span class="nf">preprocess</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<div class="viewcode-block" id="Corr.preprocess"><a class="viewcode-back" href="../../../dyconnmap.fc.html#dyconnmap.fc.corr.Corr.preprocess">[docs]</a>    <span class="k">def</span> <span class="nf">preprocess</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_skip_filter</span><span class="p">:</span>
             <span class="k">return</span> <span class="n">data</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">filtered</span> <span class="o">=</span> <span class="n">analytic_signal</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">fb</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">fs</span><span class="p">)</span>
             <span class="k">return</span> <span class="n">filtered</span></div>
 
-<div class="viewcode-block" id="Corr.estimate_pair"><a class="viewcode-back" href="../../../dyfunconn.fc.html#dyfunconn.fc.corr.Corr.estimate_pair">[docs]</a>    <span class="k">def</span> <span class="nf">estimate_pair</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">signal1</span><span class="p">,</span> <span class="n">signal2</span><span class="p">):</span>
+<div class="viewcode-block" id="Corr.estimate_pair"><a class="viewcode-back" href="../../../dyconnmap.fc.html#dyconnmap.fc.corr.Corr.estimate_pair">[docs]</a>    <span class="k">def</span> <span class="nf">estimate_pair</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">signal1</span><span class="p">,</span> <span class="n">signal2</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="sd">        Returns</span>
@@ -236,7 +236,7 @@
 
 <span class="sd">        Notes</span>
 <span class="sd">        -----</span>
-<span class="sd">        Called from :mod:`dyfunconn.tvfcgs.tvfcg`.</span>
+<span class="sd">        Called from :mod:`dyconnmap.tvfcgs.tvfcg`.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="c1"># n_samples = len(ts1)</span>
 
@@ -244,10 +244,10 @@
 
         <span class="k">return</span> <span class="n">r</span><span class="p">,</span> <span class="kc">None</span></div>
 
-<div class="viewcode-block" id="Corr.mean"><a class="viewcode-back" href="../../../dyfunconn.fc.html#dyfunconn.fc.corr.Corr.mean">[docs]</a>    <span class="k">def</span> <span class="nf">mean</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<div class="viewcode-block" id="Corr.mean"><a class="viewcode-back" href="../../../dyconnmap.fc.html#dyconnmap.fc.corr.Corr.mean">[docs]</a>    <span class="k">def</span> <span class="nf">mean</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">value</span></div>
 
-<div class="viewcode-block" id="Corr.estimate"><a class="viewcode-back" href="../../../dyfunconn.fc.html#dyfunconn.fc.corr.Corr.estimate">[docs]</a>    <span class="k">def</span> <span class="nf">estimate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">data_against</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="Corr.estimate"><a class="viewcode-back" href="../../../dyconnmap.fc.html#dyconnmap.fc.corr.Corr.estimate">[docs]</a>    <span class="k">def</span> <span class="nf">estimate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">data_against</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 
 
@@ -259,7 +259,7 @@
 
 <span class="sd">        Notes</span>
 <span class="sd">        -----</span>
-<span class="sd">        Called from :mod:`dyfunconn.tvfcgs.tvfcg`.</span>
+<span class="sd">        Called from :mod:`dyconnmap.tvfcgs.tvfcg`.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">n_rois</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 

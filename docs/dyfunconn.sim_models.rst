@@ -1,13 +1,13 @@
-dyfunconn.sim\_models package
+dyconnmap.sim\_models package
 =============================
 
 Submodules
 ----------
 
-dyfunconn.sim\_models.makinen module
+dyconnmap.sim\_models.makinen module
 ------------------------------------
 
-.. automodule:: dyfunconn.sim_models.makinen
+.. automodule:: dyconnmap.sim_models.makinen
    :members:
    :undoc-members:
    :show-inheritance:
@@ -16,7 +16,7 @@ dyfunconn.sim\_models.makinen module
 Module contents
 ---------------
 
-.. automodule:: dyfunconn.sim_models
+.. automodule:: dyconnmap.sim_models
    :members:
    :undoc-members:
    :show-inheritance:

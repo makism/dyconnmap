@@ -1,149 +1,149 @@
-dyfunconn.ts package
+dyconnmap.ts package
 ====================
 
 Submodules
 ----------
 
-dyfunconn.ts.ci module
+dyconnmap.ts.ci module
 ----------------------
 
-.. automodule:: dyfunconn.ts.ci
+.. automodule:: dyconnmap.ts.ci
    :members:
    :undoc-members:
    :show-inheritance:
 
-dyfunconn.ts.cv module
+dyconnmap.ts.cv module
 ----------------------
 
-.. automodule:: dyfunconn.ts.cv
+.. automodule:: dyconnmap.ts.cv
    :members:
    :undoc-members:
    :show-inheritance:
 
-dyfunconn.ts.dcorr module
+dyconnmap.ts.dcorr module
 -------------------------
 
-.. automodule:: dyfunconn.ts.dcorr
+.. automodule:: dyconnmap.ts.dcorr
    :members:
    :undoc-members:
    :show-inheritance:
 
-dyfunconn.ts.embed\_delay module
+dyconnmap.ts.embed\_delay module
 --------------------------------
 
-.. automodule:: dyfunconn.ts.embed_delay
+.. automodule:: dyconnmap.ts.embed_delay
    :members:
    :undoc-members:
    :show-inheritance:
 
-dyfunconn.ts.entropy module
+dyconnmap.ts.entropy module
 ---------------------------
 
-.. automodule:: dyfunconn.ts.entropy
+.. automodule:: dyconnmap.ts.entropy
    :members:
    :undoc-members:
    :show-inheritance:
 
-dyfunconn.ts.fisher\_score module
+dyconnmap.ts.fisher\_score module
 ---------------------------------
 
-.. automodule:: dyfunconn.ts.fisher_score
+.. automodule:: dyconnmap.ts.fisher_score
    :members:
    :undoc-members:
    :show-inheritance:
 
-dyfunconn.ts.fisher\_z module
+dyconnmap.ts.fisher\_z module
 -----------------------------
 
-.. automodule:: dyfunconn.ts.fisher_z
+.. automodule:: dyconnmap.ts.fisher_z
    :members:
    :undoc-members:
    :show-inheritance:
 
-dyfunconn.ts.fnn module
+dyconnmap.ts.fnn module
 -----------------------
 
-.. automodule:: dyfunconn.ts.fnn
+.. automodule:: dyconnmap.ts.fnn
    :members:
    :undoc-members:
    :show-inheritance:
 
-dyfunconn.ts.icc module
+dyconnmap.ts.icc module
 -----------------------
 
-.. automodule:: dyfunconn.ts.icc
+.. automodule:: dyconnmap.ts.icc
    :members:
    :undoc-members:
    :show-inheritance:
 
-dyfunconn.ts.markov\_matrix module
+dyconnmap.ts.markov\_matrix module
 ----------------------------------
 
-.. automodule:: dyfunconn.ts.markov_matrix
+.. automodule:: dyconnmap.ts.markov_matrix
    :members:
    :undoc-members:
    :show-inheritance:
 
-dyfunconn.ts.ordinal\_pattern\_similarity module
+dyconnmap.ts.ordinal\_pattern\_similarity module
 ------------------------------------------------
 
-.. automodule:: dyfunconn.ts.ordinal_pattern_similarity
+.. automodule:: dyconnmap.ts.ordinal_pattern_similarity
    :members:
    :undoc-members:
    :show-inheritance:
 
-dyfunconn.ts.permutation\_entropy module
+dyconnmap.ts.permutation\_entropy module
 ----------------------------------------
 
-.. automodule:: dyfunconn.ts.permutation_entropy
+.. automodule:: dyconnmap.ts.permutation_entropy
    :members:
    :undoc-members:
    :show-inheritance:
 
-dyfunconn.ts.rr\_order\_patterns module
+dyconnmap.ts.rr\_order\_patterns module
 ---------------------------------------
 
-.. automodule:: dyfunconn.ts.rr_order_patterns
+.. automodule:: dyconnmap.ts.rr_order_patterns
    :members:
    :undoc-members:
    :show-inheritance:
 
-dyfunconn.ts.sampen module
+dyconnmap.ts.sampen module
 --------------------------
 
-.. automodule:: dyfunconn.ts.sampen
+.. automodule:: dyconnmap.ts.sampen
    :members:
    :undoc-members:
    :show-inheritance:
 
-dyfunconn.ts.ste module
+dyconnmap.ts.ste module
 -----------------------
 
-.. automodule:: dyfunconn.ts.ste
+.. automodule:: dyconnmap.ts.ste
    :members:
    :undoc-members:
    :show-inheritance:
 
-dyfunconn.ts.surrogates module
+dyconnmap.ts.surrogates module
 ------------------------------
 
-.. automodule:: dyfunconn.ts.surrogates
+.. automodule:: dyconnmap.ts.surrogates
    :members:
    :undoc-members:
    :show-inheritance:
 
-dyfunconn.ts.teager\_kaiser\_energy module
+dyconnmap.ts.teager\_kaiser\_energy module
 ------------------------------------------
 
-.. automodule:: dyfunconn.ts.teager_kaiser_energy
+.. automodule:: dyconnmap.ts.teager_kaiser_energy
    :members:
    :undoc-members:
    :show-inheritance:
 
-dyfunconn.ts.wald module
+dyconnmap.ts.wald module
 ------------------------
 
-.. automodule:: dyfunconn.ts.wald
+.. automodule:: dyconnmap.ts.wald
    :members:
    :undoc-members:
    :show-inheritance:
@@ -152,7 +152,7 @@ dyfunconn.ts.wald module
 Module contents
 ---------------
 
-.. automodule:: dyfunconn.ts
+.. automodule:: dyconnmap.ts
    :members:
    :undoc-members:
    :show-inheritance:

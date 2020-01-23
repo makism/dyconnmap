@@ -64,7 +64,7 @@ def tvfcg(data, estimator_instance, fb, fs, cc=2.0, step=5.0, pairs=None):
         Multichannel recording data.
 
     estimator_instance : object
-        An object of type :mod:`dyfunconn.fc.Estimator`.
+        An object of type :mod:`dyconnmap.fc.Estimator`.
 
     fb : list of length 2
         The lower and upper frequency.
@@ -149,7 +149,7 @@ def tvfcg_cfc(
         Multichannel recording data.
 
     estimator_instance : object
-        An object of type :mod:`dyfunconn.fc.Estimator`.
+        An object of type :mod:`dyconnmap.fc.Estimator`.
 
     fb_lo : list of length 2
         The low and high frequencies.
@@ -179,7 +179,7 @@ def tvfcg_cfc(
 
     Notes
     -----
-    Not all available estimators in the :mod:`dyfunconn.fc` are valid for estimating
+    Not all available estimators in the :mod:`dyconnmap.fc` are valid for estimating
     cross frequency coupling.
     """
     preprocess, estimator, avg_func = _validate_estimator(estimator_instance)
@@ -342,7 +342,7 @@ def _validate_estimator(estimator_instance):
     Parameters
     ----------
     estimator_instance : object
-        An instance of `dyfunconn.fc.Estimator`
+        An instance of `dyconnmap.fc.Estimator`
 
 
     Returns

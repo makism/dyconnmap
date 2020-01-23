@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>dyfunconn.tvfcgs &mdash; dyfunconn  documentation</title>
+  <title>dyconnmap.tvfcgs &mdash; dyconnmap  documentation</title>
   
 
   
@@ -49,7 +49,7 @@
           
 
           
-            <a href="../../index.html" class="icon icon-home"> dyfunconn
+            <a href="../../index.html" class="icon icon-home"> dyconnmap
           
 
           
@@ -80,7 +80,7 @@
             
             
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../dyfunconn.html">dyfunconn package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../dyconnmap.html">dyconnmap package</a></li>
 </ul>
 
             
@@ -95,7 +95,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">dyfunconn</a>
+          <a href="../../index.html">dyconnmap</a>
         
       </nav>
 
@@ -128,7 +128,7 @@
         
           <li><a href="../index.html">Module code</a> &raquo;</li>
         
-      <li>dyfunconn.tvfcgs</li>
+      <li>dyconnmap.tvfcgs</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -143,7 +143,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <h1>Source code for dyfunconn.tvfcgs</h1><div class="highlight"><pre>
+  <h1>Source code for dyconnmap.tvfcgs</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot; Time-Varying Functional Connectivity Graphs</span>
 
@@ -197,7 +197,7 @@
 <span class="kn">from</span> <span class="nn">.fc.estimator</span> <span class="k">import</span> <span class="n">Estimator</span>
 
 
-<div class="viewcode-block" id="tvfcg"><a class="viewcode-back" href="../../dyfunconn.html#dyfunconn.tvfcgs.tvfcg">[docs]</a><span class="k">def</span> <span class="nf">tvfcg</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">estimator_instance</span><span class="p">,</span> <span class="n">fb</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="n">cc</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="n">pairs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<div class="viewcode-block" id="tvfcg"><a class="viewcode-back" href="../../dyconnmap.html#dyconnmap.tvfcgs.tvfcg">[docs]</a><span class="k">def</span> <span class="nf">tvfcg</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">estimator_instance</span><span class="p">,</span> <span class="n">fb</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="n">cc</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span> <span class="n">pairs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Time-Varying Functional Connectivity Graphs</span>
 
 <span class="sd">    The TVFCGs are computed from the input ``data`` by employing the given</span>
@@ -210,7 +210,7 @@
 <span class="sd">        Multichannel recording data.</span>
 
 <span class="sd">    estimator_instance : object</span>
-<span class="sd">        An object of type :mod:`dyfunconn.fc.Estimator`.</span>
+<span class="sd">        An object of type :mod:`dyconnmap.fc.Estimator`.</span>
 
 <span class="sd">    fb : list of length 2</span>
 <span class="sd">        The lower and upper frequency.</span>
@@ -280,7 +280,7 @@
     <span class="k">return</span> <span class="n">fcgs</span></div>
 
 
-<div class="viewcode-block" id="tvfcg_cfc"><a class="viewcode-back" href="../../dyfunconn.html#dyfunconn.tvfcgs.tvfcg_cfc">[docs]</a><span class="k">def</span> <span class="nf">tvfcg_cfc</span><span class="p">(</span>
+<div class="viewcode-block" id="tvfcg_cfc"><a class="viewcode-back" href="../../dyconnmap.html#dyconnmap.tvfcgs.tvfcg_cfc">[docs]</a><span class="k">def</span> <span class="nf">tvfcg_cfc</span><span class="p">(</span>
     <span class="n">data</span><span class="p">,</span> <span class="n">estimator_instance</span><span class="p">,</span> <span class="n">fb_lo</span><span class="p">,</span> <span class="n">fb_hi</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">cc</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">pairs</span><span class="o">=</span><span class="kc">None</span>
 <span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Time-Varying Functional Connectivity Graphs (for Cross frequency Coupling)</span>
@@ -295,7 +295,7 @@
 <span class="sd">        Multichannel recording data.</span>
 
 <span class="sd">    estimator_instance : object</span>
-<span class="sd">        An object of type :mod:`dyfunconn.fc.Estimator`.</span>
+<span class="sd">        An object of type :mod:`dyconnmap.fc.Estimator`.</span>
 
 <span class="sd">    fb_lo : list of length 2</span>
 <span class="sd">        The low and high frequencies.</span>
@@ -325,7 +325,7 @@
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
-<span class="sd">    Not all available estimators in the :mod:`dyfunconn.fc` are valid for estimating</span>
+<span class="sd">    Not all available estimators in the :mod:`dyconnmap.fc` are valid for estimating</span>
 <span class="sd">    cross frequency coupling.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">preprocess</span><span class="p">,</span> <span class="n">estimator</span><span class="p">,</span> <span class="n">avg_func</span> <span class="o">=</span> <span class="n">_validate_estimator</span><span class="p">(</span><span class="n">estimator_instance</span><span class="p">)</span>
@@ -367,7 +367,7 @@
     <span class="k">return</span> <span class="n">fcgs</span></div>
 
 
-<div class="viewcode-block" id="tvfcg_ts"><a class="viewcode-back" href="../../dyfunconn.html#dyfunconn.tvfcgs.tvfcg_ts">[docs]</a><span class="k">def</span> <span class="nf">tvfcg_ts</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">fb</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">cc</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">pairs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">avg_func</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">):</span>
+<div class="viewcode-block" id="tvfcg_ts"><a class="viewcode-back" href="../../dyconnmap.html#dyconnmap.tvfcgs.tvfcg_ts">[docs]</a><span class="k">def</span> <span class="nf">tvfcg_ts</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">fb</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span> <span class="n">cc</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">pairs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">avg_func</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Time-Varying Function Connectivity Graphs (from time series)</span>
 
 <span class="sd">    This implementation operates directly on the given estimated synchronization</span>
@@ -430,7 +430,7 @@
     <span class="k">return</span> <span class="n">fcgs</span></div>
 
 
-<div class="viewcode-block" id="tvfcg_compute_windows"><a class="viewcode-back" href="../../dyfunconn.html#dyfunconn.tvfcgs.tvfcg_compute_windows">[docs]</a><span class="k">def</span> <span class="nf">tvfcg_compute_windows</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">fb_lo</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="n">cc</span><span class="p">,</span> <span class="n">step</span><span class="p">):</span>
+<div class="viewcode-block" id="tvfcg_compute_windows"><a class="viewcode-back" href="../../dyconnmap.html#dyconnmap.tvfcgs.tvfcg_compute_windows">[docs]</a><span class="k">def</span> <span class="nf">tvfcg_compute_windows</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">fb_lo</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="n">cc</span><span class="p">,</span> <span class="n">step</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Compute TVFCGs Sliding Windows</span>
 
 <span class="sd">    A helper function that computes the size and number of sliding windows</span>
@@ -488,7 +488,7 @@
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    estimator_instance : object</span>
-<span class="sd">        An instance of `dyfunconn.fc.Estimator`</span>
+<span class="sd">        An instance of `dyconnmap.fc.Estimator`</span>
 
 
 <span class="sd">    Returns</span>

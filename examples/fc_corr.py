@@ -4,9 +4,9 @@
 import numpy as np
 np.set_printoptions(precision=2, linewidth=256)
 
-from dyfunconn import analytic_signal
-from dyfunconn.fc import corr, crosscorr, partcorr
-from dyfunconn.fc import Corr
+from dyconnmap import analytic_signal
+from dyconnmap.fc import corr, crosscorr, partcorr
+from dyconnmap.fc import Corr
 
 
 if __name__ == "__main__":

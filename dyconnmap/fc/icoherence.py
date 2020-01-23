@@ -52,7 +52,7 @@ def icoherence(data, fb, fs, pairs=None, **kwargs):
 
     See also
     --------
-    dyfunconn.fc.coherence: Coherence
+    dyconnmap.fc.coherence: Coherence
     """
     n_channels, _ = np.shape(data)
     _, _, filtered = analytic_signal(data, fb, fs)

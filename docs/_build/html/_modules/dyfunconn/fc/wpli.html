@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>dyfunconn.fc.wpli &mdash; dyfunconn  documentation</title>
+  <title>dyconnmap.fc.wpli &mdash; dyconnmap  documentation</title>
   
 
   
@@ -49,7 +49,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home"> dyfunconn
+            <a href="../../../index.html" class="icon icon-home"> dyconnmap
           
 
           
@@ -80,7 +80,7 @@
             
             
               <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../dyfunconn.html">dyfunconn package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../dyconnmap.html">dyconnmap package</a></li>
 </ul>
 
             
@@ -95,7 +95,7 @@
       <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../../index.html">dyfunconn</a>
+          <a href="../../../index.html">dyconnmap</a>
         
       </nav>
 
@@ -128,7 +128,7 @@
         
           <li><a href="../../index.html">Module code</a> &raquo;</li>
         
-      <li>dyfunconn.fc.wpli</li>
+      <li>dyconnmap.fc.wpli</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -143,7 +143,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <h1>Source code for dyfunconn.fc.wpli</h1><div class="highlight"><pre>
+  <h1>Source code for dyconnmap.fc.wpli</h1><div class="highlight"><pre>
 <span></span><span class="c1"># -*- coding: utf-8 -*-</span>
 <span class="sd">&quot;&quot;&quot; Weighted Phase Lag Index and Debiased Weighted Phase Lag Index</span>
 
@@ -176,7 +176,7 @@
 <span class="kn">import</span> <span class="nn">matplotlib.mlab</span> <span class="k">as</span> <span class="nn">mlab</span>
 
 
-<div class="viewcode-block" id="wpli"><a class="viewcode-back" href="../../../dyfunconn.fc.html#dyfunconn.fc.wpli.wpli">[docs]</a><span class="k">def</span> <span class="nf">wpli</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">fb</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="n">pairs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="wpli"><a class="viewcode-back" href="../../../dyconnmap.fc.html#dyconnmap.fc.wpli.wpli">[docs]</a><span class="k">def</span> <span class="nf">wpli</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">fb</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="n">pairs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Weighted Phase Lag Index</span>
 
 <span class="sd">    Compute the Weight Phase Lad Index for the given *data*, between the specified *pairs* of</span>
@@ -216,7 +216,7 @@
 
 <span class="sd">    Seer also</span>
 <span class="sd">    ---------</span>
-<span class="sd">    dyfunconn.wpli.dwpli: Debiased Weighted Phase Lag Index</span>
+<span class="sd">    dyconnmap.wpli.dwpli: Debiased Weighted Phase Lag Index</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">n_channels</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
@@ -244,7 +244,7 @@
     <span class="k">return</span> <span class="n">wpliv</span></div>
 
 
-<div class="viewcode-block" id="dwpli"><a class="viewcode-back" href="../../../dyfunconn.fc.html#dyfunconn.fc.wpli.dwpli">[docs]</a><span class="k">def</span> <span class="nf">dwpli</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">fb</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="n">pairs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="dwpli"><a class="viewcode-back" href="../../../dyconnmap.fc.html#dyconnmap.fc.wpli.dwpli">[docs]</a><span class="k">def</span> <span class="nf">dwpli</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">fb</span><span class="p">,</span> <span class="n">fs</span><span class="p">,</span> <span class="n">pairs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Debiased Weighted Phase Lag Index</span>
 
 <span class="sd">    Compute the Debiased Weight Phase Lad Index for the given *data*, between the specified *pairs* of</span>
@@ -278,7 +278,7 @@
 
 <span class="sd">    Seer also</span>
 <span class="sd">    ---------</span>
-<span class="sd">    dyfunconn.wpli.wpli: Weighted Phase Lag Index</span>
+<span class="sd">    dyconnmap.wpli.wpli: Weighted Phase Lag Index</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">n_channels</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 

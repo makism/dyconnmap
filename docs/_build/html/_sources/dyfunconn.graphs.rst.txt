@@ -1,85 +1,85 @@
-dyfunconn.graphs package
+dyconnmap.graphs package
 ========================
 
 Submodules
 ----------
 
-dyfunconn.graphs.gdd module
+dyconnmap.graphs.gdd module
 ---------------------------
 
-.. automodule:: dyfunconn.graphs.gdd
+.. automodule:: dyconnmap.graphs.gdd
    :members:
    :undoc-members:
    :show-inheritance:
 
-dyfunconn.graphs.imd module
+dyconnmap.graphs.imd module
 ---------------------------
 
-.. automodule:: dyfunconn.graphs.imd
+.. automodule:: dyconnmap.graphs.imd
    :members:
    :undoc-members:
    :show-inheritance:
 
-dyfunconn.graphs.laplacian\_energy module
+dyconnmap.graphs.laplacian\_energy module
 -----------------------------------------
 
-.. automodule:: dyfunconn.graphs.laplacian_energy
+.. automodule:: dyconnmap.graphs.laplacian_energy
    :members:
    :undoc-members:
    :show-inheritance:
 
-dyfunconn.graphs.mi module
+dyconnmap.graphs.mi module
 --------------------------
 
-.. automodule:: dyfunconn.graphs.mi
+.. automodule:: dyconnmap.graphs.mi
    :members:
    :undoc-members:
    :show-inheritance:
 
-dyfunconn.graphs.mpc module
+dyconnmap.graphs.mpc module
 ---------------------------
 
-.. automodule:: dyfunconn.graphs.mpc
+.. automodule:: dyconnmap.graphs.mpc
    :members:
    :undoc-members:
    :show-inheritance:
 
-dyfunconn.graphs.nodal module
+dyconnmap.graphs.nodal module
 -----------------------------
 
-.. automodule:: dyfunconn.graphs.nodal
+.. automodule:: dyconnmap.graphs.nodal
    :members:
    :undoc-members:
    :show-inheritance:
 
-dyfunconn.graphs.spectral\_euclidean\_distance module
+dyconnmap.graphs.spectral\_euclidean\_distance module
 -----------------------------------------------------
 
-.. automodule:: dyfunconn.graphs.spectral_euclidean_distance
+.. automodule:: dyconnmap.graphs.spectral_euclidean_distance
    :members:
    :undoc-members:
    :show-inheritance:
 
-dyfunconn.graphs.spectral\_k\_distance module
+dyconnmap.graphs.spectral\_k\_distance module
 ---------------------------------------------
 
-.. automodule:: dyfunconn.graphs.spectral_k_distance
+.. automodule:: dyconnmap.graphs.spectral_k_distance
    :members:
    :undoc-members:
    :show-inheritance:
 
-dyfunconn.graphs.threshold module
+dyconnmap.graphs.threshold module
 ---------------------------------
 
-.. automodule:: dyfunconn.graphs.threshold
+.. automodule:: dyconnmap.graphs.threshold
    :members:
    :undoc-members:
    :show-inheritance:
 
-dyfunconn.graphs.vi module
+dyconnmap.graphs.vi module
 --------------------------
 
-.. automodule:: dyfunconn.graphs.vi
+.. automodule:: dyconnmap.graphs.vi
    :members:
    :undoc-members:
    :show-inheritance:
@@ -88,7 +88,7 @@ dyfunconn.graphs.vi module
 Module contents
 ---------------
 
-.. automodule:: dyfunconn.graphs
+.. automodule:: dyconnmap.graphs
    :members:
    :undoc-members:
    :show-inheritance:

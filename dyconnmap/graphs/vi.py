@@ -32,7 +32,7 @@ The resulting distance score can be adjusted to bound it between :math:`[0, 1]` 
 
 import numpy as np
 
-from dyfunconn.ts.entropy import entropy
+from dyconnmap.ts.entropy import entropy
 
 
 def variation_information(indices_a, indices_b):

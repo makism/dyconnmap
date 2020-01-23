@@ -53,7 +53,7 @@ def dpli(data, fb, fs, pairs=None):
 
     See also
     --------
-    dyfunconn.fc.PLI: Phase Lag Index
+    dyconnmap.fc.PLI: Phase Lag Index
     """
     n_channels, n_samples = np.shape(data)
 
