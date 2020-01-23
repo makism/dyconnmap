@@ -1,11 +1,11 @@
-### dyfunconn
-A neuroimaging module for dynamic functional connectivity.
+### dyconnmap
+A neuroimaging module for dynamic connectome mapping.
 
-[![Build Status](https://travis-ci.org/makism/dyfunconn.svg?branch=master)](https://travis-ci.org/makism/dyfunconn) [![Coverage Status](https://coveralls.io/repos/github/makism/dyfunconn/badge.svg?branch=master)](https://coveralls.io/github/makism/dyfunconn?branch=master) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/70dff7603f5849f79e703f852d1b5ae3)](https://www.codacy.com/app/makism/dyfunconn?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=makism/dyfunconn&amp;utm_campaign=Badge_Grade) [![Documentation Status](https://readthedocs.org/projects/dyfunconn/badge/?version=latest)](http://dyfunconn.readthedocs.io/?badge=latest) [![Licence](https://img.shields.io/badge/Licence-BSD-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)[![PyPI version](https://badge.fury.io/py/dyfunconn.svg)](https://badge.fury.io/py/dyfunconn) ![python-3.6](https://img.shields.io/badge/python-3.6-blue.svg)
+[![Build Status](https://travis-ci.org/makism/dyconnmap.svg?branch=master)](https://travis-ci.org/makism/dyconnmap) [![Coverage Status](https://coveralls.io/repos/github/makism/dyconnmap/badge.svg?branch=master)](https://coveralls.io/github/makism/dyconnmap?branch=master) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/70dff7603f5849f79e703f852d1b5ae3)](https://www.codacy.com/app/makism/dyconnmap?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=makism/dyconnmap&amp;utm_campaign=Badge_Grade) [![Documentation Status](https://readthedocs.org/projects/dyconnmap/badge/?version=latest)](http://dyconnmap.readthedocs.io/?badge=latest) [![Licence](https://img.shields.io/badge/Licence-BSD-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)[![PyPI version](https://badge.fury.io/py/dyconnmap.svg)](https://badge.fury.io/py/dyconnmap) ![python-3.6](https://img.shields.io/badge/python-3.6-blue.svg)
 
 ---
 
-_dyfunconn_ is specifically tailored for functional connectivity, synchrony estimators and graph analysis in the context of Functional Connectivity Microstates (FCμstates) analyzing Time-Varying Functional Connectivity Graphs (TVFCGs). The primary focus in the FCμstates paradigm is twofold; to represent the input time-varying connectivity into a small number-repertoire (data reduction) of features (feature extraction) while preserving the temporal dynamics of the connectivity patterns.
+_dyconnmap_ is specifically tailored for functional connectivity, synchrony estimators and graph analysis in the context of Functional Connectivity Microstates (FCμstates) analyzing Time-Varying Functional Connectivity Graphs (TVFCGs). The primary focus in the FCμstates paradigm is twofold; to represent the input time-varying connectivity into a small number-repertoire (data reduction) of features (feature extraction) while preserving the temporal dynamics of the connectivity patterns.
 
 Other sudmodules are introduced for analyzing symbolic timeseries, clustering, statistical analyses, etc.
 
@@ -33,7 +33,7 @@ Built on [NumPy](http://www.numpy.org/), [SciPy](http://www.scipy.org/), [matplo
 
 #### Cittation
 
-If you use _dyfunconn_ in a published work, please consider citing.
+If you use _dyconnmap_ in a published work, please consider citing.
 
 <table align="center">
     <tr>
