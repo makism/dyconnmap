@@ -34,7 +34,7 @@ Built on [NumPy](http://www.numpy.org/), [SciPy](http://www.scipy.org/), [matplo
 
 #### Cittation
 
-If you use _dyconnmap_ in a published work, please consider citing.
+If you use _dyconnmap_ / _dyfunconn_ in a published work, please consider citing.
 
 <table align="center">
     <tr>
