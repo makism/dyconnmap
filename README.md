@@ -4,7 +4,7 @@
 ### dyconnmap
 A neuroimaging module for dynamic connectome mapping.
 
-[![Build Status](https://travis-ci.org/makism/dyconnmap.svg?branch=master)](https://travis-ci.org/makism/dyconnmap) [![Coverage Status](https://coveralls.io/repos/github/makism/dyconnmap/badge.svg?branch=master)](https://coveralls.io/github/makism/dyconnmap?branch=master) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/70dff7603f5849f79e703f852d1b5ae3)](https://www.codacy.com/app/makism/dyconnmap?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=makism/dyconnmap&amp;utm_campaign=Badge_Grade) [![Documentation Status](https://readthedocs.org/projects/dyfunconn/badge/?version=latest)](https://dyfunconn.readthedocs.io/?badge=latest)
+[![Build Status](https://travis-ci.org/makism/dyconnmap.svg?branch=master)](https://travis-ci.org/makism/dyconnmap) [![Coverage Status](https://coveralls.io/repos/github/makism/dyconnmap/badge.svg?branch=master)](https://coveralls.io/github/makism/dyconnmap?branch=master) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/70dff7603f5849f79e703f852d1b5ae3)](https://www.codacy.com/app/makism/dyconnmap?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=makism/dyconnmap&amp;utm_campaign=Badge_Grade) [![Documentation Status](https://readthedocs.org/projects/dyconnmap/badge/?version=latest)](https://dyconnmap.readthedocs.io/?badge=latest)
  [![Licence](https://img.shields.io/badge/Licence-BSD-blue.svg)](https://opensource.org/licenses/BSD-3-Clause) [![PyPI version](https://badge.fury.io/py/dyconnmap.svg)](https://badge.fury.io/py/dyconnmap) ![python-3.6](https://img.shields.io/badge/python-3.6-blue.svg)
 
 ---
