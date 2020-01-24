@@ -50,7 +50,7 @@ variable $PYTHONPATH from the terminal as follows:
 Documentation
 =============
 
-Once you have installed `dyconnmap`, navigate into the `tests` directory and run:
+Once you have installed `dyconnmap`, navigate into the source directory and run:
 > $ sphinx-apidoc -f -o docs/ dyconnmap/
 
 > $ cd docs
