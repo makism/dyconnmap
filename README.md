@@ -9,11 +9,12 @@ A neuroimaging module for dynamic connectome mapping.
 
 ---
 
-_dyconnmap_ is specifically tailored for functional connectivity, synchrony estimators and graph analysis in the context of Functional Connectivity Microstates (FCμstates) analyzing Time-Varying Functional Connectivity Graphs (TVFCGs). The primary focus in the FCμstates paradigm is twofold; to represent the input time-varying connectivity into a small number-repertoire (data reduction) of features (feature extraction) while preserving the temporal dynamics of the connectivity patterns.
 
-Other sudmodules are introduced for analyzing symbolic timeseries, clustering, statistical analyses, etc.
+_dyconnmap_ (abbreviated from “dynamic connectome mapping”), a neuroimaging python module specifically designed for estimating the dynamic connectivity and analyzing complex brain networks; from neurophysiological data such as electroencephalogram (EEG), magnetoencephalography (MEG) and functional magnetic resonance imaging (fMRI) recordings. It includes numerous submodules to work with, such as chronnectomics and graph-theoretical algorithms, (symbolic) time series and statistical methods.
 
-Built on [NumPy](http://www.numpy.org/), [SciPy](http://www.scipy.org/), [matplotlib](http://matplotlib.org/) and [networkx](https://networkx.github.io/) (and some other libs ;P)
+This is an ongoing effort to develop the module further and extend it by adding more algorithms related to graph analysis and statistical approaches. Considering the increasing acceptance and usage of python in analyzing neuroimaging data, we firmly believe that the module will be a great addition in every practitioner's toolbox engaged in brain connectivity analysis.
+
+Built on [NumPy](http://www.numpy.org/), [SciPy](http://www.scipy.org/), [matplotlib](http://matplotlib.org/) and [networkx](https://networkx.github.io/).
 
 #### Workflow outline
 
