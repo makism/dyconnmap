@@ -35,9 +35,7 @@
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="dyconnmap.fc package" href="dyconnmap.fc.html" />
-    <link rel="prev" title="dyconnmap.chronnectomics package" href="dyconnmap.chronnectomics.html" /> 
+    <link rel="search" title="Search" href="search.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -81,35 +79,8 @@
               
             
             
-              <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="dyconnmap.html">dyconnmap package</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="dyconnmap.html#subpackages">Subpackages</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="dyconnmap.chronnectomics.html">dyconnmap.chronnectomics package</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">dyconnmap.cluster package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#module-dyconnmap.cluster.gng">dyconnmap.cluster.gng module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#module-dyconnmap.cluster.mng">dyconnmap.cluster.mng module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#module-dyconnmap.cluster.ng">dyconnmap.cluster.ng module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#module-dyconnmap.cluster.rng">dyconnmap.cluster.rng module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#module-dyconnmap.cluster.som">dyconnmap.cluster.som module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#module-dyconnmap.cluster.umatrix">dyconnmap.cluster.umatrix module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#module-dyconnmap.cluster">Module contents</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="dyconnmap.fc.html">dyconnmap.fc package</a></li>
-<li class="toctree-l3"><a class="reference internal" href="dyconnmap.graphs.html">dyconnmap.graphs package</a></li>
-<li class="toctree-l3"><a class="reference internal" href="dyconnmap.sim_models.html">dyconnmap.sim_models package</a></li>
-<li class="toctree-l3"><a class="reference internal" href="dyconnmap.ts.html">dyconnmap.ts package</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="dyconnmap.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dyconnmap.html#module-dyconnmap.analytic_signal">dyconnmap.analytic_signal module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dyconnmap.html#module-dyconnmap.bands">dyconnmap.bands module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dyconnmap.html#module-dyconnmap.sliding_window">dyconnmap.sliding_window module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dyconnmap.html#module-dyconnmap.tvfcgs">dyconnmap.tvfcgs module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dyconnmap.html#module-dyconnmap">Module contents</a></li>
-</ul>
-</li>
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="dyconnmap.html">dyconnmap package</a></li>
 </ul>
 
             
@@ -155,15 +126,13 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-          <li><a href="dyconnmap.html">dyconnmap package</a> &raquo;</li>
-        
       <li>dyconnmap.cluster package</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="_sources/dyconnmap.cluster.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/dyfunconn.cluster.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -245,7 +214,7 @@ or an upper limit of elapsed iterations.</p>
 <dl class="class">
 <dt id="dyconnmap.cluster.gng.GrowingNeuralGas">
 <em class="property">class </em><code class="sig-prename descclassname">dyconnmap.cluster.gng.</code><code class="sig-name descname">GrowingNeuralGas</code><span class="sig-paren">(</span><em class="sig-param">n_max_protos=30</em>, <em class="sig-param">l=300</em>, <em class="sig-param">a_max=88</em>, <em class="sig-param">a=0.5</em>, <em class="sig-param">b=0.0005</em>, <em class="sig-param">iterations=10000</em>, <em class="sig-param">lrate=None</em>, <em class="sig-param">n_jobs=1</em>, <em class="sig-param">rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/cluster/gng.html#GrowingNeuralGas"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.cluster.gng.GrowingNeuralGas" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">dyconnmap.cluster.cluster.BaseCluster</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="dyconnmap.cluster.html#dyconnmap.cluster.cluster.BaseCluster" title="dyconnmap.cluster.cluster.BaseCluster"><code class="xref py py-class docutils literal notranslate"><span class="pre">dyconnmap.cluster.cluster.BaseCluster</span></code></a></p>
 <p>Growing Neural Gas</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -422,7 +391,7 @@ When the network is presented with a new input sequence <span class="math notran
 <dl class="class">
 <dt id="dyconnmap.cluster.mng.MergeNeuralGas">
 <em class="property">class </em><code class="sig-prename descclassname">dyconnmap.cluster.mng.</code><code class="sig-name descname">MergeNeuralGas</code><span class="sig-paren">(</span><em class="sig-param">n_protos=10</em>, <em class="sig-param">iterations=1024</em>, <em class="sig-param">merge_coeffs=None</em>, <em class="sig-param">epsilon=None</em>, <em class="sig-param">lrate=None</em>, <em class="sig-param">n_jobs=1</em>, <em class="sig-param">rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/cluster/mng.html#MergeNeuralGas"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.cluster.mng.MergeNeuralGas" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">dyconnmap.cluster.cluster.BaseCluster</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="dyconnmap.cluster.html#dyconnmap.cluster.cluster.BaseCluster" title="dyconnmap.cluster.cluster.BaseCluster"><code class="xref py py-class docutils literal notranslate"><span class="pre">dyconnmap.cluster.cluster.BaseCluster</span></code></a></p>
 <p>Merge Neural Gas</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -591,7 +560,7 @@ the approximated patterns as produced by the Nearest Neighbor rule.</p>
 <dl class="class">
 <dt id="dyconnmap.cluster.ng.NeuralGas">
 <em class="property">class </em><code class="sig-prename descclassname">dyconnmap.cluster.ng.</code><code class="sig-name descname">NeuralGas</code><span class="sig-paren">(</span><em class="sig-param">n_protos=10</em>, <em class="sig-param">iterations=1024</em>, <em class="sig-param">epsilon=None</em>, <em class="sig-param">lrate=None</em>, <em class="sig-param">n_jobs=1</em>, <em class="sig-param">metric='euclidean'</em>, <em class="sig-param">rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/cluster/ng.html#NeuralGas"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.cluster.ng.NeuralGas" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">dyconnmap.cluster.cluster.BaseCluster</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="dyconnmap.cluster.html#dyconnmap.cluster.cluster.BaseCluster" title="dyconnmap.cluster.cluster.BaseCluster"><code class="xref py py-class docutils literal notranslate"><span class="pre">dyconnmap.cluster.cluster.BaseCluster</span></code></a></p>
 <p>Neural Gas</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -747,7 +716,7 @@ data from a pairwise similarity or dissimilarity matrix.</p>
 <dl class="class">
 <dt id="dyconnmap.cluster.rng.RelationalNeuralGas">
 <em class="property">class </em><code class="sig-prename descclassname">dyconnmap.cluster.rng.</code><code class="sig-name descname">RelationalNeuralGas</code><span class="sig-paren">(</span><em class="sig-param">n_protos=10</em>, <em class="sig-param">iterations=100</em>, <em class="sig-param">lrate=None</em>, <em class="sig-param">metric='euclidean'</em>, <em class="sig-param">rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/cluster/rng.html#RelationalNeuralGas"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.cluster.rng.RelationalNeuralGas" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">dyconnmap.cluster.cluster.BaseCluster</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="dyconnmap.cluster.html#dyconnmap.cluster.cluster.BaseCluster" title="dyconnmap.cluster.cluster.BaseCluster"><code class="xref py py-class docutils literal notranslate"><span class="pre">dyconnmap.cluster.cluster.BaseCluster</span></code></a></p>
 <p>Relational Neural Gas</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -900,7 +869,7 @@ the approximated patterns as produced by the Nearest Neighbor rule.</p>
 <dl class="class">
 <dt id="dyconnmap.cluster.som.SOM">
 <em class="property">class </em><code class="sig-prename descclassname">dyconnmap.cluster.som.</code><code class="sig-name descname">SOM</code><span class="sig-paren">(</span><em class="sig-param">grid=(10</em>, <em class="sig-param">10)</em>, <em class="sig-param">iterations=1024</em>, <em class="sig-param">lrate=0.1</em>, <em class="sig-param">n_jobs=1</em>, <em class="sig-param">rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/cluster/som.html#SOM"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.cluster.som.SOM" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">dyconnmap.cluster.cluster.BaseCluster</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="dyconnmap.cluster.html#dyconnmap.cluster.cluster.BaseCluster" title="dyconnmap.cluster.cluster.BaseCluster"><code class="xref py py-class docutils literal notranslate"><span class="pre">dyconnmap.cluster.cluster.BaseCluster</span></code></a></p>
 <p>Self Organizing Map</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -1020,7 +989,7 @@ the approximated patterns as produced by the Nearest Neighbor rule.</p>
 <dl class="class">
 <dt id="dyconnmap.cluster.NeuralGas">
 <em class="property">class </em><code class="sig-prename descclassname">dyconnmap.cluster.</code><code class="sig-name descname">NeuralGas</code><span class="sig-paren">(</span><em class="sig-param">n_protos=10</em>, <em class="sig-param">iterations=1024</em>, <em class="sig-param">epsilon=None</em>, <em class="sig-param">lrate=None</em>, <em class="sig-param">n_jobs=1</em>, <em class="sig-param">metric='euclidean'</em>, <em class="sig-param">rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/cluster/ng.html#NeuralGas"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.cluster.NeuralGas" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">dyconnmap.cluster.cluster.BaseCluster</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="dyconnmap.cluster.html#dyconnmap.cluster.cluster.BaseCluster" title="dyconnmap.cluster.cluster.BaseCluster"><code class="xref py py-class docutils literal notranslate"><span class="pre">dyconnmap.cluster.cluster.BaseCluster</span></code></a></p>
 <p>Neural Gas</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -1157,7 +1126,7 @@ the approximated patterns as produced by the Nearest Neighbor rule.</p>
 <dl class="class">
 <dt id="dyconnmap.cluster.MergeNeuralGas">
 <em class="property">class </em><code class="sig-prename descclassname">dyconnmap.cluster.</code><code class="sig-name descname">MergeNeuralGas</code><span class="sig-paren">(</span><em class="sig-param">n_protos=10</em>, <em class="sig-param">iterations=1024</em>, <em class="sig-param">merge_coeffs=None</em>, <em class="sig-param">epsilon=None</em>, <em class="sig-param">lrate=None</em>, <em class="sig-param">n_jobs=1</em>, <em class="sig-param">rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/cluster/mng.html#MergeNeuralGas"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.cluster.MergeNeuralGas" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">dyconnmap.cluster.cluster.BaseCluster</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="dyconnmap.cluster.html#dyconnmap.cluster.cluster.BaseCluster" title="dyconnmap.cluster.cluster.BaseCluster"><code class="xref py py-class docutils literal notranslate"><span class="pre">dyconnmap.cluster.cluster.BaseCluster</span></code></a></p>
 <p>Merge Neural Gas</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -1280,7 +1249,7 @@ the approximated patterns as produced by the Nearest Neighbor rule.</p>
 <dl class="class">
 <dt id="dyconnmap.cluster.RelationalNeuralGas">
 <em class="property">class </em><code class="sig-prename descclassname">dyconnmap.cluster.</code><code class="sig-name descname">RelationalNeuralGas</code><span class="sig-paren">(</span><em class="sig-param">n_protos=10</em>, <em class="sig-param">iterations=100</em>, <em class="sig-param">lrate=None</em>, <em class="sig-param">metric='euclidean'</em>, <em class="sig-param">rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/cluster/rng.html#RelationalNeuralGas"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.cluster.RelationalNeuralGas" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">dyconnmap.cluster.cluster.BaseCluster</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="dyconnmap.cluster.html#dyconnmap.cluster.cluster.BaseCluster" title="dyconnmap.cluster.cluster.BaseCluster"><code class="xref py py-class docutils literal notranslate"><span class="pre">dyconnmap.cluster.cluster.BaseCluster</span></code></a></p>
 <p>Relational Neural Gas</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -1415,7 +1384,7 @@ the approximated patterns as produced by the Nearest Neighbor rule.</p>
 <dl class="class">
 <dt id="dyconnmap.cluster.GrowingNeuralGas">
 <em class="property">class </em><code class="sig-prename descclassname">dyconnmap.cluster.</code><code class="sig-name descname">GrowingNeuralGas</code><span class="sig-paren">(</span><em class="sig-param">n_max_protos=30</em>, <em class="sig-param">l=300</em>, <em class="sig-param">a_max=88</em>, <em class="sig-param">a=0.5</em>, <em class="sig-param">b=0.0005</em>, <em class="sig-param">iterations=10000</em>, <em class="sig-param">lrate=None</em>, <em class="sig-param">n_jobs=1</em>, <em class="sig-param">rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/cluster/gng.html#GrowingNeuralGas"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.cluster.GrowingNeuralGas" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">dyconnmap.cluster.cluster.BaseCluster</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="dyconnmap.cluster.html#dyconnmap.cluster.cluster.BaseCluster" title="dyconnmap.cluster.cluster.BaseCluster"><code class="xref py py-class docutils literal notranslate"><span class="pre">dyconnmap.cluster.cluster.BaseCluster</span></code></a></p>
 <p>Growing Neural Gas</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -1545,7 +1514,7 @@ the approximated patterns as produced by the Nearest Neighbor rule.</p>
 <dl class="class">
 <dt id="dyconnmap.cluster.SOM">
 <em class="property">class </em><code class="sig-prename descclassname">dyconnmap.cluster.</code><code class="sig-name descname">SOM</code><span class="sig-paren">(</span><em class="sig-param">grid=(10</em>, <em class="sig-param">10)</em>, <em class="sig-param">iterations=1024</em>, <em class="sig-param">lrate=0.1</em>, <em class="sig-param">n_jobs=1</em>, <em class="sig-param">rng=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/cluster/som.html#SOM"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.cluster.SOM" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">dyconnmap.cluster.cluster.BaseCluster</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="dyconnmap.cluster.html#dyconnmap.cluster.cluster.BaseCluster" title="dyconnmap.cluster.cluster.BaseCluster"><code class="xref py py-class docutils literal notranslate"><span class="pre">dyconnmap.cluster.cluster.BaseCluster</span></code></a></p>
 <p>Self Organizing Map</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -1662,15 +1631,6 @@ the approximated patterns as produced by the Nearest Neighbor rule.</p>
            
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="dyconnmap.fc.html" class="btn btn-neutral float-right" title="dyconnmap.fc package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="dyconnmap.chronnectomics.html" class="btn btn-neutral float-left" title="dyconnmap.chronnectomics package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>

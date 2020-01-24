@@ -301,7 +301,7 @@ texinfo_documents = [
 epub_title = 'dyconnmap'
 epub_author = 'Marimpis Avraam & Dimitriadis Stavros'
 epub_publisher = 'Marimpis Avraam & Dimitriadis Stavros'
-epub_copyright = '2018, Marimpis Avraam & Dimitriadis Stavros'
+epub_copyright = '2020, Marimpis Avraam & Dimitriadis Stavros'
 
 # The basename for the epub file. It defaults to the project name.
 #epub_basename = u'dyconnmap'
