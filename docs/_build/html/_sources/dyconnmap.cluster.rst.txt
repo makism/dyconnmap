@@ -4,6 +4,14 @@ dyconnmap.cluster package
 Submodules
 ----------
 
+dyconnmap.cluster.cluster module
+--------------------------------
+
+.. automodule:: dyconnmap.cluster.cluster
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 dyconnmap.cluster.gng module
 ----------------------------
 
