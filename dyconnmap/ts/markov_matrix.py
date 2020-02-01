@@ -8,7 +8,7 @@ Generation of markov matrix and some related state transition features.
 import numpy as np
 
 
-def markov_matrix(symts):
+def markov_matrix(symts, states_from_length=True):
     """ Markov Matrix
 
     Markov matrix (also refered as "transition matrix") is a square matrix that tabulates
@@ -36,7 +36,6 @@ def markov_matrix(symts):
 
     For more properties consult, among other links WolframMathWorld_ and WikipediaMarkovMatrix_.
 
-
     |
 
     -----
@@ -50,23 +49,39 @@ def markov_matrix(symts):
     symts : array-like, shape(N)
         One-dimensional discrete time series.
 
+    states_from_length: bool or int, optional
+        Used to account symbolic time series in which not all the symbols are present.
+        That may happen when for example the symbols are drawn from different distributions.
+        Default `True`, the size of the resulting Markov Matrix is equal to the number
+        of unique symbols present in the time series. If `False`, the size will be the
+        `highest symbolic state + 1`.
+        You may also speficy the highest (inclusive) symbolic state.
+
     Returns
     -------
     mtx : matrix
-        The transition matrix.
+        The transition matrix. The size depends the parameter `states_from_length`.
     """
     symbols = np.unique(symts)
-    l = len(symbols)
+
+    if isinstance(states_from_length, bool):
+        if states_from_length:
+            l = len(symbols)
+        else:
+            l = np.max(symbols) + 1
+    elif isinstance(states_from_length, int):
+        l = states_from_length
+    else:
+        l = len(symbols)
 
     mtx = np.zeros((l, l))
-
     for i in range(len(symts) - 1):
         curr_sym = symts[i]
         next_sym = symts[i + 1]
 
         mtx[curr_sym, next_sym] += 1
 
-    mtx /= float(len(symts))
+    mtx /= np.float32(len(symts))
 
     return mtx
 
