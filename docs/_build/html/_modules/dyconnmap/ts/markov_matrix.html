@@ -154,7 +154,7 @@
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 
-<div class="viewcode-block" id="markov_matrix"><a class="viewcode-back" href="../../../dyconnmap.ts.html#dyconnmap.ts.markov_matrix.markov_matrix">[docs]</a><span class="k">def</span> <span class="nf">markov_matrix</span><span class="p">(</span><span class="n">symts</span><span class="p">):</span>
+<div class="viewcode-block" id="markov_matrix"><a class="viewcode-back" href="../../../dyconnmap.ts.html#dyconnmap.ts.markov_matrix.markov_matrix">[docs]</a><span class="k">def</span> <span class="nf">markov_matrix</span><span class="p">(</span><span class="n">symts</span><span class="p">,</span> <span class="n">states_from_length</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Markov Matrix</span>
 
 <span class="sd">    Markov matrix (also refered as &quot;transition matrix&quot;) is a square matrix that tabulates</span>
@@ -182,7 +182,6 @@
 
 <span class="sd">    For more properties consult, among other links WolframMathWorld_ and WikipediaMarkovMatrix_.</span>
 
-
 <span class="sd">    |</span>
 
 <span class="sd">    -----</span>
@@ -196,23 +195,39 @@
 <span class="sd">    symts : array-like, shape(N)</span>
 <span class="sd">        One-dimensional discrete time series.</span>
 
+<span class="sd">    states_from_length: bool or int, optional</span>
+<span class="sd">        Used to account symbolic time series in which not all the symbols are present.</span>
+<span class="sd">        That may happen when for example the symbols are drawn from different distributions.</span>
+<span class="sd">        Default `True`, the size of the resulting Markov Matrix is equal to the number</span>
+<span class="sd">        of unique symbols present in the time series. If `False`, the size will be the</span>
+<span class="sd">        `highest symbolic state + 1`.</span>
+<span class="sd">        You may also speficy the highest (inclusive) symbolic state.</span>
+
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    mtx : matrix</span>
-<span class="sd">        The transition matrix.</span>
+<span class="sd">        The transition matrix. The size depends the parameter `states_from_length`.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">symbols</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">symts</span><span class="p">)</span>
-    <span class="n">l</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">symbols</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">states_from_length</span><span class="p">,</span> <span class="nb">bool</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">states_from_length</span><span class="p">:</span>
+            <span class="n">l</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">symbols</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">l</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">symbols</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">states_from_length</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="n">l</span> <span class="o">=</span> <span class="n">states_from_length</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">l</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">symbols</span><span class="p">)</span>
 
     <span class="n">mtx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">l</span><span class="p">,</span> <span class="n">l</span><span class="p">))</span>
-
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">symts</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
         <span class="n">curr_sym</span> <span class="o">=</span> <span class="n">symts</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
         <span class="n">next_sym</span> <span class="o">=</span> <span class="n">symts</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
 
         <span class="n">mtx</span><span class="p">[</span><span class="n">curr_sym</span><span class="p">,</span> <span class="n">next_sym</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
 
-    <span class="n">mtx</span> <span class="o">/=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">symts</span><span class="p">))</span>
+    <span class="n">mtx</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">symts</span><span class="p">))</span>
 
     <span class="k">return</span> <span class="n">mtx</span></div>
 

@@ -560,7 +560,7 @@ reached, or the the number of neighbors is reduced to specific percentage.</p>
 <p>Generation of markov matrix and some related state transition features.</p>
 <dl class="function">
 <dt id="dyconnmap.ts.markov_matrix.markov_matrix">
-<code class="sig-prename descclassname">dyconnmap.ts.markov_matrix.</code><code class="sig-name descname">markov_matrix</code><span class="sig-paren">(</span><em class="sig-param">symts</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/ts/markov_matrix.html#markov_matrix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.markov_matrix.markov_matrix" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.ts.markov_matrix.</code><code class="sig-name descname">markov_matrix</code><span class="sig-paren">(</span><em class="sig-param">symts</em>, <em class="sig-param">states_from_length=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/ts/markov_matrix.html#markov_matrix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.markov_matrix.markov_matrix" title="Permalink to this definition">¶</a></dt>
 <dd><p>Markov Matrix</p>
 <p>Markov matrix (also refered as “transition matrix”) is a square matrix that tabulates
 the observed transition probabilities between symbols for a finite Markov Chain. It is a first-order descriptor
@@ -598,11 +598,20 @@ from state <span class="math notranslate nohighlight">\(i\)</span> to all the ot
 <blockquote>
 <div><p>One-dimensional discrete time series.</p>
 </div></blockquote>
+<p><strong>states_from_length: bool or int, optional</strong> :</p>
+<blockquote>
+<div><p>Used to account symbolic time series in which not all the symbols are present.
+That may happen when for example the symbols are drawn from different distributions.
+Default <cite>True</cite>, the size of the resulting Markov Matrix is equal to the number
+of unique symbols present in the time series. If <cite>False</cite>, the size will be the
+<cite>highest symbolic state + 1</cite>.
+You may also speficy the highest (inclusive) symbolic state.</p>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><strong>mtx</strong> : matrix</p>
 <blockquote>
-<div><p>The transition matrix.</p>
+<div><p>The transition matrix. The size depends the parameter <cite>states_from_length</cite>.</p>
 </div></blockquote>
 </dd>
 </dl>
@@ -1504,7 +1513,7 @@ is in order to avoid :math:<a href="#id27"><span class="problematic" id="id28">`
 
 <dl class="function">
 <dt id="dyconnmap.ts.markov_matrix">
-<code class="sig-prename descclassname">dyconnmap.ts.</code><code class="sig-name descname">markov_matrix</code><span class="sig-paren">(</span><em class="sig-param">symts</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/ts/markov_matrix.html#markov_matrix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.markov_matrix" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.ts.</code><code class="sig-name descname">markov_matrix</code><span class="sig-paren">(</span><em class="sig-param">symts</em>, <em class="sig-param">states_from_length=True</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/ts/markov_matrix.html#markov_matrix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.markov_matrix" title="Permalink to this definition">¶</a></dt>
 <dd><p>Markov Matrix</p>
 <p>Markov matrix (also refered as “transition matrix”) is a square matrix that tabulates
 the observed transition probabilities between symbols for a finite Markov Chain. It is a first-order descriptor
@@ -1542,11 +1551,20 @@ from state <span class="math notranslate nohighlight">\(i\)</span> to all the ot
 <blockquote>
 <div><p>One-dimensional discrete time series.</p>
 </div></blockquote>
+<p><strong>states_from_length: bool or int, optional</strong> :</p>
+<blockquote>
+<div><p>Used to account symbolic time series in which not all the symbols are present.
+That may happen when for example the symbols are drawn from different distributions.
+Default <cite>True</cite>, the size of the resulting Markov Matrix is equal to the number
+of unique symbols present in the time series. If <cite>False</cite>, the size will be the
+<cite>highest symbolic state + 1</cite>.
+You may also speficy the highest (inclusive) symbolic state.</p>
+</div></blockquote>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><strong>mtx</strong> : matrix</p>
 <blockquote>
-<div><p>The transition matrix.</p>
+<div><p>The transition matrix. The size depends the parameter <cite>states_from_length</cite>.</p>
 </div></blockquote>
 </dd>
 </dl>
