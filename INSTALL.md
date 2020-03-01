@@ -34,6 +34,13 @@ and to install it:
 You may want to check also the _testing_ repository:
 > $ pip install --index-url https://test.pypi.org/simple dyconnmap
 
+
+##### in an Anaconda distribution
+Activate your installation and give:
+```
+pip install --extra-index-url https://pypi.anaconda.org/makism/simple dyconnmap
+```
+
 ##### From source code
 
 First clone the github repository, navigate into the directory and run:
