@@ -2,7 +2,7 @@
 """ ρ index
 
 .. math::
-    \\r_{p, q}(t) = \\frac{H_{max} - H}{H_{max}}
+    \\rho_{p, q}(t) = \\frac{H_{max} - H}{H_{max}}
 
 Where :math:`H` is the Shannon entropy estimated within :math:`M` number of
 phase bins, and :math:`H_{max} = ln(M)` is the maximal entropy and
