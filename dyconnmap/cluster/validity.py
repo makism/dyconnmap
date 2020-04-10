@@ -8,17 +8,6 @@ import numpy as np
 import sklearn
 from sklearn.metrics.pairwise import pairwise_distances
 from scipy.spatial import distance
-import math
-
-import sys
-
-sys.path.append("/home/makism/Github/dyconnmap-public-master/")
-import dyconnmap
-from dyconnmap.cluster import NeuralGas
-
-import numpy as np
-import sklearn
-from sklearn import datasets
 from collections import defaultdict
 
 
@@ -47,8 +36,6 @@ def ray_turi(data, labels):
 
     .. [RayTuri1999] Ray, S., & Turi, R. H. (1999, December). Determination of number of clusters in k-means clustering and application in colour image segmentation. In Proceedings of the 4th international conference on advances in pattern recognition and digital techniques (pp. 137-143).
     """
-    index = 0.0
-
     num_ts, num_samples = np.shape(data)
     num_clusters = max(labels) + 1
 
@@ -141,27 +128,3 @@ def davies_bouldin(data, labels):
     max_distances = list(map(lambda kv: np.max(kv[1]), results_to_dict.items()))
 
     return np.sum(max_distances) / num_clusters
-
-
-# if __name__ == "__main__":
-#     rng = np.random.RandomState(seed=0)
-#     data, _ = sklearn.datasets.make_moons(n_samples=1024, noise=0.125, random_state=rng)
-#
-#     ng = NeuralGas(n_protos=10, rng=rng).fit(data)
-#     encoding, symbols = ng.encode(data)
-#
-#     symbols = np.squeeze(symbols)
-#     encoding = np.squeeze(encoding)
-#
-#     np.save("test_cluster_validity_data.npy", data)
-#     np.save("test_cluster_validity_symbols.npy", symbols)
-#
-#     r = ray_turi(data, symbols)
-#     print(r)
-#
-#     np.save("test_cluster_validity_ray_turi.npy", r)
-#
-#     r = davies_bouldin(data, symbols)
-#     print(r)
-#
-#     np.save("test_cluster_validity_dafies_bouldin.npy", r)
