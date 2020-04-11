@@ -11,6 +11,7 @@ from .rng import RelationalNeuralGas
 from .gng import GrowingNeuralGas
 from .som import SOM
 from .umatrix import umatrix
+from .validity import ray_turi, davies_bouldin
 
 
 __all__ = [
@@ -20,4 +21,6 @@ __all__ = [
     "GrowingNeuralGas",
     "SOM",
     "umatrix",
+    "ray_turi",
+    "davies_bouldin",
 ]
