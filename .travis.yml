@@ -15,7 +15,5 @@ script:
 after_success:
   - coveralls
   - coverage xml
-  - bash <(wget -q -O - https://coverage.codacy.com/get.sh)
-  - cp -v .codacy-coverage/codacy-coverage-reporter .
-  - codacy-coverage-reporter report -l Python -r coverage.xml  final
+  - bash <(curl -Ls https://coverage.codacy.com/get.sh) report -l Python -r coverage.xml  final
   - codecov
