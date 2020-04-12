@@ -1,6 +1,5 @@
 <img src="logo/logo_640.png" width="240" height="240">
 
-
 ### dyconnmap
 A neuroimaging module for dynamic connectome mapping.
 
