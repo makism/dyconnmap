@@ -37,7 +37,8 @@ def ray_turi(data, labels):
     .. [RayTuri1999] Ray, S., & Turi, R. H. (1999, December). Determination of number of clusters in k-means clustering and application in colour image segmentation. In Proceedings of the 4th international conference on advances in pattern recognition and digital techniques (pp. 137-143).
     """
     num_ts, num_samples = np.shape(data)
-    num_clusters = max(labels) + 1
+    clusters = np.unique(labels)
+    num_clusters = len(clusters)
 
     all_barycenters = []
 
@@ -52,7 +53,7 @@ def ray_turi(data, labels):
 
         return np.sum(D)
 
-    results = list(map(lambda label: __within_distances(label), np.unique(labels)))
+    results = list(map(lambda label: __within_distances(label), clusters))
 
     all_barycenters = np.array(all_barycenters)
     all_barycenters = np.squeeze(all_barycenters)
@@ -87,12 +88,14 @@ def davies_bouldin(data, labels):
     .. [Davies1979] Davies, D. L., & Bouldin, D. W. (1979). A cluster separation measure. IEEE transactions on pattern analysis and machine intelligence, (2), 224-227.
     """
     num_ts, num_samples = np.shape(data)
-    num_clusters = np.max(labels) + 1
+
+    clusters = np.unique(labels)
+    num_clusters = len(clusters)
 
     within_distances = np.zeros((num_clusters, 1))
     cluster_sizes = np.zeros((num_clusters, 1))
     barycenters = np.zeros((num_clusters, num_samples))
-    for i in range(num_clusters):
+    for i in clusters:
         vects = data[np.where(labels == i)]
         barycenter = np.mean(vects, axis=0)
         barycenter = np.reshape(barycenter, [1, -1])

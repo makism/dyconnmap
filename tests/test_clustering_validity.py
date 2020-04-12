@@ -25,6 +25,19 @@ def test_clustering_validity_ray_turi():
     np.testing.assert_equal(r, expected)
 
 
+def test_clustering_validity_ray_turi_with_missing_labels():
+    data = np.load("data/test_cluster_validity_data.npy")
+    labels = np.load("data/test_cluster_validity_symbols.npy")
+
+    # remove label "2"
+    labels = labels[np.where(labels != 2)]
+
+    r = dyconnmap.cluster.ray_turi(data, labels)
+
+    expected = np.load("data/test_cluster_validity_ray_turi_with_missing_labels.npy")
+    np.testing.assert_equal(r, expected)
+
+
 def test_clustering_validity_davies_bouldin():
     data = np.load("data/test_cluster_validity_data.npy")
     labels = np.load("data/test_cluster_validity_symbols.npy")
