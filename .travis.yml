@@ -4,10 +4,6 @@ cache: pip
 
 python:
   - 3.7
-  
-before_install:
-  - bash <(wget -q -O - https://coverage.codacy.com/get.sh)
-  - cp -v .codacy-coverage/codacy-coverage-reporter /tests/
 
 install:
   - pip install -r requirements.txt
@@ -19,5 +15,7 @@ script:
 after_success:
   - coveralls
   - coverage xml
+  - bash <(wget -q -O - https://coverage.codacy.com/get.sh)
+  - cp -v .codacy-coverage/codacy-coverage-reporter .
   - codacy-coverage-reporter report -l Python -r coverage.xml  final
   - codecov
