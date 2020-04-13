@@ -1,6 +1,9 @@
 .idea/*
 snippets/.ipynb_checkpoints/*
 
+tests/.codacy-coverage/
+tests/codacy-coverage.json
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
