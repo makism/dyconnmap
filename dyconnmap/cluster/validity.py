@@ -95,8 +95,8 @@ def davies_bouldin(data, labels):
     within_distances = np.zeros((num_clusters, 1))
     cluster_sizes = np.zeros((num_clusters, 1))
     barycenters = np.zeros((num_clusters, num_samples))
-    for i in clusters:
-        vects = data[np.where(labels == i)]
+    for i, cluster_id in enumerate(clusters):
+        vects = data[np.where(labels == cluster_id)]
         barycenter = np.mean(vects, axis=0)
         barycenter = np.reshape(barycenter, [1, -1])
         D = pairwise_distances(vects, barycenter)
