@@ -15,5 +15,5 @@ script:
 after_success:
   - coveralls
   - coverage xml
-  - python-codacy-coverage -r coverage.xml
+  - bash <(curl -Ls https://coverage.codacy.com/get.sh) report -l Python -r coverage.xml  final
   - codecov
