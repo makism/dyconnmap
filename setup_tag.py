@@ -12,11 +12,11 @@ from setuptools import setup
 def git_describe():
     from subprocess import Popen, PIPE
     try:
-        p = Popen(['git', 'describe', '--tags'], stdout=PIPE, stderr=PIPE)
+        p = Popen(['git', 'describe'], stdout=PIPE, stderr=PIPE)
         p.stderr.close()
         line = p.stdout.readlines()[0]
 
-        return line.strip()
+        return line.decode().strip()
 
     except:
         return None
