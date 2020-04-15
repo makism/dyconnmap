@@ -9,6 +9,12 @@ jobs:
     
     steps:
       - uses: actions/checkout@master
+      - name: Set env
+        run: echo ::set-env name=RELEASE_VERSION::${GITHUB_REF:10}
+      - name: Print tag
+        run: |
+          echo $RELEASE_VERSION
+          echo ${{ env.RELEASE_VERSION }}
       - name: Set up Python 3.6
         uses: actions/setup-python@v1
         with:
