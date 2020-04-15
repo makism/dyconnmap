@@ -1,8 +1,7 @@
 #!/usr/bin/env python
 
 # based on:
-# * https://github.com/marcindulak/python-mycli/blob/master/setup.py#L34
-# * https://gist.github.com/jpmens/6248478
+# https://github.com/marcindulak/python-mycli/blob/master/setup.py#L34
 
 
 import os
@@ -10,6 +9,7 @@ from setuptools import setup
 
 
 def fetch_version_from_file():
+    """ Fetch the version string from a file. If the file doesn't exist the setup will exit. """
     with open("TAG_VERSION", "r") as fp:
         version = fp.read()
         return version
