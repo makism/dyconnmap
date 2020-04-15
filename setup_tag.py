@@ -13,9 +13,8 @@ def git_describe():
     from subprocess import Popen, PIPE
     try:
         p = Popen(['git', 'describe'], stdout=PIPE, stderr=PIPE)
-        p.stderr.close()
-        line = p.stdout.readlines()[0]
-        version = line.decode().strip()
+        line, error = p.communicate()
+        version = line.decode().split()[0]
         print(f"Found version {version}")
 
         return version
