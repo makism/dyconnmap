@@ -15,8 +15,8 @@ def git_describe():
         p = Popen(['git', 'describe'], stdout=PIPE, stderr=PIPE)
         p.stderr.close()
         line = p.stdout.readlines()[0]
-	version = line.decode().strip()
-	print(f"Found version {version}")
+        version = line.decode().strip()
+        print(f"Found version {version}")
 
         return version
 
