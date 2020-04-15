@@ -1,12 +1,10 @@
 name: publish-pypi
 
-on:
-  push:
-    branches:
-      - master
+on: push
 
 jobs:
   build:
+    name: Build and publish on TestPyPI
     runs-on: ubuntu-18.04
     
     steps:
