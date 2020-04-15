@@ -1,3 +1,7 @@
+# 1. For the action to properly work, the tag shoud likey be in numeric, i.e.: 999.1.
+# 2. The tag is fetched from the Action and is dumped in the file TAG_VERSION.
+# 3. setup_tag.py sources the version variable from the TAG_VERSION.
+
 name: publish-test-pypi
 
 on: push
