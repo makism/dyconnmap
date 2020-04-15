@@ -23,7 +23,7 @@ jobs:
         run: >-
           python -m
           pep517.build
-          --source
+          --source .
           --binary
           --out-dir dist/
       - name: Publish distribution to PyPI
