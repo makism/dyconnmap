@@ -9,18 +9,12 @@ import os
 from setuptools import setup
 
 
-def git_describe():
-    from subprocess import Popen, PIPE
-    try:
-        p = Popen(['git', 'describe'], stdout=PIPE, stderr=PIPE)
-        line, error = p.communicate()
-        version = line.decode().split()[0]
-        print(f"Found version {version}")
-
+def fetch_version_from_file():
+    with open("TAG_VERSION", "r") as fp:
+        version = fp.read()
         return version
 
-    except:
-        return None
+    return None
 
 
 name = "dyconnmap"
@@ -42,7 +36,7 @@ for extra_dirs in ("docs", "examples", "tests"):
 
 setup(
     name="dyconnmap",
-    version=git_describe(),
+    version=fetch_version_from_file(),
     description="A dynamic connectome mapping module in Python",
     author="Avraam Marimpis, Stavros Dimitriadis",
     author_email="Avraam.Marimpis@gmail.com, STIDimitriadis@gmail.com",
