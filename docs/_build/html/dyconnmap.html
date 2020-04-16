@@ -21,11 +21,11 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -340,9 +340,9 @@ algorithm) in order to eliminate the discontinuities (<a href="#id2"><span class
 <dd><p>Butterworth, S. (1930). On the theory of filter amplifiers. Wireless Engineer, 7(6), 536-541.</p>
 </dd>
 </dl>
-<dl class="function">
+<dl class="py function">
 <dt id="dyconnmap.analytic_signal.analytic_signal">
-<code class="sig-prename descclassname">dyconnmap.analytic_signal.</code><code class="sig-name descname">analytic_signal</code><span class="sig-paren">(</span><em class="sig-param">signal</em>, <em class="sig-param">fb=None</em>, <em class="sig-param">fs=None</em>, <em class="sig-param">order=3</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/analytic_signal.html#analytic_signal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.analytic_signal.analytic_signal" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.analytic_signal.</code><code class="sig-name descname">analytic_signal</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">signal</span></em>, <em class="sig-param"><span class="n">fb</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">fs</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">order</span><span class="o">=</span><span class="default_value">3</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/analytic_signal.html#analytic_signal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.analytic_signal.analytic_signal" title="Permalink to this definition">¶</a></dt>
 <dd><p>Passband filtering and Hilbert transformation</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -447,14 +447,14 @@ You can access them with</p>
 <div class="section" id="module-dyconnmap.sliding_window">
 <span id="dyconnmap-sliding-window-module"></span><h2>dyconnmap.sliding_window module<a class="headerlink" href="#module-dyconnmap.sliding_window" title="Permalink to this headline">¶</a></h2>
 <p>Sliding Window</p>
-<dl class="function">
+<dl class="py function">
 <dt id="dyconnmap.sliding_window.sliding_window">
-<code class="sig-prename descclassname">dyconnmap.sliding_window.</code><code class="sig-name descname">sliding_window</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">estimator_instance</em>, <em class="sig-param">window_length=25</em>, <em class="sig-param">step=1</em>, <em class="sig-param">pairs=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/sliding_window.html#sliding_window"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.sliding_window.sliding_window" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.sliding_window.</code><code class="sig-name descname">sliding_window</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">estimator_instance</span></em>, <em class="sig-param"><span class="n">window_length</span><span class="o">=</span><span class="default_value">25</span></em>, <em class="sig-param"><span class="n">step</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">pairs</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/sliding_window.html#sliding_window"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.sliding_window.sliding_window" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="dyconnmap.sliding_window.sliding_window_indx">
-<code class="sig-prename descclassname">dyconnmap.sliding_window.</code><code class="sig-name descname">sliding_window_indx</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">window_length</em>, <em class="sig-param">overlap=0.75</em>, <em class="sig-param">pairs=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/sliding_window.html#sliding_window_indx"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.sliding_window.sliding_window_indx" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.sliding_window.</code><code class="sig-name descname">sliding_window_indx</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">window_length</span></em>, <em class="sig-param"><span class="n">overlap</span><span class="o">=</span><span class="default_value">0.75</span></em>, <em class="sig-param"><span class="n">pairs</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/sliding_window.html#sliding_window_indx"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.sliding_window.sliding_window_indx" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the indices and pairs using a sliding window.</p>
 <p>Slide a window over <code class="docutils literal notranslate"><span class="pre">data</span></code>, and return the indices and offsets.</p>
 <dl class="field-list">
@@ -536,9 +536,9 @@ resulting into <span class="math notranslate nohighlight">\(\frac{n}{step}\)</sp
 <dd><p>Fallani, F. D. V., Latora, V., Astolfi, L., Cincotti, F., Mattia, D., Marciani, M. G., … &amp; Babiloni, F. (2008). Persistent patterns of interconnection in time-varying cortical networks estimated from high-resolution EEG recordings in humans during a simple motor act. Journal of Physics A: Mathematical and Theoretical, 41(22), 224014.</p>
 </dd>
 </dl>
-<dl class="function">
+<dl class="py function">
 <dt id="dyconnmap.tvfcgs.tvfcg">
-<code class="sig-prename descclassname">dyconnmap.tvfcgs.</code><code class="sig-name descname">tvfcg</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">estimator_instance</em>, <em class="sig-param">fb</em>, <em class="sig-param">fs</em>, <em class="sig-param">cc=2.0</em>, <em class="sig-param">step=5.0</em>, <em class="sig-param">pairs=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/tvfcgs.html#tvfcg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.tvfcgs.tvfcg" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.tvfcgs.</code><code class="sig-name descname">tvfcg</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">estimator_instance</span></em>, <em class="sig-param"><span class="n">fb</span></em>, <em class="sig-param"><span class="n">fs</span></em>, <em class="sig-param"><span class="n">cc</span><span class="o">=</span><span class="default_value">2.0</span></em>, <em class="sig-param"><span class="n">step</span><span class="o">=</span><span class="default_value">5.0</span></em>, <em class="sig-param"><span class="n">pairs</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/tvfcgs.html#tvfcg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.tvfcgs.tvfcg" title="Permalink to this definition">¶</a></dt>
 <dd><p>Time-Varying Functional Connectivity Graphs</p>
 <p>The TVFCGs are computed from the input <code class="docutils literal notranslate"><span class="pre">data</span></code> by employing the given
 synchronization estimator (<code class="docutils literal notranslate"><span class="pre">estimator_instance</span></code>).</p>
@@ -585,9 +585,9 @@ synchronization estimator (<code class="docutils literal notranslate"><span clas
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="dyconnmap.tvfcgs.tvfcg_cfc">
-<code class="sig-prename descclassname">dyconnmap.tvfcgs.</code><code class="sig-name descname">tvfcg_cfc</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">estimator_instance</em>, <em class="sig-param">fb_lo</em>, <em class="sig-param">fb_hi</em>, <em class="sig-param">fs=128</em>, <em class="sig-param">cc=2.0</em>, <em class="sig-param">step=5</em>, <em class="sig-param">pairs=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/tvfcgs.html#tvfcg_cfc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.tvfcgs.tvfcg_cfc" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.tvfcgs.</code><code class="sig-name descname">tvfcg_cfc</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">estimator_instance</span></em>, <em class="sig-param"><span class="n">fb_lo</span></em>, <em class="sig-param"><span class="n">fb_hi</span></em>, <em class="sig-param"><span class="n">fs</span><span class="o">=</span><span class="default_value">128</span></em>, <em class="sig-param"><span class="n">cc</span><span class="o">=</span><span class="default_value">2.0</span></em>, <em class="sig-param"><span class="n">step</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">pairs</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/tvfcgs.html#tvfcg_cfc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.tvfcgs.tvfcg_cfc" title="Permalink to this definition">¶</a></dt>
 <dd><p>Time-Varying Functional Connectivity Graphs (for Cross frequency Coupling)</p>
 <p>The TVFCGs are computed from the input <code class="docutils literal notranslate"><span class="pre">data</span></code> by employing the given
 cross frequency coupling synchronization estimator (<code class="docutils literal notranslate"><span class="pre">estimator_instance</span></code>).</p>
@@ -641,9 +641,9 @@ cross frequency coupling synchronization estimator (<code class="docutils litera
 cross frequency coupling.</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="dyconnmap.tvfcgs.tvfcg_compute_windows">
-<code class="sig-prename descclassname">dyconnmap.tvfcgs.</code><code class="sig-name descname">tvfcg_compute_windows</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">fb_lo</em>, <em class="sig-param">fs</em>, <em class="sig-param">cc</em>, <em class="sig-param">step</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/tvfcgs.html#tvfcg_compute_windows"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.tvfcgs.tvfcg_compute_windows" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.tvfcgs.</code><code class="sig-name descname">tvfcg_compute_windows</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">fb_lo</span></em>, <em class="sig-param"><span class="n">fs</span></em>, <em class="sig-param"><span class="n">cc</span></em>, <em class="sig-param"><span class="n">step</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/tvfcgs.html#tvfcg_compute_windows"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.tvfcgs.tvfcg_compute_windows" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute TVFCGs Sliding Windows</p>
 <p>A helper function that computes the size and number of sliding windows
 given the parameters.</p>
@@ -684,7 +684,7 @@ given the parameters.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="dyconnmap.tvfcgs.tvfcg_ts">
 <code class="sig-prename descclassname">dyconnmap.tvfcgs.</code><code class="sig-name descname">tvfcg_ts</code><span class="sig-paren">(</span><em class="sig-param">ts</em>, <em class="sig-param">fb</em>, <em class="sig-param">fs=128</em>, <em class="sig-param">cc=2.0</em>, <em class="sig-param">step=5</em>, <em class="sig-param">pairs=None</em>, <em class="sig-param">avg_func=&lt;function mean&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/tvfcgs.html#tvfcg_ts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.tvfcgs.tvfcg_ts" title="Permalink to this definition">¶</a></dt>
 <dd><p>Time-Varying Function Connectivity Graphs (from time series)</p>
@@ -732,9 +732,9 @@ time series (<code class="docutils literal notranslate"><span class="pre">ts</sp
 </div>
 <div class="section" id="module-dyconnmap">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-dyconnmap" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="dyconnmap.analytic_signal">
-<code class="sig-prename descclassname">dyconnmap.</code><code class="sig-name descname">analytic_signal</code><span class="sig-paren">(</span><em class="sig-param">signal</em>, <em class="sig-param">fb=None</em>, <em class="sig-param">fs=None</em>, <em class="sig-param">order=3</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/analytic_signal.html#analytic_signal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.analytic_signal" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.</code><code class="sig-name descname">analytic_signal</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">signal</span></em>, <em class="sig-param"><span class="n">fb</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">fs</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">order</span><span class="o">=</span><span class="default_value">3</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/analytic_signal.html#analytic_signal"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.analytic_signal" title="Permalink to this definition">¶</a></dt>
 <dd><p>Passband filtering and Hilbert transformation</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -777,9 +777,9 @@ and the two-pass filter <cite>scipy.signal.filtfilt</cite> to achieve results id
 to MATLAB.</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="dyconnmap.tvfcg">
-<code class="sig-prename descclassname">dyconnmap.</code><code class="sig-name descname">tvfcg</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">estimator_instance</em>, <em class="sig-param">fb</em>, <em class="sig-param">fs</em>, <em class="sig-param">cc=2.0</em>, <em class="sig-param">step=5.0</em>, <em class="sig-param">pairs=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/tvfcgs.html#tvfcg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.tvfcg" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.</code><code class="sig-name descname">tvfcg</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">estimator_instance</span></em>, <em class="sig-param"><span class="n">fb</span></em>, <em class="sig-param"><span class="n">fs</span></em>, <em class="sig-param"><span class="n">cc</span><span class="o">=</span><span class="default_value">2.0</span></em>, <em class="sig-param"><span class="n">step</span><span class="o">=</span><span class="default_value">5.0</span></em>, <em class="sig-param"><span class="n">pairs</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/tvfcgs.html#tvfcg"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.tvfcg" title="Permalink to this definition">¶</a></dt>
 <dd><p>Time-Varying Functional Connectivity Graphs</p>
 <p>The TVFCGs are computed from the input <code class="docutils literal notranslate"><span class="pre">data</span></code> by employing the given
 synchronization estimator (<code class="docutils literal notranslate"><span class="pre">estimator_instance</span></code>).</p>
@@ -826,9 +826,9 @@ synchronization estimator (<code class="docutils literal notranslate"><span clas
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="dyconnmap.tvfcg_cfc">
-<code class="sig-prename descclassname">dyconnmap.</code><code class="sig-name descname">tvfcg_cfc</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">estimator_instance</em>, <em class="sig-param">fb_lo</em>, <em class="sig-param">fb_hi</em>, <em class="sig-param">fs=128</em>, <em class="sig-param">cc=2.0</em>, <em class="sig-param">step=5</em>, <em class="sig-param">pairs=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/tvfcgs.html#tvfcg_cfc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.tvfcg_cfc" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.</code><code class="sig-name descname">tvfcg_cfc</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">estimator_instance</span></em>, <em class="sig-param"><span class="n">fb_lo</span></em>, <em class="sig-param"><span class="n">fb_hi</span></em>, <em class="sig-param"><span class="n">fs</span><span class="o">=</span><span class="default_value">128</span></em>, <em class="sig-param"><span class="n">cc</span><span class="o">=</span><span class="default_value">2.0</span></em>, <em class="sig-param"><span class="n">step</span><span class="o">=</span><span class="default_value">5</span></em>, <em class="sig-param"><span class="n">pairs</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/tvfcgs.html#tvfcg_cfc"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.tvfcg_cfc" title="Permalink to this definition">¶</a></dt>
 <dd><p>Time-Varying Functional Connectivity Graphs (for Cross frequency Coupling)</p>
 <p>The TVFCGs are computed from the input <code class="docutils literal notranslate"><span class="pre">data</span></code> by employing the given
 cross frequency coupling synchronization estimator (<code class="docutils literal notranslate"><span class="pre">estimator_instance</span></code>).</p>
@@ -882,7 +882,7 @@ cross frequency coupling synchronization estimator (<code class="docutils litera
 cross frequency coupling.</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="dyconnmap.tvfcg_ts">
 <code class="sig-prename descclassname">dyconnmap.</code><code class="sig-name descname">tvfcg_ts</code><span class="sig-paren">(</span><em class="sig-param">ts</em>, <em class="sig-param">fb</em>, <em class="sig-param">fs=128</em>, <em class="sig-param">cc=2.0</em>, <em class="sig-param">step=5</em>, <em class="sig-param">pairs=None</em>, <em class="sig-param">avg_func=&lt;function mean&gt;</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/tvfcgs.html#tvfcg_ts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.tvfcg_ts" title="Permalink to this definition">¶</a></dt>
 <dd><p>Time-Varying Function Connectivity Graphs (from time series)</p>
@@ -927,9 +927,9 @@ time series (<code class="docutils literal notranslate"><span class="pre">ts</sp
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="dyconnmap.tvfcg_compute_windows">
-<code class="sig-prename descclassname">dyconnmap.</code><code class="sig-name descname">tvfcg_compute_windows</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">fb_lo</em>, <em class="sig-param">fs</em>, <em class="sig-param">cc</em>, <em class="sig-param">step</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/tvfcgs.html#tvfcg_compute_windows"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.tvfcg_compute_windows" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.</code><code class="sig-name descname">tvfcg_compute_windows</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">fb_lo</span></em>, <em class="sig-param"><span class="n">fs</span></em>, <em class="sig-param"><span class="n">cc</span></em>, <em class="sig-param"><span class="n">step</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/tvfcgs.html#tvfcg_compute_windows"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.tvfcg_compute_windows" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute TVFCGs Sliding Windows</p>
 <p>A helper function that computes the size and number of sliding windows
 given the parameters.</p>
@@ -970,14 +970,14 @@ given the parameters.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="dyconnmap.sliding_window">
-<code class="sig-prename descclassname">dyconnmap.</code><code class="sig-name descname">sliding_window</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">estimator_instance</em>, <em class="sig-param">window_length=25</em>, <em class="sig-param">step=1</em>, <em class="sig-param">pairs=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/sliding_window.html#sliding_window"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.sliding_window" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.</code><code class="sig-name descname">sliding_window</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">estimator_instance</span></em>, <em class="sig-param"><span class="n">window_length</span><span class="o">=</span><span class="default_value">25</span></em>, <em class="sig-param"><span class="n">step</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">pairs</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/sliding_window.html#sliding_window"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.sliding_window" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="dyconnmap.sliding_window_indx">
-<code class="sig-prename descclassname">dyconnmap.</code><code class="sig-name descname">sliding_window_indx</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">window_length</em>, <em class="sig-param">overlap=0.75</em>, <em class="sig-param">pairs=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/sliding_window.html#sliding_window_indx"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.sliding_window_indx" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.</code><code class="sig-name descname">sliding_window_indx</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">window_length</span></em>, <em class="sig-param"><span class="n">overlap</span><span class="o">=</span><span class="default_value">0.75</span></em>, <em class="sig-param"><span class="n">pairs</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/sliding_window.html#sliding_window_indx"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.sliding_window_indx" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the indices and pairs using a sliding window.</p>
 <p>Slide a window over <code class="docutils literal notranslate"><span class="pre">data</span></code>, and return the indices and offsets.</p>
 <dl class="field-list">
@@ -1035,7 +1035,7 @@ sliding forward.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Avraam Marimpis &amp; Stavros Dimitriadis
+        &copy; Copyright 2020, Avraam Marimpis &amp; Stavros Dimitriadis
 
     </p>
   </div>

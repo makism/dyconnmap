@@ -21,11 +21,11 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../../../_static/jquery.js"></script>
-        <script type="text/javascript" src="../../../_static/underscore.js"></script>
-        <script type="text/javascript" src="../../../_static/doctools.js"></script>
-        <script type="text/javascript" src="../../../_static/language_data.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
@@ -148,6 +148,12 @@
 <span class="sd">&quot;&quot;&quot;</span>
 
 
+
+<span class="sd">-----</span>
+
+<span class="sd">.. [RayTuri1999] Ray, S., &amp; Turi, R. H. (1999, December). Determination of number of clusters in k-means clustering and application in colour image segmentation. In Proceedings of the 4th international conference on advances in pattern recognition and digital techniques (pp. 137-143).</span>
+<span class="sd">.. [Davies1979] Davies, D. L., &amp; Bouldin, D. W. (1979). A cluster separation measure. IEEE transactions on pattern analysis and machine intelligence, (2), 224-227.</span>
+
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="c1"># Author: Avraam Marimpis &lt;avraam.marimpis@gmail.com&gt;</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -176,11 +182,6 @@
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    index : float</span>
-
-
-<span class="sd">    -----</span>
-
-<span class="sd">    .. [RayTuri1999] Ray, S., &amp; Turi, R. H. (1999, December). Determination of number of clusters in k-means clustering and application in colour image segmentation. In Proceedings of the 4th international conference on advances in pattern recognition and digital techniques (pp. 137-143).</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">num_ts</span><span class="p">,</span> <span class="n">num_samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
     <span class="n">clusters</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span>
@@ -227,11 +228,6 @@
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    index : float</span>
-
-
-<span class="sd">    -----</span>
-
-<span class="sd">    .. [Davies1979] Davies, D. L., &amp; Bouldin, D. W. (1979). A cluster separation measure. IEEE transactions on pattern analysis and machine intelligence, (2), 224-227.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">num_ts</span><span class="p">,</span> <span class="n">num_samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
@@ -289,7 +285,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Avraam Marimpis &amp; Stavros Dimitriadis
+        &copy; Copyright 2020, Avraam Marimpis &amp; Stavros Dimitriadis
 
     </p>
   </div>

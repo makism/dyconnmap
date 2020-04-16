@@ -21,11 +21,11 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -218,9 +218,9 @@ measure between two adjacency matrices <span class="math notranslate nohighlight
 <dd><p>Hammond, D. K., Gur, Y., &amp; Johnson, C. R. (2013, December). Graph diffusion distance: A difference measure for weighted graphs based on the graph Laplacian exponential kernel. In Global Conference on Signal and Information Processing (GlobalSIP), 2013 IEEE (pp. 419-422). IEEE.</p>
 </dd>
 </dl>
-<dl class="function">
+<dl class="py function">
 <dt id="dyconnmap.graphs.gdd.graph_diffusion_distance">
-<code class="sig-prename descclassname">dyconnmap.graphs.gdd.</code><code class="sig-name descname">graph_diffusion_distance</code><span class="sig-paren">(</span><em class="sig-param">a</em>, <em class="sig-param">b</em>, <em class="sig-param">threshold=1e-14</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/gdd.html#graph_diffusion_distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.gdd.graph_diffusion_distance" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.graphs.gdd.</code><code class="sig-name descname">graph_diffusion_distance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">b</span></em>, <em class="sig-param"><span class="n">threshold</span><span class="o">=</span><span class="default_value">1e-14</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/gdd.html#graph_diffusion_distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.gdd.graph_diffusion_distance" title="Permalink to this definition">¶</a></dt>
 <dd><p>Graph Diffusion Distance</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -275,9 +275,9 @@ The spectral distance between two graphs <span class="math notranslate nohighlig
 <dd><p>Donnat, C., &amp; Holmes, S. (2018). Tracking Network Dynamics: a review of distances and similarity metrics. arXiv preprint arXiv:1801.07351.</p>
 </dd>
 </dl>
-<dl class="function">
+<dl class="py function">
 <dt id="dyconnmap.graphs.imd.im_distance">
-<code class="sig-prename descclassname">dyconnmap.graphs.imd.</code><code class="sig-name descname">im_distance</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">Y</em>, <em class="sig-param">bandwidth=1.0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/imd.html#im_distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.imd.im_distance" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.graphs.imd.</code><code class="sig-name descname">im_distance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em>, <em class="sig-param"><span class="n">Y</span></em>, <em class="sig-param"><span class="n">bandwidth</span><span class="o">=</span><span class="default_value">1.0</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/imd.html#im_distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.imd.im_distance" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>X</strong> : array-like, shape(N, N)</p>
@@ -316,9 +316,9 @@ matrix of <span class="math notranslate nohighlight">\(G\)</span> (Laplcian spec
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
-<dl class="function">
+<dl class="py function">
 <dt id="dyconnmap.graphs.laplacian_energy.laplacian_energy">
-<code class="sig-prename descclassname">dyconnmap.graphs.laplacian_energy.</code><code class="sig-name descname">laplacian_energy</code><span class="sig-paren">(</span><em class="sig-param">mtx</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/laplacian_energy.html#laplacian_energy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.laplacian_energy.laplacian_energy" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.graphs.laplacian_energy.</code><code class="sig-name descname">laplacian_energy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mtx</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/laplacian_energy.html#laplacian_energy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.laplacian_energy.laplacian_energy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Laplacian Energy</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -365,9 +365,9 @@ By exploiting the definition of mutual information, the following property holds
 <dd><p>Strehl, A., &amp; Ghosh, J. (2002). Cluster ensembles—a knowledge reuse framework for combining multiple partitions. Journal of machine learning research, 3(Dec), 583-617.</p>
 </dd>
 </dl>
-<dl class="function">
+<dl class="py function">
 <dt id="dyconnmap.graphs.mi.mutual_information">
-<code class="sig-prename descclassname">dyconnmap.graphs.mi.</code><code class="sig-name descname">mutual_information</code><span class="sig-paren">(</span><em class="sig-param">indices_a</em>, <em class="sig-param">indices_b</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/mi.html#mutual_information"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.mi.mutual_information" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.graphs.mi.</code><code class="sig-name descname">mutual_information</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">indices_a</span></em>, <em class="sig-param"><span class="n">indices_b</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/mi.html#mutual_information"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.mi.mutual_information" title="Permalink to this definition">¶</a></dt>
 <dd><p>Mutual Information</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -406,9 +406,9 @@ By exploiting the definition of mutual information, the following property holds
 <dd><p>Guillon, J., Attal, Y., Colliot, O., La Corte, V., Dubois, B., Schwartz, D., … &amp; Fallani, F. D. V. (2017). Loss of brain inter-frequency hubs in Alzheimer’s disease. Scientific reports, 7(1), 10879.</p>
 </dd>
 </dl>
-<dl class="function">
+<dl class="py function">
 <dt id="dyconnmap.graphs.mpc.multilayer_pc_degree">
-<code class="sig-prename descclassname">dyconnmap.graphs.mpc.</code><code class="sig-name descname">multilayer_pc_degree</code><span class="sig-paren">(</span><em class="sig-param">mlgraph</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/mpc.html#multilayer_pc_degree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.mpc.multilayer_pc_degree" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.graphs.mpc.</code><code class="sig-name descname">multilayer_pc_degree</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mlgraph</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/mpc.html#multilayer_pc_degree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.mpc.multilayer_pc_degree" title="Permalink to this definition">¶</a></dt>
 <dd><p>Multilayer Participation Coefficient (Degree)</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -426,9 +426,9 @@ By exploiting the definition of mutual information, the following property holds
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="dyconnmap.graphs.mpc.multilayer_pc_gamma">
-<code class="sig-prename descclassname">dyconnmap.graphs.mpc.</code><code class="sig-name descname">multilayer_pc_gamma</code><span class="sig-paren">(</span><em class="sig-param">mlgraph</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/mpc.html#multilayer_pc_gamma"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.mpc.multilayer_pc_gamma" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.graphs.mpc.</code><code class="sig-name descname">multilayer_pc_gamma</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mlgraph</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/mpc.html#multilayer_pc_gamma"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.mpc.multilayer_pc_gamma" title="Permalink to this definition">¶</a></dt>
 <dd><p>Multilayer Participation Coefficient method from Guillon et al.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -447,9 +447,9 @@ containing the estimated interlayer multilayer participation coefficient.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="dyconnmap.graphs.mpc.multilayer_pc_strength">
-<code class="sig-prename descclassname">dyconnmap.graphs.mpc.</code><code class="sig-name descname">multilayer_pc_strength</code><span class="sig-paren">(</span><em class="sig-param">mlgraph</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/mpc.html#multilayer_pc_strength"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.mpc.multilayer_pc_strength" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.graphs.mpc.</code><code class="sig-name descname">multilayer_pc_strength</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mlgraph</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/mpc.html#multilayer_pc_strength"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.mpc.multilayer_pc_strength" title="Permalink to this definition">¶</a></dt>
 <dd><p>Multilayer Participation Coefficient (Strength)</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -471,9 +471,9 @@ containing the estimated interlayer multilayer participation coefficient.</p>
 <div class="section" id="module-dyconnmap.graphs.nodal">
 <span id="dyconnmap-graphs-nodal-module"></span><h2>dyconnmap.graphs.nodal module<a class="headerlink" href="#module-dyconnmap.graphs.nodal" title="Permalink to this headline">¶</a></h2>
 <p>Nodal network features</p>
-<dl class="function">
+<dl class="py function">
 <dt id="dyconnmap.graphs.nodal.nodal_global_efficiency">
-<code class="sig-prename descclassname">dyconnmap.graphs.nodal.</code><code class="sig-name descname">nodal_global_efficiency</code><span class="sig-paren">(</span><em class="sig-param">mtx</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/nodal.html#nodal_global_efficiency"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.nodal.nodal_global_efficiency" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.graphs.nodal.</code><code class="sig-name descname">nodal_global_efficiency</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mtx</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/nodal.html#nodal_global_efficiency"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.nodal.nodal_global_efficiency" title="Permalink to this definition">¶</a></dt>
 <dd><p>Nodal Global Efficiency</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -512,9 +512,9 @@ containing the estimated interlayer multilayer participation coefficient.</p>
 <dd><p>Wilson, R. C., &amp; Zhu, P. (2008). A study of graph spectra for comparing graphs and trees. Pattern Recognition, 41(9), 2833-2841.</p>
 </dd>
 </dl>
-<dl class="function">
+<dl class="py function">
 <dt id="dyconnmap.graphs.spectral_euclidean_distance.spectral_euclidean_distance">
-<code class="sig-prename descclassname">dyconnmap.graphs.spectral_euclidean_distance.</code><code class="sig-name descname">spectral_euclidean_distance</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">Y</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/spectral_euclidean_distance.html#spectral_euclidean_distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.spectral_euclidean_distance.spectral_euclidean_distance" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.graphs.spectral_euclidean_distance.</code><code class="sig-name descname">spectral_euclidean_distance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em>, <em class="sig-param"><span class="n">Y</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/spectral_euclidean_distance.html#spectral_euclidean_distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.spectral_euclidean_distance.spectral_euclidean_distance" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>X</strong> : array-like, shape(N, N)</p>
@@ -562,9 +562,9 @@ inequality.</p>
 <dd><p>Pincombe, B. (2007). Detecting changes in time series of network graphs using minimum mean squared error and cumulative summation. ANZIAM Journal, 48, 450-473.</p>
 </dd>
 </dl>
-<dl class="function">
+<dl class="py function">
 <dt id="dyconnmap.graphs.spectral_k_distance.spectral_k_distance">
-<code class="sig-prename descclassname">dyconnmap.graphs.spectral_k_distance.</code><code class="sig-name descname">spectral_k_distance</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">Y</em>, <em class="sig-param">k</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/spectral_k_distance.html#spectral_k_distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.spectral_k_distance.spectral_k_distance" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.graphs.spectral_k_distance.</code><code class="sig-name descname">spectral_k_distance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em>, <em class="sig-param"><span class="n">Y</span></em>, <em class="sig-param"><span class="n">k</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/spectral_k_distance.html#spectral_k_distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.spectral_k_distance.spectral_k_distance" title="Permalink to this definition">¶</a></dt>
 <dd><p>Spectral-K Distance</p>
 <p>Use the largest <span class="math notranslate nohighlight">\(k\)</span> eigenvalues of the given graphs to compute the
 distance between them.</p>
@@ -606,9 +606,9 @@ distance between them.</p>
 <div class="line"><br /></div>
 </div>
 <hr class="docutils" />
-<dl class="function">
+<dl class="py function">
 <dt id="dyconnmap.graphs.threshold.k_core_decomposition">
-<code class="sig-prename descclassname">dyconnmap.graphs.threshold.</code><code class="sig-name descname">k_core_decomposition</code><span class="sig-paren">(</span><em class="sig-param">mtx</em>, <em class="sig-param">threshold</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/threshold.html#k_core_decomposition"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.threshold.k_core_decomposition" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.graphs.threshold.</code><code class="sig-name descname">k_core_decomposition</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mtx</span></em>, <em class="sig-param"><span class="n">threshold</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/threshold.html#k_core_decomposition"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.threshold.k_core_decomposition" title="Permalink to this definition">¶</a></dt>
 <dd><p>Threshold a binary graph based on the detected k-cores.</p>
 <dl class="citation">
 <dt class="label" id="alvarez2006"><span class="brackets">Alvarez2006</span></dt>
@@ -638,9 +638,9 @@ distance between them.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="dyconnmap.graphs.threshold.threshold_eco">
-<code class="sig-prename descclassname">dyconnmap.graphs.threshold.</code><code class="sig-name descname">threshold_eco</code><span class="sig-paren">(</span><em class="sig-param">mtx</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/threshold.html#threshold_eco"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.threshold.threshold_eco" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.graphs.threshold.</code><code class="sig-name descname">threshold_eco</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mtx</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/threshold.html#threshold_eco"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.threshold.threshold_eco" title="Permalink to this definition">¶</a></dt>
 <dd><p>Ecological Filtering</p>
 <dl class="citation">
 <dt class="label" id="fallani2017"><span class="brackets">Fallani2017</span></dt>
@@ -649,9 +649,9 @@ distance between them.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="dyconnmap.graphs.threshold.threshold_global_cost_efficiency">
-<code class="sig-prename descclassname">dyconnmap.graphs.threshold.</code><code class="sig-name descname">threshold_global_cost_efficiency</code><span class="sig-paren">(</span><em class="sig-param">mtx</em>, <em class="sig-param">iterations</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/threshold.html#threshold_global_cost_efficiency"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.threshold.threshold_global_cost_efficiency" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.graphs.threshold.</code><code class="sig-name descname">threshold_global_cost_efficiency</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mtx</span></em>, <em class="sig-param"><span class="n">iterations</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/threshold.html#threshold_global_cost_efficiency"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.threshold.threshold_global_cost_efficiency" title="Permalink to this definition">¶</a></dt>
 <dd><p>Threshold a graph based on the Global Efficiency - Cost formula.</p>
 <dl class="citation">
 <dt class="label" id="basset2009"><span class="brackets">Basset2009</span></dt>
@@ -694,9 +694,9 @@ distance between them.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="dyconnmap.graphs.threshold.threshold_mean_degree">
-<code class="sig-prename descclassname">dyconnmap.graphs.threshold.</code><code class="sig-name descname">threshold_mean_degree</code><span class="sig-paren">(</span><em class="sig-param">mtx</em>, <em class="sig-param">threshold_mean_degree</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/threshold.html#threshold_mean_degree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.threshold.threshold_mean_degree" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.graphs.threshold.</code><code class="sig-name descname">threshold_mean_degree</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mtx</span></em>, <em class="sig-param"><span class="n">threshold_mean_degree</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/threshold.html#threshold_mean_degree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.threshold.threshold_mean_degree" title="Permalink to this definition">¶</a></dt>
 <dd><p>Threshold a graph based on the mean degree.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -718,9 +718,9 @@ distance between them.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="dyconnmap.graphs.threshold.threshold_mst_mean_degree">
-<code class="sig-prename descclassname">dyconnmap.graphs.threshold.</code><code class="sig-name descname">threshold_mst_mean_degree</code><span class="sig-paren">(</span><em class="sig-param">mtx</em>, <em class="sig-param">avg_degree</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/threshold.html#threshold_mst_mean_degree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.threshold.threshold_mst_mean_degree" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.graphs.threshold.</code><code class="sig-name descname">threshold_mst_mean_degree</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mtx</span></em>, <em class="sig-param"><span class="n">avg_degree</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/threshold.html#threshold_mst_mean_degree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.threshold.threshold_mst_mean_degree" title="Permalink to this definition">¶</a></dt>
 <dd><p>Threshold a graph based on mean using minimum spanning trees.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -742,9 +742,9 @@ distance between them.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="dyconnmap.graphs.threshold.threshold_omst_global_cost_efficiency">
-<code class="sig-prename descclassname">dyconnmap.graphs.threshold.</code><code class="sig-name descname">threshold_omst_global_cost_efficiency</code><span class="sig-paren">(</span><em class="sig-param">mtx</em>, <em class="sig-param">n_msts=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/threshold.html#threshold_omst_global_cost_efficiency"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.threshold.threshold_omst_global_cost_efficiency" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.graphs.threshold.</code><code class="sig-name descname">threshold_omst_global_cost_efficiency</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mtx</span></em>, <em class="sig-param"><span class="n">n_msts</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/threshold.html#threshold_omst_global_cost_efficiency"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.threshold.threshold_omst_global_cost_efficiency" title="Permalink to this definition">¶</a></dt>
 <dd><p>Threshold a graph by optimizing the formula GE-C via orthogonal MSTs.</p>
 <dl class="citation">
 <dt class="label" id="dimitriadis2017a"><span class="brackets">Dimitriadis2017a</span></dt>
@@ -798,9 +798,9 @@ computation will be performed.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="dyconnmap.graphs.threshold.threshold_shortest_paths">
-<code class="sig-prename descclassname">dyconnmap.graphs.threshold.</code><code class="sig-name descname">threshold_shortest_paths</code><span class="sig-paren">(</span><em class="sig-param">mtx</em>, <em class="sig-param">treatment=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/threshold.html#threshold_shortest_paths"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.threshold.threshold_shortest_paths" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.graphs.threshold.</code><code class="sig-name descname">threshold_shortest_paths</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mtx</span></em>, <em class="sig-param"><span class="n">treatment</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/threshold.html#threshold_shortest_paths"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.threshold.threshold_shortest_paths" title="Permalink to this definition">¶</a></dt>
 <dd><p>Threshold a graph via  via shortest path identification using Dijkstra’s algorithm.</p>
 <dl class="citation">
 <dt class="label" id="dimitriadis2010"><span class="brackets">Dimitriadis2010</span></dt>
@@ -860,9 +860,9 @@ and <span class="math notranslate nohighlight">\(I\)</span> the mutual informati
 <dd><p>Dimitriadis, S. I., Laskaris, N. A., Michael Vourkas, V. T., &amp; Micheloyannis, S. (2012). An EEG study of brain connectivity dynamics at the resting state. Nonlinear Dynamics-Psychology and Life Sciences, 16(1), 5.</p>
 </dd>
 </dl>
-<dl class="function">
+<dl class="py function">
 <dt id="dyconnmap.graphs.vi.variation_information">
-<code class="sig-prename descclassname">dyconnmap.graphs.vi.</code><code class="sig-name descname">variation_information</code><span class="sig-paren">(</span><em class="sig-param">indices_a</em>, <em class="sig-param">indices_b</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/vi.html#variation_information"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.vi.variation_information" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.graphs.vi.</code><code class="sig-name descname">variation_information</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">indices_a</span></em>, <em class="sig-param"><span class="n">indices_b</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/vi.html#variation_information"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.vi.variation_information" title="Permalink to this definition">¶</a></dt>
 <dd><p>Variation of Information</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -887,9 +887,9 @@ and <span class="math notranslate nohighlight">\(I\)</span> the mutual informati
 </div>
 <div class="section" id="module-dyconnmap.graphs">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-dyconnmap.graphs" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
+<dl class="py function">
 <dt id="dyconnmap.graphs.graph_diffusion_distance">
-<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">graph_diffusion_distance</code><span class="sig-paren">(</span><em class="sig-param">a</em>, <em class="sig-param">b</em>, <em class="sig-param">threshold=1e-14</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/gdd.html#graph_diffusion_distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.graph_diffusion_distance" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">graph_diffusion_distance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">b</span></em>, <em class="sig-param"><span class="n">threshold</span><span class="o">=</span><span class="default_value">1e-14</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/gdd.html#graph_diffusion_distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.graph_diffusion_distance" title="Permalink to this definition">¶</a></dt>
 <dd><p>Graph Diffusion Distance</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -919,9 +919,9 @@ and <span class="math notranslate nohighlight">\(I\)</span> the mutual informati
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="dyconnmap.graphs.variation_information">
-<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">variation_information</code><span class="sig-paren">(</span><em class="sig-param">indices_a</em>, <em class="sig-param">indices_b</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/vi.html#variation_information"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.variation_information" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">variation_information</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">indices_a</span></em>, <em class="sig-param"><span class="n">indices_b</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/vi.html#variation_information"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.variation_information" title="Permalink to this definition">¶</a></dt>
 <dd><p>Variation of Information</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -943,9 +943,9 @@ and <span class="math notranslate nohighlight">\(I\)</span> the mutual informati
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="dyconnmap.graphs.mutual_information">
-<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">mutual_information</code><span class="sig-paren">(</span><em class="sig-param">indices_a</em>, <em class="sig-param">indices_b</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/mi.html#mutual_information"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.mutual_information" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">mutual_information</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">indices_a</span></em>, <em class="sig-param"><span class="n">indices_b</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/mi.html#mutual_information"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.mutual_information" title="Permalink to this definition">¶</a></dt>
 <dd><p>Mutual Information</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -971,9 +971,9 @@ and <span class="math notranslate nohighlight">\(I\)</span> the mutual informati
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="dyconnmap.graphs.threshold_mean_degree">
-<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">threshold_mean_degree</code><span class="sig-paren">(</span><em class="sig-param">mtx</em>, <em class="sig-param">threshold_mean_degree</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/threshold.html#threshold_mean_degree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.threshold_mean_degree" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">threshold_mean_degree</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mtx</span></em>, <em class="sig-param"><span class="n">threshold_mean_degree</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/threshold.html#threshold_mean_degree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.threshold_mean_degree" title="Permalink to this definition">¶</a></dt>
 <dd><p>Threshold a graph based on the mean degree.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -995,9 +995,9 @@ and <span class="math notranslate nohighlight">\(I\)</span> the mutual informati
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="dyconnmap.graphs.threshold_mst_mean_degree">
-<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">threshold_mst_mean_degree</code><span class="sig-paren">(</span><em class="sig-param">mtx</em>, <em class="sig-param">avg_degree</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/threshold.html#threshold_mst_mean_degree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.threshold_mst_mean_degree" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">threshold_mst_mean_degree</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mtx</span></em>, <em class="sig-param"><span class="n">avg_degree</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/threshold.html#threshold_mst_mean_degree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.threshold_mst_mean_degree" title="Permalink to this definition">¶</a></dt>
 <dd><p>Threshold a graph based on mean using minimum spanning trees.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -1019,9 +1019,9 @@ and <span class="math notranslate nohighlight">\(I\)</span> the mutual informati
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="dyconnmap.graphs.threshold_shortest_paths">
-<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">threshold_shortest_paths</code><span class="sig-paren">(</span><em class="sig-param">mtx</em>, <em class="sig-param">treatment=False</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/threshold.html#threshold_shortest_paths"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.threshold_shortest_paths" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">threshold_shortest_paths</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mtx</span></em>, <em class="sig-param"><span class="n">treatment</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/threshold.html#threshold_shortest_paths"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.threshold_shortest_paths" title="Permalink to this definition">¶</a></dt>
 <dd><p>Threshold a graph via  via shortest path identification using Dijkstra’s algorithm.</p>
 <dl class="citation">
 <dt class="label" id="id8"><span class="brackets">Dimitriadis2010</span></dt>
@@ -1049,9 +1049,9 @@ fill the diagonal with zeroes. Default <cite>false</cite>.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="dyconnmap.graphs.k_core_decomposition">
-<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">k_core_decomposition</code><span class="sig-paren">(</span><em class="sig-param">mtx</em>, <em class="sig-param">threshold</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/threshold.html#k_core_decomposition"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.k_core_decomposition" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">k_core_decomposition</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mtx</span></em>, <em class="sig-param"><span class="n">threshold</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/threshold.html#k_core_decomposition"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.k_core_decomposition" title="Permalink to this definition">¶</a></dt>
 <dd><p>Threshold a binary graph based on the detected k-cores.</p>
 <dl class="citation">
 <dt class="label" id="id9"><span class="brackets">Alvarez2006</span></dt>
@@ -1081,9 +1081,9 @@ fill the diagonal with zeroes. Default <cite>false</cite>.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="dyconnmap.graphs.threshold_global_cost_efficiency">
-<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">threshold_global_cost_efficiency</code><span class="sig-paren">(</span><em class="sig-param">mtx</em>, <em class="sig-param">iterations</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/threshold.html#threshold_global_cost_efficiency"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.threshold_global_cost_efficiency" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">threshold_global_cost_efficiency</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mtx</span></em>, <em class="sig-param"><span class="n">iterations</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/threshold.html#threshold_global_cost_efficiency"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.threshold_global_cost_efficiency" title="Permalink to this definition">¶</a></dt>
 <dd><p>Threshold a graph based on the Global Efficiency - Cost formula.</p>
 <dl class="citation">
 <dt class="label" id="id11"><span class="brackets">Basset2009</span></dt>
@@ -1126,9 +1126,9 @@ fill the diagonal with zeroes. Default <cite>false</cite>.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="dyconnmap.graphs.threshold_omst_global_cost_efficiency">
-<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">threshold_omst_global_cost_efficiency</code><span class="sig-paren">(</span><em class="sig-param">mtx</em>, <em class="sig-param">n_msts=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/threshold.html#threshold_omst_global_cost_efficiency"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.threshold_omst_global_cost_efficiency" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">threshold_omst_global_cost_efficiency</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mtx</span></em>, <em class="sig-param"><span class="n">n_msts</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/threshold.html#threshold_omst_global_cost_efficiency"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.threshold_omst_global_cost_efficiency" title="Permalink to this definition">¶</a></dt>
 <dd><p>Threshold a graph by optimizing the formula GE-C via orthogonal MSTs.</p>
 <dl class="citation">
 <dt class="label" id="id12"><span class="brackets">Dimitriadis2017a</span></dt>
@@ -1182,9 +1182,9 @@ computation will be performed.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="dyconnmap.graphs.threshold_eco">
-<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">threshold_eco</code><span class="sig-paren">(</span><em class="sig-param">mtx</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/threshold.html#threshold_eco"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.threshold_eco" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">threshold_eco</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mtx</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/threshold.html#threshold_eco"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.threshold_eco" title="Permalink to this definition">¶</a></dt>
 <dd><p>Ecological Filtering</p>
 <dl class="citation">
 <dt class="label" id="id15"><span class="brackets">Fallani2017</span></dt>
@@ -1193,9 +1193,9 @@ computation will be performed.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="dyconnmap.graphs.nodal_global_efficiency">
-<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">nodal_global_efficiency</code><span class="sig-paren">(</span><em class="sig-param">mtx</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/nodal.html#nodal_global_efficiency"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.nodal_global_efficiency" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">nodal_global_efficiency</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mtx</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/nodal.html#nodal_global_efficiency"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.nodal_global_efficiency" title="Permalink to this definition">¶</a></dt>
 <dd><p>Nodal Global Efficiency</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -1213,9 +1213,9 @@ computation will be performed.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="dyconnmap.graphs.im_distance">
-<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">im_distance</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">Y</em>, <em class="sig-param">bandwidth=1.0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/imd.html#im_distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.im_distance" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">im_distance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em>, <em class="sig-param"><span class="n">Y</span></em>, <em class="sig-param"><span class="n">bandwidth</span><span class="o">=</span><span class="default_value">1.0</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/imd.html#im_distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.im_distance" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>X</strong> : array-like, shape(N, N)</p>
@@ -1240,9 +1240,9 @@ computation will be performed.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="dyconnmap.graphs.spectral_k_distance">
-<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">spectral_k_distance</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">Y</em>, <em class="sig-param">k</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/spectral_k_distance.html#spectral_k_distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.spectral_k_distance" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">spectral_k_distance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em>, <em class="sig-param"><span class="n">Y</span></em>, <em class="sig-param"><span class="n">k</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/spectral_k_distance.html#spectral_k_distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.spectral_k_distance" title="Permalink to this definition">¶</a></dt>
 <dd><p>Spectral-K Distance</p>
 <p>Use the largest <span class="math notranslate nohighlight">\(k\)</span> eigenvalues of the given graphs to compute the
 distance between them.</p>
@@ -1270,9 +1270,9 @@ distance between them.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="dyconnmap.graphs.spectral_euclidean_distance">
-<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">spectral_euclidean_distance</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">Y</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/spectral_euclidean_distance.html#spectral_euclidean_distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.spectral_euclidean_distance" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">spectral_euclidean_distance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em>, <em class="sig-param"><span class="n">Y</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/spectral_euclidean_distance.html#spectral_euclidean_distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.spectral_euclidean_distance" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>X</strong> : array-like, shape(N, N)</p>
@@ -1293,9 +1293,9 @@ distance between them.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="dyconnmap.graphs.laplacian_energy">
-<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">laplacian_energy</code><span class="sig-paren">(</span><em class="sig-param">mtx</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/laplacian_energy.html#laplacian_energy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.laplacian_energy" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">laplacian_energy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mtx</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/laplacian_energy.html#laplacian_energy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.laplacian_energy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Laplacian Energy</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -1313,9 +1313,9 @@ distance between them.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="dyconnmap.graphs.multilayer_pc_strength">
-<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">multilayer_pc_strength</code><span class="sig-paren">(</span><em class="sig-param">mlgraph</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/mpc.html#multilayer_pc_strength"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.multilayer_pc_strength" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">multilayer_pc_strength</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mlgraph</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/mpc.html#multilayer_pc_strength"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.multilayer_pc_strength" title="Permalink to this definition">¶</a></dt>
 <dd><p>Multilayer Participation Coefficient (Strength)</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -1333,9 +1333,9 @@ distance between them.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="dyconnmap.graphs.multilayer_pc_degree">
-<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">multilayer_pc_degree</code><span class="sig-paren">(</span><em class="sig-param">mlgraph</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/mpc.html#multilayer_pc_degree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.multilayer_pc_degree" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">multilayer_pc_degree</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mlgraph</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/mpc.html#multilayer_pc_degree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.multilayer_pc_degree" title="Permalink to this definition">¶</a></dt>
 <dd><p>Multilayer Participation Coefficient (Degree)</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -1353,9 +1353,9 @@ distance between them.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="dyconnmap.graphs.multilayer_pc_gamma">
-<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">multilayer_pc_gamma</code><span class="sig-paren">(</span><em class="sig-param">mlgraph</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/mpc.html#multilayer_pc_gamma"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.multilayer_pc_gamma" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">multilayer_pc_gamma</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mlgraph</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/mpc.html#multilayer_pc_gamma"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.multilayer_pc_gamma" title="Permalink to this definition">¶</a></dt>
 <dd><p>Multilayer Participation Coefficient method from Guillon et al.</p>
 <dl class="field-list">
 <dt class="field-odd">Parameters</dt>
@@ -1397,7 +1397,7 @@ containing the estimated interlayer multilayer participation coefficient.</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2019, Avraam Marimpis &amp; Stavros Dimitriadis
+        &copy; Copyright 2020, Avraam Marimpis &amp; Stavros Dimitriadis
 
     </p>
   </div>
