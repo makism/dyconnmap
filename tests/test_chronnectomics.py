@@ -20,9 +20,9 @@ def test_dwell_time():
 
     dwell, mean, std = dwell_time(sts)
 
-    dwell_expected = np.load("data/chronnectomics_dwell_time.npy").item()
-    mean_expected = np.load("data/chronnectomics_dwell_mean.npy").item()
-    std_expected = np.load("data/chronnectomics_dwell_std.npy").item()
+    dwell_expected = np.load("data/chronnectomics_dwell_time.npy", allow_pickle=True)
+    mean_expected = np.load("data/chronnectomics_dwell_mean.npy", allow_pickle=True)
+    std_expected = np.load("data/chronnectomics_dwell_std.npy", allow_pickle=True)
 
     for symbol_id in dwell.keys():
         np.testing.assert_equal(dwell[symbol_id], dwell_expected[symbol_id])
@@ -49,6 +49,6 @@ def test_occupancy_time():
 
     ot = occupancy_time(sts)
 
-    ot_expected = np.load("data/chronnectomics_occupancy_time.npy")
+    ot_expected = np.load("data/chronnectomics_occupancy_time.npy", allow_pickle=True)
 
     np.testing.assert_equal(ot, ot_expected)
