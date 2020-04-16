@@ -260,7 +260,9 @@ def test_symbolic_transfer_entropy():
 
 def test_wald():
     # data = np.load("../examples/data/wald_test_ts.npy").item()
-    data = np.load("../examples/data/wald_test_ts.npy", encoding="latin1").item()
+    data = np.load(
+        "../examples/data/wald_test_ts.npy", encoding="latin1", allow_pickle=True
+    ).item()
 
     x = data["x"]
     y = data["y"]
