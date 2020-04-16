@@ -2,6 +2,12 @@
 """
 
 
+
+-----
+
+.. [RayTuri1999] Ray, S., & Turi, R. H. (1999, December). Determination of number of clusters in k-means clustering and application in colour image segmentation. In Proceedings of the 4th international conference on advances in pattern recognition and digital techniques (pp. 137-143).
+.. [Davies1979] Davies, D. L., & Bouldin, D. W. (1979). A cluster separation measure. IEEE transactions on pattern analysis and machine intelligence, (2), 224-227.
+
 """
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 import numpy as np
@@ -30,11 +36,6 @@ def ray_turi(data, labels):
     Returns
     -------
     index : float
-
-
-    -----
-
-    .. [RayTuri1999] Ray, S., & Turi, R. H. (1999, December). Determination of number of clusters in k-means clustering and application in colour image segmentation. In Proceedings of the 4th international conference on advances in pattern recognition and digital techniques (pp. 137-143).
     """
     num_ts, num_samples = np.shape(data)
     clusters = np.unique(labels)
@@ -81,11 +82,6 @@ def davies_bouldin(data, labels):
     Returns
     -------
     index : float
-
-
-    -----
-
-    .. [Davies1979] Davies, D. L., & Bouldin, D. W. (1979). A cluster separation measure. IEEE transactions on pattern analysis and machine intelligence, (2), 224-227.
     """
     num_ts, num_samples = np.shape(data)
 
