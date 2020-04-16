@@ -67,7 +67,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'dyconnmap'
-copyright = '2019, Avraam Marimpis & Stavros Dimitriadis'
+copyright = '2020, Avraam Marimpis & Stavros Dimitriadis'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
