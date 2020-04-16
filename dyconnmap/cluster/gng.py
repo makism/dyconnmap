@@ -267,9 +267,9 @@ class GrowingNeuralGas(BaseCluster):
                 g.add_edge(new_node_id, neighborhood_with_errors[0][0], age=0.0)
 
                 # Update the errors
-                g.node[n1]["error"] *= self.alpha
-                g.node[neighborhood_with_errors[0][0]]["error"] *= self.alpha
-                g.node[new_node_id]["error"] = g.node[n1]["error"]
+                g.nodes[n1]["error"] *= self.alpha
+                g.nodes[neighborhood_with_errors[0][0]]["error"] *= self.alpha
+                g.nodes[new_node_id]["error"] = g.nodes[n1]["error"]
 
             # Global error reduction
             # for node, datadict in list(g.nodes(data=True)):
