@@ -60,6 +60,14 @@ dyconnmap.cluster.umatrix module
    :undoc-members:
    :show-inheritance:
 
+dyconnmap.cluster.validity module
+---------------------------------
+
+.. automodule:: dyconnmap.cluster.validity
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 
 Module contents
 ---------------

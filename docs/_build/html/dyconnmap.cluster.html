@@ -94,6 +94,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#module-dyconnmap.cluster.rng">dyconnmap.cluster.rng module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-dyconnmap.cluster.som">dyconnmap.cluster.som module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-dyconnmap.cluster.umatrix">dyconnmap.cluster.umatrix module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-dyconnmap.cluster.validity">dyconnmap.cluster.validity module</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-dyconnmap.cluster">Module contents</a></li>
 </ul>
 </li>
@@ -1081,6 +1082,55 @@ the approximated patterns as produced by the Nearest Neighbor rule.</p>
 <dd></dd></dl>
 
 </div>
+<div class="section" id="module-dyconnmap.cluster.validity">
+<span id="dyconnmap-cluster-validity-module"></span><h2>dyconnmap.cluster.validity module<a class="headerlink" href="#module-dyconnmap.cluster.validity" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="dyconnmap.cluster.validity.davies_bouldin">
+<code class="sig-prename descclassname">dyconnmap.cluster.validity.</code><code class="sig-name descname">davies_bouldin</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">labels</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/cluster/validity.html#davies_bouldin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.cluster.validity.davies_bouldin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Davies-Bouldin Index</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> : array-like, shape(n_ts, n_samples)</p>
+<blockquote>
+<div><p>Input time series</p>
+</div></blockquote>
+<p><strong>labels</strong> : array-like, shape(n_ts)</p>
+<blockquote>
+<div><p>Cluster assignements (labels) per time serie.</p>
+</div></blockquote>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>index</strong> : float</p>
+<p><strong>—–</strong> :</p>
+<p><strong>.. [Davies1979] Davies, D. L., &amp; Bouldin, D. W. (1979). A cluster separation measure. IEEE transactions on pattern analysis and machine intelligence, (2), 224-227.</strong> :</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="dyconnmap.cluster.validity.ray_turi">
+<code class="sig-prename descclassname">dyconnmap.cluster.validity.</code><code class="sig-name descname">ray_turi</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">labels</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/cluster/validity.html#ray_turi"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.cluster.validity.ray_turi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ray-Turi Index</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> : array-like, shape(n_ts, n_samples)</p>
+<blockquote>
+<div><p>Input time series</p>
+</div></blockquote>
+<p><strong>labels</strong> : array-like, shape(n_ts)</p>
+<blockquote>
+<div><p>Cluster assignements (labels) per time serie.</p>
+</div></blockquote>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>index</strong> : float</p>
+<p><strong>—–</strong> :</p>
+<p><strong>.. [RayTuri1999] Ray, S., &amp; Turi, R. H. (1999, December). Determination of number of clusters in k-means clustering and application in colour image segmentation. In Proceedings of the 4th international conference on advances in pattern recognition and digital techniques (pp. 137-143).</strong> :</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
 <div class="section" id="module-dyconnmap.cluster">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-dyconnmap.cluster" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
@@ -1719,6 +1769,52 @@ the approximated patterns as produced by the Nearest Neighbor rule.</p>
 <dt id="dyconnmap.cluster.umatrix">
 <code class="sig-prename descclassname">dyconnmap.cluster.</code><code class="sig-name descname">umatrix</code><span class="sig-paren">(</span><em class="sig-param">M</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/cluster/umatrix.html#umatrix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.cluster.umatrix" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
+
+<dl class="function">
+<dt id="dyconnmap.cluster.ray_turi">
+<code class="sig-prename descclassname">dyconnmap.cluster.</code><code class="sig-name descname">ray_turi</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">labels</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/cluster/validity.html#ray_turi"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.cluster.ray_turi" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ray-Turi Index</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> : array-like, shape(n_ts, n_samples)</p>
+<blockquote>
+<div><p>Input time series</p>
+</div></blockquote>
+<p><strong>labels</strong> : array-like, shape(n_ts)</p>
+<blockquote>
+<div><p>Cluster assignements (labels) per time serie.</p>
+</div></blockquote>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>index</strong> : float</p>
+<p><strong>—–</strong> :</p>
+<p><strong>.. [RayTuri1999] Ray, S., &amp; Turi, R. H. (1999, December). Determination of number of clusters in k-means clustering and application in colour image segmentation. In Proceedings of the 4th international conference on advances in pattern recognition and digital techniques (pp. 137-143).</strong> :</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="dyconnmap.cluster.davies_bouldin">
+<code class="sig-prename descclassname">dyconnmap.cluster.</code><code class="sig-name descname">davies_bouldin</code><span class="sig-paren">(</span><em class="sig-param">data</em>, <em class="sig-param">labels</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/cluster/validity.html#davies_bouldin"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.cluster.davies_bouldin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Davies-Bouldin Index</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> : array-like, shape(n_ts, n_samples)</p>
+<blockquote>
+<div><p>Input time series</p>
+</div></blockquote>
+<p><strong>labels</strong> : array-like, shape(n_ts)</p>
+<blockquote>
+<div><p>Cluster assignements (labels) per time serie.</p>
+</div></blockquote>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>index</strong> : float</p>
+<p><strong>—–</strong> :</p>
+<p><strong>.. [Davies1979] Davies, D. L., &amp; Bouldin, D. W. (1979). A cluster separation measure. IEEE transactions on pattern analysis and machine intelligence, (2), 224-227.</strong> :</p>
+</dd>
+</dl>
+</dd></dl>
 
 </div>
 </div>
