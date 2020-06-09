@@ -8,6 +8,9 @@ A neuroimaging module for dynamic connectome mapping.
  
 [![PyPI version](https://badge.fury.io/py/dyconnmap.svg)](https://badge.fury.io/py/dyconnmap) [![Anaconda-Server Badge](https://anaconda.org/makism/dyconnmap/badges/version.svg)](https://anaconda.org/makism/dyconnmap) ![Whenenver a new tag is pushed; a wheel distribution is uploada on the Test PyPI index.](https://github.com/makism/dyconnmap/workflows/publish-test-pypi/badge.svg)
 
+---
+
+financially sponsored by [Brain Innovation B.V.](https://www.brainvoyager.com)
 
 ---
 
