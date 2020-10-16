@@ -81,7 +81,7 @@ def test_tvfcgs_plv():
     f32_1 = np.float32(result_fcgs)
     f32_2 = np.float32(tvfcg_plv_fcgs)
 
-    np.testing.assert_array_equal(f32_1, f32_2)
+    np.testing.assert_array_almost_equal(f32_1, f32_2)
 
 
 def test_tvfcgs_pac_plv():
