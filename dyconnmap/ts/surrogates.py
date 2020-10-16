@@ -6,11 +6,21 @@
 """
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
+from typing import Optional, Tuple, Callable
 import numpy as np
 import numbers
 
 
-def surrogate_analysis(ts1, ts2, num_surr=1000, estimator_func=None, ts1_no_surr=False, rng=None):
+def surrogate_analysis(
+    ts1: np.ndarray[np.float32],
+    ts2: np.ndarray[np.float32],
+    num_surr: int = 1000,
+    estimator_func: Optional[
+        Callable[[np.ndarray[np.float32], np.ndarray[np.float32]], float]
+    ] = None,
+    ts1_no_surr: bool = False,
+    rng: Optional[np.random.RandomState] = None,
+) -> Tuple[float, np.ndarray[np.int32], np.ndarray[np.float32], float]:
     """ Surrogate Analysis
 
 
@@ -45,6 +55,7 @@ def surrogate_analysis(ts1, ts2, num_surr=1000, estimator_func=None, ts1_no_surr
         rng = np.random.RandomState(0)
 
     if estimator_func is None:
+
         def estimator(x, y):
             return np.abs(np.corrcoef(x, y))[0, 1]
 
@@ -69,8 +80,7 @@ def surrogate_analysis(ts1, ts2, num_surr=1000, estimator_func=None, ts1_no_surr
 
     surr_vals = np.zeros((num_surr, len(r_value)))
     for i in range(num_surr):
-        surr_vals[i, :] = estimator_func(
-            surrogates[0, i, ...], surrogates[1, i, ...])
+        surr_vals[i, :] = estimator_func(surrogates[0, i, ...], surrogates[1, i, ...])
 
     surr_vals = np.array(surr_vals)
     p_vals = np.zeros((num_r_vals))
@@ -92,7 +102,11 @@ def surrogate_analysis(ts1, ts2, num_surr=1000, estimator_func=None, ts1_no_surr
     return p_vals, surr_vals, surrogates, r_value
 
 
-def aaft(ts, num_surr=1, rng=None):
+def aaft(
+    ts: np.ndarray[np.float32],
+    num_surr: int = 1,
+    rng: Optional[np.random.RandomState] = None,
+) -> np.ndarray[np.float32]:
     """ Amplitude Adjusted Fourier Transform
 
 
@@ -133,7 +147,9 @@ def aaft(ts, num_surr=1, rng=None):
     return s
 
 
-def fdr(p_values, q=0.01, method="pdep"):
+def fdr(
+    p_values: np.ndarray[np.float32], q: float = 0.01, method: str = "pdep"
+) -> Tuple[bool, float]:
     """ False Discovery Rate
 
 
@@ -181,7 +197,9 @@ def fdr(p_values, q=0.01, method="pdep"):
     return h, crit_p
 
 
-def phase_rand(data, num_surr=1, rng=None):
+def phase_rand(
+    data, num_surr: int = 1, rng: Optional[np.random.RandomState] = None
+) -> np.ndarray[np.float32]:
     """ Phase-randomized suggorates
 
 

@@ -12,10 +12,18 @@
 """
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
+from typing import Optional
 import numpy as np
 
 
-def fnn(ts, tau, max_dim=20, neighbors_reduction=0.10, rtol=15.0, atol=2.0):
+def fnn(
+    ts: np.ndarray[np.float32],
+    tau: int,
+    max_dim: int = 20,
+    neighbors_reduction: float = 0.10,
+    rtol: float = 15.0,
+    atol: float = 2.0,
+) -> Optional[int]:
     """ False Nearest Neighbors
 
     Notes
@@ -63,12 +71,16 @@ def fnn(ts, tau, max_dim=20, neighbors_reduction=0.10, rtol=15.0, atol=2.0):
         if ed_ts is not None and num_points > 0:
             distances = np.zeros((num_points, num_points))
             for i in range(num_points):
-                distances[i, :] = __euclidean_distance(ed_ts, np.ones((num_points, dim)) * ed_ts[i, :])
+                distances[i, :] = __euclidean_distance(
+                    ed_ts, np.ones((num_points, dim)) * ed_ts[i, :]
+                )
 
             indices = np.argsort(distances)
             sort_distances = np.sort(distances)
 
-            all_D = np.abs(ts[np.arange(num_points) + dim * tau] - ts[indices[:, 1] + dim * tau])
+            all_D = np.abs(
+                ts[np.arange(num_points) + dim * tau] - ts[indices[:, 1] + dim * tau]
+            )
             all_R = np.sqrt(np.power(all_D, 2) + np.power(sort_distances[:, 1], 2))
 
             a = all_D / sort_distances[:, 1]

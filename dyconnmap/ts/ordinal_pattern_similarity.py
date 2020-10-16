@@ -14,6 +14,7 @@
 """
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
+from typing import List, Optional, Tuple
 import numpy as np
 import scipy
 import itertools
@@ -22,7 +23,9 @@ from sklearn import preprocessing
 from .embed_delay import embed_delay
 
 
-def ordinal_pattern_similarity(signal1, signal2, m, tau):
+def ordinal_pattern_similarity(
+    signal1: np.ndarray[np.int32], signal2: np.ndarray[np.int32], m: int, tau: int
+) -> Tuple[float, np.ndarray[np.int32], np.ndarray[np.float32]]:
     """ Ordinal Pattern Similarity
 
 

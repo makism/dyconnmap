@@ -26,10 +26,13 @@ consult the work of Bradley and Kantz (Bradley2015_).
 """
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
+from typing import Optional
 import numpy as np
 
 
-def embed_delay(ts, dim, tau):
+def embed_delay(
+    ts: np.ndarray[np.float32], dim: int, tau: int
+) -> Optional[np.ndarray[np.float32]]:
     """ Embed delay
 
 
@@ -50,7 +53,7 @@ def embed_delay(ts, dim, tau):
         The embedded timeseries.
     """
     ts = ts.flatten()
-    new_ts = np.zeros((dim, len(ts)))
+    new_ts = np.zeros((dim, len(ts)), dtype=np.float32)
     new_ts[0, :] = ts
 
     l = len(ts)

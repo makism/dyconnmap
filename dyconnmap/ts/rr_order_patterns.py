@@ -22,7 +22,9 @@ import sklearn
 from .embed_delay import embed_delay
 
 
-def rr_order_patterns(signal1, signal2, m, tau):
+def rr_order_patterns(
+    signal1: np.ndarray[np.int32], signal2: np.ndarray[np.int32], m: int, tau: int
+) -> float:
     """
 
 

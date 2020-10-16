@@ -23,7 +23,12 @@ Notes
 import numpy as np
 
 
-def complexity_index(x, sub_len=-1, normalize=False, iterations=100):
+def complexity_index(
+    x: np.ndarray([np.float32]),
+    sub_len: int = -1,
+    normalize: bool = False,
+    iterations: int = 100,
+) -> float:
     """ Complexity Index
 
 

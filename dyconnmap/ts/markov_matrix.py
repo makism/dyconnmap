@@ -5,10 +5,13 @@ Generation of markov matrix and some related state transition features.
 """
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
+from typing import Optional, Union
 import numpy as np
 
 
-def markov_matrix(symts, states_from_length=True):
+def markov_matrix(
+    symts: np.ndarray[np.int32], states_from_length: bool = True
+) -> np.ndarray[np.float32]:
     """ Markov Matrix
 
     Markov matrix (also refered as "transition matrix") is a square matrix that tabulates
@@ -86,7 +89,9 @@ def markov_matrix(symts, states_from_length=True):
     return mtx
 
 
-def transition_rate(symts, weight=None):
+def transition_rate(
+    symts: np.ndarray[np.int32], weight: Optional[np.ndarray[np.float32]] = None
+) -> float:
     """ Transition Rate
 
     The total sum of transition between symbols.
@@ -120,7 +125,11 @@ def transition_rate(symts, weight=None):
     return TR / weight
 
 
-def occupancy_time(symts, symbol_states=None, weight=None):
+def occupancy_time(
+    symts: np.ndarray[np.int32],
+    symbol_states: np.int32 = None,
+    weight: Optional[np.float32] = None,
+) -> Union[np.ndarray[np.float32], np.ndarray[np.int32]]:
     """ Occupancy Time
 
 

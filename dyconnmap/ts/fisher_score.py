@@ -15,7 +15,19 @@
 import numpy as np
 
 
-def fisher_score(x, y):
+def fisher_score(x: np.ndarray[np.float32], y: np.ndarray[np.float32]) -> float:
+    """
+
+    Parameters
+    ---------
+    x :
+
+    y :
+
+    Returns
+    -------
+
+    """
     lx = len(x)
     ly = len(y)
 

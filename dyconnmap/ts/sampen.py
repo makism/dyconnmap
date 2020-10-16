@@ -17,11 +17,17 @@ Based on https://nl.mathworks.com/matlabcentral/fileexchange/35784-sample-entrop
 """
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
+from typing import Optional
 import numpy as np
 from numpy import matlib
 
 
-def sample_entropy(data, dim=2, tau=None, r=None):
+def sample_entropy(
+    data: np.ndarray[np.int32],
+    dim: int = 2,
+    tau: Optional[int] = None,
+    r: Optional[float] = None,
+) -> float:
     """ Sample Entropy
 
 

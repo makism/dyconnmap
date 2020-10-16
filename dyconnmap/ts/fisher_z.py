@@ -26,6 +26,14 @@ def fisher_z(data):
     .. math::
         z_p := \\frac{1}{2} \\text{ln} \\left ( \\frac{1+p}{1-p} \\right ) = \\text{arctanh}(p)
 
+
+    Parameters
+    ----------
+    data :
+
+    Returns
+    -------
+
     """
     return np.arctanh(data)
 
@@ -37,11 +45,18 @@ def fisher_z_plv(data):
         z^p_j = sin^{-1}(2 * PLV_j - 1)
 
 
+    Parameters
+    ----------
+
+    Returns
+    -------
+
+
     |
 
     -----
     .. [Mormann2005] Mormann, F., Fell, J., Axmacher, N., Weber, B., Lehnertz, K., Elger, C. E., & Fernández, G. (2005). Phase/amplitude reset and theta–gamma interaction in the human medial temporal lobe during a continuous word recognition memory task. Hippocampus, 15(7), 890-900.
 
     """
-    tmp = 2*data - 1
+    tmp = 2 * data - 1
     return np.apply_along_axis(np.arcsin, 1, tmp)

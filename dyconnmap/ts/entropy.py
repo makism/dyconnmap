@@ -7,7 +7,7 @@
 import numpy as np
 
 
-def entropy(x):
+def entropy(x: np.ndarray[np.float32]) -> float:
     """ Entropy
 
     Parameters
