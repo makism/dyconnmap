@@ -268,7 +268,7 @@ def test_pli():
     # np.save("data/test_pli_avg.npy", avg)
 
     expected_ts = np.load("data/test_pli_ts.npy")
-    np.testing.assert_array_almost_eqaul(ts, expected_ts)
+    np.testing.assert_array_almost_equal(ts, expected_ts)
 
     expected_avg = np.load("data/test_pli_avg.npy")
     np.testing.assert_array_almost_equal(avg, expected_avg)
