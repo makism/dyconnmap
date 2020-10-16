@@ -1,5 +1,6 @@
 .idea/*
 snippets/.ipynb_checkpoints/*
+.mypy_cache/
 
 tests/.codacy-coverage/
 tests/codacy-coverage.json
