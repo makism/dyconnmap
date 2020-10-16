@@ -77,12 +77,20 @@ def test_tvfcgs_compute_windows():
 
 def test_tvfcgs_plv():
     result_fcgs = np.load("data/test_tvfcgs_plv.npy")
-    np.testing.assert_array_equal(tvfcg_plv_fcgs, result_fcgs)
+
+    f32_1 = np.float32(result_fcgs)
+    f32_2 = np.float32(tvfcg_plv_fcgs)
+
+    np.testing.assert_array_equal(f32_1, f32_2)
 
 
 def test_tvfcgs_pac_plv():
     result_ts = np.load("data/test_tvfcgs_pac_plv.npy")
-    np.testing.assert_array_equal(tvfcg_pac_plv_fcgs, result_ts)
+
+    f32_1 = np.float32(result_ts)
+    f32_2 = np.float32(tvfcg_pac_plv_fcgs)
+
+    np.testing.assert_array_almost_equal(f32_1, f32_2)
 
 
 def test_tvfcgs_from_plv_ts():
