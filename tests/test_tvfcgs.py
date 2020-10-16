@@ -96,9 +96,4 @@ def test_tvfcgs_pac_plv():
 def test_tvfcgs_from_plv_ts():
     result_fcgs = np.load("data/test_tvfcgs_from_plv_ts.npy")
 
-    if "TRAVIS" in os.environ:
-        # We have to use the following to make the test work on Travis
-        np.testing.assert_allclose(tvfcg_plv_ts, result_fcgs, rtol=1e-10, atol=0.0)
-    else:
-        # The following tests pass locally; but they fail on Travis o_O
-        np.testing.assert_array_equal(tvfcg_plv_ts, result_fcgs)
+    np.testing.assert_array_almost_equal(tvfcg_plv_ts, result_fcgs)

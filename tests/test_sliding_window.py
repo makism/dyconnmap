@@ -31,7 +31,7 @@ def test_sliding_window():
     if "TRAVIS" in os.environ:
         assert True
     else:
-        np.testing.assert_array_equal(dfcg_r, expected)
+        np.testing.assert_array_almost_equal(dfcg_r, expected)
 
 
 def test_sliding_window_indx():

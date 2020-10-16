@@ -117,4 +117,4 @@ def test_clustering_som_umatrix():
     umatrix = dyconnmap.cluster.umatrix(protos)
 
     result_umatrix = np.load("data/test_clustering_som_umatrix.npy")
-    np.testing.assert_array_equal(umatrix, result_umatrix)
+    np.testing.assert_array_almost_equal(umatrix, result_umatrix)
