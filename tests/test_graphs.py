@@ -58,7 +58,6 @@ def test_mutual_information():
 def test_nodal_global_efficiency():
     inv_mtx = np.load("data/test_graphs_inv_mtx.npy")
     result = np.load("data/test_graphs_nodal_global_efficiency.npy")
-    result = result.flatten()
 
     nodal_ge = nodal_global_efficiency(inv_mtx)
 
