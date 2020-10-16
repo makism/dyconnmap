@@ -29,13 +29,17 @@ By exploiting the definition of mutual information, the following property holds
 """
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>"
 
+from typing import Tuple
+
 import numpy as np
 
 from dyconnmap.ts.entropy import entropy
 from .vi import __unique_symbols
 
 
-def mutual_information(indices_a, indices_b):
+def mutual_information(
+    indices_a: np.ndarray[np.int32], indices_b: np.ndarray[np.int32]
+) -> Tuple[float, float]:
     """ Mutual Information
 
 

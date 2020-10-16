@@ -26,7 +26,7 @@ from scipy import sparse
 import bct
 
 
-def laplacian_energy(mtx):
+def laplacian_energy(mtx: np.ndarray[np.float32]) -> float:
     """ Laplacian Energy
 
 

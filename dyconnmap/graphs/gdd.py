@@ -35,11 +35,15 @@ Based on the code accompanied the original paper. Available at https://www.resea
 """
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
+from typing import Tuple
+
 import numpy as np
 import scipy.optimize
 
 
-def graph_diffusion_distance(a, b, threshold=1e-14):
+def graph_diffusion_distance(
+    a: np.ndarray[np.float32], b: np.ndarray[np.float32], threshold: float = 1e-14
+) -> Tuple[np.float32, np.float32]:
     """ Graph Diffusion Distance
 
 
@@ -76,7 +80,9 @@ def graph_diffusion_distance(a, b, threshold=1e-14):
     t_upperbound = np.real(1.0 / eigs[0])
 
     __min_fun = lambda t: -1.0 * __gdd_xi_t(v1, w1, v2, w2, t)
-    xopt, fval, _, _ = scipy.optimize.fminbound(func=__min_fun, x1=0, x2=t_upperbound, xtol=1e-4, full_output=True)
+    xopt, fval, _, _ = scipy.optimize.fminbound(
+        func=__min_fun, x1=0, x2=t_upperbound, xtol=1e-4, full_output=True
+    )
     # xopt, fval, ierr, numfunc = scipy.optimize.fminbound(func=__min_fun, x1=0, x2=t_upperbound, xtol=1e-4, full_output=True)
 
     gdd = np.sqrt(-fval)

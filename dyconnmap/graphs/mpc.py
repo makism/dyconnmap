@@ -16,7 +16,7 @@ import bct
 from scipy import linalg as LA
 
 
-def multilayer_pc_degree(mlgraph):
+def multilayer_pc_degree(mlgraph: np.ndarray[np.float32]) -> np.ndarray[np.float32]:
     """ Multilayer Participation Coefficient (Degree)
 
 
@@ -51,7 +51,7 @@ def multilayer_pc_degree(mlgraph):
     return mpc
 
 
-def multilayer_pc_strength(mlgraph):
+def multilayer_pc_strength(mlgraph: np.ndarray[np.float32]) -> np.ndarray[np.float32]:
     """ Multilayer Participation Coefficient (Strength)
 
 
@@ -86,7 +86,7 @@ def multilayer_pc_strength(mlgraph):
     return mpc
 
 
-def multilayer_pc_gamma(mlgraph):
+def multilayer_pc_gamma(mlgraph: np.ndarray[np.float32]) -> np.ndarray[np.float32]:
     """ Multilayer Participation Coefficient method from Guillon et al.
 
 

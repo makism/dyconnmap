@@ -31,7 +31,9 @@ import scipy
 from scipy.integrate import quad
 
 
-def im_distance(X, Y, bandwidth=1.0):
+def im_distance(
+    X: np.ndarray[np.float32], Y: np.ndarray[np.float32], bandwidth: float = 1.0
+) -> float:
     """
 
     Parameters
@@ -61,7 +63,6 @@ def im_distance(X, Y, bandwidth=1.0):
 
     w_b, _ = scipy.linalg.eig(l_mtx_b)
     w_b = np.sqrt(w_b)
-
 
     func1 = lambda x: _sum_lorentz_distribution(x, w_a, bandwidth)
     fnorm1 = lambda x: func1(x) / quad(func1, a=0.0, b=np.inf)[0]

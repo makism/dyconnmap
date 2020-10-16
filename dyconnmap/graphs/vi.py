@@ -35,7 +35,9 @@ import numpy as np
 from dyconnmap.ts.entropy import entropy
 
 
-def variation_information(indices_a, indices_b):
+def variation_information(
+    indices_a: np.ndarray[np.float32], indices_b: np.ndarray[np.float32]
+) -> float:
     """ Variation of Information
 
 
