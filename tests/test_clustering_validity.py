@@ -45,4 +45,4 @@ def test_clustering_validity_davies_bouldin():
     r = dyconnmap.cluster.davies_bouldin(data, labels)
 
     expected = np.load("data/test_cluster_validity_davies_bouldin.npy")
-    np.testing.assert_equal(r, expected)
+    np.testing.assert_almost_equal(r, expected)

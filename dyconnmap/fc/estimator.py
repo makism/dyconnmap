@@ -4,6 +4,8 @@
 """
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
+from typing import List, Tuple, Optional, Callable
+
 from abc import ABCMeta
 import numpy as np
 
@@ -22,26 +24,34 @@ class Estimator(object, metaclass=ABCMeta):
     dynfunconn.tvfcgs.tvfcgs_ts: Time-Varying Functional Connectivity Graphs (from time series)
     """
 
-    def __init__(self, fb=None, fs=None, pairs=None):
+    def __init__(
+        self, fb: float = None, fs: float = None, pairs: List[List[int]] = None
+    ):
         self.fs = fs
         self.fb = fb
         self.pairs = pairs
         self.data_type = np.float32
         self._skip_filter = fb is None and fs is None
 
-    def preprocess(self, data):
+    def preprocess(self, data: np.ndarray[np.float32]):
         """ Preprocess the data.
 
         """
         pass
 
-    def estimate(self, data, data_against=None):
+    def estimate(
+        self,
+        data: np.ndarray[np.float32],
+        data_against: Optional[np.ndarray[np.float32]] = None,
+    ):
         """ Estimate the connectivity within the given dataset.
 
         """
         pass
 
-    def estimate_pair(self, signal1, signal2):
+    def estimate_pair(
+        self, signal1: np.ndarray[np.float32], signal2: np.ndarray[np.float32]
+    ):
         """ Estimate the connectivity between two signals (time series).
 
         Notes
@@ -50,7 +60,7 @@ class Estimator(object, metaclass=ABCMeta):
         """
         pass
 
-    def mean(self, ts):
+    def mean(self, ts: np.ndarray[np.float32]):
         """ The function used to compute the mean synchronization in a timeseries.
 
         This is needed because some estimators produce complex (imaginary), and
@@ -65,7 +75,7 @@ class Estimator(object, metaclass=ABCMeta):
         """
         return np.mean(ts)
 
-    def prepare_pairs(self, rois, symmetric=False):
+    def prepare_pairs(self, rois: int, symmetric: bool = False):
         """ Prepares a list of indices of ROIs sourced in an estimator.
 
 
@@ -83,5 +93,7 @@ class Estimator(object, metaclass=ABCMeta):
                     (r1, r2) for r1 in range(rois) for r2 in range(r1, rois) if r1 != r2
                 ]
 
-    def typeCast(self, data, cast_type=np.float32):
+    def typeCast(
+        self, data: np.ndarray[np.float32], cast_type: Callable[...] = np.float32
+    ):
         return data.astype(cast_type)

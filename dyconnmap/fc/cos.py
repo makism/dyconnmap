@@ -5,12 +5,19 @@
 """
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
+from typiing import Optional, List
+
 from ..analytic_signal import analytic_signal
 
 import numpy as np
 
 
-def cos(data, fb=None, fs=None, pairs=None):
+def cos(
+    data: np.ndarray[np.float32],
+    fb: Optional[float] = None,
+    fs: Optional[float] = None,
+    pairs: Optional[List[List[int]]] = None,
+):
     """ Cosine
 
     Compute the correlation for the given :attr:`data`, between the :attr:`pairs` (if given)
