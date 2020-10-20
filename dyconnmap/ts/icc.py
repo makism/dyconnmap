@@ -33,7 +33,7 @@ def icc_31(X: np.ndarray[np.float32]) -> float:
         Intra-class correlation.
 
     """
-    _, k = np.shape(X)
+    _, k = np.shape(X)  # type: ignore
     _, ms, _, _ = _anova(X)
 
     BMS = ms[2]

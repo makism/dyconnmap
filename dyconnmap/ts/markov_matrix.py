@@ -5,7 +5,7 @@ Generation of markov matrix and some related state transition features.
 """
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
-from typing import Optional, Union
+from typing import Optional, Union, Tuple
 import numpy as np
 
 
@@ -85,12 +85,14 @@ def markov_matrix(
         mtx[curr_sym, next_sym] += 1
 
     mtx /= np.float32(len(symts))
+    mtx = mtx.astype(np.float32)
 
     return mtx
 
 
 def transition_rate(
-    symts: np.ndarray[np.int32], weight: Optional[np.ndarray[np.float32]] = None
+    symts: np.ndarray[np.int32],
+    weight: Optional[Union[np.float32, np.ndarray[np.float32]]] = None,
 ) -> float:
     """ Transition Rate
 
@@ -122,14 +124,16 @@ def transition_rate(
         if curr_sym != next_sym:
             TR += 1.0
 
-    return TR / weight
+    weighted_tr = np.float32(TR / weight)
+
+    return weighted_tr
 
 
 def occupancy_time(
     symts: np.ndarray[np.int32],
     symbol_states: np.int32 = None,
-    weight: Optional[np.float32] = None,
-) -> Union[np.ndarray[np.float32], np.ndarray[np.int32]]:
+    weight: Optional[Union[np.float32, np.ndarray[np.float32]]] = None,
+) -> Tuple[np.float32, np.ndarray[np.int32]]:
     """ Occupancy Time
 
 
@@ -157,9 +161,9 @@ def occupancy_time(
     symbols = np.unique(symts)
 
     if symbol_states is None:
-        oc = np.zeros((len(symbols)))
+        oc = np.zeros((len(symbols)), dtype=np.float32)
     else:
-        oc = np.zeros((symbol_states))
+        oc = np.zeros((symbol_states), dtype=np.float32)
     l = len(symts)
 
     if weight is None:
@@ -172,6 +176,7 @@ def occupancy_time(
         if curr_sym == next_sym:
             oc[curr_sym] += 1
 
-    oc /= weight
+    weighted_oc = np.float32(oc / weight)
+    # oc /= weight
 
-    return oc, symbols
+    return weighted_oc, symbols

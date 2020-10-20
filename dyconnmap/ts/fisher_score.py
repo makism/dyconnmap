@@ -15,7 +15,9 @@
 import numpy as np
 
 
-def fisher_score(x: np.ndarray[np.float32], y: np.ndarray[np.float32]) -> float:
+def fisher_score(
+    x: np.ndarray[np.float32], y: np.ndarray[np.float32]
+) -> np.ndarray[np.float32]:
     """
 
     Parameters
@@ -34,6 +36,7 @@ def fisher_score(x: np.ndarray[np.float32], y: np.ndarray[np.float32]) -> float:
     if lx != ly:
         raise Exception("")
 
-    fsc = np.abs(np.mean(x) - np.mean(y)) / np.sqrt(np.var(x) + np.var(y))
+    fsc = np.abs(np.mean(x) - np.mean(y))  # type: ignore
+    fsc /= np.sqrt(np.var(x) + np.var(y))  # type: ignore
 
     return fsc

@@ -66,7 +66,7 @@ def embed_delay(
 
     for i in range(1, dim):
         offset = i - 1
-        tmp = np.roll(new_ts[offset], l - tau)
+        tmp = np.roll(new_ts[offset], l - tau)  # type: ignore
         new_ts[i] = tmp
     new_ts = new_ts.T
 
