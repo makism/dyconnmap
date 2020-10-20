@@ -20,15 +20,20 @@ Notes
 """
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
+from typing import Tuple, Optional, List, Union
+
 import numpy as np
 
 
 def complexity_index(
-    x: np.ndarray([np.float32]),
+    x: np.ndarray[np.int32],
     sub_len: int = -1,
     normalize: bool = False,
     iterations: int = 100,
-) -> float:
+) -> Union[
+    Tuple[np.float32, np.ndarray[np.int32]],
+    Tuple[np.float32, np.float32, np.ndarray[np.int32]],
+]:
     """ Complexity Index
 
 
@@ -60,7 +65,7 @@ def complexity_index(
         A list of the number of distinct subwords of length 1, up to the size
         of the input symbolic time series.
     """
-    x = np.int32(x)
+    x = x.cast_to(np.int32)
     x = x.flatten()
     len_x = len(x)
 
@@ -73,11 +78,11 @@ def complexity_index(
         num_letters = spectrum[0]
 
         for _ in range(iterations):
-            new_x = np.int32(np.floor(rng.rand(len_x) * num_letters))
+            new_x = np.int32(np.floor(rng.rand(len_x) * num_letters))  # type: ignore
             new_ci, _ = __compute_complexity_index(new_x, sub_len)
             mean_ci += new_ci / iterations
 
-        normal_ci = ci / mean_ci
+        normal_ci = np.float32(ci / mean_ci)
 
         return normal_ci, ci, spectrum
 
@@ -85,7 +90,9 @@ def complexity_index(
         return ci, spectrum
 
 
-def __compute_complexity_index(x, sub_len=-1):
+def __compute_complexity_index(
+    x, sub_len=-1
+) -> Tuple[np.float32, np.ndarray[np.int32]]:
     """ Complexity Index
 
 
@@ -109,7 +116,7 @@ def __compute_complexity_index(x, sub_len=-1):
     """
     ci = 0.0
 
-    x = np.int32(x)
+    x = x.cast_to(np.int32)
     x = x.flatten()
 
     len_x = len(x)
@@ -122,9 +129,9 @@ def __compute_complexity_index(x, sub_len=-1):
     x = x - min_x
 
     letters = np.unique(x)
-    max_len_word = np.min([max_subword_len, len_x - 1])
+    max_len_word = np.min([max_subword_len, len_x - 1])  # type: ignore
 
-    spectrum = np.ones((max_len_word))
+    spectrum = np.ones((max_len_word), dtype=np.int32)
     spectrum[0] = len(letters)
 
     all_num_words = list()
@@ -147,20 +154,20 @@ def __compute_complexity_index(x, sub_len=-1):
                 else:
                     cumulative_words = np.hstack([cumulative_words, words])
 
-        conv_cumulative_words = __rowsBaseConv(cumulative_words.T)
+        conv_cumulative_words = __rowsBaseConv(cumulative_words.T)  # type: ignore
         u_cumulative_words = np.unique(conv_cumulative_words)
 
         spectrum[word_len] = len(u_cumulative_words)
         cumulative_words = None
 
-    ci = np.sum(spectrum)
+    ci = np.float32(np.sum(spectrum))
 
     all_num_words = np.array(all_num_words).flatten()
 
     return ci, spectrum
 
 
-def __rowsBaseConv(x, base=None):
+def __rowsBaseConv(x: np.ndarray[np.int32], base: int = None) -> np.ndarray[np.float32]:
     """
 
     Parameters
@@ -178,12 +185,12 @@ def __rowsBaseConv(x, base=None):
     if base is None:
         base = np.max(x) + 1
 
-    _, p = np.shape(x)
+    _, p = np.shape(x)  # type: ignore
 
     bases = np.ones(p) * base
     indices = list(range(p - 1, -1, -1))
-    base = np.power(bases, indices)
+    base = np.power(bases, indices)  # type: ignore
 
-    result = x.dot(base)
+    result = x.dot(base).astype(np.float32)  # type: ignore
 
     return result
