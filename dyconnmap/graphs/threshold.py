@@ -526,10 +526,7 @@ def threshold_omst_global_cost_efficiency(mtx, n_msts=None):
 
 
 def threshold_eco(mtx):
-    """ Eco(nomical) Filtering
-
-    .. [Fallani2017] Fallani, F. D. V., Latora, V., & Chavez, M. (2017). A topological criterion for filtering information in complex brain networks. PLoS computational biology, 13(1), e1005305.
-
+    """
     """
     m, _ = np.shape(mtx)
 
