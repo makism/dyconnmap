@@ -28,28 +28,49 @@ class Modality(IntEnum):
     MEG = 4
 
 
-class SlidingWindow:
+@dataclass
+class DynamicWindow(ABC):
+    """Base dynamic window class."""
+
+    samples: int
+    rois: int
+    slides: int = field(init=False)
+    window_length: int
+    pairs: Optional[List[Tuple[int, int, int]]] = field(default=None)
+
+    @abstractmethod
+    def __post_init__(self):
+        ...
+
+    @abstractmethod
+    def __iter__(self):
+        ...
+
+
+@dataclass
+class SlidingWindow(DynamicWindow):
     """Sliding Window."""
 
-    def __init__(self, n_samples: int = 128, window_length: int = 10, step: int = 1):
-        self.window_length: int = window_length
-        self.step: int = step
-        self.n_slides: int = np.int32(np.ceil((n_samples - window_length) / step + 1.0))
-        self.n_rois: int = 32
+    step: int = field(init=True, default=10)
 
-        self.pairs: List[Tuple[int, int, int]] = [
-            (
-                win_id,
-                np.int32(win_id * step),
-                np.int32(win_id * step + self.window_length),
-                # c1,
-                # c2,
-            )
-            for win_id in range(self.n_slides)
-            # for c1 in range(0, self.n_rois)
-            # for c2 in range(c1, self.n_rois)
-            # if c1 != c2
-        ]
+    def __post_init__(self):
+        self.samples = 128
+        self.rois = 32
+        self.window_length = 10
+        self.step = 1
+        self.slides = np.int32(
+            np.ceil((self.samples - self.window_length) / self.step + 1.0)
+        )
+
+        if self.pairs is None:
+            self.pairs = [
+                (
+                    win_id,
+                    np.int32(win_id * self.step),
+                    np.int32(win_id * self.step + self.window_length),
+                )
+                for win_id in range(self.slides)
+            ]
 
     def __iter__(self):
         return iter(self.pairs)
@@ -61,38 +82,42 @@ class Estimator(ABC):
 
     dtype: np.dtype = field(default=np.float32)
 
-    n_jobs: int = field(
+    jobs: int = field(
         default=multiprocessing.cpu_count(),
         repr=True,
         metadata={"description": "Number of parallel jobs."},
     )
 
     def __post_init__(self):
-        if self.n_jobs <= 0:
-            self.n_jobs = 1
+        if self.jobs <= 0:
+            self.jobs = 1
 
     @abstractmethod
     def estimate(self, data: np.ndarray, **kwargs) -> np.ndarray:
+        """Estimator method; all subclasses must implement this."""
         ...
 
-    @abstractmethod
-    def estimate_pair(
-        self, data: np.ndarray, against: np.ndarray, **kwargs
+    def estimate_for_slides(
+        self, data: np.ndarray, pairs: List[Tuple[int, int]], **kwargs
     ) -> np.ndarray:
-        ...
+        for window_id, slice_start, slice_end in pairs:
+            tmp = self.estimate(data[:, slice_start:slice_end], **kwargs)
 
-    def __call__(self, dataset: "Dataset", window: Optional["SlidingWindow"] = None):
+    def __call__(self, dataset: "Dataset", window: Optional["DynamicWindow"] = None):
+        pairs = None
+
         if window is None:
-            results = Parallel(n_jobs=self.n_jobs)(
-                delayed(self.estimate)(dataset.data[index, :, :], subject_index=index)
-                for index in np.arange(dataset.subjects)
-            )
-
-            return results
-
+            cb_func = self.estimate
         else:
-            for pair in window:
-                slide_id, slice_start, slice_end = pair
+            cb_func = self.estimate_for_slides
+            pairs = list(window)
+
+        results = Parallel(n_jobs=self.jobs)(
+            delayed(cb_func)(
+                dataset.data[index, :, :], pairs=pairs, subject_index=index
+            )
+            for index in np.arange(dataset.subjects)
+        )
 
 
 class Correlation(Estimator):
@@ -105,12 +130,6 @@ class Correlation(Estimator):
     def estimate(self, data: np.ndarray, **kwargs) -> np.ndarray:
         result = np.corrcoef(data)
         return {"index": kwargs["subject_index"], "result": result}
-
-    def estimate_pair(
-        self, data: np.ndarray, against: np.ndarray, **kwargs
-    ) -> np.ndarray:
-        r = np.corrcoef(data, against)[0, 1]
-        return r
 
 
 @dataclass(init=True, repr=True, eq=False, order=False, unsafe_hash=False, frozen=False)
@@ -164,16 +183,19 @@ class Dataset:
         return self
 
     def __getitem__(self, index: int) -> Optional[np.ndarray]:
+        """Fetch the subject's data specified by `index`."""
         if index > self.subjects:
             raise IndexError("Index out of boundaries.")
 
         return self.data[index, :, :]
 
     def to_json(fname: str) -> bool:
+        """Write the Dataset to a json file."""
         with open("dataset1.json", "w") as fp:
             json.dump(ds, fp, cls=DatasetEncoder, indent=4)
 
     def from_json(fname: str) -> "Dataset":
+        """Load Dataset from a json file."""
         pass
 
 
@@ -191,18 +213,6 @@ class DatasetEncoder(json.JSONEncoder):
 if __name__ == "__main__":
     rng = np.random.RandomState(0)
 
-    ss = SlidingWindow()
-
-    for pair in ss:
-        # slide_id, start, end, roi1, roi2 = pair
-        slide_id, start, end = pair
-
-        print(pair)
-
-    import sys
-
-    sys.exit(0)
-
     n_subjects = 10
     n_rois = 32
     n_samples = 128
@@ -213,10 +223,14 @@ if __name__ == "__main__":
 
     ds = Dataset(data, modality=Modality.fMRI, tr=1.5)
     ds.labels = ["a", "b"]
+    print(ds)
 
     ds += data2
 
+    sw = SlidingWindow(step=10, samples=128, rois=32, window_length=10)
+    print(sw)
+
     conn = Correlation()
-    conn(ds, ss)
+    conn(ds, sw)
 
     print(conn)
