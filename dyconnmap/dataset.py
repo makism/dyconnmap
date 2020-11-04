@@ -8,14 +8,17 @@ module.
 from dataclasses import dataclass, field
 import multiprocessing
 from joblib import Parallel, delayed
-
 import numpy as np
 from enum import IntEnum
-from typing import List, Type, Union, Optional, Tuple
-
+from typing import List, Type, Union, Optional, Tuple, Dict
 from abc import ABC, abstractmethod
-
 import json
+import itertools
+
+import sys
+
+sys.path.append("/home/makism/Github/dyconnmap-feature_dataset/")
+from dyconnmap import analytic_signal
 
 
 class Modality(IntEnum):
@@ -36,7 +39,12 @@ class DynamicWindow(ABC):
     rois: int
     slides: int = field(init=False)
     window_length: int
-    pairs: Optional[List[Tuple[int, int, int]]] = field(default=None)
+    pairs: Optional[List[Tuple[int, int, int]]] = field(
+        default=None,
+        metadata={
+            "description": "The timing pairs, in which the estimator with will fed with."
+        },
+    )
 
     @abstractmethod
     def __post_init__(self):
@@ -82,6 +90,8 @@ class Estimator(ABC):
 
     dtype: np.dtype = field(default=np.float32)
 
+    requires_preprocessing: bool = field(default=False)
+
     jobs: int = field(
         default=multiprocessing.cpu_count(),
         repr=True,
@@ -91,6 +101,9 @@ class Estimator(ABC):
     def __post_init__(self):
         if self.jobs <= 0:
             self.jobs = 1
+
+    def preprocess(self, data: np.ndarray, **kwargs) -> np.ndarray:
+        ...
 
     @abstractmethod
     def estimate(self, data: np.ndarray, **kwargs) -> np.ndarray:
@@ -105,6 +118,9 @@ class Estimator(ABC):
 
     def __call__(self, dataset: "Dataset", window: Optional["DynamicWindow"] = None):
         pairs = None
+        ts = dataset.data
+        if self.requires_preprocessing:
+            ts = self.preprocess(ts)
 
         if window is None:
             cb_func = self.estimate
@@ -114,10 +130,43 @@ class Estimator(ABC):
 
         results = Parallel(n_jobs=self.jobs)(
             delayed(cb_func)(
-                dataset.data[index, :, :], pairs=pairs, subject_index=index
+                ts[index, :, :], pairs=pairs, subject_index=index, **dataset.settings()
             )
             for index in np.arange(dataset.subjects)
         )
+
+
+class PhaseLockingValue(Estimator):
+    """Phase Locking Value (PLV)."""
+
+    def __init__(self):
+        super()
+        self.dtype = np.complex
+        self.requires_preprocessing = True
+
+    def preprocess(self, data: np.ndarray, **kwargs) -> np.ndarray:
+        _, u_phases = analytic_signal(data)
+
+        return u_phases
+
+    def estimate(self, data: np.ndarray, **kwargs) -> np.ndarray:
+        rois = kwargs["rois"]
+        samples = kwargs["samples"]
+
+        tmp = list(range(rois))
+        rois_pairs = list(itertools.product(*[tmp, tmp]))
+
+        ts = np.zeros((rois, rois, samples), dtype=np.complex)
+        avg = np.zeros((rois, rois))
+
+        for pair in rois_pairs:
+            u_phases1, u_phases2 = data[pair,]
+            ts_plv = np.exp(1j * (u_phases1 - u_phases2))
+            avg_plv = np.abs(np.sum((ts_plv))) / float(n_samples)
+            ts[pair] = ts_plv
+            avg[pair] = avg_plv
+
+        return np.abs(np.sum(ts)) / samples
 
 
 class Correlation(Estimator):
@@ -189,12 +238,23 @@ class Dataset:
 
         return self.data[index, :, :]
 
-    def to_json(fname: str) -> bool:
-        """Write the Dataset to a json file."""
-        with open("dataset1.json", "w") as fp:
-            json.dump(ds, fp, cls=DatasetEncoder, indent=4)
+    def settings(self) -> Dict[str, int]:
+        """Return a dictionary containing important metadata about the Dataset; number of subjects, samples, etc.."""
+        return {"subjects": self.subjects, "samples": self.samples, "rois": self.rois}
 
-    def from_json(fname: str) -> "Dataset":
+    def to_json(self, fname: str) -> Optional[bool]:
+        """Write the Dataset to a json file."""
+        try:
+            with open("dataset1.json", "w") as fp:
+                json.dump(ds, fp, cls=DatasetEncoder, indent=4)
+        except Exception as err:
+            print(err)
+            return False
+
+        return True
+
+    @classmethod
+    def from_json(cls, fname: str) -> "Dataset":
         """Load Dataset from a json file."""
         pass
 
@@ -225,12 +285,15 @@ if __name__ == "__main__":
     ds.labels = ["a", "b"]
     print(ds)
 
-    ds += data2
+    # ds += data2
 
-    sw = SlidingWindow(step=10, samples=128, rois=32, window_length=10)
-    print(sw)
+    # sw = SlidingWindow(step=10, samples=128, rois=32, window_length=10)
+    # print(sw)
 
-    conn = Correlation()
-    conn(ds, sw)
+    # conn = Correlation()
+    # conn(ds)
+
+    conn = PhaseLockingValue()
+    conn(ds)
 
     print(conn)
