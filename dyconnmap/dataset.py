@@ -23,7 +23,7 @@ class Modality(IntEnum):
 
     Any = 0
     Raw = 1
-    fMRI = 2
+    FMRI = 2
     EEG = 3
     MEG = 4
 
@@ -148,7 +148,7 @@ class Dataset:
     labels: List[str] = field(init=True, default_factory=list, repr=True)
 
     tr: float = field(
-        default=None, metadata={"unit": "Seconds", "modality": [Modality.fMRI]}
+        default=None, metadata={"unit": "Seconds", "modality": [Modality.FMRI]}
     )
     fs: float = field(
         default=None,
@@ -221,7 +221,7 @@ if __name__ == "__main__":
     data = rng.rand(n_rois, n_samples)
     data2 = rng.rand(n_rois, n_samples)
 
-    ds = Dataset(data, modality=Modality.fMRI, tr=1.5)
+    ds = Dataset(data, modality=Modality.FMRI, tr=1.5)
     ds.labels = ["a", "b"]
     print(ds)
 
