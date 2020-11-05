@@ -19,6 +19,7 @@ import sys
 
 sys.path.append("/home/makism/Github/dyconnmap-feature_dataset/")
 from dyconnmap import analytic_signal
+from dyconnmap.fc import plv_fast
 
 
 class Modality(IntEnum):
@@ -92,6 +93,20 @@ class Estimator(ABC):
 
     requires_preprocessing: bool = field(default=False)
 
+    est_ts: Optional[np.ndarray] = field(
+        init=False,
+        default=None,
+        metadata={
+            "description": "The estimated time series after invoking the estimator; some methods are not able to produce these intermediate time series (i.e. correlation)."
+        },
+    )
+
+    est_avg: Optional[np.ndarray] = field(
+        init=False,
+        default=None,
+        metadata={"description": "The resulting connectivity matrices."},
+    )
+
     jobs: int = field(
         default=multiprocessing.cpu_count(),
         repr=True,
@@ -119,6 +134,7 @@ class Estimator(ABC):
     def __call__(self, dataset: "Dataset", window: Optional["DynamicWindow"] = None):
         pairs = None
         ts = dataset.data
+
         if self.requires_preprocessing:
             ts = self.preprocess(ts)
 
@@ -128,12 +144,23 @@ class Estimator(ABC):
             cb_func = self.estimate_for_slides
             pairs = list(window)
 
-        results = Parallel(n_jobs=self.jobs)(
-            delayed(cb_func)(
-                ts[index, :, :], pairs=pairs, subject_index=index, **dataset.settings()
+        results = None
+        if dataset.subjects == 1:
+            results = cb_func(
+                ts[0, :, :], pairs=pairs, subject_index=0, **dataset.settings()
             )
-            for index in np.arange(dataset.subjects)
-        )
+        else:
+            results = Parallel(n_jobs=self.jobs)(
+                delayed(cb_func)(
+                    ts[index, :, :],
+                    pairs=pairs,
+                    subject_index=index,
+                    **dataset.settings()
+                )
+                for index in np.arange(dataset.subjects)
+            )
+
+        return results
 
 
 class PhaseLockingValue(Estimator):
@@ -145,6 +172,7 @@ class PhaseLockingValue(Estimator):
         self.requires_preprocessing = True
 
     def preprocess(self, data: np.ndarray, **kwargs) -> np.ndarray:
+        # super().preprocess(data, **kwargs)
         _, u_phases = analytic_signal(data)
 
         return u_phases
@@ -153,6 +181,7 @@ class PhaseLockingValue(Estimator):
         rois = kwargs["rois"]
         samples = kwargs["samples"]
 
+        # Cartesian product of all ROIs.
         tmp = list(range(rois))
         rois_pairs = list(itertools.product(*[tmp, tmp]))
 
@@ -163,10 +192,11 @@ class PhaseLockingValue(Estimator):
             u_phases1, u_phases2 = data[pair,]
             ts_plv = np.exp(1j * (u_phases1 - u_phases2))
             avg_plv = np.abs(np.sum((ts_plv))) / float(n_samples)
+
             ts[pair] = ts_plv
             avg[pair] = avg_plv
 
-        return np.abs(np.sum(ts)) / samples
+        return avg
 
 
 class Correlation(Estimator):
@@ -274,7 +304,7 @@ if __name__ == "__main__":
     rng = np.random.RandomState(0)
 
     n_subjects = 10
-    n_rois = 32
+    n_rois = 4
     n_samples = 128
 
     data = rng.rand(n_subjects, n_rois, n_samples)
@@ -283,9 +313,8 @@ if __name__ == "__main__":
 
     ds = Dataset(data, modality=Modality.FMRI, tr=1.5)
     ds.labels = ["a", "b"]
+    ds += data2
     print(ds)
-
-    # ds += data2
 
     # sw = SlidingWindow(step=10, samples=128, rois=32, window_length=10)
     # print(sw)
@@ -294,6 +323,15 @@ if __name__ == "__main__":
     # conn(ds)
 
     conn = PhaseLockingValue()
+    print(conn)
+
     conn(ds)
 
-    print(conn)
+    # Check if our new class yields the same results as the previous `plv_fast`.
+    result = conn(ds)[0]
+    legacy_plv = np.asarray(plv_fast(data))
+
+    result = np.float32(result)
+    legacy_plv = np.float32(legacy_plv)
+
+    np.testing.assert_array_equal(legacy_plv, result)
