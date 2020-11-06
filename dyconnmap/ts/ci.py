@@ -26,13 +26,13 @@ import numpy as np
 
 
 def complexity_index(
-    x: np.ndarray[np.int32],
+    x: "np.ndarray[np.int32]",
     sub_len: int = -1,
     normalize: bool = False,
     iterations: int = 100,
 ) -> Union[
-    Tuple[np.float32, np.ndarray[np.int32]],
-    Tuple[np.float32, np.float32, np.ndarray[np.int32]],
+    Tuple[np.float32, "np.ndarray[np.int32]"],
+    Tuple[np.float32, np.float32, "np.ndarray[np.int32]"],
 ]:
     """ Complexity Index
 
@@ -65,7 +65,7 @@ def complexity_index(
         A list of the number of distinct subwords of length 1, up to the size
         of the input symbolic time series.
     """
-    x = x.cast_to(np.int32)
+    x = x.astype(np.int32)
     x = x.flatten()
     len_x = len(x)
 
@@ -92,7 +92,7 @@ def complexity_index(
 
 def __compute_complexity_index(
     x, sub_len=-1
-) -> Tuple[np.float32, np.ndarray[np.int32]]:
+) -> Tuple[np.float32, "np.ndarray[np.int32]"]:
     """ Complexity Index
 
 
@@ -116,8 +116,8 @@ def __compute_complexity_index(
     """
     ci = 0.0
 
-    x = x.cast_to(np.int32)
-    x = x.flatten()
+    # x = x.astype(np.int32)
+    # x = x.flatten()
 
     len_x = len(x)
 
@@ -167,7 +167,9 @@ def __compute_complexity_index(
     return ci, spectrum
 
 
-def __rowsBaseConv(x: np.ndarray[np.int32], base: int = None) -> np.ndarray[np.float32]:
+def __rowsBaseConv(
+    x: "np.ndarray[np.int32]", base: int = None
+) -> "np.ndarray[np.float64]":
     """
 
     Parameters
@@ -191,6 +193,6 @@ def __rowsBaseConv(x: np.ndarray[np.int32], base: int = None) -> np.ndarray[np.f
     indices = list(range(p - 1, -1, -1))
     base = np.power(bases, indices)  # type: ignore
 
-    result = x.dot(base).astype(np.float32)  # type: ignore
+    result = x.dot(base).astype(np.float64)  # type: ignore
 
     return result

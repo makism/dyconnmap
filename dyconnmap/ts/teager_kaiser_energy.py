@@ -9,7 +9,7 @@ ref: https://www.c-motion.com/v3dwiki/index.php/Teager_Kaiser_Energy
 import numpy as np
 
 
-def teager_kaiser_energy(ts: np.ndarray[np.float32]) -> np.ndarray[np.float32]:
+def teager_kaiser_energy(ts: "np.ndarray[np.float32]") -> "np.ndarray[np.float32]":
     """ Teager Kaiser Energy
 
 

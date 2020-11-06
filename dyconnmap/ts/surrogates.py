@@ -12,15 +12,15 @@ import numbers
 
 
 def surrogate_analysis(
-    ts1: np.ndarray[np.float32],
-    ts2: np.ndarray[np.float32],
+    ts1: "np.ndarray[np.float32]",
+    ts2: "np.ndarray[np.float32]",
     num_surr: int = 1000,
     estimator_func: Optional[
-        Callable[[np.ndarray[np.float32], np.ndarray[np.float32]], float]
+        Callable[["np.ndarray[np.float32]", "np.ndarray[np.float32]"], float]
     ] = None,
     ts1_no_surr: bool = False,
     rng: Optional[np.random.RandomState] = None,
-) -> Tuple[float, np.ndarray[np.int32], np.ndarray[np.float32], float]:
+) -> Tuple[float, "np.ndarray[np.int32]", "np.ndarray[np.float32]", float]:
     """ Surrogate Analysis
 
 
@@ -103,10 +103,10 @@ def surrogate_analysis(
 
 
 def aaft(
-    ts: np.ndarray[np.float32],
+    ts: "np.ndarray[np.float32]",
     num_surr: int = 1,
     rng: Optional[np.random.RandomState] = None,
-) -> np.ndarray[np.float32]:
+) -> "np.ndarray[np.float32]":
     """ Amplitude Adjusted Fourier Transform
 
 
@@ -148,7 +148,7 @@ def aaft(
 
 
 def fdr(
-    p_values: np.ndarray[np.float32], q: float = 0.01, method: str = "pdep"
+    p_values: "np.ndarray[np.float32]", q: float = 0.01, method: str = "pdep"
 ) -> Tuple[bool, float]:
     """ False Discovery Rate
 
@@ -199,7 +199,7 @@ def fdr(
 
 def phase_rand(
     data, num_surr: int = 1, rng: Optional[np.random.RandomState] = None
-) -> np.ndarray[np.float32]:
+) -> "np.ndarray[np.float32]":
     """ Phase-randomized suggorates
 
 

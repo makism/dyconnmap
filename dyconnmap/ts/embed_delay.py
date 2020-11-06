@@ -31,8 +31,8 @@ import numpy as np
 
 
 def embed_delay(
-    ts: np.ndarray[np.float32], dim: int, tau: int
-) -> Optional[np.ndarray[np.float32]]:
+    ts: "np.ndarray[np.float32]", dim: int, tau: int
+) -> Optional["np.ndarray[np.float32]"]:
     """ Embed delay
 
 

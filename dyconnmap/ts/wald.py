@@ -12,7 +12,7 @@ from sklearn import metrics
 
 
 def wald(
-    x: np.ndarray[np.float32], y: np.ndarray[np.float32]
+    x: np.ndarray, y: np.ndarray
 ) -> Tuple[float, float, List[List[int]], List[List[float]]]:
     """
 

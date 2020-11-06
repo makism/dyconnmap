@@ -7,7 +7,7 @@
 import numpy as np
 
 
-def entropy(x: np.ndarray[np.float32]) -> float:
+def entropy(x: "np.ndarray[np.float32]") -> float:
     """ Entropy
 
     Parameters
@@ -29,6 +29,6 @@ def entropy(x: np.ndarray[np.float32]) -> float:
 
     v = 0.0
     for i in range(len_counts):
-        v = (counts[i] / l) * np.log10(counts[i] / l)
+        v += float(counts[i] / l) * np.log10(counts[i] / l)
 
     return v

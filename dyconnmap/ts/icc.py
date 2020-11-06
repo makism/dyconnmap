@@ -17,7 +17,7 @@ import numpy as np
 import scipy
 
 
-def icc_31(X: np.ndarray[np.float32]) -> float:
+def icc_31(X: "np.ndarray[np.float32]") -> float:
     """ ICC (3,1)
 
 

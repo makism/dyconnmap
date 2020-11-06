@@ -10,8 +10,8 @@ import numpy as np
 
 
 def markov_matrix(
-    symts: np.ndarray[np.int32], states_from_length: bool = True
-) -> np.ndarray[np.float32]:
+    symts: "np.ndarray[np.int32]", states_from_length: bool = True
+) -> "np.ndarray[np.float32]":
     """ Markov Matrix
 
     Markov matrix (also refered as "transition matrix") is a square matrix that tabulates
@@ -85,14 +85,14 @@ def markov_matrix(
         mtx[curr_sym, next_sym] += 1
 
     mtx /= np.float32(len(symts))
-    mtx = mtx.astype(np.float32)
+    # mtx = mtx.astype(np.float32)
 
     return mtx
 
 
 def transition_rate(
-    symts: np.ndarray[np.int32],
-    weight: Optional[Union[np.float32, np.ndarray[np.float32]]] = None,
+    symts: "np.ndarray[np.int32]",
+    weight: Optional[Union[np.float32, "np.ndarray[np.float32]"]] = None,
 ) -> float:
     """ Transition Rate
 
@@ -124,16 +124,16 @@ def transition_rate(
         if curr_sym != next_sym:
             TR += 1.0
 
-    weighted_tr = np.float32(TR / weight)
+    weighted_tr = np.float64(TR / weight)
 
     return weighted_tr
 
 
 def occupancy_time(
-    symts: np.ndarray[np.int32],
+    symts: "np.ndarray[np.int32]",
     symbol_states: np.int32 = None,
-    weight: Optional[Union[np.float32, np.ndarray[np.float32]]] = None,
-) -> Tuple[np.float32, np.ndarray[np.int32]]:
+    weight: Optional[Union[np.float32, "np.ndarray[np.float32]"]] = None,
+) -> Tuple[np.float64, "np.ndarray[np.int32]"]:
     """ Occupancy Time
 
 
@@ -176,7 +176,7 @@ def occupancy_time(
         if curr_sym == next_sym:
             oc[curr_sym] += 1
 
-    weighted_oc = np.float32(oc / weight)
+    weighted_oc = np.float64(oc / weight)
     # oc /= weight
 
     return weighted_oc, symbols

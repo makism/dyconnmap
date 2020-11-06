@@ -24,8 +24,8 @@ from .embed_delay import embed_delay
 
 
 def ordinal_pattern_similarity(
-    signal1: np.ndarray[np.int32], signal2: np.ndarray[np.int32], m: int, tau: int
-) -> Tuple[float, np.ndarray[np.int32], np.ndarray[np.float32]]:
+    signal1: "np.ndarray[np.int32]", signal2: "np.ndarray[np.int32]", m: int, tau: int
+) -> Tuple[float, "np.ndarray[np.int32]", "np.ndarray[np.float32]"]:
     """ Ordinal Pattern Similarity
 
 

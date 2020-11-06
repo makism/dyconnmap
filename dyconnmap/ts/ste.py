@@ -9,7 +9,7 @@ from typing import Tuple
 import numpy as np
 
 
-def entropy_reduction_rate(sym_ts: np.ndarray[np.float32]) -> float:
+def entropy_reduction_rate(sym_ts: "np.ndarray[np.float32]") -> float:
     """ Entropy Reduction Rate
 
 
@@ -79,8 +79,8 @@ def entropy_reduction_rate(sym_ts: np.ndarray[np.float32]) -> float:
 
 
 def symoblic_transfer_entropy(
-    x: np.ndarray[np.int32],
-    y: np.ndarray[np.int32],
+    x: "np.ndarray[np.int32]",
+    y: "np.ndarray[np.int32]",
     s: int = 1,
     delay: int = 0,
     verbose: bool = False,

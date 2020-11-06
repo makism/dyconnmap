@@ -11,7 +11,7 @@ import numpy as np
 from scipy.spatial.distance import pdist, squareform  # type: ignore
 
 
-def dcorr(x: np.ndarray[np.float32], y: np.ndarray[np.float32]) -> float:
+def dcorr(x: np.ndarray, y: np.ndarray) -> float:
     """ Distance Correlation
 
 

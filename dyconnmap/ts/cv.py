@@ -8,7 +8,7 @@ import typing
 import numpy as np
 
 
-def cv(x: np.ndarray[np.float32]) -> float:
+def cv(x: np.ndarray) -> float:
     """ Coefficient of Variation
 
     Parameters

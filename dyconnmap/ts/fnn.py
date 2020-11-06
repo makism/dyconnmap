@@ -17,7 +17,7 @@ import numpy as np
 
 
 def fnn(
-    ts: np.ndarray[np.float32],
+    ts: "np.ndarray[np.float32]",
     tau: int,
     max_dim: int = 20,
     neighbors_reduction: float = 0.10,
