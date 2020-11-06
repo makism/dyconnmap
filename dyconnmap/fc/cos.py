@@ -5,7 +5,7 @@
 """
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
-from typiing import Optional, List
+from typing import Optional, List, Type
 
 from ..analytic_signal import analytic_signal
 
@@ -13,7 +13,7 @@ import numpy as np
 
 
 def cos(
-    data: np.ndarray[np.float32],
+    data: np.ndarray,
     fb: Optional[float] = None,
     fs: Optional[float] = None,
     pairs: Optional[List[List[int]]] = None,

@@ -33,25 +33,19 @@ class Estimator(object, metaclass=ABCMeta):
         self.data_type = np.float32
         self._skip_filter = fb is None and fs is None
 
-    def preprocess(self, data: np.ndarray[np.float32]):
+    def preprocess(self, data: np.ndarray):
         """ Preprocess the data.
 
         """
         pass
 
-    def estimate(
-        self,
-        data: np.ndarray[np.float32],
-        data_against: Optional[np.ndarray[np.float32]] = None,
-    ):
+    def estimate(self, data: np.ndarray, data_against: Optional[np.ndarray] = None):
         """ Estimate the connectivity within the given dataset.
 
         """
         pass
 
-    def estimate_pair(
-        self, signal1: np.ndarray[np.float32], signal2: np.ndarray[np.float32]
-    ):
+    def estimate_pair(self, signal1: np.ndarray, signal2: np.ndarray):
         """ Estimate the connectivity between two signals (time series).
 
         Notes
@@ -60,7 +54,7 @@ class Estimator(object, metaclass=ABCMeta):
         """
         pass
 
-    def mean(self, ts: np.ndarray[np.float32]):
+    def mean(self, ts: np.ndarray):
         """ The function used to compute the mean synchronization in a timeseries.
 
         This is needed because some estimators produce complex (imaginary), and
@@ -93,7 +87,5 @@ class Estimator(object, metaclass=ABCMeta):
                     (r1, r2) for r1 in range(rois) for r2 in range(r1, rois) if r1 != r2
                 ]
 
-    def typeCast(
-        self, data: np.ndarray[np.float32], cast_type: Callable[...] = np.float32
-    ):
+    def typeCast(self, data: np.ndarray, cast_type: np.dtype):
         return data.astype(cast_type)
