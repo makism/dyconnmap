@@ -38,7 +38,7 @@ from .vi import __unique_symbols
 
 
 def mutual_information(
-    indices_a: np.ndarray[np.int32], indices_b: np.ndarray[np.int32]
+    indices_a: np.ndarray, indices_b: np.ndarray
 ) -> Tuple[float, float]:
     """ Mutual Information
 

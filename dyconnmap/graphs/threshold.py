@@ -22,9 +22,7 @@ import networkx as nx
 import bct
 
 
-def k_core_decomposition(
-    mtx: np.ndarray[np.float32], threshold: float
-) -> np.ndarray[np.int32]:
+def k_core_decomposition(mtx: np.ndarray, threshold: float) -> np.ndarray:
     """ Threshold a binary graph based on the detected k-cores.
 
     .. [Alvarez2006] Alvarez-Hamelin, J. I., Dall'Asta, L., Barrat, A., & Vespignani, A. (2006). Large scale networks fingerprinting and visualization using the k-core decomposition. In Advances in neural information processing systems (pp. 41-50).
@@ -72,9 +70,7 @@ def k_core_decomposition(
     return k_cores
 
 
-def threshold_mst_mean_degree(
-    mtx: np.ndarray[np.float32], avg_degree: float
-) -> np.ndarray[np.int32]:
+def threshold_mst_mean_degree(mtx: np.ndarray, avg_degree: float) -> np.ndarray:
     """ Threshold a graph based on mean using minimum spanning trees.
 
 
@@ -165,9 +161,7 @@ def threshold_mst_mean_degree(
     return CIJtree
 
 
-def threshold_mean_degree(
-    mtx: np.ndarray[np.float32], threshold_mean_degree: int
-) -> np.ndarray[np.int32]:
+def threshold_mean_degree(mtx: np.ndarray, threshold_mean_degree: int) -> np.ndarray:
     """ Threshold a graph based on the mean degree.
 
 
@@ -232,9 +226,7 @@ def threshold_mean_degree(
     return binary_mtx
 
 
-def threshold_shortest_paths(
-    mtx: np.ndarray[np.float32], treatment: bool = False
-) -> np.ndarray[np.int32]:
+def threshold_shortest_paths(mtx: np.ndarray, treatment: bool = False) -> np.ndarray:
     """ Threshold a graph via  via shortest path identification using Dijkstra's algorithm.
 
     .. [Dimitriadis2010] Dimitriadis, S. I., Laskaris, N. A., Tsirka, V., Vourkas, M., Micheloyannis, S., & Fotopoulos, S. (2010). Tracking brain dynamics via time-dependent network analysis. Journal of neuroscience methods, 193(1), 145-155.
@@ -286,8 +278,8 @@ def threshold_shortest_paths(
 
 
 def threshold_global_cost_efficiency(
-    mtx: np.ndarray[np.float32], iterations: int
-) -> Tuple[np.ndarray[np.int32], float, float, float]:
+    mtx: np.ndarray, iterations: int
+) -> Tuple[np.ndarray, float, float, float]:
     """ Threshold a graph based on the Global Efficiency - Cost formula.
 
     .. [Basset2009] Bassett, D. S., Bullmore, E. T., Meyer-Lindenberg, A., Apud, J. A., Weinberger, D. R., & Coppola, R. (2009). Cognitive fitness of cost-efficient brain functional networks. Proceedings of the National Academy of Sciences, 106(28), 11747-11752.
@@ -378,8 +370,8 @@ def threshold_global_cost_efficiency(
 
 
 def threshold_omst_global_cost_efficiency(
-    mtx: np.ndarray[np.float32], n_msts: Optional[int] = None
-) -> Tuple[np.ndarray[np.float32], np.ndarray[np.float32], float, float, float, float]:
+    mtx: np.ndarray, n_msts: Optional[int] = None
+) -> Tuple[np.ndarray, np.ndarray, float, float, float, float]:
     """ Threshold a graph by optimizing the formula GE-C via orthogonal MSTs.
 
     .. [Dimitriadis2017a] Dimitriadis, S. I., Salis, C., Tarnanas, I., & Linden, D. E. (2017). Topological Filtering of Dynamic Functional Brain Networks Unfolds Informative Chronnectomics: A Novel Data-Driven Thresholding Scheme Based on Orthogonal Minimal Spanning Trees (OMSTs). Frontiers in neuroinformatics, 11.
@@ -539,9 +531,7 @@ def threshold_omst_global_cost_efficiency(
     )
 
 
-def threshold_eco(
-    mtx: np.ndarray[np.float32]
-) -> Tuple[np.ndarray[np.int32], np.ndarray[np.float32], int]:
+def threshold_eco(mtx: np.ndarray) -> Tuple[np.ndarray, np.ndarray, int]:
     """ Ecological Filtering
 
     .. [Fallani2017] Fallani, F. D. V., Latora, V., & Chavez, M. (2017). A topological criterion for filtering information in complex brain networks. PLoS computational biology, 13(1), e1005305.

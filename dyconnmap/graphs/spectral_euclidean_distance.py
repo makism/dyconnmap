@@ -23,9 +23,7 @@ Notes
 import numpy as np
 
 
-def spectral_euclidean_distance(
-    X: np.ndarray[np.float32], Y: np.ndarray[np.float32]
-) -> float:
+def spectral_euclidean_distance(X: np.ndarray, Y: np.ndarray) -> float:
     """
 
 

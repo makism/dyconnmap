@@ -9,7 +9,7 @@ import numpy as np
 import networkx as nx
 
 
-def nodal_global_efficiency(mtx: np.ndarray[np.float32]) -> np.ndarray[np.float32]:
+def nodal_global_efficiency(mtx: np.ndarray) -> np.ndarray:
     """ Nodal Global Efficiency
 
 

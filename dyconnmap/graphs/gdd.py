@@ -42,7 +42,7 @@ import scipy.optimize
 
 
 def graph_diffusion_distance(
-    a: np.ndarray[np.float32], b: np.ndarray[np.float32], threshold: float = 1e-14
+    a: np.ndarray, b: np.ndarray, threshold: float = 1e-14
 ) -> Tuple[np.float32, np.float32]:
     """ Graph Diffusion Distance
 

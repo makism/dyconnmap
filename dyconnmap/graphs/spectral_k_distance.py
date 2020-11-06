@@ -29,9 +29,7 @@ import numpy as np
 import scipy
 
 
-def spectral_k_distance(
-    X: np.ndarray[np.float32], Y: np.ndarray[np.float32], k: int
-) -> float:
+def spectral_k_distance(X: np.ndarray, Y: np.ndarray, k: int) -> float:
     """ Spectral-K Distance
 
     Use the largest :math:`k` eigenvalues of the given graphs to compute the

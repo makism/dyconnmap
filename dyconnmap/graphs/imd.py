@@ -31,9 +31,7 @@ import scipy
 from scipy.integrate import quad
 
 
-def im_distance(
-    X: np.ndarray[np.float32], Y: np.ndarray[np.float32], bandwidth: float = 1.0
-) -> float:
+def im_distance(X: np.ndarray, Y: np.ndarray, bandwidth: float = 1.0) -> float:
     """
 
     Parameters
