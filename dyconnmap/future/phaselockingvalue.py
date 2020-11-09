@@ -5,24 +5,19 @@ import numpy as np
 import itertools
 
 from estimator import Estimator
-
-import sys
-
-sys.path.append("/home/makism/Github/dyconnmap-feature_dataset/")
-from dyconnmap import analytic_signal
+from basicfilter import analytic_signal
 
 
 class PhaseLockingValue(Estimator):
     """Phase Locking Value (PLV)."""
 
-    def __init__(self):
-        super()
+    def __post_init__(self):
+        super().__post_init__()
         self.dtype = np.complex
         self.requires_preprocessing = True
 
     def preprocess(self, data: np.ndarray, **kwargs) -> np.ndarray:
-        # super().preprocess(data, **kwargs)
-        _, u_phases = analytic_signal(data)
+        u_phases = analytic_signal(data)
 
         return u_phases
 

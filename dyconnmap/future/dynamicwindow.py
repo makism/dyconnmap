@@ -9,7 +9,7 @@ class DynamicWindow(ABC):
 
     samples: int
     rois: int
-    slides: int = field(init=False)
+    slides: int = field(init=False, default=0)
     window_length: int
     pairs: Optional[List[Tuple[int, int, int]]] = field(
         default=None,

@@ -5,7 +5,7 @@ import numpy as np
 import multiprocessing
 from joblib import Parallel, delayed
 
-from typing import List, Type, Union, Optional, Tuple, Dict
+from typing import List, Type, Union, Optional, Tuple, Dict, Callable
 from dataclasses import dataclass, field
 from abc import ABC, abstractmethod
 import itertools
@@ -19,19 +19,33 @@ class Estimator(ABC):
 
     requires_preprocessing: bool = field(default=False)
 
-    est_ts: Optional[np.ndarray] = field(
-        init=False,
+    filter: Optional[Callable] = field(
         default=None,
+        init=True,
+        metadata={"description": "A callback function to filter the given `Dataset`."},
+    )
+
+    filter_opts: Optional[Dict] = field(
+        default=None,
+        init=True,
         metadata={
-            "description": "The estimated time series after invoking the estimator; some methods are not able to produce these intermediate time series (i.e. correlation)."
+            "description": "A dictionaray of parameters passed to the callback filter function."
         },
     )
 
-    est_avg: Optional[np.ndarray] = field(
-        init=False,
-        default=None,
-        metadata={"description": "The resulting connectivity matrices."},
-    )
+    # est_ts: Optional[np.ndarray] = field(
+    #     init=False,
+    #     default=None,
+    #     metadata={
+    #         "description": "The estimated time series after invoking the estimator; some methods are not able to produce these intermediate time series (i.e. correlation)."
+    #     },
+    # )
+    #
+    # est_avg: Optional[np.ndarray] = field(
+    #     init=False,
+    #     default=None,
+    #     metadata={"description": "The resulting connectivity matrices."},
+    # )
 
     jobs: int = field(
         default=multiprocessing.cpu_count(),
