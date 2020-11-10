@@ -10,8 +10,8 @@ import numpy as np
 class Correlation(Estimator):
     """Correlation."""
 
-    def __init__(self):
-        super()
+    def __post_init__(self):
+        super().__post_init__()
         self.dtype = np.float64
 
     def estimate(self, data: np.ndarray, **kwargs) -> np.ndarray:
