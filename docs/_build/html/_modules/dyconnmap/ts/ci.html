@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
@@ -25,15 +30,11 @@
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/doctools.js"></script>
         <script src="../../../_static/language_data.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
 </head>
@@ -49,7 +50,7 @@
           
 
           
-            <a href="../../../index.html" class="icon icon-home"> dyconnmap
+            <a href="../../../index.html" class="icon icon-home" alt="Documentation Home"> dyconnmap
           
 
           
@@ -72,6 +73,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -86,6 +88,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -124,7 +127,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="../../index.html">Module code</a> &raquo;</li>
         
@@ -166,10 +169,20 @@
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="c1"># Author: Avraam Marimpis &lt;avraam.marimpis@gmail.com&gt;</span>
 
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span>
+
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 
-<div class="viewcode-block" id="complexity_index"><a class="viewcode-back" href="../../../dyconnmap.ts.html#dyconnmap.ts.ci.complexity_index">[docs]</a><span class="k">def</span> <span class="nf">complexity_index</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">sub_len</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">iterations</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+<div class="viewcode-block" id="complexity_index"><a class="viewcode-back" href="../../../dyconnmap.ts.html#dyconnmap.ts.ci.complexity_index">[docs]</a><span class="k">def</span> <span class="nf">complexity_index</span><span class="p">(</span>
+    <span class="n">x</span><span class="p">:</span> <span class="s2">&quot;np.ndarray[np.int32]&quot;</span><span class="p">,</span>
+    <span class="n">sub_len</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">normalize</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">iterations</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span>
+    <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="s2">&quot;np.ndarray[np.int32]&quot;</span><span class="p">],</span>
+    <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="s2">&quot;np.ndarray[np.int32]&quot;</span><span class="p">],</span>
+<span class="p">]:</span>
     <span class="sd">&quot;&quot;&quot; Complexity Index</span>
 
 
@@ -201,7 +214,7 @@
 <span class="sd">        A list of the number of distinct subwords of length 1, up to the size</span>
 <span class="sd">        of the input symbolic time series.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
     <span class="n">len_x</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
@@ -214,11 +227,11 @@
         <span class="n">num_letters</span> <span class="o">=</span> <span class="n">spectrum</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
         <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">iterations</span><span class="p">):</span>
-            <span class="n">new_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">len_x</span><span class="p">)</span> <span class="o">*</span> <span class="n">num_letters</span><span class="p">))</span>
+            <span class="n">new_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">rng</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">len_x</span><span class="p">)</span> <span class="o">*</span> <span class="n">num_letters</span><span class="p">))</span>  <span class="c1"># type: ignore</span>
             <span class="n">new_ci</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">__compute_complexity_index</span><span class="p">(</span><span class="n">new_x</span><span class="p">,</span> <span class="n">sub_len</span><span class="p">)</span>
             <span class="n">mean_ci</span> <span class="o">+=</span> <span class="n">new_ci</span> <span class="o">/</span> <span class="n">iterations</span>
 
-        <span class="n">normal_ci</span> <span class="o">=</span> <span class="n">ci</span> <span class="o">/</span> <span class="n">mean_ci</span>
+        <span class="n">normal_ci</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">ci</span> <span class="o">/</span> <span class="n">mean_ci</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">normal_ci</span><span class="p">,</span> <span class="n">ci</span><span class="p">,</span> <span class="n">spectrum</span>
 
@@ -226,7 +239,9 @@
         <span class="k">return</span> <span class="n">ci</span><span class="p">,</span> <span class="n">spectrum</span></div>
 
 
-<span class="k">def</span> <span class="nf">__compute_complexity_index</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">sub_len</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">__compute_complexity_index</span><span class="p">(</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">sub_len</span><span class="o">=-</span><span class="mi">1</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="s2">&quot;np.ndarray[np.int32]&quot;</span><span class="p">]:</span>
     <span class="sd">&quot;&quot;&quot; Complexity Index</span>
 
 
@@ -250,8 +265,8 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">ci</span> <span class="o">=</span> <span class="mf">0.0</span>
 
-    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+    <span class="c1"># x = x.astype(np.int32)</span>
+    <span class="c1"># x = x.flatten()</span>
 
     <span class="n">len_x</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
@@ -263,9 +278,9 @@
     <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">min_x</span>
 
     <span class="n">letters</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="n">max_len_word</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">([</span><span class="n">max_subword_len</span><span class="p">,</span> <span class="n">len_x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">max_len_word</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">([</span><span class="n">max_subword_len</span><span class="p">,</span> <span class="n">len_x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span>  <span class="c1"># type: ignore</span>
 
-    <span class="n">spectrum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">max_len_word</span><span class="p">))</span>
+    <span class="n">spectrum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">max_len_word</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
     <span class="n">spectrum</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">letters</span><span class="p">)</span>
 
     <span class="n">all_num_words</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
@@ -288,20 +303,22 @@
                 <span class="k">else</span><span class="p">:</span>
                     <span class="n">cumulative_words</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">cumulative_words</span><span class="p">,</span> <span class="n">words</span><span class="p">])</span>
 
-        <span class="n">conv_cumulative_words</span> <span class="o">=</span> <span class="n">__rowsBaseConv</span><span class="p">(</span><span class="n">cumulative_words</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+        <span class="n">conv_cumulative_words</span> <span class="o">=</span> <span class="n">__rowsBaseConv</span><span class="p">(</span><span class="n">cumulative_words</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
         <span class="n">u_cumulative_words</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">conv_cumulative_words</span><span class="p">)</span>
 
         <span class="n">spectrum</span><span class="p">[</span><span class="n">word_len</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">u_cumulative_words</span><span class="p">)</span>
         <span class="n">cumulative_words</span> <span class="o">=</span> <span class="kc">None</span>
 
-    <span class="n">ci</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">spectrum</span><span class="p">)</span>
+    <span class="n">ci</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">spectrum</span><span class="p">))</span>
 
     <span class="n">all_num_words</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">all_num_words</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
 
     <span class="k">return</span> <span class="n">ci</span><span class="p">,</span> <span class="n">spectrum</span>
 
 
-<span class="k">def</span> <span class="nf">__rowsBaseConv</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">base</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">__rowsBaseConv</span><span class="p">(</span>
+    <span class="n">x</span><span class="p">:</span> <span class="s2">&quot;np.ndarray[np.int32]&quot;</span><span class="p">,</span> <span class="n">base</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&quot;np.ndarray[np.float64]&quot;</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="sd">    Parameters</span>
@@ -319,13 +336,13 @@
     <span class="k">if</span> <span class="n">base</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">base</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
 
-    <span class="n">_</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
 
     <span class="n">bases</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">*</span> <span class="n">base</span>
     <span class="n">indices</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">p</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
-    <span class="n">base</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">bases</span><span class="p">,</span> <span class="n">indices</span><span class="p">)</span>
+    <span class="n">base</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">bases</span><span class="p">,</span> <span class="n">indices</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
 
-    <span class="n">result</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">base</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">base</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
 
     <span class="k">return</span> <span class="n">result</span>
 </pre></div>
@@ -340,11 +357,19 @@
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2020, Avraam Marimpis &amp; Stavros Dimitriadis
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -355,7 +380,6 @@
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

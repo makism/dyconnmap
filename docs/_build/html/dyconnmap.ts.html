@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -25,15 +30,11 @@
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/language_data.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="dyconnmap.sim_models package" href="dyconnmap.sim_models.html" /> 
@@ -50,7 +51,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home"> dyconnmap
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> dyconnmap
           
 
           
@@ -73,6 +74,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -126,6 +128,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -164,7 +167,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="index.html">Docs</a> &raquo;</li>
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="dyconnmap.html">dyconnmap package</a> &raquo;</li>
         
@@ -199,8 +202,7 @@
 symbolic (integer) time series, by finding the number of distinct subwords
 of length <cite>l</cite>. The total complexity is given by the sum of all subwords of different lengths.
 The unnormalized measure can be used to compare sequences of equal lengths.</p>
-<div class="section" id="notes">
-<h3>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h3>
+<p class="rubric">Notes</p>
 <ul class="simple">
 <li><p>This is a direct translation from the <cite>Complexity toolbox available at</cite> <a class="reference external" href="http://users.auth.gr/~stdimitr/files/software/complexitiy.rar">http://users.auth.gr/~stdimitr/files/software/complexitiy.rar</a></p></li>
 <li><p>Original author is Stravros Dimitriadis &lt;<a class="reference external" href="mailto:stidimitriadis&#37;&#52;&#48;gmail&#46;com">stidimitriadis<span>&#64;</span>gmail<span>&#46;</span>com</a>&gt;</p></li>
@@ -218,67 +220,47 @@ The unnormalized measure can be used to compare sequences of equal lengths.</p>
 </dl>
 <dl class="py function">
 <dt id="dyconnmap.ts.ci.complexity_index">
-<code class="sig-prename descclassname">dyconnmap.ts.ci.</code><code class="sig-name descname">complexity_index</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">sub_len</span><span class="o">=</span><span class="default_value">- 1</span></em>, <em class="sig-param"><span class="n">normalize</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">iterations</span><span class="o">=</span><span class="default_value">100</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/ts/ci.html#complexity_index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.ci.complexity_index" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.ts.ci.</code><code class="sig-name descname">complexity_index</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">np.ndarray<span class="p">[</span>np.int32<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">sub_len</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">- 1</span></em>, <em class="sig-param"><span class="n">normalize</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>bool<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">False</span></em>, <em class="sig-param"><span class="n">iterations</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">100</span></em><span class="sig-paren">)</span> &#x2192; Union<span class="p">[</span>Tuple<span class="p">[</span>numpy.float32<span class="p">, </span>np.ndarray<span class="p">[</span>np.int32<span class="p">]</span><span class="p">]</span><span class="p">, </span>Tuple<span class="p">[</span>numpy.float32<span class="p">, </span>numpy.float32<span class="p">, </span>np.ndarray<span class="p">[</span>np.int32<span class="p">]</span><span class="p">]</span><span class="p">]</span><a class="reference internal" href="_modules/dyconnmap/ts/ci.html#complexity_index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.ci.complexity_index" title="Permalink to this definition">¶</a></dt>
 <dd><p>Complexity Index</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>x</strong> : array-like, shape(n_samples)</p>
-<blockquote>
-<div><p>Input symbolic time series.</p>
-</div></blockquote>
-<p><strong>sub_len</strong> : int</p>
-<blockquote>
-<div><p>Maximum subword length. Default is <cite>len(x) - 1</cite>.</p>
-</div></blockquote>
-<p><strong>normalize</strong> : bool</p>
-<blockquote>
-<div><p>Normalize result. Default is <cite>False</cite>.</p>
-</div></blockquote>
-<p><strong>iterationss</strong> : int</p>
-<blockquote>
-<div><p>Number of iterations to perform randomization. Default is <cite>100</cite>.</p>
-</div></blockquote>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>n_samples</em><em>)</em>) – Input symbolic time series.</p></li>
+<li><p><strong>sub_len</strong> (<em>int</em>) – Maximum subword length. Default is <cite>len(x) - 1</cite>.</p></li>
+<li><p><strong>normalize</strong> (<em>bool</em>) – Normalize result. Default is <cite>False</cite>.</p></li>
+<li><p><strong>iterationss</strong> (<em>int</em>) – Number of iterations to perform randomization. Default is <cite>100</cite>.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>normal_ci</strong> : float</p>
-<blockquote>
-<div><p>The computed omplexity index after normalization against the randomization
-procedure.</p>
-</div></blockquote>
-<p><strong>ci</strong> : float</p>
-<blockquote>
-<div><p>The computed complexity index.</p>
-</div></blockquote>
-<p><strong>spectrum</strong> : array-like</p>
-<blockquote>
-<div><p>A list of the number of distinct subwords of length 1, up to the size
-of the input symbolic time series.</p>
-</div></blockquote>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>normal_ci</strong> (<em>float</em>) – The computed omplexity index after normalization against the randomization
+procedure.</p></li>
+<li><p><strong>ci</strong> (<em>float</em>) – The computed complexity index.</p></li>
+<li><p><strong>spectrum</strong> (<em>array-like</em>) – A list of the number of distinct subwords of length 1, up to the size
+of the input symbolic time series.</p></li>
+</ul>
+</p>
 </dd>
 </dl>
 </dd></dl>
 
-</div>
 </div>
 <div class="section" id="module-dyconnmap.ts.cv">
 <span id="dyconnmap-ts-cv-module"></span><h2>dyconnmap.ts.cv module<a class="headerlink" href="#module-dyconnmap.ts.cv" title="Permalink to this headline">¶</a></h2>
 <p>Coefficient of Variation</p>
 <dl class="py function">
 <dt id="dyconnmap.ts.cv.cv">
-<code class="sig-prename descclassname">dyconnmap.ts.cv.</code><code class="sig-name descname">cv</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/ts/cv.html#cv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.cv.cv" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.ts.cv.</code><code class="sig-name descname">cv</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/dyconnmap/ts/cv.html#cv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.cv.cv" title="Permalink to this definition">¶</a></dt>
 <dd><p>Coefficient of Variation</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>x</strong> : array-like, shape(n_samples)</p>
-<blockquote>
-<div><p>Input time series</p>
-</div></blockquote>
+<dd class="field-odd"><p><strong>x</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>n_samples</em><em>)</em>) – Input time series</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>cv</strong> : float</p>
-<blockquote>
-<div><p>The computed coefficient of variation.</p>
-</div></blockquote>
+<dd class="field-even"><p><strong>cv</strong> – The computed coefficient of variation.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
 </dd>
 </dl>
 </dd></dl>
@@ -287,34 +269,28 @@ of the input symbolic time series.</p>
 <div class="section" id="module-dyconnmap.ts.dcorr">
 <span id="dyconnmap-ts-dcorr-module"></span><h2>dyconnmap.ts.dcorr module<a class="headerlink" href="#module-dyconnmap.ts.dcorr" title="Permalink to this headline">¶</a></h2>
 <p>Distance Correlation</p>
-<div class="section" id="id1">
-<h3>Notes<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p class="rubric">Notes</p>
 <p>Snippet adapted from: <a class="reference external" href="https://gist.github.com/Satra/aa3d19a12b74e9ab7941">https://gist.github.com/Satra/aa3d19a12b74e9ab7941</a></p>
 <dl class="py function">
 <dt id="dyconnmap.ts.dcorr.dcorr">
-<code class="sig-prename descclassname">dyconnmap.ts.dcorr.</code><code class="sig-name descname">dcorr</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/ts/dcorr.html#dcorr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.dcorr.dcorr" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.ts.dcorr.</code><code class="sig-name descname">dcorr</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">y</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/dyconnmap/ts/dcorr.html#dcorr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.dcorr.dcorr" title="Permalink to this definition">¶</a></dt>
 <dd><p>Distance Correlation</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>x</strong> : array-like, shape(n_samples)</p>
-<blockquote>
-<div><p>Input time series.</p>
-</div></blockquote>
-<p><strong>y</strong> : array-like, shape(N)</p>
-<blockquote>
-<div><p>Input time series.</p>
-</div></blockquote>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>n_samples</em><em>)</em>) – Input time series.</p></li>
+<li><p><strong>y</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>N</em><em>)</em>) – Input time series.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>val</strong> : float</p>
-<blockquote>
-<div><p>The computed distance correlation.</p>
-</div></blockquote>
+<dd class="field-even"><p><strong>val</strong> – The computed distance correlation.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
 </dd>
 </dl>
 </dd></dl>
 
-</div>
 </div>
 <div class="section" id="module-dyconnmap.ts.embed_delay">
 <span id="dyconnmap-ts-embed-delay-module"></span><h2>dyconnmap.ts.embed_delay module<a class="headerlink" href="#module-dyconnmap.ts.embed_delay" title="Permalink to this headline">¶</a></h2>
@@ -323,7 +299,7 @@ hem as time delay vectors in phase space. This new reconstruction, describes the
 tmporal evolution of a system in a state space; a trajectory of interchanging states.
 The need for this state space, stems from the fact that the original system may
 contain latent and unobserved variables that we would like to expose. Thus, we
-construct <span class="math notranslate nohighlight">\(m\)</span>-dimensional phase vectors from <span class="math notranslate nohighlight">\(\tau\)</span>-time delayed samples (<a href="#id31"><span class="problematic" id="id32">Takens1981_</span></a>):</p>
+construct <span class="math notranslate nohighlight">\(m\)</span>-dimensional phase vectors from <span class="math notranslate nohighlight">\(\tau\)</span>-time delayed samples (<a href="#id27"><span class="problematic" id="id28">Takens1981_</span></a>):</p>
 <div class="math notranslate nohighlight">
 \[s_n = (s_(n-(m-1)τ),s_(n-(m-2)) τ, …, s_n)\]</div>
 <p>This new space, is shown to preserve the dynamics properties of the original
@@ -343,28 +319,21 @@ consult the work of Bradley and Kantz (<a class="reference internal" href="#brad
 </dl>
 <dl class="py function">
 <dt id="dyconnmap.ts.embed_delay.embed_delay">
-<code class="sig-prename descclassname">dyconnmap.ts.embed_delay.</code><code class="sig-name descname">embed_delay</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ts</span></em>, <em class="sig-param"><span class="n">dim</span></em>, <em class="sig-param"><span class="n">tau</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/ts/embed_delay.html#embed_delay"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.embed_delay.embed_delay" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.ts.embed_delay.</code><code class="sig-name descname">embed_delay</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ts</span><span class="p">:</span> <span class="n">np.ndarray<span class="p">[</span>np.float32<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">dim</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">tau</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; Optional<span class="p">[</span>np.ndarray<span class="p">[</span>np.float32<span class="p">]</span><span class="p">]</span><a class="reference internal" href="_modules/dyconnmap/ts/embed_delay.html#embed_delay"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.embed_delay.embed_delay" title="Permalink to this definition">¶</a></dt>
 <dd><p>Embed delay</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>ts</strong> : array-like, shape(n_samples)</p>
-<blockquote>
-<div><p>One-dimensional symbolic time series.</p>
-</div></blockquote>
-<p><strong>dim</strong> : int</p>
-<blockquote>
-<div><p>The embedding dimension.</p>
-</div></blockquote>
-<p><strong>tau</strong> : int</p>
-<blockquote>
-<div><p>Time delay factor.</p>
-</div></blockquote>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ts</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>n_samples</em><em>)</em>) – One-dimensional symbolic time series.</p></li>
+<li><p><strong>dim</strong> (<em>int</em>) – The embedding dimension.</p></li>
+<li><p><strong>tau</strong> (<em>int</em>) – Time delay factor.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>y</strong> : array-like</p>
-<blockquote>
-<div><p>The embedded timeseries.</p>
-</div></blockquote>
+<dd class="field-even"><p><strong>y</strong> – The embedded timeseries.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>array-like</p>
 </dd>
 </dl>
 </dd></dl>
@@ -375,20 +344,17 @@ consult the work of Bradley and Kantz (<a class="reference internal" href="#brad
 <p>Entropy</p>
 <dl class="py function">
 <dt id="dyconnmap.ts.entropy.entropy">
-<code class="sig-prename descclassname">dyconnmap.ts.entropy.</code><code class="sig-name descname">entropy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/ts/entropy.html#entropy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.entropy.entropy" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.ts.entropy.</code><code class="sig-name descname">entropy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">np.ndarray<span class="p">[</span>np.float32<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/dyconnmap/ts/entropy.html#entropy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.entropy.entropy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Entropy</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>x</strong> : array-like, shape(N)</p>
-<blockquote>
-<div><p>Input symbolic time series.</p>
-</div></blockquote>
+<dd class="field-odd"><p><strong>x</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>N</em><em>)</em>) – Input symbolic time series.</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>entropy</strong> : float</p>
-<blockquote>
-<div><p>The computed entropy.</p>
-</div></blockquote>
+<dd class="field-even"><p><strong>entropy</strong> – The computed entropy.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
 </dd>
 </dl>
 </dd></dl>
@@ -411,8 +377,16 @@ consult the work of Bradley and Kantz (<a class="reference internal" href="#brad
 </dl>
 <dl class="py function">
 <dt id="dyconnmap.ts.fisher_score.fisher_score">
-<code class="sig-prename descclassname">dyconnmap.ts.fisher_score.</code><code class="sig-name descname">fisher_score</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/ts/fisher_score.html#fisher_score"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.fisher_score.fisher_score" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-prename descclassname">dyconnmap.ts.fisher_score.</code><code class="sig-name descname">fisher_score</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">y</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="_modules/dyconnmap/ts/fisher_score.html#fisher_score"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.fisher_score.fisher_score" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – </p></li>
+<li><p><strong>y</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
 
 </div>
 <div class="section" id="module-dyconnmap.ts.fisher_z">
@@ -423,10 +397,10 @@ consult the work of Bradley and Kantz (<a class="reference internal" href="#brad
 </div>
 <hr class="docutils" />
 <dl class="citation">
-<dt class="label" id="id2"><span class="brackets">Stam2007</span></dt>
+<dt class="label" id="id1"><span class="brackets">Stam2007</span></dt>
 <dd><p>Stam, C. J., Nolte, G., &amp; Daffertshofer, A. (2007). Phase lag index: assessment of functional connectivity from multi channel EEG and MEG with diminished bias from common sources. Human brain mapping, 28(11), 1178-1193.</p>
 </dd>
-<dt class="label" id="id3"><span class="brackets">Hardmeier2014</span></dt>
+<dt class="label" id="id2"><span class="brackets">Hardmeier2014</span></dt>
 <dd><p>Hardmeier, M., Hatz, F., Bousleiman, H., Schindler, C., Stam, C. J., &amp; Fuhr, P. (2014). Reproducibility of functional connectivity and graph measures based on the phase lag index (PLI) and weighted phase lag index (wPLI) derived from high resolution EEG. PloS one, 9(10), e108648.</p>
 </dd>
 </dl>
@@ -439,6 +413,11 @@ in an approximately Gaussian distribution.</p>
 <p>This transformation is computed as follows:</p>
 <div class="math notranslate nohighlight">
 \[z_p := \frac{1}{2} \text{ln} \left ( \frac{1+p}{1-p} \right ) = \text{arctanh}(p)\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> – </p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
@@ -446,12 +425,14 @@ in an approximately Gaussian distribution.</p>
 <code class="sig-prename descclassname">dyconnmap.ts.fisher_z.</code><code class="sig-name descname">fisher_z_plv</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/ts/fisher_z.html#fisher_z_plv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.fisher_z.fisher_z_plv" title="Permalink to this definition">¶</a></dt>
 <dd><div class="math notranslate nohighlight">
 \[z^p_j = sin^{-1}(2 * PLV_j - 1)\]</div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<dl class="citation">
-<dt class="label" id="mormann2005"><span class="brackets">Mormann2005</span></dt>
-<dd><p>Mormann, F., Fell, J., Axmacher, N., Weber, B., Lehnertz, K., Elger, C. E., &amp; Fernández, G. (2005). Phase/amplitude reset and theta–gamma interaction in the human medial temporal lobe during a continuous word recognition memory task. Hippocampus, 15(7), 890-900.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><em>|</em></p></li>
+<li><p><em>—–</em></p></li>
+<li><p><em>.. [Mormann2005] Mormann, F., Fell, J., Axmacher, N., Weber, B., Lehnertz, K., Elger, C. E., &amp; Fernández, G. (2005). Phase/amplitude reset and theta–gamma interaction in the human medial temporal lobe during a continuous word recognition memory task. Hippocampus, 15(7), 890-900.</em></p></li>
+</ul>
+</p>
 </dd>
 </dl>
 </dd></dl>
@@ -474,50 +455,36 @@ in an approximately Gaussian distribution.</p>
 </dl>
 <dl class="py function">
 <dt id="dyconnmap.ts.fnn.fnn">
-<code class="sig-prename descclassname">dyconnmap.ts.fnn.</code><code class="sig-name descname">fnn</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ts</span></em>, <em class="sig-param"><span class="n">tau</span></em>, <em class="sig-param"><span class="n">max_dim</span><span class="o">=</span><span class="default_value">20</span></em>, <em class="sig-param"><span class="n">neighbors_reduction</span><span class="o">=</span><span class="default_value">0.1</span></em>, <em class="sig-param"><span class="n">rtol</span><span class="o">=</span><span class="default_value">15.0</span></em>, <em class="sig-param"><span class="n">atol</span><span class="o">=</span><span class="default_value">2.0</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/ts/fnn.html#fnn"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.fnn.fnn" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.ts.fnn.</code><code class="sig-name descname">fnn</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ts</span><span class="p">:</span> <span class="n">np.ndarray<span class="p">[</span>np.float32<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">tau</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">max_dim</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">20</span></em>, <em class="sig-param"><span class="n">neighbors_reduction</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>float<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">0.1</span></em>, <em class="sig-param"><span class="n">rtol</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>float<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">15.0</span></em>, <em class="sig-param"><span class="n">atol</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>float<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">2.0</span></em><span class="sig-paren">)</span> &#x2192; Optional<span class="p">[</span>int<span class="p">]</span><a class="reference internal" href="_modules/dyconnmap/ts/fnn.html#fnn"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.fnn.fnn" title="Permalink to this definition">¶</a></dt>
 <dd><p>False Nearest Neighbors</p>
-<dl class="field-list">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>ts</strong> : array-like, 1d</p>
-<p><strong>tau</strong> : int</p>
-<blockquote>
-<div><p>Time-delay parameter.</p>
-</div></blockquote>
-<p><strong>max_dim</strong> : int</p>
-<blockquote>
-<div><p>Maximum embedding dimension.</p>
-</div></blockquote>
-<p><strong>neighbors_reduction</strong> : float</p>
-<blockquote>
-<div><p>Maximum percentage of neighbors reduction. Default ‘0.10’ (10%).</p>
-</div></blockquote>
-<p><strong>rtol</strong> : float</p>
-<blockquote>
-<div><p>First threshold, criterion to identify a false neighbor. (Neighborhood size)</p>
-</div></blockquote>
-<p><strong>atol</strong> : float</p>
-<blockquote>
-<div><p>Second threshold, criterion to identify a false neighbor.</p>
-</div></blockquote>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>min_dimension</strong> : int</p>
-<blockquote>
-<div><p>Minimum embedding dimension.</p>
-</div></blockquote>
-</dd>
-</dl>
 <p class="rubric">Notes</p>
 <p>The execution stops either when the maxium number of embedding dimensions is
 reached, or the the number of neighbors is reduced to specific percentage.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ts</strong> (<em>array-like</em><em>, </em><em>1d</em>) – </p></li>
+<li><p><strong>tau</strong> (<em>int</em>) – Time-delay parameter.</p></li>
+<li><p><strong>max_dim</strong> (<em>int</em>) – Maximum embedding dimension.</p></li>
+<li><p><strong>neighbors_reduction</strong> (<em>float</em>) – Maximum percentage of neighbors reduction. Default ‘0.10’ (10%).</p></li>
+<li><p><strong>rtol</strong> (<em>float</em>) – First threshold, criterion to identify a false neighbor. (Neighborhood size)</p></li>
+<li><p><strong>atol</strong> (<em>float</em>) – Second threshold, criterion to identify a false neighbor.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>min_dimension</strong> – Minimum embedding dimension.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
 </dd></dl>
 
 </div>
 <div class="section" id="module-dyconnmap.ts.icc">
 <span id="dyconnmap-ts-icc-module"></span><h2>dyconnmap.ts.icc module<a class="headerlink" href="#module-dyconnmap.ts.icc" title="Permalink to this headline">¶</a></h2>
 <p>Intra-class Correlation (3, 1)</p>
-<div class="section" id="id4">
-<h3>Notes<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p class="rubric">Notes</p>
 <ul class="simple">
 <li><p>Based on the code available at &lt;<a class="reference external" href="https://github.com/ekmolloy/fmri_test-retest">https://github.com/ekmolloy/fmri_test-retest</a>&gt;</p></li>
 </ul>
@@ -534,25 +501,21 @@ reached, or the the number of neighbors is reduced to specific percentage.</p>
 </dl>
 <dl class="py function">
 <dt id="dyconnmap.ts.icc.icc_31">
-<code class="sig-prename descclassname">dyconnmap.ts.icc.</code><code class="sig-name descname">icc_31</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/ts/icc.html#icc_31"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.icc.icc_31" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.ts.icc.</code><code class="sig-name descname">icc_31</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span><span class="p">:</span> <span class="n">np.ndarray<span class="p">[</span>np.float32<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/dyconnmap/ts/icc.html#icc_31"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.icc.icc_31" title="Permalink to this definition">¶</a></dt>
 <dd><p>ICC (3,1)</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>X :</strong> :</p>
-<blockquote>
-<div><p>Input data</p>
-</div></blockquote>
+<dd class="field-odd"><p><strong>X</strong> – Input data</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>icc</strong> : float</p>
-<blockquote>
-<div><p>Intra-class correlation.</p>
-</div></blockquote>
+<dd class="field-even"><p><strong>icc</strong> – Intra-class correlation.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
 </dd>
 </dl>
 </dd></dl>
 
-</div>
 </div>
 <div class="section" id="module-dyconnmap.ts.markov_matrix">
 <span id="dyconnmap-ts-markov-matrix-module"></span><h2>dyconnmap.ts.markov_matrix module<a class="headerlink" href="#module-dyconnmap.ts.markov_matrix" title="Permalink to this headline">¶</a></h2>
@@ -560,7 +523,696 @@ reached, or the the number of neighbors is reduced to specific percentage.</p>
 <p>Generation of markov matrix and some related state transition features.</p>
 <dl class="py function">
 <dt id="dyconnmap.ts.markov_matrix.markov_matrix">
-<code class="sig-prename descclassname">dyconnmap.ts.markov_matrix.</code><code class="sig-name descname">markov_matrix</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">symts</span></em>, <em class="sig-param"><span class="n">states_from_length</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/ts/markov_matrix.html#markov_matrix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.markov_matrix.markov_matrix" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.ts.markov_matrix.</code><code class="sig-name descname">markov_matrix</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">symts</span><span class="p">:</span> <span class="n">np.ndarray<span class="p">[</span>np.int32<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">states_from_length</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>bool<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">True</span></em><span class="sig-paren">)</span> &#x2192; np.ndarray<span class="p">[</span>np.float32<span class="p">]</span><a class="reference internal" href="_modules/dyconnmap/ts/markov_matrix.html#markov_matrix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.markov_matrix.markov_matrix" title="Permalink to this definition">¶</a></dt>
+<dd><p>Markov Matrix</p>
+<p>Markov matrix (also refered as “transition matrix”) is a square matrix that tabulates
+the observed transition probabilities between symbols for a finite Markov Chain. It is a first-order descriptor
+by which the next symbol depends only on the current symbol (and not on the previous ones);
+a Markov Chain model.</p>
+<p>A transition matrix is formally depicted as:</p>
+<p>Given the probability <span class="math notranslate nohighlight">\(Pr(j|i)\)</span> of moving between <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> elements,
+the transition matrix is depicted as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}P = \begin{pmatrix}
+              P_{1,1} &amp; P_{1,2} &amp; \ldots &amp; P_{1,j} &amp; \ldots &amp; P_{1,S} \\
+              P_{2,1} &amp; P_{2,2} &amp; \ldots &amp; P_{2,j} &amp; \ldots &amp; P_{2,S} \\
+              \vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \ddots &amp; \vdots \\
+              P_{i,1} &amp; P_{i,2} &amp; \ldots &amp; P_{i,j} &amp; \ldots &amp; P_{i,S} \\
+              \vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \ddots &amp; \vdots \\
+              P_{S,1} &amp; P_{S,2} &amp; \ldots &amp; P_{S,j} &amp; \ldots &amp; P_{S,S} \\
+    \end{pmatrix}\end{split}\]</div>
+<p>Since the transition matrix is row-normalized, so as the total transition probability
+from state <span class="math notranslate nohighlight">\(i\)</span> to all the others must be equal to <span class="math notranslate nohighlight">\(1\)</span>.</p>
+<p>For more properties consult, among other links <a href="#id29"><span class="problematic" id="id30">WolframMathWorld_</span></a> and <a href="#id31"><span class="problematic" id="id32">WikipediaMarkovMatrix_</span></a>.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl class="citation">
+<dt class="label" id="wolframmathworld"><span class="brackets">WolframMathWorld</span></dt>
+<dd><p><a class="reference external" href="http://mathworld.wolfram.com/StochasticMatrix.html">http://mathworld.wolfram.com/StochasticMatrix.html</a></p>
+</dd>
+<dt class="label" id="wikipediamarkovmatrix"><span class="brackets">WikipediaMarkovMatrix</span></dt>
+<dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Stochastic_matrix">https://en.wikipedia.org/wiki/Stochastic_matrix</a></p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>symts</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>N</em><em>)</em>) – One-dimensional discrete time series.</p></li>
+<li><p><strong>states_from_length</strong> (<em>bool</em><em> or </em><em>int</em><em>, </em><em>optional</em>) – Used to account symbolic time series in which not all the symbols are present.
+That may happen when for example the symbols are drawn from different distributions.
+Default <cite>True</cite>, the size of the resulting Markov Matrix is equal to the number
+of unique symbols present in the time series. If <cite>False</cite>, the size will be the
+<cite>highest symbolic state + 1</cite>.
+You may also speficy the highest (inclusive) symbolic state.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>mtx</strong> – The transition matrix. The size depends the parameter <cite>states_from_length</cite>.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>matrix</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dyconnmap.ts.markov_matrix.occupancy_time">
+<code class="sig-prename descclassname">dyconnmap.ts.markov_matrix.</code><code class="sig-name descname">occupancy_time</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">symts</span><span class="p">:</span> <span class="n">np.ndarray<span class="p">[</span>np.int32<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">symbol_states</span><span class="p">:</span> <span class="n">numpy.int32</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">weight</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>Union<span class="p">[</span>numpy.float32<span class="p">, </span>np.ndarray<span class="p">[</span>np.float32<span class="p">]</span><span class="p">]</span><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; Tuple<span class="p">[</span>numpy.float64<span class="p">, </span>np.ndarray<span class="p">[</span>np.int32<span class="p">]</span><span class="p">]</span><a class="reference internal" href="_modules/dyconnmap/ts/markov_matrix.html#occupancy_time"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.markov_matrix.occupancy_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>Occupancy Time</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>symts</strong> – </p></li>
+<li><p><strong>symbol_states</strong> (<em>int</em>) – The maximum number of symbols. This is useful to define in case your
+symbolic timeseries skips some states, in which case would produce
+a matrix of different size.</p></li>
+<li><p><strong>weight</strong> (<em>float</em>) – The weights of the reuslting transition symbols. Default <cite>len(symts)</cite>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>oc</em></p></li>
+<li><p><em>symbols</em></p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dyconnmap.ts.markov_matrix.transition_rate">
+<code class="sig-prename descclassname">dyconnmap.ts.markov_matrix.</code><code class="sig-name descname">transition_rate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">symts</span><span class="p">:</span> <span class="n">np.ndarray<span class="p">[</span>np.int32<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">weight</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>Union<span class="p">[</span>numpy.float32<span class="p">, </span>np.ndarray<span class="p">[</span>np.float32<span class="p">]</span><span class="p">]</span><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/dyconnmap/ts/markov_matrix.html#transition_rate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.markov_matrix.transition_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transition Rate</p>
+<p>The total sum of transition between symbols.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>symts</strong> – </p></li>
+<li><p><strong>weight</strong> (<em>float</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-dyconnmap.ts.ordinal_pattern_similarity">
+<span id="dyconnmap-ts-ordinal-pattern-similarity-module"></span><h2>dyconnmap.ts.ordinal_pattern_similarity module<a class="headerlink" href="#module-dyconnmap.ts.ordinal_pattern_similarity" title="Permalink to this headline">¶</a></h2>
+<p>Ordinal Pattern Similarity</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<hr class="docutils" />
+<dl class="citation">
+<dt class="label" id="id3"><span class="brackets">Stam2007</span></dt>
+<dd><p>Stam, C. J., Nolte, G., &amp; Daffertshofer, A. (2007). Phase lag index: assessment of functional connectivity from multi channel EEG and MEG with diminished bias from common sources. Human brain mapping, 28(11), 1178-1193.</p>
+</dd>
+<dt class="label" id="id4"><span class="brackets">Hardmeier2014</span></dt>
+<dd><p>Hardmeier, M., Hatz, F., Bousleiman, H., Schindler, C., Stam, C. J., &amp; Fuhr, P. (2014). Reproducibility of functional connectivity and graph measures based on the phase lag index (PLI) and weighted phase lag index (wPLI) derived from high resolution EEG. PloS one, 9(10), e108648.</p>
+</dd>
+</dl>
+<dl class="py function">
+<dt id="dyconnmap.ts.ordinal_pattern_similarity.ordinal_pattern_similarity">
+<code class="sig-prename descclassname">dyconnmap.ts.ordinal_pattern_similarity.</code><code class="sig-name descname">ordinal_pattern_similarity</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">signal1</span><span class="p">:</span> <span class="n">np.ndarray<span class="p">[</span>np.int32<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">signal2</span><span class="p">:</span> <span class="n">np.ndarray<span class="p">[</span>np.int32<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">m</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">tau</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; Tuple<span class="p">[</span>float<span class="p">, </span>np.ndarray<span class="p">[</span>np.int32<span class="p">]</span><span class="p">, </span>np.ndarray<span class="p">[</span>np.float32<span class="p">]</span><span class="p">]</span><a class="reference internal" href="_modules/dyconnmap/ts/ordinal_pattern_similarity.html#ordinal_pattern_similarity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.ordinal_pattern_similarity.ordinal_pattern_similarity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ordinal Pattern Similarity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>signal1</strong> – </p></li>
+<li><p><strong>signal2</strong> – </p></li>
+<li><p><strong>m</strong> (<em>int</em>) – Embedding dimension.</p></li>
+<li><p><strong>tau</strong> (<em>int</em>) – Time delay parameter.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>The results may vary from the original MATLAB script because of
+the permutations’ order.</p></li>
+<li><p>The permutations are generated from <span class="math notranslate nohighlight">\([1, dim+1]\)</span> so there are
+no occurances of <span class="math notranslate nohighlight">\(0.\)</span></p></li>
+<li><p>The extra <span class="math notranslate nohighlight">\(+1\)</span> in the lines
+.. python: I = sklearn.preprocessing.normalize(I + 1)
+is in order to avoid :math:<a href="#id5"><span class="problematic" id="id6">`</span></a>0`s.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><strong>dissimilarity</strong> (<em>float</em>) – The dissimilarity index as computed from the ordinal patterns.</p></li>
+<li><p><strong>ordinal_patterns</strong> (<em>array</em>) – The time series of ordinal patterns for input signals.</p></li>
+<li><p><strong>patterns_distribution</strong> (<em>array</em>) – Distribution of the patterns.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-dyconnmap.ts.permutation_entropy">
+<span id="dyconnmap-ts-permutation-entropy-module"></span><h2>dyconnmap.ts.permutation_entropy module<a class="headerlink" href="#module-dyconnmap.ts.permutation_entropy" title="Permalink to this headline">¶</a></h2>
+<p>Permutation Entropy</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<hr class="docutils" />
+<dl class="citation">
+<dt class="label" id="id7"><span class="brackets">Stam2007</span></dt>
+<dd><p>Stam, C. J., Nolte, G., &amp; Daffertshofer, A. (2007). Phase lag index: assessment of functional connectivity from multi channel EEG and MEG with diminished bias from common sources. Human brain mapping, 28(11), 1178-1193.</p>
+</dd>
+<dt class="label" id="id8"><span class="brackets">Hardmeier2014</span></dt>
+<dd><p>Hardmeier, M., Hatz, F., Bousleiman, H., Schindler, C., Stam, C. J., &amp; Fuhr, P. (2014). Reproducibility of functional connectivity and graph measures based on the phase lag index (PLI) and weighted phase lag index (wPLI) derived from high resolution EEG. PloS one, 9(10), e108648.</p>
+</dd>
+</dl>
+<dl class="py function">
+<dt id="dyconnmap.ts.permutation_entropy.permutation_entropy">
+<code class="sig-prename descclassname">dyconnmap.ts.permutation_entropy.</code><code class="sig-name descname">permutation_entropy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">signal</span><span class="p">:</span> <span class="n">np.ndarray<span class="p">[</span>np.int32<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">m</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">tau</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/dyconnmap/ts/permutation_entropy.html#permutation_entropy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.permutation_entropy.permutation_entropy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Permutation Entropy</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>signal</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>N</em><em>)</em>) – Symblic time series (1D).</p></li>
+<li><p><strong>m</strong> (<em>int</em>) – Embedding dimension.</p></li>
+<li><p><strong>tau</strong> (<em>int</em>) – Time delay parameter.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>pe</strong> (<em>float</em>) – Permutation entropy.</p></li>
+<li><p><strong>npe</strong> (<em>float</em>) – Normalized permutation entropy.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-dyconnmap.ts.rr_order_patterns">
+<span id="dyconnmap-ts-rr-order-patterns-module"></span><h2>dyconnmap.ts.rr_order_patterns module<a class="headerlink" href="#module-dyconnmap.ts.rr_order_patterns" title="Permalink to this headline">¶</a></h2>
+<p>Order Reccurence Plot</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<hr class="docutils" />
+<dl class="citation">
+<dt class="label" id="id9"><span class="brackets">Stam2007</span></dt>
+<dd><p>Stam, C. J., Nolte, G., &amp; Daffertshofer, A. (2007). Phase lag index: assessment of functional connectivity from multi channel EEG and MEG with diminished bias from common sources. Human brain mapping, 28(11), 1178-1193.</p>
+</dd>
+<dt class="label" id="id10"><span class="brackets">Hardmeier2014</span></dt>
+<dd><p>Hardmeier, M., Hatz, F., Bousleiman, H., Schindler, C., Stam, C. J., &amp; Fuhr, P. (2014). Reproducibility of functional connectivity and graph measures based on the phase lag index (PLI) and weighted phase lag index (wPLI) derived from high resolution EEG. PloS one, 9(10), e108648.</p>
+</dd>
+</dl>
+<dl class="py function">
+<dt id="dyconnmap.ts.rr_order_patterns.rr_order_patterns">
+<code class="sig-prename descclassname">dyconnmap.ts.rr_order_patterns.</code><code class="sig-name descname">rr_order_patterns</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">signal1</span><span class="p">:</span> <span class="n">np.ndarray<span class="p">[</span>np.int32<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">signal2</span><span class="p">:</span> <span class="n">np.ndarray<span class="p">[</span>np.int32<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">m</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">tau</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/dyconnmap/ts/rr_order_patterns.html#rr_order_patterns"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.rr_order_patterns.rr_order_patterns" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>signal1</strong> – </p></li>
+<li><p><strong>signal2</strong> – </p></li>
+<li><p><strong>m</strong> (<em>int</em>) – Embedding dimension.</p></li>
+<li><p><strong>tau</strong> (<em>int</em>) – Time delay parameter.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>The results may vary from the original MATLAB script because of
+the permutations’ order.</p></li>
+<li><p>The results may vary from the original MATLAB script because of
+the order of the indices in the <a href="#id11"><span class="problematic" id="id12">:python:`numpy.where`</span></a>.</p></li>
+<li><p>The permutations are generated from <span class="math notranslate nohighlight">\([1, dim+1]\)</span> so there are
+no occurances of <span class="math notranslate nohighlight">\(0.\)</span></p></li>
+<li><p>The extra <span class="math notranslate nohighlight">\(+1\)</span> in the lines
+.. python: I = sklearn.preprocessing.normalize(I + 1)
+is in order to avoid :math:<a href="#id13"><span class="problematic" id="id14">`</span></a>0`s.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>cstr</strong> – Coupling strength.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-dyconnmap.ts.sampen">
+<span id="dyconnmap-ts-sampen-module"></span><h2>dyconnmap.ts.sampen module<a class="headerlink" href="#module-dyconnmap.ts.sampen" title="Permalink to this headline">¶</a></h2>
+<p>Sample Entropy</p>
+<p class="rubric">Notes</p>
+<p>Based on <a class="reference external" href="https://nl.mathworks.com/matlabcentral/fileexchange/35784-sample-entropy">https://nl.mathworks.com/matlabcentral/fileexchange/35784-sample-entropy</a></p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<hr class="docutils" />
+<dl class="citation">
+<dt class="label" id="id15"><span class="brackets">Stam2007</span></dt>
+<dd><p>Stam, C. J., Nolte, G., &amp; Daffertshofer, A. (2007). Phase lag index: assessment of functional connectivity from multi channel EEG and MEG with diminished bias from common sources. Human brain mapping, 28(11), 1178-1193.</p>
+</dd>
+<dt class="label" id="id16"><span class="brackets">Hardmeier2014</span></dt>
+<dd><p>Hardmeier, M., Hatz, F., Bousleiman, H., Schindler, C., Stam, C. J., &amp; Fuhr, P. (2014). Reproducibility of functional connectivity and graph measures based on the phase lag index (PLI) and weighted phase lag index (wPLI) derived from high resolution EEG. PloS one, 9(10), e108648.</p>
+</dd>
+</dl>
+<dl class="py function">
+<dt id="dyconnmap.ts.sampen.sample_entropy">
+<code class="sig-prename descclassname">dyconnmap.ts.sampen.</code><code class="sig-name descname">sample_entropy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span><span class="p">:</span> <span class="n">np.ndarray<span class="p">[</span>np.int32<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">dim</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">2</span></em>, <em class="sig-param"><span class="n">tau</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">r</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>float<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/dyconnmap/ts/sampen.html#sample_entropy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.sampen.sample_entropy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sample Entropy</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>n_samples</em><em>)</em>) – Symbolic time series.</p></li>
+<li><p><strong>dim</strong> (<em>int</em>) – Embedding dimension. Default <cite>2</cite>.</p></li>
+<li><p><strong>tau</strong> (<em>int</em>) – Delay time for downsampling. Is <cite>None</cite>, <cite>1</cite> is passed.</p></li>
+<li><p><strong>r</strong> (<em>float</em>) – Tolerance factor. If <cite>None</cite>, <cite>0.2 * std(data)</cite> is passed.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>SampEn</strong> – Sample entropy.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-func docutils literal notranslate"><span class="pre">dyconnmap.ts.embed_ts()</span></code></dt><dd><p>Embedded timeseries</p>
+</dd>
+</dl>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="module-dyconnmap.ts.ste">
+<span id="dyconnmap-ts-ste-module"></span><h2>dyconnmap.ts.ste module<a class="headerlink" href="#module-dyconnmap.ts.ste" title="Permalink to this headline">¶</a></h2>
+<p>Symbolic Transfer Entropy</p>
+<dl class="py function">
+<dt id="dyconnmap.ts.ste.entropy_reduction_rate">
+<code class="sig-prename descclassname">dyconnmap.ts.ste.</code><code class="sig-name descname">entropy_reduction_rate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sym_ts</span><span class="p">:</span> <span class="n">np.ndarray<span class="p">[</span>np.float32<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/dyconnmap/ts/ste.html#entropy_reduction_rate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.ste.entropy_reduction_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Entropy Reduction Rate</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>sym_ts</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>n_samples</em><em>)</em>) – Input symblic time series.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>entredrate</strong> – The estimated entropy reduction rate.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dyconnmap.ts.ste.symoblic_transfer_entropy">
+<code class="sig-prename descclassname">dyconnmap.ts.ste.</code><code class="sig-name descname">symoblic_transfer_entropy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">np.ndarray<span class="p">[</span>np.int32<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">y</span><span class="p">:</span> <span class="n">np.ndarray<span class="p">[</span>np.int32<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">s</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">1</span></em>, <em class="sig-param"><span class="n">delay</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">0</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>bool<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">False</span></em><span class="sig-paren">)</span> &#x2192; Tuple<span class="p">[</span>float<span class="p">, </span>float<span class="p">, </span>float<span class="p">]</span><a class="reference internal" href="_modules/dyconnmap/ts/ste.html#symoblic_transfer_entropy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.ste.symoblic_transfer_entropy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Symbolic Tranfer Entropy</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>N</em><em>)</em>) – Symblic time series (1D).</p></li>
+<li><p><strong>y</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>N</em><em>)</em>) – Symbolic time series (1D).</p></li>
+<li><p><strong>s</strong> (<em>int</em>) – Embedding dimension.</p></li>
+<li><p><strong>delay</strong> (<em>int</em>) – Time delay parameter</p></li>
+<li><p><strong>verbose</strong> (<em>boolean</em>) – Print computation messages.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>tent_diff</strong> (<em>float</em>) – The difference of the tranfer entropies of the two time series.</p></li>
+<li><p><strong>tentxy</strong> (<em>float</em>) – The estimated tranfer entropy of x -&gt; y.</p></li>
+<li><p><strong>tentyx</strong> (<em>float</em>) – The estimated tranfer entropy of y -&gt; x.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-dyconnmap.ts.surrogates">
+<span id="dyconnmap-ts-surrogates-module"></span><h2>dyconnmap.ts.surrogates module<a class="headerlink" href="#module-dyconnmap.ts.surrogates" title="Permalink to this headline">¶</a></h2>
+<p>Surrogate Analysis</p>
+<dl class="py function">
+<dt id="dyconnmap.ts.surrogates.aaft">
+<code class="sig-prename descclassname">dyconnmap.ts.surrogates.</code><code class="sig-name descname">aaft</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ts</span><span class="p">:</span> <span class="n">np.ndarray<span class="p">[</span>np.float32<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">num_surr</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">1</span></em>, <em class="sig-param"><span class="n">rng</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>numpy.random.mtrand.RandomState<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; np.ndarray<span class="p">[</span>np.float32<span class="p">]</span><a class="reference internal" href="_modules/dyconnmap/ts/surrogates.html#aaft"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.surrogates.aaft" title="Permalink to this definition">¶</a></dt>
+<dd><p>Amplitude Adjusted Fourier Transform</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ts</strong> – </p></li>
+<li><p><strong>num_surr</strong> – </p></li>
+<li><p><strong>rng</strong> (<em>object</em><em> or </em><em>None</em>) – An object of type numpy.random.RandomState</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dyconnmap.ts.surrogates.fdr">
+<code class="sig-prename descclassname">dyconnmap.ts.surrogates.</code><code class="sig-name descname">fdr</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">p_values</span><span class="p">:</span> <span class="n">np.ndarray<span class="p">[</span>np.float32<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">q</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>float<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">0.01</span></em>, <em class="sig-param"><span class="n">method</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">'pdep'</span></em><span class="sig-paren">)</span> &#x2192; Tuple<span class="p">[</span>bool<span class="p">, </span>float<span class="p">]</span><a class="reference internal" href="_modules/dyconnmap/ts/surrogates.html#fdr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.surrogates.fdr" title="Permalink to this definition">¶</a></dt>
+<dd><p>False Discovery Rate</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p_values</strong> – </p></li>
+<li><p><strong>q</strong> – </p></li>
+<li><p><strong>method</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dyconnmap.ts.surrogates.phase_rand">
+<code class="sig-prename descclassname">dyconnmap.ts.surrogates.</code><code class="sig-name descname">phase_rand</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">num_surr</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">1</span></em>, <em class="sig-param"><span class="n">rng</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>numpy.random.mtrand.RandomState<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; np.ndarray<span class="p">[</span>np.float32<span class="p">]</span><a class="reference internal" href="_modules/dyconnmap/ts/surrogates.html#phase_rand"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.surrogates.phase_rand" title="Permalink to this definition">¶</a></dt>
+<dd><p>Phase-randomized suggorates</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – </p></li>
+<li><p><strong>num_surr</strong> – </p></li>
+<li><p><strong>rng</strong> (<em>object</em><em> or </em><em>None</em>) – An object of type numpy.random.RandomState</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dyconnmap.ts.surrogates.surrogate_analysis">
+<code class="sig-prename descclassname">dyconnmap.ts.surrogates.</code><code class="sig-name descname">surrogate_analysis</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ts1</span><span class="p">:</span> <span class="n">np.ndarray<span class="p">[</span>np.float32<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">ts2</span><span class="p">:</span> <span class="n">np.ndarray<span class="p">[</span>np.float32<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">num_surr</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">1000</span></em>, <em class="sig-param"><span class="n">estimator_func</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>Callable<span class="p">[</span><span class="p">[</span>np.ndarray<span class="p">[</span>np.float32<span class="p">]</span><span class="p">, </span>np.ndarray<span class="p">[</span>np.float32<span class="p">]</span><span class="p">]</span><span class="p">, </span>float<span class="p">]</span><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">ts1_no_surr</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em>, <em class="sig-param"><span class="n">rng</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>numpy.random.mtrand.RandomState<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; Tuple<span class="p">[</span>float<span class="p">, </span>np.ndarray<span class="p">[</span>np.int32<span class="p">]</span><span class="p">, </span>np.ndarray<span class="p">[</span>np.float32<span class="p">]</span><span class="p">, </span>float<span class="p">]</span><a class="reference internal" href="_modules/dyconnmap/ts/surrogates.html#surrogate_analysis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.surrogates.surrogate_analysis" title="Permalink to this definition">¶</a></dt>
+<dd><p>Surrogate Analysis</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ts1</strong> – </p></li>
+<li><p><strong>ts2</strong> – </p></li>
+<li><p><strong>num_surr</strong> (<em>int</em>) – </p></li>
+<li><p><strong>estimator_func</strong> (<em>function</em>) – </p></li>
+<li><p><strong>ts1_no_surr</strong> (<em>boolean</em>) – </p></li>
+<li><p><strong>rng</strong> (<em>object</em><em> or </em><em>None</em>) – An object of type numpy.random.RandomState</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>p_val</strong> (<em>float</em>)</p></li>
+<li><p><em>corr_surr</em></p></li>
+<li><p><em>surrogates</em></p></li>
+<li><p><strong>r_value</strong> (<em>float</em>)</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-dyconnmap.ts.teager_kaiser_energy">
+<span id="dyconnmap-ts-teager-kaiser-energy-module"></span><h2>dyconnmap.ts.teager_kaiser_energy module<a class="headerlink" href="#module-dyconnmap.ts.teager_kaiser_energy" title="Permalink to this headline">¶</a></h2>
+<p>Teager–Kaiser Operator</p>
+<p>ref: <a class="reference external" href="https://www.c-motion.com/v3dwiki/index.php/Teager_Kaiser_Energy">https://www.c-motion.com/v3dwiki/index.php/Teager_Kaiser_Energy</a></p>
+<dl class="py function">
+<dt id="dyconnmap.ts.teager_kaiser_energy.teager_kaiser_energy">
+<code class="sig-prename descclassname">dyconnmap.ts.teager_kaiser_energy.</code><code class="sig-name descname">teager_kaiser_energy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ts</span><span class="p">:</span> <span class="n">np.ndarray<span class="p">[</span>np.float32<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; np.ndarray<span class="p">[</span>np.float32<span class="p">]</span><a class="reference internal" href="_modules/dyconnmap/ts/teager_kaiser_energy.html#teager_kaiser_energy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.teager_kaiser_energy.teager_kaiser_energy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Teager Kaiser Energy</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ts</strong> (<em>array of size</em><em> [</em><em>1 x samples</em><em>]</em>) – </p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-dyconnmap.ts.wald">
+<span id="dyconnmap-ts-wald-module"></span><h2>dyconnmap.ts.wald module<a class="headerlink" href="#module-dyconnmap.ts.wald" title="Permalink to this headline">¶</a></h2>
+<p>Wald test</p>
+<dl class="py function">
+<dt id="dyconnmap.ts.wald.wald">
+<code class="sig-prename descclassname">dyconnmap.ts.wald.</code><code class="sig-name descname">wald</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">y</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em><span class="sig-paren">)</span> &#x2192; Tuple<span class="p">[</span>float<span class="p">, </span>float<span class="p">, </span>List<span class="p">[</span>List<span class="p">[</span>int<span class="p">]</span><span class="p">]</span><span class="p">, </span>List<span class="p">[</span>List<span class="p">[</span>float<span class="p">]</span><span class="p">]</span><span class="p">]</span><a class="reference internal" href="_modules/dyconnmap/ts/wald.html#wald"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.wald.wald" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – </p></li>
+<li><p><strong>y</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>w</strong> (<em>float</em>)</p></li>
+<li><p><strong>r</strong> (<em>float</em>)</p></li>
+<li><p><strong>edges</strong> (<em>array-like</em>)</p></li>
+<li><p><strong>weights</strong> (<em>array-like</em>)</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The input time series will be padded with zeros if needed.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-dyconnmap.ts">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-dyconnmap.ts" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="dyconnmap.ts.aaft">
+<code class="sig-prename descclassname">dyconnmap.ts.</code><code class="sig-name descname">aaft</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ts</span><span class="p">:</span> <span class="n">np.ndarray<span class="p">[</span>np.float32<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">num_surr</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">1</span></em>, <em class="sig-param"><span class="n">rng</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>numpy.random.mtrand.RandomState<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; np.ndarray<span class="p">[</span>np.float32<span class="p">]</span><a class="reference internal" href="_modules/dyconnmap/ts/surrogates.html#aaft"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.aaft" title="Permalink to this definition">¶</a></dt>
+<dd><p>Amplitude Adjusted Fourier Transform</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ts</strong> – </p></li>
+<li><p><strong>num_surr</strong> – </p></li>
+<li><p><strong>rng</strong> (<em>object</em><em> or </em><em>None</em>) – An object of type numpy.random.RandomState</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dyconnmap.ts.complexity_index">
+<code class="sig-prename descclassname">dyconnmap.ts.</code><code class="sig-name descname">complexity_index</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">np.ndarray<span class="p">[</span>np.int32<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">sub_len</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">- 1</span></em>, <em class="sig-param"><span class="n">normalize</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>bool<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">False</span></em>, <em class="sig-param"><span class="n">iterations</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">100</span></em><span class="sig-paren">)</span> &#x2192; Union<span class="p">[</span>Tuple<span class="p">[</span>numpy.float32<span class="p">, </span>np.ndarray<span class="p">[</span>np.int32<span class="p">]</span><span class="p">]</span><span class="p">, </span>Tuple<span class="p">[</span>numpy.float32<span class="p">, </span>numpy.float32<span class="p">, </span>np.ndarray<span class="p">[</span>np.int32<span class="p">]</span><span class="p">]</span><span class="p">]</span><a class="reference internal" href="_modules/dyconnmap/ts/ci.html#complexity_index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.complexity_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Complexity Index</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>n_samples</em><em>)</em>) – Input symbolic time series.</p></li>
+<li><p><strong>sub_len</strong> (<em>int</em>) – Maximum subword length. Default is <cite>len(x) - 1</cite>.</p></li>
+<li><p><strong>normalize</strong> (<em>bool</em>) – Normalize result. Default is <cite>False</cite>.</p></li>
+<li><p><strong>iterationss</strong> (<em>int</em>) – Number of iterations to perform randomization. Default is <cite>100</cite>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>normal_ci</strong> (<em>float</em>) – The computed omplexity index after normalization against the randomization
+procedure.</p></li>
+<li><p><strong>ci</strong> (<em>float</em>) – The computed complexity index.</p></li>
+<li><p><strong>spectrum</strong> (<em>array-like</em>) – A list of the number of distinct subwords of length 1, up to the size
+of the input symbolic time series.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dyconnmap.ts.cv">
+<code class="sig-prename descclassname">dyconnmap.ts.</code><code class="sig-name descname">cv</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/dyconnmap/ts/cv.html#cv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.cv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Coefficient of Variation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>n_samples</em><em>)</em>) – Input time series</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>cv</strong> – The computed coefficient of variation.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dyconnmap.ts.dcorr">
+<code class="sig-prename descclassname">dyconnmap.ts.</code><code class="sig-name descname">dcorr</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">y</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/dyconnmap/ts/dcorr.html#dcorr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.dcorr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Distance Correlation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>n_samples</em><em>)</em>) – Input time series.</p></li>
+<li><p><strong>y</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>N</em><em>)</em>) – Input time series.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>val</strong> – The computed distance correlation.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dyconnmap.ts.embed_delay">
+<code class="sig-prename descclassname">dyconnmap.ts.</code><code class="sig-name descname">embed_delay</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ts</span><span class="p">:</span> <span class="n">np.ndarray<span class="p">[</span>np.float32<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">dim</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">tau</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; Optional<span class="p">[</span>np.ndarray<span class="p">[</span>np.float32<span class="p">]</span><span class="p">]</span><a class="reference internal" href="_modules/dyconnmap/ts/embed_delay.html#embed_delay"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.embed_delay" title="Permalink to this definition">¶</a></dt>
+<dd><p>Embed delay</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ts</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>n_samples</em><em>)</em>) – One-dimensional symbolic time series.</p></li>
+<li><p><strong>dim</strong> (<em>int</em>) – The embedding dimension.</p></li>
+<li><p><strong>tau</strong> (<em>int</em>) – Time delay factor.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>y</strong> – The embedded timeseries.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>array-like</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dyconnmap.ts.entropy">
+<code class="sig-prename descclassname">dyconnmap.ts.</code><code class="sig-name descname">entropy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">np.ndarray<span class="p">[</span>np.float32<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/dyconnmap/ts/entropy.html#entropy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.entropy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Entropy</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>x</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>N</em><em>)</em>) – Input symbolic time series.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>entropy</strong> – The computed entropy.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dyconnmap.ts.entropy_reduction_rate">
+<code class="sig-prename descclassname">dyconnmap.ts.</code><code class="sig-name descname">entropy_reduction_rate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sym_ts</span><span class="p">:</span> <span class="n">np.ndarray<span class="p">[</span>np.float32<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/dyconnmap/ts/ste.html#entropy_reduction_rate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.entropy_reduction_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Entropy Reduction Rate</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>sym_ts</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>n_samples</em><em>)</em>) – Input symblic time series.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>entredrate</strong> – The estimated entropy reduction rate.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dyconnmap.ts.fdr">
+<code class="sig-prename descclassname">dyconnmap.ts.</code><code class="sig-name descname">fdr</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">p_values</span><span class="p">:</span> <span class="n">np.ndarray<span class="p">[</span>np.float32<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">q</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>float<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">0.01</span></em>, <em class="sig-param"><span class="n">method</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">'pdep'</span></em><span class="sig-paren">)</span> &#x2192; Tuple<span class="p">[</span>bool<span class="p">, </span>float<span class="p">]</span><a class="reference internal" href="_modules/dyconnmap/ts/surrogates.html#fdr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.fdr" title="Permalink to this definition">¶</a></dt>
+<dd><p>False Discovery Rate</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p_values</strong> – </p></li>
+<li><p><strong>q</strong> – </p></li>
+<li><p><strong>method</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dyconnmap.ts.fisher_score">
+<code class="sig-prename descclassname">dyconnmap.ts.</code><code class="sig-name descname">fisher_score</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">y</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="_modules/dyconnmap/ts/fisher_score.html#fisher_score"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.fisher_score" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – </p></li>
+<li><p><strong>y</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dyconnmap.ts.fisher_z">
+<code class="sig-prename descclassname">dyconnmap.ts.</code><code class="sig-name descname">fisher_z</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/ts/fisher_z.html#fisher_z"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.fisher_z" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fisher’s z-transformation</p>
+<p>For a given dataset <span class="math notranslate nohighlight">\(p\)</span> bound to <span class="math notranslate nohighlight">\([0.0, 1.0]\)</span>, we can use Fisher’s z-transformation to normalize it
+in an approximately Gaussian distribution.</p>
+<p>This transformation is computed as follows:</p>
+<div class="math notranslate nohighlight">
+\[z_p := \frac{1}{2} \text{ln} \left ( \frac{1+p}{1-p} \right ) = \text{arctanh}(p)\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>data</strong> – </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dyconnmap.ts.fisher_z_plv">
+<code class="sig-prename descclassname">dyconnmap.ts.</code><code class="sig-name descname">fisher_z_plv</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/ts/fisher_z.html#fisher_z_plv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.fisher_z_plv" title="Permalink to this definition">¶</a></dt>
+<dd><div class="math notranslate nohighlight">
+\[z^p_j = sin^{-1}(2 * PLV_j - 1)\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><em>|</em></p></li>
+<li><p><em>—–</em></p></li>
+<li><p><em>.. [Mormann2005] Mormann, F., Fell, J., Axmacher, N., Weber, B., Lehnertz, K., Elger, C. E., &amp; Fernández, G. (2005). Phase/amplitude reset and theta–gamma interaction in the human medial temporal lobe during a continuous word recognition memory task. Hippocampus, 15(7), 890-900.</em></p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dyconnmap.ts.fnn">
+<code class="sig-prename descclassname">dyconnmap.ts.</code><code class="sig-name descname">fnn</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ts</span><span class="p">:</span> <span class="n">np.ndarray<span class="p">[</span>np.float32<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">tau</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">max_dim</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">20</span></em>, <em class="sig-param"><span class="n">neighbors_reduction</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>float<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">0.1</span></em>, <em class="sig-param"><span class="n">rtol</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>float<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">15.0</span></em>, <em class="sig-param"><span class="n">atol</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>float<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">2.0</span></em><span class="sig-paren">)</span> &#x2192; Optional<span class="p">[</span>int<span class="p">]</span><a class="reference internal" href="_modules/dyconnmap/ts/fnn.html#fnn"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.fnn" title="Permalink to this definition">¶</a></dt>
+<dd><p>False Nearest Neighbors</p>
+<p class="rubric">Notes</p>
+<p>The execution stops either when the maxium number of embedding dimensions is
+reached, or the the number of neighbors is reduced to specific percentage.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ts</strong> (<em>array-like</em><em>, </em><em>1d</em>) – </p></li>
+<li><p><strong>tau</strong> (<em>int</em>) – Time-delay parameter.</p></li>
+<li><p><strong>max_dim</strong> (<em>int</em>) – Maximum embedding dimension.</p></li>
+<li><p><strong>neighbors_reduction</strong> (<em>float</em>) – Maximum percentage of neighbors reduction. Default ‘0.10’ (10%).</p></li>
+<li><p><strong>rtol</strong> (<em>float</em>) – First threshold, criterion to identify a false neighbor. (Neighborhood size)</p></li>
+<li><p><strong>atol</strong> (<em>float</em>) – Second threshold, criterion to identify a false neighbor.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>min_dimension</strong> – Minimum embedding dimension.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dyconnmap.ts.icc_31">
+<code class="sig-prename descclassname">dyconnmap.ts.</code><code class="sig-name descname">icc_31</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span><span class="p">:</span> <span class="n">np.ndarray<span class="p">[</span>np.float32<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/dyconnmap/ts/icc.html#icc_31"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.icc_31" title="Permalink to this definition">¶</a></dt>
+<dd><p>ICC (3,1)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>X</strong> – Input data</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>icc</strong> – Intra-class correlation.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dyconnmap.ts.markov_matrix">
+<code class="sig-prename descclassname">dyconnmap.ts.</code><code class="sig-name descname">markov_matrix</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">symts</span><span class="p">:</span> <span class="n">np.ndarray<span class="p">[</span>np.int32<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">states_from_length</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>bool<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">True</span></em><span class="sig-paren">)</span> &#x2192; np.ndarray<span class="p">[</span>np.float32<span class="p">]</span><a class="reference internal" href="_modules/dyconnmap/ts/markov_matrix.html#markov_matrix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.markov_matrix" title="Permalink to this definition">¶</a></dt>
 <dd><p>Markov Matrix</p>
 <p>Markov matrix (also refered as “transition matrix”) is a square matrix that tabulates
 the observed transition probabilities between symbols for a finite Markov Chain. It is a first-order descriptor
@@ -585,742 +1237,106 @@ from state <span class="math notranslate nohighlight">\(i\)</span> to all the ot
 <div class="line"><br /></div>
 </div>
 <dl class="citation">
-<dt class="label" id="wolframmathworld"><span class="brackets">WolframMathWorld</span></dt>
+<dt class="label" id="id17"><span class="brackets">WolframMathWorld</span></dt>
 <dd><p><a class="reference external" href="http://mathworld.wolfram.com/StochasticMatrix.html">http://mathworld.wolfram.com/StochasticMatrix.html</a></p>
 </dd>
-<dt class="label" id="wikipediamarkovmatrix"><span class="brackets">WikipediaMarkovMatrix</span></dt>
+<dt class="label" id="id18"><span class="brackets">WikipediaMarkovMatrix</span></dt>
 <dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Stochastic_matrix">https://en.wikipedia.org/wiki/Stochastic_matrix</a></p>
 </dd>
 </dl>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>symts</strong> : array-like, shape(N)</p>
-<blockquote>
-<div><p>One-dimensional discrete time series.</p>
-</div></blockquote>
-<p><strong>states_from_length: bool or int, optional</strong> :</p>
-<blockquote>
-<div><p>Used to account symbolic time series in which not all the symbols are present.
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>symts</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>N</em><em>)</em>) – One-dimensional discrete time series.</p></li>
+<li><p><strong>states_from_length</strong> (<em>bool</em><em> or </em><em>int</em><em>, </em><em>optional</em>) – Used to account symbolic time series in which not all the symbols are present.
 That may happen when for example the symbols are drawn from different distributions.
 Default <cite>True</cite>, the size of the resulting Markov Matrix is equal to the number
 of unique symbols present in the time series. If <cite>False</cite>, the size will be the
 <cite>highest symbolic state + 1</cite>.
-You may also speficy the highest (inclusive) symbolic state.</p>
-</div></blockquote>
+You may also speficy the highest (inclusive) symbolic state.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>mtx</strong> : matrix</p>
-<blockquote>
-<div><p>The transition matrix. The size depends the parameter <cite>states_from_length</cite>.</p>
-</div></blockquote>
+<dd class="field-even"><p><strong>mtx</strong> – The transition matrix. The size depends the parameter <cite>states_from_length</cite>.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>matrix</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
-<dt id="dyconnmap.ts.markov_matrix.occupancy_time">
-<code class="sig-prename descclassname">dyconnmap.ts.markov_matrix.</code><code class="sig-name descname">occupancy_time</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">symts</span></em>, <em class="sig-param"><span class="n">symbol_states</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">weight</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/ts/markov_matrix.html#occupancy_time"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.markov_matrix.occupancy_time" title="Permalink to this definition">¶</a></dt>
+<dt id="dyconnmap.ts.occupancy_time">
+<code class="sig-prename descclassname">dyconnmap.ts.</code><code class="sig-name descname">occupancy_time</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">symts</span><span class="p">:</span> <span class="n">np.ndarray<span class="p">[</span>np.int32<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">symbol_states</span><span class="p">:</span> <span class="n">numpy.int32</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">weight</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>Union<span class="p">[</span>numpy.float32<span class="p">, </span>np.ndarray<span class="p">[</span>np.float32<span class="p">]</span><span class="p">]</span><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; Tuple<span class="p">[</span>numpy.float64<span class="p">, </span>np.ndarray<span class="p">[</span>np.int32<span class="p">]</span><span class="p">]</span><a class="reference internal" href="_modules/dyconnmap/ts/markov_matrix.html#occupancy_time"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.occupancy_time" title="Permalink to this definition">¶</a></dt>
 <dd><p>Occupancy Time</p>
-<dl class="field-list">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>symts :</strong> :</p>
-<p><strong>symbol_states</strong> : int</p>
-<blockquote>
-<div><p>The maximum number of symbols. This is useful to define in case your
-symbolic timeseries skips some states, in which case would produce
-a matrix of different size.</p>
-</div></blockquote>
-<p><strong>weight</strong> : float</p>
-<blockquote>
-<div><p>The weights of the reuslting transition symbols. Default <cite>len(symts)</cite>.</p>
-</div></blockquote>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>oc :</strong> :</p>
-<p><strong>symbols :</strong> :</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt id="dyconnmap.ts.markov_matrix.transition_rate">
-<code class="sig-prename descclassname">dyconnmap.ts.markov_matrix.</code><code class="sig-name descname">transition_rate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">symts</span></em>, <em class="sig-param"><span class="n">weight</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/ts/markov_matrix.html#transition_rate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.markov_matrix.transition_rate" title="Permalink to this definition">¶</a></dt>
-<dd><p>Transition Rate</p>
-<p>The total sum of transition between symbols.</p>
-<dl class="field-list">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>symts :</strong> :</p>
-<p><strong>weight</strong> : float</p>
-</dd>
-</dl>
-</dd></dl>
-
-</div>
-<div class="section" id="module-dyconnmap.ts.ordinal_pattern_similarity">
-<span id="dyconnmap-ts-ordinal-pattern-similarity-module"></span><h2>dyconnmap.ts.ordinal_pattern_similarity module<a class="headerlink" href="#module-dyconnmap.ts.ordinal_pattern_similarity" title="Permalink to this headline">¶</a></h2>
-<p>Ordinal Pattern Similarity</p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<hr class="docutils" />
-<dl class="citation">
-<dt class="label" id="id5"><span class="brackets">Stam2007</span></dt>
-<dd><p>Stam, C. J., Nolte, G., &amp; Daffertshofer, A. (2007). Phase lag index: assessment of functional connectivity from multi channel EEG and MEG with diminished bias from common sources. Human brain mapping, 28(11), 1178-1193.</p>
-</dd>
-<dt class="label" id="id6"><span class="brackets">Hardmeier2014</span></dt>
-<dd><p>Hardmeier, M., Hatz, F., Bousleiman, H., Schindler, C., Stam, C. J., &amp; Fuhr, P. (2014). Reproducibility of functional connectivity and graph measures based on the phase lag index (PLI) and weighted phase lag index (wPLI) derived from high resolution EEG. PloS one, 9(10), e108648.</p>
-</dd>
-</dl>
-<dl class="py function">
-<dt id="dyconnmap.ts.ordinal_pattern_similarity.ordinal_pattern_similarity">
-<code class="sig-prename descclassname">dyconnmap.ts.ordinal_pattern_similarity.</code><code class="sig-name descname">ordinal_pattern_similarity</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">signal1</span></em>, <em class="sig-param"><span class="n">signal2</span></em>, <em class="sig-param"><span class="n">m</span></em>, <em class="sig-param"><span class="n">tau</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/ts/ordinal_pattern_similarity.html#ordinal_pattern_similarity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.ordinal_pattern_similarity.ordinal_pattern_similarity" title="Permalink to this definition">¶</a></dt>
-<dd><p>Ordinal Pattern Similarity</p>
-<dl class="field-list">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>signal1 :</strong> :</p>
-<p><strong>signal2 :</strong> :</p>
-<p><strong>m</strong> : int</p>
-<blockquote>
-<div><p>Embedding dimension.</p>
-</div></blockquote>
-<p><strong>tau</strong> : int</p>
-<blockquote>
-<div><p>Time delay parameter.</p>
-</div></blockquote>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>dissimilarity</strong> : float</p>
-<blockquote>
-<div><p>The dissimilarity index as computed from the ordinal patterns.</p>
-</div></blockquote>
-<p><strong>ordinal_patterns</strong> : array</p>
-<blockquote>
-<div><p>The time series of ordinal patterns for input signals.</p>
-</div></blockquote>
-<p><strong>patterns_distribution</strong> : array</p>
-<blockquote>
-<div><p>Distribution of the patterns.</p>
-</div></blockquote>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<ul class="simple">
-<li><p>The results may vary from the original MATLAB script because of
-the permutations’ order.</p></li>
-<li><p>The permutations are generated from <span class="math notranslate nohighlight">\([1, dim+1]\)</span> so there are
-no occurances of <span class="math notranslate nohighlight">\(0.\)</span></p></li>
-<li><p>The extra <span class="math notranslate nohighlight">\(+1\)</span> in the lines
-.. python: I = sklearn.preprocessing.normalize(I + 1)
-is in order to avoid :math:<a href="#id7"><span class="problematic" id="id8">`</span></a>0`s.</p></li>
-</ul>
-</dd></dl>
-
-</div>
-<div class="section" id="module-dyconnmap.ts.permutation_entropy">
-<span id="dyconnmap-ts-permutation-entropy-module"></span><h2>dyconnmap.ts.permutation_entropy module<a class="headerlink" href="#module-dyconnmap.ts.permutation_entropy" title="Permalink to this headline">¶</a></h2>
-<p>Permutation Entropy</p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<hr class="docutils" />
-<dl class="citation">
-<dt class="label" id="id9"><span class="brackets">Stam2007</span></dt>
-<dd><p>Stam, C. J., Nolte, G., &amp; Daffertshofer, A. (2007). Phase lag index: assessment of functional connectivity from multi channel EEG and MEG with diminished bias from common sources. Human brain mapping, 28(11), 1178-1193.</p>
-</dd>
-<dt class="label" id="id10"><span class="brackets">Hardmeier2014</span></dt>
-<dd><p>Hardmeier, M., Hatz, F., Bousleiman, H., Schindler, C., Stam, C. J., &amp; Fuhr, P. (2014). Reproducibility of functional connectivity and graph measures based on the phase lag index (PLI) and weighted phase lag index (wPLI) derived from high resolution EEG. PloS one, 9(10), e108648.</p>
-</dd>
-</dl>
-<dl class="py function">
-<dt id="dyconnmap.ts.permutation_entropy.permutation_entropy">
-<code class="sig-prename descclassname">dyconnmap.ts.permutation_entropy.</code><code class="sig-name descname">permutation_entropy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">signal</span></em>, <em class="sig-param"><span class="n">m</span></em>, <em class="sig-param"><span class="n">tau</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/ts/permutation_entropy.html#permutation_entropy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.permutation_entropy.permutation_entropy" title="Permalink to this definition">¶</a></dt>
-<dd><p>Permutation Entropy</p>
-<dl class="field-list">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>signal</strong> : array-like, shape(N)</p>
-<blockquote>
-<div><p>Symblic time series (1D).</p>
-</div></blockquote>
-<p><strong>m</strong> : int</p>
-<blockquote>
-<div><p>Embedding dimension.</p>
-</div></blockquote>
-<p><strong>tau</strong> : int</p>
-<blockquote>
-<div><p>Time delay parameter.</p>
-</div></blockquote>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>pe</strong> : float</p>
-<blockquote>
-<div><p>Permutation entropy.</p>
-</div></blockquote>
-<p><strong>npe</strong> : float</p>
-<blockquote>
-<div><p>Normalized permutation entropy.</p>
-</div></blockquote>
-</dd>
-</dl>
-</dd></dl>
-
-</div>
-<div class="section" id="module-dyconnmap.ts.rr_order_patterns">
-<span id="dyconnmap-ts-rr-order-patterns-module"></span><h2>dyconnmap.ts.rr_order_patterns module<a class="headerlink" href="#module-dyconnmap.ts.rr_order_patterns" title="Permalink to this headline">¶</a></h2>
-<p>Order Reccurence Plot</p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<hr class="docutils" />
-<dl class="citation">
-<dt class="label" id="id11"><span class="brackets">Stam2007</span></dt>
-<dd><p>Stam, C. J., Nolte, G., &amp; Daffertshofer, A. (2007). Phase lag index: assessment of functional connectivity from multi channel EEG and MEG with diminished bias from common sources. Human brain mapping, 28(11), 1178-1193.</p>
-</dd>
-<dt class="label" id="id12"><span class="brackets">Hardmeier2014</span></dt>
-<dd><p>Hardmeier, M., Hatz, F., Bousleiman, H., Schindler, C., Stam, C. J., &amp; Fuhr, P. (2014). Reproducibility of functional connectivity and graph measures based on the phase lag index (PLI) and weighted phase lag index (wPLI) derived from high resolution EEG. PloS one, 9(10), e108648.</p>
-</dd>
-</dl>
-<dl class="py function">
-<dt id="dyconnmap.ts.rr_order_patterns.rr_order_patterns">
-<code class="sig-prename descclassname">dyconnmap.ts.rr_order_patterns.</code><code class="sig-name descname">rr_order_patterns</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">signal1</span></em>, <em class="sig-param"><span class="n">signal2</span></em>, <em class="sig-param"><span class="n">m</span></em>, <em class="sig-param"><span class="n">tau</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/ts/rr_order_patterns.html#rr_order_patterns"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.rr_order_patterns.rr_order_patterns" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>signal1 :</strong> :</p>
-<p><strong>signal2 :</strong> :</p>
-<p><strong>m</strong> : int</p>
-<blockquote>
-<div><p>Embedding dimension.</p>
-</div></blockquote>
-<p><strong>tau</strong> : int</p>
-<blockquote>
-<div><p>Time delay parameter.</p>
-</div></blockquote>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>cstr</strong> : float</p>
-<blockquote>
-<div><p>Coupling strength.</p>
-</div></blockquote>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<ul class="simple">
-<li><p>The results may vary from the original MATLAB script because of
-the permutations’ order.</p></li>
-<li><p>The results may vary from the original MATLAB script because of
-the order of the indices in the <a href="#id13"><span class="problematic" id="id14">:python:`numpy.where`</span></a>.</p></li>
-<li><p>The permutations are generated from <span class="math notranslate nohighlight">\([1, dim+1]\)</span> so there are
-no occurances of <span class="math notranslate nohighlight">\(0.\)</span></p></li>
-<li><p>The extra <span class="math notranslate nohighlight">\(+1\)</span> in the lines
-.. python: I = sklearn.preprocessing.normalize(I + 1)
-is in order to avoid :math:<a href="#id15"><span class="problematic" id="id16">`</span></a>0`s.</p></li>
-</ul>
-</dd></dl>
-
-</div>
-<div class="section" id="module-dyconnmap.ts.sampen">
-<span id="dyconnmap-ts-sampen-module"></span><h2>dyconnmap.ts.sampen module<a class="headerlink" href="#module-dyconnmap.ts.sampen" title="Permalink to this headline">¶</a></h2>
-<p>Sample Entropy</p>
-<div class="section" id="id17">
-<h3>Notes<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
-<p>Based on <a class="reference external" href="https://nl.mathworks.com/matlabcentral/fileexchange/35784-sample-entropy">https://nl.mathworks.com/matlabcentral/fileexchange/35784-sample-entropy</a></p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<hr class="docutils" />
-<dl class="citation">
-<dt class="label" id="id18"><span class="brackets">Stam2007</span></dt>
-<dd><p>Stam, C. J., Nolte, G., &amp; Daffertshofer, A. (2007). Phase lag index: assessment of functional connectivity from multi channel EEG and MEG with diminished bias from common sources. Human brain mapping, 28(11), 1178-1193.</p>
-</dd>
-<dt class="label" id="id19"><span class="brackets">Hardmeier2014</span></dt>
-<dd><p>Hardmeier, M., Hatz, F., Bousleiman, H., Schindler, C., Stam, C. J., &amp; Fuhr, P. (2014). Reproducibility of functional connectivity and graph measures based on the phase lag index (PLI) and weighted phase lag index (wPLI) derived from high resolution EEG. PloS one, 9(10), e108648.</p>
-</dd>
-</dl>
-<dl class="py function">
-<dt id="dyconnmap.ts.sampen.sample_entropy">
-<code class="sig-prename descclassname">dyconnmap.ts.sampen.</code><code class="sig-name descname">sample_entropy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">dim</span><span class="o">=</span><span class="default_value">2</span></em>, <em class="sig-param"><span class="n">tau</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">r</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/ts/sampen.html#sample_entropy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.sampen.sample_entropy" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sample Entropy</p>
-<dl class="field-list">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>data</strong> : array-like, shape(n_samples)</p>
-<blockquote>
-<div><p>Symbolic time series.</p>
-</div></blockquote>
-<p><strong>dim</strong> : int</p>
-<blockquote>
-<div><p>Embedding dimension. Default <cite>2</cite>.</p>
-</div></blockquote>
-<p><strong>tau</strong> : int</p>
-<blockquote>
-<div><p>Delay time for downsampling. Is <cite>None</cite>, <cite>1</cite> is passed.</p>
-</div></blockquote>
-<p><strong>r</strong> : float</p>
-<blockquote>
-<div><p>Tolerance factor. If <cite>None</cite>, <cite>0.2 * std(data)</cite> is passed.</p>
-</div></blockquote>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>SampEn</strong> : float</p>
-<blockquote>
-<div><p>Sample entropy.</p>
-</div></blockquote>
-</dd>
-</dl>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<dl class="simple">
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">dyconnmap.ts.embed_ts</span></code></dt><dd><p>Embedded timeseries</p>
-</dd>
-</dl>
-</div>
-</dd></dl>
-
-</div>
-</div>
-<div class="section" id="module-dyconnmap.ts.ste">
-<span id="dyconnmap-ts-ste-module"></span><h2>dyconnmap.ts.ste module<a class="headerlink" href="#module-dyconnmap.ts.ste" title="Permalink to this headline">¶</a></h2>
-<p>Symbolic Transfer Entropy</p>
-<dl class="py function">
-<dt id="dyconnmap.ts.ste.entropy_reduction_rate">
-<code class="sig-prename descclassname">dyconnmap.ts.ste.</code><code class="sig-name descname">entropy_reduction_rate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sym_ts</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/ts/ste.html#entropy_reduction_rate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.ste.entropy_reduction_rate" title="Permalink to this definition">¶</a></dt>
-<dd><p>Entropy Reduction Rate</p>
-<dl class="field-list">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>sym_ts</strong> : array-like, shape(n_samples)</p>
-<blockquote>
-<div><p>Input symblic time series.</p>
-</div></blockquote>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>entredrate</strong> : float</p>
-<blockquote>
-<div><p>The estimated entropy reduction rate.</p>
-</div></blockquote>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt id="dyconnmap.ts.ste.symoblic_transfer_entropy">
-<code class="sig-prename descclassname">dyconnmap.ts.ste.</code><code class="sig-name descname">symoblic_transfer_entropy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">s</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">delay</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/ts/ste.html#symoblic_transfer_entropy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.ste.symoblic_transfer_entropy" title="Permalink to this definition">¶</a></dt>
-<dd><p>Symbolic Tranfer Entropy</p>
-<dl class="field-list">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>x</strong> : array-like, shape(N)</p>
-<blockquote>
-<div><p>Symblic time series (1D).</p>
-</div></blockquote>
-<p><strong>y</strong> : array-like, shape(N)</p>
-<blockquote>
-<div><p>Symbolic time series (1D).</p>
-</div></blockquote>
-<p><strong>s</strong> : int</p>
-<blockquote>
-<div><p>Embedding dimension.</p>
-</div></blockquote>
-<p><strong>delay</strong> : int</p>
-<blockquote>
-<div><p>Time delay parameter</p>
-</div></blockquote>
-<p><strong>verbose</strong> : boolean</p>
-<blockquote>
-<div><p>Print computation messages.</p>
-</div></blockquote>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>tent_diff</strong> : float</p>
-<blockquote>
-<div><p>The difference of the tranfer entropies of the two time series.</p>
-</div></blockquote>
-<p><strong>tentxy</strong> : float</p>
-<blockquote>
-<div><p>The estimated tranfer entropy of x -&gt; y.</p>
-</div></blockquote>
-<p><strong>tentyx</strong> : float</p>
-<blockquote>
-<div><p>The estimated tranfer entropy of y -&gt; x.</p>
-</div></blockquote>
-</dd>
-</dl>
-</dd></dl>
-
-</div>
-<div class="section" id="module-dyconnmap.ts.surrogates">
-<span id="dyconnmap-ts-surrogates-module"></span><h2>dyconnmap.ts.surrogates module<a class="headerlink" href="#module-dyconnmap.ts.surrogates" title="Permalink to this headline">¶</a></h2>
-<p>Surrogate Analysis</p>
-<dl class="py function">
-<dt id="dyconnmap.ts.surrogates.aaft">
-<code class="sig-prename descclassname">dyconnmap.ts.surrogates.</code><code class="sig-name descname">aaft</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ts</span></em>, <em class="sig-param"><span class="n">num_surr</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">rng</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/ts/surrogates.html#aaft"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.surrogates.aaft" title="Permalink to this definition">¶</a></dt>
-<dd><p>Amplitude Adjusted Fourier Transform</p>
-<dl class="field-list">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>ts :</strong> :</p>
-<p><strong>num_surr :</strong> :</p>
-<p><strong>rng</strong> : object or None</p>
-<blockquote>
-<div><p>An object of type numpy.random.RandomState</p>
-</div></blockquote>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt id="dyconnmap.ts.surrogates.fdr">
-<code class="sig-prename descclassname">dyconnmap.ts.surrogates.</code><code class="sig-name descname">fdr</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">p_values</span></em>, <em class="sig-param"><span class="n">q</span><span class="o">=</span><span class="default_value">0.01</span></em>, <em class="sig-param"><span class="n">method</span><span class="o">=</span><span class="default_value">'pdep'</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/ts/surrogates.html#fdr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.surrogates.fdr" title="Permalink to this definition">¶</a></dt>
-<dd><p>False Discovery Rate</p>
-<dl class="field-list">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>p_values :</strong> :</p>
-<p><strong>q :</strong> :</p>
-<p><strong>method :</strong> :</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt id="dyconnmap.ts.surrogates.phase_rand">
-<code class="sig-prename descclassname">dyconnmap.ts.surrogates.</code><code class="sig-name descname">phase_rand</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">num_surr</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">rng</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/ts/surrogates.html#phase_rand"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.surrogates.phase_rand" title="Permalink to this definition">¶</a></dt>
-<dd><p>Phase-randomized suggorates</p>
-<dl class="field-list">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>data :</strong> :</p>
-<p><strong>num_surr :</strong> :</p>
-<p><strong>rng</strong> : object or None</p>
-<blockquote>
-<div><p>An object of type numpy.random.RandomState</p>
-</div></blockquote>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt id="dyconnmap.ts.surrogates.surrogate_analysis">
-<code class="sig-prename descclassname">dyconnmap.ts.surrogates.</code><code class="sig-name descname">surrogate_analysis</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ts1</span></em>, <em class="sig-param"><span class="n">ts2</span></em>, <em class="sig-param"><span class="n">num_surr</span><span class="o">=</span><span class="default_value">1000</span></em>, <em class="sig-param"><span class="n">estimator_func</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">ts1_no_surr</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">rng</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/ts/surrogates.html#surrogate_analysis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.surrogates.surrogate_analysis" title="Permalink to this definition">¶</a></dt>
-<dd><p>Surrogate Analysis</p>
-<dl class="field-list">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>ts1 :</strong> :</p>
-<p><strong>ts2 :</strong> :</p>
-<p><strong>num_surr</strong> : int</p>
-<p><strong>estimator_func</strong> : function</p>
-<p><strong>ts1_no_surr</strong> : boolean</p>
-<p><strong>rng</strong> : object or None</p>
-<blockquote>
-<div><p>An object of type numpy.random.RandomState</p>
-</div></blockquote>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>p_val</strong> : float</p>
-<p><strong>corr_surr :</strong> :</p>
-<p><strong>surrogates :</strong> :</p>
-<p><strong>r_value</strong> : float</p>
-</dd>
-</dl>
-</dd></dl>
-
-</div>
-<div class="section" id="module-dyconnmap.ts.teager_kaiser_energy">
-<span id="dyconnmap-ts-teager-kaiser-energy-module"></span><h2>dyconnmap.ts.teager_kaiser_energy module<a class="headerlink" href="#module-dyconnmap.ts.teager_kaiser_energy" title="Permalink to this headline">¶</a></h2>
-<p>Teager–Kaiser Operator</p>
-<p>ref: <a class="reference external" href="https://www.c-motion.com/v3dwiki/index.php/Teager_Kaiser_Energy">https://www.c-motion.com/v3dwiki/index.php/Teager_Kaiser_Energy</a></p>
-<dl class="py function">
-<dt id="dyconnmap.ts.teager_kaiser_energy.teager_kaiser_energy">
-<code class="sig-prename descclassname">dyconnmap.ts.teager_kaiser_energy.</code><code class="sig-name descname">teager_kaiser_energy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ts</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/ts/teager_kaiser_energy.html#teager_kaiser_energy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.teager_kaiser_energy.teager_kaiser_energy" title="Permalink to this definition">¶</a></dt>
-<dd><p>Teager Kaiser Energy</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>ts</strong> : array of size [1 x samples]</p>
-</dd>
-</dl>
-</dd></dl>
-
-</div>
-<div class="section" id="module-dyconnmap.ts.wald">
-<span id="dyconnmap-ts-wald-module"></span><h2>dyconnmap.ts.wald module<a class="headerlink" href="#module-dyconnmap.ts.wald" title="Permalink to this headline">¶</a></h2>
-<p>Wald test</p>
-<dl class="py function">
-<dt id="dyconnmap.ts.wald.wald">
-<code class="sig-prename descclassname">dyconnmap.ts.wald.</code><code class="sig-name descname">wald</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/ts/wald.html#wald"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.wald.wald" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>x :</strong> :</p>
-<p><strong>y :</strong> :</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>symts</strong> – </p></li>
+<li><p><strong>symbol_states</strong> (<em>int</em>) – The maximum number of symbols. This is useful to define in case your
+symbolic timeseries skips some states, in which case would produce
+a matrix of different size.</p></li>
+<li><p><strong>weight</strong> (<em>float</em>) – The weights of the reuslting transition symbols. Default <cite>len(symts)</cite>.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>w</strong> : float</p>
-<p><strong>r</strong> : float</p>
-<p><strong>edges</strong> : array-like</p>
-<p><strong>weights</strong> : array-like</p>
-</dd>
-</dl>
-<p class="rubric">Notes</p>
-<p>The input time series will be padded with zeros if needed.</p>
-</dd></dl>
-
-</div>
-<div class="section" id="module-dyconnmap.ts">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-dyconnmap.ts" title="Permalink to this headline">¶</a></h2>
-<dl class="py function">
-<dt id="dyconnmap.ts.fisher_z">
-<code class="sig-prename descclassname">dyconnmap.ts.</code><code class="sig-name descname">fisher_z</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/ts/fisher_z.html#fisher_z"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.fisher_z" title="Permalink to this definition">¶</a></dt>
-<dd><p>Fisher’s z-transformation</p>
-<p>For a given dataset <span class="math notranslate nohighlight">\(p\)</span> bound to <span class="math notranslate nohighlight">\([0.0, 1.0]\)</span>, we can use Fisher’s z-transformation to normalize it
-in an approximately Gaussian distribution.</p>
-<p>This transformation is computed as follows:</p>
-<div class="math notranslate nohighlight">
-\[z_p := \frac{1}{2} \text{ln} \left ( \frac{1+p}{1-p} \right ) = \text{arctanh}(p)\]</div>
-</dd></dl>
-
-<dl class="py function">
-<dt id="dyconnmap.ts.fisher_z_plv">
-<code class="sig-prename descclassname">dyconnmap.ts.</code><code class="sig-name descname">fisher_z_plv</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/ts/fisher_z.html#fisher_z_plv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.fisher_z_plv" title="Permalink to this definition">¶</a></dt>
-<dd><div class="math notranslate nohighlight">
-\[z^p_j = sin^{-1}(2 * PLV_j - 1)\]</div>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<dl class="citation">
-<dt class="label" id="id20"><span class="brackets">Mormann2005</span></dt>
-<dd><p>Mormann, F., Fell, J., Axmacher, N., Weber, B., Lehnertz, K., Elger, C. E., &amp; Fernández, G. (2005). Phase/amplitude reset and theta–gamma interaction in the human medial temporal lobe during a continuous word recognition memory task. Hippocampus, 15(7), 890-900.</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt id="dyconnmap.ts.fisher_score">
-<code class="sig-prename descclassname">dyconnmap.ts.</code><code class="sig-name descname">fisher_score</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/ts/fisher_score.html#fisher_score"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.fisher_score" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt id="dyconnmap.ts.sample_entropy">
-<code class="sig-prename descclassname">dyconnmap.ts.</code><code class="sig-name descname">sample_entropy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">dim</span><span class="o">=</span><span class="default_value">2</span></em>, <em class="sig-param"><span class="n">tau</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">r</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/ts/sampen.html#sample_entropy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.sample_entropy" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sample Entropy</p>
-<dl class="field-list">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>data</strong> : array-like, shape(n_samples)</p>
-<blockquote>
-<div><p>Symbolic time series.</p>
-</div></blockquote>
-<p><strong>dim</strong> : int</p>
-<blockquote>
-<div><p>Embedding dimension. Default <cite>2</cite>.</p>
-</div></blockquote>
-<p><strong>tau</strong> : int</p>
-<blockquote>
-<div><p>Delay time for downsampling. Is <cite>None</cite>, <cite>1</cite> is passed.</p>
-</div></blockquote>
-<p><strong>r</strong> : float</p>
-<blockquote>
-<div><p>Tolerance factor. If <cite>None</cite>, <cite>0.2 * std(data)</cite> is passed.</p>
-</div></blockquote>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>SampEn</strong> : float</p>
-<blockquote>
-<div><p>Sample entropy.</p>
-</div></blockquote>
-</dd>
-</dl>
-<div class="admonition seealso">
-<p class="admonition-title">See also</p>
-<dl class="simple">
-<dt><code class="xref py py-obj docutils literal notranslate"><span class="pre">dyconnmap.ts.embed_ts</span></code></dt><dd><p>Embedded timeseries</p>
-</dd>
-</dl>
-</div>
-</dd></dl>
-
-<dl class="py function">
-<dt id="dyconnmap.ts.embed_delay">
-<code class="sig-prename descclassname">dyconnmap.ts.</code><code class="sig-name descname">embed_delay</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ts</span></em>, <em class="sig-param"><span class="n">dim</span></em>, <em class="sig-param"><span class="n">tau</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/ts/embed_delay.html#embed_delay"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.embed_delay" title="Permalink to this definition">¶</a></dt>
-<dd><p>Embed delay</p>
-<dl class="field-list">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>ts</strong> : array-like, shape(n_samples)</p>
-<blockquote>
-<div><p>One-dimensional symbolic time series.</p>
-</div></blockquote>
-<p><strong>dim</strong> : int</p>
-<blockquote>
-<div><p>The embedding dimension.</p>
-</div></blockquote>
-<p><strong>tau</strong> : int</p>
-<blockquote>
-<div><p>Time delay factor.</p>
-</div></blockquote>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>y</strong> : array-like</p>
-<blockquote>
-<div><p>The embedded timeseries.</p>
-</div></blockquote>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt id="dyconnmap.ts.aaft">
-<code class="sig-prename descclassname">dyconnmap.ts.</code><code class="sig-name descname">aaft</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ts</span></em>, <em class="sig-param"><span class="n">num_surr</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">rng</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/ts/surrogates.html#aaft"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.aaft" title="Permalink to this definition">¶</a></dt>
-<dd><p>Amplitude Adjusted Fourier Transform</p>
-<dl class="field-list">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>ts :</strong> :</p>
-<p><strong>num_surr :</strong> :</p>
-<p><strong>rng</strong> : object or None</p>
-<blockquote>
-<div><p>An object of type numpy.random.RandomState</p>
-</div></blockquote>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt id="dyconnmap.ts.fdr">
-<code class="sig-prename descclassname">dyconnmap.ts.</code><code class="sig-name descname">fdr</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">p_values</span></em>, <em class="sig-param"><span class="n">q</span><span class="o">=</span><span class="default_value">0.01</span></em>, <em class="sig-param"><span class="n">method</span><span class="o">=</span><span class="default_value">'pdep'</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/ts/surrogates.html#fdr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.fdr" title="Permalink to this definition">¶</a></dt>
-<dd><p>False Discovery Rate</p>
-<dl class="field-list">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>p_values :</strong> :</p>
-<p><strong>q :</strong> :</p>
-<p><strong>method :</strong> :</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt id="dyconnmap.ts.phase_rand">
-<code class="sig-prename descclassname">dyconnmap.ts.</code><code class="sig-name descname">phase_rand</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">num_surr</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">rng</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/ts/surrogates.html#phase_rand"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.phase_rand" title="Permalink to this definition">¶</a></dt>
-<dd><p>Phase-randomized suggorates</p>
-<dl class="field-list">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>data :</strong> :</p>
-<p><strong>num_surr :</strong> :</p>
-<p><strong>rng</strong> : object or None</p>
-<blockquote>
-<div><p>An object of type numpy.random.RandomState</p>
-</div></blockquote>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt id="dyconnmap.ts.surrogate_analysis">
-<code class="sig-prename descclassname">dyconnmap.ts.</code><code class="sig-name descname">surrogate_analysis</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ts1</span></em>, <em class="sig-param"><span class="n">ts2</span></em>, <em class="sig-param"><span class="n">num_surr</span><span class="o">=</span><span class="default_value">1000</span></em>, <em class="sig-param"><span class="n">estimator_func</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">ts1_no_surr</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">rng</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/ts/surrogates.html#surrogate_analysis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.surrogate_analysis" title="Permalink to this definition">¶</a></dt>
-<dd><p>Surrogate Analysis</p>
-<dl class="field-list">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>ts1 :</strong> :</p>
-<p><strong>ts2 :</strong> :</p>
-<p><strong>num_surr</strong> : int</p>
-<p><strong>estimator_func</strong> : function</p>
-<p><strong>ts1_no_surr</strong> : boolean</p>
-<p><strong>rng</strong> : object or None</p>
-<blockquote>
-<div><p>An object of type numpy.random.RandomState</p>
-</div></blockquote>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>p_val</strong> : float</p>
-<p><strong>corr_surr :</strong> :</p>
-<p><strong>surrogates :</strong> :</p>
-<p><strong>r_value</strong> : float</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt id="dyconnmap.ts.entropy_reduction_rate">
-<code class="sig-prename descclassname">dyconnmap.ts.</code><code class="sig-name descname">entropy_reduction_rate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sym_ts</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/ts/ste.html#entropy_reduction_rate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.entropy_reduction_rate" title="Permalink to this definition">¶</a></dt>
-<dd><p>Entropy Reduction Rate</p>
-<dl class="field-list">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>sym_ts</strong> : array-like, shape(n_samples)</p>
-<blockquote>
-<div><p>Input symblic time series.</p>
-</div></blockquote>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>entredrate</strong> : float</p>
-<blockquote>
-<div><p>The estimated entropy reduction rate.</p>
-</div></blockquote>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt id="dyconnmap.ts.symoblic_transfer_entropy">
-<code class="sig-prename descclassname">dyconnmap.ts.</code><code class="sig-name descname">symoblic_transfer_entropy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em>, <em class="sig-param"><span class="n">s</span><span class="o">=</span><span class="default_value">1</span></em>, <em class="sig-param"><span class="n">delay</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/ts/ste.html#symoblic_transfer_entropy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.symoblic_transfer_entropy" title="Permalink to this definition">¶</a></dt>
-<dd><p>Symbolic Tranfer Entropy</p>
-<dl class="field-list">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>x</strong> : array-like, shape(N)</p>
-<blockquote>
-<div><p>Symblic time series (1D).</p>
-</div></blockquote>
-<p><strong>y</strong> : array-like, shape(N)</p>
-<blockquote>
-<div><p>Symbolic time series (1D).</p>
-</div></blockquote>
-<p><strong>s</strong> : int</p>
-<blockquote>
-<div><p>Embedding dimension.</p>
-</div></blockquote>
-<p><strong>delay</strong> : int</p>
-<blockquote>
-<div><p>Time delay parameter</p>
-</div></blockquote>
-<p><strong>verbose</strong> : boolean</p>
-<blockquote>
-<div><p>Print computation messages.</p>
-</div></blockquote>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>tent_diff</strong> : float</p>
-<blockquote>
-<div><p>The difference of the tranfer entropies of the two time series.</p>
-</div></blockquote>
-<p><strong>tentxy</strong> : float</p>
-<blockquote>
-<div><p>The estimated tranfer entropy of x -&gt; y.</p>
-</div></blockquote>
-<p><strong>tentyx</strong> : float</p>
-<blockquote>
-<div><p>The estimated tranfer entropy of y -&gt; x.</p>
-</div></blockquote>
+<dd class="field-even"><p><ul class="simple">
+<li><p><em>oc</em></p></li>
+<li><p><em>symbols</em></p></li>
+</ul>
+</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
 <dt id="dyconnmap.ts.ordinal_pattern_similarity">
-<code class="sig-prename descclassname">dyconnmap.ts.</code><code class="sig-name descname">ordinal_pattern_similarity</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">signal1</span></em>, <em class="sig-param"><span class="n">signal2</span></em>, <em class="sig-param"><span class="n">m</span></em>, <em class="sig-param"><span class="n">tau</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/ts/ordinal_pattern_similarity.html#ordinal_pattern_similarity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.ordinal_pattern_similarity" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.ts.</code><code class="sig-name descname">ordinal_pattern_similarity</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">signal1</span><span class="p">:</span> <span class="n">np.ndarray<span class="p">[</span>np.int32<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">signal2</span><span class="p">:</span> <span class="n">np.ndarray<span class="p">[</span>np.int32<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">m</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">tau</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; Tuple<span class="p">[</span>float<span class="p">, </span>np.ndarray<span class="p">[</span>np.int32<span class="p">]</span><span class="p">, </span>np.ndarray<span class="p">[</span>np.float32<span class="p">]</span><span class="p">]</span><a class="reference internal" href="_modules/dyconnmap/ts/ordinal_pattern_similarity.html#ordinal_pattern_similarity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.ordinal_pattern_similarity" title="Permalink to this definition">¶</a></dt>
 <dd><p>Ordinal Pattern Similarity</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>signal1 :</strong> :</p>
-<p><strong>signal2 :</strong> :</p>
-<p><strong>m</strong> : int</p>
-<blockquote>
-<div><p>Embedding dimension.</p>
-</div></blockquote>
-<p><strong>tau</strong> : int</p>
-<blockquote>
-<div><p>Time delay parameter.</p>
-</div></blockquote>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>signal1</strong> – </p></li>
+<li><p><strong>signal2</strong> – </p></li>
+<li><p><strong>m</strong> (<em>int</em>) – Embedding dimension.</p></li>
+<li><p><strong>tau</strong> (<em>int</em>) – Time delay parameter.</p></li>
+</ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>dissimilarity</strong> : float</p>
-<blockquote>
-<div><p>The dissimilarity index as computed from the ordinal patterns.</p>
-</div></blockquote>
-<p><strong>ordinal_patterns</strong> : array</p>
-<blockquote>
-<div><p>The time series of ordinal patterns for input signals.</p>
-</div></blockquote>
-<p><strong>patterns_distribution</strong> : array</p>
-<blockquote>
-<div><p>Distribution of the patterns.</p>
-</div></blockquote>
+</dl>
+<p class="rubric">Notes</p>
+<ul class="simple">
+<li><p>The results may vary from the original MATLAB script because of
+the permutations’ order.</p></li>
+<li><p>The permutations are generated from <span class="math notranslate nohighlight">\([1, dim+1]\)</span> so there are
+no occurances of <span class="math notranslate nohighlight">\(0.\)</span></p></li>
+<li><p>The extra <span class="math notranslate nohighlight">\(+1\)</span> in the lines
+.. python: I = sklearn.preprocessing.normalize(I + 1)
+is in order to avoid :math:<a href="#id19"><span class="problematic" id="id20">`</span></a>0`s.</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><strong>dissimilarity</strong> (<em>float</em>) – The dissimilarity index as computed from the ordinal patterns.</p></li>
+<li><p><strong>ordinal_patterns</strong> (<em>array</em>) – The time series of ordinal patterns for input signals.</p></li>
+<li><p><strong>patterns_distribution</strong> (<em>array</em>) – Distribution of the patterns.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="id0">
+<code class="sig-prename descclassname">dyconnmap.ts.</code><code class="sig-name descname">ordinal_pattern_similarity</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">signal1</span><span class="p">:</span> <span class="n">np.ndarray<span class="p">[</span>np.int32<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">signal2</span><span class="p">:</span> <span class="n">np.ndarray<span class="p">[</span>np.int32<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">m</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">tau</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; Tuple<span class="p">[</span>float<span class="p">, </span>np.ndarray<span class="p">[</span>np.int32<span class="p">]</span><span class="p">, </span>np.ndarray<span class="p">[</span>np.float32<span class="p">]</span><span class="p">]</span><a class="reference internal" href="_modules/dyconnmap/ts/ordinal_pattern_similarity.html#ordinal_pattern_similarity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#id0" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ordinal Pattern Similarity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>signal1</strong> – </p></li>
+<li><p><strong>signal2</strong> – </p></li>
+<li><p><strong>m</strong> (<em>int</em>) – Embedding dimension.</p></li>
+<li><p><strong>tau</strong> (<em>int</em>) – Time delay parameter.</p></li>
+</ul>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
@@ -1333,105 +1349,66 @@ no occurances of <span class="math notranslate nohighlight">\(0.\)</span></p></l
 .. python: I = sklearn.preprocessing.normalize(I + 1)
 is in order to avoid :math:<a href="#id21"><span class="problematic" id="id22">`</span></a>0`s.</p></li>
 </ul>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><ul class="simple">
+<li><p><strong>dissimilarity</strong> (<em>float</em>) – The dissimilarity index as computed from the ordinal patterns.</p></li>
+<li><p><strong>ordinal_patterns</strong> (<em>array</em>) – The time series of ordinal patterns for input signals.</p></li>
+<li><p><strong>patterns_distribution</strong> (<em>array</em>) – Distribution of the patterns.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt id="dyconnmap.ts.permutation_entropy">
-<code class="sig-prename descclassname">dyconnmap.ts.</code><code class="sig-name descname">permutation_entropy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">signal</span></em>, <em class="sig-param"><span class="n">m</span></em>, <em class="sig-param"><span class="n">tau</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/ts/permutation_entropy.html#permutation_entropy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.permutation_entropy" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.ts.</code><code class="sig-name descname">permutation_entropy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">signal</span><span class="p">:</span> <span class="n">np.ndarray<span class="p">[</span>np.int32<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">m</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">tau</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/dyconnmap/ts/permutation_entropy.html#permutation_entropy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.permutation_entropy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Permutation Entropy</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>signal</strong> : array-like, shape(N)</p>
-<blockquote>
-<div><p>Symblic time series (1D).</p>
-</div></blockquote>
-<p><strong>m</strong> : int</p>
-<blockquote>
-<div><p>Embedding dimension.</p>
-</div></blockquote>
-<p><strong>tau</strong> : int</p>
-<blockquote>
-<div><p>Time delay parameter.</p>
-</div></blockquote>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>signal</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>N</em><em>)</em>) – Symblic time series (1D).</p></li>
+<li><p><strong>m</strong> (<em>int</em>) – Embedding dimension.</p></li>
+<li><p><strong>tau</strong> (<em>int</em>) – Time delay parameter.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>pe</strong> : float</p>
-<blockquote>
-<div><p>Permutation entropy.</p>
-</div></blockquote>
-<p><strong>npe</strong> : float</p>
-<blockquote>
-<div><p>Normalized permutation entropy.</p>
-</div></blockquote>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>pe</strong> (<em>float</em>) – Permutation entropy.</p></li>
+<li><p><strong>npe</strong> (<em>float</em>) – Normalized permutation entropy.</p></li>
+</ul>
+</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
-<dt id="id0">
-<code class="sig-prename descclassname">dyconnmap.ts.</code><code class="sig-name descname">ordinal_pattern_similarity</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">signal1</span></em>, <em class="sig-param"><span class="n">signal2</span></em>, <em class="sig-param"><span class="n">m</span></em>, <em class="sig-param"><span class="n">tau</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/ts/ordinal_pattern_similarity.html#ordinal_pattern_similarity"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#id0" title="Permalink to this definition">¶</a></dt>
-<dd><p>Ordinal Pattern Similarity</p>
-<dl class="field-list">
+<dt id="dyconnmap.ts.phase_rand">
+<code class="sig-prename descclassname">dyconnmap.ts.</code><code class="sig-name descname">phase_rand</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span></em>, <em class="sig-param"><span class="n">num_surr</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">1</span></em>, <em class="sig-param"><span class="n">rng</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>numpy.random.mtrand.RandomState<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; np.ndarray<span class="p">[</span>np.float32<span class="p">]</span><a class="reference internal" href="_modules/dyconnmap/ts/surrogates.html#phase_rand"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.phase_rand" title="Permalink to this definition">¶</a></dt>
+<dd><p>Phase-randomized suggorates</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>signal1 :</strong> :</p>
-<p><strong>signal2 :</strong> :</p>
-<p><strong>m</strong> : int</p>
-<blockquote>
-<div><p>Embedding dimension.</p>
-</div></blockquote>
-<p><strong>tau</strong> : int</p>
-<blockquote>
-<div><p>Time delay parameter.</p>
-</div></blockquote>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>dissimilarity</strong> : float</p>
-<blockquote>
-<div><p>The dissimilarity index as computed from the ordinal patterns.</p>
-</div></blockquote>
-<p><strong>ordinal_patterns</strong> : array</p>
-<blockquote>
-<div><p>The time series of ordinal patterns for input signals.</p>
-</div></blockquote>
-<p><strong>patterns_distribution</strong> : array</p>
-<blockquote>
-<div><p>Distribution of the patterns.</p>
-</div></blockquote>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – </p></li>
+<li><p><strong>num_surr</strong> – </p></li>
+<li><p><strong>rng</strong> (<em>object</em><em> or </em><em>None</em>) – An object of type numpy.random.RandomState</p></li>
+</ul>
 </dd>
 </dl>
-<p class="rubric">Notes</p>
-<ul class="simple">
-<li><p>The results may vary from the original MATLAB script because of
-the permutations’ order.</p></li>
-<li><p>The permutations are generated from <span class="math notranslate nohighlight">\([1, dim+1]\)</span> so there are
-no occurances of <span class="math notranslate nohighlight">\(0.\)</span></p></li>
-<li><p>The extra <span class="math notranslate nohighlight">\(+1\)</span> in the lines
-.. python: I = sklearn.preprocessing.normalize(I + 1)
-is in order to avoid :math:<a href="#id23"><span class="problematic" id="id24">`</span></a>0`s.</p></li>
-</ul>
 </dd></dl>
 
 <dl class="py function">
 <dt id="dyconnmap.ts.rr_order_patterns">
-<code class="sig-prename descclassname">dyconnmap.ts.</code><code class="sig-name descname">rr_order_patterns</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">signal1</span></em>, <em class="sig-param"><span class="n">signal2</span></em>, <em class="sig-param"><span class="n">m</span></em>, <em class="sig-param"><span class="n">tau</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/ts/rr_order_patterns.html#rr_order_patterns"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.rr_order_patterns" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list">
+<code class="sig-prename descclassname">dyconnmap.ts.</code><code class="sig-name descname">rr_order_patterns</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">signal1</span><span class="p">:</span> <span class="n">np.ndarray<span class="p">[</span>np.int32<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">signal2</span><span class="p">:</span> <span class="n">np.ndarray<span class="p">[</span>np.int32<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">m</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">tau</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/dyconnmap/ts/rr_order_patterns.html#rr_order_patterns"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.rr_order_patterns" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>signal1 :</strong> :</p>
-<p><strong>signal2 :</strong> :</p>
-<p><strong>m</strong> : int</p>
-<blockquote>
-<div><p>Embedding dimension.</p>
-</div></blockquote>
-<p><strong>tau</strong> : int</p>
-<blockquote>
-<div><p>Time delay parameter.</p>
-</div></blockquote>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>cstr</strong> : float</p>
-<blockquote>
-<div><p>Coupling strength.</p>
-</div></blockquote>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>signal1</strong> – </p></li>
+<li><p><strong>signal2</strong> – </p></li>
+<li><p><strong>m</strong> (<em>int</em>) – Embedding dimension.</p></li>
+<li><p><strong>tau</strong> (<em>int</em>) – Time delay parameter.</p></li>
+</ul>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
@@ -1439,306 +1416,152 @@ is in order to avoid :math:<a href="#id23"><span class="problematic" id="id24">`
 <li><p>The results may vary from the original MATLAB script because of
 the permutations’ order.</p></li>
 <li><p>The results may vary from the original MATLAB script because of
-the order of the indices in the <a href="#id25"><span class="problematic" id="id26">:python:`numpy.where`</span></a>.</p></li>
+the order of the indices in the <a href="#id23"><span class="problematic" id="id24">:python:`numpy.where`</span></a>.</p></li>
 <li><p>The permutations are generated from <span class="math notranslate nohighlight">\([1, dim+1]\)</span> so there are
 no occurances of <span class="math notranslate nohighlight">\(0.\)</span></p></li>
 <li><p>The extra <span class="math notranslate nohighlight">\(+1\)</span> in the lines
 .. python: I = sklearn.preprocessing.normalize(I + 1)
-is in order to avoid :math:<a href="#id27"><span class="problematic" id="id28">`</span></a>0`s.</p></li>
+is in order to avoid :math:<a href="#id25"><span class="problematic" id="id26">`</span></a>0`s.</p></li>
 </ul>
-</dd></dl>
-
-<dl class="py function">
-<dt id="dyconnmap.ts.entropy">
-<code class="sig-prename descclassname">dyconnmap.ts.</code><code class="sig-name descname">entropy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/ts/entropy.html#entropy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.entropy" title="Permalink to this definition">¶</a></dt>
-<dd><p>Entropy</p>
-<dl class="field-list">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>x</strong> : array-like, shape(N)</p>
-<blockquote>
-<div><p>Input symbolic time series.</p>
-</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>cstr</strong> – Coupling strength.</p>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>entropy</strong> : float</p>
-<blockquote>
-<div><p>The computed entropy.</p>
-</div></blockquote>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
-<dt id="dyconnmap.ts.wald">
-<code class="sig-prename descclassname">dyconnmap.ts.</code><code class="sig-name descname">wald</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/ts/wald.html#wald"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.wald" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list">
+<dt id="dyconnmap.ts.sample_entropy">
+<code class="sig-prename descclassname">dyconnmap.ts.</code><code class="sig-name descname">sample_entropy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">data</span><span class="p">:</span> <span class="n">np.ndarray<span class="p">[</span>np.int32<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">dim</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">2</span></em>, <em class="sig-param"><span class="n">tau</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">r</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>float<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/dyconnmap/ts/sampen.html#sample_entropy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.sample_entropy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sample Entropy</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>x :</strong> :</p>
-<p><strong>y :</strong> :</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>n_samples</em><em>)</em>) – Symbolic time series.</p></li>
+<li><p><strong>dim</strong> (<em>int</em>) – Embedding dimension. Default <cite>2</cite>.</p></li>
+<li><p><strong>tau</strong> (<em>int</em>) – Delay time for downsampling. Is <cite>None</cite>, <cite>1</cite> is passed.</p></li>
+<li><p><strong>r</strong> (<em>float</em>) – Tolerance factor. If <cite>None</cite>, <cite>0.2 * std(data)</cite> is passed.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>w</strong> : float</p>
-<p><strong>r</strong> : float</p>
-<p><strong>edges</strong> : array-like</p>
-<p><strong>weights</strong> : array-like</p>
+<dd class="field-even"><p><strong>SampEn</strong> – Sample entropy.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
 </dd>
 </dl>
-<p class="rubric">Notes</p>
-<p>The input time series will be padded with zeros if needed.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt id="dyconnmap.ts.dcorr">
-<code class="sig-prename descclassname">dyconnmap.ts.</code><code class="sig-name descname">dcorr</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/ts/dcorr.html#dcorr"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.dcorr" title="Permalink to this definition">¶</a></dt>
-<dd><p>Distance Correlation</p>
-<dl class="field-list">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>x</strong> : array-like, shape(n_samples)</p>
-<blockquote>
-<div><p>Input time series.</p>
-</div></blockquote>
-<p><strong>y</strong> : array-like, shape(N)</p>
-<blockquote>
-<div><p>Input time series.</p>
-</div></blockquote>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>val</strong> : float</p>
-<blockquote>
-<div><p>The computed distance correlation.</p>
-</div></blockquote>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<dl class="simple">
+<dt><code class="xref py py-func docutils literal notranslate"><span class="pre">dyconnmap.ts.embed_ts()</span></code></dt><dd><p>Embedded timeseries</p>
 </dd>
 </dl>
-</dd></dl>
-
-<dl class="py function">
-<dt id="dyconnmap.ts.markov_matrix">
-<code class="sig-prename descclassname">dyconnmap.ts.</code><code class="sig-name descname">markov_matrix</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">symts</span></em>, <em class="sig-param"><span class="n">states_from_length</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/ts/markov_matrix.html#markov_matrix"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.markov_matrix" title="Permalink to this definition">¶</a></dt>
-<dd><p>Markov Matrix</p>
-<p>Markov matrix (also refered as “transition matrix”) is a square matrix that tabulates
-the observed transition probabilities between symbols for a finite Markov Chain. It is a first-order descriptor
-by which the next symbol depends only on the current symbol (and not on the previous ones);
-a Markov Chain model.</p>
-<p>A transition matrix is formally depicted as:</p>
-<p>Given the probability <span class="math notranslate nohighlight">\(Pr(j|i)\)</span> of moving between <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> elements,
-the transition matrix is depicted as:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}P = \begin{pmatrix}
-              P_{1,1} &amp; P_{1,2} &amp; \ldots &amp; P_{1,j} &amp; \ldots &amp; P_{1,S} \\
-              P_{2,1} &amp; P_{2,2} &amp; \ldots &amp; P_{2,j} &amp; \ldots &amp; P_{2,S} \\
-              \vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \ddots &amp; \vdots \\
-              P_{i,1} &amp; P_{i,2} &amp; \ldots &amp; P_{i,j} &amp; \ldots &amp; P_{i,S} \\
-              \vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \ddots &amp; \vdots \\
-              P_{S,1} &amp; P_{S,2} &amp; \ldots &amp; P_{S,j} &amp; \ldots &amp; P_{S,S} \\
-    \end{pmatrix}\end{split}\]</div>
-<p>Since the transition matrix is row-normalized, so as the total transition probability
-from state <span class="math notranslate nohighlight">\(i\)</span> to all the others must be equal to <span class="math notranslate nohighlight">\(1\)</span>.</p>
-<p>For more properties consult, among other links <a href="#id37"><span class="problematic" id="id38">WolframMathWorld_</span></a> and <a href="#id39"><span class="problematic" id="id40">WikipediaMarkovMatrix_</span></a>.</p>
-<div class="line-block">
-<div class="line"><br /></div>
 </div>
-<dl class="citation">
-<dt class="label" id="id29"><span class="brackets">WolframMathWorld</span></dt>
-<dd><p><a class="reference external" href="http://mathworld.wolfram.com/StochasticMatrix.html">http://mathworld.wolfram.com/StochasticMatrix.html</a></p>
-</dd>
-<dt class="label" id="id30"><span class="brackets">WikipediaMarkovMatrix</span></dt>
-<dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Stochastic_matrix">https://en.wikipedia.org/wiki/Stochastic_matrix</a></p>
-</dd>
-</dl>
-<dl class="field-list">
+</dd></dl>
+
+<dl class="py function">
+<dt id="dyconnmap.ts.surrogate_analysis">
+<code class="sig-prename descclassname">dyconnmap.ts.</code><code class="sig-name descname">surrogate_analysis</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ts1</span><span class="p">:</span> <span class="n">np.ndarray<span class="p">[</span>np.float32<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">ts2</span><span class="p">:</span> <span class="n">np.ndarray<span class="p">[</span>np.float32<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">num_surr</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">1000</span></em>, <em class="sig-param"><span class="n">estimator_func</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>Callable<span class="p">[</span><span class="p">[</span>np.ndarray<span class="p">[</span>np.float32<span class="p">]</span><span class="p">, </span>np.ndarray<span class="p">[</span>np.float32<span class="p">]</span><span class="p">]</span><span class="p">, </span>float<span class="p">]</span><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">ts1_no_surr</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em>, <em class="sig-param"><span class="n">rng</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>numpy.random.mtrand.RandomState<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; Tuple<span class="p">[</span>float<span class="p">, </span>np.ndarray<span class="p">[</span>np.int32<span class="p">]</span><span class="p">, </span>np.ndarray<span class="p">[</span>np.float32<span class="p">]</span><span class="p">, </span>float<span class="p">]</span><a class="reference internal" href="_modules/dyconnmap/ts/surrogates.html#surrogate_analysis"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.surrogate_analysis" title="Permalink to this definition">¶</a></dt>
+<dd><p>Surrogate Analysis</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>symts</strong> : array-like, shape(N)</p>
-<blockquote>
-<div><p>One-dimensional discrete time series.</p>
-</div></blockquote>
-<p><strong>states_from_length: bool or int, optional</strong> :</p>
-<blockquote>
-<div><p>Used to account symbolic time series in which not all the symbols are present.
-That may happen when for example the symbols are drawn from different distributions.
-Default <cite>True</cite>, the size of the resulting Markov Matrix is equal to the number
-of unique symbols present in the time series. If <cite>False</cite>, the size will be the
-<cite>highest symbolic state + 1</cite>.
-You may also speficy the highest (inclusive) symbolic state.</p>
-</div></blockquote>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ts1</strong> – </p></li>
+<li><p><strong>ts2</strong> – </p></li>
+<li><p><strong>num_surr</strong> (<em>int</em>) – </p></li>
+<li><p><strong>estimator_func</strong> (<em>function</em>) – </p></li>
+<li><p><strong>ts1_no_surr</strong> (<em>boolean</em>) – </p></li>
+<li><p><strong>rng</strong> (<em>object</em><em> or </em><em>None</em>) – An object of type numpy.random.RandomState</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>mtx</strong> : matrix</p>
-<blockquote>
-<div><p>The transition matrix. The size depends the parameter <cite>states_from_length</cite>.</p>
-</div></blockquote>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>p_val</strong> (<em>float</em>)</p></li>
+<li><p><em>corr_surr</em></p></li>
+<li><p><em>surrogates</em></p></li>
+<li><p><strong>r_value</strong> (<em>float</em>)</p></li>
+</ul>
+</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
-<dt id="dyconnmap.ts.transition_rate">
-<code class="sig-prename descclassname">dyconnmap.ts.</code><code class="sig-name descname">transition_rate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">symts</span></em>, <em class="sig-param"><span class="n">weight</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/ts/markov_matrix.html#transition_rate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.transition_rate" title="Permalink to this definition">¶</a></dt>
-<dd><p>Transition Rate</p>
-<p>The total sum of transition between symbols.</p>
-<dl class="field-list">
+<dt id="dyconnmap.ts.symoblic_transfer_entropy">
+<code class="sig-prename descclassname">dyconnmap.ts.</code><code class="sig-name descname">symoblic_transfer_entropy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">np.ndarray<span class="p">[</span>np.int32<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">y</span><span class="p">:</span> <span class="n">np.ndarray<span class="p">[</span>np.int32<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">s</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">1</span></em>, <em class="sig-param"><span class="n">delay</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">0</span></em>, <em class="sig-param"><span class="n">verbose</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>bool<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">False</span></em><span class="sig-paren">)</span> &#x2192; Tuple<span class="p">[</span>float<span class="p">, </span>float<span class="p">, </span>float<span class="p">]</span><a class="reference internal" href="_modules/dyconnmap/ts/ste.html#symoblic_transfer_entropy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.symoblic_transfer_entropy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Symbolic Tranfer Entropy</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>symts :</strong> :</p>
-<p><strong>weight</strong> : float</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt id="dyconnmap.ts.occupancy_time">
-<code class="sig-prename descclassname">dyconnmap.ts.</code><code class="sig-name descname">occupancy_time</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">symts</span></em>, <em class="sig-param"><span class="n">symbol_states</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">weight</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/ts/markov_matrix.html#occupancy_time"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.occupancy_time" title="Permalink to this definition">¶</a></dt>
-<dd><p>Occupancy Time</p>
-<dl class="field-list">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>symts :</strong> :</p>
-<p><strong>symbol_states</strong> : int</p>
-<blockquote>
-<div><p>The maximum number of symbols. This is useful to define in case your
-symbolic timeseries skips some states, in which case would produce
-a matrix of different size.</p>
-</div></blockquote>
-<p><strong>weight</strong> : float</p>
-<blockquote>
-<div><p>The weights of the reuslting transition symbols. Default <cite>len(symts)</cite>.</p>
-</div></blockquote>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>N</em><em>)</em>) – Symblic time series (1D).</p></li>
+<li><p><strong>y</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>N</em><em>)</em>) – Symbolic time series (1D).</p></li>
+<li><p><strong>s</strong> (<em>int</em>) – Embedding dimension.</p></li>
+<li><p><strong>delay</strong> (<em>int</em>) – Time delay parameter</p></li>
+<li><p><strong>verbose</strong> (<em>boolean</em>) – Print computation messages.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>oc :</strong> :</p>
-<p><strong>symbols :</strong> :</p>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>tent_diff</strong> (<em>float</em>) – The difference of the tranfer entropies of the two time series.</p></li>
+<li><p><strong>tentxy</strong> (<em>float</em>) – The estimated tranfer entropy of x -&gt; y.</p></li>
+<li><p><strong>tentyx</strong> (<em>float</em>) – The estimated tranfer entropy of y -&gt; x.</p></li>
+</ul>
+</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
 <dt id="dyconnmap.ts.teager_kaiser_energy">
-<code class="sig-prename descclassname">dyconnmap.ts.</code><code class="sig-name descname">teager_kaiser_energy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ts</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/ts/teager_kaiser_energy.html#teager_kaiser_energy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.teager_kaiser_energy" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.ts.</code><code class="sig-name descname">teager_kaiser_energy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ts</span><span class="p">:</span> <span class="n">np.ndarray<span class="p">[</span>np.float32<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; np.ndarray<span class="p">[</span>np.float32<span class="p">]</span><a class="reference internal" href="_modules/dyconnmap/ts/teager_kaiser_energy.html#teager_kaiser_energy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.teager_kaiser_energy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Teager Kaiser Energy</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>ts</strong> : array of size [1 x samples]</p>
+<dd class="field-odd"><p><strong>ts</strong> (<em>array of size</em><em> [</em><em>1 x samples</em><em>]</em>) – </p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
-<dt id="dyconnmap.ts.complexity_index">
-<code class="sig-prename descclassname">dyconnmap.ts.</code><code class="sig-name descname">complexity_index</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">sub_len</span><span class="o">=</span><span class="default_value">- 1</span></em>, <em class="sig-param"><span class="n">normalize</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">iterations</span><span class="o">=</span><span class="default_value">100</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/ts/ci.html#complexity_index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.complexity_index" title="Permalink to this definition">¶</a></dt>
-<dd><p>Complexity Index</p>
-<dl class="field-list">
+<dt id="dyconnmap.ts.transition_rate">
+<code class="sig-prename descclassname">dyconnmap.ts.</code><code class="sig-name descname">transition_rate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">symts</span><span class="p">:</span> <span class="n">np.ndarray<span class="p">[</span>np.int32<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">weight</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>Union<span class="p">[</span>numpy.float32<span class="p">, </span>np.ndarray<span class="p">[</span>np.float32<span class="p">]</span><span class="p">]</span><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/dyconnmap/ts/markov_matrix.html#transition_rate"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.transition_rate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transition Rate</p>
+<p>The total sum of transition between symbols.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>x</strong> : array-like, shape(n_samples)</p>
-<blockquote>
-<div><p>Input symbolic time series.</p>
-</div></blockquote>
-<p><strong>sub_len</strong> : int</p>
-<blockquote>
-<div><p>Maximum subword length. Default is <cite>len(x) - 1</cite>.</p>
-</div></blockquote>
-<p><strong>normalize</strong> : bool</p>
-<blockquote>
-<div><p>Normalize result. Default is <cite>False</cite>.</p>
-</div></blockquote>
-<p><strong>iterationss</strong> : int</p>
-<blockquote>
-<div><p>Number of iterations to perform randomization. Default is <cite>100</cite>.</p>
-</div></blockquote>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>normal_ci</strong> : float</p>
-<blockquote>
-<div><p>The computed omplexity index after normalization against the randomization
-procedure.</p>
-</div></blockquote>
-<p><strong>ci</strong> : float</p>
-<blockquote>
-<div><p>The computed complexity index.</p>
-</div></blockquote>
-<p><strong>spectrum</strong> : array-like</p>
-<blockquote>
-<div><p>A list of the number of distinct subwords of length 1, up to the size
-of the input symbolic time series.</p>
-</div></blockquote>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>symts</strong> – </p></li>
+<li><p><strong>weight</strong> (<em>float</em>) – </p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
-<dt id="dyconnmap.ts.fnn">
-<code class="sig-prename descclassname">dyconnmap.ts.</code><code class="sig-name descname">fnn</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ts</span></em>, <em class="sig-param"><span class="n">tau</span></em>, <em class="sig-param"><span class="n">max_dim</span><span class="o">=</span><span class="default_value">20</span></em>, <em class="sig-param"><span class="n">neighbors_reduction</span><span class="o">=</span><span class="default_value">0.1</span></em>, <em class="sig-param"><span class="n">rtol</span><span class="o">=</span><span class="default_value">15.0</span></em>, <em class="sig-param"><span class="n">atol</span><span class="o">=</span><span class="default_value">2.0</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/ts/fnn.html#fnn"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.fnn" title="Permalink to this definition">¶</a></dt>
-<dd><p>False Nearest Neighbors</p>
-<dl class="field-list">
+<dt id="dyconnmap.ts.wald">
+<code class="sig-prename descclassname">dyconnmap.ts.</code><code class="sig-name descname">wald</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">y</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em><span class="sig-paren">)</span> &#x2192; Tuple<span class="p">[</span>float<span class="p">, </span>float<span class="p">, </span>List<span class="p">[</span>List<span class="p">[</span>int<span class="p">]</span><span class="p">]</span><span class="p">, </span>List<span class="p">[</span>List<span class="p">[</span>float<span class="p">]</span><span class="p">]</span><span class="p">]</span><a class="reference internal" href="_modules/dyconnmap/ts/wald.html#wald"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.wald" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>ts</strong> : array-like, 1d</p>
-<p><strong>tau</strong> : int</p>
-<blockquote>
-<div><p>Time-delay parameter.</p>
-</div></blockquote>
-<p><strong>max_dim</strong> : int</p>
-<blockquote>
-<div><p>Maximum embedding dimension.</p>
-</div></blockquote>
-<p><strong>neighbors_reduction</strong> : float</p>
-<blockquote>
-<div><p>Maximum percentage of neighbors reduction. Default ‘0.10’ (10%).</p>
-</div></blockquote>
-<p><strong>rtol</strong> : float</p>
-<blockquote>
-<div><p>First threshold, criterion to identify a false neighbor. (Neighborhood size)</p>
-</div></blockquote>
-<p><strong>atol</strong> : float</p>
-<blockquote>
-<div><p>Second threshold, criterion to identify a false neighbor.</p>
-</div></blockquote>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> – </p></li>
+<li><p><strong>y</strong> – </p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>min_dimension</strong> : int</p>
-<blockquote>
-<div><p>Minimum embedding dimension.</p>
-</div></blockquote>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>w</strong> (<em>float</em>)</p></li>
+<li><p><strong>r</strong> (<em>float</em>)</p></li>
+<li><p><strong>edges</strong> (<em>array-like</em>)</p></li>
+<li><p><strong>weights</strong> (<em>array-like</em>)</p></li>
+</ul>
+</p>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
-<p>The execution stops either when the maxium number of embedding dimensions is
-reached, or the the number of neighbors is reduced to specific percentage.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt id="dyconnmap.ts.icc_31">
-<code class="sig-prename descclassname">dyconnmap.ts.</code><code class="sig-name descname">icc_31</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/ts/icc.html#icc_31"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.icc_31" title="Permalink to this definition">¶</a></dt>
-<dd><p>ICC (3,1)</p>
-<dl class="field-list">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>X :</strong> :</p>
-<blockquote>
-<div><p>Input data</p>
-</div></blockquote>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>icc</strong> : float</p>
-<blockquote>
-<div><p>Intra-class correlation.</p>
-</div></blockquote>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt id="dyconnmap.ts.cv">
-<code class="sig-prename descclassname">dyconnmap.ts.</code><code class="sig-name descname">cv</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/ts/cv.html#cv"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.ts.cv" title="Permalink to this definition">¶</a></dt>
-<dd><p>Coefficient of Variation</p>
-<dl class="field-list">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>x</strong> : array-like, shape(n_samples)</p>
-<blockquote>
-<div><p>Input time series</p>
-</div></blockquote>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>cv</strong> : float</p>
-<blockquote>
-<div><p>The computed coefficient of variation.</p>
-</div></blockquote>
-</dd>
-</dl>
+<p>The input time series will be padded with zeros if needed.</p>
 </dd></dl>
 
 </div>
@@ -1762,11 +1585,19 @@ reached, or the the number of neighbors is reduced to specific percentage.</p>
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2020, Avraam Marimpis &amp; Stavros Dimitriadis
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -1777,7 +1608,6 @@ reached, or the the number of neighbors is reduced to specific percentage.</p>
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

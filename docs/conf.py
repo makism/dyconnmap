@@ -37,10 +37,11 @@ sys.path.insert(5, os.path.abspath('dyconnmap/dyconnmap/'))
 # ones.
 extensions = [
     'sphinx.ext.autodoc',
+    'sphinx.ext.napoleon',
     'sphinx.ext.viewcode',
-    #    'sphinx.ext.pngmath',
+#    'sphinx.ext.pngmath',
     'sphinx.ext.mathjax',
-    'numpy_ext.numpydoc',
+#    'numpy_ext.numpydoc',
     'sphinx.ext.autosummary',
     'sphinx.ext.intersphinx',
 ]

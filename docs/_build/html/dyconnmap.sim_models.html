@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -25,15 +30,11 @@
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/language_data.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="dyconnmap.ts package" href="dyconnmap.ts.html" />
@@ -51,7 +52,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home"> dyconnmap
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> dyconnmap
           
 
           
@@ -74,6 +75,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -110,6 +112,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -148,7 +151,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="index.html">Docs</a> &raquo;</li>
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="dyconnmap.html">dyconnmap package</a> &raquo;</li>
         
@@ -178,8 +181,7 @@
 </div>
 <div class="section" id="module-dyconnmap.sim_models.makinen">
 <span id="dyconnmap-sim-models-makinen-module"></span><h2>dyconnmap.sim_models.makinen module<a class="headerlink" href="#module-dyconnmap.sim_models.makinen" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="notes">
-<h3>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h3>
+<p class="rubric">Notes</p>
 <p>Based on the MATLAB code from <a class="reference external" href="http://www.cs.bris.ac.uk/home/rafal/phasereset/phase.zip">http://www.cs.bris.ac.uk/home/rafal/phasereset/phase.zip</a></p>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -197,32 +199,16 @@
 <dt id="dyconnmap.sim_models.makinen.makinen">
 <code class="sig-prename descclassname">dyconnmap.sim_models.makinen.</code><code class="sig-name descname">makinen</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">frames</span></em>, <em class="sig-param"><span class="n">epochs</span></em>, <em class="sig-param"><span class="n">fs</span></em>, <em class="sig-param"><span class="n">min_fr</span></em>, <em class="sig-param"><span class="n">max_fr</span></em>, <em class="sig-param"><span class="n">rng</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/sim_models/makinen.html#makinen"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.sim_models.makinen.makinen" title="Permalink to this definition">¶</a></dt>
 <dd><p>Makinen</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>frames</strong> : int</p>
-<blockquote>
-<div><p>Number of signal frames per each trial.</p>
-</div></blockquote>
-<p><strong>epochs</strong> : int</p>
-<blockquote>
-<div><p>Number of simulated trials.</p>
-</div></blockquote>
-<p><strong>fs</strong> : float</p>
-<blockquote>
-<div><p>Sampling frequency.</p>
-</div></blockquote>
-<p><strong>min_fr :</strong> :</p>
-<blockquote>
-<div><p>Minimum frequency of the sinusoid which is being reset.</p>
-</div></blockquote>
-<p><strong>max_fr :</strong> :</p>
-<blockquote>
-<div><p>Maximum frequency of the sinusoid which is being reset.</p>
-</div></blockquote>
-<p><strong>rng</strong> : object or None</p>
-<blockquote>
-<div><p>An object of type numpy.random.RandomState</p>
-</div></blockquote>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>frames</strong> (<em>int</em>) – Number of signal frames per each trial.</p></li>
+<li><p><strong>epochs</strong> (<em>int</em>) – Number of simulated trials.</p></li>
+<li><p><strong>fs</strong> (<em>float</em>) – Sampling frequency.</p></li>
+<li><p><strong>min_fr</strong> – Minimum frequency of the sinusoid which is being reset.</p></li>
+<li><p><strong>max_fr</strong> – Maximum frequency of the sinusoid which is being reset.</p></li>
+<li><p><strong>rng</strong> (<em>object</em><em> or </em><em>None</em>) – An object of type numpy.random.RandomState</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -231,22 +217,20 @@
 <dt id="dyconnmap.sim_models.makinen.phasereset">
 <code class="sig-prename descclassname">dyconnmap.sim_models.makinen.</code><code class="sig-name descname">phasereset</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">frames</span></em>, <em class="sig-param"><span class="n">epochs</span></em>, <em class="sig-param"><span class="n">fs</span></em>, <em class="sig-param"><span class="n">min_fr</span></em>, <em class="sig-param"><span class="n">max_fr</span></em>, <em class="sig-param"><span class="n">rng</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/sim_models/makinen.html#phasereset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.sim_models.makinen.phasereset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Phasereset</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>frames :</strong> :</p>
-<p><strong>epochs :</strong> :</p>
-<p><strong>fs :</strong> :</p>
-<p><strong>min_fr :</strong> :</p>
-<p><strong>max_fr :</strong> :</p>
-<p><strong>rng</strong> : object or None</p>
-<blockquote>
-<div><p>An object of type numpy.random.RandomState</p>
-</div></blockquote>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>frames</strong> – </p></li>
+<li><p><strong>epochs</strong> – </p></li>
+<li><p><strong>fs</strong> – </p></li>
+<li><p><strong>min_fr</strong> – </p></li>
+<li><p><strong>max_fr</strong> – </p></li>
+<li><p><strong>rng</strong> (<em>object</em><em> or </em><em>None</em>) – An object of type numpy.random.RandomState</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
 
-</div>
 </div>
 <div class="section" id="module-dyconnmap.sim_models">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-dyconnmap.sim_models" title="Permalink to this headline">¶</a></h2>
@@ -254,32 +238,16 @@
 <dt id="dyconnmap.sim_models.makinen">
 <code class="sig-prename descclassname">dyconnmap.sim_models.</code><code class="sig-name descname">makinen</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">frames</span></em>, <em class="sig-param"><span class="n">epochs</span></em>, <em class="sig-param"><span class="n">fs</span></em>, <em class="sig-param"><span class="n">min_fr</span></em>, <em class="sig-param"><span class="n">max_fr</span></em>, <em class="sig-param"><span class="n">rng</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/sim_models/makinen.html#makinen"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.sim_models.makinen" title="Permalink to this definition">¶</a></dt>
 <dd><p>Makinen</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>frames</strong> : int</p>
-<blockquote>
-<div><p>Number of signal frames per each trial.</p>
-</div></blockquote>
-<p><strong>epochs</strong> : int</p>
-<blockquote>
-<div><p>Number of simulated trials.</p>
-</div></blockquote>
-<p><strong>fs</strong> : float</p>
-<blockquote>
-<div><p>Sampling frequency.</p>
-</div></blockquote>
-<p><strong>min_fr :</strong> :</p>
-<blockquote>
-<div><p>Minimum frequency of the sinusoid which is being reset.</p>
-</div></blockquote>
-<p><strong>max_fr :</strong> :</p>
-<blockquote>
-<div><p>Maximum frequency of the sinusoid which is being reset.</p>
-</div></blockquote>
-<p><strong>rng</strong> : object or None</p>
-<blockquote>
-<div><p>An object of type numpy.random.RandomState</p>
-</div></blockquote>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>frames</strong> (<em>int</em>) – Number of signal frames per each trial.</p></li>
+<li><p><strong>epochs</strong> (<em>int</em>) – Number of simulated trials.</p></li>
+<li><p><strong>fs</strong> (<em>float</em>) – Sampling frequency.</p></li>
+<li><p><strong>min_fr</strong> – Minimum frequency of the sinusoid which is being reset.</p></li>
+<li><p><strong>max_fr</strong> – Maximum frequency of the sinusoid which is being reset.</p></li>
+<li><p><strong>rng</strong> (<em>object</em><em> or </em><em>None</em>) – An object of type numpy.random.RandomState</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -288,17 +256,16 @@
 <dt id="dyconnmap.sim_models.phasereset">
 <code class="sig-prename descclassname">dyconnmap.sim_models.</code><code class="sig-name descname">phasereset</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">frames</span></em>, <em class="sig-param"><span class="n">epochs</span></em>, <em class="sig-param"><span class="n">fs</span></em>, <em class="sig-param"><span class="n">min_fr</span></em>, <em class="sig-param"><span class="n">max_fr</span></em>, <em class="sig-param"><span class="n">rng</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/sim_models/makinen.html#phasereset"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.sim_models.phasereset" title="Permalink to this definition">¶</a></dt>
 <dd><p>Phasereset</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>frames :</strong> :</p>
-<p><strong>epochs :</strong> :</p>
-<p><strong>fs :</strong> :</p>
-<p><strong>min_fr :</strong> :</p>
-<p><strong>max_fr :</strong> :</p>
-<p><strong>rng</strong> : object or None</p>
-<blockquote>
-<div><p>An object of type numpy.random.RandomState</p>
-</div></blockquote>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>frames</strong> – </p></li>
+<li><p><strong>epochs</strong> – </p></li>
+<li><p><strong>fs</strong> – </p></li>
+<li><p><strong>min_fr</strong> – </p></li>
+<li><p><strong>max_fr</strong> – </p></li>
+<li><p><strong>rng</strong> (<em>object</em><em> or </em><em>None</em>) – An object of type numpy.random.RandomState</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
@@ -326,11 +293,19 @@
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2020, Avraam Marimpis &amp; Stavros Dimitriadis
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -341,7 +316,6 @@
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

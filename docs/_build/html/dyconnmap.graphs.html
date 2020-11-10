@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -25,15 +30,11 @@
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/language_data.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="dyconnmap.sim_models package" href="dyconnmap.sim_models.html" />
@@ -51,7 +52,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home"> dyconnmap
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> dyconnmap
           
 
           
@@ -74,6 +75,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -119,6 +121,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -157,7 +160,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="index.html">Docs</a> &raquo;</li>
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="dyconnmap.html">dyconnmap package</a> &raquo;</li>
         
@@ -206,8 +209,7 @@ measure between two adjacency matrices <span class="math notranslate nohighlight
 <div class="math notranslate nohighlight">
 \[ξ(A_1, A_2 ; t) = ‖exp⁡(-tL_1 ) - exp⁡(-tL_2 )‖_F^2\]</div>
 <p>where <span class="math notranslate nohighlight">\(‖∙‖_F\)</span> is the Frobenious norm.</p>
-<div class="section" id="notes">
-<h3>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h3>
+<p class="rubric">Notes</p>
 <p>Based on the code accompanied the original paper. Available at <a class="reference external" href="https://www.researchgate.net/publication/259621918_A_Matlab_code_for_computing_the_GDD_presented_in_the_paper">https://www.researchgate.net/publication/259621918_A_Matlab_code_for_computing_the_GDD_presented_in_the_paper</a></p>
 <div class="line-block">
 <div class="line"><br /></div>
@@ -220,37 +222,26 @@ measure between two adjacency matrices <span class="math notranslate nohighlight
 </dl>
 <dl class="py function">
 <dt id="dyconnmap.graphs.gdd.graph_diffusion_distance">
-<code class="sig-prename descclassname">dyconnmap.graphs.gdd.</code><code class="sig-name descname">graph_diffusion_distance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">b</span></em>, <em class="sig-param"><span class="n">threshold</span><span class="o">=</span><span class="default_value">1e-14</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/gdd.html#graph_diffusion_distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.gdd.graph_diffusion_distance" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.graphs.gdd.</code><code class="sig-name descname">graph_diffusion_distance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">a</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">b</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">threshold</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>float<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">1e-14</span></em><span class="sig-paren">)</span> &#x2192; Tuple<span class="p">[</span>numpy.float32<span class="p">, </span>numpy.float32<span class="p">]</span><a class="reference internal" href="_modules/dyconnmap/graphs/gdd.html#graph_diffusion_distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.gdd.graph_diffusion_distance" title="Permalink to this definition">¶</a></dt>
 <dd><p>Graph Diffusion Distance</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>a</strong> : array-like, shape(N, N)</p>
-<blockquote>
-<div><p>Weighted matrix.</p>
-</div></blockquote>
-<p><strong>b</strong> : array-like, shape(N, N)</p>
-<blockquote>
-<div><p>Weighted matrix.</p>
-</div></blockquote>
-<p><strong>threshold</strong> : float</p>
-<blockquote>
-<div><p>A threshold to filter out the small eigenvalues. If the you get NaN or INFs, try lowering this threshold.</p>
-</div></blockquote>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>N</em><em>, </em><em>N</em><em>)</em>) – Weighted matrix.</p></li>
+<li><p><strong>b</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>N</em><em>, </em><em>N</em><em>)</em>) – Weighted matrix.</p></li>
+<li><p><strong>threshold</strong> (<em>float</em>) – A threshold to filter out the small eigenvalues. If the you get NaN or INFs, try lowering this threshold.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>gdd</strong> : float</p>
-<blockquote>
-<div><p>The estimated graph diffusion distance.</p>
-</div></blockquote>
-<p><strong>xopt</strong> : float</p>
-<blockquote>
-<div><p>Parameters (over given interval) which minimize the objective function. (see <code class="xref py py-mod docutils literal notranslate"><span class="pre">scipy.optimize.fmindbound</span></code>)</p>
-</div></blockquote>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>gdd</strong> (<em>float</em>) – The estimated graph diffusion distance.</p></li>
+<li><p><strong>xopt</strong> (<em>float</em>) – Parameters (over given interval) which minimize the objective function. (see <code class="xref py py-mod docutils literal notranslate"><span class="pre">scipy.optimize.fmindbound</span></code>)</p></li>
+</ul>
+</p>
 </dd>
 </dl>
 </dd></dl>
 
-</div>
 </div>
 <div class="section" id="module-dyconnmap.graphs.imd">
 <span id="dyconnmap-graphs-imd-module"></span><h2>dyconnmap.graphs.imd module<a class="headerlink" href="#module-dyconnmap.graphs.imd" title="Permalink to this headline">¶</a></h2>
@@ -277,27 +268,20 @@ The spectral distance between two graphs <span class="math notranslate nohighlig
 </dl>
 <dl class="py function">
 <dt id="dyconnmap.graphs.imd.im_distance">
-<code class="sig-prename descclassname">dyconnmap.graphs.imd.</code><code class="sig-name descname">im_distance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em>, <em class="sig-param"><span class="n">Y</span></em>, <em class="sig-param"><span class="n">bandwidth</span><span class="o">=</span><span class="default_value">1.0</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/imd.html#im_distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.imd.im_distance" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list">
+<code class="sig-prename descclassname">dyconnmap.graphs.imd.</code><code class="sig-name descname">im_distance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">Y</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">bandwidth</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>float<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">1.0</span></em><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/dyconnmap/graphs/imd.html#im_distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.imd.im_distance" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>X</strong> : array-like, shape(N, N)</p>
-<blockquote>
-<div><p>A weighted matrix.</p>
-</div></blockquote>
-<p><strong>Y</strong> : array-like, shape(N, N)</p>
-<blockquote>
-<div><p>A weighted matrix.</p>
-</div></blockquote>
-<p><strong>bandwidth</strong> : float</p>
-<blockquote>
-<div><p>Bandwidth of the kernel. Default <cite>1.0</cite>.</p>
-</div></blockquote>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>N</em><em>, </em><em>N</em><em>)</em>) – A weighted matrix.</p></li>
+<li><p><strong>Y</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>N</em><em>, </em><em>N</em><em>)</em>) – A weighted matrix.</p></li>
+<li><p><strong>bandwidth</strong> (<em>float</em>) – Bandwidth of the kernel. Default <cite>1.0</cite>.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>distance</strong> : float</p>
-<blockquote>
-<div><p>The estimated Ipsen-Mikhailov distance.</p>
-</div></blockquote>
+<dd class="field-even"><p><strong>distance</strong> – The estimated Ipsen-Mikhailov distance.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
 </dd>
 </dl>
 </dd></dl>
@@ -312,26 +296,23 @@ The spectral distance between two graphs <span class="math notranslate nohighlig
 ξ(A_1, A_2 ; t) = ‖exp⁡(-tL_1 ) - exp⁡(-tL_2 )‖_F^2\]</div>
 <p>Where <span class="math notranslate nohighlight">\(\mu_i\)</span> denote the eigenvalue associated with the node of the Laplcian
 matrix of <span class="math notranslate nohighlight">\(G\)</span> (Laplcian spectrum) and <span class="math notranslate nohighlight">\(\frac{2m}{n}\)</span> the average vertex degree.</p>
-<p>For a details please go through the original work (<a href="#id16"><span class="problematic" id="id17">Gutman2006_</span></a>).</p>
+<p>For a details please go through the original work (<a href="#id13"><span class="problematic" id="id14">Gutman2006_</span></a>).</p>
 <div class="line-block">
 <div class="line"><br /></div>
 </div>
 <dl class="py function">
 <dt id="dyconnmap.graphs.laplacian_energy.laplacian_energy">
-<code class="sig-prename descclassname">dyconnmap.graphs.laplacian_energy.</code><code class="sig-name descname">laplacian_energy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mtx</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/laplacian_energy.html#laplacian_energy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.laplacian_energy.laplacian_energy" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.graphs.laplacian_energy.</code><code class="sig-name descname">laplacian_energy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mtx</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/dyconnmap/graphs/laplacian_energy.html#laplacian_energy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.laplacian_energy.laplacian_energy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Laplacian Energy</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>mtx</strong> : array-like, shape(N, N)</p>
-<blockquote>
-<div><p>Symmetric, weighted and undirected connectivity matrix.</p>
-</div></blockquote>
+<dd class="field-odd"><p><strong>mtx</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>N</em><em>, </em><em>N</em><em>)</em>) – Symmetric, weighted and undirected connectivity matrix.</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>le</strong> : float</p>
-<blockquote>
-<div><p>The Laplacian Energy.</p>
-</div></blockquote>
+<dd class="field-even"><p><strong>le</strong> – The Laplacian Energy.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
 </dd>
 </dl>
 </dd></dl>
@@ -367,28 +348,21 @@ By exploiting the definition of mutual information, the following property holds
 </dl>
 <dl class="py function">
 <dt id="dyconnmap.graphs.mi.mutual_information">
-<code class="sig-prename descclassname">dyconnmap.graphs.mi.</code><code class="sig-name descname">mutual_information</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">indices_a</span></em>, <em class="sig-param"><span class="n">indices_b</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/mi.html#mutual_information"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.mi.mutual_information" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.graphs.mi.</code><code class="sig-name descname">mutual_information</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">indices_a</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">indices_b</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em><span class="sig-paren">)</span> &#x2192; Tuple<span class="p">[</span>float<span class="p">, </span>float<span class="p">]</span><a class="reference internal" href="_modules/dyconnmap/graphs/mi.html#mutual_information"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.mi.mutual_information" title="Permalink to this definition">¶</a></dt>
 <dd><p>Mutual Information</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>indices_a</strong> : array-like, shape(n_samples)</p>
-<blockquote>
-<div><p>Symbolic time series.</p>
-</div></blockquote>
-<p><strong>indices_b</strong> : array-like, shape(n_samples)</p>
-<blockquote>
-<div><p>Symbolic time series.</p>
-</div></blockquote>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>indices_a</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>n_samples</em><em>)</em>) – Symbolic time series.</p></li>
+<li><p><strong>indices_b</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>n_samples</em><em>)</em>) – Symbolic time series.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>MI</strong> : float</p>
-<blockquote>
-<div><p>Mutual information.</p>
-</div></blockquote>
-<p><strong>NMI</strong> : float</p>
-<blockquote>
-<div><p>Normalized mutual information.</p>
-</div></blockquote>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>MI</strong> (<em>float</em>) – Mutual information.</p></li>
+<li><p><strong>NMI</strong> (<em>float</em>) – Normalized mutual information.</p></li>
+</ul>
+</p>
 </dd>
 </dl>
 </dd></dl>
@@ -408,61 +382,52 @@ By exploiting the definition of mutual information, the following property holds
 </dl>
 <dl class="py function">
 <dt id="dyconnmap.graphs.mpc.multilayer_pc_degree">
-<code class="sig-prename descclassname">dyconnmap.graphs.mpc.</code><code class="sig-name descname">multilayer_pc_degree</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mlgraph</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/mpc.html#multilayer_pc_degree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.mpc.multilayer_pc_degree" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.graphs.mpc.</code><code class="sig-name descname">multilayer_pc_degree</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mlgraph</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="_modules/dyconnmap/graphs/mpc.html#multilayer_pc_degree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.mpc.multilayer_pc_degree" title="Permalink to this definition">¶</a></dt>
 <dd><p>Multilayer Participation Coefficient (Degree)</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>mlgraph</strong> : array-like, shape(n_layers, n_rois, n_rois)</p>
-<blockquote>
-<div><p>A multilayer (undirected) graph. Each layer consists of a graph.</p>
-</div></blockquote>
+<dd class="field-odd"><p><strong>mlgraph</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>n_layers</em><em>, </em><em>n_rois</em><em>, </em><em>n_rois</em><em>)</em>) – A multilayer (undirected) graph. Each layer consists of a graph.</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>mpc</strong> : array-like</p>
-<blockquote>
-<div><p>Participation coefficient based on the degree of the layers’ nodes.</p>
-</div></blockquote>
+<dd class="field-even"><p><strong>mpc</strong> – Participation coefficient based on the degree of the layers’ nodes.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>array-like</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
 <dt id="dyconnmap.graphs.mpc.multilayer_pc_gamma">
-<code class="sig-prename descclassname">dyconnmap.graphs.mpc.</code><code class="sig-name descname">multilayer_pc_gamma</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mlgraph</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/mpc.html#multilayer_pc_gamma"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.mpc.multilayer_pc_gamma" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.graphs.mpc.</code><code class="sig-name descname">multilayer_pc_gamma</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mlgraph</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="_modules/dyconnmap/graphs/mpc.html#multilayer_pc_gamma"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.mpc.multilayer_pc_gamma" title="Permalink to this definition">¶</a></dt>
 <dd><p>Multilayer Participation Coefficient method from Guillon et al.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>mlgraph</strong> : array-like, shape(n_layers, n_rois, n_rois)</p>
-<blockquote>
-<div><p>A multilayer graph.</p>
-</div></blockquote>
+<dd class="field-odd"><p><strong>mlgraph</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>n_layers</em><em>, </em><em>n_rois</em><em>, </em><em>n_rois</em><em>)</em>) – A multilayer graph.</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>gamma</strong> : array-like, shape(n_layers*n_rois, n_layers*n_rois)</p>
-<blockquote>
-<div><p>Returns the original multilayer graph flattened, with the off diagional
+<dd class="field-even"><p><strong>gamma</strong> – Returns the original multilayer graph flattened, with the off diagional
 containing the estimated interlayer multilayer participation coefficient.</p>
-</div></blockquote>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>array-like, shape(n_layers*n_rois, n_layers*n_rois)</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
 <dt id="dyconnmap.graphs.mpc.multilayer_pc_strength">
-<code class="sig-prename descclassname">dyconnmap.graphs.mpc.</code><code class="sig-name descname">multilayer_pc_strength</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mlgraph</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/mpc.html#multilayer_pc_strength"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.mpc.multilayer_pc_strength" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.graphs.mpc.</code><code class="sig-name descname">multilayer_pc_strength</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mlgraph</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="_modules/dyconnmap/graphs/mpc.html#multilayer_pc_strength"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.mpc.multilayer_pc_strength" title="Permalink to this definition">¶</a></dt>
 <dd><p>Multilayer Participation Coefficient (Strength)</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>mlgraph</strong> : array-like, shape(n_layers, n_rois, n_rois)</p>
-<blockquote>
-<div><p>A multilayer (undirected) graph. Each layer consists of a graph.</p>
-</div></blockquote>
+<dd class="field-odd"><p><strong>mlgraph</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>n_layers</em><em>, </em><em>n_rois</em><em>, </em><em>n_rois</em><em>)</em>) – A multilayer (undirected) graph. Each layer consists of a graph.</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>mpc</strong> : array-like</p>
-<blockquote>
-<div><p>Participation coefficient based on the strength of the layers’ nodes.</p>
-</div></blockquote>
+<dd class="field-even"><p><strong>mpc</strong> – Participation coefficient based on the strength of the layers’ nodes.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>array-like</p>
 </dd>
 </dl>
 </dd></dl>
@@ -473,20 +438,17 @@ containing the estimated interlayer multilayer participation coefficient.</p>
 <p>Nodal network features</p>
 <dl class="py function">
 <dt id="dyconnmap.graphs.nodal.nodal_global_efficiency">
-<code class="sig-prename descclassname">dyconnmap.graphs.nodal.</code><code class="sig-name descname">nodal_global_efficiency</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mtx</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/nodal.html#nodal_global_efficiency"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.nodal.nodal_global_efficiency" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.graphs.nodal.</code><code class="sig-name descname">nodal_global_efficiency</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mtx</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="_modules/dyconnmap/graphs/nodal.html#nodal_global_efficiency"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.nodal.nodal_global_efficiency" title="Permalink to this definition">¶</a></dt>
 <dd><p>Nodal Global Efficiency</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>mtx</strong> : array-like, shape(N, N)</p>
-<blockquote>
-<div><p>Symmetric, weighted and undirected connectivity matrix.</p>
-</div></blockquote>
+<dd class="field-odd"><p><strong>mtx</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>N</em><em>, </em><em>N</em><em>)</em>) – Symmetric, weighted and undirected connectivity matrix.</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>nodal_ge</strong> : array-like, shape(N, 1)</p>
-<blockquote>
-<div><p>The computed nodal global efficiency.</p>
-</div></blockquote>
+<dd class="field-even"><p><strong>nodal_ge</strong> – The computed nodal global efficiency.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>array-like, shape(N, 1)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -498,8 +460,7 @@ containing the estimated interlayer multilayer participation coefficient.</p>
 <p>The spectral distance between graphs is simply the Euclidean distance between the spectra.</p>
 <div class="math notranslate nohighlight">
 \[d(G, H) = \sqrt{ \sum_i{  (g_i  - h_j)^2   }  }\]</div>
-<div class="section" id="id2">
-<h3>Notes<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p class="rubric">Notes</p>
 <ul class="simple">
 <li><p>The input graphs can be a standard adjency matrix, or a variant of Laplacian.</p></li>
 </ul>
@@ -514,28 +475,23 @@ containing the estimated interlayer multilayer participation coefficient.</p>
 </dl>
 <dl class="py function">
 <dt id="dyconnmap.graphs.spectral_euclidean_distance.spectral_euclidean_distance">
-<code class="sig-prename descclassname">dyconnmap.graphs.spectral_euclidean_distance.</code><code class="sig-name descname">spectral_euclidean_distance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em>, <em class="sig-param"><span class="n">Y</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/spectral_euclidean_distance.html#spectral_euclidean_distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.spectral_euclidean_distance.spectral_euclidean_distance" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list">
+<code class="sig-prename descclassname">dyconnmap.graphs.spectral_euclidean_distance.</code><code class="sig-name descname">spectral_euclidean_distance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">Y</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/dyconnmap/graphs/spectral_euclidean_distance.html#spectral_euclidean_distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.spectral_euclidean_distance.spectral_euclidean_distance" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>X</strong> : array-like, shape(N, N)</p>
-<blockquote>
-<div><p>A weighted matrix.</p>
-</div></blockquote>
-<p><strong>Y</strong> : array-like, shape(N, N)</p>
-<blockquote>
-<div><p>A weighted matrix:</p>
-</div></blockquote>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>N</em><em>, </em><em>N</em><em>)</em>) – A weighted matrix.</p></li>
+<li><p><strong>Y</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>N</em><em>, </em><em>N</em><em>)</em>) – A weighted matrix:</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>distance</strong> : float</p>
-<blockquote>
-<div><p>The euclidean distance between the two spectrums.</p>
-</div></blockquote>
+<dd class="field-even"><p><strong>distance</strong> – The euclidean distance between the two spectrums.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
 </dd>
 </dl>
 </dd></dl>
 
-</div>
 </div>
 <div class="section" id="module-dyconnmap.graphs.spectral_k_distance">
 <span id="dyconnmap-graphs-spectral-k-distance-module"></span><h2>dyconnmap.graphs.spectral_k_distance module<a class="headerlink" href="#module-dyconnmap.graphs.spectral_k_distance" title="Permalink to this headline">¶</a></h2>
@@ -564,30 +520,23 @@ inequality.</p>
 </dl>
 <dl class="py function">
 <dt id="dyconnmap.graphs.spectral_k_distance.spectral_k_distance">
-<code class="sig-prename descclassname">dyconnmap.graphs.spectral_k_distance.</code><code class="sig-name descname">spectral_k_distance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em>, <em class="sig-param"><span class="n">Y</span></em>, <em class="sig-param"><span class="n">k</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/spectral_k_distance.html#spectral_k_distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.spectral_k_distance.spectral_k_distance" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.graphs.spectral_k_distance.</code><code class="sig-name descname">spectral_k_distance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">Y</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">k</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/dyconnmap/graphs/spectral_k_distance.html#spectral_k_distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.spectral_k_distance.spectral_k_distance" title="Permalink to this definition">¶</a></dt>
 <dd><p>Spectral-K Distance</p>
 <p>Use the largest <span class="math notranslate nohighlight">\(k\)</span> eigenvalues of the given graphs to compute the
 distance between them.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>X</strong> : array-like, shape(N, N)</p>
-<blockquote>
-<div><p>A weighted matrix.</p>
-</div></blockquote>
-<p><strong>Y</strong> : array-like, shape(N, N)</p>
-<blockquote>
-<div><p>A weighted matrixY</p>
-</div></blockquote>
-<p><strong>k</strong> : int</p>
-<blockquote>
-<div><p>Largest <cite>k</cite> eigenvalues to use.</p>
-</div></blockquote>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>N</em><em>, </em><em>N</em><em>)</em>) – A weighted matrix.</p></li>
+<li><p><strong>Y</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>N</em><em>, </em><em>N</em><em>)</em>) – A weighted matrixY</p></li>
+<li><p><strong>k</strong> (<em>int</em>) – Largest <cite>k</cite> eigenvalues to use.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>distance</strong> : float</p>
-<blockquote>
-<div><p>Estimated distance based on selected largest eigenvalues.</p>
-</div></blockquote>
+<dd class="field-even"><p><strong>distance</strong> – Estimated distance based on selected largest eigenvalues.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
 </dd>
 </dl>
 </dd></dl>
@@ -596,10 +545,9 @@ distance between them.</p>
 <div class="section" id="module-dyconnmap.graphs.threshold">
 <span id="dyconnmap-graphs-threshold-module"></span><h2>dyconnmap.graphs.threshold module<a class="headerlink" href="#module-dyconnmap.graphs.threshold" title="Permalink to this headline">¶</a></h2>
 <p>Thresholding schemes</p>
-<div class="section" id="id3">
-<h3>Notes<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p class="rubric">Notes</p>
 <ul class="simple">
-<li><p>This is a direct translation from <a href="#id4"><span class="problematic" id="id5">`</span></a>Data Driven Topological Filtering of Brain Networks via Orthogonal Minimal Spanning Trees &lt;<a class="reference external" href="https://github.com/stdimitr/topological_filtering_networks">https://github.com/stdimitr/topological_filtering_networks</a>&gt;’</p></li>
+<li><p>This is a direct translation from <a href="#id2"><span class="problematic" id="id3">`</span></a>Data Driven Topological Filtering of Brain Networks via Orthogonal Minimal Spanning Trees &lt;<a class="reference external" href="https://github.com/stdimitr/topological_filtering_networks">https://github.com/stdimitr/topological_filtering_networks</a>&gt;’</p></li>
 <li><p>Original author is Stravros Dimitriadis &lt;<a class="reference external" href="mailto:stidimitriadis&#37;&#52;&#48;gmail&#46;com">stidimitriadis<span>&#64;</span>gmail<span>&#46;</span>com</a>&gt;</p></li>
 </ul>
 <div class="line-block">
@@ -608,7 +556,7 @@ distance between them.</p>
 <hr class="docutils" />
 <dl class="py function">
 <dt id="dyconnmap.graphs.threshold.k_core_decomposition">
-<code class="sig-prename descclassname">dyconnmap.graphs.threshold.</code><code class="sig-name descname">k_core_decomposition</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mtx</span></em>, <em class="sig-param"><span class="n">threshold</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/threshold.html#k_core_decomposition"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.threshold.k_core_decomposition" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.graphs.threshold.</code><code class="sig-name descname">k_core_decomposition</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mtx</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">threshold</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="_modules/dyconnmap/graphs/threshold.html#k_core_decomposition"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.threshold.k_core_decomposition" title="Permalink to this definition">¶</a></dt>
 <dd><p>Threshold a binary graph based on the detected k-cores.</p>
 <dl class="citation">
 <dt class="label" id="alvarez2006"><span class="brackets">Alvarez2006</span></dt>
@@ -618,22 +566,18 @@ distance between them.</p>
 <dd><p>Hagmann, P., Cammoun, L., Gigandet, X., Meuli, R., Honey, C. J., Wedeen, V. J., &amp; Sporns, O. (2008). Mapping the structural core of human cerebral cortex. PLoS biology, 6(7), e159.</p>
 </dd>
 </dl>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>mtx</strong> : array-like, shape(N, N)</p>
-<blockquote>
-<div><p>Binary matrix.</p>
-</div></blockquote>
-<p><strong>threshold</strong> : int</p>
-<blockquote>
-<div><p>Degree threshold.</p>
-</div></blockquote>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mtx</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>N</em><em>, </em><em>N</em><em>)</em>) – Binary matrix.</p></li>
+<li><p><strong>threshold</strong> (<em>int</em>) – Degree threshold.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>k_cores</strong> : array-like, shape(N, 1)</p>
-<blockquote>
-<div><p>A binary matrix of the decomposed cores.</p>
-</div></blockquote>
+<dd class="field-even"><p><strong>k_cores</strong> – A binary matrix of the decomposed cores.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>array-like, shape(N, 1)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -641,110 +585,80 @@ distance between them.</p>
 <dl class="py function">
 <dt id="dyconnmap.graphs.threshold.threshold_eco">
 <code class="sig-prename descclassname">dyconnmap.graphs.threshold.</code><code class="sig-name descname">threshold_eco</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mtx</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/threshold.html#threshold_eco"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.threshold.threshold_eco" title="Permalink to this definition">¶</a></dt>
-<dd><p>Ecological Filtering</p>
-<dl class="citation">
-<dt class="label" id="fallani2017"><span class="brackets">Fallani2017</span></dt>
-<dd><p>Fallani, F. D. V., Latora, V., &amp; Chavez, M. (2017). A topological criterion for filtering information in complex brain networks. PLoS computational biology, 13(1), e1005305.</p>
-</dd>
-</dl>
-</dd></dl>
+<dd></dd></dl>
 
 <dl class="py function">
 <dt id="dyconnmap.graphs.threshold.threshold_global_cost_efficiency">
-<code class="sig-prename descclassname">dyconnmap.graphs.threshold.</code><code class="sig-name descname">threshold_global_cost_efficiency</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mtx</span></em>, <em class="sig-param"><span class="n">iterations</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/threshold.html#threshold_global_cost_efficiency"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.threshold.threshold_global_cost_efficiency" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.graphs.threshold.</code><code class="sig-name descname">threshold_global_cost_efficiency</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mtx</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">iterations</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; Tuple<span class="p">[</span>numpy.ndarray<span class="p">, </span>float<span class="p">, </span>float<span class="p">, </span>float<span class="p">]</span><a class="reference internal" href="_modules/dyconnmap/graphs/threshold.html#threshold_global_cost_efficiency"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.threshold.threshold_global_cost_efficiency" title="Permalink to this definition">¶</a></dt>
 <dd><p>Threshold a graph based on the Global Efficiency - Cost formula.</p>
 <dl class="citation">
 <dt class="label" id="basset2009"><span class="brackets">Basset2009</span></dt>
 <dd><p>Bassett, D. S., Bullmore, E. T., Meyer-Lindenberg, A., Apud, J. A., Weinberger, D. R., &amp; Coppola, R. (2009). Cognitive fitness of cost-efficient brain functional networks. Proceedings of the National Academy of Sciences, 106(28), 11747-11752.</p>
 </dd>
 </dl>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>mtx</strong> : array-like, shape(N, N)</p>
-<blockquote>
-<div><p>Symmetric, weighted and undirected connectivity matrix.</p>
-</div></blockquote>
-<p><strong>iterations</strong> : int</p>
-<blockquote>
-<div><p>Number of steps, as a resolution when search for optima.</p>
-</div></blockquote>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mtx</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>N</em><em>, </em><em>N</em><em>)</em>) – Symmetric, weighted and undirected connectivity matrix.</p></li>
+<li><p><strong>iterations</strong> (<em>int</em>) – Number of steps, as a resolution when search for optima.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>binary_mtx</strong> : array-like, shape(N, N)</p>
-<blockquote>
-<div><p>A binary mask matrix.</p>
-</div></blockquote>
-<p><strong>threshold</strong> : float</p>
-<blockquote>
-<div><p>The threshold that maximizes the global cost efficiency.</p>
-</div></blockquote>
-<p><strong>global_cost_eff_max</strong> : float</p>
-<blockquote>
-<div><p>Global cost efficiency.</p>
-</div></blockquote>
-<p><strong>efficiency</strong> : float</p>
-<blockquote>
-<div><p>Global efficiency.</p>
-</div></blockquote>
-<p><strong>cost_max</strong> : float</p>
-<blockquote>
-<div><p>Cost of the network at the maximum global cost efficiency</p>
-</div></blockquote>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>binary_mtx</strong> (<em>array-like, shape(N, N)</em>) – A binary mask matrix.</p></li>
+<li><p><strong>threshold</strong> (<em>float</em>) – The threshold that maximizes the global cost efficiency.</p></li>
+<li><p><strong>global_cost_eff_max</strong> (<em>float</em>) – Global cost efficiency.</p></li>
+<li><p><strong>efficiency</strong> (<em>float</em>) – Global efficiency.</p></li>
+<li><p><strong>cost_max</strong> (<em>float</em>) – Cost of the network at the maximum global cost efficiency</p></li>
+</ul>
+</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
 <dt id="dyconnmap.graphs.threshold.threshold_mean_degree">
-<code class="sig-prename descclassname">dyconnmap.graphs.threshold.</code><code class="sig-name descname">threshold_mean_degree</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mtx</span></em>, <em class="sig-param"><span class="n">threshold_mean_degree</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/threshold.html#threshold_mean_degree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.threshold.threshold_mean_degree" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.graphs.threshold.</code><code class="sig-name descname">threshold_mean_degree</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mtx</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">threshold_mean_degree</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="_modules/dyconnmap/graphs/threshold.html#threshold_mean_degree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.threshold.threshold_mean_degree" title="Permalink to this definition">¶</a></dt>
 <dd><p>Threshold a graph based on the mean degree.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>mtx</strong> : array-like, shape(N, N)</p>
-<blockquote>
-<div><p>Symmetric, weighted and undirected connectivity matrix.</p>
-</div></blockquote>
-<p><strong>threshold_mean_degree</strong> : int</p>
-<blockquote>
-<div><p>Mean degree threshold.</p>
-</div></blockquote>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mtx</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>N</em><em>, </em><em>N</em><em>)</em>) – Symmetric, weighted and undirected connectivity matrix.</p></li>
+<li><p><strong>threshold_mean_degree</strong> (<em>int</em>) – Mean degree threshold.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>binary_mtx</strong> : array-like, shape(N, N)</p>
-<blockquote>
-<div><p>A binary mask matrix.</p>
-</div></blockquote>
+<dd class="field-even"><p><strong>binary_mtx</strong> – A binary mask matrix.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>array-like, shape(N, N)</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
 <dt id="dyconnmap.graphs.threshold.threshold_mst_mean_degree">
-<code class="sig-prename descclassname">dyconnmap.graphs.threshold.</code><code class="sig-name descname">threshold_mst_mean_degree</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mtx</span></em>, <em class="sig-param"><span class="n">avg_degree</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/threshold.html#threshold_mst_mean_degree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.threshold.threshold_mst_mean_degree" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.graphs.threshold.</code><code class="sig-name descname">threshold_mst_mean_degree</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mtx</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">avg_degree</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="_modules/dyconnmap/graphs/threshold.html#threshold_mst_mean_degree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.threshold.threshold_mst_mean_degree" title="Permalink to this definition">¶</a></dt>
 <dd><p>Threshold a graph based on mean using minimum spanning trees.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>mtx</strong> : array-like, shape(N, N)</p>
-<blockquote>
-<div><p>Symmetric, weighted and undirected connectivity matrix.</p>
-</div></blockquote>
-<p><strong>avg_degree</strong> : float</p>
-<blockquote>
-<div><p>Mean degree threshold.</p>
-</div></blockquote>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mtx</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>N</em><em>, </em><em>N</em><em>)</em>) – Symmetric, weighted and undirected connectivity matrix.</p></li>
+<li><p><strong>avg_degree</strong> (<em>float</em>) – Mean degree threshold.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>binary_mtx</strong> : array-like, shape(N, N)</p>
-<blockquote>
-<div><p>A binary mask matrix.</p>
-</div></blockquote>
+<dd class="field-even"><p><strong>binary_mtx</strong> – A binary mask matrix.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>array-like, shape(N, N)</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
 <dt id="dyconnmap.graphs.threshold.threshold_omst_global_cost_efficiency">
-<code class="sig-prename descclassname">dyconnmap.graphs.threshold.</code><code class="sig-name descname">threshold_omst_global_cost_efficiency</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mtx</span></em>, <em class="sig-param"><span class="n">n_msts</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/threshold.html#threshold_omst_global_cost_efficiency"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.threshold.threshold_omst_global_cost_efficiency" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.graphs.threshold.</code><code class="sig-name descname">threshold_omst_global_cost_efficiency</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mtx</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">n_msts</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; Tuple<span class="p">[</span>numpy.ndarray<span class="p">, </span>numpy.ndarray<span class="p">, </span>float<span class="p">, </span>float<span class="p">, </span>float<span class="p">, </span>float<span class="p">]</span><a class="reference internal" href="_modules/dyconnmap/graphs/threshold.html#threshold_omst_global_cost_efficiency"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.threshold.threshold_omst_global_cost_efficiency" title="Permalink to this definition">¶</a></dt>
 <dd><p>Threshold a graph by optimizing the formula GE-C via orthogonal MSTs.</p>
 <dl class="citation">
 <dt class="label" id="dimitriadis2017a"><span class="brackets">Dimitriadis2017a</span></dt>
@@ -753,87 +667,63 @@ distance between them.</p>
 <dt class="label" id="dimitriadis2017n"><span class="brackets">Dimitriadis2017n</span></dt>
 <dd><p>Dimitriadis, S. I., Antonakakis, M., Simos, P., Fletcher, J. M., &amp; Papanicolaou, A. C. (2017). Data-driven Topological Filtering based on Orthogonal Minimal Spanning Trees: Application to Multi-Group MEG Resting-State Connectivity. Brain Connectivity, (ja).</p>
 </dd>
-<dt class="label" id="id6"><span class="brackets">Basset2009</span></dt>
+<dt class="label" id="id4"><span class="brackets">Basset2009</span></dt>
 <dd><p>Bassett, D. S., Bullmore, E. T., Meyer-Lindenberg, A., Apud, J. A., Weinberger, D. R., &amp; Coppola, R. (2009). Cognitive fitness of cost-efficient brain functional networks. Proceedings of the National Academy of Sciences, 106(28), 11747-11752.</p>
 </dd>
 </dl>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>mtx</strong> : array-like, shape(N, N)</p>
-<blockquote>
-<div><p>Symmetric, weighted and undirected connectivity matrix.</p>
-</div></blockquote>
-<p><strong>n_msts</strong> : int or None</p>
-<blockquote>
-<div><p>Maximum number of OMSTs to compute. Default <cite>None</cite>; an exhaustive
-computation will be performed.</p>
-</div></blockquote>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mtx</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>N</em><em>, </em><em>N</em><em>)</em>) – Symmetric, weighted and undirected connectivity matrix.</p></li>
+<li><p><strong>n_msts</strong> (<em>int</em><em> or </em><em>None</em>) – Maximum number of OMSTs to compute. Default <cite>None</cite>; an exhaustive
+computation will be performed.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>nCIJtree</strong> : array-like, shape(n_msts, N, N)</p>
-<blockquote>
-<div><p>A matrix containing all the orthogonal MSTs.</p>
-</div></blockquote>
-<p><strong>CIJtree</strong> : array-like, shape(N, N)</p>
-<blockquote>
-<div><p>Resulting graph.</p>
-</div></blockquote>
-<p><strong>degree</strong> : float</p>
-<blockquote>
-<div><p>The mean degree of the resulting graph.</p>
-</div></blockquote>
-<p><strong>global_eff</strong> : float</p>
-<blockquote>
-<div><p>Global efficiency of the resulting graph.</p>
-</div></blockquote>
-<p><strong>global_cost_eff_max</strong> : float</p>
-<blockquote>
-<div><p>The value where global efficiency - cost is maximized.</p>
-</div></blockquote>
-<p><strong>cost_max</strong> : float</p>
-<blockquote>
-<div><p>Cost of the network at the maximum global cost efficiency.</p>
-</div></blockquote>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>nCIJtree</strong> (<em>array-like, shape(n_msts, N, N)</em>) – A matrix containing all the orthogonal MSTs.</p></li>
+<li><p><strong>CIJtree</strong> (<em>array-like, shape(N, N)</em>) – Resulting graph.</p></li>
+<li><p><strong>degree</strong> (<em>float</em>) – The mean degree of the resulting graph.</p></li>
+<li><p><strong>global_eff</strong> (<em>float</em>) – Global efficiency of the resulting graph.</p></li>
+<li><p><strong>global_cost_eff_max</strong> (<em>float</em>) – The value where global efficiency - cost is maximized.</p></li>
+<li><p><strong>cost_max</strong> (<em>float</em>) – Cost of the network at the maximum global cost efficiency.</p></li>
+</ul>
+</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
 <dt id="dyconnmap.graphs.threshold.threshold_shortest_paths">
-<code class="sig-prename descclassname">dyconnmap.graphs.threshold.</code><code class="sig-name descname">threshold_shortest_paths</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mtx</span></em>, <em class="sig-param"><span class="n">treatment</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/threshold.html#threshold_shortest_paths"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.threshold.threshold_shortest_paths" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.graphs.threshold.</code><code class="sig-name descname">threshold_shortest_paths</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mtx</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">treatment</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>bool<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">False</span></em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="_modules/dyconnmap/graphs/threshold.html#threshold_shortest_paths"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.threshold.threshold_shortest_paths" title="Permalink to this definition">¶</a></dt>
 <dd><p>Threshold a graph via  via shortest path identification using Dijkstra’s algorithm.</p>
 <dl class="citation">
 <dt class="label" id="dimitriadis2010"><span class="brackets">Dimitriadis2010</span></dt>
 <dd><p>Dimitriadis, S. I., Laskaris, N. A., Tsirka, V., Vourkas, M., Micheloyannis, S., &amp; Fotopoulos, S. (2010). Tracking brain dynamics via time-dependent network analysis. Journal of neuroscience methods, 193(1), 145-155.</p>
 </dd>
 </dl>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>mtx</strong> : array-like, shape(N, N)</p>
-<blockquote>
-<div><p>Symmetric, weighted and undirected connectivity matrix.</p>
-</div></blockquote>
-<p><strong>treatment</strong> : boolean</p>
-<blockquote>
-<div><p>Convert the weights to distances by inversing the matrix. Also,
-fill the diagonal with zeroes. Default <cite>false</cite>.</p>
-</div></blockquote>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mtx</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>N</em><em>, </em><em>N</em><em>)</em>) – Symmetric, weighted and undirected connectivity matrix.</p></li>
+<li><p><strong>treatment</strong> (<em>boolean</em>) – Convert the weights to distances by inversing the matrix. Also,
+fill the diagonal with zeroes. Default <cite>false</cite>.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>binary_mtx</strong> : array-like, shape(N, N)</p>
-<blockquote>
-<div><p>A binary mask matrix.</p>
-</div></blockquote>
+<dd class="field-even"><p><strong>binary_mtx</strong> – A binary mask matrix.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>array-like, shape(N, N)</p>
 </dd>
 </dl>
 </dd></dl>
 
 </div>
-</div>
 <div class="section" id="module-dyconnmap.graphs.vi">
 <span id="dyconnmap-graphs-vi-module"></span><h2>dyconnmap.graphs.vi module<a class="headerlink" href="#module-dyconnmap.graphs.vi" title="Permalink to this headline">¶</a></h2>
 <p>Variation of Information</p>
-<p>Variation of Information (<em>VI</em>) <a class="reference internal" href="#meilla2007" id="id7"><span>[Meilla2007]</span></a> is an information theoretic criterion
+<p>Variation of Information (<em>VI</em>) <a class="reference internal" href="#meilla2007" id="id5"><span>[Meilla2007]</span></a> is an information theoretic criterion
 for comparing two partitions. It is based on the classic notions of entropy and mutual information.
 In a nutshell, VI measures the amount of information that is lost or gained in changing from
 clustering <span class="math notranslate nohighlight">\(A\)</span> to clustering <span class="math notranslate nohighlight">\(B\)</span>. VI is a true metric, is always non-negative and symmetric.
@@ -850,7 +740,7 @@ and <span class="math notranslate nohighlight">\(I\)</span> the mutual informati
 </div>
 <hr class="docutils" />
 <dl class="citation">
-<dt class="label" id="meilla2007"><span class="brackets"><a class="fn-backref" href="#id7">Meilla2007</a></span></dt>
+<dt class="label" id="meilla2007"><span class="brackets"><a class="fn-backref" href="#id5">Meilla2007</a></span></dt>
 <dd><p>Meilă, M. (2007). Comparing clusterings—an information based distance. Journal of multivariate analysis, 98(5), 873-895.</p>
 </dd>
 <dt class="label" id="dimitriadis2009"><span class="brackets">Dimitriadis2009</span></dt>
@@ -862,24 +752,20 @@ and <span class="math notranslate nohighlight">\(I\)</span> the mutual informati
 </dl>
 <dl class="py function">
 <dt id="dyconnmap.graphs.vi.variation_information">
-<code class="sig-prename descclassname">dyconnmap.graphs.vi.</code><code class="sig-name descname">variation_information</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">indices_a</span></em>, <em class="sig-param"><span class="n">indices_b</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/vi.html#variation_information"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.vi.variation_information" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.graphs.vi.</code><code class="sig-name descname">variation_information</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">indices_a</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">indices_b</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/dyconnmap/graphs/vi.html#variation_information"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.vi.variation_information" title="Permalink to this definition">¶</a></dt>
 <dd><p>Variation of Information</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>indices_a</strong> : array-like, shape(n_samples)</p>
-<blockquote>
-<div><p>Symbolic time series.</p>
-</div></blockquote>
-<p><strong>indices_b</strong> : array-like, shape(n_samples)</p>
-<blockquote>
-<div><p>Symbolic time series.</p>
-</div></blockquote>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>indices_a</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>n_samples</em><em>)</em>) – Symbolic time series.</p></li>
+<li><p><strong>indices_b</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>n_samples</em><em>)</em>) – Symbolic time series.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>vi</strong> : float</p>
-<blockquote>
-<div><p>Variation of information.</p>
-</div></blockquote>
+<dd class="field-even"><p><strong>vi</strong> – Variation of information.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
 </dd>
 </dl>
 </dd></dl>
@@ -889,295 +775,219 @@ and <span class="math notranslate nohighlight">\(I\)</span> the mutual informati
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-dyconnmap.graphs" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt id="dyconnmap.graphs.graph_diffusion_distance">
-<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">graph_diffusion_distance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">b</span></em>, <em class="sig-param"><span class="n">threshold</span><span class="o">=</span><span class="default_value">1e-14</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/gdd.html#graph_diffusion_distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.graph_diffusion_distance" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">graph_diffusion_distance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">a</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">b</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">threshold</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>float<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">1e-14</span></em><span class="sig-paren">)</span> &#x2192; Tuple<span class="p">[</span>numpy.float32<span class="p">, </span>numpy.float32<span class="p">]</span><a class="reference internal" href="_modules/dyconnmap/graphs/gdd.html#graph_diffusion_distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.graph_diffusion_distance" title="Permalink to this definition">¶</a></dt>
 <dd><p>Graph Diffusion Distance</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>a</strong> : array-like, shape(N, N)</p>
-<blockquote>
-<div><p>Weighted matrix.</p>
-</div></blockquote>
-<p><strong>b</strong> : array-like, shape(N, N)</p>
-<blockquote>
-<div><p>Weighted matrix.</p>
-</div></blockquote>
-<p><strong>threshold</strong> : float</p>
-<blockquote>
-<div><p>A threshold to filter out the small eigenvalues. If the you get NaN or INFs, try lowering this threshold.</p>
-</div></blockquote>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>a</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>N</em><em>, </em><em>N</em><em>)</em>) – Weighted matrix.</p></li>
+<li><p><strong>b</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>N</em><em>, </em><em>N</em><em>)</em>) – Weighted matrix.</p></li>
+<li><p><strong>threshold</strong> (<em>float</em>) – A threshold to filter out the small eigenvalues. If the you get NaN or INFs, try lowering this threshold.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>gdd</strong> : float</p>
-<blockquote>
-<div><p>The estimated graph diffusion distance.</p>
-</div></blockquote>
-<p><strong>xopt</strong> : float</p>
-<blockquote>
-<div><p>Parameters (over given interval) which minimize the objective function. (see <code class="xref py py-mod docutils literal notranslate"><span class="pre">scipy.optimize.fmindbound</span></code>)</p>
-</div></blockquote>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>gdd</strong> (<em>float</em>) – The estimated graph diffusion distance.</p></li>
+<li><p><strong>xopt</strong> (<em>float</em>) – Parameters (over given interval) which minimize the objective function. (see <code class="xref py py-mod docutils literal notranslate"><span class="pre">scipy.optimize.fmindbound</span></code>)</p></li>
+</ul>
+</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
-<dt id="dyconnmap.graphs.variation_information">
-<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">variation_information</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">indices_a</span></em>, <em class="sig-param"><span class="n">indices_b</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/vi.html#variation_information"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.variation_information" title="Permalink to this definition">¶</a></dt>
-<dd><p>Variation of Information</p>
-<dl class="field-list">
+<dt id="dyconnmap.graphs.im_distance">
+<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">im_distance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">Y</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">bandwidth</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>float<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">1.0</span></em><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/dyconnmap/graphs/imd.html#im_distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.im_distance" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>indices_a</strong> : array-like, shape(n_samples)</p>
-<blockquote>
-<div><p>Symbolic time series.</p>
-</div></blockquote>
-<p><strong>indices_b</strong> : array-like, shape(n_samples)</p>
-<blockquote>
-<div><p>Symbolic time series.</p>
-</div></blockquote>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>N</em><em>, </em><em>N</em><em>)</em>) – A weighted matrix.</p></li>
+<li><p><strong>Y</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>N</em><em>, </em><em>N</em><em>)</em>) – A weighted matrix.</p></li>
+<li><p><strong>bandwidth</strong> (<em>float</em>) – Bandwidth of the kernel. Default <cite>1.0</cite>.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>vi</strong> : float</p>
-<blockquote>
-<div><p>Variation of information.</p>
-</div></blockquote>
+<dd class="field-even"><p><strong>distance</strong> – The estimated Ipsen-Mikhailov distance.</p>
 </dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt id="dyconnmap.graphs.mutual_information">
-<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">mutual_information</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">indices_a</span></em>, <em class="sig-param"><span class="n">indices_b</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/mi.html#mutual_information"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.mutual_information" title="Permalink to this definition">¶</a></dt>
-<dd><p>Mutual Information</p>
-<dl class="field-list">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>indices_a</strong> : array-like, shape(n_samples)</p>
-<blockquote>
-<div><p>Symbolic time series.</p>
-</div></blockquote>
-<p><strong>indices_b</strong> : array-like, shape(n_samples)</p>
-<blockquote>
-<div><p>Symbolic time series.</p>
-</div></blockquote>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>MI</strong> : float</p>
-<blockquote>
-<div><p>Mutual information.</p>
-</div></blockquote>
-<p><strong>NMI</strong> : float</p>
-<blockquote>
-<div><p>Normalized mutual information.</p>
-</div></blockquote>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt id="dyconnmap.graphs.threshold_mean_degree">
-<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">threshold_mean_degree</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mtx</span></em>, <em class="sig-param"><span class="n">threshold_mean_degree</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/threshold.html#threshold_mean_degree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.threshold_mean_degree" title="Permalink to this definition">¶</a></dt>
-<dd><p>Threshold a graph based on the mean degree.</p>
-<dl class="field-list">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>mtx</strong> : array-like, shape(N, N)</p>
-<blockquote>
-<div><p>Symmetric, weighted and undirected connectivity matrix.</p>
-</div></blockquote>
-<p><strong>threshold_mean_degree</strong> : int</p>
-<blockquote>
-<div><p>Mean degree threshold.</p>
-</div></blockquote>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>binary_mtx</strong> : array-like, shape(N, N)</p>
-<blockquote>
-<div><p>A binary mask matrix.</p>
-</div></blockquote>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt id="dyconnmap.graphs.threshold_mst_mean_degree">
-<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">threshold_mst_mean_degree</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mtx</span></em>, <em class="sig-param"><span class="n">avg_degree</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/threshold.html#threshold_mst_mean_degree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.threshold_mst_mean_degree" title="Permalink to this definition">¶</a></dt>
-<dd><p>Threshold a graph based on mean using minimum spanning trees.</p>
-<dl class="field-list">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>mtx</strong> : array-like, shape(N, N)</p>
-<blockquote>
-<div><p>Symmetric, weighted and undirected connectivity matrix.</p>
-</div></blockquote>
-<p><strong>avg_degree</strong> : float</p>
-<blockquote>
-<div><p>Mean degree threshold.</p>
-</div></blockquote>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>binary_mtx</strong> : array-like, shape(N, N)</p>
-<blockquote>
-<div><p>A binary mask matrix.</p>
-</div></blockquote>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt id="dyconnmap.graphs.threshold_shortest_paths">
-<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">threshold_shortest_paths</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mtx</span></em>, <em class="sig-param"><span class="n">treatment</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/threshold.html#threshold_shortest_paths"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.threshold_shortest_paths" title="Permalink to this definition">¶</a></dt>
-<dd><p>Threshold a graph via  via shortest path identification using Dijkstra’s algorithm.</p>
-<dl class="citation">
-<dt class="label" id="id8"><span class="brackets">Dimitriadis2010</span></dt>
-<dd><p>Dimitriadis, S. I., Laskaris, N. A., Tsirka, V., Vourkas, M., Micheloyannis, S., &amp; Fotopoulos, S. (2010). Tracking brain dynamics via time-dependent network analysis. Journal of neuroscience methods, 193(1), 145-155.</p>
-</dd>
-</dl>
-<dl class="field-list">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>mtx</strong> : array-like, shape(N, N)</p>
-<blockquote>
-<div><p>Symmetric, weighted and undirected connectivity matrix.</p>
-</div></blockquote>
-<p><strong>treatment</strong> : boolean</p>
-<blockquote>
-<div><p>Convert the weights to distances by inversing the matrix. Also,
-fill the diagonal with zeroes. Default <cite>false</cite>.</p>
-</div></blockquote>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>binary_mtx</strong> : array-like, shape(N, N)</p>
-<blockquote>
-<div><p>A binary mask matrix.</p>
-</div></blockquote>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
 <dt id="dyconnmap.graphs.k_core_decomposition">
-<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">k_core_decomposition</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mtx</span></em>, <em class="sig-param"><span class="n">threshold</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/threshold.html#k_core_decomposition"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.k_core_decomposition" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">k_core_decomposition</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mtx</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">threshold</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="_modules/dyconnmap/graphs/threshold.html#k_core_decomposition"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.k_core_decomposition" title="Permalink to this definition">¶</a></dt>
 <dd><p>Threshold a binary graph based on the detected k-cores.</p>
 <dl class="citation">
-<dt class="label" id="id9"><span class="brackets">Alvarez2006</span></dt>
+<dt class="label" id="id6"><span class="brackets">Alvarez2006</span></dt>
 <dd><p>Alvarez-Hamelin, J. I., Dall’Asta, L., Barrat, A., &amp; Vespignani, A. (2006). Large scale networks fingerprinting and visualization using the k-core decomposition. In Advances in neural information processing systems (pp. 41-50).</p>
 </dd>
-<dt class="label" id="id10"><span class="brackets">Hagman2008</span></dt>
+<dt class="label" id="id7"><span class="brackets">Hagman2008</span></dt>
 <dd><p>Hagmann, P., Cammoun, L., Gigandet, X., Meuli, R., Honey, C. J., Wedeen, V. J., &amp; Sporns, O. (2008). Mapping the structural core of human cerebral cortex. PLoS biology, 6(7), e159.</p>
 </dd>
 </dl>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>mtx</strong> : array-like, shape(N, N)</p>
-<blockquote>
-<div><p>Binary matrix.</p>
-</div></blockquote>
-<p><strong>threshold</strong> : int</p>
-<blockquote>
-<div><p>Degree threshold.</p>
-</div></blockquote>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mtx</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>N</em><em>, </em><em>N</em><em>)</em>) – Binary matrix.</p></li>
+<li><p><strong>threshold</strong> (<em>int</em>) – Degree threshold.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>k_cores</strong> : array-like, shape(N, 1)</p>
-<blockquote>
-<div><p>A binary matrix of the decomposed cores.</p>
-</div></blockquote>
+<dd class="field-even"><p><strong>k_cores</strong> – A binary matrix of the decomposed cores.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>array-like, shape(N, 1)</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
-<dt id="dyconnmap.graphs.threshold_global_cost_efficiency">
-<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">threshold_global_cost_efficiency</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mtx</span></em>, <em class="sig-param"><span class="n">iterations</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/threshold.html#threshold_global_cost_efficiency"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.threshold_global_cost_efficiency" title="Permalink to this definition">¶</a></dt>
-<dd><p>Threshold a graph based on the Global Efficiency - Cost formula.</p>
-<dl class="citation">
-<dt class="label" id="id11"><span class="brackets">Basset2009</span></dt>
-<dd><p>Bassett, D. S., Bullmore, E. T., Meyer-Lindenberg, A., Apud, J. A., Weinberger, D. R., &amp; Coppola, R. (2009). Cognitive fitness of cost-efficient brain functional networks. Proceedings of the National Academy of Sciences, 106(28), 11747-11752.</p>
-</dd>
-</dl>
-<dl class="field-list">
+<dt id="dyconnmap.graphs.laplacian_energy">
+<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">laplacian_energy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mtx</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/dyconnmap/graphs/laplacian_energy.html#laplacian_energy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.laplacian_energy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Laplacian Energy</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>mtx</strong> : array-like, shape(N, N)</p>
-<blockquote>
-<div><p>Symmetric, weighted and undirected connectivity matrix.</p>
-</div></blockquote>
-<p><strong>iterations</strong> : int</p>
-<blockquote>
-<div><p>Number of steps, as a resolution when search for optima.</p>
-</div></blockquote>
+<dd class="field-odd"><p><strong>mtx</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>N</em><em>, </em><em>N</em><em>)</em>) – Symmetric, weighted and undirected connectivity matrix.</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>binary_mtx</strong> : array-like, shape(N, N)</p>
-<blockquote>
-<div><p>A binary mask matrix.</p>
-</div></blockquote>
-<p><strong>threshold</strong> : float</p>
-<blockquote>
-<div><p>The threshold that maximizes the global cost efficiency.</p>
-</div></blockquote>
-<p><strong>global_cost_eff_max</strong> : float</p>
-<blockquote>
-<div><p>Global cost efficiency.</p>
-</div></blockquote>
-<p><strong>efficiency</strong> : float</p>
-<blockquote>
-<div><p>Global efficiency.</p>
-</div></blockquote>
-<p><strong>cost_max</strong> : float</p>
-<blockquote>
-<div><p>Cost of the network at the maximum global cost efficiency</p>
-</div></blockquote>
+<dd class="field-even"><p><strong>le</strong> – The Laplacian Energy.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
-<dt id="dyconnmap.graphs.threshold_omst_global_cost_efficiency">
-<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">threshold_omst_global_cost_efficiency</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mtx</span></em>, <em class="sig-param"><span class="n">n_msts</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/threshold.html#threshold_omst_global_cost_efficiency"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.threshold_omst_global_cost_efficiency" title="Permalink to this definition">¶</a></dt>
-<dd><p>Threshold a graph by optimizing the formula GE-C via orthogonal MSTs.</p>
-<dl class="citation">
-<dt class="label" id="id12"><span class="brackets">Dimitriadis2017a</span></dt>
-<dd><p>Dimitriadis, S. I., Salis, C., Tarnanas, I., &amp; Linden, D. E. (2017). Topological Filtering of Dynamic Functional Brain Networks Unfolds Informative Chronnectomics: A Novel Data-Driven Thresholding Scheme Based on Orthogonal Minimal Spanning Trees (OMSTs). Frontiers in neuroinformatics, 11.</p>
-</dd>
-<dt class="label" id="id13"><span class="brackets">Dimitriadis2017n</span></dt>
-<dd><p>Dimitriadis, S. I., Antonakakis, M., Simos, P., Fletcher, J. M., &amp; Papanicolaou, A. C. (2017). Data-driven Topological Filtering based on Orthogonal Minimal Spanning Trees: Application to Multi-Group MEG Resting-State Connectivity. Brain Connectivity, (ja).</p>
-</dd>
-<dt class="label" id="id14"><span class="brackets">Basset2009</span></dt>
-<dd><p>Bassett, D. S., Bullmore, E. T., Meyer-Lindenberg, A., Apud, J. A., Weinberger, D. R., &amp; Coppola, R. (2009). Cognitive fitness of cost-efficient brain functional networks. Proceedings of the National Academy of Sciences, 106(28), 11747-11752.</p>
-</dd>
-</dl>
-<dl class="field-list">
+<dt id="dyconnmap.graphs.multilayer_pc_degree">
+<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">multilayer_pc_degree</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mlgraph</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="_modules/dyconnmap/graphs/mpc.html#multilayer_pc_degree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.multilayer_pc_degree" title="Permalink to this definition">¶</a></dt>
+<dd><p>Multilayer Participation Coefficient (Degree)</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>mtx</strong> : array-like, shape(N, N)</p>
-<blockquote>
-<div><p>Symmetric, weighted and undirected connectivity matrix.</p>
-</div></blockquote>
-<p><strong>n_msts</strong> : int or None</p>
-<blockquote>
-<div><p>Maximum number of OMSTs to compute. Default <cite>None</cite>; an exhaustive
-computation will be performed.</p>
-</div></blockquote>
+<dd class="field-odd"><p><strong>mlgraph</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>n_layers</em><em>, </em><em>n_rois</em><em>, </em><em>n_rois</em><em>)</em>) – A multilayer (undirected) graph. Each layer consists of a graph.</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>nCIJtree</strong> : array-like, shape(n_msts, N, N)</p>
-<blockquote>
-<div><p>A matrix containing all the orthogonal MSTs.</p>
-</div></blockquote>
-<p><strong>CIJtree</strong> : array-like, shape(N, N)</p>
-<blockquote>
-<div><p>Resulting graph.</p>
-</div></blockquote>
-<p><strong>degree</strong> : float</p>
-<blockquote>
-<div><p>The mean degree of the resulting graph.</p>
-</div></blockquote>
-<p><strong>global_eff</strong> : float</p>
-<blockquote>
-<div><p>Global efficiency of the resulting graph.</p>
-</div></blockquote>
-<p><strong>global_cost_eff_max</strong> : float</p>
-<blockquote>
-<div><p>The value where global efficiency - cost is maximized.</p>
-</div></blockquote>
-<p><strong>cost_max</strong> : float</p>
-<blockquote>
-<div><p>Cost of the network at the maximum global cost efficiency.</p>
-</div></blockquote>
+<dd class="field-even"><p><strong>mpc</strong> – Participation coefficient based on the degree of the layers’ nodes.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>array-like</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dyconnmap.graphs.multilayer_pc_gamma">
+<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">multilayer_pc_gamma</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mlgraph</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="_modules/dyconnmap/graphs/mpc.html#multilayer_pc_gamma"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.multilayer_pc_gamma" title="Permalink to this definition">¶</a></dt>
+<dd><p>Multilayer Participation Coefficient method from Guillon et al.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mlgraph</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>n_layers</em><em>, </em><em>n_rois</em><em>, </em><em>n_rois</em><em>)</em>) – A multilayer graph.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>gamma</strong> – Returns the original multilayer graph flattened, with the off diagional
+containing the estimated interlayer multilayer participation coefficient.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>array-like, shape(n_layers*n_rois, n_layers*n_rois)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dyconnmap.graphs.multilayer_pc_strength">
+<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">multilayer_pc_strength</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mlgraph</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="_modules/dyconnmap/graphs/mpc.html#multilayer_pc_strength"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.multilayer_pc_strength" title="Permalink to this definition">¶</a></dt>
+<dd><p>Multilayer Participation Coefficient (Strength)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mlgraph</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>n_layers</em><em>, </em><em>n_rois</em><em>, </em><em>n_rois</em><em>)</em>) – A multilayer (undirected) graph. Each layer consists of a graph.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>mpc</strong> – Participation coefficient based on the strength of the layers’ nodes.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>array-like</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dyconnmap.graphs.mutual_information">
+<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">mutual_information</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">indices_a</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">indices_b</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em><span class="sig-paren">)</span> &#x2192; Tuple<span class="p">[</span>float<span class="p">, </span>float<span class="p">]</span><a class="reference internal" href="_modules/dyconnmap/graphs/mi.html#mutual_information"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.mutual_information" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mutual Information</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>indices_a</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>n_samples</em><em>)</em>) – Symbolic time series.</p></li>
+<li><p><strong>indices_b</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>n_samples</em><em>)</em>) – Symbolic time series.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>MI</strong> (<em>float</em>) – Mutual information.</p></li>
+<li><p><strong>NMI</strong> (<em>float</em>) – Normalized mutual information.</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dyconnmap.graphs.nodal_global_efficiency">
+<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">nodal_global_efficiency</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mtx</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="_modules/dyconnmap/graphs/nodal.html#nodal_global_efficiency"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.nodal_global_efficiency" title="Permalink to this definition">¶</a></dt>
+<dd><p>Nodal Global Efficiency</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>mtx</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>N</em><em>, </em><em>N</em><em>)</em>) – Symmetric, weighted and undirected connectivity matrix.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>nodal_ge</strong> – The computed nodal global efficiency.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>array-like, shape(N, 1)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dyconnmap.graphs.spectral_euclidean_distance">
+<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">spectral_euclidean_distance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">Y</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/dyconnmap/graphs/spectral_euclidean_distance.html#spectral_euclidean_distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.spectral_euclidean_distance" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>N</em><em>, </em><em>N</em><em>)</em>) – A weighted matrix.</p></li>
+<li><p><strong>Y</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>N</em><em>, </em><em>N</em><em>)</em>) – A weighted matrix:</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>distance</strong> – The euclidean distance between the two spectrums.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="dyconnmap.graphs.spectral_k_distance">
+<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">spectral_k_distance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">Y</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">k</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/dyconnmap/graphs/spectral_k_distance.html#spectral_k_distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.spectral_k_distance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Spectral-K Distance</p>
+<p>Use the largest <span class="math notranslate nohighlight">\(k\)</span> eigenvalues of the given graphs to compute the
+distance between them.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>X</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>N</em><em>, </em><em>N</em><em>)</em>) – A weighted matrix.</p></li>
+<li><p><strong>Y</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>N</em><em>, </em><em>N</em><em>)</em>) – A weighted matrixY</p></li>
+<li><p><strong>k</strong> (<em>int</em>) – Largest <cite>k</cite> eigenvalues to use.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>distance</strong> – Estimated distance based on selected largest eigenvalues.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1185,191 +995,156 @@ computation will be performed.</p>
 <dl class="py function">
 <dt id="dyconnmap.graphs.threshold_eco">
 <code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">threshold_eco</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mtx</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/threshold.html#threshold_eco"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.threshold_eco" title="Permalink to this definition">¶</a></dt>
-<dd><p>Ecological Filtering</p>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="dyconnmap.graphs.threshold_global_cost_efficiency">
+<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">threshold_global_cost_efficiency</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mtx</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">iterations</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; Tuple<span class="p">[</span>numpy.ndarray<span class="p">, </span>float<span class="p">, </span>float<span class="p">, </span>float<span class="p">]</span><a class="reference internal" href="_modules/dyconnmap/graphs/threshold.html#threshold_global_cost_efficiency"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.threshold_global_cost_efficiency" title="Permalink to this definition">¶</a></dt>
+<dd><p>Threshold a graph based on the Global Efficiency - Cost formula.</p>
 <dl class="citation">
-<dt class="label" id="id15"><span class="brackets">Fallani2017</span></dt>
-<dd><p>Fallani, F. D. V., Latora, V., &amp; Chavez, M. (2017). A topological criterion for filtering information in complex brain networks. PLoS computational biology, 13(1), e1005305.</p>
+<dt class="label" id="id8"><span class="brackets">Basset2009</span></dt>
+<dd><p>Bassett, D. S., Bullmore, E. T., Meyer-Lindenberg, A., Apud, J. A., Weinberger, D. R., &amp; Coppola, R. (2009). Cognitive fitness of cost-efficient brain functional networks. Proceedings of the National Academy of Sciences, 106(28), 11747-11752.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mtx</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>N</em><em>, </em><em>N</em><em>)</em>) – Symmetric, weighted and undirected connectivity matrix.</p></li>
+<li><p><strong>iterations</strong> (<em>int</em>) – Number of steps, as a resolution when search for optima.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>binary_mtx</strong> (<em>array-like, shape(N, N)</em>) – A binary mask matrix.</p></li>
+<li><p><strong>threshold</strong> (<em>float</em>) – The threshold that maximizes the global cost efficiency.</p></li>
+<li><p><strong>global_cost_eff_max</strong> (<em>float</em>) – Global cost efficiency.</p></li>
+<li><p><strong>efficiency</strong> (<em>float</em>) – Global efficiency.</p></li>
+<li><p><strong>cost_max</strong> (<em>float</em>) – Cost of the network at the maximum global cost efficiency</p></li>
+</ul>
+</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
-<dt id="dyconnmap.graphs.nodal_global_efficiency">
-<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">nodal_global_efficiency</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mtx</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/nodal.html#nodal_global_efficiency"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.nodal_global_efficiency" title="Permalink to this definition">¶</a></dt>
-<dd><p>Nodal Global Efficiency</p>
-<dl class="field-list">
+<dt id="dyconnmap.graphs.threshold_mean_degree">
+<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">threshold_mean_degree</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mtx</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">threshold_mean_degree</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="_modules/dyconnmap/graphs/threshold.html#threshold_mean_degree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.threshold_mean_degree" title="Permalink to this definition">¶</a></dt>
+<dd><p>Threshold a graph based on the mean degree.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>mtx</strong> : array-like, shape(N, N)</p>
-<blockquote>
-<div><p>Symmetric, weighted and undirected connectivity matrix.</p>
-</div></blockquote>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mtx</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>N</em><em>, </em><em>N</em><em>)</em>) – Symmetric, weighted and undirected connectivity matrix.</p></li>
+<li><p><strong>threshold_mean_degree</strong> (<em>int</em>) – Mean degree threshold.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>nodal_ge</strong> : array-like, shape(N, 1)</p>
-<blockquote>
-<div><p>The computed nodal global efficiency.</p>
-</div></blockquote>
+<dd class="field-even"><p><strong>binary_mtx</strong> – A binary mask matrix.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>array-like, shape(N, N)</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
-<dt id="dyconnmap.graphs.im_distance">
-<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">im_distance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em>, <em class="sig-param"><span class="n">Y</span></em>, <em class="sig-param"><span class="n">bandwidth</span><span class="o">=</span><span class="default_value">1.0</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/imd.html#im_distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.im_distance" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list">
+<dt id="dyconnmap.graphs.threshold_mst_mean_degree">
+<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">threshold_mst_mean_degree</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mtx</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">avg_degree</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="_modules/dyconnmap/graphs/threshold.html#threshold_mst_mean_degree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.threshold_mst_mean_degree" title="Permalink to this definition">¶</a></dt>
+<dd><p>Threshold a graph based on mean using minimum spanning trees.</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>X</strong> : array-like, shape(N, N)</p>
-<blockquote>
-<div><p>A weighted matrix.</p>
-</div></blockquote>
-<p><strong>Y</strong> : array-like, shape(N, N)</p>
-<blockquote>
-<div><p>A weighted matrix.</p>
-</div></blockquote>
-<p><strong>bandwidth</strong> : float</p>
-<blockquote>
-<div><p>Bandwidth of the kernel. Default <cite>1.0</cite>.</p>
-</div></blockquote>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mtx</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>N</em><em>, </em><em>N</em><em>)</em>) – Symmetric, weighted and undirected connectivity matrix.</p></li>
+<li><p><strong>avg_degree</strong> (<em>float</em>) – Mean degree threshold.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>distance</strong> : float</p>
-<blockquote>
-<div><p>The estimated Ipsen-Mikhailov distance.</p>
-</div></blockquote>
+<dd class="field-even"><p><strong>binary_mtx</strong> – A binary mask matrix.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>array-like, shape(N, N)</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
-<dt id="dyconnmap.graphs.spectral_k_distance">
-<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">spectral_k_distance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em>, <em class="sig-param"><span class="n">Y</span></em>, <em class="sig-param"><span class="n">k</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/spectral_k_distance.html#spectral_k_distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.spectral_k_distance" title="Permalink to this definition">¶</a></dt>
-<dd><p>Spectral-K Distance</p>
-<p>Use the largest <span class="math notranslate nohighlight">\(k\)</span> eigenvalues of the given graphs to compute the
-distance between them.</p>
-<dl class="field-list">
+<dt id="dyconnmap.graphs.threshold_omst_global_cost_efficiency">
+<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">threshold_omst_global_cost_efficiency</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mtx</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">n_msts</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; Tuple<span class="p">[</span>numpy.ndarray<span class="p">, </span>numpy.ndarray<span class="p">, </span>float<span class="p">, </span>float<span class="p">, </span>float<span class="p">, </span>float<span class="p">]</span><a class="reference internal" href="_modules/dyconnmap/graphs/threshold.html#threshold_omst_global_cost_efficiency"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.threshold_omst_global_cost_efficiency" title="Permalink to this definition">¶</a></dt>
+<dd><p>Threshold a graph by optimizing the formula GE-C via orthogonal MSTs.</p>
+<dl class="citation">
+<dt class="label" id="id9"><span class="brackets">Dimitriadis2017a</span></dt>
+<dd><p>Dimitriadis, S. I., Salis, C., Tarnanas, I., &amp; Linden, D. E. (2017). Topological Filtering of Dynamic Functional Brain Networks Unfolds Informative Chronnectomics: A Novel Data-Driven Thresholding Scheme Based on Orthogonal Minimal Spanning Trees (OMSTs). Frontiers in neuroinformatics, 11.</p>
+</dd>
+<dt class="label" id="id10"><span class="brackets">Dimitriadis2017n</span></dt>
+<dd><p>Dimitriadis, S. I., Antonakakis, M., Simos, P., Fletcher, J. M., &amp; Papanicolaou, A. C. (2017). Data-driven Topological Filtering based on Orthogonal Minimal Spanning Trees: Application to Multi-Group MEG Resting-State Connectivity. Brain Connectivity, (ja).</p>
+</dd>
+<dt class="label" id="id11"><span class="brackets">Basset2009</span></dt>
+<dd><p>Bassett, D. S., Bullmore, E. T., Meyer-Lindenberg, A., Apud, J. A., Weinberger, D. R., &amp; Coppola, R. (2009). Cognitive fitness of cost-efficient brain functional networks. Proceedings of the National Academy of Sciences, 106(28), 11747-11752.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>X</strong> : array-like, shape(N, N)</p>
-<blockquote>
-<div><p>A weighted matrix.</p>
-</div></blockquote>
-<p><strong>Y</strong> : array-like, shape(N, N)</p>
-<blockquote>
-<div><p>A weighted matrixY</p>
-</div></blockquote>
-<p><strong>k</strong> : int</p>
-<blockquote>
-<div><p>Largest <cite>k</cite> eigenvalues to use.</p>
-</div></blockquote>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mtx</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>N</em><em>, </em><em>N</em><em>)</em>) – Symmetric, weighted and undirected connectivity matrix.</p></li>
+<li><p><strong>n_msts</strong> (<em>int</em><em> or </em><em>None</em>) – Maximum number of OMSTs to compute. Default <cite>None</cite>; an exhaustive
+computation will be performed.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>distance</strong> : float</p>
-<blockquote>
-<div><p>Estimated distance based on selected largest eigenvalues.</p>
-</div></blockquote>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>nCIJtree</strong> (<em>array-like, shape(n_msts, N, N)</em>) – A matrix containing all the orthogonal MSTs.</p></li>
+<li><p><strong>CIJtree</strong> (<em>array-like, shape(N, N)</em>) – Resulting graph.</p></li>
+<li><p><strong>degree</strong> (<em>float</em>) – The mean degree of the resulting graph.</p></li>
+<li><p><strong>global_eff</strong> (<em>float</em>) – Global efficiency of the resulting graph.</p></li>
+<li><p><strong>global_cost_eff_max</strong> (<em>float</em>) – The value where global efficiency - cost is maximized.</p></li>
+<li><p><strong>cost_max</strong> (<em>float</em>) – Cost of the network at the maximum global cost efficiency.</p></li>
+</ul>
+</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
-<dt id="dyconnmap.graphs.spectral_euclidean_distance">
-<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">spectral_euclidean_distance</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">X</span></em>, <em class="sig-param"><span class="n">Y</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/spectral_euclidean_distance.html#spectral_euclidean_distance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.spectral_euclidean_distance" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list">
+<dt id="dyconnmap.graphs.threshold_shortest_paths">
+<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">threshold_shortest_paths</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mtx</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">treatment</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>bool<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">False</span></em><span class="sig-paren">)</span> &#x2192; numpy.ndarray<a class="reference internal" href="_modules/dyconnmap/graphs/threshold.html#threshold_shortest_paths"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.threshold_shortest_paths" title="Permalink to this definition">¶</a></dt>
+<dd><p>Threshold a graph via  via shortest path identification using Dijkstra’s algorithm.</p>
+<dl class="citation">
+<dt class="label" id="id12"><span class="brackets">Dimitriadis2010</span></dt>
+<dd><p>Dimitriadis, S. I., Laskaris, N. A., Tsirka, V., Vourkas, M., Micheloyannis, S., &amp; Fotopoulos, S. (2010). Tracking brain dynamics via time-dependent network analysis. Journal of neuroscience methods, 193(1), 145-155.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>X</strong> : array-like, shape(N, N)</p>
-<blockquote>
-<div><p>A weighted matrix.</p>
-</div></blockquote>
-<p><strong>Y</strong> : array-like, shape(N, N)</p>
-<blockquote>
-<div><p>A weighted matrix:</p>
-</div></blockquote>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mtx</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>N</em><em>, </em><em>N</em><em>)</em>) – Symmetric, weighted and undirected connectivity matrix.</p></li>
+<li><p><strong>treatment</strong> (<em>boolean</em>) – Convert the weights to distances by inversing the matrix. Also,
+fill the diagonal with zeroes. Default <cite>false</cite>.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>distance</strong> : float</p>
-<blockquote>
-<div><p>The euclidean distance between the two spectrums.</p>
-</div></blockquote>
+<dd class="field-even"><p><strong>binary_mtx</strong> – A binary mask matrix.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>array-like, shape(N, N)</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
-<dt id="dyconnmap.graphs.laplacian_energy">
-<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">laplacian_energy</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mtx</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/laplacian_energy.html#laplacian_energy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.laplacian_energy" title="Permalink to this definition">¶</a></dt>
-<dd><p>Laplacian Energy</p>
-<dl class="field-list">
+<dt id="dyconnmap.graphs.variation_information">
+<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">variation_information</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">indices_a</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em>, <em class="sig-param"><span class="n">indices_b</span><span class="p">:</span> <span class="n">numpy.ndarray</span></em><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/dyconnmap/graphs/vi.html#variation_information"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.variation_information" title="Permalink to this definition">¶</a></dt>
+<dd><p>Variation of Information</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>mtx</strong> : array-like, shape(N, N)</p>
-<blockquote>
-<div><p>Symmetric, weighted and undirected connectivity matrix.</p>
-</div></blockquote>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>indices_a</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>n_samples</em><em>)</em>) – Symbolic time series.</p></li>
+<li><p><strong>indices_b</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>n_samples</em><em>)</em>) – Symbolic time series.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>le</strong> : float</p>
-<blockquote>
-<div><p>The Laplacian Energy.</p>
-</div></blockquote>
+<dd class="field-even"><p><strong>vi</strong> – Variation of information.</p>
 </dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt id="dyconnmap.graphs.multilayer_pc_strength">
-<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">multilayer_pc_strength</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mlgraph</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/mpc.html#multilayer_pc_strength"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.multilayer_pc_strength" title="Permalink to this definition">¶</a></dt>
-<dd><p>Multilayer Participation Coefficient (Strength)</p>
-<dl class="field-list">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>mlgraph</strong> : array-like, shape(n_layers, n_rois, n_rois)</p>
-<blockquote>
-<div><p>A multilayer (undirected) graph. Each layer consists of a graph.</p>
-</div></blockquote>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>mpc</strong> : array-like</p>
-<blockquote>
-<div><p>Participation coefficient based on the strength of the layers’ nodes.</p>
-</div></blockquote>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt id="dyconnmap.graphs.multilayer_pc_degree">
-<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">multilayer_pc_degree</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mlgraph</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/mpc.html#multilayer_pc_degree"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.multilayer_pc_degree" title="Permalink to this definition">¶</a></dt>
-<dd><p>Multilayer Participation Coefficient (Degree)</p>
-<dl class="field-list">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>mlgraph</strong> : array-like, shape(n_layers, n_rois, n_rois)</p>
-<blockquote>
-<div><p>A multilayer (undirected) graph. Each layer consists of a graph.</p>
-</div></blockquote>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>mpc</strong> : array-like</p>
-<blockquote>
-<div><p>Participation coefficient based on the degree of the layers’ nodes.</p>
-</div></blockquote>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt id="dyconnmap.graphs.multilayer_pc_gamma">
-<code class="sig-prename descclassname">dyconnmap.graphs.</code><code class="sig-name descname">multilayer_pc_gamma</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">mlgraph</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/graphs/mpc.html#multilayer_pc_gamma"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.graphs.multilayer_pc_gamma" title="Permalink to this definition">¶</a></dt>
-<dd><p>Multilayer Participation Coefficient method from Guillon et al.</p>
-<dl class="field-list">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>mlgraph</strong> : array-like, shape(n_layers, n_rois, n_rois)</p>
-<blockquote>
-<div><p>A multilayer graph.</p>
-</div></blockquote>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>gamma</strong> : array-like, shape(n_layers*n_rois, n_layers*n_rois)</p>
-<blockquote>
-<div><p>Returns the original multilayer graph flattened, with the off diagional
-containing the estimated interlayer multilayer participation coefficient.</p>
-</div></blockquote>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1397,11 +1172,19 @@ containing the estimated interlayer multilayer participation coefficient.</p>
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2020, Avraam Marimpis &amp; Stavros Dimitriadis
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -1412,7 +1195,6 @@ containing the estimated interlayer multilayer participation coefficient.</p>
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

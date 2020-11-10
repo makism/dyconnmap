@@ -1,8 +1,7 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8">
   
@@ -12,12 +11,18 @@
   
 
   
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
   
   
   
 
   
-  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -25,15 +30,11 @@
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/language_data.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
     
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="dyconnmap.cluster package" href="dyconnmap.cluster.html" />
@@ -51,7 +52,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home"> dyconnmap
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> dyconnmap
           
 
           
@@ -74,6 +75,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -112,6 +114,7 @@
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -150,7 +153,7 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="index.html">Docs</a> &raquo;</li>
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
           <li><a href="dyconnmap.html">dyconnmap package</a> &raquo;</li>
         
@@ -196,26 +199,17 @@ microstates) a which a state is active consecutive temporal segments (<a href="#
 <code class="sig-prename descclassname">dyconnmap.chronnectomics.dwell_time.</code><code class="sig-name descname">dwell_time</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/chronnectomics/dwell_time.html#dwell_time"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.chronnectomics.dwell_time.dwell_time" title="Permalink to this definition">¶</a></dt>
 <dd><p>Dwell Time</p>
 <p>Compute the dwell time for the given symbolic, 1d time series.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>x</strong> : array-like, shape(N)</p>
-<blockquote>
-<div><p>Input symbolic time series.</p>
-</div></blockquote>
+<dd class="field-odd"><p><strong>x</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>N</em><em>)</em>) – Input symbolic time series.</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>dwell</strong> : dictionary</p>
-<blockquote>
-<div><p>KVP, where K=symbol id and V=array of dwell time.</p>
-</div></blockquote>
-<p><strong>mean</strong> : dictionary</p>
-<blockquote>
-<div><p>KVP, where K=symbol id and V=mean dwell time.</p>
-</div></blockquote>
-<p><strong>std</strong> : dictionary</p>
-<blockquote>
-<div><p>KVP, where K=symbol id and V=std dwell time.</p>
-</div></blockquote>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>dwell</strong> (<em>dictionary</em>) – KVP, where K=symbol id and V=array of dwell time.</p></li>
+<li><p><strong>mean</strong> (<em>dictionary</em>) – KVP, where K=symbol id and V=mean dwell time.</p></li>
+<li><p><strong>std</strong> (<em>dictionary</em>) – KVP, where K=symbol id and V=std dwell time.</p></li>
+</ul>
+</p>
 </dd>
 </dl>
 </dd></dl>
@@ -242,18 +236,15 @@ temporal segments. The higher the number of changes, the larger the FI will be.<
 <code class="sig-prename descclassname">dyconnmap.chronnectomics.flexibility_index.</code><code class="sig-name descname">flexibility_index</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/chronnectomics/flexibility_index.html#flexibility_index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.chronnectomics.flexibility_index.flexibility_index" title="Permalink to this definition">¶</a></dt>
 <dd><p>Flexibility Index</p>
 <p>Compute the flexibility index for the given symbolic, 1d time series.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>x</strong> : array-like, shape(N)</p>
-<blockquote>
-<div><p>Input symbolic time series.</p>
-</div></blockquote>
+<dd class="field-odd"><p><strong>x</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>N</em><em>)</em>) – Input symbolic time series.</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>fi</strong> : float</p>
-<blockquote>
-<div><p>The flexibility index.</p>
-</div></blockquote>
+<dd class="field-even"><p><strong>fi</strong> – The flexibility index.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
 </dd>
 </dl>
 </dd></dl>
@@ -276,18 +267,15 @@ temporal segments. The higher the number of changes, the larger the FI will be.<
 <code class="sig-prename descclassname">dyconnmap.chronnectomics.occupancy_time.</code><code class="sig-name descname">occupancy_time</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/chronnectomics/occupancy_time.html#occupancy_time"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.chronnectomics.occupancy_time.occupancy_time" title="Permalink to this definition">¶</a></dt>
 <dd><p>Occupancy Time</p>
 <p>Compute the occupancy time for the given symbolic, 1d time series.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>x</strong> : array-like, shape(N)</p>
-<blockquote>
-<div><p>Input symbolic time series.</p>
-</div></blockquote>
+<dd class="field-odd"><p><strong>x</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>N</em><em>)</em>) – Input symbolic time series.</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>ot</strong> : dictionary</p>
-<blockquote>
-<div><p>KVP, where K=symbol id and V=occupancy time.</p>
-</div></blockquote>
+<dd class="field-even"><p><strong>ot</strong> – KVP, where K=symbol id and V=occupancy time.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dictionary</p>
 </dd>
 </dl>
 </dd></dl>
@@ -300,26 +288,17 @@ temporal segments. The higher the number of changes, the larger the FI will be.<
 <code class="sig-prename descclassname">dyconnmap.chronnectomics.</code><code class="sig-name descname">dwell_time</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/chronnectomics/dwell_time.html#dwell_time"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.chronnectomics.dwell_time" title="Permalink to this definition">¶</a></dt>
 <dd><p>Dwell Time</p>
 <p>Compute the dwell time for the given symbolic, 1d time series.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>x</strong> : array-like, shape(N)</p>
-<blockquote>
-<div><p>Input symbolic time series.</p>
-</div></blockquote>
+<dd class="field-odd"><p><strong>x</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>N</em><em>)</em>) – Input symbolic time series.</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>dwell</strong> : dictionary</p>
-<blockquote>
-<div><p>KVP, where K=symbol id and V=array of dwell time.</p>
-</div></blockquote>
-<p><strong>mean</strong> : dictionary</p>
-<blockquote>
-<div><p>KVP, where K=symbol id and V=mean dwell time.</p>
-</div></blockquote>
-<p><strong>std</strong> : dictionary</p>
-<blockquote>
-<div><p>KVP, where K=symbol id and V=std dwell time.</p>
-</div></blockquote>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>dwell</strong> (<em>dictionary</em>) – KVP, where K=symbol id and V=array of dwell time.</p></li>
+<li><p><strong>mean</strong> (<em>dictionary</em>) – KVP, where K=symbol id and V=mean dwell time.</p></li>
+<li><p><strong>std</strong> (<em>dictionary</em>) – KVP, where K=symbol id and V=std dwell time.</p></li>
+</ul>
+</p>
 </dd>
 </dl>
 </dd></dl>
@@ -329,18 +308,15 @@ temporal segments. The higher the number of changes, the larger the FI will be.<
 <code class="sig-prename descclassname">dyconnmap.chronnectomics.</code><code class="sig-name descname">flexibility_index</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/chronnectomics/flexibility_index.html#flexibility_index"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.chronnectomics.flexibility_index" title="Permalink to this definition">¶</a></dt>
 <dd><p>Flexibility Index</p>
 <p>Compute the flexibility index for the given symbolic, 1d time series.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>x</strong> : array-like, shape(N)</p>
-<blockquote>
-<div><p>Input symbolic time series.</p>
-</div></blockquote>
+<dd class="field-odd"><p><strong>x</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>N</em><em>)</em>) – Input symbolic time series.</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>fi</strong> : float</p>
-<blockquote>
-<div><p>The flexibility index.</p>
-</div></blockquote>
+<dd class="field-even"><p><strong>fi</strong> – The flexibility index.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
 </dd>
 </dl>
 </dd></dl>
@@ -350,18 +326,15 @@ temporal segments. The higher the number of changes, the larger the FI will be.<
 <code class="sig-prename descclassname">dyconnmap.chronnectomics.</code><code class="sig-name descname">occupancy_time</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/dyconnmap/chronnectomics/occupancy_time.html#occupancy_time"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#dyconnmap.chronnectomics.occupancy_time" title="Permalink to this definition">¶</a></dt>
 <dd><p>Occupancy Time</p>
 <p>Compute the occupancy time for the given symbolic, 1d time series.</p>
-<dl class="field-list">
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>x</strong> : array-like, shape(N)</p>
-<blockquote>
-<div><p>Input symbolic time series.</p>
-</div></blockquote>
+<dd class="field-odd"><p><strong>x</strong> (<em>array-like</em><em>, </em><em>shape</em><em>(</em><em>N</em><em>)</em>) – Input symbolic time series.</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><strong>ot</strong> : dictionary</p>
-<blockquote>
-<div><p>KVP, where K=symbol id and V=occupancy time.</p>
-</div></blockquote>
+<dd class="field-even"><p><strong>ot</strong> – KVP, where K=symbol id and V=occupancy time.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dictionary</p>
 </dd>
 </dl>
 </dd></dl>
@@ -389,11 +362,19 @@ temporal segments. The higher the number of changes, the larger the FI will be.<
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2020, Avraam Marimpis &amp; Stavros Dimitriadis
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -404,7 +385,6 @@ temporal segments. The higher the number of changes, the larger the FI will be.<
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {
