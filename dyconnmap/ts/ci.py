@@ -27,9 +27,9 @@ import numpy as np
 
 def complexity_index(
     x: "np.ndarray[np.int32]",
-    sub_len: int = -1,
-    normalize: bool = False,
-    iterations: int = 100,
+    sub_len: Optional[int] = -1,
+    normalize: Optional[bool] = False,
+    iterations: Optional[int] = 100,
 ) -> Union[
     Tuple[np.float32, "np.ndarray[np.int32]"],
     Tuple[np.float32, np.float32, "np.ndarray[np.int32]"],
@@ -168,7 +168,7 @@ def __compute_complexity_index(
 
 
 def __rowsBaseConv(
-    x: "np.ndarray[np.int32]", base: int = None
+    x: "np.ndarray[np.int32]", base: Optional[int] = None
 ) -> "np.ndarray[np.float64]":
     """
 

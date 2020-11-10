@@ -10,7 +10,7 @@ import numpy as np
 
 
 def markov_matrix(
-    symts: "np.ndarray[np.int32]", states_from_length: bool = True
+    symts: "np.ndarray[np.int32]", states_from_length: Optional[bool] = True
 ) -> "np.ndarray[np.float32]":
     """ Markov Matrix
 

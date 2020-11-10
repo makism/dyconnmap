@@ -5,7 +5,7 @@
 """
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
-from typing import Tuple
+from typing import Tuple, Optional
 import numpy as np
 
 
@@ -81,9 +81,9 @@ def entropy_reduction_rate(sym_ts: "np.ndarray[np.float32]") -> float:
 def symoblic_transfer_entropy(
     x: "np.ndarray[np.int32]",
     y: "np.ndarray[np.int32]",
-    s: int = 1,
-    delay: int = 0,
-    verbose: bool = False,
+    s: Optional[int] = 1,
+    delay: Optional[int] = 0,
+    verbose: Optional[bool] = False,
 ) -> Tuple[float, float, float]:
     """ Symbolic Tranfer Entropy
 

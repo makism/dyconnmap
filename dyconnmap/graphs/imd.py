@@ -26,12 +26,16 @@ The spectral distance between two graphs :math:`G` and :math:`H` with densities 
 """
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
+from typing import Optional
+
 import numpy as np
 import scipy
 from scipy.integrate import quad
 
 
-def im_distance(X: np.ndarray, Y: np.ndarray, bandwidth: float = 1.0) -> float:
+def im_distance(
+    X: np.ndarray, Y: np.ndarray, bandwidth: Optional[float] = 1.0
+) -> float:
     """
 
     Parameters

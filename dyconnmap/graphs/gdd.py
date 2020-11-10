@@ -35,14 +35,14 @@ Based on the code accompanied the original paper. Available at https://www.resea
 """
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
-from typing import Tuple
+from typing import Tuple, Optional
 
 import numpy as np
 import scipy.optimize
 
 
 def graph_diffusion_distance(
-    a: np.ndarray, b: np.ndarray, threshold: float = 1e-14
+    a: np.ndarray, b: np.ndarray, threshold: Optional[float] = 1e-14
 ) -> Tuple[np.float32, np.float32]:
     """ Graph Diffusion Distance
 

@@ -24,7 +24,7 @@ from numpy import matlib
 
 def sample_entropy(
     data: "np.ndarray[np.int32]",
-    dim: int = 2,
+    dim: Optional[int] = 2,
     tau: Optional[int] = None,
     r: Optional[float] = None,
 ) -> float:

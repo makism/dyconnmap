@@ -19,10 +19,10 @@ import numpy as np
 def fnn(
     ts: "np.ndarray[np.float32]",
     tau: int,
-    max_dim: int = 20,
-    neighbors_reduction: float = 0.10,
-    rtol: float = 15.0,
-    atol: float = 2.0,
+    max_dim: Optional[int] = 20,
+    neighbors_reduction: Optional[float] = 0.10,
+    rtol: Optional[float] = 15.0,
+    atol: Optional[float] = 2.0,
 ) -> Optional[int]:
     """ False Nearest Neighbors
 

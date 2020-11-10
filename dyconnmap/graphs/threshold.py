@@ -226,7 +226,9 @@ def threshold_mean_degree(mtx: np.ndarray, threshold_mean_degree: int) -> np.nda
     return binary_mtx
 
 
-def threshold_shortest_paths(mtx: np.ndarray, treatment: bool = False) -> np.ndarray:
+def threshold_shortest_paths(
+    mtx: np.ndarray, treatment: Optional[bool] = False
+) -> np.ndarray:
     """ Threshold a graph via  via shortest path identification using Dijkstra's algorithm.
 
     .. [Dimitriadis2010] Dimitriadis, S. I., Laskaris, N. A., Tsirka, V., Vourkas, M., Micheloyannis, S., & Fotopoulos, S. (2010). Tracking brain dynamics via time-dependent network analysis. Journal of neuroscience methods, 193(1), 145-155.
