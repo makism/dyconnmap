@@ -1,6 +1,6 @@
 language: python
 
-#cache: pip
+cache: pip
 
 python:
   - "3.6"
@@ -9,14 +9,13 @@ python:
 
 install:
   - pip install -r requirements.txt
-#  - pip install tox-travis
 
 script:
   - cd /home/travis/build/makism/dyconnmap/tests/
- - nosetests --cover-tests --with-coverage --cover-package=dyconnmap
+  - nosetests --cover-tests --with-coverage --cover-package=dyconnmap
 
 after_success:
- - coveralls
- - coverage xml
- - bash <(curl -Ls https://coverage.codacy.com/get.sh) report -l Python -r coverage.xml  final
- - codecov
+  - coveralls
+  - coverage xml
+  - bash <(curl -Ls https://coverage.codacy.com/get.sh) report -l Python -r coverage.xml  final
+  - codecov
