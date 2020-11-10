@@ -9,15 +9,14 @@ python:
 
 install:
   - pip install -r requirements.txt
-  - pip install tox-travis
+#  - pip install tox-travis
 
 script:
   - cd /home/travis/build/makism/dyconnmap/tests/
-  - tox
-#  - nosetests --cover-tests --with-coverage --cover-package=dyconnmap
+ - nosetests --cover-tests --with-coverage --cover-package=dyconnmap
 
-#after_success:
-#  - coveralls
-#  - coverage xml
-#  - bash <(curl -Ls https://coverage.codacy.com/get.sh) report -l Python -r coverage.xml  final
-#  - codecov
+after_success:
+ - coveralls
+ - coverage xml
+ - bash <(curl -Ls https://coverage.codacy.com/get.sh) report -l Python -r coverage.xml  final
+ - codecov
