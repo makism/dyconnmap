@@ -34,7 +34,7 @@ setup(
     license="BSD",
     keywords="eeg fMRI meg connectivity graphs neuroimage brain",
     url="https://github.com/makism/dyconnmap",
-    python_requires="~=3.6, ~=3.7",
+    python_requires=">=3.6",
     packages=packages,
     install_requires=[
         "numpy",

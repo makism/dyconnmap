@@ -15,12 +15,14 @@ Notes
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 # Author: Stravros Dimitriadis <stidimitriadis@gmail.com>
 
+from typing import Tuple, Optional
+
 import numpy as np
 import networkx as nx
 import bct
 
 
-def k_core_decomposition(mtx, threshold):
+def k_core_decomposition(mtx: np.ndarray, threshold: float) -> np.ndarray:
     """ Threshold a binary graph based on the detected k-cores.
 
     .. [Alvarez2006] Alvarez-Hamelin, J. I., Dall'Asta, L., Barrat, A., & Vespignani, A. (2006). Large scale networks fingerprinting and visualization using the k-core decomposition. In Advances in neural information processing systems (pp. 41-50).
@@ -68,7 +70,7 @@ def k_core_decomposition(mtx, threshold):
     return k_cores
 
 
-def threshold_mst_mean_degree(mtx, avg_degree):
+def threshold_mst_mean_degree(mtx: np.ndarray, avg_degree: float) -> np.ndarray:
     """ Threshold a graph based on mean using minimum spanning trees.
 
 
@@ -159,7 +161,7 @@ def threshold_mst_mean_degree(mtx, avg_degree):
     return CIJtree
 
 
-def threshold_mean_degree(mtx, threshold_mean_degree):
+def threshold_mean_degree(mtx: np.ndarray, threshold_mean_degree: int) -> np.ndarray:
     """ Threshold a graph based on the mean degree.
 
 
@@ -224,7 +226,9 @@ def threshold_mean_degree(mtx, threshold_mean_degree):
     return binary_mtx
 
 
-def threshold_shortest_paths(mtx, treatment=False):
+def threshold_shortest_paths(
+    mtx: np.ndarray, treatment: Optional[bool] = False
+) -> np.ndarray:
     """ Threshold a graph via  via shortest path identification using Dijkstra's algorithm.
 
     .. [Dimitriadis2010] Dimitriadis, S. I., Laskaris, N. A., Tsirka, V., Vourkas, M., Micheloyannis, S., & Fotopoulos, S. (2010). Tracking brain dynamics via time-dependent network analysis. Journal of neuroscience methods, 193(1), 145-155.
@@ -275,7 +279,9 @@ def threshold_shortest_paths(mtx, treatment=False):
     return binary_mtx
 
 
-def threshold_global_cost_efficiency(mtx, iterations):
+def threshold_global_cost_efficiency(
+    mtx: np.ndarray, iterations: int
+) -> Tuple[np.ndarray, float, float, float]:
     """ Threshold a graph based on the Global Efficiency - Cost formula.
 
     .. [Basset2009] Bassett, D. S., Bullmore, E. T., Meyer-Lindenberg, A., Apud, J. A., Weinberger, D. R., & Coppola, R. (2009). Cognitive fitness of cost-efficient brain functional networks. Proceedings of the National Academy of Sciences, 106(28), 11747-11752.
@@ -365,7 +371,9 @@ def threshold_global_cost_efficiency(mtx, iterations):
     return binary_mtx, threshold, global_cost_eff_max, efficiency, cost_max
 
 
-def threshold_omst_global_cost_efficiency(mtx, n_msts=None):
+def threshold_omst_global_cost_efficiency(
+    mtx: np.ndarray, n_msts: Optional[int] = None
+) -> Tuple[np.ndarray, np.ndarray, float, float, float, float]:
     """ Threshold a graph by optimizing the formula GE-C via orthogonal MSTs.
 
     .. [Dimitriadis2017a] Dimitriadis, S. I., Salis, C., Tarnanas, I., & Linden, D. E. (2017). Topological Filtering of Dynamic Functional Brain Networks Unfolds Informative Chronnectomics: A Novel Data-Driven Thresholding Scheme Based on Orthogonal Minimal Spanning Trees (OMSTs). Frontiers in neuroinformatics, 11.
@@ -523,6 +531,7 @@ def threshold_omst_global_cost_efficiency(mtx, n_msts=None):
         cost,
         global_cost_eff,
     )
+
 
 
 def threshold_eco(mtx):

@@ -4,15 +4,14 @@ Notes
 -----
 Snippet adapted from: https://gist.github.com/Satra/aa3d19a12b74e9ab7941
 
-
 """
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
 import numpy as np
-from scipy.spatial.distance import pdist, squareform
+from scipy.spatial.distance import pdist, squareform  # type: ignore
 
 
-def dcorr(x, y):
+def dcorr(x: np.ndarray, y: np.ndarray) -> float:
     """ Distance Correlation
 
 
@@ -35,8 +34,9 @@ def dcorr(x, y):
     if lx != ly:
         raise Exception("")
 
-    X = np.atleast_1d(x)
-    Y = np.atleast_1d(y)
+    X = np.atleast_1d(x)  # type: ignore
+    Y = np.atleast_1d(y)  # type: ignore
+
     if np.prod(X.shape) == len(X):
         X = X[:, None]
     if np.prod(Y.shape) == len(Y):

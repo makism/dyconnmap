@@ -19,7 +19,7 @@ import itertools
 from .embed_delay import embed_delay
 
 
-def permutation_entropy(signal, m, tau):
+def permutation_entropy(signal: "np.ndarray[np.int32]", m: int, tau: int) -> float:
     """ Permutation Entropy
 
 

@@ -12,5 +12,8 @@ statsmodels==0.12.0
 scikit-learn==0.23.2
 bctpy==0.5.0
 
-Sphinx==3.2.1    
+Sphinx==3.0.4
 sphinx-rtd-theme==0.5.0
+
+mypy
+data-science-types

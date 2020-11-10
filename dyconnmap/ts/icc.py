@@ -17,7 +17,7 @@ import numpy as np
 import scipy
 
 
-def icc_31(X):
+def icc_31(X: "np.ndarray[np.float32]") -> float:
     """ ICC (3,1)
 
 
@@ -33,12 +33,12 @@ def icc_31(X):
         Intra-class correlation.
 
     """
-    _,  k = np.shape(X)
+    _, k = np.shape(X)  # type: ignore
     _, ms, _, _ = _anova(X)
 
     BMS = ms[2]
     EMS = ms[4]
-    icc = (BMS - EMS) / (BMS + (k-1) * EMS)
+    icc = (BMS - EMS) / (BMS + (k - 1) * EMS)
 
     return icc
 
@@ -55,13 +55,13 @@ def _anova(X):
     Br = np.sum(np.power(np.sum(X, 1), 2.0)) / np.float32(n)
     D = np.power(np.sum(np.sum(X)), 2.0) / np.float32(total)
 
-    ss_bc = Bc - D   # Columns - between
-    ss_wc = A - Bc   # Columns - within
+    ss_bc = Bc - D  # Columns - between
+    ss_wc = A - Bc  # Columns - within
 
-    ss_br = Br - D   # Rows - between
-    ss_wr = A - Br   # Rows - within
+    ss_br = Br - D  # Rows - between
+    ss_wr = A - Br  # Rows - within
 
-    ss_e = A - Br - Bc + D # Residual
+    ss_e = A - Br - Bc + D  # Residual
 
     # degrees of freedom for columns/rows/residual and between/within
     df_bc = n - 1

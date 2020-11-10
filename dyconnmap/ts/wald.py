@@ -5,12 +5,15 @@
 """
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
+from typing import Tuple, List
 import numpy as np
 import networkx as nx
 from sklearn import metrics
 
 
-def wald(x, y):
+def wald(
+    x: np.ndarray, y: np.ndarray
+) -> Tuple[float, float, List[List[int]], List[List[float]]]:
     """
 
 

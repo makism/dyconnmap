@@ -5,10 +5,13 @@ Generation of markov matrix and some related state transition features.
 """
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
+from typing import Optional, Union, Tuple
 import numpy as np
 
 
-def markov_matrix(symts, states_from_length=True):
+def markov_matrix(
+    symts: "np.ndarray[np.int32]", states_from_length: Optional[bool] = True
+) -> "np.ndarray[np.float32]":
     """ Markov Matrix
 
     Markov matrix (also refered as "transition matrix") is a square matrix that tabulates
@@ -82,11 +85,15 @@ def markov_matrix(symts, states_from_length=True):
         mtx[curr_sym, next_sym] += 1
 
     mtx /= np.float32(len(symts))
+    # mtx = mtx.astype(np.float32)
 
     return mtx
 
 
-def transition_rate(symts, weight=None):
+def transition_rate(
+    symts: "np.ndarray[np.int32]",
+    weight: Optional[Union[np.float32, "np.ndarray[np.float32]"]] = None,
+) -> float:
     """ Transition Rate
 
     The total sum of transition between symbols.
@@ -117,10 +124,16 @@ def transition_rate(symts, weight=None):
         if curr_sym != next_sym:
             TR += 1.0
 
-    return TR / weight
+    weighted_tr = np.float64(TR / weight)
+
+    return weighted_tr
 
 
-def occupancy_time(symts, symbol_states=None, weight=None):
+def occupancy_time(
+    symts: "np.ndarray[np.int32]",
+    symbol_states: np.int32 = None,
+    weight: Optional[Union[np.float32, "np.ndarray[np.float32]"]] = None,
+) -> Tuple[np.float64, "np.ndarray[np.int32]"]:
     """ Occupancy Time
 
 
@@ -148,9 +161,9 @@ def occupancy_time(symts, symbol_states=None, weight=None):
     symbols = np.unique(symts)
 
     if symbol_states is None:
-        oc = np.zeros((len(symbols)))
+        oc = np.zeros((len(symbols)), dtype=np.float32)
     else:
-        oc = np.zeros((symbol_states))
+        oc = np.zeros((symbol_states), dtype=np.float32)
     l = len(symts)
 
     if weight is None:
@@ -163,6 +176,7 @@ def occupancy_time(symts, symbol_states=None, weight=None):
         if curr_sym == next_sym:
             oc[curr_sym] += 1
 
-    oc /= weight
+    weighted_oc = np.float64(oc / weight)
+    # oc /= weight
 
-    return oc, symbols
+    return weighted_oc, symbols
