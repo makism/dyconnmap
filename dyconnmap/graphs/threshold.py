@@ -533,11 +533,9 @@ def threshold_omst_global_cost_efficiency(
     )
 
 
-def threshold_eco(mtx: np.ndarray) -> Tuple[np.ndarray, np.ndarray, int]:
-    """ Ecological Filtering
 
-    .. [Fallani2017] Fallani, F. D. V., Latora, V., & Chavez, M. (2017). A topological criterion for filtering information in complex brain networks. PLoS computational biology, 13(1), e1005305.
-
+def threshold_eco(mtx):
+    """
     """
     m, _ = np.shape(mtx)
 
