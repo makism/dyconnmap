@@ -17,7 +17,7 @@ python3 -m twine upload dist/*
 ## on Anaconda Cloud
 
 ```
-conda login
+anaconda login
 anaconda upload dist/*.tar.gz
 ```
 
