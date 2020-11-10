@@ -35,19 +35,17 @@ if __name__ == "__main__":
     ds += data2
     print(ds)
 
-    # sw = SlidingWindow(step=10, samples=128, rois=32, window_length=10)
-    # print(sw)
-
-    # fb does where???
-
-    # timevar = TimeVarying(step=10, samples=128, rois=32, window_length=10)
-    # print(timevar)
+    win = SlidingWindow(step=10, samples=128, rois=32, window_length=10)
+    win = TimeVarying(step=10, samples=128, rois=32, window_length=10)
+    # print(win)
 
     conn = Correlation()
-    # conn(ds, timevar)
+    # conn(ds, win)
     print(conn)
 
-    conn = PhaseLockingValue(filter=passband_filter, filter_opts={"fb": [1.0, 4.0]})
+    conn = PhaseLockingValue(
+        filter=passband_filter, filter_opts={"fs": 128.0, "fb": [1.0, 4.0]}
+    )
     print(conn)
 
     # pipeline = Pipeline(
@@ -58,11 +56,13 @@ if __name__ == "__main__":
     # )
     # print(pipeline)
 
-    # # Check if our new class yields the same results as the previous `plv_fast`.
-    # result = conn(ds)[0]
-    # legacy_plv = np.asarray(plv_fast(data))
-    #
-    # result = np.float32(result)
-    # legacy_plv = np.float32(legacy_plv)
-    #
-    # np.testing.assert_array_equal(legacy_plv, result)
+    # Check if our new class yields the same results as the previous `plv_fast`.
+    result = conn(ds)[0]
+
+    f_data = passband_filter(data, fs=128.0, fb=[1.0, 4.0])
+    legacy_plv = np.asarray(plv_fast(f_data))
+
+    result = np.float32(result)
+    legacy_plv = np.float32(legacy_plv)
+
+    np.testing.assert_array_equal(legacy_plv, result)
