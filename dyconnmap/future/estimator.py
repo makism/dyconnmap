@@ -9,6 +9,7 @@ from typing import List, Type, Union, Optional, Tuple, Dict, Callable
 from dataclasses import dataclass, field
 from abc import ABC, abstractmethod
 import itertools
+import collections
 
 
 @dataclass(frozen=False)
@@ -26,7 +27,7 @@ class Estimator(ABC):
     )
 
     filter_opts: Optional[Dict] = field(
-        default=None,
+        default_factory=dict,
         init=True,
         metadata={
             "description": "A dictionaray of parameters passed to the callback filter function."
@@ -74,6 +75,9 @@ class Estimator(ABC):
     def __call__(self, dataset: "Dataset", window: Optional["DynamicWindow"] = None):
         pairs = None
         ts = dataset.data
+
+        if self.filter is not None and isinstance(self.filter, collections.Callable):
+            ts = self.filter(ts, **self.filter_opts)
 
         if self.requires_preprocessing:
             ts = self.preprocess(ts)
