@@ -20,7 +20,7 @@ Notes
 """
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
-from typing import Tuple, Optional, List, Union
+from typing import Tuple, Optional, Union
 
 import numpy as np
 

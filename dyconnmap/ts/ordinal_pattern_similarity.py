@@ -14,7 +14,7 @@
 """
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
-from typing import List, Optional, Tuple
+from typing import Optional, Tuple
 import numpy as np
 import scipy
 import itertools

@@ -5,7 +5,7 @@
 """
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
-from typing import Optional, List, Type
+from typing import Optional, List
 
 from ..analytic_signal import analytic_signal
 

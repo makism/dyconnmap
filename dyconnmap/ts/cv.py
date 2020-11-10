@@ -4,7 +4,6 @@
 """
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
-import typing
 import numpy as np
 
 
