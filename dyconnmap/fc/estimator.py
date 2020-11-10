@@ -4,7 +4,7 @@
 """
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
-from typing import List, Optional, Callable
+from typing import List, Optional
 
 from abc import ABCMeta
 import numpy as np
