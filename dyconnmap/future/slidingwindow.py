@@ -1,6 +1,4 @@
-"""
-
-"""
+"""Sliwing Window."""
 import numpy as np
 
 from dynamicwindow import DynamicWindow
@@ -11,15 +9,13 @@ from dataclasses import dataclass, field
 
 @dataclass
 class SlidingWindow(DynamicWindow):
-    """Sliding Window."""
+    """Sliding window class."""
 
-    step: int = field(init=True, default=10)
+    step: int = field(default=0)
 
-    def __post_init__(self):
-        self.samples = 128
-        self.rois = 32
-        self.window_length = 10
-        self.step = 1
+    def prepare(self, **kwargs) -> None:
+        super().prepare(**kwargs)
+
         self.slides = np.int32(
             np.ceil((self.samples - self.window_length) / self.step + 1.0)
         )
