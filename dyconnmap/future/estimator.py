@@ -1,5 +1,4 @@
-"""
-"""
+"""Base Estimator."""
 import numpy as np
 
 import multiprocessing
@@ -7,9 +6,9 @@ from joblib import Parallel, delayed
 
 from typing import List, Type, Union, Optional, Tuple, Dict, Callable
 from dataclasses import dataclass, field
-from abc import ABC, abstractmethod
 import itertools
 import collections
+from abc import ABC, abstractmethod
 
 
 @dataclass(frozen=False)
@@ -19,6 +18,14 @@ class Estimator(ABC):
     dtype: np.dtype = field(default=np.float32)
 
     requires_preprocessing: bool = field(default=False)
+
+    rois: Optional[List[int]] = field(
+        default=None,
+        init=True,
+        metadata={
+            "description": "An optional list of ROIs indices between which the Estimator wil be employed."
+        },
+    )
 
     filter: Optional[Callable] = field(
         default=None,
@@ -54,6 +61,10 @@ class Estimator(ABC):
         metadata={"description": "Number of parallel jobs."},
     )
 
+    # dataset_settings: dict = None
+
+    # window_settings: dict = None
+
     def __post_init__(self):
         if self.jobs <= 0:
             self.jobs = 1
@@ -69,37 +80,52 @@ class Estimator(ABC):
     def estimate_for_slides(
         self, data: np.ndarray, pairs: List[Tuple[int, int]], **kwargs
     ) -> np.ndarray:
+        rois = kwargs["rois"]
+        slides = kwargs["slides"]
+
+        dfcg = np.zeros((slides, rois, rois), dtype=self.dtype)
         for window_id, slice_start, slice_end in pairs:
-            tmp = self.estimate(data[:, slice_start:slice_end], **kwargs)
+            result = self.estimate(data[:, slice_start:slice_end], **kwargs)
+
+            dfcg[window_id, :, :] = result["estimation"]
+
+        return dfcg
 
     def __call__(self, dataset: "Dataset", window: Optional["DynamicWindow"] = None):
         pairs = None
         ts = dataset.data
 
+        # Dataset's settings; we'll pass the where needed.
+        settings = dataset.settings()
+
+        # Check if a list of ROIs is given
+        if self.rois is not None:
+            ts = ts[:, self.rois, :]
+            settings["rois"] = len(self.rois)
+
+        # Apply the given filter ufunc on the input timeseries.
         if self.filter is not None and isinstance(self.filter, collections.Callable):
             ts = self.filter(ts, **self.filter_opts)
 
+        # Run (if defined) the preprocessing function defined by the Estimator.
         if self.requires_preprocessing:
             ts = self.preprocess(ts)
 
         if window is None:
             cb_func = self.estimate
         else:
+            window.prepare(**settings)
+            settings["slides"] = window.slides
+
             cb_func = self.estimate_for_slides
             pairs = list(window)
 
-        results = None
         if dataset.subjects == 1:
-            results = cb_func(
-                ts[0, :, :], pairs=pairs, subject_index=0, **dataset.settings()
-            )
+            results = cb_func(ts[0, :, :], pairs=pairs, subject_index=0, **settings)
         else:
             results = Parallel(n_jobs=self.jobs)(
                 delayed(cb_func)(
-                    ts[index, :, :],
-                    pairs=pairs,
-                    subject_index=index,
-                    **dataset.settings()
+                    ts[index, :, :], pairs=pairs, subject_index=index, **settings
                 )
                 for index in np.arange(dataset.subjects)
             )
