@@ -1,6 +1,4 @@
-"""
-
-"""
+"""Phase Locking Value Estimator."""
 import numpy as np
 import itertools
 

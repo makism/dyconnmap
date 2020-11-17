@@ -1,6 +1,4 @@
-"""
-
-"""
+"""Correlation Estimator."""
 
 from estimator import Estimator
 
