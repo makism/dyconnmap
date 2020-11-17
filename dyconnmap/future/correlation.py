@@ -14,4 +14,5 @@ class Correlation(Estimator):
 
     def estimate(self, data: np.ndarray, **kwargs) -> np.ndarray:
         result = np.corrcoef(data)
-        return {"index": kwargs["subject_index"], "estimation": result}
+        # return {"index": kwargs["subject_index"], "estimation": result}
+        return result
