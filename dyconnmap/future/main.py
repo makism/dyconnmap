@@ -8,7 +8,7 @@ sys.path.append("/home/makism/Github/dyconnmap-feature_dataset/")
 from dyconnmap.fc import plv_fast
 
 from dataset import Dataset, Modality
-from correlation import Correlation
+from correlation import Correlation, correlation
 
 # from timevar import TimeVarying
 from slidingwindow import SlidingWindow
@@ -44,14 +44,15 @@ def spectral_k_distance(X: np.ndarray, Y: np.ndarray, k: int) -> float:
 if __name__ == "__main__":
     rng = np.random.RandomState(0)
 
-    n_subjects = 10
+    n_subjects = 1
     n_rois = 32
     n_samples = 128
 
     data = rng.rand(n_subjects, n_rois, n_samples)
+
     ds = Dataset(data, modality=Modality.Raw, fs=128.0)
 
-    win = SlidingWindow(step=5, window_length=10)
+    # win = SlidingWindow(step=5, window_length=10)
     # win = TimeVarying(step=10, samples=128, rois=32, window_length=10)
 
     conn = Correlation(rois=[0, 3])
@@ -62,14 +63,17 @@ if __name__ == "__main__":
     # result = conn(ds, win)
     result = conn(ds)
     result = np.array(result)
-    print(result.shape)
+    print(result)
 
-    cb_func = spectral_k_distance
-    tmp2 = [(i, ii) for i in range(5) for ii in range(i, 5) if i != ii]
-    distances = Parallel(n_jobs=1)(
-        delayed(cb_func)(result[x, :, :], result[y, :, :], k=3) for x, y in tmp2
-    )
+    # cb_func = spectral_k_distance
+    # tmp2 = [(i, ii) for i in range(5) for ii in range(i, 5) if i != ii]
+    # distances = Parallel(n_jobs=1)(
+    #     delayed(cb_func)(result[x, :, :], result[y, :, :], k=3) for x, y in tmp2
+    # )
+    #
+    # print(spectral_k_distance(result[0, :, :], result[1, :, :], k=3))
+    #
+    # print(distances)
 
-    print(spectral_k_distance(result[0, :, :], result[1, :, :], k=3))
-
-    print(distances)
+    result2 = correlation(data)
+    print(result)
