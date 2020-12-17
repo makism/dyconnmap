@@ -12,9 +12,12 @@ from correlation import Correlation, correlation
 
 # from timevar import TimeVarying
 from slidingwindow import SlidingWindow
-from phaselockingvalue import PhaseLockingValue
+from phaselockingvalue import PhaseLockingValue, phaselockingvalue
 from pipeline import Pipeline
 from basicfilter import passband_filter
+
+
+import json
 
 
 def spectral_k_distance(X: np.ndarray, Y: np.ndarray, k: int) -> float:
@@ -45,25 +48,28 @@ if __name__ == "__main__":
     rng = np.random.RandomState(0)
 
     n_subjects = 1
-    n_rois = 32
-    n_samples = 128
+    n_rois = 4
+    n_samples = 12
 
     data = rng.rand(n_subjects, n_rois, n_samples)
 
     ds = Dataset(data, modality=Modality.Raw, fs=128.0)
+    ds.labels = ["a", "b", "c", "d"]
 
-    # win = SlidingWindow(step=5, window_length=10)
+    ds.write("/tmp/myds")
+
+    win = SlidingWindow(step=5, window_length=10)
     # win = TimeVarying(step=10, samples=128, rois=32, window_length=10)
 
-    conn = Correlation(rois=[0, 3])
+    # conn = Correlation(rois=[0, 3])
     # conn = PhaseLockingValue(
     #     filter=passband_filter, filter_opts={"fs": 128.0, "fb": [1.0, 4.0]}
     # )
-
-    # result = conn(ds, win)
-    result = conn(ds)
-    result = np.array(result)
-    print(result)
+    #
+    # # result = conn(ds, win)
+    # result = conn(ds)
+    # result = np.array(result)
+    # print(result)
 
     # cb_func = spectral_k_distance
     # tmp2 = [(i, ii) for i in range(5) for ii in range(i, 5) if i != ii]
@@ -75,5 +81,9 @@ if __name__ == "__main__":
     #
     # print(distances)
 
-    result2 = correlation(data)
-    print(result)
+    print()
+    #
+    result2 = phaselockingvalue(
+        data, filter=passband_filter, filter_opts={"fs": 128.0, "fb": [1.0, 4.0]}
+    )
+    print(result2)
