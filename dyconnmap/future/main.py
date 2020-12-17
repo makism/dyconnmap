@@ -17,9 +17,6 @@ from pipeline import Pipeline
 from basicfilter import passband_filter
 
 
-import json
-
-
 def spectral_k_distance(X: np.ndarray, Y: np.ndarray, k: int) -> float:
     """Spectral K Distance."""
     X = np.squeeze(X)
@@ -54,9 +51,6 @@ if __name__ == "__main__":
     data = rng.rand(n_subjects, n_rois, n_samples)
 
     ds = Dataset(data, modality=Modality.Raw, fs=128.0)
-    ds.labels = ["a", "b", "c", "d"]
-
-    ds.write("/tmp/myds")
 
     # win = SlidingWindow(step=5, window_length=10)
     # win = TimeVarying(step=10, samples=128, rois=32, window_length=10)
