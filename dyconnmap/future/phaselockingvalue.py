@@ -4,6 +4,8 @@ import itertools
 
 from estimator import Estimator
 from basicfilter import analytic_signal
+from joblib import Parallel, delayed
+import collections
 
 
 class PhaseLockingValue(Estimator):
@@ -39,3 +41,26 @@ class PhaseLockingValue(Estimator):
             avg[pair] = avg_plv
 
         return avg
+
+
+def phaselockingvalue(ts, **kwargs):
+    """Phase Locking Value (func)."""
+    n_subjects, n_rois, n_samples = np.shape(ts)
+
+    rois = kwargs.get("rois", range(n_rois))
+    filter = kwargs.get("filter", None)
+    filter_opts = kwargs.get("filter_opts", None)
+
+    obj = PhaseLockingValue()
+    ts = ts[0, rois, :]
+    ts = np.squeeze(ts)
+
+    if filter is not None and isinstance(filter, collections.Callable):
+        ts = filter(ts, **filter_opts)
+
+    if obj.requires_preprocessing:
+        ts = obj.preprocess(ts)
+
+    results = obj.estimate(ts, rois=len(rois), samples=n_samples)
+
+    return results
