@@ -86,6 +86,29 @@ class Dataset:
 
         return self.data[index, :, :]
 
+    def __eq__(self, other: "Dataset"):
+        """Test for equality against another Dataset object."""
+
+        if not isinstance(other, Dataset):
+            return False
+
+        for key in self.__dict__.keys():
+            if key == "data":
+                compare = self.data == other.data
+                equal_arrays = compare.all()
+                if not equal_arrays:
+
+                    return False
+            elif key == "labels":
+                if set(self.labels) != set(other.labels):
+                    return False
+
+            else:
+                if self.__dict__[key] != other.__dict__[key]:
+                    return False
+
+        return True
+
     def settings(self) -> Dict[str, int]:
         """Return a dictionary containing important metadata about the Dataset; number of subjects, samples, etc.."""
         return {"subjects": self.subjects, "samples": self.samples, "rois": self.rois}
@@ -115,9 +138,40 @@ class Dataset:
         return True
 
     @classmethod
-    def from_json(cls, pathname: str) -> "Dataset":
+    def load(cls, pathname: str) -> "Dataset":
         """Load Dataset from a json file."""
-        pass
+        with open(f"{pathname}/dataset.json", "r") as fp:
+            json_data = json.load(fp)
+
+            orig_version, orig_date_time, orig_comments = (
+                json_data["version"],
+                json_data["date_time"],
+                json_data["comments"],
+            )
+
+            del json_data["version"]
+            del json_data["comments"]
+            del json_data["date_time"]
+
+            ds_data = None
+            for i in range(json_data["subjects"]):
+                m = np.loadtxt(
+                    f"{pathname}/data_subject{i}.csv", delimiter=",", skiprows=1
+                )
+
+                if ds_data is None:
+                    ds_data = m
+                else:
+                    ds_data = np.stack([ds_data, m], axis=0)
+            json_data["data"] = ds_data
+
+            new_ds = Dataset(**json_data)
+            new_ds.date_time = datetime.datetime.fromisoformat(orig_date_time)
+            new_ds.modality = Modality(new_ds.modality)
+
+            return new_ds
+
+        return None
 
 
 class DatasetEncoder(json.JSONEncoder):

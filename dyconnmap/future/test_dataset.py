@@ -91,3 +91,53 @@ def test_dataset_write():
     assert os.path.exists("/tmp/test_ds_write/dataset.json") == True
     assert os.path.exists("/tmp/test_ds_write/data_subject0.csv") == True
     assert os.path.exists("/tmp/test_ds_write/data_subject1.csv") == True
+
+
+def test_dataset_load():
+    """Test load Dataset from the disk."""
+    rng = np.random.RandomState(0)
+
+    n_subjects = 2
+    n_rois = 4
+    n_samples = 1000
+    fs = 1500.0
+    labels = ["a", "b", "c", "d"]
+
+    data = rng.rand(n_subjects, n_rois, n_samples)
+
+    ds = Dataset(data, labels=labels, modality=Modality.Raw, fs=fs)
+    ds.write("/tmp/test_ds_load")
+
+    ds_loaded = Dataset.load("/tmp/test_ds_load")
+
+    for key in ds.__dict__.keys():
+        if key == "data":
+            continue
+
+        if key == "labels":
+            assert set(ds.labels) == set(ds_loaded.labels)
+        else:
+            assert ds.__dict__[key] == ds_loaded.__dict__[key]
+
+    np.testing.assert_array_equal(ds.data.shape, ds_loaded.data.shape)
+    np.testing.assert_array_equal(ds.data, ds_loaded.data)
+
+
+def test_dataset_load_eq():
+    """Test load Dataset from the disk (using __eq__)."""
+    rng = np.random.RandomState(0)
+
+    n_subjects = 2
+    n_rois = 4
+    n_samples = 1000
+    fs = 1500.0
+    labels = ["a", "b", "c", "d"]
+
+    data = rng.rand(n_subjects, n_rois, n_samples)
+
+    ds = Dataset(data, labels=labels, modality=Modality.Raw, fs=fs)
+    ds.write("/tmp/test_ds_load")
+
+    ds_loaded = Dataset.load("/tmp/test_ds_load")
+
+    assert ds == ds_loaded
