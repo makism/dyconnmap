@@ -6,6 +6,7 @@ module.
 # author Avraam Marimpis <avraam.marimpis@gmail.com>
 
 import numpy as np
+import os
 from dataclasses import dataclass, field
 from enum import IntEnum
 
@@ -84,21 +85,34 @@ class Dataset:
         """Return a dictionary containing important metadata about the Dataset; number of subjects, samples, etc.."""
         return {"subjects": self.subjects, "samples": self.samples, "rois": self.rois}
 
-    def to_json(self, fname: str) -> Optional[bool]:
-        """Write the Dataset to a json file."""
+    def write(self, pathname: str) -> Optional[bool]:
+        """Write the Dataset to the given directory."""
         try:
-            with open("dataset1.json", "w") as fp:
-                json.dump(ds, fp, cls=DatasetEncoder, indent=4)
+            if not os.path.exists(pathname):
+                os.makedirs(pathname)
+
+            json_dataset = f"{pathname}/dataset.json"
+            with open(json_dataset, "w") as fp:
+                json.dump(self, fp, cls=DatasetEncoder, indent=4)
+
+            for s in range(self.subjects):
+                np.savetxt(
+                    f"{pathname}/data_subject{s}.csv",
+                    self.data[s, :, :],
+                    header=",".join(self.labels),
+                    comments="",
+                    delimiter=",",
+                )
         except Exception as err:
             print(err)
             return False
 
         return True
 
-    @classmethod
-    def from_json(cls, fname: str) -> "Dataset":
-        """Load Dataset from a json file."""
-        pass
+    # @classmethod
+    # def from_json(cls, fname: str) -> "Dataset":
+    # """Load Dataset from a json file."""
+    # pass
 
 
 class DatasetEncoder(json.JSONEncoder):
@@ -108,5 +122,7 @@ class DatasetEncoder(json.JSONEncoder):
         if isinstance(obj, Dataset):
             return obj.__dict__
         elif isinstance(obj, np.ndarray):
-            return obj.tolist()
+            # return obj.tolist()
+            return None
+
         return json.JSONEncoder.default(self, obj)
