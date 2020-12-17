@@ -47,7 +47,7 @@ def spectral_k_distance(X: np.ndarray, Y: np.ndarray, k: int) -> float:
 if __name__ == "__main__":
     rng = np.random.RandomState(0)
 
-    n_subjects = 4
+    n_subjects = 1
     n_rois = 32
     n_samples = 128
 
@@ -58,7 +58,7 @@ if __name__ == "__main__":
 
     ds.write("/tmp/myds")
 
-    win = SlidingWindow(step=5, window_length=10)
+    # win = SlidingWindow(step=5, window_length=10)
     # win = TimeVarying(step=10, samples=128, rois=32, window_length=10)
 
     # conn = Correlation(rois=[0, 3])
@@ -81,9 +81,9 @@ if __name__ == "__main__":
     #
     # print(distances)
 
-    print()
-    #
-    result2 = phaselockingvalue(
-        data, filter=passband_filter, filter_opts={"fs": 128.0, "fb": [1.0, 4.0]}
-    )
-    print(result2)
+    # print()
+    # #
+    # result2 = phaselockingvalue(
+    #     data, filter=passband_filter, filter_opts={"fs": 128.0, "fb": [1.0, 4.0]}
+    # )
+    # print(result2)

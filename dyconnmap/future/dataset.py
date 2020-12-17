@@ -7,6 +7,7 @@ module.
 
 import numpy as np
 import os
+import datetime
 from dataclasses import dataclass, field
 from enum import IntEnum
 
@@ -29,6 +30,7 @@ class Dataset:
     """Dataset."""
 
     version: float = field(default=1.0, init=False)
+    date_time: datetime.datetime = field(default=datetime.datetime.now(), init=False)
     comments: str = field(default_factory=str, init=False)
 
     data: np.ndarray = field(repr=False)
@@ -37,7 +39,7 @@ class Dataset:
     samples: int = field(default=0)
     rois: int = field(default=0)
 
-    labels: List[str] = field(init=True, default_factory=list, repr=True)
+    labels: List[str] = field(init=True, default_factory=list)
 
     tr: float = field(
         default=None, metadata={"unit": "Seconds", "modality": [Modality.FMRI]}
@@ -51,6 +53,9 @@ class Dataset:
     )
 
     def __post_init__(self):
+        self.version = 1.0
+        self.date_time = datetime.datetime.now()
+
         # Add an empty dimension if it's single-subject
         if len(self.data.shape) == 2:
             self.data = np.expand_dims(self.data, axis=0)
@@ -109,10 +114,10 @@ class Dataset:
 
         return True
 
-    # @classmethod
-    # def from_json(cls, fname: str) -> "Dataset":
-    # """Load Dataset from a json file."""
-    # pass
+    @classmethod
+    def from_json(cls, pathname: str) -> "Dataset":
+        """Load Dataset from a json file."""
+        pass
 
 
 class DatasetEncoder(json.JSONEncoder):
@@ -121,6 +126,8 @@ class DatasetEncoder(json.JSONEncoder):
     def default(self, obj):
         if isinstance(obj, Dataset):
             return obj.__dict__
+        elif isinstance(obj, (datetime.date, datetime.datetime)):
+            return obj.isoformat()
         elif isinstance(obj, np.ndarray):
             # return obj.tolist()
             return None
