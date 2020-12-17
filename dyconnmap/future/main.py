@@ -47,9 +47,9 @@ def spectral_k_distance(X: np.ndarray, Y: np.ndarray, k: int) -> float:
 if __name__ == "__main__":
     rng = np.random.RandomState(0)
 
-    n_subjects = 1
-    n_rois = 4
-    n_samples = 12
+    n_subjects = 4
+    n_rois = 32
+    n_samples = 128
 
     data = rng.rand(n_subjects, n_rois, n_samples)
 
