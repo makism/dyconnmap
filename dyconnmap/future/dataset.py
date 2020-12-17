@@ -104,6 +104,9 @@ class Dataset:
                     return False
 
             else:
+                if key not in other.__dict__:
+                    return False
+
                 if self.__dict__[key] != other.__dict__[key]:
                     return False
 
