@@ -4,7 +4,7 @@ codacy-coverage
 coverage
 codecov
 
-numpy==1.19.2
+numpy==1.19.5
 scipy==1.5.2
 matplotlib==3.3.2
 networkx==2.5
