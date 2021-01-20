@@ -8,6 +8,8 @@ from typing import List, Type, Union, Optional, Tuple, Dict
 class DynamicWindow(ABC):
     """Base dynamic window class."""
 
+    __ready = False
+
     window_length: int
     samples: int = field(default=0)
     rois: int = field(default=0)
@@ -19,9 +21,13 @@ class DynamicWindow(ABC):
         },
     )
 
+    def is_ready(self) -> bool:
+        return self.__ready
+
     def prepare(self, **kwargs) -> None:
         self.samples = kwargs.get("samples", 0)
         self.rois = kwargs.get("rois", 0)
+        self.__ready = True
 
     def settings(self) -> dict:
         """Return the settings for the given estimator."""
