@@ -14,16 +14,30 @@ class TimeVarying(DynamicWindow):
         init=True, default=2.0, metadata={"description": "The cycle-criterion."}
     )
 
+    # redefine optional
+    window_length: int = field(init=False)
+
     step: int = field(init=True, default=10)
 
-    def __post_init__(self):
-        self.samples = 128
-        self.rois = 32
-        self.window_length = 10
-        # self.step = None
-        # self.slides = None
+    def prepare(self, **kwargs) -> None:
+        super().prepare(**kwargs)
+
+        if "filter_opts" not in kwargs:
+            raise Exception(
+                "No filter options found; please set them in your Estimator object."
+            )
+
+        fs = kwargs["filter_opts"]["fs"]
+        fb = kwargs["filter_opts"]["fb"]
+        rois = kwargs["rois"]
+
+        self.window_length = np.int32(np.round((self.cc / fb[0]) * fs))
+
+        if self.window_length >= self.samples:
+            raise Exception("The resulting window size is greater than the samples.")
+
         self.slides = np.int32(
-            np.ceil((self.samples - self.window_length) / self.step + 1.0)
+            np.round((self.samples - self.window_length) / self.step)
         )
 
         if self.pairs is None:
@@ -35,9 +49,6 @@ class TimeVarying(DynamicWindow):
                 )
                 for win_id in range(self.slides)
             ]
-
-        # window_length = np.int32(np.round((cc / fb[0]) * fs))
-        # windows = np.int32(np.round((n_samples - window_length) / step))
 
     def __iter__(self):
         return iter(self.pairs)
