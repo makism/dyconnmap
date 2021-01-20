@@ -11,7 +11,7 @@ class Correlation(Estimator):
 
     def __post_init__(self):
         super().__post_init__()
-        self.dtype = np.float64
+        self.dtype = np.float32
 
     def estimate(self, data: np.ndarray, **kwargs) -> np.ndarray:
         result = np.corrcoef(data)
