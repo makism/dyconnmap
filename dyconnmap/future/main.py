@@ -10,7 +10,7 @@ from dyconnmap.fc import plv_fast
 from dataset import Dataset, Modality
 from correlation import Correlation, correlation
 
-# from timevar import TimeVarying
+from timevar import TimeVarying
 from slidingwindow import SlidingWindow
 from phaselockingvalue import PhaseLockingValue, phaselockingvalue
 from pipeline import Pipeline
@@ -45,39 +45,35 @@ if __name__ == "__main__":
     rng = np.random.RandomState(0)
 
     n_subjects = 1
-    n_rois = 32
-    n_samples = 128
+    n_rois = 4
+    n_samples = 128 * 3
+    fs = 128.0
+    cc = 2.0
+    step = 10
+    fb = [1.0, 4.0]
 
     data = rng.rand(n_subjects, n_rois, n_samples)
 
-    ds = Dataset(data, modality=Modality.Raw, fs=128.0)
+    ds = Dataset(data, modality=Modality.Raw, fs=fs)
 
-    # win = SlidingWindow(step=5, window_length=10)
-    # win = TimeVarying(step=10, samples=128, rois=32, window_length=10)
+    win = TimeVarying(step=step, cc=cc)
+    # win = SlidingWindow(window_length=10)
+    conn = PhaseLockingValue(
+        rois=None, filter=passband_filter, filter_opts={"fs": fs, "fb": fb}
+    )
 
-    # conn = Correlation(rois=[0, 3])
-    # conn = PhaseLockingValue(
-    #     filter=passband_filter, filter_opts={"fs": 128.0, "fb": [1.0, 4.0]}
-    # )
-    #
-    # # result = conn(ds, win)
-    # result = conn(ds)
-    # result = np.array(result)
-    # print(result)
+    result = conn(ds, win)
+    print(result[0, :, :])
 
-    # cb_func = spectral_k_distance
-    # tmp2 = [(i, ii) for i in range(5) for ii in range(i, 5) if i != ii]
-    # distances = Parallel(n_jobs=1)(
-    #     delayed(cb_func)(result[x, :, :], result[y, :, :], k=3) for x, y in tmp2
-    # )
-    #
-    # print(spectral_k_distance(result[0, :, :], result[1, :, :], k=3))
-    #
-    # print(distances)
+    from dyconnmap import tvfcg
+    from dyconnmap.fc import PLV
 
-    # print()
-    # #
-    # result2 = phaselockingvalue(
-    #     data, filter=passband_filter, filter_opts={"fs": 128.0, "fb": [1.0, 4.0]}
-    # )
-    # print(result2)
+    estimator = PLV(fb, fs)
+    fcgs = tvfcg(data[0, :, :], estimator, fb, fs, cc, step)
+    # # real_fcgs = np.real(fcgs)
+
+    print("*" * 80)
+    print("original TVFCGs shape: ", np.shape(fcgs))
+    print(fcgs[0, :, :])
+
+    np.testing.assert_array_equal(result, fcgs)
