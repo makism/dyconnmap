@@ -81,13 +81,22 @@ class Estimator(ABC):
         self, data: np.ndarray, pairs: List[Tuple[int, int]], **kwargs
     ) -> np.ndarray:
         rois = kwargs["rois"]
-        slides = kwargs["slides"]
+        slides = kwargs["window"]["slides"]
+        slide_pairs = kwargs["window"]["pairs"]
 
         dfcg = np.zeros((slides, rois, rois), dtype=self.dtype)
-        for window_id, slice_start, slice_end in pairs:
-            result = self.estimate(data[:, slice_start:slice_end], **kwargs)
 
-            dfcg[window_id, :, :] = result["estimation"]
+        # print(np.shape(dfcg))
+
+        # final_pairs = list(itertools.product(pairs, slide_pairs))
+        # print(np.shape(final_pairs))
+        # print("pairs: ", pairs)
+        # print("np.shape(data): ", np.shape(data))
+
+        for window_id, slice_start, slice_end in pairs:
+            # print(f"window_id: {window_id}, start: {slice_start}, end: {slice_end}")
+            result = self.estimate(data[:, slice_start:slice_end], **kwargs)
+            dfcg[window_id, :, :] = result
 
         return dfcg
 
@@ -102,9 +111,14 @@ class Estimator(ABC):
         if self.rois is not None:
             ts = ts[:, self.rois, :]
             settings["rois"] = len(self.rois)
+        # l = len(self.rois)
+        # pairs = [(roi1, roi2) for roi1 in range(0, l) for roi2 in range(0, l)]
 
         # Apply the given filter ufunc on the input timeseries.
-        if self.filter is not None and isinstance(self.filter, collections.Callable):
+        if self.filter is not None and isinstance(
+            self.filter, collections.abc.Callable
+        ):
+            settings["filter_opts"] = self.filter_opts
             ts = self.filter(ts, **self.filter_opts)
 
         # Run (if defined) the preprocessing function defined by the Estimator.
@@ -115,7 +129,8 @@ class Estimator(ABC):
             cb_func = self.estimate
         else:
             window.prepare(**settings)
-            settings["slides"] = window.slides
+            settings["window"] = window.settings()
+            settings["use_window"] = True
 
             cb_func = self.estimate_for_slides
             pairs = list(window)
