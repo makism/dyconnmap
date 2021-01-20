@@ -113,9 +113,11 @@ def tvfcg(data, estimator_instance, fb, fs, cc=2.0, step=5.0, pairs=None):
             (win_id, int(win_id * step), int(window_length + (win_id * step)), c1, c2)
             for win_id in range(windows)
             for c1 in range(0, n_channels)
-            for c2 in range(c1, n_channels)
-            if c1 != c2
+            for c2 in range(0, n_channels)
+            # if c1 != c2
         ]
+
+    # print(pairs)
 
     for pair in pairs:
         win_id, start, end, c1, c2 = pair

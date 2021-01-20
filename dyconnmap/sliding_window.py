@@ -43,8 +43,8 @@ def sliding_window(data, estimator_instance, window_length=25, step=1, pairs=Non
             )
             for win_id in range(n_slides)
             for c1 in range(0, n_rois)
-            for c2 in range(c1, n_rois)
-            if c1 != c2
+            for c2 in range(0, n_rois)
+            # if c1 != c2
         ]
 
     for pair in pairs:
