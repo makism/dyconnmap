@@ -11,7 +11,7 @@ from dataclasses import dataclass, field
 class SlidingWindow(DynamicWindow):
     """Sliding window class."""
 
-    step: int = field(default=0)
+    step: int = field(default=1, init=True)
 
     def prepare(self, **kwargs) -> None:
         super().prepare(**kwargs)
