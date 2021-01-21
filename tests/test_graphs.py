@@ -135,12 +135,6 @@ def test_mpc_gamma():
 
 
 def test_e2e():
-    # import scipy
-    # from scipy import io
-    # mat = scipy.io.loadmat("/home/makism/Development/Matlab/result.mat")
-    # expected = np.float32(mat["r"])
-    # np.save("data/test_mlgraph_e2e_expected_result.npy", expected)
-
     dfcgs = np.load("data/test_mlgraph_e2e.npy")
     result = edge_to_edge(dfcgs)
     result = np.float32(result)
