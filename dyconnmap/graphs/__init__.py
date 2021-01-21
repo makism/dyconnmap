@@ -23,6 +23,7 @@ from .spectral_euclidean_distance import spectral_euclidean_distance
 from .spectral_k_distance import spectral_k_distance
 from .laplacian_energy import laplacian_energy
 from .mpc import multilayer_pc_strength, multilayer_pc_degree, multilayer_pc_gamma
+from .e2e import edge_to_edge
 
 
 __all__ = [
@@ -44,4 +45,5 @@ __all__ = [
     "multilayer_pc_strength",
     "multilayer_pc_degree",
     "multilayer_pc_gamma",
+    "edge_to_edge",
 ]
