@@ -406,7 +406,7 @@ def test_cos():
 
     expected = np.load("data/test_cos.npy")
 
-    np.testing.assert_array_equal(conn, expected)
+    np.testing.assert_array_almost_equal(conn, expected)
 
 
 def test_cos_nofilter():
@@ -416,4 +416,4 @@ def test_cos_nofilter():
 
     expected = np.load("data/test_cos_nofilter.npy")
 
-    np.testing.assert_array_equal(conn, expected)
+    np.testing.assert_array_almost_equal(conn, expected)
