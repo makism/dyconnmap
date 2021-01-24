@@ -2,11 +2,40 @@
 
 ### dyconnmap
 A neuroimaging module for dynamic connectome mapping.
-
-[![Build Status](https://travis-ci.org/makism/dyconnmap.svg?branch=master)](https://travis-ci.org/makism/dyconnmap) [![Coverage Status](https://coveralls.io/repos/github/makism/dyconnmap/badge.svg?branch=master)](https://coveralls.io/github/makism/dyconnmap?branch=master) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/70dff7603f5849f79e703f852d1b5ae3)](https://www.codacy.com/app/makism/dyconnmap?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=makism/dyconnmap&amp;utm_campaign=Badge_Grade) [![Documentation Status](https://readthedocs.org/projects/dyconnmap/badge/?version=latest)](https://dyconnmap.readthedocs.io/?badge=latest)
- [![Licence](https://img.shields.io/badge/Licence-BSD-blue.svg)](https://opensource.org/licenses/BSD-3-Clause) ![python-3.6](https://img.shields.io/pypi/pyversions/dyconnmap) [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/makism/dyconnmap/master?filepath=tutorials)
  
-[![PyPI version](https://badge.fury.io/py/dyconnmap.svg)](https://badge.fury.io/py/dyconnmap) [![Anaconda-Server Badge](https://anaconda.org/makism/dyconnmap/badges/version.svg)](https://anaconda.org/makism/dyconnmap) ![Whenenver a new tag is pushed; a wheel distribution is uploada on the Test PyPI index.](https://github.com/makism/dyconnmap/workflows/publish-test-pypi/badge.svg)
+<table>
+ <tr>
+  <td>build & code</td>
+  <td><br/>
+   
+[![Build Status](https://travis-ci.org/makism/dyconnmap.svg?branch=master)](https://travis-ci.org/makism/dyconnmap) [![Coverage Status](https://coveralls.io/repos/github/makism/dyconnmap/badge.svg?branch=master)](https://coveralls.io/github/makism/dyconnmap?branch=master) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/70dff7603f5849f79e703f852d1b5ae3)](https://www.codacy.com/app/makism/dyconnmap?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=makism/dyconnmap&amp;utm_campaign=Badge_Grade)
+   </td>
+ </tr>
+ <tr>
+  <td>package</td>
+  <td><br/>
+ 
+ [![PyPI version](https://badge.fury.io/py/dyconnmap.svg)](https://badge.fury.io/py/dyconnmap) 
+ [![Anaconda-Server Badge](https://anaconda.org/makism/dyconnmap/badges/version.svg)](https://anaconda.org/makism/dyconnmap)
+ ![Whenenver a new tag is pushed; a wheel distribution is uploaded on the Test PyPI index.](https://github.com/makism/dyconnmap/workflows/publish-test-pypi/badge.svg)
+ </td>
+ </tr>
+ <tr>
+ <td>release</td>
+ <td><br/>
+
+![python-versions](https://img.shields.io/pypi/pyversions/dyconnmap)
+[![Licence](https://img.shields.io/badge/Licence-BSD-blue.svg)](https://opensource.org/licenses/BSD-3-Clause) 
+[![Documentation Status](https://readthedocs.org/projects/dyconnmap/badge/?version=latest)](https://dyconnmap.readthedocs.io/?badge=latest)
+ </td>
+ <tr>
+ <td>tutorials</td>
+ <td><br/>
+  
+   [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/makism/dyconnmap/master?filepath=tutorials)
+</td>
+</tr>
+</table>
 
 ---
 
