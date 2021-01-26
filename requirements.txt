@@ -5,14 +5,15 @@ coverage
 codecov
 
 numpy==1.19.5
-scipy==1.6.0
+scipy==1.6.0; python_version > '3.6'
+scipy==1.5.2; python_version <= '3.6'
 matplotlib==3.3.3
 networkx==2.5
 statsmodels==0.12.1
 scikit-learn==0.24.1
 bctpy==0.5.0
 
-Sphinx==3.0.4
+Sphinx>=3.0.4
 sphinx-rtd-theme==0.5.1
 
 mypy
