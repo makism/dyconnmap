@@ -4,6 +4,14 @@ dyconnmap.graphs package
 Submodules
 ----------
 
+dyconnmap.graphs.e2e module
+---------------------------
+
+.. automodule:: dyconnmap.graphs.e2e
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 dyconnmap.graphs.gdd module
 ---------------------------
 

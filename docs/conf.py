@@ -68,7 +68,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'dyconnmap'
-copyright = '2020, Avraam Marimpis & Stavros Dimitriadis'
+copyright = '2021, Avraam Marimpis & Stavros Dimitriadis'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -302,7 +302,7 @@ texinfo_documents = [
 epub_title = 'dyconnmap'
 epub_author = 'Marimpis Avraam & Dimitriadis Stavros'
 epub_publisher = 'Marimpis Avraam & Dimitriadis Stavros'
-epub_copyright = '2020, Marimpis Avraam & Dimitriadis Stavros'
+epub_copyright = '2021, Marimpis Avraam & Dimitriadis Stavros'
 
 # The basename for the epub file. It defaults to the project name.
 #epub_basename = u'dyconnmap'

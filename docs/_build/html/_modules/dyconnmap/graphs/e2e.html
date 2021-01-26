@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>dyconnmap.chronnectomics.flexibility_index &mdash; dyconnmap  documentation</title>
+  <title>dyconnmap.graphs.e2e &mdash; dyconnmap  documentation</title>
   
 
   
@@ -131,7 +131,7 @@
         
           <li><a href="../../index.html">Module code</a> &raquo;</li>
         
-      <li>dyconnmap.chronnectomics.flexibility_index</li>
+      <li>dyconnmap.graphs.e2e</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -146,54 +146,43 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <h1>Source code for dyconnmap.chronnectomics.flexibility_index</h1><div class="highlight"><pre>
-<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
-<span class="sd">&quot;&quot;&quot; Flexibility Index</span>
-
-<span class="sd">In the context of graph clustering it was defined in (Basset2011_), flexbility is the frequency</span>
-<span class="sd">of a nodea change module allegiance; the transition of brain states between consecutive</span>
-<span class="sd">temporal segments. The higher the number of changes, the larger the FI will be.</span>
-
-<span class="sd">.. math::</span>
-<span class="sd">   FI = \\frac{\\text{number of transitions}} {\\text{total symbols - 1}}</span>
-
-<span class="sd">|</span>
-
-<span class="sd">.. [Basset2011] Bassett, D. S., Wymbs, N. F., Porter, M. A., Mucha, P. J., Carlson, J. M., &amp; Grafton, S. T. (2011). Dynamic reconfiguration of human brain networks during learning. Proceedings of the National Academy of Sciences, 108(18), 7641-7646.</span>
-
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="c1"># Author: Avraam Marimpis &lt;avraam.marimpis@gmail.com&gt;</span>
+  <h1>Source code for dyconnmap.graphs.e2e</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Edge-to-Edge Network&quot;&quot;&quot;</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy.spatial</span>
 
 
-<div class="viewcode-block" id="flexibility_index"><a class="viewcode-back" href="../../../dyconnmap.chronnectomics.html#dyconnmap.chronnectomics.flexibility_index.flexibility_index">[docs]</a><span class="k">def</span> <span class="nf">flexibility_index</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; Flexibility Index</span>
-
-<span class="sd">    Compute the flexibility index for the given symbolic, 1d time series.</span>
-
+<div class="viewcode-block" id="edge_to_edge"><a class="viewcode-back" href="../../../dyconnmap.graphs.html#dyconnmap.graphs.e2e.edge_to_edge">[docs]</a><span class="k">def</span> <span class="nf">edge_to_edge</span><span class="p">(</span><span class="n">dfcgs</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Edge-To-Edge</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    x : array-like, shape(N)</span>
-<span class="sd">        Input symbolic time series.</span>
-
+<span class="sd">    mlgraph : array-like, shape(n_layers, n_rois, n_rois)</span>
+<span class="sd">        A multilayer (undirected) graph. Each layer consists of a graph.</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
-<span class="sd">    fi : float</span>
-<span class="sd">        The flexibility index.</span>
+<span class="sd">    net : array-like</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">l</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">n_ts</span><span class="p">,</span> <span class="n">n_rois</span><span class="p">,</span> <span class="n">n_oirs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">dfcgs</span><span class="p">)</span>
 
-    <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">l</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">x</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">!=</span> <span class="n">x</span><span class="p">[</span><span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]:</span>
-            <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="n">n_rois</span> <span class="o">*</span> <span class="p">(</span><span class="n">n_rois</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
 
-    <span class="n">fi</span> <span class="o">=</span> <span class="n">counter</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">l</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">ts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">N</span><span class="p">,</span> <span class="n">n_ts</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_rois</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n_rois</span><span class="p">):</span>
+            <span class="n">ts</span><span class="p">[</span><span class="n">count</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">dfcgs</span><span class="p">[:,</span> <span class="n">i</span><span class="p">,</span> <span class="n">l</span><span class="p">])</span>
+            <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
 
-    <span class="k">return</span> <span class="n">fi</span></div>
+    <span class="n">net</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">spatial</span><span class="o">.</span><span class="n">distance</span><span class="o">.</span><span class="n">squareform</span><span class="p">(</span>
+        <span class="n">scipy</span><span class="o">.</span><span class="n">spatial</span><span class="o">.</span><span class="n">distance</span><span class="o">.</span><span class="n">pdist</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="s2">&quot;euclidean&quot;</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">net</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">(</span><span class="n">net</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">net</span></div>
 </pre></div>
 
            </div>
