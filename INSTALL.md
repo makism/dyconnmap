@@ -8,11 +8,12 @@ The following software is required for `dyconnmap` to work properly:
 3. SciPy
 4. Matplotlib
 5. NetworkX
-6. nose (optional)
+6. Brain Connictivity Toolbox for Python (BctPy)
+7. nose (optional)
 
     This is required for executing the tests.
 
-7. Sphinx (optional)
+8. Sphinx (optional)
 
     This is required for building the documentation from the source code.
 
