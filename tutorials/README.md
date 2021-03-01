@@ -2,6 +2,8 @@
 
 Check `dyconnmap`'s requirements, plus you will need `jupyter-notebook`.
 
+For the tutorials involving EEG data, you will also need `pyedflib`.
+
 
 #### How to run (sample instructions)
 
@@ -19,7 +21,7 @@ The fMRI time series are taken from the public dataset (around 1000 participants
 To acquire the data, you will have to follow the instructions found in the starting kit (http://nbviewer.jupyter.org/github/ramp-kits/autism/blob/master/autism_starting_kit.ipynb). We are using the fMRI time series fitted for the MSDL atlas, so retrieve the relevant data.
 
 #### EEG data
-The EEG data were taken from https://physionet.org/pn4/eegmmidb/ [1, 2]
+The EEG data were taken from https://physionet.org/content/eegmmidb [1, 2]
 
 ##### References
 

@@ -64,14 +64,14 @@ Built on [NumPy](http://www.numpy.org/), [SciPy](http://www.scipy.org/), [matplo
 
 * [Installation](https://github.com/makism/dyconnmap/blob/master/INSTALL.md)
 
-* [Documenation](http://dyconnmap.readthedocs.io/?badge=latest)
+* [API Documentation](http://dyconnmap.readthedocs.io/?badge=latest)
 
 * [Tutorials](https://github.com/makism/dyconnmap/tree/master/tutorials)
 
 * [Examples](https://github.com/makism/dyconnmap/tree/master/examples)
 
 
-#### Cittation
+#### Citation
 
 If you use _dyconnmap_ or _dyfunconn_ in a published work, please consider citing.
 
