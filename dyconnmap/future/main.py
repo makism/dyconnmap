@@ -5,6 +5,7 @@ from joblib import Parallel, delayed
 import sys
 
 sys.path.append("/home/makism/Github/dyconnmap-feature_dataset/")
+sys.path.append("/home/makism/Github/dyconnmap-feature_dataset/future/")
 from dyconnmap.fc import plv_fast
 
 from dataset import Dataset, Modality
@@ -15,6 +16,7 @@ from slidingwindow import SlidingWindow
 from phaselockingvalue import PhaseLockingValue, phaselockingvalue
 from pipeline import Pipeline
 from basicfilter import passband_filter
+from bv import bv_parse_voi
 
 
 def spectral_k_distance(X: np.ndarray, Y: np.ndarray, k: int) -> float:
@@ -41,7 +43,22 @@ def spectral_k_distance(X: np.ndarray, Y: np.ndarray, k: int) -> float:
     return distance
 
 
+import pysnooper
+
 if __name__ == "__main__":
+    voi_fname = (
+        "/home/makism/Documents/BrainVoyager/SampleData/NF Pilot Study/s01/s01_V5.voi"
+    )
+    voi_desc, vois = bv_parse_voi(fname=voi_fname)
+
+    print(vois[0]["NrOfVoxels"])
+    print(vois[0]["NameOfVOI"])
+    print(len(vois[0]["Coords"]))
+    print(vois[1]["NrOfVoxels"])
+    print(len(vois[1]["Coords"]))
+
+    sys.exit(0)
+
     rng = np.random.RandomState(0)
 
     n_subjects = 1
@@ -54,26 +71,14 @@ if __name__ == "__main__":
 
     data = rng.rand(n_subjects, n_rois, n_samples)
 
+    # with pysnooper.snoop():
     ds = Dataset(data, modality=Modality.Raw, fs=fs)
 
     win = TimeVarying(step=step, cc=cc)
-    # win = SlidingWindow(window_length=10)
+    win = SlidingWindow(window_length=10)
     conn = PhaseLockingValue(
         rois=None, filter=passband_filter, filter_opts={"fs": fs, "fb": fb}
     )
 
     result = conn(ds, win)
     print(result[0, :, :])
-
-    from dyconnmap import tvfcg
-    from dyconnmap.fc import PLV
-
-    estimator = PLV(fb, fs)
-    fcgs = tvfcg(data[0, :, :], estimator, fb, fs, cc, step)
-    # # real_fcgs = np.real(fcgs)
-
-    print("*" * 80)
-    print("original TVFCGs shape: ", np.shape(fcgs))
-    print(fcgs[0, :, :])
-
-    np.testing.assert_array_equal(result, fcgs)
