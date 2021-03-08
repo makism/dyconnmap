@@ -6,11 +6,31 @@ from typing import Union, List, Optional, Dict
 
 
 def bv_convert_coords(coords: List, from_ref_space: str) -> Optional["np.ndarray"]:
-    """Convert Coordinates from/to TAL/MNI/BV system."""
+    """Convert Coordinates from/to TAL/MNI/BV system.
+
+    Parameters
+    ----------
+    coords : array-like, shape(n_voxels, 3)
+        Input coordinates.
+
+    from_ref_space : string
+        Original reference space. Valid options include:
+        - TAL
+        - MNI
+
+    Returns
+    -------
+    transf_coords : array-like, shape(n_voxels, 3)
+        The transformed coordinates. It will return `None` in case of error.
+    """
     transf_coords = None
 
     arr = np.array(coords)
+
     if np.atleast_2d(arr):
+        if arr.shape[1] != 3:
+            return transf_coords
+
         if from_ref_space == "TAL" or from_ref_space == "MNI":
             transf_coords = 128.0 - arr
             transf_coords = transf_coords.astype(np.int32)
@@ -27,7 +47,26 @@ def bv_convert_coords(coords: List, from_ref_space: str) -> Optional["np.ndarray
 
 
 def bv_parse_vtc(fname: str) -> Union[Dict, "np.ndarray"]:
-    """Parse a VTC file, support only the 3rd version of the format."""
+    """Parse a VTC file.
+
+    Parameters
+    ----------
+    fname : string
+        Input VTC filename.
+
+
+    Returns
+    -------
+    metadata : dict
+        A dictionary holding the relevant metadata.
+
+    tc : array-like, shape(n_voxels, 4)
+        The extracted Timecourses.
+
+    Notes
+    -----
+    For the time-being, only the 3rd version of the format is supported.
+    """
 
     metadata = {
         "version": 3,
@@ -137,7 +176,21 @@ def bv_parse_vtc(fname: str) -> Union[Dict, "np.ndarray"]:
 
 
 def bv_parse_voi(fname: str) -> Union[Dict, List[int]]:
-    """Parse a VOI definition file."""
+    """Parse a VOI definition file.
+
+    Parameters
+    ----------
+    fname : str
+        Input VOI file.
+
+    Returns
+    -------
+    voi_dec : dict
+        A dictionary holding all the metadata.
+
+    vois : list
+        A list of VOIs' coordinates.
+    """
 
     voi_desc = {
         "FileVersion": None,
