@@ -2,9 +2,10 @@
 
 import numpy as np
 import struct
+from typing import Union, List, Optional, Dict
 
 
-def bv_convert_coords(coords, from_ref_space) -> np.ndarray:
+def bv_convert_coords(coords: List, from_ref_space: str) -> Optional["np.ndarray"]:
     """Convert Coordinates from/to TAL/MNI/BV system."""
     transf_coords = None
 
@@ -25,8 +26,8 @@ def bv_convert_coords(coords, from_ref_space) -> np.ndarray:
     return transf_coords
 
 
-def bv_parse_vtc(fname):
-    """Parse a VTC file, supprt only the 3rd version of the format."""
+def bv_parse_vtc(fname: str) -> Union[Dict, "np.ndarray"]:
+    """Parse a VTC file, support only the 3rd version of the format."""
 
     metadata = {
         "version": 3,
@@ -135,7 +136,7 @@ def bv_parse_vtc(fname):
     return metadata, tc
 
 
-def bv_parse_voi(fname):
+def bv_parse_voi(fname: str) -> Union[Dict, List[int]]:
     """Parse a VOI definition file."""
 
     voi_desc = {
