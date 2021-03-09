@@ -36,6 +36,14 @@ A neuroimaging module for dynamic connectome mapping.
    [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/makism/dyconnmap/master?filepath=tutorials)
 </td>
 </tr>
+
+<tr>
+ <td>social & updates</td>
+ <td><br/>
+  
+   [![RG](https://img.shields.io/badge/RG%20Project-Python%20tools%20for%20Brain%20Network%20Analysis-%2300ccbb)](https://www.researchgate.net/project/Python-tools-for-Brain-Network-Analysis)
+  </td>
+</tr>
 </table>
 
 ---
