@@ -74,18 +74,18 @@ def bv_parse_vtc(fname: str, swapaxes: bool = False) -> Union[Dict, "np.ndarray"
     metadata = {
         "version": 3,
         "fmr_filename": "",
-        "num_protos": 1,
+        "num_protos": None,  # default: 1
         "protos_filenames": list(),
         "current_protocol": 0,
-        "data_type": 2,  # 1 -> short int, 2 -> float
-        "num_volumes": 0,
-        "vmr_resolution": 3,
-        "x_start": 57,
-        "x_end": 231,
-        "y_start": 52,
-        "y_end": 172,
-        "z_start": 59,
-        "z_end": 197,
+        "data_type": None,  # default: 2, 1 -> short int, 2 -> float
+        "num_volumes": None,  # default:0
+        "vmr_resolution": None,  # default: 3
+        "x_start": None,  # default: 57
+        "x_end": None,  # default: 231
+        "y_start": None,  # default: 52
+        "y_end": None,  # default: 172
+        "z_start": None,  # default: 59
+        "z_end": None,  # default: 197
         "lr": None,  # 1 -> left-is-right, 2 -> left-is-left, 0 -> unknown
         "ref_space_flag": None,  # 1 -> native, 2 -> ACPC, 3 -> Talarach, 0 -> Unknown
         "tr": None,  # in MS
@@ -134,27 +134,41 @@ def bv_parse_vtc(fname: str, swapaxes: bool = False) -> Union[Dict, "np.ndarray"
             metadata["protos_filenames"].append(proto_fname)
 
         # Current Protocol, Data Type, Number of Volumes
-        fields = struct.unpack("3h", contents[idx : idx + 6])
+        fields = struct.unpack("hhh", contents[idx : idx + 6])
         idx += 6
         metadata["current_protocol"], metadata["data_type"], metadata[
             "num_volumes"
         ] = fields
 
-        # X,Y,Z start and end
-        fields = struct.unpack("6h", contents[idx : idx + 12])
-        idx += 12
-        metadata["x_start"], metadata["x_end"], metadata["y_start"], metadata[
-            "y_end"
-        ], metadata["z_start"], metadata["z_end"] = fields
+        # VMR Resolution
+        fields = struct.unpack("h", contents[idx : idx + 2])
+        idx += 2
+        metadata["vmr_resolution"] = fields[0]
 
-        # LR convention, Reference Space flag, TR
-        fields = struct.unpack("ssf", contents[idx : idx + 8])
-        idx += 8
-        metadata["lr"] = fields[0]  # TODO: needs decoding
-        metadata["ref_space_flag"] = fields[1]  # TODO: needs decoding
-        metadata["tr"] = fields[2]
+        # X,Y,Z start and end
+        fields = struct.unpack("hh", contents[idx : idx + 4])
+        metadata["x_start"], metadata["x_end"] = fields
+
+        idx += 4
+        fields = struct.unpack("hh", contents[idx : idx + 4])
+        metadata["y_start"], metadata["y_end"] = fields
+
+        idx += 4
+        fields = struct.unpack("hh", contents[idx : idx + 4])
+        metadata["z_start"], metadata["z_end"] = fields
+
+        # LR convention, Reference Space flag
+        idx += 4
+        fields = struct.unpack("BB", contents[idx : idx + 2])
+        metadata["lr"], metadata["ref_space_flag"] = fields
+
+        # TR
+        idx += 2
+        fields = struct.unpack("f", contents[idx : idx + 4])[0]
+        metadata["tr"] = fields
 
         # Timecourses
+        idx += 4
         DataType = metadata["data_type"]
         XStart, XEnd = metadata["x_start"], metadata["x_end"]
         YStart, YEnd = metadata["y_start"], metadata["y_end"]
