@@ -2,8 +2,13 @@
 snippets/.ipynb_checkpoints/*
 .mypy_cache/
 
+bv_data/
+bv_data/*
+
 tests/.codacy-coverage/
 tests/codacy-coverage.json
+
+.directory
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
