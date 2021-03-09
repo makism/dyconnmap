@@ -1,10 +1,8 @@
-import numpy as np
+"""Test the new Dataset class."""
 
+import numpy as np
 import os.path
 import sys
-
-sys.path.append("/home/makism/Github/dyconnmap-feature_dataset/")
-sys.path.append("/home/makism/Github/dyconnmap-feature_dataset/dyconnmap/future/")
 
 from .dataset import Dataset, Modality
 

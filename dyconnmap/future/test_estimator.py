@@ -1,9 +1,7 @@
+"""Test thew Estimators' implementation."""
+
 import numpy as np
-
 import sys
-
-sys.path.append("/home/makism/Github/dyconnmap-feature_dataset/")
-sys.path.append("/home/makism/Github/dyconnmap-feature_dataset/dyconnmap/future/")
 from dyconnmap import tvfcg, sliding_window
 from dyconnmap.fc import PLV, Corr, plv_fast
 
