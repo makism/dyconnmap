@@ -46,7 +46,7 @@ def bv_convert_coords(coords: List, from_ref_space: str) -> Optional["np.ndarray
     return transf_coords
 
 
-def bv_parse_vtc(fname: str) -> Union[Dict, "np.ndarray"]:
+def bv_parse_vtc(fname: str, swapaxes: bool = False) -> Union[Dict, "np.ndarray"]:
     """Parse a VTC file.
 
     Parameters
@@ -54,14 +54,17 @@ def bv_parse_vtc(fname: str) -> Union[Dict, "np.ndarray"]:
     fname : string
         Input VTC filename.
 
+    swapaxes : bool
+        If `True`, the resulting array will swap the axes Z and X.
+
 
     Returns
     -------
     metadata : dict
         A dictionary holding the relevant metadata.
 
-    tc : array-like, shape(n_voxels, 4)
-        The extracted Timecourses.
+    tc : array-like, shape(len_z, len_y, len_x, n_volumes)
+        The extracted Timecourses. The axes `len_z` and `len_x` may be optionaly swapped using the parameter `swapaxes`.
 
     Notes
     -----
@@ -163,14 +166,22 @@ def bv_parse_vtc(fname: str) -> Union[Dict, "np.ndarray"]:
         DimY = int((YEnd - YStart) / VTCResolution)
         DimZ = int((ZEnd - ZStart) / VTCResolution)
 
-        read_amount = int(DimX * DimY * DimZ * NumVolumes)
+        read_amount = int(DimZ * DimY * DimX * NumVolumes)
         data_size = 4 if DataType == 2 else 2
         data_code = "f" if DataType == 2 else "H"
         tc = struct.unpack(
             f"{read_amount}{data_code}", contents[idx : idx + read_amount * data_size]
         )
-        tc = np.reshape(np.array(tc), [-1, 4])
-        print(tc.shape)
+
+        lenX = abs(DimX)
+        lenY = abs(DimY)
+        lenZ = abs(DimZ)
+
+        tc = np.array(tc)
+        tc = np.reshape(tc, [lenZ, lenY, lenX, NumVolumes])
+
+        if swapaxes:
+            tc = np.swapaxes(tc, axis1=0, axis2=2)
 
     return metadata, tc
 
