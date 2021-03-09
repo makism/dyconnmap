@@ -150,8 +150,8 @@ def bv_parse_vtc(fname: str, swapaxes: bool = False) -> Union[Dict, "np.ndarray"
         # LR convention, Reference Space flag, TR
         fields = struct.unpack("ssf", contents[idx : idx + 8])
         idx += 8
-        metadata["lr"] = fields[0]
-        metadata["ref_space_flag"] = fields[1]
+        metadata["lr"] = fields[0]  # TODO: needs decoding
+        metadata["ref_space_flag"] = fields[1]  # TODO: needs decoding
         metadata["tr"] = fields[2]
 
         # Timecourses
