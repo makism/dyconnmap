@@ -1,2 +1,5 @@
 lab/*
 migrated
+.ipynb_checkpoints/*
+raw_data/
+data/
