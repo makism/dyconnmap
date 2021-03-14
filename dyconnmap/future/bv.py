@@ -46,13 +46,18 @@ def bv_convert_coords(coords: List, from_ref_space: str) -> Optional["np.ndarray
     return transf_coords
 
 
-def bv_parse_vtc(fname: str, swapaxes: bool = False) -> Union[Dict, "np.ndarray"]:
+def bv_parse_vtc(
+    fname: str, dryrun: bool = True, swapaxes: bool = False
+) -> Union[Dict, Optional["np.ndarray"]]:
     """Parse a VTC file.
 
     Parameters
     ----------
     fname : string
         Input VTC filename.
+
+    dryrun : bool
+        If `True` (default) only the metadata will be extracted and the actual timecourses will be completely ignored.
 
     swapaxes : bool
         If `True`, the resulting array will swap the axes Z and X.
@@ -167,40 +172,42 @@ def bv_parse_vtc(fname: str, swapaxes: bool = False) -> Union[Dict, "np.ndarray"
         fields = struct.unpack("f", contents[idx : idx + 4])[0]
         metadata["tr"] = fields
 
-        # Timecourses
-        idx += 4
-        DataType = metadata["data_type"]
-        XStart, XEnd = metadata["x_start"], metadata["x_end"]
-        YStart, YEnd = metadata["y_start"], metadata["y_end"]
-        ZStart, ZEnd = metadata["z_start"], metadata["z_end"]
-        VTCResolution = int(metadata["vmr_resolution"])
-        NumVolumes = metadata["num_volumes"]
+        if not dryrun:
+            # Timecourses
+            idx += 4
+            DataType = metadata["data_type"]
+            XStart, XEnd = metadata["x_start"], metadata["x_end"]
+            YStart, YEnd = metadata["y_start"], metadata["y_end"]
+            ZStart, ZEnd = metadata["z_start"], metadata["z_end"]
+            VTCResolution = int(metadata["vmr_resolution"])
+            NumVolumes = metadata["num_volumes"]
 
-        DimX = int((XEnd - XStart) / VTCResolution)
-        DimY = int((YEnd - YStart) / VTCResolution)
-        DimZ = int((ZEnd - ZStart) / VTCResolution)
+            DimX = int((XEnd - XStart) / VTCResolution)
+            DimY = int((YEnd - YStart) / VTCResolution)
+            DimZ = int((ZEnd - ZStart) / VTCResolution)
 
-        read_amount = int(DimZ * DimY * DimX * NumVolumes)
-        data_size = 4 if DataType == 2 else 2
-        data_code = "f" if DataType == 2 else "H"
-        tc = struct.unpack(
-            f"{read_amount}{data_code}", contents[idx : idx + read_amount * data_size]
-        )
+            read_amount = int(DimZ * DimY * DimX * NumVolumes)
+            data_size = 4 if DataType == 2 else 2
+            data_code = "f" if DataType == 2 else "H"
+            tc = struct.unpack(
+                f"{read_amount}{data_code}",
+                contents[idx : idx + read_amount * data_size],
+            )
 
-        lenX = abs(DimX)
-        lenY = abs(DimY)
-        lenZ = abs(DimZ)
+            lenX = abs(DimX)
+            lenY = abs(DimY)
+            lenZ = abs(DimZ)
 
-        tc = np.array(tc)
-        tc = np.reshape(tc, [lenZ, lenY, lenX, NumVolumes])
+            tc = np.array(tc)
+            tc = np.reshape(tc, [lenZ, lenY, lenX, NumVolumes])
 
-        if swapaxes:
-            tc = np.swapaxes(tc, axis1=0, axis2=2)
+            if swapaxes:
+                tc = np.swapaxes(tc, axis1=0, axis2=2)
 
     return metadata, tc
 
 
-def bv_parse_voi(fname: str) -> Union[Dict, List[int]]:
+def bv_parse_voi(fname: str, dryrun: bool = False) -> Union[Dict, List[int]]:
     """Parse a VOI definition file.
 
     Parameters
@@ -210,8 +217,11 @@ def bv_parse_voi(fname: str) -> Union[Dict, List[int]]:
 
     Returns
     -------
-    voi_dec : dict
+    voi_desc : dict
         A dictionary holding all the metadata.
+
+    dryrun : bool
+        If `True` the VOIs' coordinates will not be extracted. Only the metadata will be read.
 
     vois : list
         A list of VOIs' coordinates.
