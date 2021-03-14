@@ -1,6 +1,6 @@
 """Correlation Estimator."""
 
-from estimator import Estimator
+from .estimator import Estimator
 
 import numpy as np
 from joblib import Parallel, delayed

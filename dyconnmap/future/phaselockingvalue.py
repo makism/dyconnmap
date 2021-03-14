@@ -2,8 +2,8 @@
 import numpy as np
 import itertools
 
-from estimator import Estimator
-from basicfilter import analytic_signal
+from .estimator import Estimator
+from .basicfilter import analytic_signal
 from joblib import Parallel, delayed
 import collections
 
