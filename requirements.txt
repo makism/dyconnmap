@@ -4,7 +4,7 @@ codacy-coverage
 coverage
 codecov
 
-numpy==1.19.5
+numpy==1.20.1
 scipy>=1.6.0; python_version > '3.6'
 scipy==1.5.2; python_version <= '3.6'
 matplotlib>=3.3.0
