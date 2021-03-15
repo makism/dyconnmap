@@ -1,2 +1,2 @@
-pyEDFlib==0.1.14
+pyEDFlib==0.1.20
 tqdm
