@@ -9,7 +9,7 @@ scipy==1.6.0; python_version > '3.6'
 scipy==1.5.2; python_version <= '3.6'
 matplotlib>=3.3.0
 networkx==2.5
-statsmodels==0.12.1
+statsmodels==0.12.2
 scikit-learn==0.24.1
 bctpy==0.5.0
 
