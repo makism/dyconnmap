@@ -27,7 +27,7 @@ for extra_dirs in ("docs", "examples", "tests"):
 
 setup(
     name="dyconnmap",
-    version="v1.0.3",
+    version="v1.0.4",
     description="A dynamic connectome mapping module in Python",
     author="Avraam Marimpis, Stavros Dimitriadis",
     author_email="Avraam.Marimpis@gmail.com, STIDimitriadis@gmail.com",
