@@ -8,3 +8,11 @@ You may run the tests using:
 ```
 $ pytest .
 ```
+
+# Advanced Run
+
+You can also use our provided tox setup to test across Python 3.6, 3.8 and 3.9.
+It is recommended to first activate an Anaconda environment, then from the project's parent directory run:
+```
+$ tox
+```
