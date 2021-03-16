@@ -3,12 +3,12 @@ Prerequisites
 
 The following software is required for `dyconnmap` to work properly:
 
-1. Python 3.6+
+1. Python 3.6, or Python 3.8+
 2. NumPy
 3. SciPy
 4. Matplotlib
 5. NetworkX
-6. Brain Connictivity Toolbox for Python (BctPy)
+6. Brain Connectivity Toolbox for Python (bctpy)
 7. nose (optional)
 
     This is required for executing the tests.
@@ -27,7 +27,7 @@ The easiest way to install `dyconnmap` is through `pip`.
 From a terminal just type:
 > $ pip search dyconnmap
 
-> dyconnmap (1.0.0)  - A dynamic connectome mapping module.
+> dyconnmap (1.0.4)  - A dynamic connectome mapping module.
 
 and to install it:
 > $ pip install dyconnmap
