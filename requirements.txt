@@ -19,3 +19,5 @@ sphinx-rtd-theme==0.5.1
 
 mypy
 data-science-types
+tox
+tox-conda
