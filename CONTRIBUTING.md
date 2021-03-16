@@ -8,6 +8,6 @@ self-contained code example that demonstrates the problem.
 
 #### Contributing code
 
-Thanks for your interest in contributing code to `dynfunconn`!
+Thanks for your interest in contributing code to `dyconnmap`!
 
 Either fork or create a pull request on our Github page.
