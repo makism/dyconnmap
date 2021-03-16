@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 import os
-import nose
 import scipy as sp
 import numpy as np
 from numpy import testing
