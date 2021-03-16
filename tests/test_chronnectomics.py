@@ -7,16 +7,8 @@ from numpy import testing
 from dyconnmap.chronnectomics import dwell_time, flexibility_index, occupancy_time
 
 
-sts = None
-
-
-def setup_module(module):
-    global sts
-    sts = np.load("../examples/data/chronnectomics_sts.npy")
-
-
 def test_dwell_time():
-    global sts
+    sts = np.load("../examples/data/chronnectomics_sts.npy")
 
     dwell, mean, std = dwell_time(sts)
 
@@ -41,7 +33,7 @@ def test_dwell_time():
 
 
 def test_flexibility_index():
-    global sts
+    sts = np.load("../examples/data/chronnectomics_sts.npy")
 
     fi = flexibility_index(sts)
 
@@ -51,7 +43,7 @@ def test_flexibility_index():
 
 
 def test_occupancy_time():
-    global sts
+    sts = np.load("../examples/data/chronnectomics_sts.npy")
 
     ot = occupancy_time(sts)
 

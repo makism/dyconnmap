@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 import os
 import nose
-from nose import tools
 import scipy as sp
 import numpy as np
 from numpy import testing
@@ -214,7 +213,7 @@ def test_pac_one_channel():
     avg = np.squeeze(np.real(avg))
 
     expected = 0.468296707219
-    nose.tools.assert_almost_equal(avg, expected)
+    np.testing.assert_almost_equal(avg, expected)
 
 
 def test_pac_multiple_channels():

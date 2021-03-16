@@ -8,8 +8,8 @@ Also, from the all tests the Time Varying Functional Connectivity Graphs are als
 - two tests using the class XFreqCoupling (multiple channels, multiple high frequency bands, PAC, PLV)
 
 """
-import nose
-from nose import tools
+
+import pytest
 import scipy as sp
 from scipy import io
 import numpy as np
@@ -22,22 +22,16 @@ import dyconnmap
 from dyconnmap import cluster
 
 
-rng = None
-data = None
-
-
+@pytest.fixture()
 def initialize():
-    global rng
-    global data
-
     rng = np.random.RandomState(seed=0)
     data, _ = sklearn.datasets.make_moons(n_samples=1024, noise=0.125, random_state=rng)
 
+    return rng, data
 
-@nose.tools.with_setup(initialize)
-def test_clustering_ng():
-    global rng
-    global data
+
+def test_clustering_ng(initialize):
+    rng, data = initialize
 
     ng = dyconnmap.cluster.NeuralGas(rng=rng).fit(data)
     protos = ng.protos
@@ -50,10 +44,8 @@ def test_clustering_ng():
     np.testing.assert_array_almost_equal(symbols, result_symbols)
 
 
-@nose.tools.with_setup(initialize)
-def test_clustering_rng():
-    global rng
-    global data
+def test_clustering_rng(initialize):
+    rng, data = initialize
 
     reng = dyconnmap.cluster.RelationalNeuralGas(
         n_protos=10, iterations=100, rng=rng
@@ -68,10 +60,8 @@ def test_clustering_rng():
     np.testing.assert_array_almost_equal(symbols, result_symbols)
 
 
-@nose.tools.with_setup(initialize)
-def test_clustering_mng():
-    global rng
-    global data
+def test_clustering_mng(initialize):
+    rng, data = initialize
 
     protos = dyconnmap.cluster.MergeNeuralGas(rng=rng).fit(data).protos
 
@@ -79,10 +69,8 @@ def test_clustering_mng():
     np.testing.assert_array_almost_equal(protos, result_protos)
 
 
-@nose.tools.with_setup(initialize)
-def test_clustering_gng():
-    global rng
-    global data
+def test_clustering_gng(initialize):
+    rng, data = initialize
 
     gng = dyconnmap.cluster.GrowingNeuralGas(rng=rng)
     gng.fit(data)
@@ -97,10 +85,8 @@ def test_clustering_gng():
     np.testing.assert_array_almost_equal(symbols, result_symbols)
 
 
-@nose.tools.with_setup(initialize)
-def test_clustering_som():
-    global rng
-    global data
+def test_clustering_som(initialize):
+    rng, data = initialize
 
     protos = dyconnmap.cluster.SOM(grid=(8, 4), rng=rng).fit(data).weights
 
@@ -108,10 +94,8 @@ def test_clustering_som():
     np.testing.assert_array_almost_equal(protos, result_protos)
 
 
-@nose.tools.with_setup(initialize)
-def test_clustering_som_umatrix():
-    global rng
-    global data
+def test_clustering_som_umatrix(initialize):
+    rng, data = initialize
 
     protos = dyconnmap.cluster.SOM(grid=(8, 4), rng=rng).fit(data).weights
     umatrix = dyconnmap.cluster.umatrix(protos)

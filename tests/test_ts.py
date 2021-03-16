@@ -33,16 +33,6 @@ from dyconnmap.ts import (
 )
 
 
-ts = None
-
-
-def setup_module(module):
-    global ts
-
-    ts = np.load("../examples/data/eeg_32chans_10secs.npy")
-    ts = ts[0:1, 0:128].ravel()
-
-
 def test_surrogate_analysis():
     rng = np.random.RandomState(0)
 
@@ -143,6 +133,9 @@ def test_rr_order_similarity():
 
 
 def test_pemutation_entropy():
+    ts = np.load("../examples/data/eeg_32chans_10secs.npy")
+    ts = ts[0:1, 0:128].ravel()
+
     dim = 3
     tau = 1
 
@@ -175,6 +168,9 @@ def test_ordinal_pattern_similariy():
 
 
 def test_ts_embedded_ts():
+    ts = np.load("../examples/data/eeg_32chans_10secs.npy")
+    ts = ts[0:1, 0:128].ravel()
+
     dim = 3
     tau = 1
     embedded_ts = embed_delay(ts, dim, tau)
@@ -184,7 +180,9 @@ def test_ts_embedded_ts():
 
 
 def test_phase_rand():
-    global ts
+    ts = np.load("../examples/data/eeg_32chans_10secs.npy")
+    ts = ts[0:1, 0:128].ravel()
+
     num_surr = 1
     rng = np.random.RandomState(0)
 
@@ -197,7 +195,9 @@ def test_phase_rand():
 
 
 def test_aaft():
-    global ts
+    ts = np.load("../examples/data/eeg_32chans_10secs.npy")
+    ts = ts[0:1, 0:128].ravel()
+
     num_surr = 1
     rng = np.random.RandomState(0)
 
@@ -225,6 +225,9 @@ def test_fdr():
 
 
 def test_entropy_reduction_rate():
+    ts = np.load("../examples/data/eeg_32chans_10secs.npy")
+    ts = ts[0:1, 0:128].ravel()
+
     mean1 = np.mean(ts)
     sx = ts
     sx[ts > mean1] = 1

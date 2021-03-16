@@ -5,7 +5,6 @@
 """
 import os
 import nose
-from nose import tools
 import numpy as np
 from numpy import testing
 

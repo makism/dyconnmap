@@ -1,9 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
 
-"""
-import nose
-from nose import tools
 import scipy as sp
 from scipy import io
 import numpy as np

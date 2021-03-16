@@ -1,10 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-
-
-"""
-import nose
-from nose import tools
+import pytest
 import scipy as sp
 from scipy import io
 import numpy as np
@@ -16,19 +11,15 @@ from dyconnmap import tvfcg, tvfcg_ts, tvfcg_cfc, tvfcg_compute_windows
 from dyconnmap.fc import PAC, PLV, plv
 
 
-tvfcg_plv_ts = None
-tvfcg_plv_fcgs = None
-tvfcg_pac_plv_fcgs = None
-
-
 def sample_ufunc(data):
     return np.abs(np.real(data))
 
 
-def setup_module(module):
-    global tvfcg_plv_ts
-    global tvfcg_plv_fcgs
-    global tvfcg_pac_plv_fcgs
+@pytest.fixture()
+def initialize():
+    tvfcg_plv_ts = None
+    tvfcg_plv_fcgs = None
+    tvfcg_pac_plv_fcgs = None
 
     original_data = np.load("../examples/data/eeg_32chans_10secs.npy")
 
@@ -57,8 +48,12 @@ def setup_module(module):
     ts, avg = estimator.estimate(u_phases)
     tvfcg_plv_ts = tvfcg_ts(ts, [1.0, 4.0], 128, avg_func=estimator.mean)
 
+    return tvfcg_plv_ts, tvfcg_plv_fcgs, tvfcg_pac_plv_fcgs
 
-def test_tvfcgs_compute_windows():
+
+def test_tvfcgs_compute_windows(initialize):
+    tvfcg_plv_ts, tvfcg_plv_fcgs, tvfcg_pac_plv_fcgs = initialize
+
     data = np.load("data/test_iplv_ts.npy")
 
     fb = [1.0, 4.0]
@@ -75,7 +70,9 @@ def test_tvfcgs_compute_windows():
     np.testing.assert_array_equal(window_length, result_window_length)
 
 
-def test_tvfcgs_plv():
+def test_tvfcgs_plv(initialize):
+    tvfcg_plv_ts, tvfcg_plv_fcgs, tvfcg_pac_plv_fcgs = initialize
+
     result_fcgs = np.load("data/test_tvfcgs_plv.npy")
 
     f32_1 = np.float32(result_fcgs)
@@ -84,7 +81,9 @@ def test_tvfcgs_plv():
     np.testing.assert_array_almost_equal(f32_1, f32_2)
 
 
-def test_tvfcgs_pac_plv():
+def test_tvfcgs_pac_plv(initialize):
+    tvfcg_plv_ts, tvfcg_plv_fcgs, tvfcg_pac_plv_fcgs = initialize
+
     result_ts = np.load("data/test_tvfcgs_pac_plv.npy")
 
     f32_1 = np.float32(result_ts)
@@ -93,7 +92,9 @@ def test_tvfcgs_pac_plv():
     np.testing.assert_array_almost_equal(f32_1, f32_2)
 
 
-def test_tvfcgs_from_plv_ts():
+def test_tvfcgs_from_plv_ts(initialize):
+    tvfcg_plv_ts, tvfcg_plv_fcgs, tvfcg_pac_plv_fcgs = initialize
+
     result_fcgs = np.load("data/test_tvfcgs_from_plv_ts.npy")
 
     np.testing.assert_array_almost_equal(tvfcg_plv_ts, result_fcgs)
