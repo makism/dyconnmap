@@ -8,7 +8,7 @@ A neuroimaging module for dynamic connectome mapping.
   <td>build & code</td>
   <td><br/>
    
-[![Build Status](https://travis-ci.org/makism/dyconnmap.svg?branch=master)](https://travis-ci.org/makism/dyconnmap) [![Coverage Status](https://coveralls.io/repos/github/makism/dyconnmap/badge.svg?branch=master)](https://coveralls.io/github/makism/dyconnmap?branch=master) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/70dff7603f5849f79e703f852d1b5ae3)](https://www.codacy.com/app/makism/dyconnmap?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=makism/dyconnmap&amp;utm_campaign=Badge_Grade)
+[![Build Status](https://travis-ci.org/makism/dyconnmap.svg?branch=master)](https://travis-ci.org/makism/dyconnmap) [![Coverage Status](https://coveralls.io/repos/github/makism/dyconnmap/badge.svg?branch=master)](https://coveralls.io/github/makism/dyconnmap?branch=master) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/10f434822c3a4bdb89dd0bf43f524970)](https://www.codacy.com/gh/makism/dyconnmap/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=makism/dyconnmap&amp;utm_campaign=Badge_Grade)
    </td>
  </tr>
  <tr>
