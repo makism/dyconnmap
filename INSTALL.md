@@ -4,12 +4,12 @@ Prerequisites
 The following software is required for `dyconnmap` to work properly:
 
 1. Python 3.6, or Python 3.8+
-2. NumPy
-3. SciPy
-4. Matplotlib
-5. NetworkX
+2. numpy
+3. scipy
+4. maplotlib
+5. networkx
 6. Brain Connectivity Toolbox for Python (bctpy)
-7. nose (optional)
+7. pytest (optional)
 
     This is required for executing the tests.
 
@@ -68,4 +68,4 @@ Testing
 =======
 
 Once you have installed `dyconnmap`, navigate into the `tests` directory and run:
-> $ nosetests -svd .
+> $ pytest .
