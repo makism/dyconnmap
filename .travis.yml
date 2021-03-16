@@ -12,7 +12,8 @@ install:
 
 script:
   - cd /home/travis/build/makism/dyconnmap/tests/
-  - nosetests --cover-tests --with-coverage --cover-package=dyconnmap
+  #- nosetests --cover-tests --with-coverage --cover-package=dyconnmap
+  - pytest --cov-report=term-missing --cov=dyconnmap .
 
 after_success:
   - coveralls
