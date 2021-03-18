@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Test for the functional connectivity module."""
+"""Tests for the functional connectivity module."""
 
 import os
 import scipy as sp
