@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """Tests for the graphs threshlding module."""
 
 import numpy as np

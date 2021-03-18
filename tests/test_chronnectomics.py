@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 """Tests for the chronnectomics module."""
+
 import numpy as np
 from numpy import testing
 
