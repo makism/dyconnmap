@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Tests for the graphs threshlding module."""
+"""Tests for the graphs thresholding module."""
 
 import numpy as np
 from numpy import testing
