@@ -1,6 +1,6 @@
 # About
 
-Currently, we use _pytest_ for the tests. Each test contains a some ground truth results, and a set of data that each function/method will use.
+Currently, we use _pytest_ for the tests. Each test contains a some ground truth results (organized under `groundtruth/`), and a set of data that each function/method will use (in `sample_data/`).
 
 # Run
 
