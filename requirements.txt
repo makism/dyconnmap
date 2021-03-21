@@ -23,8 +23,3 @@ tox-conda
 # For the documentation
 Sphinx>=3.0.4
 sphinx-rtd-theme==0.5.1
-
-# For the tutorials
-pyEDFlib==0.1.14
-tqdm
-jupyterlab
