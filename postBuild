@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export RAW_DATA=$NB_USER/tutorials/raw_data/
+export RAW_DATA=/home/$NB_USER/tutorials/raw_data/
 
 mkdir $RAW_DATA
 wget -P $RAW_DATA/ https://physionet.org/static/published-projects/eegmmidb/eeg-motor-movementimagery-dataset-1.0.0.zip
