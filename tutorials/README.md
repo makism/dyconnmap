@@ -1,6 +1,8 @@
 # Requirements
 
-Is is imperative that you check and install `dyconnmap`s requirements in the parent directory. The file `reuirements.txt` contains tha package required for the notebooks to run successfully.
+Is is imperative that you check and install `dyconnmap`s requirements in the parent directory. 
+
+Additionally, you have to match and install packages found in `requirements.txt`.
 
 # How to run (sample instructions)
 
