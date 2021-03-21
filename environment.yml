@@ -1,9 +1,11 @@
-name: py38
+name: py36
 channels:
   - conda-forge
   - defaults
 dependencies:
-  - python=3.8
+  - python=3.6
   - pip
   - pip:
     - -r file:requirements.txt
+  - pip:
+    - -r file:tutorials/requirements.txt
