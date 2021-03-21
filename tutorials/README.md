@@ -1,8 +1,8 @@
 # Requirements
 
-Check `dyconnmap`'s requirements. Additionally you will need `jupyter-lab`.
+Is is imperative that you check `dyconnmap`s requirements in the parent directory (`requirements.txt`).
 
-Install the requirements with `pip install -r requirements.txt`.
+Additionally you will need `jupyter-lab`.
 
 # How to run (sample instructions)
 
