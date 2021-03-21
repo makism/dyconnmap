@@ -1,5 +1,8 @@
 #!/bin/bash
 
-mkdir ./raw-data
-wget -q -P raw-data https://physionet.org/static/published-projects/eegmmidb/eeg-motor-movementimagery-dataset-1.0.0.zip
-unzip raw-data/eeg-motor-movementimagery-dataset-1.0.0.zip -d raw-data/eeg-motor-movementimagery-dataset/
+export RAW_DATA=$NB_USER/tutorials/raw_data/
+
+mkdir $RAW_DATA
+wget -P $RAW_DATA/ https://physionet.org/static/published-projects/eegmmidb/eeg-motor-movementimagery-dataset-1.0.0.zip
+unzip $RAW_DATA/eeg-motor-movementimagery-dataset-1.0.0.zip -d $RAW_DATA/eeg-motor-movementimagery-dataset/
+rm -v $RAW_DATA/eeg-motor-movementimagery-dataset-1.0.0.zip
