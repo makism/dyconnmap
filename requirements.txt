@@ -27,3 +27,4 @@ sphinx-rtd-theme==0.5.1
 # For the tutorials
 pyEDFlib==0.1.14
 tqdm
+jupyterlab
