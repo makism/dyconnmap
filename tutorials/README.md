@@ -1,8 +1,6 @@
 # Requirements
 
-Is is imperative that you check `dyconnmap`s requirements in the parent directory (`requirements.txt`).
-
-Additionally you will need `jupyter-lab`.
+Is is imperative that you check and install `dyconnmap`s requirements in the parent directory. The file `reuirements.txt` contains tha package required for the notebooks to run successfully.
 
 # How to run (sample instructions)
 
