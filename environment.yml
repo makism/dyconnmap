@@ -7,5 +7,6 @@ dependencies:
   - pip
   - pip:
     - -r file:requirements.txt
-  - pip:
-    - -r file:tutorials/requirements.txt
+  - pyEDFlib==0.1.14
+  - tqdm
+  - jupyterlab
