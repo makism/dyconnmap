@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 # Fetch EEG data
 export RAW_DATA=/home/$NB_USER/tutorials/raw_data/
 
@@ -8,7 +7,6 @@ mkdir $RAW_DATA
 wget -q -P $RAW_DATA/ https://physionet.org/static/published-projects/eegmmidb/eeg-motor-movementimagery-dataset-1.0.0.zip
 unzip $RAW_DATA/eeg-motor-movementimagery-dataset-1.0.0.zip -d $RAW_DATA/eeg-motor-movementimagery-dataset/
 rm -v $RAW_DATA/eeg-motor-movementimagery-dataset-1.0.0.zip
-
 
 # Fetch fMRI time series
 mkdir /opt/Temp/
