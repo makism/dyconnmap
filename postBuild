@@ -9,8 +9,7 @@ unzip $RAW_DATA/eeg-motor-movementimagery-dataset-1.0.0.zip -d $RAW_DATA/eeg-mot
 rm -v $RAW_DATA/eeg-motor-movementimagery-dataset-1.0.0.zip
 
 # Fetch fMRI time series
-mkdir /opt/Temp/
-cd /opt/Temp/
+cd $RAW_DATA
 git clone https://github.com/ramp-kits/autism.git
 cd autism/data/fmri/
 wget -c wget https://zenodo.org/record/3625740/files/msdl.zip
