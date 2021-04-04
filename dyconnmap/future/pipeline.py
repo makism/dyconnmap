@@ -1,6 +1,5 @@
-"""
-
-"""
+"""Pipeline backend."""
+# author Avraam Marimpis <avraam.marimpis@gmail.com>
 
 from dataclasses import dataclass
 from typing import Optional, List, Any

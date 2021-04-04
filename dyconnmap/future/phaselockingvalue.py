@@ -1,11 +1,12 @@
 """Phase Locking Value Estimator."""
+# author Avraam Marimpis <avraam.marimpis@gmail.com>
+
 import numpy as np
 import itertools
-
-from .estimator import Estimator
-from .basicfilter import analytic_signal
 from joblib import Parallel, delayed
 import collections
+from .estimator import Estimator
+from .basicfilter import analytic_signal
 
 
 class PhaseLockingValue(Estimator):

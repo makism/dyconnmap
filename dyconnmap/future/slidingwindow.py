@@ -1,8 +1,8 @@
 """Sliwing Window."""
+# author Avraam Marimpis <avraam.marimpis@gmail.com>
+
 import numpy as np
-
 from .dynamicwindow import DynamicWindow
-
 from typing import List, Type, Union, Optional, Tuple, Dict
 from dataclasses import dataclass, field
 

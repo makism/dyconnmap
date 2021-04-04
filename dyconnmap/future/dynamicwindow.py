@@ -1,7 +1,9 @@
 """Base Dynamic Window."""
-from dataclasses import dataclass, field
+# author Avraam Marimpis <avraam.marimpis@gmail.com>
+
 from abc import ABC, abstractmethod
-from typing import List, Type, Union, Optional, Tuple, Dict
+from dataclasses import dataclass, field
+from typing import List, Optional, Tuple
 
 
 @dataclass
@@ -17,14 +19,16 @@ class DynamicWindow(ABC):
     pairs: Optional[List[Tuple[int, int, int]]] = field(
         default=None,
         metadata={
-            "description": "The timing pairs, in which the estimator with will fed with."
+            "description": "The timing pairs / windows for the estimator."
         },
     )
 
     def is_ready(self) -> bool:
+        """Return the preparation status of the estimator."""
         return self.__ready
 
     def prepare(self, **kwargs) -> None:
+        """Prepare the estimator and initialize the default values."""
         self.samples = kwargs.get("samples", 0)
         self.rois = kwargs.get("rois", 0)
         self.__ready = True
@@ -41,4 +45,5 @@ class DynamicWindow(ABC):
 
     @abstractmethod
     def __iter__(self):
+        """Return a generator to iterate over the constructed windows."""
         ...

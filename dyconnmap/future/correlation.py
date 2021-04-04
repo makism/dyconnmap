@@ -1,19 +1,23 @@
 """Correlation Estimator."""
+# author Avraam Marimpis <avraam.marimpis@gmail.com>
 
-from .estimator import Estimator
+from joblib import Parallel, delayed
 
 import numpy as np
-from joblib import Parallel, delayed
+
+from .estimator import Estimator
 
 
 class Correlation(Estimator):
     """Correlation."""
 
     def __post_init__(self):
+        """Post init; set datatype."""
         super().__post_init__()
         self.dtype = np.float32
 
     def estimate(self, data: np.ndarray, **kwargs) -> np.ndarray:
+        """Estimate correlation connectivity."""
         result = np.corrcoef(data)
         # return {"index": kwargs["subject_index"], "estimation": result}
         return result

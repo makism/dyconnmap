@@ -5,14 +5,14 @@ module.
 """
 # author Avraam Marimpis <avraam.marimpis@gmail.com>
 
-import numpy as np
-import os
 import datetime
+import json
+import os
 from dataclasses import dataclass, field
 from enum import IntEnum
+from typing import Dict, List, Optional, Union
 
-from typing import List, Type, Union, Optional, Tuple, Dict
-import json
+import numpy as np
 
 
 class Modality(IntEnum):
@@ -25,12 +25,14 @@ class Modality(IntEnum):
     MEG = 4
 
 
-@dataclass(init=True, repr=True, eq=False, order=False, unsafe_hash=False, frozen=False)
+@dataclass(eq=False, order=False, unsafe_hash=False, frozen=False)
 class Dataset:
     """Dataset."""
 
     version: float = field(default=1.0, init=False)
-    date_time: datetime.datetime = field(default=datetime.datetime.now(), init=False)
+    date_time: datetime.datetime = field(
+        default=datetime.datetime.now(), init=False
+    )
     comments: str = field(default_factory=str, init=False)
 
     data: np.ndarray = field(repr=False)
@@ -53,6 +55,7 @@ class Dataset:
     )
 
     def __post_init__(self):
+        """Post init; initialize default values."""
         self.version = 1.0
         self.date_time = datetime.datetime.now()
 
@@ -88,7 +91,6 @@ class Dataset:
 
     def __eq__(self, other: "Dataset"):
         """Test for equality against another Dataset object."""
-
         if not isinstance(other, Dataset):
             return False
 
@@ -113,8 +115,12 @@ class Dataset:
         return True
 
     def settings(self) -> Dict[str, int]:
-        """Return a dictionary containing important metadata about the Dataset; number of subjects, samples, etc.."""
-        return {"subjects": self.subjects, "samples": self.samples, "rois": self.rois}
+        """Return a dict containing important metadata about the Dataset."""
+        return {
+            "subjects": self.subjects,
+            "samples": self.samples,
+            "rois": self.rois,
+        }
 
     def write(self, pathname: str) -> Optional[bool]:
         """Write the Dataset to the given directory."""
@@ -146,7 +152,7 @@ class Dataset:
         with open(f"{pathname}/dataset.json", "r") as fp:
             json_data = json.load(fp)
 
-            orig_version, orig_date_time, orig_comments = (
+            _, orig_date_time, _ = (
                 json_data["version"],
                 json_data["date_time"],
                 json_data["comments"],
@@ -159,7 +165,9 @@ class Dataset:
             ds_data = None
             for i in range(json_data["subjects"]):
                 m = np.loadtxt(
-                    f"{pathname}/data_subject{i}.csv", delimiter=",", skiprows=1
+                    f"{pathname}/data_subject{i}.csv",
+                    delimiter=",",
+                    skiprows=1,
                 )
 
                 if ds_data is None:
@@ -181,6 +189,7 @@ class DatasetEncoder(json.JSONEncoder):
     """JSON encoder for our Dataset class."""
 
     def default(self, obj):
+        """Encode the fields based on their data type."""
         if isinstance(obj, Dataset):
             return obj.__dict__
         elif isinstance(obj, (datetime.date, datetime.datetime)):

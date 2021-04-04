@@ -1,14 +1,18 @@
 """Base Estimator."""
-import numpy as np
+# author Avraam Marimpis <avraam.marimpis@gmail.com>
 
+import collections
 import multiprocessing
+from abc import ABC, abstractmethod
+from dataclasses import dataclass, field
+from typing import Callable, Dict, List, Optional, Tuple
+
 from joblib import Parallel, delayed
 
-from typing import List, Type, Union, Optional, Tuple, Dict, Callable
-from dataclasses import dataclass, field
-import itertools
-import collections
-from abc import ABC, abstractmethod
+import numpy as np
+
+from .dataset import Dataset
+from .dynamicwindow import DynamicWindow
 
 
 @dataclass(frozen=False)
@@ -30,7 +34,9 @@ class Estimator(ABC):
     filter: Optional[Callable] = field(
         default=None,
         init=True,
-        metadata={"description": "A callback function to filter the given `Dataset`."},
+        metadata={
+            "description": "A callback function to filter the given `Dataset`."
+        },
     )
 
     filter_opts: Optional[Dict] = field(
@@ -41,35 +47,19 @@ class Estimator(ABC):
         },
     )
 
-    # est_ts: Optional[np.ndarray] = field(
-    #     init=False,
-    #     default=None,
-    #     metadata={
-    #         "description": "The estimated time series after invoking the estimator; some methods are not able to produce these intermediate time series (i.e. correlation)."
-    #     },
-    # )
-    #
-    # est_avg: Optional[np.ndarray] = field(
-    #     init=False,
-    #     default=None,
-    #     metadata={"description": "The resulting connectivity matrices."},
-    # )
-
     jobs: int = field(
         default=multiprocessing.cpu_count(),
         repr=True,
         metadata={"description": "Number of parallel jobs."},
     )
 
-    # dataset_settings: dict = None
-
-    # window_settings: dict = None
-
     def __post_init__(self):
+        """Post init; setup number of parallel jobs."""
         if self.jobs <= 0:
             self.jobs = 1
 
     def preprocess(self, data: np.ndarray, **kwargs) -> np.ndarray:
+        """Perform a preprocessing step."""
         ...
 
     @abstractmethod
@@ -80,27 +70,23 @@ class Estimator(ABC):
     def estimate_for_slides(
         self, data: np.ndarray, pairs: List[Tuple[int, int]], **kwargs
     ) -> np.ndarray:
+        """Employ the estimator on each slide."""
         rois = kwargs["rois"]
         slides = kwargs["window"]["slides"]
-        slide_pairs = kwargs["window"]["pairs"]
+        # slide_pairs = kwargs["window"]["pairs"]
 
         dfcg = np.zeros((slides, rois, rois), dtype=self.dtype)
 
-        # print(np.shape(dfcg))
-
-        # final_pairs = list(itertools.product(pairs, slide_pairs))
-        # print(np.shape(final_pairs))
-        # print("pairs: ", pairs)
-        # print("np.shape(data): ", np.shape(data))
-
         for window_id, slice_start, slice_end in pairs:
-            # print(f"window_id: {window_id}, start: {slice_start}, end: {slice_end}")
             result = self.estimate(data[:, slice_start:slice_end], **kwargs)
             dfcg[window_id, :, :] = result
 
         return dfcg
 
-    def __call__(self, dataset: "Dataset", window: Optional["DynamicWindow"] = None):
+    def __call__(
+        self, dataset: "Dataset", window: Optional["DynamicWindow"] = None
+    ):
+        """Magic method to invoke the estimator."""
         pairs = None
         ts = dataset.data
 
@@ -136,11 +122,16 @@ class Estimator(ABC):
             pairs = list(window)
 
         if dataset.subjects == 1:
-            results = cb_func(ts[0, :, :], pairs=pairs, subject_index=0, **settings)
+            results = cb_func(
+                ts[0, :, :], pairs=pairs, subject_index=0, **settings
+            )
         else:
             results = Parallel(n_jobs=self.jobs)(
                 delayed(cb_func)(
-                    ts[index, :, :], pairs=pairs, subject_index=index, **settings
+                    ts[index, :, :],
+                    pairs=pairs,
+                    subject_index=index,
+                    **settings
                 )
                 for index in np.arange(dataset.subjects)
             )
