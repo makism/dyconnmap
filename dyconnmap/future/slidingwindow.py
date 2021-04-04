@@ -1,10 +1,11 @@
 """Sliwing Window."""
 # author Avraam Marimpis <avraam.marimpis@gmail.com>
 
-import numpy as np
-from .dynamicwindow import DynamicWindow
-from typing import List, Type, Union, Optional, Tuple, Dict
 from dataclasses import dataclass, field
+
+import numpy as np
+
+from .dynamicwindow import DynamicWindow
 
 
 @dataclass
@@ -14,6 +15,7 @@ class SlidingWindow(DynamicWindow):
     step: int = field(default=1, init=True)
 
     def prepare(self, **kwargs) -> None:
+        """Prepare the sliding window."""
         super().prepare(**kwargs)
 
         self.slides = np.int32(
@@ -31,4 +33,5 @@ class SlidingWindow(DynamicWindow):
             ]
 
     def __iter__(self):
+        """Return a generator to iterate over the constructed windows."""
         return iter(self.pairs)

@@ -28,7 +28,7 @@ class DynamicWindow(ABC):
         return self.__ready
 
     def prepare(self, **kwargs) -> None:
-        """Prepare the estimator and initialize the default values."""
+        """Prepare the dynamic window and initialize the default values."""
         self.samples = kwargs.get("samples", 0)
         self.rois = kwargs.get("rois", 0)
         self.__ready = True

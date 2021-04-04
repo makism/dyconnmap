@@ -1,17 +1,21 @@
 """Time-Vayring Functional Connectivity Graphs."""
 # author Avraam Marimpis <avraam.marimpis@gmail.com>
 
-import numpy as np
-from typing import List, Type, Union, Optional, Tuple, Dict
 from dataclasses import dataclass, field
+
+import numpy as np
+
 from .dynamicwindow import DynamicWindow
+
 
 @dataclass
 class TimeVarying(DynamicWindow):
     """Time Varying (Functional Connectivity Graphs)."""
 
     cc: float = field(
-        init=True, default=2.0, metadata={"description": "The cycle-criterion."}
+        init=True,
+        default=2.0,
+        metadata={"description": "The cycle-criterion."},
     )
 
     # redefine optional
@@ -20,6 +24,7 @@ class TimeVarying(DynamicWindow):
     step: int = field(init=True, default=10)
 
     def prepare(self, **kwargs) -> None:
+        """Prepare the time-varying window."""
         super().prepare(**kwargs)
 
         if "filter_opts" not in kwargs:
@@ -29,12 +34,13 @@ class TimeVarying(DynamicWindow):
 
         fs = kwargs["filter_opts"]["fs"]
         fb = kwargs["filter_opts"]["fb"]
-        rois = kwargs["rois"]
 
         self.window_length = np.int32(np.round((self.cc / fb[0]) * fs))
 
         if self.window_length >= self.samples:
-            raise Exception("The resulting window size is greater than the samples.")
+            raise Exception(
+                "The resulting window size is greater than the samples."
+            )
 
         self.slides = np.int32(
             np.round((self.samples - self.window_length) / self.step)
@@ -51,4 +57,5 @@ class TimeVarying(DynamicWindow):
             ]
 
     def __iter__(self):
+        """Return a generator to iterate over the constructed windows."""
         return iter(self.pairs)
