@@ -88,11 +88,11 @@ If you use _dyconnmap_ or _dyfunconn_ in a published work, please consider citin
 
 <table>
  <tr>
-  <td>Nov 2017 - Apr 2021</td>
+  <td align="left" width="200px">Nov 2017 - Apr 2021</td>
   <td>Brain Innovation B.V.</td>
  </tr>
  <tr>
-  <td>Sept 2017</td>
+  <td align="left" width="200px">Sept 2017</td>
   <td>BRAINTRAIN (Taking imaging into the therapeutic domain: Self-regulation of brain systems for mental disorders) research project (FP7-HEALTH).</td>
  </tr>
 </table>
