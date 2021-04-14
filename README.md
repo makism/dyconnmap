@@ -46,13 +46,6 @@ A neuroimaging module for dynamic connectome mapping.
 </tr>
 </table>
 
----
-
-financially sponsored by [Brain Innovation B.V.](https://www.brainvoyager.com)
-
----
-
-
 _dyconnmap_ (abbreviated from “dynamic connectome mapping”), a neuroimaging python module specifically designed for estimating the dynamic connectivity and analyzing complex brain networks; from neurophysiological data such as electroencephalogram (EEG), magnetoencephalography (MEG) and functional magnetic resonance imaging (fMRI) recordings. It includes numerous submodules to work with, such as chronnectomics and graph-theoretical algorithms, (symbolic) time series and statistical methods.
 
 This is an ongoing effort to develop the module further and extend it by adding more algorithms related to graph analysis and statistical approaches. Considering the increasing acceptance and usage of python in analyzing neuroimaging data, we firmly believe that the module will be a great addition in every practitioner's toolbox engaged in brain connectivity analysis.
@@ -90,3 +83,16 @@ If you use _dyconnmap_ or _dyfunconn_ in a published work, please consider citin
     </tr>
 </table>
 
+
+#### Sponsors
+
+<table>
+ <tr>
+  <td>Nov 2017 - Apr 2021</td>
+  <td>Brain Innovation B.V.</td>
+ </tr>
+ <tr>
+  <td>Sept 2017</td>
+  <td>BRAINTRAIN (Taking imaging into the therapeutic domain: Self-regulation of brain systems for mental disorders) research project (FP7-HEALTH).</td>
+ </tr>
+</table>
