@@ -1,0 +1,32 @@
+version: 2
+updates:
+- package-ecosystem: pip
+  directory: "/"
+  schedule:
+    interval: weekly
+    time: "04:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: bctpy
+    versions:
+    - "> 0.5.0, < 0.6"
+  - dependency-name: pyedflib
+    versions:
+    - 0.1.20
+    - 0.1.22
+  - dependency-name: networkx
+    versions:
+    - 2.5.1
+  - dependency-name: numpy
+    versions:
+    - 1.20.0
+    - 1.20.1
+  - dependency-name: statsmodels
+    versions:
+    - 0.12.2
+  - dependency-name: scipy
+    versions:
+    - 1.6.1
+  - dependency-name: matplotlib
+    versions:
+    - 3.3.4
