@@ -14,3 +14,6 @@ git clone https://github.com/ramp-kits/autism.git
 cd autism/data/fmri/
 wget -c wget https://zenodo.org/record/3625740/files/msdl.zip
 unzip msdl.zip
+
+# Install dyconnmap
+pip install dyconnmap
