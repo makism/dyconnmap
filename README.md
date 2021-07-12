@@ -59,7 +59,10 @@ Built on [NumPy](http://www.numpy.org/), [SciPy](http://www.scipy.org/), [matplo
 
 #### Publications
 
-* [poster presented @ 13th International Conference for Cognitive Neuroscience in Amsterdam \(ICON2017\)](https://f1000research.com/posters/6-1638) [![DOI](https://img.shields.io/badge/DOI-10.7490%2Ff1000research.1114652.1-blue.svg)](http://dx.doi.org/10.7490/f1000research.1114652.1) [under the previous name "dyfunconn"]
+
+* [ Marimpis, A. D., Dimitriadis, S. I., & Goebel, R. (2021). Dyconnmap: Dynamic connectome mapping—A neuroimaging python module. Human Brain Mapping, 1– 31. https://doi.org/10.1002/hbm.25589](https://onlinelibrary.wiley.com/doi/10.1002/hbm.25589) [![DOI](https://img.shields.io/badge/DOI-10.1002/hbm.25589-blue.svg)](https://doi.org/10.1002/hbm.25589)
+
+* [poster presented @ 13th International Conference for Cognitive Neuroscience in Amsterdam \(ICON2017\)](https://f1000research.com/posters/6-1638) [![DOI](https://img.shields.io/badge/DOI-10.7490%2Ff1000research.1114652.1-blue.svg)](https://dx.doi.org/10.7490/f1000research.1114652.1) [under the previous name "dyfunconn"]
 
 #### Resources
 
