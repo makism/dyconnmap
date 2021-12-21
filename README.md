@@ -82,10 +82,13 @@ If you use _dyconnmap_ or _dyfunconn_ in a published work, please consider citin
 <table align="center">
     <tr>
         <td align="left">1.</td>
+        <td align="left"> Marimpis, A. D., Dimitriadis, S. I., & Goebel, R. (2021). Dyconnmap: Dynamic connectome mapping—A neuroimaging python module. Human Brain Mapping, 42( 15), 4909– 4939. https://doi.org/10.1002/hbm.25589</td>
+    </tr>
+    <tr>
+        <td align="left">2.</td>
         <td align="left">Marimpis, A. D., & Dimitriadis, S. I. (2017). dyfunncon: dynamic functional connectivity–a neuroimaging Python module. F1000Research, 6. https://doi.org/10.7490/f1000research.1114652.1</td>
     </tr>
 </table>
-
 
 #### Sponsors
 
