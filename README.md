@@ -18,7 +18,7 @@ A neuroimaging module for dynamic connectome mapping.
  [![PyPI version](https://badge.fury.io/py/dyconnmap.svg)](https://badge.fury.io/py/dyconnmap) 
  [![Anaconda-Server Badge](https://anaconda.org/makism/dyconnmap/badges/version.svg)](https://anaconda.org/makism/dyconnmap)
  ![Whenenver a new tag is pushed; a wheel distribution is uploaded on the Test PyPI index.](https://github.com/makism/dyconnmap/workflows/publish-test-pypi/badge.svg)
- [![Requirements Status](https://requires.io/github/makism/dyconnmap/requirements.svg?branch=master)](https://requires.io/github/makism/dyconnmap/requirements/?branch=master)
+ ![Libraries.io dependency status for latest release](https://img.shields.io/librariesio/release/pypi/dyconnmap)
  [![Downloads](https://pepy.tech/badge/dyconnmap)](https://pepy.tech/project/dyconnmap)
  </td>
  </tr>
