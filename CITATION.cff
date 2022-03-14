@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+title: >-
+  Dyconnmap: Dynamic connectome mapping—A
+  neuroimaging python module
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Avraam
+    email: avraam.marimpis@maastrichtuniversity.nl
+    orcid: 'https://orcid.org/0000-0003-1551-9940'
+    family-names: Marimpis
+  - orcid: 'https://orcid.org/0000-0002-0000-5392'
+    given-names: Stavros
+    family-names: Dimitriadis
+  - given-names: Rainer
+    family-names: Goebel
+    orcid: 'https://orcid.org/0000-0003-1780-2467'
