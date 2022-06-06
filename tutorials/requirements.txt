@@ -1,4 +1,4 @@
 # For the tutorials
-pyEDFlib==0.1.14
+pyEDFlib==0.1.29
 tqdm
 jupyterlab
