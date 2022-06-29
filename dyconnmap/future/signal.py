@@ -1,10 +1,7 @@
-"""Basic filtering methods."""
-# author Avraam Marimpis <avraam.marimpis@gmail.com>
-
+"""Basic signal processing methods."""
 from typing import Tuple
 
 import numpy as np
-
 import scipy
 import scipy.signal
 
@@ -22,9 +19,7 @@ def passband_filter(
 
     passband = [fb[0] / (fs / 2.0), fb[1] / (fs / 2.0)]
     passband = np.ravel(passband)
-    b, a = scipy.signal.butter(
-        order, passband, "bandpass", analog=False, output="ba"
-    )
+    b, a = scipy.signal.butter(order, passband, "bandpass", analog=False, output="ba")
 
     filtered = scipy.signal.filtfilt(b, a, data)
 

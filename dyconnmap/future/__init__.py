@@ -3,7 +3,7 @@
 """
 # Author: Avraam Marimpis <avraam.marimpis@gmail.com>
 
-from .basicfilter import passband_filter, analytic_signal
+from .signal import passband_filter, analytic_signal
 from .bv import bv_parse_voi, bv_parse_vtc, bv_convert_coords
 from .dataset import Dataset
 from .estimator import Estimator

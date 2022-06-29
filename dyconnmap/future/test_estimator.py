@@ -6,7 +6,7 @@ from dyconnmap import tvfcg, sliding_window
 from dyconnmap.fc import PLV, Corr, plv_fast
 
 from .dataset import Dataset, Modality
-from .basicfilter import passband_filter
+from .signal import passband_filter
 from .phaselockingvalue import PhaseLockingValue
 from .correlation import Correlation, correlation
 from .slidingwindow import SlidingWindow

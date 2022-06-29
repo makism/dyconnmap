@@ -6,7 +6,7 @@ import itertools
 
 import numpy as np
 
-from .basicfilter import analytic_signal
+from .signal import analytic_signal
 from .estimator import Estimator
 
 
