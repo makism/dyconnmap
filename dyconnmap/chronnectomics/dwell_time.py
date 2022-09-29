@@ -50,6 +50,12 @@ def dwell_time(x):
 
         r_diff = np.diff(r)
         r_diff_without_one = np.where(r_diff != 1)
+        
+        if r_diff_without_one[0].shape[0] == 0:
+            dwell[symbol] = []
+            dwell_mean[symbol] = 0
+            dwell_std[symbol] = 0
+            continue
 
         x = r[r_diff_without_one]
         segments = len(x)
