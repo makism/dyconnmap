@@ -22,4 +22,4 @@ tox-conda
 
 # For the documentation
 Sphinx>=3.0.4
-sphinx-rtd-theme==0.5.1
+sphinx-rtd-theme==1.2.1
